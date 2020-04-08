@@ -8,8 +8,8 @@
   * [Copying several annotations](#copying-several-annotations)
   * [Visibility](#visibility)
 - [The syntax](#the-syntax)
-  * [`{Indication of key.}`](#indication-of-key)
-  * [`[Roman numeral(s)]`](#roman-numerals)
+  * [Indication of key.](#indication-of-key)
+  * [Roman numeral(s)](#roman-numerals)
     + [Triads](#triads)
     + [Tetrads](#tetrads)
   * [Suspensions and retardations](#suspensions-and-retardations)
@@ -96,23 +96,21 @@ Although not important for the computerised analysis of your annotations, it is 
 * If expressions overlap with notes, you can drag them manually as well. But if this is often the case, you might want to
   * change the distance between the chord symbols and the respective system for the entire document by changing the value of `Style -> General... -> Chord Symbols, Fretboard Diagrams -> Default vertical position`. A usable value might lie around `6.00sp`. If the distance is good but chord symbols overlap with the above system, you might want to
   * change the distance between all systems by raising the value of `Style -> General... -> Page -> Min. system distance`. Note that you might have to adjust `Max. system distance` if you need high values.
-  
+
 ![settings](pics/settings.png)
 
 # The syntax
 
-`{Indication of key.}[Roman numeral(s)]`
+Every symbol *must* have at least one compulsory Roman numeral and *may* start with an indication of key, followed by a separating dot. Such an indication sets the context for the (compulsorily) attached Roman numeral *and* for all subsequent symbols up to the next indication of key.
 
-Every symbol *must* have at least one compulsory [Roman numeral] and *may* start with an {Indication of key} followed by a separating dot. Such an indication sets the context for the (compulsorily) attached [Roman numeral] *and* for all subsequent symbols up to the next indication of key. 
-
-## `{Indication of key.}`
+## Indication of key.
 
 * The first symbol written in a score always starts with the absolute indication of the entire piece's tonality.
   * Simply type the tonic's note name {A/a,B/b,C/c,D/d,E/e,F/f,G/g(#/b)} within two dots. Remember that symbols starting with a note name have to be preceded by a dot. Examples: `.f#.i` for the first harmony of a piece in F sharp minor; `.Ab.I` for the first harmony of a piece in A flat major; both pieces beginning with the tonic harmony.
 * All other indications of key (i.e. 'local keys') are entered as Roman numerals relative to that.
   * Example 1: As soon as a piece in C major modulates to G major, you can indicate the new key by typing `V.I` over the harmony of G major. All subsequent Roman numerals up to the next indication of key relate to the new key of G major. Note that altered scale degrees beginning with `b` such as `.bVII.` have to start with a leading dot because `b` is a note name.
   * There is a way of annotating secondary dominants (see [relative key](#relative-key)); however, if you find a `V/vi` chord and the music then stays in the key of `vi` for a longer time (cf. next paragraph), you can write `vi.V` right away. Every following `i` symbol designates the new tonic.
-  
+
 **Important** `I6 ii65/V V7/V V` and `I6 V.ii65 V7 I` (see example below), in general, have the same meaning but a preference has to be given either to the first version - i.e., with **applied chords** - or to the second -i.e., with change of **local key**. In principle, it is an objective of your analyses to include a bigger picture of a piece's tonality through exactly this kind of choices. This means that upon making such a choice, you need to include the broader context:
 * If the example passage is a mere tonicization of `V` followed by a return to the original tonic, that is a case for the version with applied chords because the local key stays the same.
 * In the special case, that this would be a cadence to `V`, followed by a return to the original tonic, you should even opt for `I6 ii65/V V7/V I/V` (**NB** `I/V` has the same meaning as `V`) because an Authentic Cadence should always end with some sort of tonic symbol.
@@ -143,7 +141,7 @@ If a symbol relates to a different key than the one you are in, you can indicate
 
 ![relativekey](pics/relativekey.png)
 
-## `[Roman numeral(s)]`
+## Roman numerals
 
 The smallest possible symbols consist of a single Roman numeral. They stand for a major (`I, II, III, IV, V, VI, VII`) or minor (`i, ii, iii, iv, v, vi, vii`) triad in root position. *All other chords* - those which are no major or minor root position triad on one of the key's natural degrees - need additional symbols. For altered scale degrees simply use `[.]b/#`+[Roman numeral], e.g. `.bVI` for an Ab major chord in the context of C major; or `#vi` for an A minor chord in the context of C minor. Remember the leading dots if `b` appears at the beginning of a symbol (`V/bVI` works but `bVI` not!).
 
@@ -163,7 +161,7 @@ Every triad symbol must indicate the [type of triad] and its {inversion} if it i
   * `viio6` in major context, `#viio6` in minor context
   * `I64` for a passing 64 chord on scale degree ^5 (as opposed to a dominant with 64-suspension, [see below](#suspensions-and-retardations))
   * `I+6` as a shorthand for V6/IV with augmented fifth (relative to the root, [see below](#suspensions-and-retardations)).
-  
+
 ### Tetrads
 
 All tetrads are annotated as springing from a seventh chord. Therefore, every tetrad must indicate the [type of seventh chord] AND, for example, a `7` for root position OR `65 43 2` for the three possible inversions.
@@ -180,7 +178,7 @@ All tetrads are annotated as springing from a seventh chord. Therefore, every te
 
 ## Suspensions and retardations
 
-Suspensions and retardations are annotated as arabic numbers within round parantheses `()` following the Roman numeral. The numbers designate the note's interval **to the root**. That is to say a suspensional 4 is marked as `(4)` in any inversion: `V(4) V6(4) V65(4) V43(4) V2(4)` (yes, two of them have the suspension in the bass). It implies, that the functional third of the chord (i.e., the third above the root) is not present. In order to indicate the resolution, write the sounding chord without the suspension, e.g. `V65(4) V65` or `V(4) V7`. If an interval is altered, add `#/b` in front of the digit, e.g. `V7(b6) V7`, which is possible only in a major context because in minor, the 6th would already be flat. If several suspensions are sounding at the same time, annotate all of them within the same parenthesis and always in descending order, e.g. `V(64)`. A *cadenza doppia* could look like `V7 V(64) V(4) V` followed by `I` or `i`. 
+Suspensions and retardations are annotated as arabic numbers within round parantheses `()` following the Roman numeral. The numbers designate the note's interval **to the root**. That is to say a suspensional 4 is marked as `(4)` in any inversion: `V(4) V6(4) V65(4) V43(4) V2(4)` (yes, two of them have the suspension in the bass). It implies, that the functional third of the chord (i.e., the third above the root) is not present. In order to indicate the resolution, write the sounding chord without the suspension, e.g. `V65(4) V65` or `V(4) V7`. If an interval is altered, add `#/b` in front of the digit, e.g. `V7(b6) V7`, which is possible only in a major context because in minor, the 6th would already be flat. If several suspensions are sounding at the same time, annotate all of them within the same parenthesis and always in descending order, e.g. `V(64)`. A *cadenza doppia* could look like `V7 V(64) V(4) V` followed by `I` or `i`.
 
 The digits stand for
 * `(2)`: Suspension over the root, meaning that the **root is not present** in the chord; as opposed to
@@ -205,7 +203,7 @@ Sometimes, it can seem ambiguous whether a note is an added note, a suspension w
 
 ![added_notes](pics/added_notes.png)
 
-Compare the first halves of mm. 40, 41 and 44. The B in m. 41 is interpreted as an embellishment (incomplete neighbour) although it could be seen as part of a `iio43`. The B in m. 40, however, is interpreted as being more than just an embellishment (anticipation) because it is more pronounced. However, unlike in m. 44, the B is neither prepared nor resolved and therefore it is annotated as added note, i.e. `i(+9)`, rather than as a suspension `i(9)`. 
+Compare the first halves of mm. 40, 41 and 44. The B in m. 41 is interpreted as an embellishment (incomplete neighbour) although it could be seen as part of a `iio43`. The B in m. 40, however, is interpreted as being more than just an embellishment (anticipation) because it is more pronounced. However, unlike in m. 44, the B is neither prepared nor resolved and therefore it is annotated as added note, i.e. `i(+9)`, rather than as a suspension `i(9)`.
 
 ## Phrase endings
 
@@ -261,7 +259,7 @@ One of the longest possible expressions would be `.bvii.V[#viio65(+b84)/#vi`. Th
 * `.bvii.`, in the context of a major key *(C major)*, means that all following symbols relate to the minor key on the lowered 7th scale degree *(Bb minor)*. The initial dot is necessary because `b` is a note name.
 * `V[` designates the beginning of an organ point on the 5th scale degree *(F)*.
 * `#viio65` stands for the first inversion of a diminished seventh chord of the raised 7th scale degree
-* `(+b84)` designates an added diminished octave (added notes usually occur because of pedal tones that are not in the bass) and a (not added but) suspended fourth, withholding the third 
+* `(+b84)` designates an added diminished octave (added notes usually occur because of pedal tones that are not in the bass) and a (not added but) suspended fourth, withholding the third
 * `/#vi` means that this chord (the `#viio65`) relates to the raised 6th scale degree. *Which, in Bb minor, would be G. Therefore, the root of `#viio65/#vi` would be F#.*
 
 Here, you can see an imaginary context, in C major, where this example could theoretically occur:
