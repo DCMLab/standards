@@ -1,3 +1,4 @@
+# Regular expression needs to be compiled using re.compile(regex, re.VERBOSE)
 regex = r"""^
     (\.)?
     ((?P<key>[a-gA-G](b*|\#*)|(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\.)?
