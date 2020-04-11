@@ -16,6 +16,11 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 ### Release Notes
 
+#### v2.1.0
+
+* Previously accepted for no apparent reason, leading dots are not allowed for `relativeroot` anymore. For example, this would have been legal before, although never used: `V/.bIII`. The correct version is `V/bIII`.
+* Relative roots of unbouded levels are allowed now, as in `V7/V/V`. The feature `relativeroot` would be extracted as `V/V` in this case, i.e. without the initial slash.
+
 #### v2.0.0
 
 * This version does not allow `9` as `figbass` feature anymore. This means that a label such as `V9` will throw an error. Instead, this chord needs to be written either as `V7(9)` or `V7(+9)`, depending on the context.
