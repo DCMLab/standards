@@ -141,7 +141,7 @@ If a symbol relates to a different key than the one you are in, you can indicate
 
 ![relativekey](pics/relativekey.png)
 
-Starting from version *2.1.0* of this standard, relative keys of relative keys can be annotated, for example the dominant of the dominant of the dominant: `V7/V/V`.
+Relative keys of relative keys can be annotated, for example the dominant of the dominant of the dominant: `V7/V/V`.
 
 ## Roman numerals
 
