@@ -16,6 +16,12 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 ### Release Notes
 
+#### v2.1.0
+
+* Global keys (note names) and local keys (Roman numerals) are now parsed in two different groups. This solves the problem that previously, all pieces were assumed to start with localkey `I` or `i`. Now it is possible to have the global key *and* a change of local key within the first label, e.g. `Ab.vi.i` for a piece in Ab major that begins with an introduction in the relative key.
+* Leading periods `.` are not allowed for `relativeroot` anymore. For example, the following would have been legal before, although never used: `V/.bIII`. The correct version is `V/bIII`.
+* Relative roots of unbounded levels are allowed now, as in `V7/V/V`. The feature `relativeroot` would be extracted as `V/V` in this case, i.e. without the initial slash.
+
 #### v2.0.0
 
 * This version does not allow `9` as `figbass` feature anymore. This means that a label such as `V9` will throw an error. Instead, this chord needs to be written either as `V7(9)` or `V7(+9)`, depending on the context.

@@ -141,6 +141,8 @@ If a symbol relates to a different key than the one you are in, you can indicate
 
 ![relativekey](pics/relativekey.png)
 
+Relative keys of relative keys can be annotated, for example the dominant of the dominant of the dominant: `V7/V/V`.
+
 ## Roman numerals
 
 The smallest possible symbols consist of a single Roman numeral. They stand for a major (`I, II, III, IV, V, VI, VII`) or minor (`i, ii, iii, iv, v, vi, vii`) triad in root position. *All other chords* - those which are no major or minor root position triad on one of the key's natural degrees - need additional symbols. For altered scale degrees simply use `[.]b/#`+[Roman numeral], e.g. `.bVI` for an Ab major chord in the context of C major; or `#vi` for an A minor chord in the context of C minor. Remember the leading dots if `b` appears at the beginning of a symbol (`V/bVI` works but `bVI` not!).
