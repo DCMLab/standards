@@ -1,7 +1,6 @@
 # Regular expression needs to be compiled using re.compile(regex, re.VERBOSE)
 regex = r"""^
-    (\.)?
-    ((?P<globalkey>[a-gA-G](b*|\#*))\.)?
+    (\.(?P<globalkey>[a-gA-G](b*|\#*))\.)?
     ((?P<localkey>(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\.)?
     ((?P<pedal>(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\[)?
     (?P<chord>
