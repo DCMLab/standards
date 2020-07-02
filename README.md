@@ -16,6 +16,11 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 ### Release Notes
 
+#### v2.1.1
+
+* In this version of the regex, `@none` is admitted as a symbol and interpreted as a numeral (root).
+* The position of the initial dot was moved because the prior version did not accept some correct labels, such as `.bIII.bIII`.
+
 #### v2.1.0
 
 * Global keys (note names) and local keys (Roman numerals) are now parsed in two different groups. This solves the problem that previously, all pieces were assumed to start with localkey `I` or `i`. Now it is possible to have the global key *and* a change of local key within the first label, e.g. `Ab.vi.i` for a piece in Ab major that begins with an introduction in the relative key.
