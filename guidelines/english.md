@@ -12,6 +12,7 @@
   * [Roman numeral(s)](#roman-numerals)
     + [Triads](#triads)
     + [Tetrads](#tetrads)
+    + [Augmented 6th chords (.Fr, .Ger, It6)](#augmented-6th-chords-fr-ger-it6)
   * [Suspensions and retardations](#suspensions-and-retardations)
   * [Added notes](#added-notes)
   * [Relative key](#relative-key)
@@ -178,7 +179,7 @@ All tetrads are annotated as springing from a seventh chord. Therefore, every te
 * The respective inversions are annotated by replacing `7` with `65` (NOT `56`), `43` (NOT `34`) or `2` respectively.
 * There are special symbols to annotate the French, German and Italian sixth chords: `.Fr`, `.Ger` and `It`. The latter actually does not need an initial dot because it does not start with a note name.
 
-### Augmented 6th chords (Fr, Ger, It6)
+### Augmented 6th chords (.Fr, .Ger, It6)
 
 These three symbols are considered as `special` chords, meaning that they serve as a shortcut and are internally translated to the labels they replace (in future versions of the standard, more such shortcuts could be added):
 
