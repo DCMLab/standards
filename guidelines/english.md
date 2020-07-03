@@ -37,7 +37,7 @@ For the computer assisted evaluation of your data, a number of things are import
 
 * Chord symbols (i.e. Roman numerals) have to be attached to the moments in the score where the respective harmony begins. They are understood to be valid until the next symbol is written. That is to say, identical symbols are never repeated consecutively.
 * The symbols have to be linked to the upper system of the score, even if it contains only rests. Every symbol has to be attached to the precise position where the harmony occurs. N.B.: Symbols are stored with the original position, even if you move them by hand!
-* If a symbol starts with a note name, Musescore will save it differently which annotators have to avoid by putting a dot in front of the note name. For example: `I6`, `ii7`, `V65` etc. can be written without a starting dot but `.bVI` and `.Ger6` (German sixth chord) need one, as does the initial indication of the main key such as `.Eb.I.` (BTW, the one and only actual pitch name needed and allowed in every piece, see [`{Indication of key.}`](#indication-of-key)).
+* If a symbol starts with a note name, Musescore will save it differently which annotators have to avoid by putting a dot in front of the note name. For example: `I6`, `ii7`, `V65` etc. can be written without a starting dot but `.bVI` and `.Ger` (German sixth chord) need one, as does the initial indication of the main key such as `.Eb.I.` (BTW, the one and only actual pitch name needed and allowed in every piece, see [`{Indication of key.}`](#indication-of-key)).
 * Arabic numbers indicating [inversions](#roman-numerals) or [suspensions](#suspensions-and-retardations) always appear in descending order (e.g. `65` or `9#74`).
 * The information about a harmony has to be expressed in a fixed order (syntax). This [syntax](#the-syntax) can be proofread by using the script HarmonyAnnotationChecker.jl
 * Major keys are indicated by uppercase, minor keys by lowercase letters.
@@ -176,7 +176,20 @@ All tetrads are annotated as springing from a seventh chord. Therefore, every te
   * MM7 (major seventh): uppercase numeral + `M7`, e.g. `IVM7 IIIM65`
   * Mm7 (dominant seventh): `V7`. Theoretically, it could appear on other degrees than V, e.g. in a falling fifths progression: `i iv7 `**`VII7`**` IIIM7 VIM7 ii%7 V7 i` - but in such a case, where the respective tonic follows, it will be annotated as (secondary) dominant: `i iv7 `**`V7/III`**` IIIM7 VIM7 ii%7 V7 i`. However, there are cases where the same sonority occurs as `IV7` or `IV65` in a minor key, which will not be notated as a dominant.
 * The respective inversions are annotated by replacing `7` with `65` (NOT `56`), `43` (NOT `34`) or `2` respectively.
-* There are special symbols to annotate the French, German and Italian sixth chords: `.Fr6`, `.Ger6` and `.It6`. The latter actually does not need an initial dot because it does not start with a note name.
+* There are special symbols to annotate the French, German and Italian sixth chords: `.Fr`, `.Ger` and `It`. The latter actually does not need an initial dot because it does not start with a note name.
+
+### Augmented 6th chords (Fr, Ger, It6)
+
+These three symbols are considered as `special` chords, meaning that they serve as a shortcut and are internally translated to the labels they replace (in future versions of the standard, more such shortcuts could be added):
+
+| Special | Translation  | root  | standard figbass |
+|---------|--------------|-------|------------------|
+| It      | viio6(b3)/V  | vii/V | 6                |
+| .Ger    | viio65(b3)/V | vii/V | ∅, 6, 65        |
+| .Fr     | V43(b5)/V    | V/V   | ∅, 6, 43        |
+
+The table shows that `.Ger` and `.Fr` can be used with or without `figbass`, meaning that `figbass` can be used to designate inversions of augmented sixth chords. This requires careful attention because for each of the three chords, another `figbass` designates the 'standard' form on the low sixth scale degree: `It6`, `.Ger65`, and `Fr43` (for downward compatibility, `.Ger6` and `.Fr6` are recognized and translated). Accordingly, the most frequent inversion, the one on the raised fourth scale degree, would be `It`, `Ger7` and `Fr65`. In case this goes against your intuition, you may instead not use the shortcut for inversions and use what it translates to immediately; in the given example with `4#` in the bass: `It = viio(b3)/V`, `.Ger7 = viio7(b3)/V`, and `.Fr65 = V65(b5)/V`.
+
 
 ## Suspensions and retardations
 
@@ -190,7 +203,7 @@ The digits stand for
 * `(7)`: Retardation of the root, i.e. the resolution goes upwards
 * `(#`*`N`*`)`: digit *N* is a retardation resolving upwards, e.g. `(#2)` retarding the third. The `#` overrides the rule that you use `(2)` only if the root is not present.
 * `(b`*`N`*`)`: digit *N* is a suspension resolving downwards
-> Attention! Designating suspensions or retardations as intervalls above the root will be counterintuitive if you are used to thinking in figured bass. For example, a falling fauxbourdon `ii6 I6 viio6` with 7-6 suspensions has to be written as `ii6(2) ii6 I6(2) I6 viio6(2) viio6`. Note that you use `(2)` and not `(9)` because the root is not present.
+> Attention! Designating suspensions or retardations as intervals above the root will be counterintuitive if you are used to thinking in figured bass. For example, a falling fauxbourdon `ii6 I6 viio6` with 7-6 suspensions has to be written as `ii6(2) ii6 I6(2) I6 viio6(2) viio6`. Note that you use `(2)` and not `(9)` because the root is not present.
 > Other than what some would typically write, a Classical retardated ending looks like `i(9#74) i`, and not `i(#742) i` or `i(24#7) i`.
 
 ## Added notes
@@ -199,7 +212,7 @@ Generally, there are only very few notes in the Common practice era which cannot
 > One should add that we don't annotate neighbour notes, passing notes nor embellishments.
 
 A typical additional note would be that of a pedal note which appears in a different voice than the bass. In this case, you would annotate the additional note - analogue to a suspension - as a digit indicating the interval *from the root* in parenthesis, but preceded by a `+`.
-Example: Imagine a C major context and a pedal on G in some middle voice. Around that, the other voices do the progression `I viio6 I6 ii6 I64 IV6 .Ger6 V\\`: Some harmonies contain the G and do not change (namely `I`, `I6`, `I64` and `V`), one harmony supports an added G (`viio6` with G is `V43`) and the rest neither support G nor can it be interpreted as suspensions. So the correct annotation would be `I V43 I6 ii6(+4) I64 IV6(+2) .Ger6(+7) V\\`.
+Example: Imagine a C major context and a pedal on G in some middle voice. Around that, the other voices do the progression `I viio6 I6 ii6 I64 IV6 .Ge6 V\\`: Some harmonies contain the G and do not change (namely `I`, `I6`, `I64` and `V`), one harmony supports an added G (`viio6` with G is `V43`) and the rest neither support G nor can it be interpreted as suspensions. So the correct annotation would be `I V43 I6 ii6(+4) I64 IV6(+2) .Ger(+7) V\\`.
 
 Sometimes, it can seem ambiguous whether a note is an added note, a suspension without resolution or an embellishment (anticipation). The following example from Monteverdi's *Lamento della ninfa* might give a hint how to differentiate.
 

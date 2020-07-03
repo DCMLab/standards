@@ -20,6 +20,7 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 * In this version of the regex, `@none` is admitted as a symbol and interpreted as a numeral (root).
 * The position of the initial dot was moved because the prior version did not accept some correct labels, such as `.bIII.bIII`.
+* Guidelines updated on the [use of augmented sixth chords](https://github.com/DCMLab/standards/blob/develop/guidelines/english.md#augmented-6th-chords-fr-ger-it6).
 
 #### v2.1.0
 
