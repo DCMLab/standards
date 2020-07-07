@@ -315,3 +315,9 @@ They are currently part of larger libraries or applications, but should probably
 - ClojureScript: [interface](https://github.com/DCMLab/schema_annotation_app/blob/master/src/intervals/core.cljs), [spelled](https://github.com/DCMLab/schema_annotation_app/blob/master/src/intervals/spelled.cljs)
   - not complete yet (e.g. MIDI missing)
   - currently only ClojureScript, not Clojure
+- Python (currently [part of the CorpusInterface](https://github.com/DCMLab/CorpusInterface/blob/master/CorpusInterface/datatypes.py))
+  - Point/Vector base classes
+  - default arithmetics (+, -, *, /, abs) with type checking
+  - MIDI pitch (incl. channel info etc), enharmonic pitch, spellt pitch, log-frequency pitch, harmonic/pythoagorean pitch (and all the corresponding interval classes)
+  - possibility to register converters, which automatically detects conversion chains (i.e. registering spelled-->MIDI and MIDI-->log-frequency will add spelled-->log-frequency, but this default behaviour can be suppressed)
+  - no dedicated pitch- and interval-_class_ types; this is a boolean property instead, which is check at different points (e.g. for converters)
