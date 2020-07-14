@@ -27,6 +27,9 @@ The discussed issues should be close in the course of the discussions or attribu
 * Approval of the current 'regulation'
 * Discuss concrete examples and add them to the FAQ
 
+### [Temporary Tonicisations](https://github.com/DCMLab/standards/issues/17)
+
+* Guidelines offer the possibility to write something like `V7/V I/V` in the context of a cadence. Should this be emphasized, maybe also for other cases?
 
 ## [Changes](https://github.com/DCMLab/standards/labels/%27changes%27%20feature)
 
