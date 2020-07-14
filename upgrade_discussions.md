@@ -9,6 +9,11 @@ All concrete examples that are discussed and where a decision is made should be 
 * Let `\\` stand alone (without repeating identical harmony)
 * (instead) generally allow for repeating identical harmonies as a means of creating "Sinneinheiten" ("meaningful" chord segments)
 
+### [The question of the organ points](https://github.com/DCMLab/standards/issues/6)
+
+* Approval of the current 'regulation'
+* Discuss concrete examples and add them to the FAQ
+
 ## [Changes](https://github.com/DCMLab/standards/labels/%27changes%27%20feature)
 
 ### [Suspensions & Retardations: Which note is being withheld?](https://github.com/DCMLab/standards/issues/4)
@@ -20,4 +25,6 @@ All concrete examples that are discussed and where a decision is made should be 
 ### [Level of detail concerning suspensions](https://github.com/DCMLab/standards/issues/5)
 
 * Discuss concrete examples and add them to the FAQ
+
+
 
