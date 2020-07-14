@@ -17,6 +17,11 @@ The discussed issues should be close in the course of the discussions or attribu
 * Introduce `\` for phrase interlocking?
 * Do we want to allow for cadence annotations? How would they relate to the phrase ending symbols? Alternative: Have cadences always as separate set of annotations.
 
+### [Hierarchical phrase structure annotation?](https://github.com/DCMLab/standards/issues/13)
+
+* Related to above: How do the phrases in the standard relate to form annotations?
+* Do we stick to the idea that we use an improved form of Gotham's form annotations?
+
 ### [The question of the organ points](https://github.com/DCMLab/standards/issues/6)
 
 * Approval of the current 'regulation'
