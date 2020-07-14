@@ -43,6 +43,10 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Additionally to added tones (e.g. `+9`), allow for missing tones (e.g. `-5`)
 
+### [Ommited roots](https://github.com/DCMLab/standards/issues/14)
+
+* On the same note, allow for omitted roots (`(-1)`)? How to distinguish `viio` = `V7(-1)`, or `IV` = `ii7(-1)`
+
 ### [Level of detail concerning suspensions](https://github.com/DCMLab/standards/issues/5)
 
 * Discuss concrete examples and add them to the FAQ
