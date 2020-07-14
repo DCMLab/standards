@@ -2,6 +2,8 @@
 
 All concrete examples that are discussed and where a decision is made should be added to a `FAQ` collection where the different options and decisions are listed for reference.
 
+The discussed issues should be close in the course of the discussions or attributed to someone. If useful, create milestones.
+
 ## [Segmentations (organ points, phrases etc.)](https://github.com/DCMLab/standards/labels/segmentations)
 
 ### [Forbidden repetitions of identical labels and exceptions](https://github.com/DCMLab/standards/issues/3)
@@ -25,6 +27,13 @@ All concrete examples that are discussed and where a decision is made should be 
 ### [Level of detail concerning suspensions](https://github.com/DCMLab/standards/issues/5)
 
 * Discuss concrete examples and add them to the FAQ
+
+## [Error Detection](https://github.com/DCMLab/standards/labels/error%20detection)
+
+### [Downward compatibility of changes in the annotation standard / guidelines](https://github.com/DCMLab/standards/issues/8)
+
+* Checking labels' syntax (regEx) is context-independent, checking their semantics (during post-annotation feature extraction) is not. Close issue?
+* Since we convert labels into chord tones, there are new possibilities of checking against the actual notes in the score. Should that be included in the checks?
 
 
 
