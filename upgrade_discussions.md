@@ -101,6 +101,10 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Discuss concrete examples and add them to the FAQ
 
+### [Bass Arpeggiations](https://github.com/DCMLab/standards/issues/29)
+
+* Discuss concrete examples and add them to the FAQ
+
 ### [Discouraging the use of @none](https://github.com/DCMLab/standards/issues/23)
 
 * Discuss concrete examples and add them to the FAQ
@@ -108,6 +112,10 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Enharmonies](https://github.com/DCMLab/standards/issues/25)
 
 * Mention in the guidelines/FAQ how to deal with enharmonically inconsistent spellings. Include concrete examples.
+
+### [Implied 64 cadences](https://github.com/DCMLab/standards/issues/30)
+
+* Or the general question how to deal with things we and annotators know about thorough bass practice: Who much knowledge of what someone "would have played" should go into the annotation? --> Look at Johannes Menke's Couperin annotations and talk to him about this issue.
 
 
 
@@ -126,3 +134,11 @@ The discussed issues should be close in the course of the discussions or attribu
 * Consider Ana's suggestion of introducing inversions `9`, `76`, `54`, `32` (and consequently `21`).
 * Discuss the added complexity.
 * Discuss how well 'proper' ninth chords (re-introduced `V9`) can be distinguished from `V7(9)` and `V7(+9)`.
+
+### [Polytonality and superimposition of chords](https://github.com/DCMLab/standards/issues/31)
+
+* Probably something to consider for non-functional music? Something to keep in mind for the right-hand extension of the standard.
+
+### [Modality and special scales](https://github.com/DCMLab/standards/issues/32)
+
+* Additional scales as an important constituent for left- and right-hand extension of the standard.
