@@ -17,6 +17,10 @@ The discussed issues should be close in the course of the discussions or attribu
 * Let `\\` stand alone (without repeating identical harmony)
 * (instead) generally allow for repeating identical harmonies as a means of creating "Sinneinheiten" ("meaningful" chord segments)
 
+### [Repeats & Segnos](https://github.com/DCMLab/standards/issues/22)
+
+* Add to the guidelines that with a segno, the same label should be repeated? This would be important for the "unfolded" representation if before the D.S. there is a different harmony than at the segno.
+
 ### [Phrase interlocking, different kinds of phrase endings, cadence annotations](https://github.com/DCMLab/standards/issues/12)
 
 * So far, there are no guidelines as to in what a phrase ending exists. What is our stance?
