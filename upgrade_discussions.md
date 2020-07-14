@@ -4,6 +4,12 @@ All concrete examples that are discussed and where a decision is made should be 
 
 The discussed issues should be close in the course of the discussions or attributed to someone. If useful, create milestones.
 
+## General questions
+
+### [Position and duration for chords on the basis of crotchets](https://github.com/DCMLab/standards/issues/21)
+
+* Should the principles of post-processing be part of the standard? This would result in me writing down the rules that have been applied so far for creating the feature lists (including computation of chord-tones). This is actually the moment where the labels are treated semantically.
+
 ## [Segmentations (organ points, phrases etc.)](https://github.com/DCMLab/standards/labels/segmentations)
 
 ### [Forbidden repetitions of identical labels and exceptions](https://github.com/DCMLab/standards/issues/3)
