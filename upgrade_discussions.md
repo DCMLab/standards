@@ -43,5 +43,9 @@ The discussed issues should be close in the course of the discussions or attribu
 * Checking labels' syntax (regEx) is context-independent, checking their semantics (during post-annotation feature extraction) is not. Close issue?
 * Since we convert labels into chord tones, there are new possibilities of checking against the actual notes in the score. Should that be included in the checks?
 
+## [Analytical Edge Cases](https://github.com/DCMLab/standards/labels/analytical%20edge%20cases)
 
+### [Chord analysis when the melody is in the bass](https://github.com/DCMLab/standards/issues/11)
+
+* Discuss concrete examples and add them to the FAQ
 
