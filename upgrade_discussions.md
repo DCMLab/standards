@@ -69,3 +69,11 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Simplification of annotation of `%` chords](https://github.com/DCMLab/standards/issues/15)
 
 * Would allowing for `ii%` instead of `ii%7` make life easier?
+
+## [Enhancements](https://github.com/DCMLab/standards/labels/enhancement)
+
+### [9th chords](https://github.com/DCMLab/standards/issues/16)
+
+* Consider Ana's suggestion of introducing inversions `9`, `76`, `54`, `32` (and consequently `21`).
+* Discuss the added complexity.
+* Discuss how well 'proper' ninth chords (re-introduced `V9`) can be distinguished from `V7(9)` and `V7(+9)`.
