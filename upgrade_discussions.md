@@ -10,6 +10,10 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Should the principles of post-processing be part of the standard? This would result in me writing down the rules that have been applied so far for creating the feature lists (including computation of chord-tones). This is actually the moment where the labels are treated semantically.
 
+### [Discouraging the use of @none](https://github.com/DCMLab/standards/issues/23)
+
+* Discuss concrete examples and add them to the FAQ
+
 ## [Segmentations (organ points, phrases etc.)](https://github.com/DCMLab/standards/labels/segmentations)
 
 ### [Forbidden repetitions of identical labels and exceptions](https://github.com/DCMLab/standards/issues/3)
