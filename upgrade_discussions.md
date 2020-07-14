@@ -64,3 +64,8 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Discuss concrete examples and add them to the FAQ
 
+## [Shortcuts](https://github.com/DCMLab/standards/labels/shortcuts)
+
+### [Simplification of annotation of `%` chords](https://github.com/DCMLab/standards/issues/15)
+
+* Would allowing for `ii%` instead of `ii%7` make life easier?
