@@ -4,15 +4,26 @@ All concrete examples that are discussed and where a decision is made should be 
 
 The discussed issues should be close in the course of the discussions or attributed to someone. If useful, create milestones.
 
+
+
 ## General questions
+
+## [Post-Processing and Error Detection](https://github.com/DCMLab/standards/labels/post-processing)
 
 ### [Position and duration for chords on the basis of crotchets](https://github.com/DCMLab/standards/issues/21)
 
 * Should the principles of post-processing be part of the standard? This would result in me writing down the rules that have been applied so far for creating the feature lists (including computation of chord-tones). This is actually the moment where the labels are treated semantically.
 
-### [Discouraging the use of @none](https://github.com/DCMLab/standards/issues/23)
+### [Downward compatibility of changes in the annotation standard / guidelines](https://github.com/DCMLab/standards/issues/8)
 
-* Discuss concrete examples and add them to the FAQ
+* Checking labels' syntax (regEx) is context-independent, checking their semantics (during post-annotation feature extraction) is not. Close issue?
+* Since we convert labels into chord tones, there are new possibilities of checking against the actual notes in the score. Should that be included in the checks?
+
+### [What is an augmented seventh chord? Size of the seventh](https://github.com/DCMLab/standards/issues/24)
+
+* Stipulate that the seventh in `V+7` (for example) is a major seventh?
+
+
 
 ## [Segmentations (organ points, phrases etc.)](https://github.com/DCMLab/standards/labels/segmentations)
 
@@ -45,12 +56,18 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Guidelines offer the possibility to write something like `V7/V I/V` in the context of a cadence. Should this be emphasized, maybe also for other cases?
 
+
+
 ## [Changes](https://github.com/DCMLab/standards/labels/%27changes%27%20feature)
 
 ### [Suspensions & Retardations: Which note is being withheld?](https://github.com/DCMLab/standards/issues/4)
 
 * New symbol for indicating that `2`, `4`, and `6` exceptionally replace the upper, not the lower neighbour?
 * What about a `7` which exceptionally replaces the lower, not the upper neighbour?
+
+### [Changes bigger than 13](https://github.com/DCMLab/standards/issues/27)
+
+* If 8 is present but the 15 is retarded by a seventh it should be called `(14)`, right? Momentarily, no numbers bigger than 13 are accepted by the post-processor.
 
 ### [Suspension vs passing notes](https://github.com/DCMLab/standards/issues/9)
 
@@ -68,12 +85,11 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Discuss concrete examples and add them to the FAQ
 
-## [Error Detection](https://github.com/DCMLab/standards/labels/error%20detection)
+### [Anticipations](https://github.com/DCMLab/standards/issues/26)
 
-### [Downward compatibility of changes in the annotation standard / guidelines](https://github.com/DCMLab/standards/issues/8)
+* Confirm that we don't annotate ornamentation.
 
-* Checking labels' syntax (regEx) is context-independent, checking their semantics (during post-annotation feature extraction) is not. Close issue?
-* Since we convert labels into chord tones, there are new possibilities of checking against the actual notes in the score. Should that be included in the checks?
+
 
 ## [Analytical Edge Cases](https://github.com/DCMLab/standards/labels/analytical%20edge%20cases)
 
@@ -81,11 +97,23 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Discuss concrete examples and add them to the FAQ
 
+### [Discouraging the use of @none](https://github.com/DCMLab/standards/issues/23)
+
+* Discuss concrete examples and add them to the FAQ
+
+### [Enharmonies](https://github.com/DCMLab/standards/issues/25)
+
+* Mention in the guidelines/FAQ how to deal with enharmonically inconsistent spellings. Include concrete examples.
+
+
+
 ## [Shortcuts](https://github.com/DCMLab/standards/labels/shortcuts)
 
 ### [Simplification of annotation of `%` chords](https://github.com/DCMLab/standards/issues/15)
 
 * Would allowing for `ii%` instead of `ii%7` make life easier?
+
+
 
 ## [Enhancements](https://github.com/DCMLab/standards/labels/enhancement)
 
