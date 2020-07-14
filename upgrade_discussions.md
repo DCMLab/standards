@@ -11,12 +11,16 @@ The discussed issues should be close in the course of the discussions or attribu
 * Let `\\` stand alone (without repeating identical harmony)
 * (instead) generally allow for repeating identical harmonies as a means of creating "Sinneinheiten" ("meaningful" chord segments)
 
+### [Phrase interlocking, different kinds of phrase endings, cadence annotations](https://github.com/DCMLab/standards/issues/12)
+
+* So far, there are no guidelines as to in what a phrase ending exists. What is our stance?
+* Introduce `\` for phrase interlocking?
+* Do we want to allow for cadence annotations? How would they relate to the phrase ending symbols? Alternative: Have cadences always as separate set of annotations.
+
 ### [The question of the organ points](https://github.com/DCMLab/standards/issues/6)
 
 * Approval of the current 'regulation'
 * Discuss concrete examples and add them to the FAQ
-
-### [Phrase interlocking, different kinds of phrase endings, cadence annotations](https://github.com/DCMLab/standards/issues/12)
 
 
 ## [Changes](https://github.com/DCMLab/standards/labels/%27changes%27%20feature)
