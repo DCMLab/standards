@@ -114,10 +114,8 @@ example, works only on mscx, so make sure to save the annotated score in
 this format by using ``Files -> Save As...`` and selecting the
 "Uncompressed MuseScore File (\*.mscx)" format.
 
-.. figure:: pics/saveas.png
+.. figure:: ../img/saveas.png
    :alt: saveas
-
-   saveas
 
 How to annotate
 ---------------
@@ -290,10 +288,8 @@ the distance between all systems by raising the value of
 ``Style -> General... -> Page -> Min. system distance``. Note that you
 might have to adjust ``Max. system distance`` if you need high values.
 
-.. figure:: pics/settings.png
+.. figure:: ../img/settings.png
    :alt: settings
-
-   settings
 
 The syntax
 ==========
@@ -400,10 +396,8 @@ would be ``iv.i #viio6 i6 V65/iv vii.i #viio7/ii V7/v iv.i`` To avoid
 confusion, don't use relative key annotation if a modulation to that
 same relative key follows.
 
-.. figure:: pics/relativekey.png
+.. figure:: ../img/relativekey.png
    :alt: relativekey
-
-   relativekey
 
 Relative keys of relative keys can be annotated, for example the
 dominant of the dominant of the dominant: ``V7/V/V``.
@@ -542,10 +536,8 @@ suspension without resolution or an embellishment (anticipation). The
 following example from Monteverdi's *Lamento della ninfa* might give a
 hint how to differentiate.
 
-.. figure:: pics/added_notes.png
+.. figure:: ../img/added_notes.png
    :alt: added\_notes
-
-   added\_notes
 
 Compare the first halves of mm. 40, 41 and 44. The B in m. 41 is
 interpreted as an embellishment (incomplete neighbour) although it could
@@ -581,10 +573,8 @@ A half cadence, for example, could look like ``ii6 V65/V V\\``. The
 appendix does not receive another phrase-ending symbol (see Example from
 KV 576, I, 26-8).
 
-.. figure:: pics/phraseending.png
+.. figure:: ../img/phraseending.png
    :alt: phraseending
-
-   phraseending
 
 Pedal points (Organ points)
 ---------------------------
@@ -700,13 +690,13 @@ minor, would be G. Therefore, the root of ``#viio65/#vi`` would be F#.*
 Here, you can see an imaginary context, in C major, where this example
 could theoretically occur: |longexpression|
 
-.. |split1| image:: pics/split1.png
-.. |split2| image:: pics/split2.png
-.. |split3| image:: pics/split3.png
-.. |ocal\_key\_correct| image:: pics/local_key_correct.png
-.. |local\_key\_wrong| image:: pics/local_key_wrong.png
-.. |gantt\_before| image:: pics/gantt_before.png
-.. |gantt\_after| image:: pics/gantt_after.png
-.. |notapedal| image:: pics/notapedal.png
-.. |auskomponiert| image:: pics/auskomponiert.png
-.. |longexpression| image:: pics/longexpression.png
+.. |split1| image:: ../img/split1.png
+.. |split2| image:: ../img/split2.png
+.. |split3| image:: ../img/split3.png
+.. |ocal\_key\_correct| image:: ../img/local_key_correct.png
+.. |local\_key\_wrong| image:: ../img/local_key_wrong.png
+.. |gantt\_before| image:: ../img/gantt_before.png
+.. |gantt\_after| image:: ../img/gantt_after.png
+.. |notapedal| image:: ../img/notapedal.png
+.. |auskomponiert| image:: ../img/auskomponiert.png
+.. |longexpression| image:: ../img/longexpression.png
