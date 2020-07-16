@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Annotation Guidelines[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[DHarmonic Annotation Guidelines's documentation!
-==============================================================================================================================================
+Welcome to our Harmonic Annotation guidelines!
+==============================================
 
 .. toctree::
    :maxdepth: 2
