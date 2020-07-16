@@ -10,7 +10,10 @@ Welcome to our Harmonic Annotation guidelines!
    :maxdepth: 2
    :caption: Contents:
 
-   old_guidelines
+   intro
+   musescore
+   syntax
+   summary
 
 
 Indices and tables

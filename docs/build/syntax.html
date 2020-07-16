@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Annotation Guidelines &#8212; Harmonic Annotation Guidelines 0.0.1 documentation</title>
+    <title>The syntax &#8212; Harmonic Annotation Guidelines 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -14,6 +14,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Annotation Guidelines" href="summary.html" />
     <link rel="prev" title="Using MuseScore" href="musescore.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -31,193 +32,7 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="annotation-guidelines">
-<h1>Annotation Guidelines<a class="headerlink" href="#annotation-guidelines" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
-<li><p><a class="reference external" href="#using-musescore">Using MuseScore</a></p></li>
-<li><p><a class="reference external" href="#how-to-annotate">How to annotate</a></p></li>
-<li><p><a class="reference external" href="#editing-annotations">Editing annotations</a></p></li>
-<li><p><a class="reference external" href="#splitting-beats">Splitting beats</a></p></li>
-<li><p><a class="reference external" href="#copying-several-annotations">Copying several annotations</a></p></li>
-<li><p><a class="reference external" href="#visibility">Visibility</a></p></li>
-<li><p><a class="reference external" href="#the-syntax">The syntax</a></p></li>
-<li><p><a class="reference external" href="#indication-of-key">Indication of key.</a></p></li>
-<li><p><a class="reference external" href="#roman-numerals">Roman numeral(s)</a></p>
-<ul>
-<li><p><a class="reference external" href="#triads">Triads</a></p></li>
-<li><p><a class="reference external" href="#tetrads">Tetrads</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#suspensions-and-retardations">Suspensions and retardations</a></p></li>
-<li><p><a class="reference external" href="#added-notes">Added notes</a></p></li>
-<li><p><a class="reference external" href="#relative-key">Relative key</a></p></li>
-<li><p><a class="reference external" href="#phrase-endings">Phrase endings</a></p></li>
-<li><p><a class="reference external" href="#pedal-points-organ-points">Pedal points (Organ points)</a></p></li>
-<li><p><a class="reference external" href="#ambiguity">Ambiguity</a></p></li>
-<li><p><a class="reference external" href="#unisono">Unisono</a></p></li>
-<li><p><a class="reference external" href="#summary">Summary</a></p></li>
-</ul>
-</div>
-<div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>Thank you for your help in building an annotated music corpus. Harmonic
-analysis is a notoriously complex task, as of now very difficult to
-teach to a computer. Therefore, we need to rely on a handannotated
-databasis when analyzing the development of tonal harmony over the last
-five centuries with the quantitative methods. With this goal in mind, we
-have devised an annotation standard for writing harmonic analyses in a
-machine-readable format. This document will help you learn how to use
-this standard.</p>
-<p>The annotation process consists in adding Roman numerals to a digital
-music score. In this context, we will call them ‘symbols’, ‘chord
-symbols’, ‘expressions’ or ‘annotations’. The chord analyses are added
-via the chord symbol function in the open source notation software
-<a class="reference external" href="https://musescore.org/en/download#Older-and-unsupported-versions">MuseScore
-2.3.2</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note that Musescore 3 is available but that we are still working with
-the old version. The link brings you to “Older and unsupported
-versions”, please download MuseScore 2.3.2 for your operation system
-there. You can have MuseScore 2 and 3 installed next to each other but
-this requires extra attention because MS3 cannot save files in MS2
-format. At some point in 2019 we will stop using MS2.</p>
-</div>
-<p>Depending on the
-source of the notation file that you receive for annotation, it might be
-advisable to have a scan of the <em>Urtext</em> opened in the background for
-tacit correction of the score. At least the bar numbers have to be 100%
-correct. Please make sure, that upbeat measures are counted by MuseScore
-as measure 0.</p>
-<p>For the computer assisted evaluation of your data, a number of things
-are important:</p>
-<ul class="simple">
-<li><p>Chord symbols (i.e. Roman numerals) have to be attached to the
-moments in the score where the respective harmony begins. They are
-understood to be valid until the next symbol is written. That is to
-say, identical symbols are never repeated consecutively.</p></li>
-<li><p>The symbols have to be linked to the upper system of the score, even
-if it contains only rests. Every symbol has to be attached to the
-precise position where the harmony occurs. N.B.: Symbols are stored
-with the original position, even if you move them by hand!</p></li>
-<li><p>If a symbol starts with a note name, Musescore will save it
-differently which annotators have to avoid by putting a dot in front
-of the note name. For example: <code class="docutils literal notranslate"><span class="pre">I6</span></code>, <code class="docutils literal notranslate"><span class="pre">ii7</span></code>, <code class="docutils literal notranslate"><span class="pre">V65</span></code> etc. can be
-written without a starting dot but <code class="docutils literal notranslate"><span class="pre">.bVI</span></code> and <code class="docutils literal notranslate"><span class="pre">.Ger6</span></code> (German
-sixth chord) need one, as does the initial indication of the main key
-such as <code class="docutils literal notranslate"><span class="pre">.Eb.I.</span></code> (BTW, the one and only actual pitch name needed
-and allowed in every piece, see
-<code class="docutils literal notranslate"><span class="pre">`{Indication</span> <span class="pre">of</span> <span class="pre">key.}</span></code> &lt;#indication-of-key&gt;`__).</p></li>
-<li><p>Arabic numbers indicating <a class="reference external" href="#roman-numerals">inversions</a> or
-<a class="reference external" href="#suspensions-and-retardations">suspensions</a> always appear in
-descending order (e.g. <code class="docutils literal notranslate"><span class="pre">65</span></code> or <code class="docutils literal notranslate"><span class="pre">9#74</span></code>).</p></li>
-<li><p>The information about a harmony has to be expressed in a fixed order
-(syntax). This <a class="reference external" href="#the-syntax">syntax</a> can be proofread by using the
-script HarmonyAnnotationChecker.jl</p></li>
-<li><p>Major keys are indicated by uppercase, minor keys by lowercase
-letters.</p></li>
-</ul>
-<p>However, as we are slowly moving towards automated analyses,
-<strong>consistency</strong> is the order of the day. In other words, while different
-annotators would interpret the same music differently, it is important
-that the same annotator interprets the same music identically. That is
-to say, once you have made a difficult decision about annotating a
-certain chord progression, you have to stick to this decision every time
-the progression occurs. If at one point, for the sake of consistency,
-you get the idea of <a class="reference external" href="#copying-several-annotations">copying your
-annotations</a> when music repeats, make
-sure that you are dealing with an exact repetition and check the
-annotations after copying.</p>
-</div>
-<div class="section" id="using-musescore">
-<h1>Using MuseScore<a class="headerlink" href="#using-musescore" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>If you are not familiar with the software, know that <code class="docutils literal notranslate"><span class="pre">F12</span></code> opens
-the navigator which facilitates navigating. If you prefer scrolling
-through pages vertically instead of horizontally, change
-<code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">-&gt;</span> <span class="pre">Preferences...</span> <span class="pre">-&gt;</span> <span class="pre">Canvas</span> <span class="pre">-&gt;</span> <span class="pre">Scroll</span> <span class="pre">pages</span></code></p>
-</div></blockquote>
-<p>There are two types of MuseScore files. The software saves files
-automatically in the compressed format <code class="docutils literal notranslate"><span class="pre">.mscz</span></code>, creating smaller file
-sizes. However, we work with the uncompressed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> format because
-it represents text files. The HarmonyAnnotationChecker script, for
-example, works only on mscx, so make sure to save the annotated score in
-this format by using <code class="docutils literal notranslate"><span class="pre">Files</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">As...</span></code> and selecting the
-“Uncompressed MuseScore File (*.mscx)” format.</p>
-<div class="figure align-default">
-<img alt="saveas" src="_images/saveas.png" />
-</div>
-<div class="section" id="how-to-annotate">
-<h2>How to annotate<a class="headerlink" href="#how-to-annotate" title="Permalink to this headline">¶</a></h2>
-<p>To type the chord symbols into the score comfortably, click once on one
-note of the first harmony in the <strong>upper staff</strong> and press <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">K</span></code>
-which will activate a cursor above the system. After typing in the chord
-expression, press <code class="docutils literal notranslate"><span class="pre">Space</span></code> to go to the next note or the next beat.
-<code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Space</span></code> will bring you back to the prior event, and <code class="docutils literal notranslate"><span class="pre">Tab</span></code> to
-beat 1 of the next measure. And, importantly, <code class="docutils literal notranslate"><span class="pre">Esc</span></code> ends the chord
-editing mode.</p>
-<blockquote>
-<div><p>All labels have to be attached to the upmost (i.e. right hand)
-staff. Within this staff, it does not matter to which voice they are
-attached.</p>
-</div></blockquote>
-</div>
-<div class="section" id="editing-annotations">
-<h2>Editing annotations<a class="headerlink" href="#editing-annotations" title="Permalink to this headline">¶</a></h2>
-<p>If you want to change a chord symbol, double click (or tap) on it to get
-into chord edit mode. To delete one, get out of edit mode, click on the
-symbol once to select it, and press <code class="docutils literal notranslate"><span class="pre">Delete</span></code>.</p>
-<p>If you want to change the beat/position of a symbol, it is important not
-to drag it horizontally because it stays linked to the moment where you
-entered it. Therefore, you need to delete it and enter it anew on the
-right position. Of course, the quickest way to do this is to double
-click on the symbol, select the entire expression with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">A</span></code>,
-cutting it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">X</span></code>, moving to the correct position with
-<code class="docutils literal notranslate"><span class="pre">Space</span></code> or <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Space</span></code> and insert it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">V</span></code>.</p>
-</div>
-<div class="section" id="splitting-beats">
-<h2>Splitting beats<a class="headerlink" href="#splitting-beats" title="Permalink to this headline">¶</a></h2>
-<p>It is as simple as pressing Ctrl+3 for moving the cursor by a 16th,
-Ctrl+4 for an 8th and so on (same values as for note entry).</p>
-</div>
-<div class="section" id="copying-several-annotations">
-<h2>Copying several annotations<a class="headerlink" href="#copying-several-annotations" title="Permalink to this headline">¶</a></h2>
-<p>If you find an exact repetition, make sure, it actually is an exact
-repetition first before copying symbols. Then, go to the symbols you
-want to copy. &gt; If they expand over more than one system, you will have
-to change “Page view” to “Continuous View”. Generally, you will end up
-in a different measure than expected and you can easily navigate to your
-measure using <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F</span></code> and typing the measure number.</p>
-<p>To select the chord symbols (or anything else for that matter), press
-<code class="docutils literal notranslate"><span class="pre">Shift</span></code> to draw a frame around the symbols with your mouse (or touch
-device). Copy with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code>, then select the first beat where you
-want to paste the symbols and press <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">V</span></code>. It is important that
-no other symbols exist in the range where you paste to avoid duplicates
-or twofold annotations for the same position.</p>
-</div>
-<div class="section" id="visibility">
-<h2>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h2>
-<p>Although not important for the computerised analysis of your
-annotations, it is preferrable to arrange them in a human-readable way.
-* If two expressions overlap horizontally, just drag the first one up
-or down with your mouse (or touch device). Make sure to leave any edit
-mode first, using <code class="docutils literal notranslate"><span class="pre">Esc</span></code>. * If expressions overlap with notes, you can
-drag them manually as well. But if this is often the case, you might
-want to * change the distance between the chord symbols and the
-respective system for the entire document by changing the value of
-<code class="docutils literal notranslate"><span class="pre">Style</span> <span class="pre">-&gt;</span> <span class="pre">General...</span> <span class="pre">-&gt;</span> <span class="pre">Chord</span> <span class="pre">Symbols,</span> <span class="pre">Fretboard</span> <span class="pre">Diagrams</span> <span class="pre">-&gt;</span> <span class="pre">Default</span> <span class="pre">vertical</span> <span class="pre">position</span></code>.
-A usable value might lie around <code class="docutils literal notranslate"><span class="pre">6.00sp</span></code>. If the distance is good but
-chord symbols overlap with the above system, you might want to * change
-the distance between all systems by raising the value of
-<code class="docutils literal notranslate"><span class="pre">Style</span> <span class="pre">-&gt;</span> <span class="pre">General...</span> <span class="pre">-&gt;</span> <span class="pre">Page</span> <span class="pre">-&gt;</span> <span class="pre">Min.</span> <span class="pre">system</span> <span class="pre">distance</span></code>. Note that you
-might have to adjust <code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">system</span> <span class="pre">distance</span></code> if you need high values.</p>
-<div class="figure align-default">
-<img alt="settings" src="_images/settings.png" />
-</div>
-</div>
-</div>
-<div class="section" id="the-syntax">
+  <div class="section" id="the-syntax">
 <h1>The syntax<a class="headerlink" href="#the-syntax" title="Permalink to this headline">¶</a></h1>
 <p>Every symbol <em>must</em> have at least one compulsory Roman numeral and <em>may</em>
 start with an indication of key, followed by a separating dot. Such an
@@ -617,26 +432,6 @@ piece. If no harmony can be inferred - in particular where a composer
 deliberately withdraws tonal footing - use the symbol <code class="docutils literal notranslate"><span class="pre">&#64;none</span></code>.</p>
 </div>
 </div>
-<div class="section" id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
-<p>One of the longest possible expressions would be
-<code class="docutils literal notranslate"><span class="pre">.bvii.V[#viio65(+b84)/#vi</span></code>. This, of course, is quite theoretical and
-simply a demonstration of order and meaning of the different syntactic
-components, with concrete examples given in relation to C major: *
-<code class="docutils literal notranslate"><span class="pre">.bvii.</span></code>, in the context of a major key <em>(C major)</em>, means that all
-following symbols relate to the minor key on the lowered 7th scale
-degree <em>(Bb minor)</em>. The initial dot is necessary because <code class="docutils literal notranslate"><span class="pre">b</span></code> is a
-note name. * <code class="docutils literal notranslate"><span class="pre">V[</span></code> designates the beginning of an organ point on the
-5th scale degree <em>(F)</em>. * <code class="docutils literal notranslate"><span class="pre">#viio65</span></code> stands for the first inversion of
-a diminished seventh chord of the raised 7th scale degree * <code class="docutils literal notranslate"><span class="pre">(+b84)</span></code>
-designates an added diminished octave (added notes usually occur because
-of pedal tones that are not in the bass) and a (not added but) suspended
-fourth, withholding the third * <code class="docutils literal notranslate"><span class="pre">/#vi</span></code> means that this chord (the
-<code class="docutils literal notranslate"><span class="pre">#viio65</span></code>) relates to the raised 6th scale degree. <em>Which, in Bb
-minor, would be G. Therefore, the root of ``#viio65/#vi`` would be F#.</em></p>
-<p>Here, you can see an imaginary context, in C major, where this example
-could theoretically occur: <img alt="longexpression" src="_images/longexpression.png" /></p>
-</div>
 
 
           </div>
@@ -659,17 +454,7 @@ could theoretically occur: <img alt="longexpression" src="_images/longexpression
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="musescore.html">Using MuseScore</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Annotation Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#using-musescore">Using MuseScore</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-annotate">How to annotate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#editing-annotations">Editing annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#splitting-beats">Splitting beats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#copying-several-annotations">Copying several annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#visibility">Visibility</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#the-syntax">The syntax</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The syntax</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#indication-of-key">Indication of key.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#relative-key">Relative key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#roman-numerals">Roman numerals</a></li>
@@ -681,7 +466,8 @@ could theoretically occur: <img alt="longexpression" src="_images/longexpression
 <li class="toctree-l2"><a class="reference internal" href="#unisono">Unisono</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Annotation Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html#summary">Summary</a></li>
 </ul>
 
 <div class="relations">
@@ -689,6 +475,7 @@ could theoretically occur: <img alt="longexpression" src="_images/longexpression
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="musescore.html" title="previous chapter">Using MuseScore</a></li>
+      <li>Next: <a href="summary.html" title="next chapter">Annotation Guidelines</a></li>
   </ul></li>
 </ul>
 </div>
@@ -722,7 +509,7 @@ could theoretically occur: <img alt="longexpression" src="_images/longexpression
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="_sources/old_guidelines.rst.txt"
+      <a href="_sources/syntax.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
