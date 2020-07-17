@@ -33,6 +33,7 @@ Phrase annotation to be considered a separate kind of annotation
 * keine Notation für Pedaltöne
 * keine Spezialnotation für gehaltene Quintpedal etc.
 
+* allow for `%` and `M` to occur without `7`
 
 
 * Nicht immer der tiefste Ton entscheided über die Umkehrung --> Einzelfallfrage, Beispiele
