@@ -1,11 +1,12 @@
 The syntax
 ==========
 
-Every symbol *must* have at least one compulsory Roman numeral and *may*
+Every chord symbol *must* have at least one compulsory Roman numeral and *may*
 start with an indication of key, followed by a separating dot. Such an
 indication sets the context for the (compulsorily) attached Roman
 numeral *and* for all subsequent symbols up to the next indication of
-key.
+key. Phrase annotations represent a separate standard. Therefore they can
+stand alone, without a chord label, or at the very end of one.
 
 Indication of key.
 ------------------
@@ -37,18 +38,23 @@ given either to the first version - i.e., with **applied chords** - or
 to the second -i.e., with change of **local key**. In principle, it is
 an objective of your analyses to include a bigger picture of a piece's
 tonality through exactly this kind of choices. This means that upon
-making such a choice, you need to include the broader context: \* If the
-example passage is a mere tonicization of ``V`` followed by a return to
-the original tonic, that is a case for the version with applied chords
-because the local key stays the same. \* In the special case, that this
-would be a cadence to ``V``, followed by a return to the original tonic,
-you should even opt for ``I6 ii65/V V7/V I/V`` (**NB** ``I/V`` has the
-same meaning as ``V``) because an Authentic Cadence should always end
-with some sort of tonic symbol. \* If, on the other hand, the music
-continues in the key of V, the second option should be chosen. The
-general rule is that, in such a modulation, the change of local key
-should be annotated as early as consistently possible; so you could even
-write ``V.IV6 ii65 V7 I``.
+making such a choice, you need to include the broader context:
+
+* If the
+  example passage is a mere tonicization of ``V`` followed by a return to
+  the original tonic, that is a case for the version with applied chords
+  because the local key stays the same. \* In the special case, that this
+  would be a cadence to ``V``, followed by a return to the original tonic,
+  you should even opt for ``I6 ii65/V V7/V I/V`` (**NB** ``I/V`` has the
+  same meaning as ``V``) because an Authentic Cadence should always end
+  with some sort of tonic symbol.
+* If, on the other hand, the music
+  continues in the key of V, the second option should be chosen. The
+  general rule is that, in such a modulation, the change of local key
+  should be annotated as early as consistently possible; so you could even
+  write ``V.IV6 ii65 V7 I``.
+
+.. note::
 
     Note that the key indications of applied chords always relate to the
     local key (see the following section). So, if the Schumann example
@@ -62,13 +68,13 @@ write ``V.IV6 ii65 V7 I``.
 .. |localkeycorrect| image:: ../img/local_key_correct.png
 .. |localkeywrong| image:: ../img/local_key_wrong.png
 
-+------------------------+-----------------------+
-| Wanted annotation      | Unwanted annotation   |
-+========================+=======================+
-| |localkeycorrect|      | |localkeywrong|       |
-+------------------------+-----------------------+
-
-*mm. 4-5 from Schumann's "Wehmut", Liederkreis op. 39/9*
++------------------------+---------------------------------+
+| Wanted annotation      | Unwanted annotation             |
++========================+=================================+
+| |localkeycorrect|      | |localkeywrong|                 |
++------------------------+---------------------------------+
+| *mm. 4-5 from Schumann's "Wehmut", Liederkreis op. 39/9* |
++------------------------+---------------------------------+
 
 The rationale behind this logic can be seen in these automated key
 analyses of two different annotations of the same piece:
@@ -76,14 +82,15 @@ analyses of two different annotations of the same piece:
 .. |ganttbefore| image:: ../img/gantt_before.png
 .. |ganttafter| image:: ../img/gantt_after.png
 
-+--------------------------------------+--------------------+
-| With too many changes of local key   | After correction   |
-+======================================+====================+
-| |ganttbefore|                        | |ganttafter|       |
-+--------------------------------------+--------------------+
++--------------------------------------+---------------------------------------+
+| With too many changes of local key   | After correction                      |
++======================================+=======================================+
+| |ganttbefore|                        | |ganttafter|                          |
++--------------------------------------+---------------------------------------+
+| `Gantt chart showing the local keys in the first movement of Mozart's K. 533`|
++--------------------------------------+---------------------------------------+
 
-*Gantt chart showing the local keys in the first movement of Mozart's
-piano sonata F major, K. 533*
+
 
 Relative key
 ------------
@@ -94,26 +101,32 @@ the case for secondary dominants such as ``V65/IV``. The relative key is
 indicated as relative to the local key and does not change the local
 key. E.g.: ``iv.i #viio6 i6 V65/iv iv viio7/V V7 i`` (see below)
 designates a cadence in the key of ``iv`` (here: G minor) because of the
-initial indication of key. Note that \* the relative keys ``iv`` (C
-minor) and ``V`` (D major) relate to the *local* key ``iv`` and not to
-the *global* (tonic) key (here: D minor); \* ``viio7/V`` is not spelled
-``#viio7/V`` although the bass is altered. The reason is that it is the
-natural 7th scale degree in the key of ``V`` (D **major**). B flat, of
-course, is not natural in D major but is clearly annotated through the
-choice of ``viio7`` rather than ``vii%7``. \* combining relative key
-with a modulation can be counterintuitive because relative keys relate
-to the *local* key, whereas `key indications <#--indication-of-key-->`__
-used for modulation always relate to the *global* key. A theoretically
-correct but illegible and non-sensical variant of the example annotation
-would be ``iv.i #viio6 i6 V65/iv vii.i #viio7/ii V7/v iv.i`` To avoid
-confusion, don't use relative key annotation if a modulation to that
-same relative key follows.
+initial indication of key. Note that
+
+* the relative keys ``iv`` (C
+  minor) and ``V`` (D major) relate to the *local* key ``iv`` and not to
+  the *global* (tonic) key (here: D minor);
+* ``viio7/V`` is not spelled
+  ``#viio7/V`` although the bass is altered. The reason is that it is the
+  natural 7th scale degree in the key of ``V`` (D **major**). B flat, of
+  course, is not natural in D major but is clearly annotated through the
+  choice of ``viio7`` rather than ``vii%7``.
+* combining relative key
+  with a modulation can be counterintuitive because relative keys relate
+  to the *local* key, whereas `key indications <#--indication-of-key-->`__
+  used for modulation always relate to the *global* key. A theoretically
+  correct but illegible and non-sensical variant of the example annotation
+  would be ``iv.i #viio6 i6 V65/iv vii.io6 #viio7/ii V7/v iv.i`` To avoid
+  confusion, don't use relative key annotation if a modulation to that
+  same relative key follows.
 
 .. figure:: ../img/relativekey.png
    :alt: relativekey
 
 Relative keys of relative keys can be annotated, for example the
 dominant of the dominant of the dominant: ``V7/V/V``.
+
+.. _roman-numerals:
 
 Roman numerals
 --------------
@@ -127,6 +140,8 @@ scale degrees simply use ``[.]b/#``\ +[Roman numeral], e.g. ``.bVI`` for
 an Ab major chord in the context of C major; or ``#vi`` for an A minor
 chord in the context of C minor. Remember the leading dots if ``b``
 appears at the beginning of a symbol (``V/bVI`` works but ``bVI`` not!).
+
+.. note::
 
     You always indicate the chord type *before* the inversion.
 
@@ -189,12 +204,14 @@ inversions.
    does not need an initial dot because it does not start with a note
    name.
 
+.. _suspensions-and-retardations:
+
 Suspensions and retardations
 ----------------------------
 
 Suspensions and retardations are annotated as arabic numbers within
-round parantheses ``()`` following the Roman numeral. The numbers
-designate the note's interval **to the root**. That is to say a
+round parentheses ``()`` following the Roman numeral, form and inversion. The
+numbers designate the note's interval **to the root**. That is to say a
 suspensional 4 is marked as ``(4)`` in any inversion:
 ``V(4) V6(4) V65(4) V43(4) V2(4)`` (yes, two of them have the suspension
 in the bass). It implies, that the functional third of the chord (i.e.,
@@ -202,29 +219,63 @@ the third above the root) is not present. In order to indicate the
 resolution, write the sounding chord without the suspension, e.g.
 ``V65(4) V65`` or ``V(4) V7``. If an interval is altered, add ``#/b`` in
 front of the digit, e.g. ``V7(b6) V7``, which is possible only in a
-major context because in minor, the 6th would already be flat. If
-several suspensions are sounding at the same time, annotate all of them
+major context because in minor, the 6th would already be flat.
+
+.. note::
+
+    The intervals designated by the arabic numbers in parantheses depend on the
+    chord's position in the scale and the scale itself!
+
+If several suspensions are sounding at the same time, annotate all of them
 within the same parenthesis and always in descending order, e.g.
 ``V(64)``. A *cadenza doppia* could look like ``V7 V(64) V(4) V``
 followed by ``I`` or ``i``.
 
-The digits stand for \* ``(2)``: Suspension over the root, meaning that
-the **root is not present** in the chord; as opposed to \* ``(9)``:
-designating the same pitch but indicating that the **root is present**
-at the same time; \* ``(4)``: Suspension over the third \* ``(6)``:
-Suspension over the fifth \* ``(7)``: Retardation of the root, i.e. the
-resolution goes upwards \* ``(#``\ *``N``*\ ``)``: digit *N* is a
-retardation resolving upwards, e.g. ``(#2)`` retarding the third. The
-``#`` overrides the rule that you use ``(2)`` only if the root is not
-present. \* ``(b``\ *``N``*\ ``)``: digit *N* is a suspension resolving
-downwards > Attention! Designating suspensions or retardations as
-intervalls above the root will be counterintuitive if you are used to
-thinking in figured bass. For example, a falling fauxbourdon
-``ii6 I6 viio6`` with 7-6 suspensions has to be written as
-``ii6(2) ii6 I6(2) I6 viio6(2) viio6``. Note that you use ``(2)`` and
-not ``(9)`` because the root is not present. > Other than what some
-would typically write, a Classical retardated ending looks like
-``i(9#74) i``, and not ``i(#742) i`` or ``i(24#7) i``.
+.. note::
+
+    The digits {3, 5, 8, 10, 12} are used for alterations of chord
+    tones, and {2, 4, 6, 7, 9, 11, 13, 14} for suspensions and alterations -
+    depending on a set of rules that is explained in the following and
+    which is important to understand.
+
+The digits stand for
+
+* ``(2)``: Suspension of the root, meaning that
+  the **root is not present** in the chord; as opposed to
+* ``(9)``:
+  designating the same pitch but indicating that the **root is present**
+  at the same time;
+* ``(4)``: Suspension of the third (third not present)
+* ``(11)``: Suspension of the third but the third is present at the same
+  time in a lower voice, in particular if the third is in the bass
+* ``(6)``:
+  Suspension of the fifth
+* ``(7)``: Retardation of the root, i.e. the
+  resolution goes upwards
+* ``(#``\ *``N``*\ ``)``: digit *N* is a
+  retardation resolving upwards, e.g. ``(#2)`` retarding the third. The
+  ``#`` overrides the rule that you use ``(2)`` only if the root is not
+  present.
+* ``(b``\ *``N``*\ ``)``: digit *N* is a suspension resolving
+  downwards.
+
+There are cases where you need to express that, for example, a 2 is not
+replacing the root, but the third instead. In other words you want to
+identify it as an retardation rather than a suspension. In such a case you can
+use the symbol ``^`` as in ``i(^2)``. This is not necessary if it is a raised
+interval, e.g. ``i(#2)``.
+
+
+.. Attention!::
+
+    Designating suspensions or retardations as
+    intervals above the root will be counterintuitive if you are used to
+    thinking in figured bass. For example, a falling fauxbourdon
+    ``ii6 I6 viio6`` with 7-6 suspensions has to be written as
+    ``ii6(2) ii6 I6(2) I6 viio6(2) viio6``. Note that you use ``(2)`` and
+    not ``(9)`` because the root is not present. Other than what some
+    would typically write, a Classical ending with retardation looks like
+    ``i(9#74) i``, and not ``i(#742) i`` or ``i(24#7) i``.
 
 Added notes
 -----------

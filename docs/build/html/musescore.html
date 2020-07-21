@@ -43,8 +43,7 @@ through pages vertically instead of horizontally, change
 <p>There are two types of MuseScore files. The software saves files
 automatically in the compressed format <code class="docutils literal notranslate"><span class="pre">.mscz</span></code>, creating smaller file
 sizes. However, we work with the uncompressed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> format because
-it represents text files. The HarmonyAnnotationChecker script, for
-example, works only on mscx, so make sure to save the annotated score in
+it represents text files. Please make sure to save the annotated score in
 this format by using <code class="docutils literal notranslate"><span class="pre">Files</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">As...</span></code> and selecting the
 “Uncompressed MuseScore File (*.mscx)” format.</p>
 <div class="figure align-default">
@@ -59,11 +58,12 @@ expression, press <code class="docutils literal notranslate"><span class="pre">S
 <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Space</span></code> will bring you back to the prior event, and <code class="docutils literal notranslate"><span class="pre">Tab</span></code> to
 beat 1 of the next measure. And, importantly, <code class="docutils literal notranslate"><span class="pre">Esc</span></code> ends the chord
 editing mode.</p>
-<blockquote>
-<div><p>All labels have to be attached to the upmost (i.e. right hand)
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All labels have to be attached to the upmost (i.e. right hand)
 staff. Within this staff, it does not matter to which voice they are
 attached.</p>
-</div></blockquote>
+</div>
 </div>
 <div class="section" id="editing-annotations">
 <h2>Editing annotations<a class="headerlink" href="#editing-annotations" title="Permalink to this headline">¶</a></h2>
@@ -73,24 +73,27 @@ symbol once to select it, and press <code class="docutils literal notranslate"><
 <p>If you want to change the beat/position of a symbol, it is important not
 to drag it horizontally because it stays linked to the moment where you
 entered it. Therefore, you need to delete it and enter it anew on the
-right position. Of course, the quickest way to do this is to double
-click on the symbol, select the entire expression with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">A</span></code>,
-cutting it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">X</span></code>, moving to the correct position with
-<code class="docutils literal notranslate"><span class="pre">Space</span></code> or <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Space</span></code> and insert it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">V</span></code>.</p>
+right position. Of course, the quickest way to do this is to select the label,
+cut it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">X</span></code>, select a note in the correct position and
+insert it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">V</span></code>.</p>
 </div>
-<div class="section" id="splitting-beats">
-<h2>Splitting beats<a class="headerlink" href="#splitting-beats" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="selecting-a-position-where-there-is-no-note-or-rest">
+<h2>Selecting a position where there is no note or rest<a class="headerlink" href="#selecting-a-position-where-there-is-no-note-or-rest" title="Permalink to this headline">¶</a></h2>
 <p>It is as simple as pressing Ctrl+3 for moving the cursor by a 16th,
 Ctrl+4 for an 8th and so on (same values as for note entry).</p>
 </div>
 <div class="section" id="copying-several-annotations">
-<h2>Copying several annotations<a class="headerlink" href="#copying-several-annotations" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Copying several annotations<a class="headerlink" href="#copying-several-annotations" title="Permalink to this headline">¶</a></h2>
 <p>If you find an exact repetition, make sure, it actually is an exact
 repetition first before copying symbols. Then, go to the symbols you
-want to copy. &gt; If they expand over more than one system, you will have
+want to copy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If they expand over more than one system, you will have
 to change “Page view” to “Continuous View”. Generally, you will end up
 in a different measure than expected and you can easily navigate to your
 measure using <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F</span></code> and typing the measure number.</p>
+</div>
 <p>To select the chord symbols (or anything else for that matter), press
 <code class="docutils literal notranslate"><span class="pre">Shift</span></code> to draw a frame around the symbols with your mouse (or touch
 device). Copy with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code>, then select the first beat where you
@@ -101,19 +104,21 @@ or twofold annotations for the same position.</p>
 <div class="section" id="visibility">
 <h2>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h2>
 <p>Although not important for the computerised analysis of your
-annotations, it is preferrable to arrange them in a human-readable way.
-* If two expressions overlap horizontally, just drag the first one up
-or down with your mouse (or touch device). Make sure to leave any edit
-mode first, using <code class="docutils literal notranslate"><span class="pre">Esc</span></code>. * If expressions overlap with notes, you can
-drag them manually as well. But if this is often the case, you might
-want to * change the distance between the chord symbols and the
-respective system for the entire document by changing the value of
-<code class="docutils literal notranslate"><span class="pre">Style</span> <span class="pre">-&gt;</span> <span class="pre">General...</span> <span class="pre">-&gt;</span> <span class="pre">Chord</span> <span class="pre">Symbols,</span> <span class="pre">Fretboard</span> <span class="pre">Diagrams</span> <span class="pre">-&gt;</span> <span class="pre">Default</span> <span class="pre">vertical</span> <span class="pre">position</span></code>.
+annotations, it is preferrable to arrange them in a human-readable way.</p>
+<ul class="simple">
+<li><p>If two expressions overlap horizontally, just drag the first one up or down
+with your mouse (or touch device). Make sure to leave any edit mode first,
+using <code class="docutils literal notranslate"><span class="pre">Esc</span></code>.</p></li>
+<li><p>If expressions overlap with notes, you can drag them manually as well. But if
+this is often the case, you might want to</p></li>
+<li><p>change the distance between the chord symbols and the respective system for
+the entire document by changing the value of <code class="docutils literal notranslate"><span class="pre">Style</span> <span class="pre">-&gt;</span> <span class="pre">General...</span> <span class="pre">-&gt;</span> <span class="pre">Chord</span> <span class="pre">Symbols,</span> <span class="pre">Fretboard</span> <span class="pre">Diagrams</span> <span class="pre">-&gt;</span> <span class="pre">Default</span> <span class="pre">vertical</span> <span class="pre">position</span></code>.
 A usable value might lie around <code class="docutils literal notranslate"><span class="pre">6.00sp</span></code>. If the distance is good but
-chord symbols overlap with the above system, you might want to * change
-the distance between all systems by raising the value of
+chord symbols overlap with the above system, you might want to</p></li>
+<li><p>change the distance between all systems by raising the value of
 <code class="docutils literal notranslate"><span class="pre">Style</span> <span class="pre">-&gt;</span> <span class="pre">General...</span> <span class="pre">-&gt;</span> <span class="pre">Page</span> <span class="pre">-&gt;</span> <span class="pre">Min.</span> <span class="pre">system</span> <span class="pre">distance</span></code>. Note that you
-might have to adjust <code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">system</span> <span class="pre">distance</span></code> if you need high values.</p>
+might have to adjust <code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">system</span> <span class="pre">distance</span></code> if you need high values.</p></li>
+</ul>
 <div class="figure align-default">
 <img alt="settings" src="_images/settings.png" />
 </div>
@@ -143,7 +148,7 @@ might have to adjust <code class="docutils literal notranslate"><span class="pre
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using MuseScore</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-annotate">How to annotate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#editing-annotations">Editing annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#splitting-beats">Splitting beats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selecting-a-position-where-there-is-no-note-or-rest">Selecting a position where there is no note or rest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#copying-several-annotations">Copying several annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#visibility">Visibility</a></li>
 </ul>

@@ -37,26 +37,17 @@
 <p>Thank you for your help in building an annotated music corpus. Harmonic
 analysis is a notoriously complex task, as of now very difficult to
 teach to a computer. Therefore, we need to rely on a handannotated
-databasis when analyzing the development of tonal harmony over the last
-five centuries with the quantitative methods. With this goal in mind, we
+data when analyzing the development of tonal harmony over the last
+five centuries with quantitative methods. With this goal in mind, we
 have devised an annotation standard for writing harmonic analyses in a
 machine-readable format. This document will help you learn how to use
 this standard.</p>
 <p>The annotation process consists in adding Roman numerals to a digital
 music score. In this context, we will call them ‘symbols’, ‘chord
-symbols’, ‘expressions’ or ‘annotations’. The chord analyses are added
+symbols’, ‘labels’, ‘expressions’ or ‘annotations’. The chord analyses are added
 via the chord symbol function in the open source notation software
-<a class="reference external" href="https://musescore.org/en/download#Older-and-unsupported-versions">MuseScore
-2.3.2</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note that Musescore 3 is available but that we are still working with
-the old version. The link brings you to “Older and unsupported
-versions”, please download MuseScore 2.3.2 for your operation system
-there. You can have MuseScore 2 and 3 installed next to each other but
-this requires extra attention because MS3 cannot save files in MS2
-format. At some point in 2019 we will stop using MS2.</p>
-</div>
+<a class="reference external" href="https://musescore.org/en/download">MuseScore 3</a> (download the ‘latest stable
+version’).</p>
 <p>Depending on the
 source of the notation file that you receive for annotation, it might be
 advisable to have a scan of the <em>Urtext</em> opened in the background for
@@ -77,17 +68,14 @@ with the original position, even if you move them by hand!</p></li>
 <li><p>If a symbol starts with a note name, Musescore will save it
 differently which annotators have to avoid by putting a dot in front
 of the note name. For example: <code class="docutils literal notranslate"><span class="pre">I6</span></code>, <code class="docutils literal notranslate"><span class="pre">ii7</span></code>, <code class="docutils literal notranslate"><span class="pre">V65</span></code> etc. can be
-written without a starting dot but <code class="docutils literal notranslate"><span class="pre">.bVI</span></code> and <code class="docutils literal notranslate"><span class="pre">.Ger6</span></code> (German
+written without a starting dot but <code class="docutils literal notranslate"><span class="pre">.bVI</span></code> and <code class="docutils literal notranslate"><span class="pre">.Ger</span></code> (German
 sixth chord) need one, as does the initial indication of the main key
-such as <code class="docutils literal notranslate"><span class="pre">.Eb.I.</span></code> (BTW, the one and only actual pitch name needed
-and allowed in every piece, see
-<code class="docutils literal notranslate"><span class="pre">`{Indication</span> <span class="pre">of</span> <span class="pre">key.}</span></code> &lt;#indication-of-key&gt;`__).</p></li>
-<li><p>Arabic numbers indicating <a class="reference external" href="#roman-numerals">inversions</a> or
-<a class="reference external" href="#suspensions-and-retardations">suspensions</a> always appear in
+such as <code class="docutils literal notranslate"><span class="pre">.Eb.I.</span></code>.</p></li>
+<li><p>Arabic numbers indicating <a class="reference internal" href="syntax.html#roman-numerals"><span class="std std-ref">inversions</span></a> or
+<a class="reference internal" href="syntax.html#suspensions-and-retardations"><span class="std std-ref">suspensions</span></a> always appear in
 descending order (e.g. <code class="docutils literal notranslate"><span class="pre">65</span></code> or <code class="docutils literal notranslate"><span class="pre">9#74</span></code>).</p></li>
 <li><p>The information about a harmony has to be expressed in a fixed order
-(syntax). This <a class="reference external" href="#the-syntax">syntax</a> can be proofread by using the
-script HarmonyAnnotationChecker.jl</p></li>
+(syntax) and orthographical errors can be automatically detected.</p></li>
 <li><p>Major keys are indicated by uppercase, minor keys by lowercase
 letters.</p></li>
 </ul>
@@ -98,8 +86,8 @@ that the same annotator interprets the same music identically. That is
 to say, once you have made a difficult decision about annotating a
 certain chord progression, you have to stick to this decision every time
 the progression occurs. If at one point, for the sake of consistency,
-you get the idea of <a class="reference external" href="#copying-several-annotations">copying your
-annotations</a> when music repeats, make
+you get the idea of <a class="reference internal" href="musescore.html#copying-several-annotations"><span class="std std-ref">copying your
+annotations</span></a> when music repeats, make
 sure that you are dealing with an exact repetition and check the
 annotations after copying.</p>
 </div>
