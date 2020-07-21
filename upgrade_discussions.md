@@ -74,10 +74,12 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * New symbol for indicating that `2`, `4`, and `6` exceptionally replace the upper, not the lower neighbour?
 * What about a `7` which exceptionally replaces the lower, not the upper neighbour?
+  * **`^` added as a new symbol**
 
 ### [Changes bigger than 13](https://github.com/DCMLab/standards/issues/27)
 
 * If 8 is present but the 15 is retarded by a seventh it should be called `(14)`, right? Momentarily, no numbers bigger than 13 are accepted by the post-processor.
+  * **Yes, this needs to be accounted for.**
 
 ### [Suspension vs passing notes](https://github.com/DCMLab/standards/issues/9)
 
