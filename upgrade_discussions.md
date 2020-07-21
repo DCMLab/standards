@@ -12,7 +12,8 @@ The discussed issues should be close in the course of the discussions or attribu
 
 ### [Position and duration for chords on the basis of crotchets](https://github.com/DCMLab/standards/issues/21)
 
-* Should the principles of post-processing be part of the standard? This would result in me writing down the rules that have been applied so far for creating the feature lists (including computation of chord-tones). This is actually the moment where the labels are treated semantically.
+* **Should the principles of post-processing be part of the standard? This would result in me writing down the rules that have been applied so far for creating the feature lists (including computation of chord-tones). This is actually the moment where the labels are treated semantically.**
+  * Yes, this should be part of the specification.
 
 ### [Downward compatibility of changes in the annotation standard / guidelines](https://github.com/DCMLab/standards/issues/8)
 
