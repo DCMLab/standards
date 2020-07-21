@@ -39,10 +39,12 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Upbeat anticipating the following downbeat harmony](https://github.com/DCMLab/standards/issues/28)
 
 * Such "Sinneinheiten" could also encode metrical aspects which would probably require label repetitions.
+  * **Repetitions are allowed**
 
 ### [Repeats & Segnos](https://github.com/DCMLab/standards/issues/22)
 
 * Add to the guidelines that with a segno, the same label should be repeated? This would be important for the "unfolded" representation if before the D.S. there is a different harmony than at the segno.
+  * **Add this to the guidelines**
 
 ### [Phrase interlocking, different kinds of phrase endings, cadence annotations](https://github.com/DCMLab/standards/issues/12)
 
@@ -72,10 +74,12 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * New symbol for indicating that `2`, `4`, and `6` exceptionally replace the upper, not the lower neighbour?
 * What about a `7` which exceptionally replaces the lower, not the upper neighbour?
+  * **`^` added as a new symbol**
 
 ### [Changes bigger than 13](https://github.com/DCMLab/standards/issues/27)
 
 * If 8 is present but the 15 is retarded by a seventh it should be called `(14)`, right? Momentarily, no numbers bigger than 13 are accepted by the post-processor.
+  * **Yes, this needs to be accounted for.**
 
 ### [Suspension vs passing notes](https://github.com/DCMLab/standards/issues/9)
 
