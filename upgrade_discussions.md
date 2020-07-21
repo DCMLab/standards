@@ -34,6 +34,7 @@ The discussed issues should be close in the course of the discussions or attribu
 
 * Let `\\` stand alone (without repeating identical harmony)
 * (instead) generally allow for repeating identical harmonies as a means of creating "Sinneinheiten" ("meaningful" chord segments). This would probably lead to the recommendation to always evaluate chord duration instead of counts for statistics; for transition probabilities, immediate repetitions can easily be excluded...
+  * **Solution: phrase annotations with `{}`
 
 ### [Upbeat anticipating the following downbeat harmony](https://github.com/DCMLab/standards/issues/28)
 
