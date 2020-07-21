@@ -13,15 +13,18 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Position and duration for chords on the basis of crotchets](https://github.com/DCMLab/standards/issues/21)
 
 * Should the principles of post-processing be part of the standard? This would result in me writing down the rules that have been applied so far for creating the feature lists (including computation of chord-tones). This is actually the moment where the labels are treated semantically.
+  * **Yes, this should be part of the specification.**
 
 ### [Downward compatibility of changes in the annotation standard / guidelines](https://github.com/DCMLab/standards/issues/8)
 
-* Checking labels' syntax (regEx) is context-independent, checking their semantics (during post-annotation feature extraction) is not. Close issue?
+* *hecking labels' syntax (regEx) is context-independent, checking their semantics (during post-annotation feature extraction) is not. Close issue?
 * Since we convert labels into chord tones, there are new possibilities of checking against the actual notes in the score. Should that be included in the checks?
+  * **Add this to the specification.**
 
 ### [What is an augmented seventh chord? Size of the seventh](https://github.com/DCMLab/standards/issues/24)
 
-* Stipulate that the seventh in `V+7` (for example) is a major seventh?
+* *Stipulate that the seventh in `V+7` (for example) is a major seventh?*
+  * **Solution: `V+7` has a minor seventh, `V+M7` has a major seventh.
 
 
 
