@@ -39,10 +39,12 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Upbeat anticipating the following downbeat harmony](https://github.com/DCMLab/standards/issues/28)
 
 * Such "Sinneinheiten" could also encode metrical aspects which would probably require label repetitions.
+  * **Repetitions are allowed**
 
 ### [Repeats & Segnos](https://github.com/DCMLab/standards/issues/22)
 
 * Add to the guidelines that with a segno, the same label should be repeated? This would be important for the "unfolded" representation if before the D.S. there is a different harmony than at the segno.
+  * **Add this to the guidelines**
 
 ### [Phrase interlocking, different kinds of phrase endings, cadence annotations](https://github.com/DCMLab/standards/issues/12)
 
