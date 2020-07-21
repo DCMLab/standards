@@ -167,6 +167,8 @@ inversions.
    ``#viio7 iio65``
 -  half-diminished seventh: lowercase numeral + ``%7``, e.g.
    ``viio%7 ii%43``
+- augmented (minor) seventh: uppercase numeral + ``+7``, e.g. ``V+7``
+- augmented major seventh: uppercase numeral + ``+M7``, e.g. ``V+M7``
 -  mm7 (minor seventh): lowercase numeral + ``7``, e.g. ``ii7 i2``
 -  mM7 (minor with major seventh): lowercase numeral + ``M7``, e.g.
    ``ivM7`` (although, in most cases, such a chord will be annotated as
@@ -183,7 +185,7 @@ inversions.
 -  The respective inversions are annotated by replacing ``7`` with
    ``65`` (NOT ``56``), ``43`` (NOT ``34``) or ``2`` respectively.
 -  There are special symbols to annotate the French, German and Italian
-   sixth chords: ``.Fr6``, ``.Ger6`` and ``.It6``. The latter actually
+   sixth chords: ``.Fr``, ``.Ger`` and ``It6``. The latter actually
    does not need an initial dot because it does not start with a note
    name.
 
@@ -263,31 +265,28 @@ rather than as a suspension ``i(9)``.
 Phrase endings
 --------------
 
-The structural ending of a phrase - typically the target chord of a
-cadence - should be marked with a double backslash ``\\``. **Important:
-The ``\\`` always has to be the last element of the expression.** > Be
-careful: relative keys are indicated with a single slash ``/`` and
-phrase endings with double backslash ``\\``
+The annotation of phrases consists in a separate annotation standard which
+can be used alongside with the harmony annotations. For that it is important
+to remember, that phrase annotations are **always the label's last part**.
+Curly brackets ``{}`` are used for annotating phrases. For example, the first
+phrase of a piece could begin with the label ``.C.I{``. The closing bracket ``}``
+always marks the structural ending of a phrase - typically the target chord of a
+cadence, e.g. ``I}``.
+
 
     It has proven useful to listen to your completely annotated score
     once again just to detect phrase endings and cadences.
 
-Note that many cadences are followed by an appendix. The phrase-end
-symbol does not have to be repeated at the end of the appendix. Unlike
-the harmony part of symbol (which is operative until the next symbol),
-the double backslash marks the time point at which it appears (which is
-different to the closing brackets of a pedal point).
+Note that many cadences and other structural endings are followed by an
+appendix or some transitional codetta, which is alwas the part between the
+structural ending marked with ``}`` and the next beginning ``{``. Curly brackets
+can stand alone (i.e. don't have to be preceded by a label) and can fall together
+in the case of phrase interlocking: ``}{``.
 
-    For this reason, in rare cases, a label has to be repeated if the
-    respective harmony appears already before the actual phrase ending,
-    e.g. Chopin's Mazurka BI77-3op17-3.mscx mm. 47f.
+.. figure:: ../img/phrase_boundaries.png
+    :alt: phrase\_boundaries
 
-A half cadence, for example, could look like ``ii6 V65/V V\\``. The
-appendix does not receive another phrase-ending symbol (see Example from
-KV 576, I, 26-8).
-
-.. figure:: ../img/phraseending.png
-   :alt: phraseending
+    Corelli: Sonata da chiesa op. 1/7, I, mm. 1-4
 
 Pedal points (Organ points)
 ---------------------------

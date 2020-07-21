@@ -207,6 +207,8 @@ inversions.</p>
 <code class="docutils literal notranslate"><span class="pre">#viio7</span> <span class="pre">iio65</span></code></p></li>
 <li><p>half-diminished seventh: lowercase numeral + <code class="docutils literal notranslate"><span class="pre">%7</span></code>, e.g.
 <code class="docutils literal notranslate"><span class="pre">viio%7</span> <span class="pre">ii%43</span></code></p></li>
+<li><p>augmented (minor) seventh: uppercase numeral + <code class="docutils literal notranslate"><span class="pre">+7</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">V+7</span></code></p></li>
+<li><p>augmented major seventh: uppercase numeral + <code class="docutils literal notranslate"><span class="pre">+M7</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">V+M7</span></code></p></li>
 <li><p>mm7 (minor seventh): lowercase numeral + <code class="docutils literal notranslate"><span class="pre">7</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">ii7</span> <span class="pre">i2</span></code></p></li>
 <li><p>mM7 (minor with major seventh): lowercase numeral + <code class="docutils literal notranslate"><span class="pre">M7</span></code>, e.g.
 <code class="docutils literal notranslate"><span class="pre">ivM7</span></code> (although, in most cases, such a chord will be annotated as
@@ -223,7 +225,7 @@ minor key, which will not be notated as a dominant.</p></li>
 <li><p>The respective inversions are annotated by replacing <code class="docutils literal notranslate"><span class="pre">7</span></code> with
 <code class="docutils literal notranslate"><span class="pre">65</span></code> (NOT <code class="docutils literal notranslate"><span class="pre">56</span></code>), <code class="docutils literal notranslate"><span class="pre">43</span></code> (NOT <code class="docutils literal notranslate"><span class="pre">34</span></code>) or <code class="docutils literal notranslate"><span class="pre">2</span></code> respectively.</p></li>
 <li><p>There are special symbols to annotate the French, German and Italian
-sixth chords: <code class="docutils literal notranslate"><span class="pre">.Fr6</span></code>, <code class="docutils literal notranslate"><span class="pre">.Ger6</span></code> and <code class="docutils literal notranslate"><span class="pre">.It6</span></code>. The latter actually
+sixth chords: <code class="docutils literal notranslate"><span class="pre">.Fr</span></code>, <code class="docutils literal notranslate"><span class="pre">.Ger</span></code> and <code class="docutils literal notranslate"><span class="pre">It6</span></code>. The latter actually
 does not need an initial dot because it does not start with a note
 name.</p></li>
 </ul>
@@ -298,30 +300,25 @@ rather than as a suspension <code class="docutils literal notranslate"><span cla
 </div>
 <div class="section" id="phrase-endings">
 <h2>Phrase endings<a class="headerlink" href="#phrase-endings" title="Permalink to this headline">¶</a></h2>
-<p>The structural ending of a phrase - typically the target chord of a
-cadence - should be marked with a double backslash <code class="docutils literal notranslate"><span class="pre">\\</span></code>. <strong>Important:
-The ```` always has to be the last element of the expression.</strong> &gt; Be
-careful: relative keys are indicated with a single slash <code class="docutils literal notranslate"><span class="pre">/</span></code> and
-phrase endings with double backslash <code class="docutils literal notranslate"><span class="pre">\\</span></code></p>
+<p>The annotation of phrases consists in a separate annotation standard which
+can be used alongside with the harmony annotations. For that it is important
+to remember, that phrase annotations are <strong>always the label’s last part</strong>.
+Curly brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code> are used for annotating phrases. For example, the first
+phrase of a piece could begin with the label <code class="docutils literal notranslate"><span class="pre">.C.I{</span></code>. The closing bracket <code class="docutils literal notranslate"><span class="pre">}</span></code>
+always marks the structural ending of a phrase - typically the target chord of a
+cadence, e.g. <code class="docutils literal notranslate"><span class="pre">I}</span></code>.</p>
 <blockquote>
 <div><p>It has proven useful to listen to your completely annotated score
 once again just to detect phrase endings and cadences.</p>
 </div></blockquote>
-<p>Note that many cadences are followed by an appendix. The phrase-end
-symbol does not have to be repeated at the end of the appendix. Unlike
-the harmony part of symbol (which is operative until the next symbol),
-the double backslash marks the time point at which it appears (which is
-different to the closing brackets of a pedal point).</p>
-<blockquote>
-<div><p>For this reason, in rare cases, a label has to be repeated if the
-respective harmony appears already before the actual phrase ending,
-e.g. Chopin’s Mazurka BI77-3op17-3.mscx mm. 47f.</p>
-</div></blockquote>
-<p>A half cadence, for example, could look like <code class="docutils literal notranslate"><span class="pre">ii6</span> <span class="pre">V65/V</span> <span class="pre">V\\</span></code>. The
-appendix does not receive another phrase-ending symbol (see Example from
-KV 576, I, 26-8).</p>
-<div class="figure align-default">
-<img alt="phraseending" src="_images/phraseending.png" />
+<p>Note that many cadences and other structural endings are followed by an
+appendix or some transitional codetta, which is alwas the part between the
+structural ending marked with <code class="docutils literal notranslate"><span class="pre">}</span></code> and the next beginning <code class="docutils literal notranslate"><span class="pre">{</span></code>. Curly brackets
+can stand alone (i.e. don’t have to be preceded by a label) and can fall together
+in the case of phrase interlocking: <code class="docutils literal notranslate"><span class="pre">}{</span></code>.</p>
+<div class="figure align-default" id="id1">
+<img alt="phrase\_boundaries" src="_images/phrase_boundaries.png" />
+<p class="caption"><span class="caption-text">Corelli: Sonata da chiesa op. 1/7, I, mm. 1-4</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="pedal-points-organ-points">

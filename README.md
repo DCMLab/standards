@@ -16,6 +16,11 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 ### Release Notes
 
+#### v2.2.0
+
+* `+7` (and inversions) designates an augmented chord with a minor seventh. For the case of an augmented chord with a major seventh, the combination `+M7` (and inversions) has been added. (#24)
+* With the new version, phrase beginnings are annotated with a trailing `{`, a phrase's structural ending with a `}` and phrase interlocking with `{}`.
+
 #### v2.1.1
 
 * In this version of the regex, `@none` is admitted as a symbol and interpreted as a numeral (root).
