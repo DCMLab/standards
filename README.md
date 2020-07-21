@@ -21,6 +21,7 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 * `+7` (and inversions) designates an augmented chord with a minor seventh. For the case of an augmented chord with a major seventh, the combination `+M7` (and inversions) has been added. (#24)
 * With the new version, phrase beginnings are annotated with a trailing `{`, a phrase's structural ending with a `}` and phrase interlocking with `{}`. (#3)
 * The symbol `^` can now be used to distinguish retardations from suspensions (e.g. `i(^2)` for a 2 that replaces the third rather than the root). (#4)
+* The symbol `-` can now be used to express missing chord tones, e.g. `I(-3)`. (#10, #14)
 * Changes to the guidelines
   - Immediate repetition of identical labels is still discouraged but not rigorously forbidden. (#28)
 

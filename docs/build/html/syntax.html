@@ -300,23 +300,33 @@ identify it as an retardation rather than a suspension. In such a case you can
 use the symbol <code class="docutils literal notranslate"><span class="pre">^</span></code> as in <code class="docutils literal notranslate"><span class="pre">i(^2)</span></code>. This is not necessary if it is a raised
 interval, e.g. <code class="docutils literal notranslate"><span class="pre">i(#2)</span></code>.</p>
 </div>
-<div class="section" id="added-notes">
-<h2>Added notes<a class="headerlink" href="#added-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="added-and-missing-notes">
+<h2>Added and missing notes<a class="headerlink" href="#added-and-missing-notes" title="Permalink to this headline">¶</a></h2>
 <p>Generally, there are only very few notes in the Common practice era
-which cannot be explained as suspensions or retardations. &gt; One should
-add that we don’t annotate neighbour notes, passing notes nor
-embellishments.</p>
+which cannot be explained as suspensions or retardations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We don’t annotate neighbour notes, passing notes nor embellishments.</p>
+</div>
 <p>A typical additional note would be that of a pedal note which appears in
 a different voice than the bass. In this case, you would annotate the
 additional note - analogue to a suspension - as a digit indicating the
 interval <em>from the root</em> in parenthesis, but preceded by a <code class="docutils literal notranslate"><span class="pre">+</span></code>.
 Example: Imagine a C major context and a pedal on G in some middle
 voice. Around that, the other voices do the progression
-<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">viio6</span> <span class="pre">I6</span> <span class="pre">ii6</span> <span class="pre">I64</span> <span class="pre">IV6</span> <span class="pre">.Ger6</span> <span class="pre">V\\</span></code>: Some harmonies contain the G and
+<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">viio6</span> <span class="pre">I6</span> <span class="pre">ii6</span> <span class="pre">I64</span> <span class="pre">IV6</span> <span class="pre">.Ger</span> <span class="pre">V\\</span></code>: Some harmonies contain the G and
 do not change (namely <code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">I6</span></code>, <code class="docutils literal notranslate"><span class="pre">I64</span></code> and <code class="docutils literal notranslate"><span class="pre">V</span></code>), one harmony
 supports an added G (<code class="docutils literal notranslate"><span class="pre">viio6</span></code> with G is <code class="docutils literal notranslate"><span class="pre">V43</span></code>) and the rest neither
 support G nor can it be interpreted as suspensions. So the correct
-annotation would be <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">V43</span> <span class="pre">I6</span> <span class="pre">ii6(+4)</span> <span class="pre">I64</span> <span class="pre">IV6(+2)</span> <span class="pre">.Ger6(+7)</span> <span class="pre">V\\</span></code>.</p>
+annotation would be <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">V43</span> <span class="pre">I6</span> <span class="pre">ii6(+4)</span> <span class="pre">I64</span> <span class="pre">IV6(+2)</span> <span class="pre">.Ger(+7)</span> <span class="pre">V\\</span></code>.</p>
+<p>In analogy, <code class="docutils literal notranslate"><span class="pre">-</span></code> can be used to indicate that a given chord tone is missing
+and <strong>that it is not implied</strong> by the music. For that reason, this symbol is
+used rarely because in most cases the missing note (the fifth in particular)
+is considered as implied. Examples where the symbol is used are pronounced
+empty fifths such as <code class="docutils literal notranslate"><span class="pre">I(-3)</span></code>, or, if it is not clear which third is missing
+(e.g. at the beginning of a piece) <code class="docutils literal notranslate"><span class="pre">I(-3)-i(-3)</span></code>. Another application of
+the symbol could be in chords where the root is missing, for example in
+two-voice counterpoint (e.g. <code class="docutils literal notranslate"><span class="pre">IV(-1)</span></code>).</p>
 <p>Sometimes, it can seem ambiguous whether a note is an added note, a
 suspension without resolution or an embellishment (anticipation). The
 following example from Monteverdi’s <em>Lamento della ninfa</em> might give a
@@ -459,6 +469,17 @@ than the other or because it alludes to another passage of the same
 piece. If no harmony can be inferred - in particular where a composer
 deliberately withdraws tonal footing - use the symbol <code class="docutils literal notranslate"><span class="pre">&#64;none</span></code>.</p>
 </div>
+<div class="section" id="immediate-repetion-of-identical-labels">
+<h2>Immediate repetion of identical labels<a class="headerlink" href="#immediate-repetion-of-identical-labels" title="Permalink to this headline">¶</a></h2>
+<p>There are only rare cases where identical labels should be repeated. These
+include:</p>
+<ul class="simple">
+<li><p>If one label marks the beginning or ending of an organ point.</p></li>
+<li><p>If a repetition is needed in order to allow for consistent reading with
+repetitions, first and second endings, dal segnos, etc.
+Example: <code class="docutils literal notranslate"><span class="pre">|</span> <span class="pre">V</span> <span class="pre">|:</span> <span class="pre">V</span> <span class="pre">I</span> <span class="pre">:|</span></code> instead of <code class="docutils literal notranslate"><span class="pre">|</span> <span class="pre">V</span> <span class="pre">|:</span> <span class="pre">I</span> <span class="pre">:|</span></code></p></li>
+</ul>
+</div>
 </div>
 
 
@@ -487,11 +508,12 @@ deliberately withdraws tonal footing - use the symbol <code class="docutils lite
 <li class="toctree-l2"><a class="reference internal" href="#relative-key">Relative key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#roman-numerals">Roman numerals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#suspensions-and-retardations">Suspensions and retardations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#added-notes">Added notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#added-and-missing-notes">Added and missing notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#phrase-endings">Phrase endings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pedal-points-organ-points">Pedal points (Organ points)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ambiguity">Ambiguity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#unisono">Unisono</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#immediate-repetion-of-identical-labels">Immediate repetion of identical labels</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>

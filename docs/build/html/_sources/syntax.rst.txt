@@ -277,13 +277,15 @@ interval, e.g. ``i(#2)``.
     would typically write, a Classical ending with retardation looks like
     ``i(9#74) i``, and not ``i(#742) i`` or ``i(24#7) i``.
 
-Added notes
------------
+Added and missing notes
+-----------------------
 
 Generally, there are only very few notes in the Common practice era
-which cannot be explained as suspensions or retardations. > One should
-add that we don't annotate neighbour notes, passing notes nor
-embellishments.
+which cannot be explained as suspensions or retardations.
+
+.. note::
+
+    We don't annotate neighbour notes, passing notes nor embellishments.
 
 A typical additional note would be that of a pedal note which appears in
 a different voice than the bass. In this case, you would annotate the
@@ -291,11 +293,20 @@ additional note - analogue to a suspension - as a digit indicating the
 interval *from the root* in parenthesis, but preceded by a ``+``.
 Example: Imagine a C major context and a pedal on G in some middle
 voice. Around that, the other voices do the progression
-``I viio6 I6 ii6 I64 IV6 .Ger6 V\\``: Some harmonies contain the G and
+``I viio6 I6 ii6 I64 IV6 .Ger V\\``: Some harmonies contain the G and
 do not change (namely ``I``, ``I6``, ``I64`` and ``V``), one harmony
 supports an added G (``viio6`` with G is ``V43``) and the rest neither
 support G nor can it be interpreted as suspensions. So the correct
-annotation would be ``I V43 I6 ii6(+4) I64 IV6(+2) .Ger6(+7) V\\``.
+annotation would be ``I V43 I6 ii6(+4) I64 IV6(+2) .Ger(+7) V\\``.
+
+In analogy, ``-`` can be used to indicate that a given chord tone is missing
+and **that it is not implied** by the music. For that reason, this symbol is
+used rarely because in most cases the missing note (the fifth in particular)
+is considered as implied. Examples where the symbol is used are pronounced
+empty fifths such as ``I(-3)``, or, if it is not clear which third is missing
+(e.g. at the beginning of a piece) ``I(-3)-i(-3)``. Another application of
+the symbol could be in chords where the root is missing, for example in
+two-voice counterpoint (e.g. ``IV(-1)``).
 
 Sometimes, it can seem ambiguous whether a note is an added note, a
 suspension without resolution or an embellishment (anticipation). The
@@ -433,3 +444,14 @@ also free to choose one interpretation because it is more stereotypical
 than the other or because it alludes to another passage of the same
 piece. If no harmony can be inferred - in particular where a composer
 deliberately withdraws tonal footing - use the symbol ``@none``.
+
+Immediate repetion of identical labels
+--------------------------------------
+
+There are only rare cases where identical labels should be repeated. These
+include:
+
+* If one label marks the beginning or ending of an organ point.
+* If a repetition is needed in order to allow for consistent reading with
+  repetitions, first and second endings, dal segnos, etc.
+  Example: ``| V |: V I :|`` instead of ``| V |: I :|``

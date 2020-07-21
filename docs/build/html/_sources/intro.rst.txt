@@ -46,6 +46,8 @@ are important:
    descending order (e.g. ``65`` or ``9#74``).
 -  The information about a harmony has to be expressed in a fixed order
    (syntax) and orthographical errors can be automatically detected.
+-  The annotations always need to represent a consistent reading, also in the
+   case of repetitions, first and second endings, dal segnos, etc.
 -  Major keys are indicated by uppercase, minor keys by lowercase
    letters.
 
