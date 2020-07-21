@@ -24,7 +24,7 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [What is an augmented seventh chord? Size of the seventh](https://github.com/DCMLab/standards/issues/24)
 
 * *Stipulate that the seventh in `V+7` (for example) is a major seventh?*
-  * **Solution: `V+7` has a minor seventh, `V+M7` has a major seventh. For consistency, allow for `VoM7`, too.**
+  * **Solution: `V+7` has a minor seventh, `V+M7` has a major seventh.
 
 
 
