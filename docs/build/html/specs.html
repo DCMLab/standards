@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Technical Specifications &#8212; Harmonic Annotation Guidelines 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Annotator’s Guidelines" href="guidelines.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="technical-specifications">
+<h1>Technical Specifications<a class="headerlink" href="#technical-specifications" title="Permalink to this headline">¶</a></h1>
+<p>These specs fulfill at least two purposes:</p>
+<ul class="simple">
+<li><p>Keeping track of what the DCML harmony labels express</p></li>
+<li><p>Being a resource for researchers and developers who want to interact with them</p></li>
+</ul>
+<p>This way, the annotation standard’s current limitations become transparent
+and everyone who wants to help improving them can be on the same page. The
+current state of the corresponding discussions can be seen in this repo’s
+<a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a>.</p>
+<div class="section" id="what-is-being-encoded">
+<h2>What is being encoded?<a class="headerlink" href="#what-is-being-encoded" title="Permalink to this headline">¶</a></h2>
+<p>This section elicits the general principles and assumptions underlying the
+DCML harmony annotation standard.</p>
+<div class="section" id="segmentations">
+<h3>Segmentations<a class="headerlink" href="#segmentations" title="Permalink to this headline">¶</a></h3>
+<p>DCML harmony labels represent a score segmentation on various levels:</p>
+<ul class="simple">
+<li><p>key areas (tonalities)</p></li>
+<li><p>harmonic segments</p></li>
+<li><p>chord and non-chord tones are distinguished from ornaments</p></li>
+</ul>
+<p>The annotations follow the basic principle that a key or a harmony begins at the
+timestamp that the designating label is attached to and stays effective up to
+the subsequent change (half-open intervals). Following this principle</p>
+<ul class="simple">
+<li><p>the <strong>key</strong> is defined for every harmony as long as the first harmony label
+comes with information about its key;</p></li>
+<li><p>from the first harmony label onwards, the beginning of every event falls
+into exactly one <strong>harmonic segment</strong>.</p></li>
+</ul>
+<p>By <strong>key</strong> we understand an ordered set of unique tonal pitch classes (a
+<strong>scale</strong>) of which
+we call the first one <strong>root</strong> (<cite>tonic, home, one, I, 1, (relative) DO</cite>,
+etc.). The annotation standard is an expression of the basic assumption that
+the music to which it is being applied is hierarchically organised ‘around’
+the root. This is expressed through numbering the key’s ordered pitch classes,
+its scale degrees, using either Roman or Arabic numerals, depending on the
+context. Tones which are not part of the key’s scale are expressed in relation
+to its scale degrees via the accidentals {♯♮♭} which we facilitate to {#b}.</p>
+<p>By <strong>harmonic segment</strong> we understand a continuous score segment encompassing
+all staves. Therefore, it has the same morphology as a slice with the difference
+that the word slice is generally associated with a harmonic segment which does
+have a duration but no rhythm. In that sense, harmonic segment is the more
+general concept which can include anything from a single slice to a whole piece.
+The criterion for harmonic segmentation is a given set of features: The music
+pertaining to harmonic segments that have been identically labelled has
+the same harmonic features, provided that the identical set of features has
+been used as segmentation criterion in all cases.</p>
+<p>The following section explains how the segmentations’ timestamps are
+encoded whereas the expression of chord and non-chord tones will be
+specified in the <a class="reference internal" href="#regex"><span class="std std-ref">regEx</span></a> section below.</p>
+</div>
+<div class="section" id="timestamps">
+<h3>Timestamps<a class="headerlink" href="#timestamps" title="Permalink to this headline">¶</a></h3>
+<p>The way DCML harmony labels are entered in the <a class="reference external" href="https://musescore.org/en/download">MuseScore 3</a>
+notation software ensures that each of them is attached to a timestamp in the
+score. The software allows for attaching several labels to the same time point,
+even in the same staff, and annotators are asked to avoid this. In the future,
+this would make it possible to have a score include several annotation layers
+simultaneously which would only need to have a clearly distinguishable syntax.</p>
+<p>Additionally, the standard offers the possibility to annotate phrases. These
+may not be hierarchically nested but most naturally they should coincide with
+one given level of a hierarchical form analysis. The annotator’s guidelines are
+quite vague in this regard and leave it open on which hierarchical level – if
+at all – the annotator wants to use phrase annotations. This is the test whether the line</p>
+</div>
+</div>
+<div class="section" id="the-regex-regular-expression">
+<span id="regex"></span><h2>The regEx (Regular Expression)<a class="headerlink" href="#the-regex-regular-expression" title="Permalink to this headline">¶</a></h2>
+<p>Is a good regEx!</p>
+</div>
+<div class="section" id="missing-features">
+<h2>Missing Features<a class="headerlink" href="#missing-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>encoding exact (or transposed) repetition of labels (facilitating corrections)</p></li>
+<li></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Harmonic Annotation Guidelines</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guidelines.html">Annotator’s Guidelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-being-encoded">What is being encoded?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#segmentations">Segmentations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timestamps">Timestamps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#missing-features">Missing Features</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="guidelines.html" title="previous chapter">Annotator’s Guidelines</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, DCML.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/specs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

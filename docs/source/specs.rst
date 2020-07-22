@@ -1,0 +1,92 @@
+************************
+Technical Specifications
+************************
+
+These specs fulfill at least two purposes:
+
+* Keeping track of what the DCML harmony labels express
+* Being a resource for researchers and developers who want to interact with them
+
+This way, the annotation standard's current limitations become transparent
+and everyone who wants to help improving them can be on the same page. The
+current state of the corresponding discussions can be seen in this repo's
+`issue tracker <https://github.com/DCMLab/standards/issues>`__.
+
+What is being encoded?
+======================
+
+This section elicits the general principles and assumptions underlying the
+DCML harmony annotation standard.
+
+Segmentations
+-------------
+
+DCML harmony labels represent a score segmentation on various levels:
+
+* key areas (tonalities)
+* harmonic segments
+* chord and non-chord tones are distinguished from ornaments
+
+The annotations follow the basic principle that a key or a harmony begins at the
+timestamp that the designating label is attached to and stays effective up to
+the subsequent change (half-open intervals). Following this principle
+
+* the **key** is defined for every harmony as long as the first harmony label
+  comes with information about its key;
+* from the first harmony label onwards, the beginning of every event falls
+  into exactly one **harmonic segment**.
+
+By **key** we understand an ordered set of unique tonal pitch classes (a
+**scale**) of which
+we call the first one **root** (`tonic, home, one, I, 1, (relative) DO`,
+etc.). The annotation standard is an expression of the basic assumption that
+the music to which it is being applied is hierarchically organised 'around'
+the root. This is expressed through numbering the key's ordered pitch classes,
+its scale degrees, using either Roman or Arabic numerals, depending on the
+context. Tones which are not part of the key's scale are expressed in relation
+to its scale degrees via the accidentals {♯♮♭} which we facilitate to {#b}.
+
+By **harmonic segment** we understand a continuous score segment encompassing
+all staves. Therefore, it has the same morphology as a slice with the difference
+that the word slice is generally associated with a harmonic segment which does
+have a duration but no rhythm. In that sense, harmonic segment is the more
+general concept which can include anything from a single slice to a whole piece.
+The criterion for harmonic segmentation is a given set of features: The music
+pertaining to harmonic segments that have been identically labelled has
+the same harmonic features, provided that the identical set of features has
+been used as segmentation criterion in all cases.
+
+Additionally, the standard offers the possibility to annotate **phrases**. These
+cannot be hierarchically nested but most naturally they should coincide with
+one given level of a hierarchical form analysis. The annotator's guidelines are
+quite vague in this regard and leave it open on which hierarchical level -- if
+at all -- the annotator wants to use phrase annotations.
+
+The following section explains how the segmentations' timestamps are
+encoded whereas the expression of chord and non-chord tones will be
+specified in the :ref:`regEx <regex>` section below.
+
+Timestamps
+----------
+
+The way DCML harmony labels are entered in the `MuseScore 3 <https://musescore.org/en/download>`__
+notation software ensures that each of them is attached to a timestamp in the
+score. The software allows for attaching several labels to the same time point,
+even in the same staff but annotators are asked to avoid this and to use
+:ref:`encoded ambiguity <ambiguity>` instead. In principle, it would be possible
+have one score include several simultaneous annotation layers, the labels of
+which would only need to have a clearly distinguishable syntax.
+
+
+.. _regex:
+
+The regEx (Regular Expression)
+==============================
+
+Is a good regEx!
+
+Missing Features
+================
+
+* encoding exact (or transposed) repetition of labels (facilitating corrections)
+* vertical segmentation of which voice/s has/have the melody
