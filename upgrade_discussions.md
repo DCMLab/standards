@@ -51,16 +51,19 @@ The discussed issues should be close in the course of the discussions or attribu
 * So far, there are no guidelines as to in what a phrase ending exists. What is our stance?
 * Introduce `\` for phrase interlocking?
 * Do we want to allow for cadence annotations? How would they relate to the phrase ending symbols? Alternative: Have cadences always as separate set of annotations.
+  * **Phrase interlocking yes, integrated cadence annotations no**
 
 ### [Hierarchical phrase structure annotation?](https://github.com/DCMLab/standards/issues/13)
 
 * Related to above: How do the phrases in the standard relate to form annotations?
 * Do we stick to the idea that we use an improved form of Gotham's form annotations?
+  * **Form annotations should be done separately**
 
 ### [The question of the organ points](https://github.com/DCMLab/standards/issues/6)
 
 * Approval of the current 'regulation'
 * Discuss concrete examples and add them to the FAQ
+  * **Clarify the semantics of the different alternatives so that annotators can make informed choices.**
 
 ### [Temporary Tonicisations](https://github.com/DCMLab/standards/issues/17)
 
@@ -110,10 +113,12 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Chord analysis when the melody is in the bass](https://github.com/DCMLab/standards/issues/11)
 
 * Discuss concrete examples and add them to the FAQ
+  * **The bass note can be in a middle voice. Use annotators' expertise**
 
 ### [Bass Arpeggiations](https://github.com/DCMLab/standards/issues/29)
 
 * Discuss concrete examples and add them to the FAQ
+  * **No general rule possible, include examples**
 
 ### [Discouraging the use of @none](https://github.com/DCMLab/standards/issues/23)
 
@@ -134,6 +139,7 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Simplification of annotation of `%` chords](https://github.com/DCMLab/standards/issues/15)
 
 * Would allowing for `ii%` instead of `ii%7` make life easier?
+  * **Not difficult to implement**
 
 
 
@@ -144,6 +150,7 @@ The discussed issues should be close in the course of the discussions or attribu
 * Consider Ana's suggestion of introducing inversions `9`, `76`, `54`, `32` (and consequently `21`).
 * Discuss the added complexity.
 * Discuss how well 'proper' ninth chords (re-introduced `V9`) can be distinguished from `V7(9)` and `V7(+9)`.
+  * **We are not re-introducing 9th-chords as proper chords**
 
 ### [Polytonality and superimposition of chords](https://github.com/DCMLab/standards/issues/31)
 
@@ -152,3 +159,4 @@ The discussed issues should be close in the course of the discussions or attribu
 ### [Modality and special scales](https://github.com/DCMLab/standards/issues/32)
 
 * Additional scales as an important constituent for left- and right-hand extension of the standard.
+  * **Current suggestion: Define the scale and then use scale degree + figured bass annotation**
