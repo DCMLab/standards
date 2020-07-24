@@ -591,6 +591,8 @@ not want to include the bass note but highlight the sixth chords:
      ``WWV096-Meistersinger_01_Vorspiel-Prelude_SchottKleinmichel.mscx``,
      mm. 33f.)
 
+.. _ambiguity:
+
 Ambiguity
 ---------
 

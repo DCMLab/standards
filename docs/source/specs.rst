@@ -77,6 +77,152 @@ even in the same staff but annotators are asked to avoid this and to use
 have one score include several simultaneous annotation layers, the labels of
 which would only need to have a clearly distinguishable syntax.
 
+By **timestamp** we understand a uniquely identifiable position. In the case of
+music scores there are several possible referencing systems out of which we are
+using references to a measure (bar) and a position within this measure. The
+**position**, which we call 'onset', is measured from the measure's beginning
+(starting from 0) and expressed as fractions representing quarter note durations
+which can be easily transformed in any kind of beat representation. For example,
+the position at one quarter note after beat 1 has ``onset = 1/4`` regardless of
+the time signature. When it comes to referencing measures, there are two
+different ways of referencing measures, as is the  case for all XML encodings of
+measured music (musicXML, MEI). These two different ways we call **measure
+number (MN)** and **measure count (MC)**.
+
+* MNs represent a running count of complete measures and correspond to the
+  numbers that can be found in printed scores. They follow several conventions
+  (such as anacruses being numbered as 0, first and second endings having the same
+  number, etc.) and are the typical way for humans to refer to measures.
+* MCs on the other hand are a running count of measure units in the XML score and
+  therefore they count any kind of complete and incomplete (i.e. split) measures
+  alike. Therefore, they are independent of conventions and identify a certain
+  measure unit unambiguously (whereas a MN might refer to several MCs). That is
+  why MCs are the ideal way for machines to refer to measures.
+
+Musescore displays both kinds of numbers: MCs are shown in the status bar when
+clicking on a measure, whereas MNs are shown in the score (if activated) and in
+the Navigator pane. It follows that our timestamps have to be able to mediate
+between the two referencing schemes, i.e. the one for humans and the one for
+machines. This requires some particular care with regard  to score consistency.
+Concretely, this means that the above-mentioned conventions for MNs need to be
+correctly encoded in the MuseScore files, enabling a correct mapping of MCs to
+the MNs as they can (or could) be found in an original print. In particular, for
+the following cases one has to ensure that an MC is "excluded from bar count"
+(as it is called in MuseScore):
+
+* anacruses;
+* every part of split measures except the first one; (split measures often
+  occur at section breaks in pieces maintaining an upbeat)
+* all measures pertaining to a second (or third etc.) ending. For endings
+  longer than one MN, MuseScore's "Add to bar number" has to be used with a
+  negative value (:ref:`see below <volta_numbering>`).
+
+    The "exclude from bar count" function is mainly needed to ensure correct
+    display of MNs in Musescore, but also for dubious or non-standard cases. The
+    logic of the mapping MC -> MN can otherwise be implemented easily.
+
+Consequently, when printing a list of labels, we use *three columns* for the
+respective timestamps which should satisfy all needs. Note that we count MCs
+starting with 1 in order to match MuseScore's behaviour in the status bar. Also
+note that there are two potential ways of expressing positions (onsets), namely
+with respect to the respective MC or to the respective MN. In order to facilitate
+correct conversion to beats, we generally print the latter as can be seen in the
+examples below. However, for referencing a position in the score, the MN-onset
+needs to be converted into the correct MC-onset. Implementation-wise this can
+be accomplished by keeping track of each MC's 'offset' from the corresponding
+MN's beginning, which in most cases will be 0.
+
+.. figure:: ../img/mc-mn-anacrusis.png
+    :alt: Measure counts vs. measure numbers for an anacrusis
+
+    **Correct timestamps for the beginning of Bourrée I from Bach's
+    `English Suite No. 1` BWV 806.**
+
+    +----+----+-------+-------+
+    | mc | mn | onset | label |
+    +====+====+=======+=======+
+    | 1  | 0  | 3/4   | .A.V  |
+    +----+----+-------+-------+
+    | 2  | 1  | 0     | I     |
+    +----+----+-------+-------+
+    | 2  | 1  | 1/2   | I6    |
+    +----+----+-------+-------+
+    | 2  | 1  | 3/4   | I     |
+    +----+----+-------+-------+
+
+Note how in this example, the first labels'
+position is given as ``onset == 3/4`` because MN 0 was internally treated as
+the second part of a split bar, resulting in the above-mentioned 'offset'
+value for MC 1 to be ``3/4`` which would translate correctly to beat
+4 in 4/4 meter or beat 2.5 in 2/2.
+
+.. figure:: ../img/mc-mn-voltas.png
+    :alt: Measure counts vs. measure numbers for first and second endings
+
+    **mm. 16ff. of the same piece as an example for correct timestamps in the case
+    of first and second endings.**
+
+    +------+------+-------+-------+-------+
+    | mc   | mn   | onset | label | volta |
+    +======+======+=======+=======+=======+
+    | 17   | 16   | 0     | V     | 1     |
+    +------+------+-------+-------+-------+
+    | 17   | 16   | 1/2   | V6    | 1     |
+    +------+------+-------+-------+-------+
+    | 17   | 16   | 3/4   | V2    | 1     |
+    +------+------+-------+-------+-------+
+    | 18   | 17   | 0     | I6    | 1     |
+    +------+------+-------+-------+-------+
+    | 18   | 17   | 1/2   | I     | 1     |
+    +------+------+-------+-------+-------+
+    | 19   | 16   | 0     | V\\\\ | 2     |
+    +------+------+-------+-------+-------+
+    |\(20\)|\(16\)|\(3/4\)|\(V\)  |\(2\)  |
+    +------+------+-------+-------+-------+
+    | 21   | 17   | 0     | I     | 2     |
+    +------+------+-------+-------+-------+
+
+Note how MCs identify every measure unit of the score unambiguously whereas the
+official conventions intend MNs 16 and 17 to have two different appearances
+which are commonly distinguished by writing `16a, 16b, 17a, 17b`. In order to
+stick to an integer type for the MN column, we recommend using an
+additional distinguishing column which we call 'volta' (prima/seconda volta
+being the Italian way of saying first/second ending). It has to be further
+noted that, since the first volta has a length of two bars and the second
+a length of only one bar, the distinuishing column does not correspond 100%
+to the printed voltas. The MNs are in accordance with the
+`Henle Urtext Edition <https://imslp.org/wiki/Special:ReverseLookup/533082>`__.
+The second-last timestamp has been added to the list
+for clarity because in the score there is no label in MC 20.
+
+.. _volta_numbering:
+
+
+In order to guarantee the display of correct measures in
+MuseScore for the example above, the  following configuration has to be set for
+the various MCs. A ``1`` in the column 'dont_count' represents a measure unit
+for which the 'Exclude from bar count' flag is set and the column 'numbering
+offset' represents values for "Add to bar number". Empty cells represent zero
+values.
+
++----+----+------------+------------------+
+| mc | mn | dont_count | numbering_offset |
++====+====+============+==================+
+| 17 | 16 |            |                  |
++----+----+------------+------------------+
+| 18 | 17 |            |                  |
++----+----+------------+------------------+
+| 19 | 16 |            | -2               |
++----+----+------------+------------------+
+| 20 | 16 | 1          |                  |
++----+----+------------+------------------+
+| 21 | 17 |            |                  |
++----+----+------------+------------------+
+
+Floating point timestamps
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Bla bla
 
 .. _regex:
 
