@@ -12,6 +12,7 @@ Welcome to our Harmonic Annotation guidelines!
 
    guidelines
    specs
+   examples
 
 
 .. Indices and tables
