@@ -14,6 +14,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Questions &amp; Examples" href="examples.html" />
     <link rel="prev" title="Annotator’s Guidelines" href="guidelines.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -156,7 +157,7 @@ needs to be converted into the correct MC-onset. Implementation-wise this can
 be accomplished by keeping track of each MC’s ‘offset’ from the corresponding
 MN’s beginning, which in most cases will be 0.</p>
 <div class="figure align-default" id="id1">
-<img alt="Measure counts vs. measure numbers for an anacrusis" src="_images/mc-mn-anacrusis.png" />
+<span id="label-lists"></span><img alt="Measure counts vs. measure numbers for an anacrusis" src="_images/mc-mn-anacrusis.png" />
 <p class="caption"><span class="caption-text"><strong>Correct timestamps for the beginning of Bourrée I from Bach’s
 `English Suite No. 1` BWV 806.</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 <div class="legend">
@@ -346,7 +347,126 @@ values.</p>
 </div>
 <div class="section" id="the-regex-regular-expression">
 <span id="regex"></span><h2>The regEx (Regular Expression)<a class="headerlink" href="#the-regex-regular-expression" title="Permalink to this headline">¶</a></h2>
-<p>Is a good regEx!</p>
+<p>The regular expression (regEx) is the backbone of the DCML annotation standard.
+It  expresses its entire chord alphabet by defining the syntactic rules of  the
+harmonic features that the standard is able to encode. At the same time, it
+includes preconfigured names for the different features which can be used  to
+easily split chord labels into a feature matrix with named columns. Labels that
+don’t match the regEx are considered as syntactically erroneous. Splitting
+harmony labels into the included features enables all kinds of subsequent
+processing, e.g. sorting, feature statistics, computation of extended features,
+etc.</p>
+<p>The current version of the regEx can be found in
+<a class="reference external" href="https://github.com/DCMLab/standards/blob/docs/harmony.py">harmony.py</a>
+(the file in the development branch contains the latest version that has not yet
+been released).</p>
+<p>The regEx on the current branch looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Regular expression needs to be compiled using re.compile(regex, re.VERBOSE)</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    ^(\.?</span>
+<span class="s2">        ((?P&lt;globalkey&gt;[a-gA-G](b*|\#*))\.)?</span>
+<span class="s2">        ((?P&lt;localkey&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\.)?</span>
+<span class="s2">        ((?P&lt;pedal&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\[)?</span>
+<span class="s2">        (?P&lt;chord&gt;</span>
+<span class="s2">            (?P&lt;numeral&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i|Ger|It|Fr|@none))</span>
+<span class="s2">            (?P&lt;form&gt;(%|o|+|M|+M))?</span>
+<span class="s2">            (?P&lt;figbass&gt;(7|65|43|42|2|64|6))?</span>
+<span class="s2">            (\((?P&lt;changes&gt;((\+|\^)?(b*|\#*)\d)+)\))?</span>
+<span class="s2">            (/(?P&lt;relativeroot&gt;((b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i)/?)*))?</span>
+<span class="s2">        )</span>
+<span class="s2">        (?P&lt;pedalend&gt;\])?</span>
+<span class="s2">    )?</span>
+<span class="s2">    (?P&lt;phraseend&gt;(\\\\|\{|\}|\}\{))?$</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="fetching-and-compiling-the-regex">
+<h3>Fetching and Compiling the regEx<a class="headerlink" href="#fetching-and-compiling-the-regex" title="Permalink to this headline">¶</a></h3>
+<p>In Python, you could fetch and compile a particular version of the regEx like
+this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+
+<span class="k">def</span> <span class="nf">get_regex</span><span class="p">(</span><span class="n">git_branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    git_branch : :obj:`str`</span>
+<span class="sd">        Branch or tag of the DCMLab/standards repo from which to retrieve regex.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/DCMLab/standards/</span><span class="si">{</span><span class="n">git_branch</span><span class="si">}</span><span class="s2">/harmony.py&quot;</span>
+    <span class="n">glo</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">glo</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;regex&#39;</span><span class="p">],</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="n">old_version</span> <span class="o">=</span> <span class="n">get_regex</span><span class="p">(</span><span class="s1">&#39;v2.0.0&#39;</span><span class="p">)</span>   <span class="c1"># uses a version tag</span>
+<span class="n">pre_release</span> <span class="o">=</span> <span class="n">get_regex</span><span class="p">(</span><span class="s1">&#39;develop&#39;</span><span class="p">)</span>  <span class="c1"># uses a branch name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="structure-of-the-regex">
+<h3>Structure of the regEx<a class="headerlink" href="#structure-of-the-regex" title="Permalink to this headline">¶</a></h3>
+<p>In the current version, the overall structure of the regex is
+<code class="docutils literal notranslate"><span class="pre">(harmony_label)?(phrase_label)?</span></code> where <code class="docutils literal notranslate"><span class="pre">phrase_label</span></code> corresponds to the
+regEx’s last group and <code class="docutils literal notranslate"><span class="pre">harmony_label</span></code> to everything before.</p>
+<div class="section" id="structure-of-the-harmony-labels">
+<h4>Structure of the Harmony Labels<a class="headerlink" href="#structure-of-the-harmony-labels" title="Permalink to this headline">¶</a></h4>
+<p>Simplifying the regEx’s harmony part to the included groups, we get</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(globalkey)?
+(localkey)?
+(pedal)?
+(chord
+    (numeral)
+    (form)?
+    (figbass)?
+    (changes)?
+    (relativeroot)?
+)
+(pedalend)?
+</pre></div>
+</div>
+<p>which shows that the only feature that every harmony label needs to express
+is (Roman) <code class="docutils literal notranslate"><span class="pre">numeral</span></code>, i.e. the harmony’s root. <code class="docutils literal notranslate"><span class="pre">numeral</span></code> in return is
+included in the <code class="docutils literal notranslate"><span class="pre">chord</span></code> group, together with the features <code class="docutils literal notranslate"><span class="pre">form,</span> <span class="pre">figbass,</span>
+<span class="pre">changes,</span> <span class="pre">relativeroot</span></code> which fully define a harmony’s chord tones and
+(structural, non-ornamental) non-chord tones.</p>
+</div>
+<div class="section" id="structure-of-the-phrase-labels">
+<h4>Structure of the Phrase Labels<a class="headerlink" href="#structure-of-the-phrase-labels" title="Permalink to this headline">¶</a></h4>
+<p>Phrase labels can stand alone or follow a harmony label. A phrase label can be
+one of the following symbols:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\\</span></code>: kept for downward compatibility. In older versions of the standard,
+this was the only symbol and designated a phrase ending. This was a quite
+limited way to annotate phrases, which is why v2.2.0 introduced the following
+symbols replacing <code class="docutils literal notranslate"><span class="pre">\\</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span></code>: beginning of a phrase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">}</span></code>: (structural) phrase ending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">}{</span></code>: Phrase interlocking</p></li>
+</ul>
+<p>The logic behind the closed curly braces is that they designate a structural
+ending, e.g. the position of a cadence’s ultima. This implies that everything
+that follows <code class="docutils literal notranslate"><span class="pre">}</span></code> yet precedes the subsequent <code class="docutils literal notranslate"><span class="pre">{</span></code> is still considered as part
+of the same phrase, be it an annexe, a general pause, a transition etc. It
+follows that calculating full phrase lengths is achieved from <code class="docutils literal notranslate"><span class="pre">{</span></code> to <code class="docutils literal notranslate"><span class="pre">{</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="feature-processing">
+<h2>Feature Processing<a class="headerlink" href="#feature-processing" title="Permalink to this headline">¶</a></h2>
+<p>This section reflects the current specification of how every feature included in
+the regEx is or can be processed. It’s purpose is both internal documentation
+and exposure to outside researchers and developers who want to use, understand,
+help developing the DCML harmony annotation standard. The specifications are
+exemplified by Python 3 functions.</p>
+<p>The section retraces step by step the operations performed by the overarching
+<code class="docutils literal notranslate"><span class="pre">expand_labels()</span></code> function. It presupposes an initial data representation as a
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">pandas DataFrame</a>
+that includes labels and their timestamps (see the
+<a class="reference internal" href="#label-lists"><span class="std std-ref">above examples</span></a>).</p>
+</div>
+<div class="section" id="splitting-the-labels">
+<h2>Splitting the Labels<a class="headerlink" href="#splitting-the-labels" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="missing-features">
 <h2>Missing Features<a class="headerlink" href="#missing-features" title="Permalink to this headline">¶</a></h2>
@@ -383,10 +503,17 @@ values.</p>
 <li class="toctree-l3"><a class="reference internal" href="#timestamps">Timestamps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-regex-regular-expression">The regEx (Regular Expression)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fetching-and-compiling-the-regex">Fetching and Compiling the regEx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structure-of-the-regex">Structure of the regEx</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-processing">Feature Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#splitting-the-labels">Splitting the Labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#missing-features">Missing Features</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Questions &amp; Examples</a></li>
 </ul>
 
 <div class="relations">
@@ -394,6 +521,7 @@ values.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="guidelines.html" title="previous chapter">Annotator’s Guidelines</a></li>
+      <li>Next: <a href="examples.html" title="next chapter">Questions &amp; Examples</a></li>
   </ul></li>
 </ul>
 </div>

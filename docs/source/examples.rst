@@ -1,6 +1,6 @@
-******************
-Intricate Examples
-******************
+********************
+Questions & Examples
+********************
 
 Although the guidelines for applying the DCML harmony standard to scores aim at
 reducing contingency (i.e. the presence of several solutions) in order to
@@ -48,3 +48,16 @@ express this, we would write ``viio7/V/iii V65/V/iii``.
 
 In addition, the example contains a mistake in m. 156 where ``iii`` should be
 replaced by ``i6/iii``.
+
+Phrase Structure
+================
+
+Phrase annotations should be considered as a separate, light-weight annotation
+standard which can be combined with harmony labels or used separately.
+
+Hierarchical phrase structure?
+------------------------------
+
+At the moment, we don't use hierarchical phrase segmentations. In other words,
+annotators choose exactly one hierarchical level to be expressed in the
+continuous segmentation using ``{`` and ``}``.

@@ -67,7 +67,7 @@ encoded whereas the expression of chord and non-chord tones will be
 specified in the :ref:`regEx <regex>` section below.
 
 Timestamps
-----------
+-----------------
 
 The way DCML harmony labels are entered in the `MuseScore 3 <https://musescore.org/en/download>`__
 notation software ensures that each of them is attached to a timestamp in the
@@ -131,6 +131,8 @@ examples below. However, for referencing a position in the score, the MN-onset
 needs to be converted into the correct MC-onset. Implementation-wise this can
 be accomplished by keeping track of each MC's 'offset' from the corresponding
 MN's beginning, which in most cases will be 0.
+
+.. _label_lists:
 
 .. figure:: ../img/mc-mn-anacrusis.png
     :alt: Measure counts vs. measure numbers for an anacrusis
@@ -229,7 +231,107 @@ Bla bla
 The regEx (Regular Expression)
 ==============================
 
-Is a good regEx!
+The regular expression (regEx) is the backbone of the DCML annotation standard.
+It  expresses its entire chord alphabet by defining the syntactic rules of  the
+harmonic features that the standard is able to encode. At the same time, it
+includes preconfigured names for the different features which can be used  to
+easily split chord labels into a feature matrix with named columns. Labels that
+don't match the regEx are considered as syntactically erroneous. Splitting
+harmony labels into the included features enables all kinds of subsequent
+processing, e.g. sorting, feature statistics, computation of extended features,
+etc.
+
+The current version of the regEx can be found in
+`harmony.py <https://github.com/DCMLab/standards/blob/docs/harmony.py>`_
+(the file in the development branch contains the latest version that has not yet
+been released).
+
+The regEx on the current branch looks like this:
+
+.. literalinclude:: ../../harmony.py
+  :language: python
+
+Fetching and Compiling the regEx
+--------------------------------
+
+In Python, you could fetch and compile a particular version of the regEx like
+this:
+
+.. literalinclude:: ../../functions/get_regex.py
+  :language: python
+
+Structure of the regEx
+----------------------
+
+In the current version, the overall structure of the regex is
+``(harmony_label)?(phrase_label)?`` where ``phrase_label`` corresponds to the
+regEx's last group and ``harmony_label`` to everything before.
+
+Structure of the Harmony Labels
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Simplifying the regEx's harmony part to the included groups, we get
+
+.. code-block::
+
+    (globalkey)?
+    (localkey)?
+    (pedal)?
+    (chord
+        (numeral)
+        (form)?
+        (figbass)?
+        (changes)?
+        (relativeroot)?
+    )
+    (pedalend)?
+
+which shows that the only feature that every harmony label needs to express
+is (Roman) ``numeral``, i.e. the harmony's root. ``numeral`` in return is
+included in the ``chord`` group, together with the features ``form, figbass,
+changes, relativeroot`` which fully define a harmony's chord tones and
+(structural, non-ornamental) non-chord tones.
+
+Structure of the Phrase Labels
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Phrase labels can stand alone or follow a harmony label. A phrase label can be
+one of the following symbols:
+
+* ``\\``: kept for downward compatibility. In older versions of the standard,
+  this was the only symbol and designated a phrase ending. This was a quite
+  limited way to annotate phrases, which is why v2.2.0 introduced the following
+  symbols replacing ``\\``.
+* ``{``: beginning of a phrase
+* ``}``: (structural) phrase ending
+* ``}{``: Phrase interlocking
+
+The logic behind the closed curly braces is that they designate a structural
+ending, e.g. the position of a cadence's ultima. This implies that everything
+that follows ``}`` yet precedes the subsequent ``{`` is still considered as part
+of the same phrase, be it an annexe, a general pause, a transition etc. It
+follows that calculating full phrase lengths is achieved from ``{`` to ``{``.
+
+Feature Processing
+==================
+
+This section reflects the current specification of how every feature included in
+the regEx is or can be processed. It's purpose is both internal documentation
+and exposure to outside researchers and developers who want to use, understand,
+help developing the DCML harmony annotation standard. The specifications are
+exemplified by Python 3 functions.
+
+The section retraces step by step the operations performed by the overarching
+``expand_labels()`` function. It presupposes an initial data representation as a
+`pandas DataFrame
+<https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe>`_
+that includes labels and their timestamps (see the
+:ref:`above examples <label_lists>`).
+
+Splitting the Labels
+====================
+
+
 
 Missing Features
 ================
