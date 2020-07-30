@@ -66,6 +66,8 @@ The following section explains how the segmentations' timestamps are
 encoded whereas the expression of chord and non-chord tones will be
 specified in the :ref:`regEx <regex>` section below.
 
+.. _timestamps:
+
 Timestamps
 -----------------
 
@@ -325,11 +327,13 @@ The section retraces step by step the operations performed by the overarching
 ``expand_labels()`` function. It presupposes an initial data representation as a
 `pandas DataFrame
 <https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe>`_
-that includes labels and their timestamps (see the
-:ref:`above examples <label_lists>`).
+that includes labels and their :ref:`timestamps <_timestamps>`. The example
+functions use the same column names as the :ref:`above examples <label_lists>`.
 
 Splitting the Labels
-====================
+--------------------
+
+
 
 
 
