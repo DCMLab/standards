@@ -66,8 +66,10 @@ The following section explains how the segmentations' timestamps are
 encoded whereas the expression of chord and non-chord tones will be
 specified in the :ref:`regEx <regex>` section below.
 
+.. _timestamps:
+
 Timestamps
------------------
+----------
 
 The way DCML harmony labels are entered in the `MuseScore 3 <https://musescore.org/en/download>`__
 notation software ensures that each of them is attached to a timestamp in the
@@ -325,11 +327,31 @@ The section retraces step by step the operations performed by the overarching
 ``expand_labels()`` function. It presupposes an initial data representation as a
 `pandas DataFrame
 <https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe>`_
-that includes labels and their timestamps (see the
-:ref:`above examples <label_lists>`).
+that includes labels and their :ref:`timestamps <timestamps>`. The example
+functions use the same column names as the :ref:`above examples <label_lists>`.
 
 Splitting the Labels
-====================
+--------------------
+
+The goal in this section is to split raw harmony labels into the encoded
+features using a particular version of the standard's regular expression
+(regEx). The DCML harmony annotation standard allows annotators two include a
+second, alternative label, separated by ``-`` which have to be separated into
+autonomous labels before applying the regEx. From v2.2.0 onwards, ``-`` can also
+be part of a label (indicating omission of a chord tone) which is why a regEx
+with negative lookahead needs to be used, e.g. like this:
+
+.. literalinclude:: ../../functions/split_alternatives.py
+  :language: python
+
+When the alternatives have been moved into a separate column, the regEx can be
+applied to the main column, e.g. using the pandas function
+``pd.Series.str.split()``.  Since applying the regEx to labels that include
+alternatives, the function ``split_alternatives()`` shown above is included in
+the following example.
+
+.. literalinclude:: ../../functions/split_labels.py
+  :language: python
 
 
 

@@ -92,7 +92,7 @@ encoded whereas the expression of chord and non-chord tones will be
 specified in the <a class="reference internal" href="#regex"><span class="std std-ref">regEx</span></a> section below.</p>
 </div>
 <div class="section" id="timestamps">
-<h3>Timestamps<a class="headerlink" href="#timestamps" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Timestamps<a class="headerlink" href="#timestamps" title="Permalink to this headline">¶</a></h3>
 <p>The way DCML harmony labels are entered in the <a class="reference external" href="https://musescore.org/en/download">MuseScore 3</a>
 notation software ensures that each of them is attached to a timestamp in the
 score. The software allows for attaching several labels to the same time point,
@@ -156,10 +156,10 @@ examples below. However, for referencing a position in the score, the MN-onset
 needs to be converted into the correct MC-onset. Implementation-wise this can
 be accomplished by keeping track of each MC’s ‘offset’ from the corresponding
 MN’s beginning, which in most cases will be 0.</p>
-<div class="figure align-default" id="id1">
+<div class="figure align-default" id="id2">
 <span id="label-lists"></span><img alt="Measure counts vs. measure numbers for an anacrusis" src="_images/mc-mn-anacrusis.png" />
 <p class="caption"><span class="caption-text"><strong>Correct timestamps for the beginning of Bourrée I from Bach’s
-`English Suite No. 1` BWV 806.</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+`English Suite No. 1` BWV 806.</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <table class="docutils align-default">
 <colgroup>
@@ -205,10 +205,10 @@ position is given as <code class="docutils literal notranslate"><span class="pre
 the second part of a split bar, resulting in the above-mentioned ‘offset’
 value for MC 1 to be <code class="docutils literal notranslate"><span class="pre">3/4</span></code> which would translate correctly to beat
 4 in 4/4 meter or beat 2.5 in 2/2.</p>
-<div class="figure align-default" id="id2">
+<div class="figure align-default" id="id3">
 <img alt="Measure counts vs. measure numbers for first and second endings" src="_images/mc-mn-voltas.png" />
 <p class="caption"><span class="caption-text"><strong>mm. 16ff. of the same piece as an example for correct timestamps in the case
-of first and second endings.</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+of first and second endings.</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <table class="docutils align-default">
 <colgroup>
@@ -369,9 +369,9 @@ been released).</p>
 <span class="s2">        ((?P&lt;pedal&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\[)?</span>
 <span class="s2">        (?P&lt;chord&gt;</span>
 <span class="s2">            (?P&lt;numeral&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i|Ger|It|Fr|@none))</span>
-<span class="s2">            (?P&lt;form&gt;(%|o|+|M|+M))?</span>
+<span class="s2">            (?P&lt;form&gt;(%|o|\+|M|\+M))?</span>
 <span class="s2">            (?P&lt;figbass&gt;(7|65|43|42|2|64|6))?</span>
-<span class="s2">            (\((?P&lt;changes&gt;((\+|\^)?(b*|\#*)\d)+)\))?</span>
+<span class="s2">            (\((?P&lt;changes&gt;((\+|-|\^)?(b*|\#*)\d)+)\))?</span>
 <span class="s2">            (/(?P&lt;relativeroot&gt;((b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i)/?)*))?</span>
 <span class="s2">        )</span>
 <span class="s2">        (?P&lt;pedalend&gt;\])?</span>
@@ -462,11 +462,118 @@ exemplified by Python 3 functions.</p>
 <p>The section retraces step by step the operations performed by the overarching
 <code class="docutils literal notranslate"><span class="pre">expand_labels()</span></code> function. It presupposes an initial data representation as a
 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">pandas DataFrame</a>
-that includes labels and their timestamps (see the
-<a class="reference internal" href="#label-lists"><span class="std std-ref">above examples</span></a>).</p>
-</div>
+that includes labels and their <a class="reference internal" href="#timestamps"><span class="std std-ref">timestamps</span></a>. The example
+functions use the same column names as the <a class="reference internal" href="#label-lists"><span class="std std-ref">above examples</span></a>.</p>
 <div class="section" id="splitting-the-labels">
-<h2>Splitting the Labels<a class="headerlink" href="#splitting-the-labels" title="Permalink to this headline">¶</a></h2>
+<h3>Splitting the Labels<a class="headerlink" href="#splitting-the-labels" title="Permalink to this headline">¶</a></h3>
+<p>The goal in this section is to split raw harmony labels into the encoded
+features using a particular version of the standard’s regular expression
+(regEx). The DCML harmony annotation standard allows annotators two include a
+second, alternative label, separated by <code class="docutils literal notranslate"><span class="pre">-</span></code> which have to be separated into
+autonomous labels before applying the regEx. From v2.2.0 onwards, <code class="docutils literal notranslate"><span class="pre">-</span></code> can also
+be part of a label (indicating omission of a chord tone) which is why a regEx
+with negative lookahead needs to be used, e.g. like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">split_alternatives</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Splits labels that come with an alternative separated by &#39;-&#39; and adds</span>
+<span class="sd">        a new column. Only one alternative is taken into account. `df` is</span>
+<span class="sd">        mutated inplace.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : :obj:`pandas.DataFrame`</span>
+<span class="sd">        Dataframe where one column contains DCML chord labels.</span>
+<span class="sd">    column : :obj:`str`, optional</span>
+<span class="sd">        Name of the column that holds the harmony labels.</span>
+<span class="sd">    logger : :obj:`logging.Logger`, optional</span>
+<span class="sd">        Pass Logger object if you don&#39;t want to use the RootLogger.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        import pandas as pd</span>
+<span class="sd">        labels = pd.read_csv(&#39;labels.csv&#39;)</span>
+<span class="sd">        split_alternatives(labels)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+
+    <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;-(?!(\d|b|\#))&quot;</span> <span class="c1"># &lt;v2.2.0 labels work without lookahead: regex=&#39;-&#39;</span>
+    <span class="n">alternatives</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">alternatives</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">alt_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;alt_</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">alternatives</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">alt_name</span><span class="p">,</span> <span class="n">alternatives</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span> <span class="c1"># replace None by NaN</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">alternatives</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;More than two alternatives are not taken into account: </span><span class="si">{</span><span class="n">alternatives</span><span class="p">[</span><span class="n">alternatives</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When the alternatives have been moved into a separate column, the regEx can be
+applied to the main column, e.g. using the pandas function
+<code class="docutils literal notranslate"><span class="pre">pd.Series.str.split()</span></code>.  Since applying the regEx to labels that include
+alternatives, the function <code class="docutils literal notranslate"><span class="pre">split_alternatives()</span></code> shown above is included in
+the following example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">split_alternatives</span> <span class="kn">import</span> <span class="n">split_alternatives</span>
+
+<span class="k">def</span> <span class="nf">split_labels</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regex</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="p">{},</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Split harmony labels complying with the DCML syntax into columns holding their various features.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : :obj:`pandas.DataFrame`</span>
+<span class="sd">        Dataframe where one column contains DCML chord labels.</span>
+<span class="sd">    regex : :obj:`re.Pattern`</span>
+<span class="sd">        Compiled regular expression used to split the labels. It needs to have named groups.</span>
+<span class="sd">        The group names are used as column names.</span>
+<span class="sd">    column : :obj:`str`, optional</span>
+<span class="sd">        Name of the column that holds the harmony labels.</span>
+<span class="sd">    dropna : :obj:`bool`, optional</span>
+<span class="sd">        Pass True if you want to drop rows where `column` is NaN/&lt;NA&gt;</span>
+<span class="sd">    logger : :obj:`logging.Logger`, optional</span>
+<span class="sd">        Pass Logger object if you don&#39;t want to use the RootLogger.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        import pandas as pd</span>
+<span class="sd">        from get_regex import get_regex</span>
+<span class="sd">        labels = pd.read_csv(&#39;labels.csv&#39;)</span>
+<span class="sd">        regex = get_regex()</span>
+<span class="sd">        split_labels(labels, regex)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+
+    <span class="k">assert</span> <span class="n">regex</span><span class="o">.</span><span class="vm">__class__</span> <span class="o">==</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;Compile regular expression using re.compile()&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">dropna</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing NaN values from label column </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> contains NaN values.&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Splitting alternative annotations...&quot;</span><span class="p">)</span>
+    <span class="n">split_alternatives</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Applying RegEx to labels...&quot;</span><span class="p">)</span>
+    <span class="n">spl</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">groupindex</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">spl</span><span class="p">[</span><span class="n">features</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mistakes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">numeral</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">mistakes</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The following chords could not be parsed:</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mistakes</span><span class="p">,</span> <span class="p">:</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="missing-features">
 <h2>Missing Features<a class="headerlink" href="#missing-features" title="Permalink to this headline">¶</a></h2>
@@ -508,8 +615,10 @@ that includes labels and their timestamps (see the
 <li class="toctree-l3"><a class="reference internal" href="#structure-of-the-regex">Structure of the regEx</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#feature-processing">Feature Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#splitting-the-labels">Splitting the Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-processing">Feature Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#splitting-the-labels">Splitting the Labels</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#missing-features">Missing Features</a></li>
 </ul>
 </li>

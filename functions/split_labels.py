@@ -2,7 +2,7 @@ import re, logging
 
 from split_alternatives import split_alternatives
 
-def split_labels(df, regex, column='label', cols={}, dropna=False, **kwargs):
+def split_labels(df, regex, column='label', cols={}, dropna=False, logger=None, **kwargs):
     """ Split harmony labels complying with the DCML syntax into columns holding their various features.
 
     Parameters
@@ -16,32 +16,39 @@ def split_labels(df, regex, column='label', cols={}, dropna=False, **kwargs):
         Name of the column that holds the harmony labels.
     dropna : :obj:`bool`, optional
         Pass True if you want to drop rows where `column` is NaN/<NA>
+    logger : :obj:`logging.Logger`, optional
+        Pass Logger object if you don't want to use the RootLogger.
+
+    Example
+    -------
+
+    .. code-block:: python
+        import pandas as pd
+        from get_regex import get_regex
+        labels = pd.read_csv('labels.csv')
+        regex = get_regex()
+        split_labels(labels, regex)
     """
+    if not logger:
+        logger = logging.getLogger()
 
     assert regex.__class__ == re.compile('').__class__, "Compile regular expression using re.compile()"
     df = df.copy()
     if df[column].isna().any():
         if dropna:
-            logging.debug(f"Removing NaN values from label column {column}...")
+            logger.debug(f"Removing NaN values from label column {column}...")
             df = df[df[column].notna()]
         else:
-            logging.warning(f"{column} contains NaN values.")
+            logger.warning(f"{column} contains NaN values.")
 
-    logging.debug(f"Splitting alternative annotations...")
-    split_alternatives(df=df, column=column)
+    logger.debug(f"Splitting alternative annotations...")
+    split_alternatives(df=df, column=column, logger=logger)
 
-    logging.debug("Applying RegEx to labels...")
+    logger.debug("Applying RegEx to labels...")
     spl = df[column].str.extract(regex, expand=True)
     features = regex.groupindex.keys()
-    df[:, features] = spl[features]
+    df = pd.concat([df, spl[features]], axis=1)
     mistakes = df.numeral.isna() & df[column].notna()
     if mistakes.any():
-        logging.warning(f"The following chords could not be parsed:\n{df.loc[mistakes, :column]}")
+        logger.warning(f"The following chords could not be parsed:\n{df.loc[mistakes, :column]}")
     return df
-
-import pandas as pd
-from get_regex import get_regex
-labels = pd.read_csv('/home/hentsche/Documents/Code/tmp/labels.csv')
-regex = get_regex('docs')
-test = labels[~labels.label.str.contains('-')]
-split_labels(labels, regex)
