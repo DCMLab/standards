@@ -48,7 +48,7 @@ def split_labels(df, regex, column='label', cols={}, dropna=False, logger=None, 
     spl = df[column].str.extract(regex, expand=True)
     features = regex.groupindex.keys()
     df = pd.concat([df, spl[features]], axis=1)
-    mistakes = df.numeral.isna() & df[column].notna()
+    mistakes = spl.isna().apply(all, axis=1) & df[column].notna()
     if mistakes.any():
         logger.warning(f"The following chords could not be parsed:\n{df.loc[mistakes, :column]}")
     return df

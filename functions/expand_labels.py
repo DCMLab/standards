@@ -19,6 +19,7 @@ import numpy as np
 # Helpers
 ################################################################################
 from .feature_matrices import name2tpc, transform
+from split_labels import split_labels
 
 ################################################################################
 # Constants
@@ -1141,52 +1142,7 @@ def sort_tpcs(tpcs, ascending=True, start=None):
 
 
 
-def split_labels(df, column, regex, cols={}, dropna=False, **kwargs):
-    """ Split harmony labels complying with the DCML syntax into columns holding their various features.
 
-    Parameters
-    ----------
-    df : :obj:`pandas.DataFrame`
-        Dataframe where one column contains DCML chord labels.
-    column : :obj:`str`
-        Name of the column that holds the harmony labels.
-    regex : :obj:`re.Pattern`
-        Compiled regular expression used to split the labels. It needs to have named groups.
-        The group names are used as column names unless replaced by `cols`.
-    cols : :obj:`dict`
-        Dictionary to map the regex's group names to deviating column names.
-    dropna : :obj:`bool`, optional
-        Pass True if you want to drop rows where `column` is NaN/<NA>
-    """
-
-    assert regex.__class__ == re.compile('').__class__, "Compile regular expression using re.compile()"
-    features = regex.groupindex.keys()
-    df = df.copy()
-    if df[column].isna().any():
-        if dropna:
-            logging.debug(f"Removing NaN values from label column {column}...")
-            df = df[df[column].notna()]
-        else:
-            logging.warning(f"{column} contains NaN values.")
-    if df[column].str.contains('-').any():
-        logging.debug(f"Splitting alternative annotations...")
-        alternatives = df[column].str.rsplit('-', expand=True)
-        alt_name = f"alt_{column}"
-        df.loc[:, column] = alternatives[0]
-        df.insert(df.columns.get_loc(column)+1, alt_name, alternatives[1].fillna(np.nan)) # replace None by NaN
-        if len(alternatives.columns) > 2:
-            logging.warning(f"More than two alternatives are not taken into account: {alternatives[alternatives[2].notna()]}")
-    logging.debug("Applying RegEx to labels...")
-    spl = df[column].str.extract(regex, expand=True) #.astype('string') # needs pandas 1.0?
-    for feature in features:
-        name = cols[feature] if feature in cols else feature
-        df[name] = spl[feature]
-        logging.debug(f"Stored feature {feature} as column {name}.")
-    numeral = cols['numeral'] if 'numeral' in cols else 'numeral'
-    mistakes = df[numeral].isna() & df[column].notna()
-    if mistakes.any():
-        logging.warning(f"The following chords could not be parsed:\n{df.loc[mistakes, :column]}")
-    return df
 
 
 
