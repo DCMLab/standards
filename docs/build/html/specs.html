@@ -4,6 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Specifications &#8212; Harmonic Annotation Guidelines 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -260,7 +261,7 @@ of first and second endings.</strong></span><a class="headerlink" href="#id3" ti
 <tr class="row-odd"><td><p>19</p></td>
 <td><p>16</p></td>
 <td><p>0</p></td>
-<td><p>V\</p></td>
+<td><p>V\\</p></td>
 <td><p>2</p></td>
 </tr>
 <tr class="row-even"><td><p>(20)</p></td>
@@ -377,6 +378,46 @@ been released).</p>
 <span class="s2">        (?P&lt;pedalend&gt;\])?</span>
 <span class="s2">    )?</span>
 <span class="s2">    (?P&lt;phraseend&gt;(\\\\|\{|\}|\}\{))?$</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="c1"># this is a second version of the same regex which allows for parsing an additional</span>
+<span class="c1"># alternative label separated by a dash: &lt;first&gt;-&lt;second&gt;</span>
+<span class="n">allowing_alternatives</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    ^(?P&lt;first&gt;</span>
+<span class="s2">      (\.?</span>
+<span class="s2">        ((?P&lt;globalkey&gt;[a-gA-G](b*|\#*))\.)?</span>
+<span class="s2">        ((?P&lt;localkey&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\.)?</span>
+<span class="s2">        ((?P&lt;pedal&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\[)?</span>
+<span class="s2">        (?P&lt;chord&gt;</span>
+<span class="s2">            (?P&lt;numeral&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i|Ger|It|Fr|@none))</span>
+<span class="s2">            (?P&lt;form&gt;(%|o|\+|M|\+M))?</span>
+<span class="s2">            (?P&lt;figbass&gt;(7|65|43|42|2|64|6))?</span>
+<span class="s2">            (\((?P&lt;changes&gt;((\+|-|\^)?(b*|\#*)\d)+)\))?</span>
+<span class="s2">            (/(?P&lt;relativeroot&gt;((b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i)/?)*))?</span>
+<span class="s2">        )</span>
+<span class="s2">        (?P&lt;pedalend&gt;\])?</span>
+<span class="s2">      )?</span>
+<span class="s2">      (?P&lt;phraseend&gt;(\\\\|\{|\}|\}\{)</span>
+<span class="s2">      )?</span>
+<span class="s2">     )</span>
+<span class="s2">     (-</span>
+<span class="s2">      (?P&lt;second&gt;</span>
+<span class="s2">        ((?P&lt;globalkey2&gt;[a-gA-G](b*|\#*))\.)?</span>
+<span class="s2">        ((?P&lt;localkey2&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\.)?</span>
+<span class="s2">        ((?P&lt;pedal2&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\[)?</span>
+<span class="s2">        (?P&lt;chord2&gt;</span>
+<span class="s2">            (?P&lt;numeral2&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i|Ger|It|Fr|@none))</span>
+<span class="s2">            (?P&lt;form2&gt;(%|o|\+|M|\+M))?</span>
+<span class="s2">            (?P&lt;figbass2&gt;(7|65|43|42|2|64|6))?</span>
+<span class="s2">            (\((?P&lt;changes2&gt;((\+|-|\^)?(b*|\#*)\d)+)\))?</span>
+<span class="s2">            (/(?P&lt;relativeroot2&gt;((b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i)/?)*))?</span>
+<span class="s2">        )</span>
+<span class="s2">        (?P&lt;pedalend2&gt;\])?</span>
+<span class="s2">      )?</span>
+<span class="s2">      (?P&lt;phraseend2&gt;(\\\\|\{|\}|\}\{)</span>
+<span class="s2">      )?</span>
+<span class="s2">     )?</span>
+<span class="s2">    $</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -567,7 +608,7 @@ the following example.</p>
     <span class="n">spl</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">groupindex</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">spl</span><span class="p">[</span><span class="n">features</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">mistakes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">numeral</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+    <span class="n">mistakes</span> <span class="o">=</span> <span class="n">spl</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">all</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">mistakes</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The following chords could not be parsed:</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mistakes</span><span class="p">,</span> <span class="p">:</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
@@ -660,7 +701,7 @@ the following example.</p>
       &copy;2020, DCML.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

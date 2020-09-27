@@ -25,7 +25,7 @@ labels in the same string as intended by the standard.
 * Phrase annotations, including the deprecated `\\` can now appear independently of a harmony label.
 * The symbol `^` can now be used to distinguish retardations from suspensions (e.g. `i(^2)` for a 2 that replaces the third rather than the root). (#4)
 * The symbol `-` can now be used to express missing chord tones, e.g. `I(-3)`. (#10, #14)
-* Changes to the guidelines
+* Changes to the guidelines (other than switching to Sphinx)
   - Immediate repetition of identical labels is still discouraged but not rigorously forbidden. (#28)
   - In some cases, immediate repetitions are necessary. (#22)
 
