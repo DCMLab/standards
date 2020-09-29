@@ -18,8 +18,6 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 #### v2.2.0
 
-* This version includes the additional regEx `allowing_alternatives` able to parse two
-labels in the same string as intended by the standard.
 * `+7` (and inversions) designates an augmented chord with a minor seventh. For the case of an augmented chord with a major seventh, the combination `+M7` (and inversions) has been added. (#24)
 * With the new version, phrase beginnings are annotated with a trailing `{`, a phrase's structural ending with a `}` and phrase interlocking with `{}`. (#3, #12)
 * Phrase annotations, including the deprecated `\\` can now appear independently of a harmony label.
