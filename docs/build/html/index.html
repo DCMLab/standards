@@ -4,6 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to our Harmonic Annotation guidelines! &#8212; Harmonic Annotation Guidelines 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +15,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction" href="intro.html" />
+    <link rel="next" title="Annotator’s Guidelines" href="guidelines.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -36,28 +37,61 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="musescore.html">Using MuseScore</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="musescore.html#how-to-annotate">How to annotate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="musescore.html#editing-annotations">Editing annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="musescore.html#splitting-beats">Splitting beats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="musescore.html#copying-several-annotations">Copying several annotations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="musescore.html#visibility">Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guidelines.html">Annotator’s Guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html#using-musescore">Using MuseScore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#how-to-annotate">How to annotate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#editing-annotations">Editing annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#selecting-a-position-where-there-is-no-note-or-rest">Selecting a position where there is no note or rest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#copying-several-annotations">Copying several annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#visibility">Visibility</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syntax.html">The syntax</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#indication-of-key">Indication of key.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#relative-key">Relative key</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#roman-numerals">Roman numerals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#suspensions-and-retardations">Suspensions and retardations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#added-notes">Added notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#phrase-endings">Phrase endings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#pedal-points-organ-points">Pedal points (Organ points)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#ambiguity">Ambiguity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syntax.html#unisono">Unisono</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html#the-syntax">The syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#indication-of-key">Indication of key.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#relative-key">Relative key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#roman-numerals">Roman numerals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#suspensions-and-retardations">Suspensions and retardations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#added-and-missing-notes">Added and missing notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#phrase-endings">Phrase endings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#pedal-points-organ-points">Pedal points (Organ points)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#ambiguity">Ambiguity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#unisono">Unisono</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guidelines.html#immediate-repetion-of-identical-labels">Immediate repetion of identical labels</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="specs.html">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="specs.html#what-is-being-encoded">What is being encoded?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="specs.html#segmentations">Segmentations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specs.html#timestamps">Timestamps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="specs.html#fetching-and-compiling-the-regex">Fetching and Compiling the regEx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="specs.html#structure-of-the-regex">Structure of the regEx</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="specs.html#feature-processing">Feature Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="specs.html#splitting-the-labels">Splitting the Labels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="specs.html#missing-features">Missing Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#secondary-keys">Secondary Keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#ternary-triple-dominants">‘Ternary’ / ‘Triple’ dominants</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#phrase-structure">Phrase Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#hierarchical-phrase-structure">Hierarchical phrase structure?</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -81,17 +115,16 @@
 <h3>Navigation</h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="musescore.html">Using MuseScore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="syntax.html">The syntax</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guidelines.html">Annotator’s Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specs.html">Technical Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Questions &amp; Examples</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="intro.html" title="next chapter">Introduction</a></li>
+      <li>Next: <a href="guidelines.html" title="next chapter">Annotator’s Guidelines</a></li>
   </ul></li>
 </ul>
 </div>
@@ -121,7 +154,7 @@
       &copy;2020, DCML.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

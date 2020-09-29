@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions &amp; Examples &#8212; Harmonic Annotation Guidelines 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Technical Specifications" href="specs.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="questions-examples">
+<h1>Questions &amp; Examples<a class="headerlink" href="#questions-examples" title="Permalink to this headline">¶</a></h1>
+<p>Although the guidelines for applying the DCML harmony standard to scores aim at
+reducing contingency (i.e. the presence of several solutions) in order to
+achieve high inter-annotator agreement, the standard needs to remain open enough
+so that style-specific and case-to-case solutions are possible if required.</p>
+<p>In other words: In many cases, the same harmonic passage can be annotated in
+different ways. Which one the annotator chooses, depends on their interpretation
+of the passage. Since different interpretations have different semantics
+(meanings), we provide a collection of difficult and ambiguous cases. In every
+case, we discuss the most obvious solutions and try to give convincing reasons
+why we opted for a particular one. This resource is mainly targeted at
+annotators for reference.</p>
+<p>This section will be constantly extended with solved cases from our
+<a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a>. If you come
+across such a difficult case you are more than welcome to open an issue there
+together with a screenshot which includes measure number, clefs, time and key
+signatures, so that it can be discussed by the community and eventually added
+to this collection here.</p>
+<div class="section" id="secondary-keys">
+<h2>Secondary Keys<a class="headerlink" href="#secondary-keys" title="Permalink to this headline">¶</a></h2>
+<p>The DCML harmony standard distinguishes between modulation (e.g. to scale degree
+V: <code class="docutils literal notranslate"><span class="pre">V.V7</span> <span class="pre">I</span></code>) and temporary tonicization (<code class="docutils literal notranslate"><span class="pre">V7/V</span> <span class="pre">I/V</span></code>). This section is dealing
+with examples for the latter case.</p>
+<div class="section" id="ternary-triple-dominants">
+<h3>‘Ternary’ / ‘Triple’ dominants<a class="headerlink" href="#ternary-triple-dominants" title="Permalink to this headline">¶</a></h3>
+<p>In the following example, notating secondary dominants of <code class="docutils literal notranslate"><span class="pre">/VII</span></code> in m. 154f.
+is, of course, fine:</p>
+<div class="figure align-default" id="id1">
+<a class="reference external image-reference" href="../../img/mendelssohn_op12_I_149-158.png"><img alt="Ternary key in a Mendelssohn quartet" src="_images/mendelssohn_op12_I_149-158.png" /></a>
+<p class="caption"><span class="caption-text">Mendelssohn: <cite>String Quartet op. 12</cite>, I. Adagio, non troppo, mm. 149-158</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>However, in order to express a continued tonicization of G minor (<code class="docutils literal notranslate"><span class="pre">iii</span></code>),
+annotators might want to opt for the ‘ternary key’ notation, in the sense that
+the standard allows for secondary keys within secondary keys. In order to
+express this, we would write <code class="docutils literal notranslate"><span class="pre">viio7/V/iii</span> <span class="pre">V65/V/iii</span></code>.</p>
+<p>In addition, the example contains a mistake in m. 156 where <code class="docutils literal notranslate"><span class="pre">iii</span></code> should be
+replaced by <code class="docutils literal notranslate"><span class="pre">i6/iii</span></code>.</p>
+</div>
+</div>
+<div class="section" id="phrase-structure">
+<h2>Phrase Structure<a class="headerlink" href="#phrase-structure" title="Permalink to this headline">¶</a></h2>
+<p>Phrase annotations should be considered as a separate, light-weight annotation
+standard which can be combined with harmony labels or used separately.</p>
+<div class="section" id="hierarchical-phrase-structure">
+<h3>Hierarchical phrase structure?<a class="headerlink" href="#hierarchical-phrase-structure" title="Permalink to this headline">¶</a></h3>
+<p>At the moment, we don’t use hierarchical phrase segmentations. In other words,
+annotators choose exactly one hierarchical level to be expressed in the
+continuous segmentation using <code class="docutils literal notranslate"><span class="pre">{</span></code> and <code class="docutils literal notranslate"><span class="pre">}</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Harmonic Annotation Guidelines</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guidelines.html">Annotator’s Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="specs.html">Technical Specifications</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#secondary-keys">Secondary Keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ternary-triple-dominants">‘Ternary’ / ‘Triple’ dominants</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#phrase-structure">Phrase Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchical-phrase-structure">Hierarchical phrase structure?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="specs.html" title="previous chapter">Technical Specifications</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, DCML.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/examples.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

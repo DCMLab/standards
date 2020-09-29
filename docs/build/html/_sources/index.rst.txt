@@ -7,13 +7,12 @@ Welcome to our Harmonic Annotation guidelines!
 ==============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
-   intro
-   musescore
-   syntax
-   summary
+   guidelines
+   specs
+   examples
 
 
 .. Indices and tables
