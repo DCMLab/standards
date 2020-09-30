@@ -60,4 +60,5 @@ Hierarchical phrase structure?
 
 At the moment, we don't use hierarchical phrase segmentations. In other words,
 annotators choose exactly one hierarchical level to be expressed in the
-continuous segmentation using ``{`` and ``}``.
+continuous segmentation using ``{`` and ``}``. Ideally, this level is chosen such
+every cadence coincides with a phrase ending (but not forcibly vice-versa).
