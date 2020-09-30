@@ -16,6 +16,23 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 ### Release Notes
 
+#### v2.2.0
+
+* `+7` (and inversions) designates an augmented chord with a minor seventh. For the case of an augmented chord with a major seventh, the combination `+M7` (and inversions) has been added. (#24)
+* With the new version, phrase beginnings are annotated with a trailing `{`, a phrase's structural ending with a `}` and phrase interlocking with `{}`. (#3, #12)
+* Phrase annotations, including the deprecated `\\` can now appear independently of a harmony label.
+* The symbol `^` can now be used to distinguish retardations from suspensions (e.g. `i(^2)` for a 2 that replaces the third rather than the root). (#4)
+* The symbol `-` can now be used to express missing chord tones, e.g. `I(-3)`. (#10, #14)
+* Changes to the guidelines (other than switching to Sphinx)
+  - Immediate repetition of identical labels is still discouraged but not rigorously forbidden. (#28)
+  - In some cases, immediate repetitions are necessary. (#22)
+
+#### v2.1.1
+
+* In this version of the regex, `@none` is admitted as a symbol and interpreted as a numeral (root).
+* The position of the initial dot was moved because the prior version did not accept some correct labels, such as `.bIII.bIII`.
+* Guidelines updated on the [use of augmented sixth chords](https://github.com/DCMLab/standards/blob/develop/guidelines/english.md#augmented-6th-chords-fr-ger-it6).
+
 #### v2.1.0
 
 * Global keys (note names) and local keys (Roman numerals) are now parsed in two different groups. This solves the problem that previously, all pieces were assumed to start with localkey `I` or `i`. Now it is possible to have the global key *and* a change of local key within the first label, e.g. `Ab.vi.i` for a piece in Ab major that begins with an introduction in the relative key.
