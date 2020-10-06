@@ -18,11 +18,11 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'Harmonic Annotation Guidelines'
-copyright = '2020, DCML'
-author = 'DCML'
+copyright = '2020, École Polytechnique Fédérale de Lausanne'
+author = 'Digital and Cognitive Musicology Lab'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '2.2.0'
 
 
 # -- General configuration ---------------------------------------------------
