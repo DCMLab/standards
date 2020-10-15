@@ -4,7 +4,7 @@ This repository contains the standard for harmonic annotations developed at the 
 
 ## Harmonic annotation standard
 
-The DCML standard for harmonic annotations consists in a set of [annotation guidelines](https://github.com/DCMLab/standards/blob/master/guidelines/english.md) and a [regular expression](https://github.com/DCMLab/standards/blob/master/harmony.py). The guidelines are the reference for annotators applying the standard for the task of encoding harmonic analysis, and explain how the open-source software [MuseScore](https://musescore.org/) can be used to enter chord labels into scores so that they can be
+The DCML standard for harmonic annotations consists in a set of [annotation guidelines](https://dcmlab.github.io/standards) and a [regular expression](https://github.com/DCMLab/standards/blob/master/harmony.py). The guidelines are the reference for annotators applying the standard for the task of encoding harmonic analysis, and explain how the open-source software [MuseScore](https://musescore.org/) can be used to enter chord labels into scores so that they can be
 * automatically extracted using the tools developed at the DCML, and
 * split into the various encoded features using the regular expression.
 
@@ -31,7 +31,7 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 * In this version of the regex, `@none` is admitted as a symbol and interpreted as a numeral (root).
 * The position of the initial dot was moved because the prior version did not accept some correct labels, such as `.bIII.bIII`.
-* Guidelines updated on the [use of augmented sixth chords](https://github.com/DCMLab/standards/blob/develop/guidelines/english.md#augmented-6th-chords-fr-ger-it6).
+* Guidelines updated on the use of augmented sixth chords.
 
 #### v2.1.0
 
