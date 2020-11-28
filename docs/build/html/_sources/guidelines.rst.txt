@@ -669,7 +669,7 @@ Git is a version control system generally controlled via the command line.
 GitHub is a hosting service for remote Git repositories. Since the DCML hosts
 data on GitHub, a basic understanding of the Git workflow is relevant for annotators
 and reviewers. There are plenty of resources (for example
-`these videos https://git-scm.com/doc`__) for learning Git on the web, so this
+`these videos <https://git-scm.com/doc>`__) for learning Git on the web, so this
 is just a very quick guide.
 
 Installing Git
@@ -683,7 +683,7 @@ Check in your terminal if Git is already installed:
   git version 2.29.2
 
 If the command fails install Git with your system's package manger or head to
-`this page https://git-scm.com/book/en/v2/Getting-Started-Installing-Git`__
+`this page <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`__
 for instructions.
 
 Cloning a Repository from GitHub
