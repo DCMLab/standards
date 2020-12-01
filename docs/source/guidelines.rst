@@ -719,7 +719,7 @@ Git Branching Primer
 
 A Git repository often holds several versions, called 'branches', in parallel,
 each with their own version history. The way the
-`Git branching model https://nvie.com/posts/a-successful-git-branching-model/`
+`Git branching model <https://nvie.com/posts/a-successful-git-branching-model/>`_
 is most often used, is that the branch called ``master`` holds the latest
 *correct* version (production status), whereas all other branches are used for
 experimenting and for applying as many changes as you want without changing the
@@ -800,11 +800,11 @@ local history, you will be using the same two commands:
 As a rule of thumb you should use these commands as often as possible for at least
 two reasons:
 
-1. Every change registered as a commit can be reverted individually.
-1. Every commit has a meaningful COMMIT_MESSAGE that explains what has been
-changed, e.g. ``"Changing X, Y and Z, correcting their [PROBLEM]"``. The more
-individual changes you commit, the more comprehensible your history will be
-to others.
+#. Every change registered as a commit can be reverted individually.
+#. Every commit has a meaningful COMMIT_MESSAGE that explains what has been
+   changed, e.g. ``"Changing X, Y and Z, correcting their [PROBLEM]"``. The more
+   individual changes you commit, the more comprehensible your history will be
+   to others.
 
 In the case of music scores, meaningful commit messages could be:
 

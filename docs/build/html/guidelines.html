@@ -703,7 +703,7 @@ your local clone of the repository, otherwise you get <code class="docutils lite
 <h4>Git Branching Primer<a class="headerlink" href="#git-branching-primer" title="Permalink to this headline">¶</a></h4>
 <p>A Git repository often holds several versions, called ‘branches’, in parallel,
 each with their own version history. The way the
-<cite>Git branching model https://nvie.com/posts/a-successful-git-branching-model/</cite>
+<a class="reference external" href="https://nvie.com/posts/a-successful-git-branching-model/">Git branching model</a>
 is most often used, is that the branch called <code class="docutils literal notranslate"><span class="pre">master</span></code> holds the latest
 <em>correct</em> version (production status), whereas all other branches are used for
 experimenting and for applying as many changes as you want without changing the
@@ -775,11 +775,13 @@ local history, you will be using the same two commands:</p>
 </div>
 <p>As a rule of thumb you should use these commands as often as possible for at least
 two reasons:</p>
-<p>1. Every change registered as a commit can be reverted individually.
-1. Every commit has a meaningful COMMIT_MESSAGE that explains what has been
+<ol class="arabic simple">
+<li><p>Every change registered as a commit can be reverted individually.</p></li>
+<li><p>Every commit has a meaningful COMMIT_MESSAGE that explains what has been
 changed, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Changing</span> <span class="pre">X,</span> <span class="pre">Y</span> <span class="pre">and</span> <span class="pre">Z,</span> <span class="pre">correcting</span> <span class="pre">their</span> <span class="pre">[PROBLEM]&quot;</span></code>. The more
 individual changes you commit, the more comprehensible your history will be
-to others.</p>
+to others.</p></li>
+</ol>
 <p>In the case of music scores, meaningful commit messages could be:</p>
 <ul class="simple">
 <li><p>“Corrected ‘corrupt file’ errors in measures 31, 32, and 37”</p></li>
