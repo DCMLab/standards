@@ -12,6 +12,8 @@
 #
 import os
 import sys
+#import sphinx_rtd_theme
+import sphinx_bootstrap_theme
 sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -31,7 +33,10 @@ release = '2.2.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_togglebutton',
 ]
+# https://sphinx-togglebutton.readthedocs.io/en/latest/
+togglebutton_hint = "Show solution"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -47,12 +52,93 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "alabaster"
 
+# html_theme = "alabaster"
+# html_theme_options = {
+#     'page_width': '1200px',
+#     'body_max_width': 'auto'
+# }
+
+#html_theme = "sphinx_rtd_theme"
+
+#html_theme = "press"
+
+# http://ryan-roemer.github.io/sphinx-bootstrap-theme/README.html
+html_theme = 'bootstrap'
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path() # pip install sphinx_bootstrap_theme
 html_theme_options = {
-    'page_width': '1200px',
-    'body_max_width': 'auto'
+    # Navigation bar title. (Default: ``project`` value)
+    'navbar_title': "DCML Guidelines",
+
+    # Tab name for entire site. (Default: "Site")
+    'navbar_site_name': "Other pages",
+
+    # A list of tuples containing pages or urls to link to.
+    # Valid tuples should be in the following forms:
+    #    (name, page)                 # a link to a page
+    #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
+    #    (name, "http://example.com", True) # arbitrary absolute url
+    # Note the "1" or "True" value above as the third argument to indicate
+    # an arbitrary url.
+    'navbar_links': [
+    ],
+
+    # Render the next and previous page links in navbar. (Default: true)
+    'navbar_sidebarrel': True,
+
+    # Render the current pages TOC in the navbar. (Default: true)
+    'navbar_pagenav': True,
+
+    # Tab name for the current pages TOC. (Default: "Page")
+    'navbar_pagenav_name': "This Page",
+
+    # Global TOC depth for "site" navbar tab. (Default: 1)
+    # Switching to -1 shows all levels.
+    'globaltoc_depth': 2,
+
+    # Include hidden TOCs in Site navbar?
+    #
+    # Note: If this is "false", you cannot have mixed ``:hidden:`` and
+    # non-hidden ``toctree`` directives in the same page, or else the build
+    # will break.
+    #
+    # Values: "true" (default) or "false"
+    'globaltoc_includehidden': "true",
+
+    # HTML navbar class (Default: "navbar") to attach to <div> element.
+    # For black navbar, do "navbar navbar-inverse"
+    'navbar_class': "navbar navbar-inverse",
+
+    # Fix navigation bar to top of page?
+    # Values: "true" (default) or "false"
+    'navbar_fixed_top': "true",
+
+    # Location of link to source.
+    # Options are "nav" (default), "footer" or anything else to exclude.
+    'source_link_position': "nav",
+
+    # Bootswatch (http://bootswatch.com/) theme.
+    #
+    # Options are nothing (default) or the name of a valid theme
+    # such as "cosmo" or "sandstone".
+    #
+    # The set of valid themes depend on the version of Bootstrap
+    # that's used (the next config option).
+    #
+    # Currently, the supported themes are:
+    # - Bootstrap 2: https://bootswatch.com/2
+    # - Bootstrap 3: https://bootswatch.com/3
+    'bootswatch_theme': "united",
 }
+
+# html_theme = 'cloud'  # pip install cloud_sptheme
+# html_theme_options = {
+#     'lighter_header_decor': True,
+#     'shaded_decor': True,
+#     'borderless_decor': False,
+#     'max_width': '1600px',
+# }
+# # view theme options here: https://cloud-sptheme.readthedocs.io/en/latest/cloud_theme.html#list-of-options
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

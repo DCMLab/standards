@@ -1,0 +1,146 @@
+***************
+Level of detail
+***************
+
+In this section we discuss the single **most pertinent cause for inter-annotator disagreement**: The question of how large
+of a musical chunk we want to compress into a label. There is definitely not one correct answer, instead we ask our
+annotators to make one high-level decision for a given piece and stick to that consistently. That's what was meant in the
+previous section by the assignment
+
+.. admonition:: Do a complete annotation of ``corelli_op01n04b.mscx`` after deciding on its harmonic pace
+  :class: toggle
+
+  What harmonic pace did you decide on and how did you decide? Did you listen to a recording or to a live rendition in
+  your head? In case you didn't, does `listening to a recording <https://youtu.be/OKp_abVXIq8?t=54>`__ make you want to
+  change your mind? In the latter case, please create an alternative set of annotations in a separate file for
+  comparison.
+
+  Once you're settled, let's walk through some of the possibilities and
+  their implications.
+
+Solution 1: Coarse-grained
+==========================
+
+.. figure:: img/detail_01_corelli_coarse.svg
+  :alt: Coarse-grained analysis of Corelli op. 1/4, II. Adagio
+  :scale: 30%
+
+  Coarse-grained analysis of Corelli op. 1/4, II. Adagio
+
+This solution focuses on chunks of a half note's length. There are a couple of things to note:
+
+.. |funny_dash| image:: img/funny_dash.png
+  :scale: 30 %
+
+:Harmonic pace:
+  The annotator settled on half measures. The set of annotations demonstrates the consequences of this decision:
+  Many eighth notes are interpreted as ornaments and thus not reflected in the labels. When using the DCML standard
+  we do annotate non-chord tones such as suspensions, retardations, additions (see REFERENCE), but not ornaments.
+
+:Indeterminacy:
+  In m. 2, the new harmony is mainly determined by the pitches F and A. Even if an annotator has a strong opinion,
+  it is a good idea to express the indeterminacy by writing both possibilities in one label, separated by a dash,
+  ``VI-iv6``. A label can include only one alternative (i.e., one dash), and the annotator puts the solution they prefer
+  in the front. In the present case, don't worry about the funny dash placement |funny_dash| when writing
+  ``iv6-VI``.
+
+:Phrasing:
+  One's interpretation of the harmonic pace might correlate with one's perception of musical phrases. The analysis here
+  expresses fluidity not only through a harmonic rhythm in 2/2 meter but also by having the first phrase end only
+  in m. 8 after the harmonic "double time" and the pronounced cadence.
+
+Solution 2: Fine-grained
+========================
+
+.. figure:: img/detail_02_corelli_fine.svg
+  :alt: Fine-grained analysis of Corelli op. 1/4, II. Adagio
+  :scale: 30%
+
+  Fine-grained analysis of Corelli op. 1/4, II. Adagio. Differences to above highlighted in bold.
+
+Let's have a look at the differences.
+
+:Harmonic pace:
+  This set of annotations is susceptible to the change of harmony on the quarter beat level. Whereas in the above version
+  four step-wise descending eighth notes were mostly considered as elaborations of ond and the same chord, this one here
+  reveals a tendency to see them as elaborations of chord tones from two *different* chords. In particular, the
+  annotator has highlighted implicit 5-6 movements through the pertinent patterns ``i VI6`` (mm. 4 & 9), ``iv iio6``
+  (m. 3), and ``VI iv6`` (m. 2, that one purely virtual). Where the descending eights motive occurs in the bass, two
+  chords with their bass notes a third apart have been assumed (mm. 2, 6 & 9); and where this was not plausible
+  (mm. 5 & 8), a change of harmony was assumed on the fourth note. This solution seems to suggest syncopated harmonic
+  rhythms in mm. 2-3 & 9.
+
+:Indeterminacy:
+  While being more bold in assuming particular chord tones in m. 2, this solution introduces alternative labels for the
+  dominant chords in mm. 3 & 6; namely labels interpreting the same chord as elaborations of dominant seventh chords.
+  For reasons of consistency, the same interpretation would have applied to m. 8: ``V}{-V2}{`` (every side of the dash
+  needs to be a fully valid reading, which is why the phrase annotations should be repeated). But two reasons speak
+  against this interpretation: (1) it would conflict with the ``V64`` label on the last eighth which, however, reflects
+  consistency with the above-mentioned analytical decision and m. 5; and (2) the alternative reading ``V2`` would
+  represent a possible harmonic progression ``iv6 V2}{`` which is implausible in this cadential context.
+
+:Phrasing:
+  The more fine-grained harmonic analysis has led the annotator to assume shorter phrases, too: The long first phrase
+  from Solution 1 (mm. 1-8) has been split into two interlocked phrases here.
+
+.. admonition:: Hint
+  :class: caution
+
+  On the more abstract level seen in Solution 1 the predominant root progression is by falling fifth (``i iv`` and
+  ``ii V i``). Theorists know that a scaffold of falling fifths affords movement by falling thirds and it is therefore
+  not surprising that a more fine-grained solution exists which highlights these (``i VI iv ii [#viio] V [III] i``).
+
+.. admonition:: Consistency is watching you
+  :class: danger
+
+  Note how in both examples the analytical decisions were implemented with rigorous consistency which is the DCML
+  annotation standard's highest maxim.
+
+
+Solution 3: A bit over the top
+==============================
+
+.. figure:: img/detail_03_corelli_very.svg
+  :alt: Too fine-grained analysis of Corelli op. 1/4, II. Adagio
+  :scale: 30%
+
+  Too fine-grained and partially inconsistent analysis of Corelli op. 1/4, II. Adagio.
+
+The fictional annotator behind this analysis had just learned about the chord alteration syntax using rounded
+brackets ``()`` and wanted to use it everywhere! Let's say we leave them the pleasure for now to not steal their
+thunder, but consistency is nevertheless indispensable. Before you try to spot some of the inconsistencies, it will be
+useful for you to understand how the chord alterations work, so you can empathize with this greenhorn.
+
+* If an upper neighbour of one of the three chord tones ``1``, ``3``, ``5`` is present within the parentheses,
+  e.g. ``V(2)``, ``V(4)``, ``V(6)``, it means that the respective chord tone is replaced (the fourth suspension
+  we had seen already).
+* This is independent of the chord inversion, so ``iv6(2)`` means that the chord root is replaced by its upper
+  neighbour (see the 7-6 suspension in all three solutions, m. 8).
+* If the actual chord tone is not replaced, but the upper neighbour is instead added, it is preceded by a ``+``,
+  as is the case in ``V6(+6)`` in m. 6.
+* The upper neighbours can occur simultaneously (always in descending order) and always represent the interval
+  corresponding to the scale. In other words,
+
+  - ``iv(4)`` translates to the pitches ``F B C`` in a C major context but in a C minor context it means ``F Bb C``;
+  - to express ``F Bb C`` in a C major context we would have to write ``iv(b4)`` or ``IV(b4)`` accordingly;
+  - ``bII6`` translates to ``F Ab Db`` in both C major and minor, but ``bII6(62)`` is ``F B E`` in C major yet
+    ``F Bb Eb`` in C minor;
+  - on the other hand, the same suspension chord ``F Bb Eb`` in a C major context would need to be expressed as
+    ``bII(b6b2)``.
+
+Can you feel the joy that drove our fictitious annotator to use rounded brackets that frequently here? So let's show
+them some indulgence - but only where the analytical decisions are traceable and applied consistently.
+
+.. admonition:: Spot as many places as possible where the annotations are inconsistent or a bit over the top.
+  :class: toggle
+
+  * m. 2: ``iv6 VI`` not justified
+  * m. 4 & 10: ``iio6-ii%65`` vs. ``iio6 ii%65-iio6`` (alternative reading would result in redundant progression
+    ``iio6 iio6``)
+  * m. 4 & 7: phrase boundaries?
+  * m. 4 & 9: ``VI6`` vs. ``i(6) i``
+  * m. 5 & 8: ``V64`` vs. ``V43``
+  * m. 6: ``V65`` inkonsistent
+  * m. 7: ``V(6)/iv V/iv``
+  * m. 9: ``#viio6`` possible but plausible?
+  * m. 11: ``iv7`` D root, not transition?

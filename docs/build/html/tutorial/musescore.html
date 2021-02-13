@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting started &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The first label" href="first_label.html" />
+    <link rel="prev" title="Annotation Tutorial" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          DCML Guidelines</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Other pages <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Annotation Tutorial</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first_label.html">The first label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first_phrase.html">The first phrase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detail.html">Level of detail</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git.html">Version control with Git</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#installing-git">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#cloning-a-repository-from-github">Cloning a Repository from GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#selecting-the-right-branch">Selecting the right Branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-repository">Applying Changes to the Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#uploading-changes-to-github">Uploading Changes to GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-origin-directly">Applying Changes to the Origin Directly</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines/examples.html">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/examples.html#phrase-structure">Phrase Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/examples.html#figured-bass">Figured Bass</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines/guidelines.html">Annotator’s Guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#using-musescore">Using MuseScore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#the-syntax">The syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#summary-of-the-harmony-annotation-standard">Summary of the Harmony Annotation Standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#inter-annotator-consensus">Inter-Annotator Consensus</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines/specs.html">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#what-is-being-encoded">What is being encoded?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#feature-processing">Feature Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#missing-features">Missing Features</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">This Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Getting started</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#preparing-this-tutorial">Preparing this tutorial</a><ul>
+<li><a class="reference internal" href="#get-the-files">Get the files</a></li>
+<li><a class="reference internal" href="#get-the-latest-version-of-musescore-3">Get the latest version of MuseScore 3</a><ul>
+<li><a class="reference internal" href="#downloading-musescore">Downloading MuseScore</a></li>
+<li><a class="reference internal" href="#already-have-it-installed">Already have it installed?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#placing-the-annotation-cursor">Placing the annotation cursor</a><ul>
+<li><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+<li><a class="reference internal" href="#moving-the-annotation-cursor">Moving the annotation cursor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#start-annotation-tutorial">Start annotation tutorial</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Annotation Tutorial"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Annotation Tutorial</span>
+    </a>
+  </li>
+  <li>
+    <a href="first_label.html" title="Next Chapter: The first label"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The first label &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/tutorial/musescore.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the DCML harmony annotation tutorial!</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The goal of this tutorial is to provide a systematic and condensed way of conveying the annotation philosophy and
+principles (aka “the guidelines”) behind the annotation standard. What has been condensed are more than two years
+of discussions between the music theory experts involved in the standard’s creation and application, i.e. between
+annotators, reviewers, and users. Therefore, this tutorial is not about telling anybody “how harmonic analysis <em>really</em>
+works” or “how everyone should be using Roman numeral”. Instead, it introduces a set of guidelines for analysts who
+want to use the DCML harmony annotation standard to encode a set of musical features in a consistent and
+machine-readable manner so that others can re-use and rely on the encoded information.</p>
+<div class="caution admonition">
+<p class="admonition-title">Summary</p>
+<p>Although DCML harmony labels look like “normal” Roman numerals, they are more than that. Whereas the Roman numeral
+nomenclature (syntax) can convey a huge number of analytical meanings (semantics), the DCML standard aims at
+fixing syntax <em>and</em> semantics in a way that enables consistent communication of rich analytical information.</p>
+</div>
+<div class="danger admonition">
+<p class="admonition-title">TL;DR</p>
+<p>The DCML standard enables the production of consistent music theoretical research data.</p>
+</div>
+<p>In case you want to contribute annotations to the <a class="reference external" href="https://github.com/DCMLab/dcml_corpora">DCML corpus</a>, we would
+like to ask you to go through this tutorial word by word and to do the assignments. They come in the form of blue
+boxes that you can toggle to see the proposed solution. Since there is always room for improvement, in case things are
+unclear we invite you to leave us your feedback and suggestions on our
+<a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a>.</p>
+</div>
+<div class="section" id="preparing-this-tutorial">
+<h2>Preparing this tutorial<a class="headerlink" href="#preparing-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-files">
+<h3>Get the files<a class="headerlink" href="#get-the-files" title="Permalink to this headline">¶</a></h3>
+<p>The DCML stores all its research data in Github repositories and the history of
+every single file is tracked using the software <a class="reference external" href="https://git-scm.com/">Git</a>.
+Therefore, everyone involved with creating and reviewing annotations needs to be
+or get familiar with Git version control. There are  plenty of resources on the
+web and we have also compiled a small <a class="reference internal" href="../git/git.html#git-intro"><span class="std std-ref">Quick Guide</span></a> .</p>
+<p>This tutorial is based on a couple of MuseScore files for you to open and
+annotate. If you know Git or just want to try cloning your first Git repository,
+clone <a class="reference external" href="https://github.com/DCMLab/annotation_tutorial">https://github.com/DCMLab/annotation_tutorial</a></p>
+<p>If you can’t be fussed right know, simply download
+<a class="reference external" href="https://github.com/DCMLab/annotation_tutorial/archive/main.zip">this ZIP archive</a>
+and unpack it to your disk.</p>
+</div>
+<div class="section" id="get-the-latest-version-of-musescore-3">
+<h3>Get the latest version of MuseScore 3<a class="headerlink" href="#get-the-latest-version-of-musescore-3" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure to be using the latest stable version from the
+<a class="reference external" href="https://musescore.org/download">MuseScore 3 download page</a>.</p>
+<div class="section" id="downloading-musescore">
+<h4>Downloading MuseScore<a class="headerlink" href="#downloading-musescore" title="Permalink to this headline">¶</a></h4>
+<p>Head to the link above and download the installer for your operation system. If
+you’re using Linux but the latest version is not available in your package
+manager, you can download and execute the AppImage.</p>
+</div>
+<div class="section" id="already-have-it-installed">
+<h4>Already have it installed?<a class="headerlink" href="#already-have-it-installed" title="Permalink to this headline">¶</a></h4>
+<p>In case your local installation does not prompt you about the latest updates,
+you may check your current version through <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">About...</span></code>. If your version
+does not match the latest stable version on the download page, please upgrade.</p>
+<div class="toggle admonition">
+<p class="admonition-title">Note to Linux users</p>
+<p>On Linux you can find out your version using the command
+<code class="docutils literal notranslate"><span class="pre">mscore</span> <span class="pre">-v</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="placing-the-annotation-cursor">
+<h2>Placing the annotation cursor<a class="headerlink" href="#placing-the-annotation-cursor" title="Permalink to this headline">¶</a></h2>
+<p>To start writing your first labels, open up a score, e.g. <code class="docutils literal notranslate"><span class="pre">corelli_op01n01a.mscx</span></code>,
+click on the note to which you want to attach the label, and go to
+<code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">-&gt;</span> <span class="pre">Text</span> <span class="pre">-&gt;</span> <span class="pre">Roman</span> <span class="pre">Numeral</span> <span class="pre">Analysis</span></code>. A cursor appears under the note so you
+can start writing Roman numerals, skipping from note to note using <code class="docutils literal notranslate"><span class="pre">[SPACE]</span></code>.</p>
+<div class="section" id="keyboard-shortcuts">
+<h3>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h3>
+<p>Shortcuts are there mainly to impress your friends but they also save you a lot
+of time. Therefore this tutorial introduces the most important ones where,
+depending on your keyboard, the keys have different names. We use the following
+placeholders:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[S]</span></code> for Shift</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[C]</span></code> for Ctrl (Windows/Linux) or Cmd (Mac)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[A]</span></code> for Alt (Windows/Linux) or Option (Mac)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[TAB]</span></code> for tabulator (the key with two arrows, above [CAPS LOCK])</p></li>
+</ul>
+<p>MuseScore has a lot of keyboard shortcuts pre-defined and where they are lacking
+or you find them unpractical, it lets you define your own. To do that, simply go to
+<code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">-&gt;</span> <span class="pre">Preferences</span></code>, switch to the <code class="docutils literal notranslate"><span class="pre">Shortcuts</span></code> tab and look for the
+functionality in question. In our case, we</p>
+<ol class="arabic simple">
+<li><p>start typing “rom” in the search bar below</p></li>
+<li><p>double click on “Add Roman Numeral analysis”</p></li>
+<li><p>press the desired shortcut, e.g. <code class="docutils literal notranslate"><span class="pre">[C]+R</span></code>; upon mistake,
+click “Clear”</p></li>
+<li><p>click on “Add” to leave “Old shortcuts” intact or “Replace” to replace them.</p></li>
+</ol>
+<div class="figure align-default" id="id1">
+<a class="reference external image-reference" href="../_images/shortcut.png"><img alt="Defining your own shortcuts in MuseScore" src="../_images/shortcut.png" /></a>
+<p class="caption"><span class="caption-text">Defining your own shortcut in MuseScore</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="moving-the-annotation-cursor">
+<h3>Moving the annotation cursor<a class="headerlink" href="#moving-the-annotation-cursor" title="Permalink to this headline">¶</a></h3>
+<p>Having clicked on the first note in the lowest staff and pressed your shortcut,
+you can enter the Roman numeral and</p>
+<ul class="simple">
+<li><p>go to the next note pressing <code class="docutils literal notranslate"><span class="pre">[SPACE]</span></code>;</p></li>
+<li><p>go to the next measure pressing <code class="docutils literal notranslate"><span class="pre">[TAB]</span></code>;</p></li>
+<li><p>move the cursor by a particular note value pressing
+* <code class="docutils literal notranslate"><span class="pre">[C]+3</span></code> for a sixteenth note;
+* <code class="docutils literal notranslate"><span class="pre">[C]+4</span></code> for an eighth note;
+* etc. (same numbers as when entering notes)</p></li>
+<li><p>go to previous note (<code class="docutils literal notranslate"><span class="pre">[S]+[SPACE]</span></code>) or previous measure <code class="docutils literal notranslate"><span class="pre">[S]+[TAB]</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="start-annotation-tutorial">
+<h2>Start annotation tutorial<a class="headerlink" href="#start-annotation-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Do you know how to place your annotation and cursor and how to move it around?
+Once you have finished a section, you can go to the next section by clicking
+on it in the navigation menu, in this case called <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">first</span> <span class="pre">label</span></code>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
