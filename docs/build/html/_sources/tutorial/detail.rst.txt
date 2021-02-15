@@ -41,8 +41,8 @@ This solution focuses on chunks of a half note's length. There are a couple of t
   In m. 2, the new harmony is mainly determined by the pitches F and A. Even if an annotator has a strong opinion,
   it is a good idea to express the indeterminacy by writing both possibilities in one label, separated by a dash,
   ``VI-iv6``. A label can include only one alternative (i.e., one dash), and the annotator puts the solution they prefer
-  in the front. In the present case, don't worry about the funny dash placement |funny_dash| when writing
-  ``iv6-VI``.
+  in the front. The solution to put ``VI`` in front probably lies in the absence of a bass figure.
+  (In the present case, don't worry about the funny dash placement |funny_dash| when writing ``iv6-VI``.)
 
 :Phrasing:
   One's interpretation of the harmonic pace might correlate with one's perception of musical phrases. The analysis here
@@ -97,8 +97,8 @@ Let's have a look at the differences.
   annotation standard's highest maxim.
 
 
-Solution 3: A bit over the top
-==============================
+Solution 3: Indicating replaced chord tones
+===========================================
 
 .. figure:: img/detail_03_corelli_very.svg
   :alt: Too fine-grained analysis of Corelli op. 1/4, II. Adagio
@@ -109,7 +109,7 @@ Solution 3: A bit over the top
 The fictional annotator behind this analysis had just learned about the chord alteration syntax using rounded
 brackets ``()`` and wanted to use it everywhere! Let's say we leave them the pleasure for now to not steal their
 thunder, but consistency is nevertheless indispensable. Before you try to spot some of the inconsistencies, it will be
-useful for you to understand to how the chord alterations work, so you can empathize with this greenhorn.
+useful for you to understand how the chord alterations work, so you can empathize with this greenhorn.
 
 * If an upper neighbour of one of the three chord tones ``1``, ``3``, ``5`` is present within the parentheses,
   e.g. ``V(2)``, ``V(4)``, ``V(6)``, it means that the respective chord tone is replaced (the fourth suspension
@@ -118,29 +118,59 @@ useful for you to understand to how the chord alterations work, so you can empat
   neighbour (see the 7-6 suspension in all three solutions, m. 8).
 * If the actual chord tone is not replaced, but the upper neighbour is instead added, it is preceded by a ``+``,
   as is the case in ``V6(+6)`` in m. 6.
-* The upper neighbours can occur simultaneously (always in descending order) and always represent the interval
+* The upper neighbours can occur simultaneously (always in descending order, e.g. ``V(42)`` in m. 5) and always represent the interval
   corresponding to the scale. In other words,
 
-  - ``iv(4)`` translates to the pitches ``F B C`` in a C major context but in a C minor context it means ``F Bb C``;
+  - ``iv(4)`` translates to the pitches ``F B C`` in a C major context but to ``F Bb C`` in a C minor context;
   - to express ``F Bb C`` in a C major context we would have to write ``iv(b4)`` or ``IV(b4)`` accordingly;
   - ``bII6`` translates to ``F Ab Db`` in both C major and minor, but ``bII6(62)`` is ``F B E`` in C major yet
     ``F Bb Eb`` in C minor;
-  - on the other hand, the same suspension chord ``F Bb Eb`` in a C major context would need to be expressed as
-    ``bII(b6b2)``.
+  - in contrast, the same suspension chord ``F Bb Eb`` in a C major context would need to be expressed as
+    ``bII6(b6b2)`` or ``ii6(b6b2)``, depending on the context.
 
-Can you feel the joy that drove our fictitious annotator to use rounded brackets that frequently here? So let's show
-them some indulgence - but only where the analytical decisions are traceable and applied consistently.
+Can you feel the joy that drove our fictitious annotator to use rounded brackets so frequently here? So let's show
+them some indulgence---but only where the analytical decisions are traceable and applied consistently.
 
-.. admonition:: Spot as many places as possible where the annotations are inconsistent or a bit over the top.
+.. admonition:: Review Solution 3 and spot as many places as possible where the annotations are inconsistent or would require justification
   :class: toggle
 
-  * m. 2: ``iv6 VI`` not justified
-  * m. 4 & 10: ``iio6-ii%65`` vs. ``iio6 ii%65-iio6`` (alternative reading would result in redundant progression
-    ``iio6 iio6``)
-  * m. 4 & 7: phrase boundaries?
-  * m. 4 & 9: ``VI6`` vs. ``i(6) i``
-  * m. 5 & 8: ``V64`` vs. ``V43``
-  * m. 6: ``V65`` inkonsistent
-  * m. 7: ``V(6)/iv V/iv``
-  * m. 9: ``#viio6`` possible but plausible?
-  * m. 11: ``iv7`` D root, not transition?
+  When DCML annotations are reviewed, the most important task for the reviewer is to spot inconsistencies. When it
+  comes to analytical decisions that the reviewer does not follow, they ask the annotators for a justification
+  and together they come up with a solution that is satisfying for both. So let's start with a couple of things that are
+  consistent:
+
+  Consistencies
+    * The reviewer was consistent in the decision to assume a 4/4 harmonic rhythm to a point that, where necessary,
+      the harmony on the third eighth of the descending figures was interpreted as suspension chord resolving on the
+      following eighth (mm. 3, 5, 6, 8). (Consider, however, the comment on mm. 4 vs. 9 and on m. 7 below.)
+    * ``G#`` and ``C#`` have been interpreted as thirds of dominant chords (mm. 2 & 9) except where hindered by a
+      pedal note (mm. 1, 2 & 10).
+    * ``ii%65`` was consistently added as a possible realization of bass ``D`` + figure ``6`` (however, consider the
+      comment on m. 10 below).
+
+  Inconsistencies
+    * m. 4 vs. 10: ``iio6-ii%65`` vs. ``iio6 ii%65-iio6``
+    * m. 4 vs. 9: ``VI6`` vs. ``i(6) i``
+    * m. 5 vs. 8: ``V64`` vs. ``V43``
+    * m. 6: The alternative reading ``V65`` would be implausible in combination with the subsequent ``V6``.
+    * m. 7: To be consistent with the rest, beat 2 would require ``V(6)/iv V/iv``
+    * m. 9: ``#viio6`` possible is possible but is inconsistent with mm. 2, 5, 6 & 8 where no chord changes were
+      assumed on the second eighth.
+
+  Justification requested
+    * m. 2: why ``iv6 VI``?
+    * m. 4 & 7: What are the arguments for putting the phrase boundaries here (other than a ``V i`` progression)?
+    * m. 10: ``iio6 ii%65-iio6``: the alternative reading would result in redundant progression ``iio6 iio6``
+    * m. 11, ``iv7``: What are the reasons for considering ``D`` as chord root, not a mere transition?
+
+
+.. admonition:: Take-home message
+  :class: caution
+
+  The more consciously and consistently the analytical decisions are made and implemented, the stronger the annotator's
+  position vis-à-vis the reviewer(s). That's what is meant by "Consistency is watching you". But no one should feel
+  intimidated: Those people who joined our team of annotators took this coercion as an incentive to express their
+  own perspective on a piece as precisely as possible within the standard's expressive power. And some of them
+  reported happily that parts of their conceptual building became visible which had been hidden in their subconscious.
+
+OK, time to harness our expressive power to change some keys!

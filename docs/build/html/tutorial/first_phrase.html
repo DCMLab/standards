@@ -62,6 +62,8 @@
 <li class="toctree-l2"><a class="reference internal" href="first_label.html">The first label</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">The first phrase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="detail.html">Level of detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="localkey.html">Changing the local key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterpoint.html">Contrapuntal patterns</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../git/git.html">Version control with Git</a><ul>
@@ -108,7 +110,11 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">The first phrase</a></li>
+<li><a class="reference internal" href="#">The first phrase</a><ul>
+<li><a class="reference internal" href="#phrase-annotations">Phrase annotations</a></li>
+<li><a class="reference internal" href="#chord-syntax">Chord syntax</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -158,6 +164,8 @@
       
   <div class="section" id="the-first-phrase">
 <h1>The first phrase<a class="headerlink" href="#the-first-phrase" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="phrase-annotations">
+<h2>Phrase annotations<a class="headerlink" href="#phrase-annotations" title="Permalink to this headline">¶</a></h2>
 <p>The DCML standard includes a rudimentary form of phrase annotations using
 curly brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code>. They may stand alone or be the last character of a chord
 label.</p>
@@ -165,17 +173,20 @@ label.</p>
 example would actually start like this:</p>
 <div class="figure align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/phrase_01_beethoven.svg"><img alt="Annotated beginning of Beethoven's piano sonata no. 1" height="185" src="../_images/phrase_01_beethoven.svg" width="416" /></a>
-<p class="caption"><span class="caption-text">Annotated beginning of Beethoven’s piano sonata no. 1</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Beginning of Beethoven’s piano sonata no. 1 with phrase annotation</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>The closing bracket is put on the perceived structural ending of the musical
 phrase which is either followed by a small transitory ‘codetta’ leading up to
 the next phrase or coincides with the beginning of the next phrase (‘phrase
-interlocking’, <code class="docutils literal notranslate"><span class="pre">}{</span></code>). Finishing the Beethoven phrase we get:</p>
+interlocking’, <code class="docutils literal notranslate"><span class="pre">}{</span></code>). At the end of the Beethoven phrase we get:</p>
 <div class="figure align-default" id="id2">
 <img alt="First phrase of Beethoven's piano sonata no. 1 annotated" src="../_images/phrase_02_beethoven.svg" /><p class="caption"><span class="caption-text">First phrase of Beethoven’s piano sonata no. 1 annotated</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
-<p>Note how the <code class="docutils literal notranslate"><span class="pre">}</span></code> sits on beat 1, the structural ending of the sentence.</p>
-<p>The chord labels are achieved by simply typing the characters
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">}</span></code> sits on beat 1, the structural ending of the sentence.</p>
+</div>
+<div class="section" id="chord-syntax">
+<h2>Chord syntax<a class="headerlink" href="#chord-syntax" title="Permalink to this headline">¶</a></h2>
+<p>The remaining chord labels are achieved by simply typing the characters
 <code class="docutils literal notranslate"><span class="pre">V65</span> <span class="pre">i</span> <span class="pre">#viio6</span> <span class="pre">i6</span> <span class="pre">iio6</span> <span class="pre">V(4)}</span> <span class="pre">V</span></code>. Note how every label fully defines the chord
 type: Uppercase numerals express a major third, lowercase numerals a minor third,
 and diminished triads are indicated with <code class="docutils literal notranslate"><span class="pre">o</span></code>. Inverted triads are followed by
@@ -219,7 +230,7 @@ and diminished triads are indicated with <code class="docutils literal notransla
 </table>
 <p>The same principle follows for seventh chord types. Every seventh chord is distinguished by
 one out of <code class="docutils literal notranslate"><span class="pre">7</span></code>, <code class="docutils literal notranslate"><span class="pre">65</span></code> (not <code class="docutils literal notranslate"><span class="pre">56</span></code>), <code class="docutils literal notranslate"><span class="pre">43</span></code> (not <code class="docutils literal notranslate"><span class="pre">34</span></code>), or <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
-<div class="admonition-mnemonic-hook admonition">
+<div class="caution admonition">
 <p class="admonition-title">Mnemonic Hook</p>
 <p>Arabic numbers always occur in descending order.</p>
 </div>
@@ -254,29 +265,29 @@ one out of <code class="docutils literal notranslate"><span class="pre">7</span>
 <td><p>Diminished seventh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">vio7</span></code>, <code class="docutils literal notranslate"><span class="pre">#viio2</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>rn</p></td>
+<tr class="row-odd"><td><p>RN</p></td>
+<td><p>+</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Augmented minor seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V+7</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>rn</p></td>
 <td><p>%</p></td>
 <td><p>7, 65, 43, 2</p></td>
 <td><p>Half-diminished seventh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">vii%7</span></code>, <code class="docutils literal notranslate"><span class="pre">#vi%43</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>RN</p></td>
+<tr class="row-odd"><td><p>RN</p></td>
 <td><p>M</p></td>
 <td><p>7, 65, 43, 2</p></td>
 <td><p>Major seventh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">IVM7</span></code>, <code class="docutils literal notranslate"><span class="pre">IIIM65</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>rn</p></td>
+<tr class="row-even"><td><p>rn</p></td>
 <td><p>M</p></td>
 <td><p>7, 65, 43, 2</p></td>
 <td><p>Minor major seventh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">iiiM7</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>RN</p></td>
-<td><p>+</p></td>
-<td><p>7, 65, 43, 2</p></td>
-<td><p>Augmented minor seventh</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">V+7</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>RN</p></td>
 <td><p>+M</p></td>
@@ -333,6 +344,7 @@ change your mind? In the latter case, please create an alternative set of annota
 comparison.</p>
 <p>Once you’re settled, let’s take it to <a class="reference internal" href="detail.html"><span class="doc">the next section</span></a> to walk through some of the possibilities and
 their implications.</p>
+</div>
 </div>
 </div>
 

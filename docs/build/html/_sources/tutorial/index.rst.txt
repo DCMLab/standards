@@ -8,3 +8,5 @@ Annotation Tutorial
       first_label
       first_phrase
       detail
+      localkey
+      counterpoint

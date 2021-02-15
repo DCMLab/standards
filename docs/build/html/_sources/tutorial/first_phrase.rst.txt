@@ -2,6 +2,9 @@
 The first phrase
 ****************
 
+Phrase annotations
+==================
+
 The DCML standard includes a rudimentary form of phrase annotations using
 curly brackets ``{}``. They may stand alone or be the last character of a chord
 label.
@@ -13,21 +16,24 @@ example would actually start like this:
   :alt: Annotated beginning of Beethoven's piano sonata no. 1
   :scale: 30 %
 
-  Annotated beginning of Beethoven's piano sonata no. 1
+  Beginning of Beethoven's piano sonata no. 1 with phrase annotation
 
 The closing bracket is put on the perceived structural ending of the musical
 phrase which is either followed by a small transitory 'codetta' leading up to
 the next phrase or coincides with the beginning of the next phrase ('phrase
-interlocking', ``}{``). Finishing the Beethoven phrase we get:
+interlocking', ``}{``). At the end of the Beethoven phrase we get:
 
 .. figure:: img/phrase_02_beethoven.svg
   :alt: First phrase of Beethoven's piano sonata no. 1 annotated
 
   First phrase of Beethoven's piano sonata no. 1 annotated
 
-Note how the ``}`` sits on beat 1, the structural ending of the sentence.
+Note that the ``}`` sits on beat 1, the structural ending of the sentence.
 
-The chord labels are achieved by simply typing the characters
+Chord syntax
+============
+
+The remaining chord labels are achieved by simply typing the characters
 ``V65 i #viio6 i6 iio6 V(4)} V``. Note how every label fully defines the chord
 type: Uppercase numerals express a major third, lowercase numerals a minor third,
 and diminished triads are indicated with ``o``. Inverted triads are followed by
@@ -55,6 +61,7 @@ The same principle follows for seventh chord types. Every seventh chord is disti
 one out of ``7``, ``65`` (not ``56``), ``43`` (not ``34``), or ``2``.
 
 .. admonition:: Mnemonic Hook
+  :class: caution
 
   Arabic numbers always occur in descending order.
 
@@ -75,13 +82,13 @@ In addition to the types based on the four triads, there are the special symbols
   +------+------+--------------+-------------------------+-----------------------+
   | rn   | o    | 7, 65, 43, 2 | Diminished seventh      | ``vio7``, ``#viio2``  |
   +------+------+--------------+-------------------------+-----------------------+
+  | RN   | \+   | 7, 65, 43, 2 | Augmented minor seventh | ``V+7``               |
+  +------+------+--------------+-------------------------+-----------------------+
   | rn   | \%   | 7, 65, 43, 2 | Half-diminished seventh | ``vii%7``, ``#vi%43`` |
   +------+------+--------------+-------------------------+-----------------------+
   | RN   | M    | 7, 65, 43, 2 | Major seventh           | ``IVM7``, ``IIIM65``  |
   +------+------+--------------+-------------------------+-----------------------+
   | rn   | M    | 7, 65, 43, 2 | Minor major seventh     | ``iiiM7``             |
-  +------+------+--------------+-------------------------+-----------------------+
-  | RN   | \+   | 7, 65, 43, 2 | Augmented minor seventh | ``V+7``               |
   +------+------+--------------+-------------------------+-----------------------+
   | RN   | +M   | 7, 65, 43, 2 | Augmented major seventh | ``I+M7``              |
   +------+------+--------------+-------------------------+-----------------------+

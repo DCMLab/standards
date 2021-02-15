@@ -36,7 +36,7 @@ extensions = [
     'sphinx_togglebutton',
 ]
 # https://sphinx-togglebutton.readthedocs.io/en/latest/
-togglebutton_hint = "Show solution"
+togglebutton_hint = "Show answer"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -17,7 +17,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Version control with Git" href="../git/git.html" />
+    <link rel="next" title="Changing the local key" href="localkey.html" />
     <link rel="prev" title="The first phrase" href="first_phrase.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -62,6 +62,8 @@
 <li class="toctree-l2"><a class="reference internal" href="first_label.html">The first label</a></li>
 <li class="toctree-l2"><a class="reference internal" href="first_phrase.html">The first phrase</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Level of detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="localkey.html">Changing the local key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="counterpoint.html">Contrapuntal patterns</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../git/git.html">Version control with Git</a><ul>
@@ -111,7 +113,7 @@
 <li><a class="reference internal" href="#">Level of detail</a><ul>
 <li><a class="reference internal" href="#solution-1-coarse-grained">Solution 1: Coarse-grained</a></li>
 <li><a class="reference internal" href="#solution-2-fine-grained">Solution 2: Fine-grained</a></li>
-<li><a class="reference internal" href="#solution-3-a-bit-over-the-top">Solution 3: A bit over the top</a></li>
+<li><a class="reference internal" href="#solution-3-indicating-replaced-chord-tones">Solution 3: Indicating replaced chord tones</a></li>
 </ul>
 </li>
 </ul>
@@ -127,7 +129,7 @@
     </a>
   </li>
   <li>
-    <a href="../git/git.html" title="Next Chapter: Version control with Git"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Version contr... &raquo;</span>
+    <a href="localkey.html" title="Next Chapter: Changing the local key"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Changing the ... &raquo;</span>
     </a>
   </li>
               
@@ -193,8 +195,8 @@ we do annotate non-chord tones such as suspensions, retardations, additions (see
 <dd class="field-even"><p>In m. 2, the new harmony is mainly determined by the pitches F and A. Even if an annotator has a strong opinion,
 it is a good idea to express the indeterminacy by writing both possibilities in one label, separated by a dash,
 <code class="docutils literal notranslate"><span class="pre">VI-iv6</span></code>. A label can include only one alternative (i.e., one dash), and the annotator puts the solution they prefer
-in the front. In the present case, don’t worry about the funny dash placement <a class="reference internal" href="../_images/funny_dash.png"><img alt="funny_dash" src="../_images/funny_dash.png" style="width: 36.3px; height: 19.2px;" /></a> when writing
-<code class="docutils literal notranslate"><span class="pre">iv6-VI</span></code>.</p>
+in the front. The solution to put <code class="docutils literal notranslate"><span class="pre">VI</span></code> in front probably lies in the absence of a bass figure.
+(In the present case, don’t worry about the funny dash placement <a class="reference internal" href="../_images/funny_dash.png"><img alt="funny_dash" src="../_images/funny_dash.png" style="width: 36.3px; height: 19.2px;" /></a> when writing <code class="docutils literal notranslate"><span class="pre">iv6-VI</span></code>.)</p>
 </dd>
 <dt class="field-odd">Phrasing</dt>
 <dd class="field-odd"><p>One’s interpretation of the harmonic pace might correlate with one’s perception of musical phrases. The analysis here
@@ -247,8 +249,8 @@ not surprising that a more fine-grained solution exists which highlights these (
 annotation standard’s highest maxim.</p>
 </div>
 </div>
-<div class="section" id="solution-3-a-bit-over-the-top">
-<h2>Solution 3: A bit over the top<a class="headerlink" href="#solution-3-a-bit-over-the-top" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-3-indicating-replaced-chord-tones">
+<h2>Solution 3: Indicating replaced chord tones<a class="headerlink" href="#solution-3-indicating-replaced-chord-tones" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/detail_03_corelli_very.svg"><img alt="Too fine-grained analysis of Corelli op. 1/4, II. Adagio" height="473" src="../_images/detail_03_corelli_very.svg" width="813" /></a>
 <p class="caption"><span class="caption-text">Too fine-grained and partially inconsistent analysis of Corelli op. 1/4, II. Adagio.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
@@ -256,7 +258,7 @@ annotation standard’s highest maxim.</p>
 <p>The fictional annotator behind this analysis had just learned about the chord alteration syntax using rounded
 brackets <code class="docutils literal notranslate"><span class="pre">()</span></code> and wanted to use it everywhere! Let’s say we leave them the pleasure for now to not steal their
 thunder, but consistency is nevertheless indispensable. Before you try to spot some of the inconsistencies, it will be
-useful for you to understand to how the chord alterations work, so you can empathize with this greenhorn.</p>
+useful for you to understand how the chord alterations work, so you can empathize with this greenhorn.</p>
 <ul class="simple">
 <li><p>If an upper neighbour of one of the three chord tones <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code> is present within the parentheses,
 e.g. <code class="docutils literal notranslate"><span class="pre">V(2)</span></code>, <code class="docutils literal notranslate"><span class="pre">V(4)</span></code>, <code class="docutils literal notranslate"><span class="pre">V(6)</span></code>, it means that the respective chord tone is replaced (the fourth suspension
@@ -265,59 +267,92 @@ we had seen already).</p></li>
 neighbour (see the 7-6 suspension in all three solutions, m. 8).</p></li>
 <li><p>If the actual chord tone is not replaced, but the upper neighbour is instead added, it is preceded by a <code class="docutils literal notranslate"><span class="pre">+</span></code>,
 as is the case in <code class="docutils literal notranslate"><span class="pre">V6(+6)</span></code> in m. 6.</p></li>
-<li><p>The upper neighbours can occur simultaneously (always in descending order) and always represent the interval
+<li><p>The upper neighbours can occur simultaneously (always in descending order, e.g. <code class="docutils literal notranslate"><span class="pre">V(42)</span></code> in m. 5) and always represent the interval
 corresponding to the scale. In other words,</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">iv(4)</span></code> translates to the pitches <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">B</span> <span class="pre">C</span></code> in a C major context but in a C minor context it means <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">C</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iv(4)</span></code> translates to the pitches <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">B</span> <span class="pre">C</span></code> in a C major context but to <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">C</span></code> in a C minor context;</p></li>
 <li><p>to express <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">C</span></code> in a C major context we would have to write <code class="docutils literal notranslate"><span class="pre">iv(b4)</span></code> or <code class="docutils literal notranslate"><span class="pre">IV(b4)</span></code> accordingly;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bII6</span></code> translates to <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Ab</span> <span class="pre">Db</span></code> in both C major and minor, but <code class="docutils literal notranslate"><span class="pre">bII6(62)</span></code> is <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">B</span> <span class="pre">E</span></code> in C major yet
 <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">Eb</span></code> in C minor;</p></li>
-<li><p>on the other hand, the same suspension chord <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">Eb</span></code> in a C major context would need to be expressed as
-<code class="docutils literal notranslate"><span class="pre">bII(b6b2)</span></code>.</p></li>
+<li><p>in contrast, the same suspension chord <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">Eb</span></code> in a C major context would need to be expressed as
+<code class="docutils literal notranslate"><span class="pre">bII6(b6b2)</span></code> or <code class="docutils literal notranslate"><span class="pre">ii6(b6b2)</span></code>, depending on the context.</p></li>
 </ul>
 </li>
 </ul>
-<p>Can you feel the joy that drove our fictitious annotator to use rounded brackets that frequently here? So let’s show
-them some indulgence - but only where the analytical decisions are traceable and applied consistently.</p>
+<p>Can you feel the joy that drove our fictitious annotator to use rounded brackets so frequently here? So let’s show
+them some indulgence—but only where the analytical decisions are traceable and applied consistently.</p>
 <div class="toggle admonition">
-<p class="admonition-title">Spot as many places as possible where the annotations are inconsistent or a bit over the top.</p>
-<ul class="simple">
+<p class="admonition-title">Review Solution 3 and spot as many places as possible where the annotations are inconsistent or would require justification</p>
+<p>When DCML annotations are reviewed, the most important task for the reviewer is to spot inconsistencies. When it
+comes to analytical decisions that the reviewer does not follow, they ask the annotators for a justification
+and together they come up with a solution that is satisfying for both. So let’s start with a couple of things that are
+consistent:</p>
+<dl class="simple">
+<dt>Consistencies</dt><dd><ul class="simple">
+<li><p>The reviewer was consistent in the decision to assume a 4/4 harmonic rhythm to a point that, where necessary,
+the harmony on the third eighth of the descending figures was interpreted as suspension chord resolving on the
+following eighth (mm. 3, 5, 6, 8). (Consider, however, the comment on mm. 4 vs. 9 and on m. 7 below.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">G#</span></code> and <code class="docutils literal notranslate"><span class="pre">C#</span></code> have been interpreted as thirds of dominant chords (mm. 2 &amp; 9) except where hindered by a
+pedal note (mm. 1, 2 &amp; 10).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ii%65</span></code> was consistently added as a possible realization of bass <code class="docutils literal notranslate"><span class="pre">D</span></code> + figure <code class="docutils literal notranslate"><span class="pre">6</span></code> (however, consider the
+comment on m. 10 below).</p></li>
+</ul>
+</dd>
+<dt>Inconsistencies</dt><dd><ul class="simple">
 <li><ol class="loweralpha simple" start="13">
-<li><p>2: <code class="docutils literal notranslate"><span class="pre">iv6</span> <span class="pre">VI</span></code> not justified</p></li>
-</ol>
-</li>
-<li><p>m. 4 &amp; 10: <code class="docutils literal notranslate"><span class="pre">iio6-ii%65</span></code> vs. <code class="docutils literal notranslate"><span class="pre">iio6</span> <span class="pre">ii%65-iio6</span></code> (alternative reading would result in redundant progression
-<code class="docutils literal notranslate"><span class="pre">iio6</span> <span class="pre">iio6</span></code>)</p></li>
-<li><ol class="loweralpha simple" start="13">
-<li><p>4 &amp; 7: phrase boundaries?</p></li>
-</ol>
-</li>
-<li><ol class="loweralpha simple" start="13">
-<li><p>4 &amp; 9: <code class="docutils literal notranslate"><span class="pre">VI6</span></code> vs. <code class="docutils literal notranslate"><span class="pre">i(6)</span> <span class="pre">i</span></code></p></li>
-</ol>
-</li>
-<li><ol class="loweralpha simple" start="13">
-<li><p>5 &amp; 8: <code class="docutils literal notranslate"><span class="pre">V64</span></code> vs. <code class="docutils literal notranslate"><span class="pre">V43</span></code></p></li>
-</ol>
-</li>
-<li><ol class="loweralpha simple" start="13">
-<li><p>6: <code class="docutils literal notranslate"><span class="pre">V65</span></code> inkonsistent</p></li>
+<li><p>4 vs. 10: <code class="docutils literal notranslate"><span class="pre">iio6-ii%65</span></code> vs. <code class="docutils literal notranslate"><span class="pre">iio6</span> <span class="pre">ii%65-iio6</span></code></p></li>
 </ol>
 </li>
 <li><ol class="loweralpha simple" start="13">
-<li><p>7: <code class="docutils literal notranslate"><span class="pre">V(6)/iv</span> <span class="pre">V/iv</span></code></p></li>
+<li><p>4 vs. 9: <code class="docutils literal notranslate"><span class="pre">VI6</span></code> vs. <code class="docutils literal notranslate"><span class="pre">i(6)</span> <span class="pre">i</span></code></p></li>
 </ol>
 </li>
 <li><ol class="loweralpha simple" start="13">
-<li><p>9: <code class="docutils literal notranslate"><span class="pre">#viio6</span></code> possible but plausible?</p></li>
+<li><p>5 vs. 8: <code class="docutils literal notranslate"><span class="pre">V64</span></code> vs. <code class="docutils literal notranslate"><span class="pre">V43</span></code></p></li>
 </ol>
 </li>
 <li><ol class="loweralpha simple" start="13">
-<li><p>11: <code class="docutils literal notranslate"><span class="pre">iv7</span></code> D root, not transition?</p></li>
+<li><p>6: The alternative reading <code class="docutils literal notranslate"><span class="pre">V65</span></code> would be implausible in combination with the subsequent <code class="docutils literal notranslate"><span class="pre">V6</span></code>.</p></li>
+</ol>
+</li>
+<li><ol class="loweralpha simple" start="13">
+<li><p>7: To be consistent with the rest, beat 2 would require <code class="docutils literal notranslate"><span class="pre">V(6)/iv</span> <span class="pre">V/iv</span></code></p></li>
+</ol>
+</li>
+<li><p>m. 9: <code class="docutils literal notranslate"><span class="pre">#viio6</span></code> possible is possible but is inconsistent with mm. 2, 5, 6 &amp; 8 where no chord changes were
+assumed on the second eighth.</p></li>
+</ul>
+</dd>
+<dt>Justification requested</dt><dd><ul class="simple">
+<li><ol class="loweralpha simple" start="13">
+<li><p>2: why <code class="docutils literal notranslate"><span class="pre">iv6</span> <span class="pre">VI</span></code>?</p></li>
+</ol>
+</li>
+<li><ol class="loweralpha simple" start="13">
+<li><p>4 &amp; 7: What are the arguments for putting the phrase boundaries here (other than a <code class="docutils literal notranslate"><span class="pre">V</span> <span class="pre">i</span></code> progression)?</p></li>
+</ol>
+</li>
+<li><ol class="loweralpha simple" start="13">
+<li><p>10: <code class="docutils literal notranslate"><span class="pre">iio6</span> <span class="pre">ii%65-iio6</span></code>: the alternative reading would result in redundant progression <code class="docutils literal notranslate"><span class="pre">iio6</span> <span class="pre">iio6</span></code></p></li>
+</ol>
+</li>
+<li><ol class="loweralpha simple" start="13">
+<li><p>11, <code class="docutils literal notranslate"><span class="pre">iv7</span></code>: What are the reasons for considering <code class="docutils literal notranslate"><span class="pre">D</span></code> as chord root, not a mere transition?</p></li>
 </ol>
 </li>
 </ul>
+</dd>
+</dl>
 </div>
+<div class="caution admonition">
+<p class="admonition-title">Take-home message</p>
+<p>The more consciously and consistently the analytical decisions are made and implemented, the stronger the annotator’s
+position vis-à-vis the reviewer(s). That’s what is meant by “Consistency is watching you”. But no one should feel
+intimidated: Those people who joined our team of annotators took this coercion as an incentive to express their
+own perspective on a piece as precisely as possible within the standard’s expressive power. And some of them
+reported happily that parts of their conceptual building became visible which had been hidden in their subconscious.</p>
+</div>
+<p>OK, time to harness our expressive power to change some keys!</p>
 </div>
 </div>
 
