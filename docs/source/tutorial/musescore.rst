@@ -92,7 +92,7 @@ can start writing Roman numerals, skipping from note to note using ``[SPACE]``.
 Keyboard shortcuts
 ------------------
 
-Shortcuts are there mainly to impress your friends but they also save you a lot
+Shortcuts are mainly there to impress your friends but they also save you a lot
 of time. Therefore this tutorial introduces the most important ones where,
 depending on your keyboard, the keys have different names. We use the following
 placeholders:
@@ -128,9 +128,11 @@ you can enter the Roman numeral and
 * go to the next note pressing ``[SPACE]``;
 * go to the next measure pressing ``[TAB]``;
 * move the cursor by a particular note value pressing
+
   * ``[C]+3`` for a sixteenth note;
   * ``[C]+4`` for an eighth note;
   * etc. (same numbers as when entering notes)
+
 * go to previous note (``[S]+[SPACE]``) or previous measure ``[S]+[TAB]``
 
 Start annotation tutorial

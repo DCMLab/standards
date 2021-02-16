@@ -88,7 +88,7 @@ Let's have a look at the differences.
 
   On the more abstract level seen in Solution 1 the predominant root progression is by falling fifth (``i iv`` and
   ``ii V i``). Theorists know that a scaffold of falling fifths affords movement by falling thirds and it is therefore
-  not surprising that a more fine-grained solution exists which highlights these (``i VI iv ii [#viio] V [III] i``).
+  not surprising that a more fine-grained solution exists which highlights these (``i VI iv iio [#viio] V [III] i``).
 
 .. admonition:: Consistency is watching you
   :class: danger

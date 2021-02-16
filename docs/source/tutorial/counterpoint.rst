@@ -2,6 +2,9 @@
 Contrapuntal patterns
 *********************
 
+Introduction
+------------
+
 Roman numerals describe first and foremost vertical structure but we have already seen examples how the chord
 alteration syntax with parentheses ``()`` can be used to describe horizontal, melodic, contrapuntal phenomena
 such as a fourth suspension or a ``7-6`` bass figure. Here we are going to have a look how the DCML harmonic
@@ -28,7 +31,7 @@ let's quickly brush up the basic principle.
     * If taken literally, the figures ``6-5`` in m. 10 translate to ``V6/V viio/V`` or, more plausibly,
       ``V6/V V65/V`` since we can assume notes to keep sounding. This has been condensed into one label here.
     * Several solutions are possible for beat 4.5 of m. 10 depending on what you consider to be a proper or a
-      passing chord. Depending on what you would write in a harmonic reduction other solutions could be
+      passing chord. According to what you would write in a harmonic reduction other solutions could be
       ``I6 vi``, ``I6 V7 vi``, or ``I6 IV V7 vi``.
     * The resolution of the fourth suspension in m. 11 was put on beat 2.5 reflecting both the harmonic rhythm
       and the placement of the figure ``3``, and interpreting the belated ``E`` in Vl. 2 as rhythmic ornament.
@@ -221,5 +224,4 @@ interpretations in some cases, we generally stick to the aforementioned conventi
 teaching students all inversions of ``I ii7 V7 I``? ;⚫︎) ]
 
 
-
-Now let's have a look at the remaining features of the DCML standard in conjunction with some musical special cases.
+**Now let's have a look at the remaining features of the DCML standard in conjunction with some special cases.**

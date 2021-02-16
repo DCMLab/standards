@@ -17,7 +17,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Version control with Git" href="../git/git.html" />
+    <link rel="next" title="Some more features" href="features.html" />
     <link rel="prev" title="Changing the local key" href="localkey.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -64,6 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="detail.html">Level of detail</a></li>
 <li class="toctree-l2"><a class="reference internal" href="localkey.html">Changing the local key</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Contrapuntal patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html">Some more features</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../git/git.html">Version control with Git</a><ul>
@@ -111,14 +112,17 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Contrapuntal patterns</a><ul>
-<li><a class="reference internal" href="#a-more-difficult-case">A more difficult case</a><ul>
-<li><a class="reference internal" href="#solution-1">Solution 1</a></li>
-<li><a class="reference internal" href="#solution-2">Solution 2</a></li>
-<li><a class="reference internal" href="#solution-3">Solution 3</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#a-more-difficult-case">A more difficult case</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#solution-1">Solution 1</a></li>
+<li><a class="reference internal" href="#solution-2">Solution 2</a></li>
+<li><a class="reference internal" href="#solution-3">Solution 3</a><ul>
 <li><a class="reference internal" href="#suspensions-versus-seventh-chords"><code class="docutils literal notranslate"><span class="pre">7-6</span></code> suspensions versus seventh chords</a></li>
 <li><a class="reference internal" href="#analytic-conventions">Analytic conventions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -134,7 +138,7 @@
     </a>
   </li>
   <li>
-    <a href="../git/git.html" title="Next Chapter: Version control with Git"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Version contr... &raquo;</span>
+    <a href="features.html" title="Next Chapter: Some more features"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Some more features &raquo;</span>
     </a>
   </li>
               
@@ -170,6 +174,8 @@
       
   <div class="section" id="contrapuntal-patterns">
 <h1>Contrapuntal patterns<a class="headerlink" href="#contrapuntal-patterns" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Roman numerals describe first and foremost vertical structure but we have already seen examples how the chord
 alteration syntax with parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> can be used to describe horizontal, melodic, contrapuntal phenomena
 such as a fourth suspension or a <code class="docutils literal notranslate"><span class="pre">7-6</span></code> bass figure. Here we are going to have a look how the DCML harmonic
@@ -191,7 +197,7 @@ the literal repetition in the music requires the exact same annotation.</p>
 <li><p>If taken literally, the figures <code class="docutils literal notranslate"><span class="pre">6-5</span></code> in m. 10 translate to <code class="docutils literal notranslate"><span class="pre">V6/V</span> <span class="pre">viio/V</span></code> or, more plausibly,
 <code class="docutils literal notranslate"><span class="pre">V6/V</span> <span class="pre">V65/V</span></code> since we can assume notes to keep sounding. This has been condensed into one label here.</p></li>
 <li><p>Several solutions are possible for beat 4.5 of m. 10 depending on what you consider to be a proper or a
-passing chord. Depending on what you would write in a harmonic reduction other solutions could be
+passing chord. According to what you would write in a harmonic reduction other solutions could be
 <code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">vi</span></code>, <code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">V7</span> <span class="pre">vi</span></code>, or <code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">IV</span> <span class="pre">V7</span> <span class="pre">vi</span></code>.</p></li>
 <li><p>The resolution of the fourth suspension in m. 11 was put on beat 2.5 reflecting both the harmonic rhythm
 and the placement of the figure <code class="docutils literal notranslate"><span class="pre">3</span></code>, and interpreting the belated <code class="docutils literal notranslate"><span class="pre">E</span></code> in Vl. 2 as rhythmic ornament.</p></li>
@@ -202,12 +208,14 @@ and the placement of the figure <code class="docutils literal notranslate"><span
 suspensions of the root. The principal means for expressing contrapuntal similarity is an analogously similar
 syntactical pattern in the annotations. Let’s look at a more tricky example now.</p>
 <div class="section" id="a-more-difficult-case">
-<h2>A more difficult case<a class="headerlink" href="#a-more-difficult-case" title="Permalink to this headline">¶</a></h2>
+<h3>A more difficult case<a class="headerlink" href="#a-more-difficult-case" title="Permalink to this headline">¶</a></h3>
 <p>Let’s now finalize <code class="docutils literal notranslate"><span class="pre">corelli_op01n01a.mscx</span></code> by going through three different solutions for mm. 7 &amp; 8. The goal is
 once more to capture the <code class="docutils literal notranslate"><span class="pre">2-3</span></code> dissonance chain. Another question we need to answer in parallel is where we
 change the local key to <code class="docutils literal notranslate"><span class="pre">vi</span></code>.</p>
+</div>
+</div>
 <div class="section" id="solution-1">
-<h3>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this headline">¶</a></h3>
+<h2>Solution 1<a class="headerlink" href="#solution-1" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/counterpoint_02a_corelli.svg"><img alt="First movement of Corelli op. 1/1, mm. 6-9, annotated" height="333" src="../_images/counterpoint_02a_corelli.svg" width="718" /></a>
 <p class="caption"><span class="caption-text">First movement of Corelli op. 1/1, mm. 6-9, possible solution</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
@@ -225,7 +233,7 @@ a cadential six-four chord where the fourth is suspended by a fifth.</p></li>
 <p>Let as look at the second solution which tries to address the second of the two points.</p>
 </div>
 <div class="section" id="solution-2">
-<h3>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">¶</a></h3>
+<h2>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/counterpoint_02b_corelli.svg"><img alt="First movement of Corelli op. 1/1, mm. 6-9, annotated" height="333" src="../_images/counterpoint_02b_corelli.svg" width="718" /></a>
 <p class="caption"><span class="caption-text">First movement of Corelli op. 1/1, mm. 6-9, possible solution</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
@@ -250,7 +258,7 @@ two chords of m. 7 “as one hears it” in the old key (although the annotator 
 local key by giving the alternatives <code class="docutils literal notranslate"><span class="pre">viio6-iio6/vi</span></code>). So let’s try to fix this, shall we?</p>
 </div>
 <div class="section" id="solution-3">
-<h3>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this headline">¶</a></h3>
+<h2>Solution 3<a class="headerlink" href="#solution-3" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/counterpoint_02c_corelli.svg"><img alt="First movement of Corelli op. 1/1, mm. 6-9, annotated" height="335" src="../_images/counterpoint_02c_corelli.svg" width="723" /></a>
 <p class="caption"><span class="caption-text">First movement of Corelli op. 1/1, mm. 6-9, possible solution</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
@@ -260,10 +268,8 @@ while keeping the characteristic <code class="docutils literal notranslate"><spa
 <code class="docutils literal notranslate"><span class="pre">7-6</span></code> chain (which is, of course, the inversion of <code class="docutils literal notranslate"><span class="pre">2-3</span></code>) at the beginning of this section: In both cases, the
 main characteristic as a chain of suspensions has been explicitly expressed by annotating suspension and resolution
 over an identical root, and even in the frequent case that the bass progresses in the moment of resolution.</p>
-</div>
-</div>
 <div class="section" id="suspensions-versus-seventh-chords">
-<h2><code class="docutils literal notranslate"><span class="pre">7-6</span></code> suspensions versus seventh chords<a class="headerlink" href="#suspensions-versus-seventh-chords" title="Permalink to this headline">¶</a></h2>
+<h3><code class="docutils literal notranslate"><span class="pre">7-6</span></code> suspensions versus seventh chords<a class="headerlink" href="#suspensions-versus-seventh-chords" title="Permalink to this headline">¶</a></h3>
 <p>One could argue that Solution 1 is better because it shows the continuation of the sequential logic up to the
 <code class="docutils literal notranslate"><span class="pre">ii%65</span></code> chord. The argument points to a fundamental problem of the semantic difference between</p>
 <ul class="simple">
@@ -336,7 +342,7 @@ both perspectives:</p>
 </div>
 </div>
 <div class="section" id="analytic-conventions">
-<h2>Analytic conventions<a class="headerlink" href="#analytic-conventions" title="Permalink to this headline">¶</a></h2>
+<h3>Analytic conventions<a class="headerlink" href="#analytic-conventions" title="Permalink to this headline">¶</a></h3>
 <p>The above-mentioned decision problem arises in many cases where voice-leading phenomena are to be taken into account,
 for example the “5-6 movement”. In the examples we have seen so far, this has been consistently encoded in the form
 <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">VI6</span></code>, <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">vi6</span></code>, <code class="docutils literal notranslate"><span class="pre">IV</span> <span class="pre">ii6</span></code>, <code class="docutils literal notranslate"><span class="pre">iv</span> <span class="pre">iio6</span></code> etc.
@@ -357,7 +363,8 @@ we have in mind when realizing a <em>basso che scende legato</em> on a keyboard 
 as <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">#viio7(2)</span> <span class="pre">#viio7</span> <span class="pre">i</span></code> or <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">V65(42)</span> <span class="pre">V65</span> <span class="pre">I</span></code>. Although the latter two may definitely be legitimate
 interpretations in some cases, we generally stick to the aforementioned convention. [Otherwise, why would we be
 teaching students all inversions of <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">ii7</span> <span class="pre">V7</span> <span class="pre">I</span></code>? ;⚫︎) ]</p>
-<p>Now let’s have a look at the remaining features of the DCML standard in conjunction with some musical special cases.</p>
+<p><strong>Now let’s have a look at the remaining features of the DCML standard in conjunction with some special cases.</strong></p>
+</div>
 </div>
 </div>
 
