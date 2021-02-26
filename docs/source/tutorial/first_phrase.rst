@@ -30,6 +30,39 @@ interlocking', ``}{``). At the end of the Beethoven phrase we get:
 
 Note that the ``}`` sits on beat 1, the structural ending of the sentence.
 
+Cadence Labels
+==============
+
+Every time you spot a complete or attempted cadence, please mark its ultima with one of these five cadence labels,
+separated from the chord label by a pipe ``|``:
+
+.. table:: Triads. <NA> = empty; RN = uppercase numeral; rn = lowercase numeral
+  :width: 70 %
+  :widths: auto
+  :align: center
+
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | Label | Cadence type                | Usage                                                                               |
+  +=======+=============================+=====================================================================================+
+  | PAC   | Perfect authentic cadence   | Bass and upper voice closing on ^1                                                  |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | IAC   | Imperfect authentic cadence | Bass or upper voice not closing on ^1                                               |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | HC    | Half cadence                | Closing on V                                                                        |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | DC    | Deceptive cadence           | Ultima not a tonic chord                                                            |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | EC    | Evaded cadence              | Cadential goal is cut-off from the previous progression and groups forward          |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | PC    | Plagal cadence              | cadential ending with ^4 - ^1 in the bass (usually not applicable to 18th-c. music) |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+
+As becomes clear in the example above, in case the ultima is suspended, the cadence label marks the moment of its
+completion, whereas its structural position remains marked by the ``}`` on beat 1. If cadence label and
+structural phrase ending occurs, ``}`` goes last (e.g. ``i|PAC}``).
+
+
+
 Chord syntax
 ============
 

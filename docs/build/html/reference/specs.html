@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Specifications &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Annotation Tutorial" href="../tutorial/index.html" />
+    <link rel="prev" title="Questions &amp; Examples" href="examples.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          DCML Guidelines</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Other pages <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Annotation Standard Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#the-syntax">The syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#summary-of-the-harmony-annotation-standard">Summary of the Harmony Annotation Standard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#phrase-structure">Phrase Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#figured-bass">Figured Bass</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-being-encoded">What is being encoded?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-processing">Feature Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#missing-features">Missing Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Annotation Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/musescore.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/first_label.html">The first label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/first_phrase.html">The first phrase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/detail.html">Level of detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/localkey.html">Changing the local key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/counterpoint.html">Contrapuntal patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/features.html">Some more features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git.html">Version control with Git</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#installing-git">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#cloning-a-repository-from-github">Cloning a Repository from GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#selecting-the-right-branch">Selecting the right Branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-repository">Applying Changes to the Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#uploading-changes-to-github">Uploading Changes to GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-origin-directly">Applying Changes to the Origin Directly</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">This Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Technical Specifications</a><ul>
+<li><a class="reference internal" href="#what-is-being-encoded">What is being encoded?</a><ul>
+<li><a class="reference internal" href="#segmentations">Segmentations</a></li>
+<li><a class="reference internal" href="#timestamps">Timestamps</a><ul>
+<li><a class="reference internal" href="#floating-point-timestamps">Floating point timestamps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-regex-regular-expression">The regEx (Regular Expression)</a><ul>
+<li><a class="reference internal" href="#fetching-and-compiling-the-regex">Fetching and Compiling the regEx</a></li>
+<li><a class="reference internal" href="#structure-of-the-regex">Structure of the regEx</a><ul>
+<li><a class="reference internal" href="#structure-of-the-harmony-labels">Structure of the Harmony Labels</a></li>
+<li><a class="reference internal" href="#structure-of-the-phrase-labels">Structure of the Phrase Labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#feature-processing">Feature Processing</a><ul>
+<li><a class="reference internal" href="#splitting-the-labels">Splitting the Labels</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#missing-features">Missing Features</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="examples.html" title="Previous Chapter: Questions & Examples"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Questions & Examples</span>
+    </a>
+  </li>
+  <li>
+    <a href="../tutorial/index.html" title="Next Chapter: Annotation Tutorial"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Annotation Tutorial &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/reference/specs.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="technical-specifications">
+<h1>Technical Specifications<a class="headerlink" href="#technical-specifications" title="Permalink to this headline">¶</a></h1>
+<p>These specs fulfill at least two purposes:</p>
+<ul class="simple">
+<li><p>Keeping track of what the DCML harmony labels express</p></li>
+<li><p>Being a resource for researchers and developers who want to interact with them</p></li>
+</ul>
+<p>This way, the annotation standard’s current limitations become transparent
+and everyone who wants to help improving them can be on the same page. The
+current state of the corresponding discussions can be seen in this repo’s
+<a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a>.</p>
+<div class="section" id="what-is-being-encoded">
+<h2>What is being encoded?<a class="headerlink" href="#what-is-being-encoded" title="Permalink to this headline">¶</a></h2>
+<p>This section elicits the general principles and assumptions underlying the
+DCML harmony annotation standard.</p>
+<div class="section" id="segmentations">
+<h3>Segmentations<a class="headerlink" href="#segmentations" title="Permalink to this headline">¶</a></h3>
+<p>DCML harmony labels represent a score segmentation on various levels:</p>
+<ul class="simple">
+<li><p>key areas (tonalities)</p></li>
+<li><p>harmonic segments</p></li>
+<li><p>chord and non-chord tones are distinguished from ornaments</p></li>
+</ul>
+<p>The annotations follow the basic principle that a key or a harmony begins at the
+timestamp that the designating label is attached to and stays effective up to
+the subsequent change (half-open intervals). Following this principle</p>
+<ul class="simple">
+<li><p>the <strong>key</strong> is defined for every harmony as long as the first harmony label
+comes with information about its key;</p></li>
+<li><p>from the first harmony label onwards, the beginning of every event falls
+into exactly one <strong>harmonic segment</strong>.</p></li>
+</ul>
+<p>By <strong>key</strong> we understand an ordered set of unique tonal pitch classes (a
+<strong>scale</strong>) of which
+we call the first one <strong>root</strong> (<cite>tonic, home, one, I, 1, (relative) DO</cite>,
+etc.). The annotation standard is an expression of the basic assumption that
+the music to which it is being applied is hierarchically organised ‘around’
+the root. This is expressed through numbering the key’s ordered pitch classes,
+its scale degrees, using either Roman or Arabic numerals, depending on the
+context. Tones which are not part of the key’s scale are expressed in relation
+to its scale degrees via the accidentals {♯♮♭} which we facilitate to {#b}.</p>
+<p>By <strong>harmonic segment</strong> we understand a continuous score segment encompassing
+all staves. Therefore, it has the same morphology as a slice with the difference
+that the word slice is generally associated with a harmonic segment which does
+have a duration but no rhythm. In that sense, harmonic segment is the more
+general concept which can include anything from a single slice to a whole piece.
+The criterion for harmonic segmentation is a given set of features: The music
+pertaining to harmonic segments that have been identically labelled has
+the same harmonic features, provided that the identical set of features has
+been used as segmentation criterion in all cases.</p>
+<p>Additionally, the standard offers the possibility to annotate <strong>phrases</strong>. These
+cannot be hierarchically nested but most naturally they should coincide with
+one given level of a hierarchical form analysis. The annotator’s guidelines are
+quite vague in this regard and leave it open on which hierarchical level – if
+at all – the annotator wants to use phrase annotations.</p>
+<p>The following section explains how the segmentations’ timestamps are
+encoded whereas the expression of chord and non-chord tones will be
+specified in the <a class="reference internal" href="#regex"><span class="std std-ref">regEx</span></a> section below.</p>
+</div>
+<div class="section" id="timestamps">
+<span id="id1"></span><h3>Timestamps<a class="headerlink" href="#timestamps" title="Permalink to this headline">¶</a></h3>
+<p>The way DCML harmony labels are entered in the <a class="reference external" href="https://musescore.org/en/download">MuseScore 3</a>
+notation software ensures that each of them is attached to a timestamp in the
+score. The software allows for attaching several labels to the same time point,
+even in the same staff but annotators are asked to avoid this and to use
+<a class="reference internal" href="reference.html#ambiguity"><span class="std std-ref">encoded ambiguity</span></a> instead. In principle, it would be possible
+have one score include several simultaneous annotation layers, the labels of
+which would only need to have a clearly distinguishable syntax.</p>
+<p>By <strong>timestamp</strong> we understand a uniquely identifiable position. In the case of
+music scores there are several possible referencing systems out of which we are
+using references to a measure (bar) and a position within this measure. The
+<strong>position</strong>, which we call ‘onset’, is measured from the measure’s beginning
+(starting from 0) and expressed as fractions representing quarter note durations
+which can be easily transformed in any kind of beat representation. For example,
+the position at one quarter note after beat 1 has <code class="docutils literal notranslate"><span class="pre">onset</span> <span class="pre">=</span> <span class="pre">1/4</span></code> regardless of
+the time signature. When it comes to referencing measures, there are two
+different ways of referencing measures, as is the  case for all XML encodings of
+measured music (musicXML, MEI). These two different ways we call <strong>measure
+number (MN)</strong> and <strong>measure count (MC)</strong>.</p>
+<ul class="simple">
+<li><p>MNs represent a running count of complete measures and correspond to the
+numbers that can be found in printed scores. They follow several conventions
+(such as anacruses being numbered as 0, first and second endings having the same
+number, etc.) and are the typical way for humans to refer to measures.</p></li>
+<li><p>MCs on the other hand are a running count of measure units in the XML score and
+therefore they count any kind of complete and incomplete (i.e. split) measures
+alike. Therefore, they are independent of conventions and identify a certain
+measure unit unambiguously (whereas a MN might refer to several MCs). That is
+why MCs are the ideal way for machines to refer to measures.</p></li>
+</ul>
+<p>Musescore displays both kinds of numbers: MCs are shown in the status bar when
+clicking on a measure, whereas MNs are shown in the score (if activated) and in
+the Navigator pane. It follows that our timestamps have to be able to mediate
+between the two referencing schemes, i.e. the one for humans and the one for
+machines. This requires some particular care with regard  to score consistency.
+Concretely, this means that the above-mentioned conventions for MNs need to be
+correctly encoded in the MuseScore files, enabling a correct mapping of MCs to
+the MNs as they can (or could) be found in an original print. In particular, for
+the following cases one has to ensure that an MC is “excluded from bar count”
+(as it is called in MuseScore):</p>
+<ul>
+<li><p>anacruses;</p></li>
+<li><p>every part of split measures except the first one; (split measures often
+occur at section breaks in pieces maintaining an upbeat)</p></li>
+<li><p>all measures pertaining to a second (or third etc.) ending. For endings
+longer than one MN, MuseScore’s “Add to bar number” has to be used with a
+negative value (<a class="reference internal" href="#volta-numbering"><span class="std std-ref">see below</span></a>).</p>
+<blockquote>
+<div><p>The “exclude from bar count” function is mainly needed to ensure correct
+display of MNs in Musescore, but also for dubious or non-standard cases. The
+logic of the mapping MC -&gt; MN can otherwise be implemented easily.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>Consequently, when printing a list of labels, we use <em>three columns</em> for the
+respective timestamps which should satisfy all needs. Note that we count MCs
+starting with 1 in order to match MuseScore’s behaviour in the status bar. Also
+note that there are two potential ways of expressing positions (onsets), namely
+with respect to the respective MC or to the respective MN. In order to facilitate
+correct conversion to beats, we generally print the latter as can be seen in the
+examples below. However, for referencing a position in the score, the MN-onset
+needs to be converted into the correct MC-onset. Implementation-wise this can
+be accomplished by keeping track of each MC’s ‘offset’ from the corresponding
+MN’s beginning, which in most cases will be 0.</p>
+<div class="figure align-default" id="id2">
+<span id="label-lists"></span><img alt="Measure counts vs. measure numbers for an anacrusis" src="../_images/mc-mn-anacrusis.png" />
+<p class="caption"><span class="caption-text"><strong>Correct timestamps for the beginning of Bourrée I from Bach’s
+`English Suite No. 1` BWV 806.</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>mc</p></th>
+<th class="head"><p>mn</p></th>
+<th class="head"><p>onset</p></th>
+<th class="head"><p>label</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>3/4</p></td>
+<td><p>.A.V</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>I</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>1/2</p></td>
+<td><p>I6</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>3/4</p></td>
+<td><p>I</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Note how in this example, the first labels’
+position is given as <code class="docutils literal notranslate"><span class="pre">onset</span> <span class="pre">==</span> <span class="pre">3/4</span></code> because MN 0 was internally treated as
+the second part of a split bar, resulting in the above-mentioned ‘offset’
+value for MC 1 to be <code class="docutils literal notranslate"><span class="pre">3/4</span></code> which would translate correctly to beat
+4 in 4/4 meter or beat 2.5 in 2/2.</p>
+<div class="figure align-default" id="id3">
+<img alt="Measure counts vs. measure numbers for first and second endings" src="../_images/mc-mn-voltas.png" />
+<p class="caption"><span class="caption-text"><strong>mm. 16ff. of the same piece as an example for correct timestamps in the case
+of first and second endings.</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>mc</p></th>
+<th class="head"><p>mn</p></th>
+<th class="head"><p>onset</p></th>
+<th class="head"><p>label</p></th>
+<th class="head"><p>volta</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>16</p></td>
+<td><p>0</p></td>
+<td><p>V</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>16</p></td>
+<td><p>1/2</p></td>
+<td><p>V6</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>16</p></td>
+<td><p>3/4</p></td>
+<td><p>V2</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>17</p></td>
+<td><p>0</p></td>
+<td><p>I6</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>17</p></td>
+<td><p>1/2</p></td>
+<td><p>I</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p>16</p></td>
+<td><p>0</p></td>
+<td><p>V\\</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>(20)</p></td>
+<td><p>(16)</p></td>
+<td><p>(3/4)</p></td>
+<td><p>(V)</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p>17</p></td>
+<td><p>0</p></td>
+<td><p>I</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Note how MCs identify every measure unit of the score unambiguously whereas the
+official conventions intend MNs 16 and 17 to have two different appearances
+which are commonly distinguished by writing <cite>16a, 16b, 17a, 17b</cite>. In order to
+stick to an integer type for the MN column, we recommend using an
+additional distinguishing column which we call ‘volta’ (prima/seconda volta
+being the Italian way of saying first/second ending). It has to be further
+noted that, since the first volta has a length of two bars and the second
+a length of only one bar, the distinuishing column does not correspond 100%
+to the printed voltas. The MNs are in accordance with the
+<a class="reference external" href="https://imslp.org/wiki/Special:ReverseLookup/533082">Henle Urtext Edition</a>.
+The second-last timestamp has been added to the list
+for clarity because in the score there is no label in MC 20.</p>
+<p id="volta-numbering">In order to guarantee the display of correct measures in
+MuseScore for the example above, the  following configuration has to be set for
+the various MCs. A <code class="docutils literal notranslate"><span class="pre">1</span></code> in the column ‘dont_count’ represents a measure unit
+for which the ‘Exclude from bar count’ flag is set and the column ‘numbering
+offset’ represents values for “Add to bar number”. Empty cells represent zero
+values.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 32%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>mc</p></th>
+<th class="head"><p>mn</p></th>
+<th class="head"><p>dont_count</p></th>
+<th class="head"><p>numbering_offset</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>16</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td><p>17</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p>16</p></td>
+<td></td>
+<td><p>-2</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>16</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>17</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="floating-point-timestamps">
+<h4>Floating point timestamps<a class="headerlink" href="#floating-point-timestamps" title="Permalink to this headline">¶</a></h4>
+<p>Bla bla</p>
+</div>
+</div>
+</div>
+<div class="section" id="the-regex-regular-expression">
+<span id="regex"></span><h2>The regEx (Regular Expression)<a class="headerlink" href="#the-regex-regular-expression" title="Permalink to this headline">¶</a></h2>
+<p>The regular expression (regEx) is the backbone of the DCML annotation standard.
+It  expresses its entire chord alphabet by defining the syntactic rules of  the
+harmonic features that the standard is able to encode. At the same time, it
+includes preconfigured names for the different features which can be used  to
+easily split chord labels into a feature matrix with named columns. Labels that
+don’t match the regEx are considered as syntactically erroneous. Splitting
+harmony labels into the included features enables all kinds of subsequent
+processing, e.g. sorting, feature statistics, computation of extended features,
+etc.</p>
+<p>The current version of the regEx can be found in
+<a class="reference external" href="https://github.com/DCMLab/standards/blob/docs/harmony.py">harmony.py</a>
+(the file in the development branch contains the latest version that has not yet
+been released).</p>
+<p>The regEx on the current branch looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Regular expression needs to be compiled using re.compile(regex, re.VERBOSE)</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    ^(\.?</span>
+<span class="s2">        ((?P&lt;globalkey&gt;[a-gA-G](b*|\#*))\.)?</span>
+<span class="s2">        ((?P&lt;localkey&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\.)?</span>
+<span class="s2">        ((?P&lt;pedal&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i))\[)?</span>
+<span class="s2">        (?P&lt;chord&gt;</span>
+<span class="s2">            (?P&lt;numeral&gt;(b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i|Ger|It|Fr|@none))</span>
+<span class="s2">            (?P&lt;form&gt;(%|o|\+|M|\+M))?</span>
+<span class="s2">            (?P&lt;figbass&gt;(7|65|43|42|2|64|6))?</span>
+<span class="s2">            (\((?P&lt;changes&gt;((\+|-|\^)?(b*|\#*)\d)+)\))?</span>
+<span class="s2">            (/(?P&lt;relativeroot&gt;((b*|\#*)(VII|VI|V|IV|III|II|I|vii|vi|v|iv|iii|ii|i)/?)*))?</span>
+<span class="s2">        )</span>
+<span class="s2">        (?P&lt;pedalend&gt;\])?</span>
+<span class="s2">    )?</span>
+<span class="s2">    (?P&lt;phraseend&gt;(\\\\|\{|\}|\}\{))?$</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="fetching-and-compiling-the-regex">
+<h3>Fetching and Compiling the regEx<a class="headerlink" href="#fetching-and-compiling-the-regex" title="Permalink to this headline">¶</a></h3>
+<p>In Python, you could fetch and compile a particular version of the regEx like
+this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+
+<span class="k">def</span> <span class="nf">get_regex</span><span class="p">(</span><span class="n">git_branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    git_branch : :obj:`str`</span>
+<span class="sd">        Branch or tag of the DCMLab/standards repo from which to retrieve regex.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/DCMLab/standards/</span><span class="si">{</span><span class="n">git_branch</span><span class="si">}</span><span class="s2">/harmony.py&quot;</span>
+    <span class="n">glo</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">glo</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;regex&#39;</span><span class="p">],</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="n">old_version</span> <span class="o">=</span> <span class="n">get_regex</span><span class="p">(</span><span class="s1">&#39;v2.0.0&#39;</span><span class="p">)</span>   <span class="c1"># uses a version tag</span>
+<span class="n">pre_release</span> <span class="o">=</span> <span class="n">get_regex</span><span class="p">(</span><span class="s1">&#39;develop&#39;</span><span class="p">)</span>  <span class="c1"># uses a branch name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="structure-of-the-regex">
+<h3>Structure of the regEx<a class="headerlink" href="#structure-of-the-regex" title="Permalink to this headline">¶</a></h3>
+<p>In the current version, the overall structure of the regex is
+<code class="docutils literal notranslate"><span class="pre">(harmony_label)?(phrase_label)?</span></code> where <code class="docutils literal notranslate"><span class="pre">phrase_label</span></code> corresponds to the
+regEx’s last group and <code class="docutils literal notranslate"><span class="pre">harmony_label</span></code> to everything before.</p>
+<div class="section" id="structure-of-the-harmony-labels">
+<h4>Structure of the Harmony Labels<a class="headerlink" href="#structure-of-the-harmony-labels" title="Permalink to this headline">¶</a></h4>
+<p>Simplifying the regEx’s harmony part to the included groups, we get</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(globalkey)?
+(localkey)?
+(pedal)?
+(chord
+    (numeral)
+    (form)?
+    (figbass)?
+    (changes)?
+    (relativeroot)?
+)
+(pedalend)?
+</pre></div>
+</div>
+<p>which shows that the only feature that every harmony label needs to express
+is (Roman) <code class="docutils literal notranslate"><span class="pre">numeral</span></code>, i.e. the harmony’s root. <code class="docutils literal notranslate"><span class="pre">numeral</span></code> in return is
+included in the <code class="docutils literal notranslate"><span class="pre">chord</span></code> group, together with the features <code class="docutils literal notranslate"><span class="pre">form,</span> <span class="pre">figbass,</span>
+<span class="pre">changes,</span> <span class="pre">relativeroot</span></code> which fully define a harmony’s chord tones and
+(structural, non-ornamental) non-chord tones.</p>
+</div>
+<div class="section" id="structure-of-the-phrase-labels">
+<h4>Structure of the Phrase Labels<a class="headerlink" href="#structure-of-the-phrase-labels" title="Permalink to this headline">¶</a></h4>
+<p>Phrase labels can stand alone or follow a harmony label. A phrase label can be
+one of the following symbols:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\\</span></code>: kept for downward compatibility. In older versions of the standard,
+this was the only symbol and designated a phrase ending. This was a quite
+limited way to annotate phrases, which is why v2.2.0 introduced the following
+symbols replacing <code class="docutils literal notranslate"><span class="pre">\\</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span></code>: beginning of a phrase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">}</span></code>: (structural) phrase ending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">}{</span></code>: Phrase interlocking</p></li>
+</ul>
+<p>The logic behind the closed curly braces is that they designate a structural
+ending, e.g. the position of a cadence’s ultima. This implies that everything
+that follows <code class="docutils literal notranslate"><span class="pre">}</span></code> yet precedes the subsequent <code class="docutils literal notranslate"><span class="pre">{</span></code> is still considered as part
+of the same phrase, be it an annexe, a general pause, a transition etc. It
+follows that calculating full phrase lengths is achieved from <code class="docutils literal notranslate"><span class="pre">{</span></code> to <code class="docutils literal notranslate"><span class="pre">{</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="feature-processing">
+<h2>Feature Processing<a class="headerlink" href="#feature-processing" title="Permalink to this headline">¶</a></h2>
+<p>This section reflects the current specification of how every feature included in
+the regEx is or can be processed. It’s purpose is both internal documentation
+and exposure to outside researchers and developers who want to use, understand,
+help developing the DCML harmony annotation standard. The specifications are
+exemplified by Python 3 functions.</p>
+<p>The section retraces step by step the operations performed by the overarching
+<code class="docutils literal notranslate"><span class="pre">expand_labels()</span></code> function. It presupposes an initial data representation as a
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">pandas DataFrame</a>
+that includes labels and their <a class="reference internal" href="#timestamps"><span class="std std-ref">timestamps</span></a>. The example
+functions use the same column names as the <a class="reference internal" href="#label-lists"><span class="std std-ref">above examples</span></a>.</p>
+<div class="section" id="splitting-the-labels">
+<h3>Splitting the Labels<a class="headerlink" href="#splitting-the-labels" title="Permalink to this headline">¶</a></h3>
+<p>The goal in this section is to split raw harmony labels into the encoded
+features using a particular version of the standard’s regular expression
+(regEx). The DCML harmony annotation standard allows annotators two include a
+second, alternative label, separated by <code class="docutils literal notranslate"><span class="pre">-</span></code> which have to be separated into
+autonomous labels before applying the regEx. From v2.2.0 onwards, <code class="docutils literal notranslate"><span class="pre">-</span></code> can also
+be part of a label (indicating omission of a chord tone) which is why a regEx
+with negative lookahead needs to be used, e.g. like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">split_alternatives</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Splits labels that come with an alternative separated by &#39;-&#39; and adds</span>
+<span class="sd">        a new column. Only one alternative is taken into account. `df` is</span>
+<span class="sd">        mutated inplace.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : :obj:`pandas.DataFrame`</span>
+<span class="sd">        Dataframe where one column contains DCML chord labels.</span>
+<span class="sd">    column : :obj:`str`, optional</span>
+<span class="sd">        Name of the column that holds the harmony labels.</span>
+<span class="sd">    logger : :obj:`logging.Logger`, optional</span>
+<span class="sd">        Pass Logger object if you don&#39;t want to use the RootLogger.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        import pandas as pd</span>
+<span class="sd">        labels = pd.read_csv(&#39;labels.csv&#39;)</span>
+<span class="sd">        split_alternatives(labels)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+
+    <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;-(?!(\d|b|\#))&quot;</span> <span class="c1"># &lt;v2.2.0 labels work without lookahead: regex=&#39;-&#39;</span>
+    <span class="n">alternatives</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">alternatives</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">alt_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;alt_</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">alternatives</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">alt_name</span><span class="p">,</span> <span class="n">alternatives</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span> <span class="c1"># replace None by NaN</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">alternatives</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;More than two alternatives are not taken into account: </span><span class="si">{</span><span class="n">alternatives</span><span class="p">[</span><span class="n">alternatives</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When the alternatives have been moved into a separate column, the regEx can be
+applied to the main column, e.g. using the pandas function
+<code class="docutils literal notranslate"><span class="pre">pd.Series.str.split()</span></code>.  Since applying the regEx to labels that include
+alternatives, the function <code class="docutils literal notranslate"><span class="pre">split_alternatives()</span></code> shown above is included in
+the following example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">split_alternatives</span> <span class="kn">import</span> <span class="n">split_alternatives</span>
+
+<span class="k">def</span> <span class="nf">split_labels</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regex</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="p">{},</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Split harmony labels complying with the DCML syntax into columns holding their various features.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : :obj:`pandas.DataFrame`</span>
+<span class="sd">        Dataframe where one column contains DCML chord labels.</span>
+<span class="sd">    regex : :obj:`re.Pattern`</span>
+<span class="sd">        Compiled regular expression used to split the labels. It needs to have named groups.</span>
+<span class="sd">        The group names are used as column names.</span>
+<span class="sd">    column : :obj:`str`, optional</span>
+<span class="sd">        Name of the column that holds the harmony labels.</span>
+<span class="sd">    dropna : :obj:`bool`, optional</span>
+<span class="sd">        Pass True if you want to drop rows where `column` is NaN/&lt;NA&gt;</span>
+<span class="sd">    logger : :obj:`logging.Logger`, optional</span>
+<span class="sd">        Pass Logger object if you don&#39;t want to use the RootLogger.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        import pandas as pd</span>
+<span class="sd">        from get_regex import get_regex</span>
+<span class="sd">        labels = pd.read_csv(&#39;labels.csv&#39;)</span>
+<span class="sd">        regex = get_regex()</span>
+<span class="sd">        split_labels(labels, regex)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+
+    <span class="k">assert</span> <span class="n">regex</span><span class="o">.</span><span class="vm">__class__</span> <span class="o">==</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;Compile regular expression using re.compile()&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">dropna</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing NaN values from label column </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> contains NaN values.&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Splitting alternative annotations...&quot;</span><span class="p">)</span>
+    <span class="n">split_alternatives</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Applying RegEx to labels...&quot;</span><span class="p">)</span>
+    <span class="n">spl</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">groupindex</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">spl</span><span class="p">[</span><span class="n">features</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mistakes</span> <span class="o">=</span> <span class="n">spl</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">all</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">mistakes</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The following chords could not be parsed:</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mistakes</span><span class="p">,</span> <span class="p">:</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="missing-features">
+<h2>Missing Features<a class="headerlink" href="#missing-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>encoding exact (or transposed) repetition of labels (facilitating corrections)</p></li>
+<li><p>vertical segmentation of which voice/s has/have the melody</p></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

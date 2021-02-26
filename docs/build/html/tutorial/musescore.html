@@ -57,6 +57,25 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Standard Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-syntax">The syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#summary-of-the-harmony-annotation-standard">Summary of the Harmony Annotation Standard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/examples.html">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#phrase-structure">Phrase Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#figured-bass">Figured Bass</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/specs.html">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#what-is-being-encoded">What is being encoded?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#feature-processing">Feature Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#missing-features">Missing Features</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Annotation Tutorial</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="first_label.html">The first label</a></li>
@@ -75,27 +94,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-repository">Applying Changes to the Repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#uploading-changes-to-github">Uploading Changes to GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-origin-directly">Applying Changes to the Origin Directly</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../guidelines/examples.html">Questions &amp; Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/examples.html#phrase-structure">Phrase Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/examples.html#figured-bass">Figured Bass</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../guidelines/guidelines.html">Annotator’s Guidelines</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#using-musescore">Using MuseScore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#the-syntax">The syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#summary-of-the-harmony-annotation-standard">Summary of the Harmony Annotation Standard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/guidelines.html#inter-annotator-consensus">Inter-Annotator Consensus</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../guidelines/specs.html">Technical Specifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#what-is-being-encoded">What is being encoded?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#feature-processing">Feature Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guidelines/specs.html#missing-features">Missing Features</a></li>
 </ul>
 </li>
 </ul>
@@ -125,6 +123,14 @@
 <li><a class="reference internal" href="#placing-the-annotation-cursor">Placing the annotation cursor</a><ul>
 <li><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
 <li><a class="reference internal" href="#moving-the-annotation-cursor">Moving the annotation cursor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#background-knowledge-and-tricks">Background knowledge and tricks</a><ul>
+<li><a class="reference internal" href="#mscz-vs-mscx">MSCZ vs. MSCX</a></li>
+<li><a class="reference internal" href="#navigating-in-musescore">Navigating in MuseScore</a></li>
+<li><a class="reference internal" href="#editing-annotations">Editing annotations</a></li>
+<li><a class="reference internal" href="#copying-several-annotations">Copying several annotations</a></li>
+<li><a class="reference internal" href="#visibility">Visibility</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#start-annotation-tutorial">Start annotation tutorial</a></li>
@@ -293,6 +299,78 @@ you can enter the Roman numeral and</p>
 </ul>
 </li>
 <li><p>go to previous note (<code class="docutils literal notranslate"><span class="pre">[S]+[SPACE]</span></code>) or previous measure <code class="docutils literal notranslate"><span class="pre">[S]+[TAB]</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="background-knowledge-and-tricks">
+<h2>Background knowledge and tricks<a class="headerlink" href="#background-knowledge-and-tricks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mscz-vs-mscx">
+<h3>MSCZ vs. MSCX<a class="headerlink" href="#mscz-vs-mscx" title="Permalink to this headline">¶</a></h3>
+<p>There are two types of MuseScore files. The software saves files
+automatically in the compressed format <code class="docutils literal notranslate"><span class="pre">.mscz</span></code>, creating smaller file
+sizes. However, we work with the uncompressed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> format because
+it represents text files. Please make sure to save the annotated score in
+this format by using <code class="docutils literal notranslate"><span class="pre">Files</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">As...</span></code> and selecting the
+“Uncompressed MuseScore File (*.mscx)” format.</p>
+<div class="figure align-default">
+<img alt="saveas" src="../_images/saveas.png" />
+</div>
+</div>
+<div class="section" id="navigating-in-musescore">
+<h3>Navigating in MuseScore<a class="headerlink" href="#navigating-in-musescore" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">F12</span></code> opens the navigator which facilitates finding places in the score.</p>
+<p>If you prefer scrolling
+through pages vertically instead of horizontally, change
+<code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">-&gt;</span> <span class="pre">Preferences...</span> <span class="pre">-&gt;</span> <span class="pre">Canvas</span> <span class="pre">-&gt;</span> <span class="pre">Scroll</span> <span class="pre">pages</span></code></p>
+</div>
+<div class="section" id="editing-annotations">
+<h3>Editing annotations<a class="headerlink" href="#editing-annotations" title="Permalink to this headline">¶</a></h3>
+<p>If you want to change a chord symbol, double click (or tap) on it to get
+into chord edit mode. To delete one, get out of edit mode (<cite>Esc</cite>), click on the
+symbol once to select it, and press <code class="docutils literal notranslate"><span class="pre">Delete</span></code>.</p>
+<p>If you want to change the beat/position of a symbol, it is important not
+to drag it horizontally because it stays linked to the moment where you
+entered it. Therefore, you need to delete it and enter it anew on the
+right position. Of course, the quickest way to do this is to select the label,
+cut it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">X</span></code>, select a note in the correct position and
+insert it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">V</span></code>.</p>
+</div>
+<div class="section" id="copying-several-annotations">
+<h3>Copying several annotations<a class="headerlink" href="#copying-several-annotations" title="Permalink to this headline">¶</a></h3>
+<p>If you find an exact repetition, make sure, it actually is an exact
+repetition first before copying symbols. Then, go to the symbols you
+want to copy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If they expand over more than one system, you will have
+to change “Page view” to “Continuous View” (<code class="docutils literal notranslate"><span class="pre">[C]+[S]+V</span></code>). Generally, you will end up
+in a different measure than expected and you can easily navigate to your
+measure using <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">F</span></code> and typing the measure number.</p>
+</div>
+<p>To select the chord symbols (or anything else for that matter), press
+<code class="docutils literal notranslate"><span class="pre">Shift</span></code> to draw a frame around the symbols with your mouse (or touch
+device). Copy with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code>, then select the first beat where you
+want to paste the symbols and press <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">V</span></code>. It is important that
+no other symbols exist in the range where you paste to avoid duplicates
+or twofold annotations for the same position.</p>
+</div>
+<div class="section" id="visibility">
+<h3>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h3>
+<p>Although not important for the computerised analysis of your
+annotations, it is preferable to arrange them in a human-readable way.</p>
+<ul class="simple">
+<li><p>If two expressions overlap horizontally, just drag the first one up or down
+with your mouse (or touch device). Make sure to leave any edit mode first,
+using <code class="docutils literal notranslate"><span class="pre">Esc</span></code>.</p></li>
+<li><p>If expressions overlap with notes, you can drag them manually as well. But if
+this is often the case, you might want to</p></li>
+<li><p>change the distance between the chord symbols and the respective system for
+the entire document by changing the value under
+<code class="docutils literal notranslate"><span class="pre">Style</span> <span class="pre">-&gt;</span> <span class="pre">General...</span> <span class="pre">-&gt;</span> <span class="pre">Chord</span> <span class="pre">Symbols,</span> <span class="pre">Fretboard</span> <span class="pre">Diagrams</span> <span class="pre">-&gt;</span> <span class="pre">Default</span> <span class="pre">vertical</span> <span class="pre">position</span></code>.
+A usable value might lie around <code class="docutils literal notranslate"><span class="pre">6.00sp</span></code>. If the distance is good but
+chord symbols overlap with the above system, you might want to</p></li>
+<li><p>change the distance between all systems by raising the value of
+<code class="docutils literal notranslate"><span class="pre">Format</span> <span class="pre">-&gt;</span> <span class="pre">Style</span> <span class="pre">-&gt;</span> <span class="pre">Chord</span> <span class="pre">Symbols</span></code>.</p></li>
 </ul>
 </div>
 </div>

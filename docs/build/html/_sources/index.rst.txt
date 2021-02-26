@@ -5,11 +5,12 @@ TOC
 .. toctree::
   :maxdepth: 2
 
+  reference/reference
+  reference/examples
+  reference/specs
   tutorial/index
   git/git
-  guidelines/examples
-  guidelines/guidelines
-  guidelines/specs
+
 
 
 .. Indices and tables
