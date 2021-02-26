@@ -5,7 +5,8 @@ The first phrase
 Phrase annotations
 ==================
 
-The DCML standard includes a rudimentary form of phrase annotations using
+The DCML standard includes a rudimentary (because non-hierarchical) form of
+phrase annotations using
 curly brackets ``{}``. They may stand alone or be the last character of a chord
 label.
 
@@ -69,7 +70,7 @@ Chord syntax
 The remaining chord labels are achieved by simply typing the characters
 ``V65 i #viio6 i6 iio6 V(4)} V``. Note how every label fully defines the chord
 type: Uppercase numerals express a major third, lowercase numerals a minor third,
-and diminished triads are indicated with ``o``. Inverted triads are followed by
+diminished and augmented triads are indicated with ``o`` and ``+``. Inverted triads are followed by
 ``6`` or ``64`` (not ``46``), leading to these combinations:
 
 .. table:: Triads. <NA> = empty; RN = uppercase numeral; rn = lowercase numeral
@@ -142,7 +143,7 @@ In addition to the types based on the four triads, there are the special symbols
       how it used to be realized needs to be included in the analysis.
     * Here, the labels' display was changed to "above" after annotating.
       Musescore handles the label placement automatically but if you're
-      optically disturbed by figures and numerals mingling while you annotat,
+      optically disturbed by figures and numerals mingling while you annotate,
       you may annotate under the third staff instead.
     * At the beginning of the next phrase, the harmony does not change, so the
       ``I`` is not repeated; instead, ``{`` stands alone.
