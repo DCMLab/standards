@@ -66,7 +66,7 @@ contrapuntal pattern should be reflected in a syntactical pattern; although it d
 * the first chord of m. 8 can be viewed as part of the cadential pattern in the sense that it could be viewed as
   a cadential six-four chord where the fourth is suspended by a fifth.
 
-Let as look at the second solution which tries to address the second of the two points.
+Let us look at the second solution which tries to address the second of the two points.
 
 Solution 2
 ----------
@@ -118,19 +118,19 @@ over an identical root, and even in the frequent case that the bass progresses i
 One could argue that Solution 1 is better because it shows the continuation of the sequential logic up to the
 ``ii%65`` chord. The argument points to a fundamental problem of the semantic difference between
 
-* the historically older seventh in the sens of an *patiens* which "wants to" resolve downwards into the sixth over
+* the historically older seventh in the sense of a *patiens* which "wants to" resolve downwards into the sixth over
   the same *agens* (and, thinking in modern terms, over the identical root a third or a fifth below the *agens*), and
 * the "emancipated" seventh as a fourth chord tone, which "wants to" resolve downwards as well, but does so a priori
   into the consonant chord tone pertaining to a different root (preferably a fifth below).
 
-.. admonition:: Note
+.. admonition:: Hint
   :class: caution
 
   Some think that the main difference between the two is the absence or presence of a fifth but the distinction does
   not hold because many ``7-6`` suspensions come as ``75-6`` suspensions.
 
 The two resulting viewpoints are demonstrated most clearly above. Solution 1 shows that a *horizontal* ``2-3``
-suspension chain (as well as its inversion ``7-6``) can be implicit in an annotation pattern that focuses on$
+suspension chain (as well as its inversion ``7-6``) can be implicit in an annotation pattern that focuses on
 *verticalities*, as is most obvious, for example, in all inversions of the ``ii7 V7 I`` progression.
 Solution 3, through it's use of ``()``,  by default is the more *horizontally* oriented one, and therefore it can be
 more sensitive to and expressive of the voice-leading tendencies of particular tones. Leaving the annotation pattern
@@ -168,14 +168,14 @@ through the use of ``ii%65`` can be justified twofold:
 
   :black: labels left untouched by the reviewer;
   :red: labels removed by the reviewer;
-  :green: labels inserted by the reviewer are in green.
+  :green: labels inserted by the reviewer.
 
   Please pause and ponder for a moment what the reasoning behind each of the two versions might have been and how
   they relate to yours.
 
   The annotator (in red) had learned their partimento well and defended their interpretation as a stereotypical
   realization of a *basso che scende legato*. The reviewer, on the other hand, wanted to highlight the continuum
-  with the following Fauxbourdon (mm. 243-5). Since both are very legitimate views, they settled on integrating
+  with the following Fauxbourdon (mm. 243-5). Since both are legitimate views, they settled on integrating
   both perspectives:
 
   .. figure:: img/counterpoint_03c_beethoven.svg

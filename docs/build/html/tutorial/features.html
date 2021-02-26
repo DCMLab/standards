@@ -57,25 +57,6 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Standard Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-syntax">The syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#summary-of-the-harmony-annotation-standard">Summary of the Harmony Annotation Standard</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/examples.html">Questions &amp; Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#phrase-structure">Phrase Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#figured-bass">Figured Bass</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/specs.html">Technical Specifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#what-is-being-encoded">What is being encoded?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#feature-processing">Feature Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#missing-features">Missing Features</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Annotation Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="musescore.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="first_label.html">The first label</a></li>
@@ -94,6 +75,25 @@
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-repository">Applying Changes to the Repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#uploading-changes-to-github">Uploading Changes to GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-origin-directly">Applying Changes to the Origin Directly</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-syntax">The syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-remainder-of-the-reference-is-currently-under-reconstruction">The remainder of the Reference is currently under reconstruction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/examples.html">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#phrase-structure">Phrase Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#figured-bass">Figured Bass</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/specs.html">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#what-is-being-encoded">What is being encoded?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#feature-processing">Feature Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#missing-features">Missing Features</a></li>
 </ul>
 </li>
 </ul>
@@ -115,6 +115,17 @@
 <li><a class="reference internal" href="#advanced-use-of-applied-chord-notation">Advanced use of applied chord notation</a></li>
 <li><a class="reference internal" href="#organ-points">Organ Points</a></li>
 <li><a class="reference internal" href="#unisono-passages">Unisono passages</a></li>
+<li><a class="reference internal" href="#advanced-use-of-chord-tone-replacement">Advanced use of chord tone replacement</a><ul>
+<li><a class="reference internal" href="#general-principles">General principles</a></li>
+<li><a class="reference internal" href="#replacement-of-a-chord-tone-s-octave-doubling">Replacement of a chord tone’s octave doubling</a></li>
+<li><a class="reference internal" href="#ninth-chords">Ninth chords</a></li>
+<li><a class="reference internal" href="#replacement-of-the-root-by-its-lower-neighbour">Replacement of the root by its lower neighbour</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#end-of-the-tutorial">End of the tutorial</a><ul>
+<li><a class="reference internal" href="#missing-sections">Missing sections</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -181,13 +192,13 @@ annotation standard, so you’re invited to challenge the suggested solutions: T
 suggested solutions and check whether it is consistent throughout the examples. Where you have reasons to suggest
 a better solution, you are more than welcome to
 share and discuss it with us on our <a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a> either by
-inserting MuseScore 3 shots (<code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">Image</span> <span class="pre">Capture</span></code>) or by uploading the file as attachment to your issue.</p>
+inserting MuseScore 3 shots (<code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">Image</span> <span class="pre">Capture</span></code>) or by uploading the MuseScore file as attachment to your issue.</p>
 <div class="section" id="melodies-in-the-bass">
 <h2>Melodies in the bass<a class="headerlink" href="#melodies-in-the-bass" title="Permalink to this headline">¶</a></h2>
 <div class="toggle admonition">
 <p class="admonition-title">To get into the piece, please annotate the first 13 measures after deciding on harmonic pace and phrasing for this <em>Allegro con brio</em>.</p>
 <div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/features_01_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 1-13, annotated" height="408" src="../_images/features_01_beethoven.svg" width="812" /></a>
+<a class="reference internal image-reference" href="../_images/features_01_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 1-13, annotated" height="321" src="../_images/features_01_beethoven.svg" width="812" /></a>
 <p class="caption"><span class="caption-text">First movement of Beethoven’s Piano Sonata no. 3, mm. 1–13, annotated</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>How did it go? There isn’t an aweful lot of choice when it comes to harmonic rhythm and phrasing, is there?</p>
@@ -197,7 +208,9 @@ inserting MuseScore 3 shots (<code class="docutils literal notranslate"><span cl
 <li><p>In mm. 10 &amp; 11 the melody in the bass causes <code class="docutils literal notranslate"><span class="pre">I64</span></code> tonic inversions. Please be aware that quite often, when
 the melody is in the bass, it is the next higher voice that perceptually takes over the bass function which is
 decisive for the chord inversion. Here, however, the inversions seem plausible.</p></li>
-<li><p>The first label in m. 12 is actually spelled correctly, <code class="docutils literal notranslate"><span class="pre">V(#764)</span></code>, but displayed incorrectly. No worries.</p></li>
+<li><p>The first label in m. 12 is actually spelled correctly, <code class="docutils literal notranslate"><span class="pre">V(64#0)</span></code>, but displayed incorrectly. No worries.
+However, you would have all reason to be surprised why it’s <code class="docutils literal notranslate"><span class="pre">#0</span></code> and not <code class="docutils literal notranslate"><span class="pre">V(#764)</span></code>. For an explanation,
+please check <a class="reference internal" href="#root-replacement"><span class="std std-ref">Replacement of the root by its lower neighbour</span></a> below.</p></li>
 </ul>
 </div>
 </div>
@@ -207,7 +220,7 @@ decisive for the chord inversion. Here, however, the inversions seem plausible.<
 <div class="toggle admonition">
 <p class="admonition-title">Let’s continue, please annotate mm. 13-20.</p>
 <div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/features_02_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 13-20, annotated" height="296" src="../_images/features_02_beethoven.svg" width="828" /></a>
+<a class="reference internal image-reference" href="../_images/features_02_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 13-20, annotated" height="305" src="../_images/features_02_beethoven.svg" width="828" /></a>
 <p class="caption"><span class="caption-text">First movement of Beethoven’s Piano Sonata no. 3, mm. 13–20, annotated</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>So the annotator decided to express the bass arpeggios as chord inversions. This can hardly be wrong, naturally,
@@ -224,7 +237,7 @@ missing chord tones by writing <code class="docutils literal notranslate"><span 
 <div class="toggle admonition">
 <p class="admonition-title">Let’s take it to the medial caesura…</p>
 <div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="../_images/features_03_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 21-26, annotated" height="293" src="../_images/features_03_beethoven.svg" width="813" /></a>
+<a class="reference internal image-reference" href="../_images/features_03_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 21-26, annotated" height="308" src="../_images/features_03_beethoven.svg" width="812" /></a>
 <p class="caption"><span class="caption-text">First movement of Beethoven’s Piano Sonata no. 3, mm. 21–26, annotated</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>In the introduction of the section you read the word “pedal point” but this pedal here is not one that we annotate.
@@ -237,14 +250,14 @@ is just surplus momentum.</p>
 <div class="section" id="advanced-use-of-applied-chord-notation">
 <h2>Advanced use of applied chord notation<a class="headerlink" href="#advanced-use-of-applied-chord-notation" title="Permalink to this headline">¶</a></h2>
 <div class="toggle admonition">
-<p class="admonition-title">Just for the fun of it, please try annotating mm. 27-42 in the key of <code class="docutils literal notranslate"><span class="pre">V</span></code>.</p>
+<p class="admonition-title">Please try annotating mm. 27-42 in the key of <code class="docutils literal notranslate"><span class="pre">V</span></code>. Below, it will become clearer why.</p>
 <div class="figure align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/features_04_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 27-42, annotated" height="465" src="../_images/features_04_beethoven.svg" width="813" /></a>
 <p class="caption"><span class="caption-text">First movement of Beethoven’s Piano Sonata no. 3, mm. 27–42, annotated</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>So how do you stay in the same local key but still express the equivalence of mm. 27–32 and mm. 33–38? Well, maybe
 you guessed from the heading: The “applied chord notation” <code class="docutils literal notranslate"><span class="pre">/</span></code> can be used to a wider extent than is maybe common.
-Note how the second system is just a copy of the first one with <code class="docutils literal notranslate"><span class="pre">/v</span></code> appended to all labels up to m. 38, where
+Note how the second system is just a copy of the first one with <code class="docutils literal notranslate"><span class="pre">/v</span></code> appended to all labels; up to m. 38 where
 we have reached another fifth above, <code class="docutils literal notranslate"><span class="pre">/ii</span></code>. The resulting <code class="docutils literal notranslate"><span class="pre">V2/V/v</span></code> and <code class="docutils literal notranslate"><span class="pre">V2/iv/v</span></code> are fine because they
 fulfill this specific purpose, namely displaying the recursive borrowing of chords from other keys.</p>
 <p>In m. 42 you were probably wondering about some special syntax for augmented sixth chords and indeed, we have
@@ -262,9 +275,9 @@ the completeness of opening and closing brackets is a constant source of errors 
 harmonies. In difference to phrase annotations, the square brackets cannot stand alone: They always need to come
 in conjunction with a chord label. The opening <code class="docutils literal notranslate"><span class="pre">[</span></code> separates the scale degree of the pedal note from the first
 harmony over the pedal note, whereas the closing <code class="docutils literal notranslate"><span class="pre">]</span></code> always needs to be the <em>last</em> element of a chord label
-(which, in return, always precedes a potential phrase annotation). But see for yourself:</p>
+(which, in return, always precedes a potential cadence and/or phrase label). But see for yourself:</p>
 <div class="figure align-default" id="id5">
-<a class="reference internal image-reference" href="../_images/features_05_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 43-48, with organ point syntax" height="150" src="../_images/features_05_beethoven.svg" width="813" /></a>
+<a class="reference internal image-reference" href="../_images/features_05_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 43-48, with organ point syntax" height="155" src="../_images/features_05_beethoven.svg" width="814" /></a>
 <p class="caption"><span class="caption-text">First movement of Beethoven’s Piano Sonata no. 3, mm. 43–48, with organ point syntax</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>Now looking at the bigger picture of mm. 27–48, we see more clearly what the annotator probably had in mind (and
@@ -345,9 +358,78 @@ to discuss, so let’s have a look at what to do with</p>
 <div class="toggle admonition">
 <p class="admonition-title">Please annotate the ending of the exposition, starting from m. 69.</p>
 <div class="figure align-default" id="id6">
-<a class="reference internal image-reference" href="../_images/features_07_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 27-42, annotated" height="462" src="../_images/features_07_beethoven.svg" width="811" /></a>
+<a class="reference internal image-reference" href="../_images/features_07_beethoven.svg"><img alt="First movement of Beethoven's Piano Sonata no. 3, mm. 27-42, annotated" height="458" src="../_images/features_07_beethoven.svg" width="811" /></a>
 <p class="caption"><span class="caption-text">First movement of Beethoven’s Piano Sonata no. 3, mm. 27–42, annotated</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
+</div>
+<p>The annotator in this example followed the general guideline to infer which chords are being horizontalized. In such
+cases, annotators often account for ambiguity by writing labels including two alternatives, separated by a dash
+(not in this example, though).</p>
+</div>
+<div class="section" id="advanced-use-of-chord-tone-replacement">
+<h2>Advanced use of chord tone replacement<a class="headerlink" href="#advanced-use-of-chord-tone-replacement" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-principles">
+<h3>General principles<a class="headerlink" href="#general-principles" title="Permalink to this headline">¶</a></h3>
+<p>In <a class="reference internal" href="detail.html#replacing-chordtones"><span class="std std-ref">a previous section</span></a> we introduced the syntax for replacement of the chord tones
+<code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, and <code class="docutils literal notranslate"><span class="pre">5</span></code> from above, namely through the combinations <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">b2</span></code>, <code class="docutils literal notranslate"><span class="pre">v#2</span></code>
+, <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">b4</span></code>, <code class="docutils literal notranslate"><span class="pre">v#4</span></code>, <code class="docutils literal notranslate"><span class="pre">6</span></code>, <code class="docutils literal notranslate"><span class="pre">b6</span></code>, <code class="docutils literal notranslate"><span class="pre">v#6</span></code> within parentheses following the chord inversion. The digits
+preceded by a sharp require the symbol <code class="docutils literal notranslate"><span class="pre">v</span></code> because without it they would be assumed to replace the chord tone above.
+Similarly, <code class="docutils literal notranslate"><span class="pre">^2</span></code>, <code class="docutils literal notranslate"><span class="pre">^b2</span></code>, <code class="docutils literal notranslate"><span class="pre">#2</span></code>, <code class="docutils literal notranslate"><span class="pre">^4</span></code>, <code class="docutils literal notranslate"><span class="pre">^b4</span></code>, <code class="docutils literal notranslate"><span class="pre">#4</span></code>, <code class="docutils literal notranslate"><span class="pre">^6</span></code>, <code class="docutils literal notranslate"><span class="pre">^b6</span></code>, <code class="docutils literal notranslate"><span class="pre">#6</span></code> are used to indicate replacement
+of chord tones <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>, and <code class="docutils literal notranslate"><span class="pre">7</span></code> from below.</p>
+<div class="caution admonition">
+<p class="admonition-title">Note</p>
+<p>Remember that the accidentals depend on the local major or (natural) minor scale.</p>
+</div>
+</div>
+<div class="section" id="replacement-of-a-chord-tone-s-octave-doubling">
+<h3>Replacement of a chord tone’s octave doubling<a class="headerlink" href="#replacement-of-a-chord-tone-s-octave-doubling" title="Permalink to this headline">¶</a></h3>
+<p>The same principles apply when the chord tone in question is present, but replaced in one of the octaves above,
+in form of the digits <code class="docutils literal notranslate"><span class="pre">9</span></code>, <code class="docutils literal notranslate"><span class="pre">11</span></code>, and <code class="docutils literal notranslate"><span class="pre">13</span></code>. For example in the case of the so-called “Chopin chord”
+which is commonly said to be a “dominant seventh chord add 13”: We would express that as <code class="docutils literal notranslate"><span class="pre">V7(13)</span></code> to make it clear
+that the chordal fifth is actually present and the suspension (at least) a ninth apart.</p>
+<p>The same logic can be applied to added notes, for example to express a difference between <code class="docutils literal notranslate"><span class="pre">V7(+6)</span></code>
+(dissonance is a second) and <code class="docutils literal notranslate"><span class="pre">V7(+13)</span></code>.</p>
+</div>
+<div class="section" id="ninth-chords">
+<h3>Ninth chords<a class="headerlink" href="#ninth-chords" title="Permalink to this headline">¶</a></h3>
+<p>To give the most prominent example of ninth chords, dominant ninth chords are expressed as</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V7(9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(b9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(v#9)</span></code> if the ninth is considered to replace an octave doubling of the root;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V7(^9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(^b9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(#9)</span></code> if the ninth is considered to replace an octave doubling of the chordal third;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V7(+b9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(+9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(+#9)</span></code> if the ninth is considered as an added note.</p></li>
+</ul>
+</div>
+<div class="section" id="replacement-of-the-root-by-its-lower-neighbour">
+<span id="root-replacement"></span><h3>Replacement of the root by its lower neighbour<a class="headerlink" href="#replacement-of-the-root-by-its-lower-neighbour" title="Permalink to this headline">¶</a></h3>
+<p>For root replacement we needed to introduce a special case: Following the above logic, replacement of the
+lowest root (<code class="docutils literal notranslate"><span class="pre">1</span></code>)  in the chord should be expressed through through <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">#0</span></code> (leading tone in a minor scale).
+However, to not overstretch annotator’s departure from inveterate annotation practices, we have it commonly
+expressed as <code class="docutils literal notranslate"><span class="pre">7</span></code> or <code class="docutils literal notranslate"><span class="pre">#7</span></code> (which, logically, would express replacement of an octave doubling of the root).
+Therefore <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">7</span></code> are equivalent in nearly all cases, the exception being root position chords, where the root
+is in the bass: Here, <code class="docutils literal notranslate"><span class="pre">0</span></code> is required to differentiate from replacement of an octave doubling (<code class="docutils literal notranslate"><span class="pre">7</span></code>). The following
+examples, hopefully, will not leave any doubts:</p>
+<div class="figure align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/retardations.svg"><img alt="DCML syntax for replacement of the chordal root in the bass vs. in other voices." height="125" src="../_images/retardations.svg" width="763" /></a>
+<p class="caption"><span class="caption-text">DCML syntax for replacement of the chordal root in the bass vs. in other voices.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<div class="caution toggle admonition">
+<p class="admonition-title">Read only if you subscribed to the full package</p>
+<p>In case you wondered: <code class="docutils literal notranslate"><span class="pre">v7</span></code>, <code class="docutils literal notranslate"><span class="pre">vb7</span></code> are theoretically possible but only in debatable cases where a sixth above
+the root could be considered to be a chord tone. At present, this would—if ever stretching the concept of root
+pretty far—theoretically be the case for the augmented sixth chords <code class="docutils literal notranslate"><span class="pre">Fr6</span></code>, <code class="docutils literal notranslate"><span class="pre">Ger6</span></code>, and <code class="docutils literal notranslate"><span class="pre">It6</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="end-of-the-tutorial">
+<h2>End of the tutorial<a class="headerlink" href="#end-of-the-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Thank you for making it to the end! In case you managed to read and internalize all sections, congratulations, you are now in the position to
+Once more the invitation to state problems you might have had in our
+<a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a>.</p>
+<div class="section" id="missing-sections">
+<h3>Missing sections<a class="headerlink" href="#missing-sections" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>augmented sixth chords</p></li>
+</ul>
 </div>
 </div>
 </div>

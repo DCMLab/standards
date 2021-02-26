@@ -56,18 +56,18 @@ Solution 2: Fine-grained
   :alt: Fine-grained analysis of Corelli op. 1/4, II. Adagio
   :scale: 30%
 
-  Fine-grained analysis of Corelli op. 1/4, II. Adagio. Differences to above highlighted in bold.
+  Fine-grained analysis of Corelli op. 1/4, II. Adagio. Differences to above highlighted in bold font.
 
 Let's have a look at the differences.
 
 :Harmonic pace:
   This set of annotations is susceptible to the change of harmony on the quarter beat level. Whereas in the above version
   four step-wise descending eighth notes were mostly considered as elaborations of ond and the same chord, this one here
-  reveals a tendency to see them as elaborations of chord tones from two *different* chords. In particular, the
+  reveals a tendency to see them as elaborations of chord tones from two *different* chords or inversions. In particular, the
   annotator has highlighted implicit 5-6 movements through the pertinent patterns ``i VI6`` (mm. 4 & 9), ``iv iio6``
   (m. 3), and ``VI iv6`` (m. 2, that one purely virtual). Where the descending eights motive occurs in the bass, two
   chords with their bass notes a third apart have been assumed (mm. 2, 6 & 9); and where this was not plausible
-  (mm. 5 & 8), a change of harmony was assumed on the fourth note. This solution seems to suggest syncopated harmonic
+  (mm. 5 & 8), a chord inversion was assumed on the fourth note. This solution seems to suggest syncopated harmonic
   rhythms in mm. 2-3 & 9.
 
 :Indeterminacy:
@@ -75,7 +75,8 @@ Let's have a look at the differences.
   dominant chords in mm. 3 & 6; namely labels interpreting the same chord as elaborations of dominant seventh chords.
   For reasons of consistency, the same interpretation would have applied to m. 8: ``V}{-V2}{`` (every side of the dash
   needs to be a fully valid reading, which is why the phrase annotations should be repeated). But two reasons speak
-  against this interpretation: (1) it would conflict with the ``V64`` label on the last eighth which, however, reflects
+  against this interpretation: (1) it would conflict with the ``V64`` label (because no seventh
+  is included here) on the last eighth which, however, reflects
   consistency with the above-mentioned analytical decision and m. 5; and (2) the alternative reading ``V2`` would
   represent a possible harmonic progression ``iv6 V2}{`` which is implausible in this cadential context.
 
@@ -87,7 +88,7 @@ Let's have a look at the differences.
   :class: caution
 
   On the more abstract level seen in Solution 1 the predominant root progression is by falling fifth (``i iv`` and
-  ``ii V i``). Theorists know that a scaffold of falling fifths affords movement by falling thirds and it is therefore
+  ``[VI] ii V i``). Theorists know that a scaffold of falling fifths affords movement by falling thirds and it is therefore
   not surprising that a more fine-grained solution exists which highlights these (``i VI iv iio [#viio] V [III] i``).
 
 .. admonition:: Consistency is watching you
@@ -96,6 +97,7 @@ Let's have a look at the differences.
   Note how in both examples the analytical decisions were implemented with rigorous consistency which is the DCML
   annotation standard's highest maxim.
 
+.. _replacing_chordtones:
 
 Solution 3: Indicating replaced chord tones
 ===========================================
@@ -114,7 +116,7 @@ useful for you to understand how the chord alterations work, so you can empathiz
 * If an upper neighbour of one of the three chord tones ``1``, ``3``, ``5`` is present within the parentheses,
   e.g. ``V(2)``, ``V(4)``, ``V(6)``, it means that the respective chord tone is replaced (the fourth suspension
   we had seen already).
-* This is independent of the chord inversion, so ``iv6(2)`` means that the chord root is replaced by its upper
+* This is independent of the chord inversion, so ``iv6(2)`` still means that the chord root is replaced by its upper
   neighbour (see the 7-6 suspension in all three solutions, m. 8).
 * If the actual chord tone is not replaced, but the upper neighbour is instead added, it is preceded by a ``+``,
   as is the case in ``V6(+6)`` in m. 6.
@@ -142,10 +144,10 @@ them some indulgence---but only where the analytical decisions are traceable and
   Consistencies
     * The reviewer was consistent in the decision to assume a 4/4 harmonic rhythm to a point that, where necessary,
       the harmony on the third eighth of the descending figures was interpreted as suspension chord resolving on the
-      following eighth (mm. 3, 5, 6, 8). (Consider, however, the comment on mm. 4 vs. 9 and on m. 7 below.)
+      following eighth (mm. 3, 5, 6, 8). (Consider, however, the inconsistencies mentioned below for mm. 4 vs. 9 and m. 7.)
     * ``G#`` and ``C#`` have been interpreted as thirds of dominant chords (mm. 2 & 9) except where hindered by a
       pedal note (mm. 1, 2 & 10).
-    * ``ii%65`` was consistently added as a possible realization of bass ``D`` + figure ``6`` (however, consider the
+    * ``ii%65`` was consistently added as a possible realization of bass note ``D`` bearing figure ``6`` (however, consider the
       comment on m. 10 below).
 
   Inconsistencies
@@ -154,13 +156,13 @@ them some indulgence---but only where the analytical decisions are traceable and
     * m. 5 vs. 8: ``V64`` vs. ``V43``
     * m. 6: The alternative reading ``V65`` would be implausible in combination with the subsequent ``V6``.
     * m. 7: To be consistent with the rest, beat 2 would require ``V(6)/iv V/iv``
-    * m. 9: ``#viio6`` possible is possible but is inconsistent with mm. 2, 5, 6 & 8 where no chord changes were
+    * m. 9: ``#viio6`` is possible but inconsistent with mm. 2, 5, 6 & 8 where no chord changes were
       assumed on the second eighth.
 
   Justification requested
     * m. 2: why ``iv6 VI``?
     * m. 4 & 7: What are the arguments for putting the phrase boundaries here (other than a ``V i`` progression)?
-    * m. 10: ``iio6 ii%65-iio6``: the alternative reading would result in redundant progression ``iio6 iio6``
+    * m. 10: ``iio6 ii%65-iio6``: the alternative reading would result in the redundant progression ``iio6 iio6``
     * m. 11, ``iv7``: What are the reasons for considering ``D`` as chord root, not a mere transition?
 
 
@@ -173,4 +175,4 @@ them some indulgence---but only where the analytical decisions are traceable and
   own perspective on a piece as precisely as possible within the standard's expressive power. And some of them
   reported happily that parts of their conceptual building became visible which had been hidden in their subconscious.
 
-OK, time to harness our expressive power to change some keys!
+OK, time to harness our expressive power to :doc:`change some keys<localkey>`!

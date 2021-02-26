@@ -5,11 +5,11 @@ TOC
 .. toctree::
   :maxdepth: 2
 
+  tutorial/index
+  git/git
   reference/reference
   reference/examples
   reference/specs
-  tutorial/index
-  git/git
 
 
 

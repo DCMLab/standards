@@ -106,7 +106,7 @@ Change of key or tonicization?
 
 But what if we take the following two measures into account, mm. 6 & 7?
 
-.. figure:: img/localkey_05_corelli.svg
+.. figure:: img/localkey_04_corelli.svg
   :alt: First movement of Corelli op. 1/1, mm. 5-7, annotated
   :scale: 30 %
 

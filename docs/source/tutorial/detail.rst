@@ -97,6 +97,7 @@ Let's have a look at the differences.
   Note how in both examples the analytical decisions were implemented with rigorous consistency which is the DCML
   annotation standard's highest maxim.
 
+.. _replacing_chordtones:
 
 Solution 3: Indicating replaced chord tones
 ===========================================

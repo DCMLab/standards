@@ -5,7 +5,8 @@ The first phrase
 Phrase annotations
 ==================
 
-The DCML standard includes a rudimentary form of phrase annotations using
+The DCML standard includes a rudimentary (because non-hierarchical) form of
+phrase annotations using
 curly brackets ``{}``. They may stand alone or be the last character of a chord
 label.
 
@@ -30,13 +31,45 @@ interlocking', ``}{``). At the end of the Beethoven phrase we get:
 
 Note that the ``}`` sits on beat 1, the structural ending of the sentence.
 
+Cadence Labels
+==============
+
+Every time you spot a complete or attempted cadence, please mark its ultima with one of these five cadence labels,
+separated from the chord label by a pipe ``|``:
+
+.. table:: Cadence labels.
+  :widths: auto
+  :align: center
+
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | Label | Cadence type                | Usage                                                                               |
+  +=======+=============================+=====================================================================================+
+  | PAC   | Perfect authentic cadence   | Bass and upper voice closing on ^1                                                  |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | IAC   | Imperfect authentic cadence | Bass or upper voice not closing on ^1                                               |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | HC    | Half cadence                | Closing on V                                                                        |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | DC    | Deceptive cadence           | Ultima not a tonic chord                                                            |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | EC    | Evaded cadence              | Cadential goal is cut-off from the previous progression and groups forward          |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+  | PC    | Plagal cadence              | cadential ending with ^4 - ^1 in the bass (usually not applicable to 18th-c. music) |
+  +-------+-----------------------------+-------------------------------------------------------------------------------------+
+
+As becomes clear in the example above, in case the ultima is suspended, the cadence label marks the moment of its
+completion, whereas its structural position is marked by the ``}`` on beat 1. If cadence label and
+structural phrase ending occurs, ``}`` goes last (e.g. ``i|PAC}``).
+
+
+
 Chord syntax
 ============
 
 The remaining chord labels are achieved by simply typing the characters
 ``V65 i #viio6 i6 iio6 V(4)} V``. Note how every label fully defines the chord
 type: Uppercase numerals express a major third, lowercase numerals a minor third,
-and diminished triads are indicated with ``o``. Inverted triads are followed by
+diminished and augmented triads are indicated with ``o`` and ``+``. Inverted triads are followed by
 ``6`` or ``64`` (not ``46``), leading to these combinations:
 
 .. table:: Triads. <NA> = empty; RN = uppercase numeral; rn = lowercase numeral
@@ -109,7 +142,7 @@ In addition to the types based on the four triads, there are the special symbols
       how it used to be realized needs to be included in the analysis.
     * Here, the labels' display was changed to "above" after annotating.
       Musescore handles the label placement automatically but if you're
-      optically disturbed by figures and numerals mingling while you annotat,
+      optically disturbed by figures and numerals mingling while you annotate,
       you may annotate under the third staff instead.
     * At the beginning of the next phrase, the harmony does not change, so the
       ``I`` is not repeated; instead, ``{`` stands alone.
