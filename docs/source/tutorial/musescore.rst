@@ -11,7 +11,7 @@ The goal of this tutorial is to provide a systematic and condensed way of convey
 principles (aka "the guidelines") behind the annotation standard. What has been condensed are more than two years
 of discussions between the music theory experts involved in the standard's creation and application, i.e. between
 annotators, reviewers, and users. Therefore, this tutorial is not about telling anybody "how harmonic analysis *really*
-works" or "how everyone should be using Roman numeral". Instead, it introduces a set of guidelines for analysts who
+works" or "how everyone should be using Roman numerals". Instead, it introduces a set of guidelines for analysts who
 want to use the DCML harmony annotation standard to encode a set of musical features in a consistent and
 machine-readable manner so that others can re-use and rely on the encoded information.
 
@@ -25,7 +25,7 @@ machine-readable manner so that others can re-use and rely on the encoded inform
 .. admonition:: TL;DR
   :class: danger
 
-  The DCML standard enables the production of consistent music theoretical research data.
+  The DCML standard enables the production and communication of consistent music theoretical research data.
 
 In case you want to contribute annotations to the `DCML corpus <https://github.com/DCMLab/dcml_corpora>`__, we would
 like to ask you to go through this tutorial word by word and to do the assignments. They come in the form of blue
