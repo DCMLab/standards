@@ -256,10 +256,10 @@ Otherwise, head to the ``Pull requests`` tab, click on "New pull request" and se
 this:
 
 .. figure:: img/github_create_pr.png
-    :alt: GitHub offering to creat a new pull request
+    :alt: Giving the new pull request a meaningful title
     :scale: 95%
 
-    GitHub offering to create a new pull request
+    Giving the new pull request a meaningful title
 
 Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
 the green button, you're done
