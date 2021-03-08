@@ -14,6 +14,15 @@ and reviewers. There are plenty of resources (for example
 `these videos <https://git-scm.com/doc>`__) for learning Git on the web, so this
 is just a very quick guide.
 
+.. admonition:: Navigating in the command line
+  :class: caution
+
+  In case you have never used the command line, you need to know that to run any ``git`` command (except ``clone``)
+  you need to "be" within a git directory. Usually, the prompt (everything before the cursor) should tell you,
+  where "you are", otherwise try ``pwd`` (on Windows: ``echo %cd%``). Use ``cd <folder_name_or_path>`` to change directory and ``ls``
+  (on Windows: ``dir``) to show what is in the current WD (working directory). When typing cd and the first couple
+  of letters of the folder you want to "go to", you can press [TAB] to autocomplete.
+
 Installing Git
 --------------
 
