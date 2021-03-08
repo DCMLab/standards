@@ -222,18 +222,18 @@ your local clone of the repository, otherwise you get <code class="docutils lite
 <p>A Git repository often holds several versions, called ‘branches’, in parallel,
 each with their own version history. The way the
 <a class="reference external" href="https://nvie.com/posts/a-successful-git-branching-model/">Git branching model</a>
-is most often used, is that the branch called <code class="docutils literal notranslate"><span class="pre">master</span></code> holds the latest
+is most often used, is that the branch called <code class="docutils literal notranslate"><span class="pre">main</span></code>  (previously <code class="docutils literal notranslate"><span class="pre">master</span></code>) holds the latest
 <em>correct</em> version (production status), whereas all other branches are used for
 experimenting and for applying as many changes as you want without changing the
-<code class="docutils literal notranslate"><span class="pre">master</span></code>. Effectively that means that</p>
+<code class="docutils literal notranslate"><span class="pre">main</span></code>. Effectively that means that</p>
 <ul class="simple">
 <li><p>you apply your changes, ‘commits’, to a different branch: the commits are prepended
 to this branch’s history;</p></li>
 <li><p>once you are done and want to integrate, ‘merge’, your branch into the
-<code class="docutils literal notranslate"><span class="pre">master</span></code>, you create a Pull Request (PR);</p></li>
+<code class="docutils literal notranslate"><span class="pre">main</span></code>, you create a Pull Request (PR);</p></li>
 <li><p>before the merge, the PR should be checked, ‘reviewed’, by someone else than
 yourself;</p></li>
-<li><p>if the PR passes all checks and reviews, it can be merged into the master,
+<li><p>if the PR passes all checks and reviews, it can be merged into the main branch,
 thus synchronising both histories. The merged branch can then be deleted.</p></li>
 </ul>
 </div>
@@ -244,15 +244,15 @@ what branch you are on (which branch is ‘checked out’), but also by how much
 local history deviates from the history of the ‘origin’, i.e. the remote version
 of the same branch on GitHub.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>&gt;&gt; git status
-<span class="go">On branch master</span>
-<span class="go">Your branch is behind &#39;origin/master&#39; by 2 commits, and can be fast-forwarded.</span>
+<span class="go">On branch main</span>
+<span class="go">Your branch is behind &#39;origin/main&#39; by 2 commits, and can be fast-forwarded.</span>
 <span class="gp gp-VirtualEnv">(use &quot;git pull&quot; to update your local branch)</span>
 
 <span class="go">nothing to commit, working tree clean</span>
 </pre></div>
 </div>
 <p>This message tells you that when you navigate to your local copy, the files you
-see correspond to your local version of the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch which is currently
+see correspond to your local version of the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch which is currently
 missing two changes, ‘commits’, from the origin on GitHub. Git also suggests
 to integrate, ‘merge’, these two commits by going <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>.</p>
 </div>
@@ -284,7 +284,7 @@ Git will tell you the command to use, e.g.:</p>
 <div class="section" id="applying-changes-to-the-repository">
 <h3>Applying Changes to the Repository<a class="headerlink" href="#applying-changes-to-the-repository" title="Permalink to this headline">¶</a></h3>
 <p>First, decide which branch you want to apply changes to and check it out locally.
-Generally speaking, you will never apply changes, ‘commits’, to the <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+Generally speaking, you will never apply changes, ‘commits’, to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
 <p>Every time you have made changes that you want to register as ‘commits’ in your
 local history, you will be using the same two commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git add -A</span>

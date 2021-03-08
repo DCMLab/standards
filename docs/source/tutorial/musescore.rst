@@ -182,18 +182,11 @@ Copying several annotations
 
 If you find an exact repetition, make sure, it actually is an exact
 repetition first before copying symbols. Then, go to the symbols you
-want to copy.
-
-.. note::
-
-    If they expand over more than one system, you will have
-    to change "Page view" to "Continuous View" (``[C]+[S]+V``). Generally, you will end up
-    in a different measure than expected and you can easily navigate to your
-    measure using ``Ctrl + F`` and typing the measure number.
-
-To select the chord symbols (or anything else for that matter), press
-``Shift`` to draw a frame around the symbols with your mouse (or touch
-device). Copy with ``Ctrl + C``, then select the first beat where you
+want to copy. Draw a selection frame around the symbols or select the
+respective measures in the navigator (F12): Right-click on one of the
+selected symbols and go ``Select -> All similar elements in range selection``.
+If required, hold ``[C]`` and click on individual labels to add/remove
+them to/from the selection. Copy with ``Ctrl + C``, then select the first beat where you
 want to paste the symbols and press ``Ctrl + V``. It is important that
 no other symbols exist in the range where you paste to avoid duplicates
 or twofold annotations for the same position.

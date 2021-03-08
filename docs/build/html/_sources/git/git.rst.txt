@@ -62,18 +62,18 @@ Git Branching Primer
 A Git repository often holds several versions, called 'branches', in parallel,
 each with their own version history. The way the
 `Git branching model <https://nvie.com/posts/a-successful-git-branching-model/>`_
-is most often used, is that the branch called ``master`` holds the latest
+is most often used, is that the branch called ``main``  (previously ``master``) holds the latest
 *correct* version (production status), whereas all other branches are used for
 experimenting and for applying as many changes as you want without changing the
-``master``. Effectively that means that
+``main``. Effectively that means that
 
 * you apply your changes, 'commits', to a different branch: the commits are prepended
   to this branch's history;
 * once you are done and want to integrate, 'merge', your branch into the
-  ``master``, you create a Pull Request (PR);
+  ``main``, you create a Pull Request (PR);
 * before the merge, the PR should be checked, 'reviewed', by someone else than
   yourself;
-* if the PR passes all checks and reviews, it can be merged into the master,
+* if the PR passes all checks and reviews, it can be merged into the main branch,
   thus synchronising both histories. The merged branch can then be deleted.
 
 What's my branch?
@@ -87,14 +87,14 @@ of the same branch on GitHub.
 .. code-block:: console
 
   >>> git status
-  On branch master
-  Your branch is behind 'origin/master' by 2 commits, and can be fast-forwarded.
+  On branch main
+  Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
   (use "git pull" to update your local branch)
 
   nothing to commit, working tree clean
 
 This message tells you that when you navigate to your local copy, the files you
-see correspond to your local version of the ``master`` branch which is currently
+see correspond to your local version of the ``main`` branch which is currently
 missing two changes, 'commits', from the origin on GitHub. Git also suggests
 to integrate, 'merge', these two commits by going ``git pull``.
 
@@ -129,7 +129,7 @@ Applying Changes to the Repository
 ----------------------------------
 
 First, decide which branch you want to apply changes to and check it out locally.
-Generally speaking, you will never apply changes, 'commits', to the ``master``.
+Generally speaking, you will never apply changes, 'commits', to the ``main`` branch.
 
 Every time you have made changes that you want to register as 'commits' in your
 local history, you will be using the same two commands:

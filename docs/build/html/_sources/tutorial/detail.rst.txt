@@ -62,7 +62,7 @@ Let's have a look at the differences.
 
 :Harmonic pace:
   This set of annotations is susceptible to the change of harmony on the quarter beat level. Whereas in the above version
-  four step-wise descending eighth notes were mostly considered as elaborations of ond and the same chord, this one here
+  four step-wise descending eighth notes were mostly considered as elaborations of one and the same chord, this one here
   reveals a tendency to see them as elaborations of chord tones from two *different* chords or inversions. In particular, the
   annotator has highlighted implicit 5-6 movements through the pertinent patterns ``i VI6`` (mm. 4 & 9), ``iv iio6``
   (m. 3), and ``VI iv6`` (m. 2, that one purely virtual). Where the descending eights motive occurs in the bass, two

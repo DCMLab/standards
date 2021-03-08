@@ -224,4 +224,4 @@ interpretations in some cases, we generally stick to the aforementioned conventi
 teaching students all inversions of ``I ii7 V7 I``? ;⚫︎) ]
 
 
-**Now let's have a look at the remaining features of the DCML standard in conjunction with some special cases.**
+**Now let's have a look at the :doc:`remaining features<features>` of the DCML standard in conjunction with some special cases.**

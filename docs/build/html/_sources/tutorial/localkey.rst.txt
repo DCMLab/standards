@@ -123,7 +123,7 @@ in m. 6 and the cadence to ``d`` in m. 9 as temporary tonicizations (*applied ch
    :file: interactive/localkey_06_corelli.html
 
 The blue line shows the local key which remains in the key of ``I`` in this version. Red lines show keys that are
-tonicized using applied chords (i.e. labels including a slash), and the green lines show where the the tonic of the
+tonicized using applied chords (i.e. labels including a slash), and the green lines show where the tonic of the
 temporarily tonicized key is present. Whereas this kind of interpretation might be sensible when looking at a longer
 piece or, for example, the whole trio sonata, considering the short form alone calls for an analysis that reflects
 the two cadences to other keys, resulting in this tonal plan:
@@ -131,7 +131,7 @@ the two cadences to other keys, resulting in this tonal plan:
 .. raw:: html
    :file: interactive/localkey_07_corelli.html
 
-Going forward, let's have a look at how to encode contrapuntal patterns such as sequences.
+Going forward, let's have a look at how to encode :doc:`contrapuntal patterns<counterpoint>` such as sequences.
 
 
 
