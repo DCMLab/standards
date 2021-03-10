@@ -124,7 +124,11 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#annotation-workflow">Annotation Workflow</a></li>
+<li><a class="reference internal" href="#annotation-workflow">Annotation Workflow</a><ul>
+<li><a class="reference internal" href="#annotating">Annotating</a></li>
+<li><a class="reference internal" href="#reviewing">Reviewing</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -356,6 +360,8 @@ into GitHub. Once again, don’t forget a meaningful COMMIT_MESSAGE.</p>
 </div>
 <div class="section" id="annotation-workflow">
 <h2>Annotation Workflow<a class="headerlink" href="#annotation-workflow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="annotating">
+<h3>Annotating<a class="headerlink" href="#annotating" title="Permalink to this headline">¶</a></h3>
 <p>Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
 meaningful name. In this example, we want to annotate Corelli’s first trio sonata, so we call the branch
 <code class="docutils literal notranslate"><span class="pre">corelli_01</span></code>.</p>
@@ -402,6 +408,18 @@ this:</p>
 </div>
 <p>Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
 the green button, you’re done</p>
+</div>
+<div class="section" id="reviewing">
+<h3>Reviewing<a class="headerlink" href="#reviewing" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Merge PR -&gt; annotation tables are automatically pushed</p></li>
+<li><p>Checkout respective annotation branch and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--all</span></code> (annotation tables get into your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code> (annotation tables need to be in the annotation branch)</p></li>
+<li><p>review files and commit every change individually with measure number and explanation, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;13:</span> <span class="pre">vii</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">#vii</span></code></p></li>
+<li><p>push everything and create pull review -&gt; comparison MuseScore file gets pushed automatically</p></li>
+<li><p>request review by annotator</p></li>
+</ol>
+</div>
 </div>
 </div>
 

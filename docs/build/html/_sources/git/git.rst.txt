@@ -217,6 +217,9 @@ into GitHub. Once again, don't forget a meaningful COMMIT_MESSAGE.
 Annotation Workflow
 ===================
 
+Annotating
+----------
+
 
 Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
 meaningful name. In this example, we want to annotate Corelli's first trio sonata, so we call the branch
@@ -272,3 +275,15 @@ this:
 
 Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
 the green button, you're done
+
+
+Reviewing
+---------
+
+#. Merge PR -> annotation tables are automatically pushed
+#. Checkout respective annotation branch and ``git pull --all`` (annotation tables get into your local ``main`` branch)
+#. ``git merge main`` (annotation tables need to be in the annotation branch)
+#. review files and commit every change individually with measure number and explanation, e.g. ``"13: vii should be #vii``
+#. push everything and create pull review -> comparison MuseScore file gets pushed automatically
+#. request review by annotator
+
