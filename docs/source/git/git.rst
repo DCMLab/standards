@@ -223,7 +223,7 @@ Annotating
 
 Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
 meaningful name. In this example, we want to annotate Corelli's first trio sonata, so we call the branch
-``corelli_01``.
+``op01no01``.
 
 Annotate your piece(s) and commit your changes locally. Everytime you push your changes to GitHub, your new labels
 will be checked automatically and you can see immediately if there are any syntactic errors. Simply head to the
@@ -251,7 +251,7 @@ Scroll down until you see the output of the checking algorithm:
 
 The table shows the filename ``fnames``, the measure count ``MC`` which corresponds to the bar number that MuseScore displays in the
 status bar on the bottom left (not always identical to the measure number (MN) in the score), the incorrect
-label's offset from the barline, ``mc_onset``, measured in quarter notes, and the incorrect label. From here on,
+label's offset from the barline, ``mc_onset``, measured in fractions of a whole note, and the incorrect label. From here on,
 simply correct the labels, commit and push again, and the check should pass this time.
 
 Once we have finished our work (in this case all sonata movements) and want to submit it for review,
@@ -287,3 +287,8 @@ Reviewing
 #. push everything and create pull review -> comparison MuseScore file gets pushed automatically
 #. request review by annotator
 
+Approving review & requesting changes
+-------------------------------------
+
+When reviewing a Pull Request by a reviewer who has gone through your annotations, checkout and pull the respective
+branch. You should find comparison MuseScore files with the suffix ``_reviewed``.

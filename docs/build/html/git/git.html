@@ -127,6 +127,7 @@
 <li><a class="reference internal" href="#annotation-workflow">Annotation Workflow</a><ul>
 <li><a class="reference internal" href="#annotating">Annotating</a></li>
 <li><a class="reference internal" href="#reviewing">Reviewing</a></li>
+<li><a class="reference internal" href="#approving-review-requesting-changes">Approving review &amp; requesting changes</a></li>
 </ul>
 </li>
 </ul>
@@ -364,7 +365,7 @@ into GitHub. Once again, don’t forget a meaningful COMMIT_MESSAGE.</p>
 <h3>Annotating<a class="headerlink" href="#annotating" title="Permalink to this headline">¶</a></h3>
 <p>Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
 meaningful name. In this example, we want to annotate Corelli’s first trio sonata, so we call the branch
-<code class="docutils literal notranslate"><span class="pre">corelli_01</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">op01no01</span></code>.</p>
 <p>Annotate your piece(s) and commit your changes locally. Everytime you push your changes to GitHub, your new labels
 will be checked automatically and you can see immediately if there are any syntactic errors. Simply head to the
 GitHub repository and click on the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> tab. There you will see your last commit with a small coloured symbol:</p>
@@ -391,7 +392,7 @@ GitHub repository and click on the <code class="docutils literal notranslate"><s
 </div>
 <p>The table shows the filename <code class="docutils literal notranslate"><span class="pre">fnames</span></code>, the measure count <code class="docutils literal notranslate"><span class="pre">MC</span></code> which corresponds to the bar number that MuseScore displays in the
 status bar on the bottom left (not always identical to the measure number (MN) in the score), the incorrect
-label’s offset from the barline, <code class="docutils literal notranslate"><span class="pre">mc_onset</span></code>, measured in quarter notes, and the incorrect label. From here on,
+label’s offset from the barline, <code class="docutils literal notranslate"><span class="pre">mc_onset</span></code>, measured in fractions of a whole note, and the incorrect label. From here on,
 simply correct the labels, commit and push again, and the check should pass this time.</p>
 <p>Once we have finished our work (in this case all sonata movements) and want to submit it for review,
 we head to the main page of the GitHub repository where we should see a banner allowing us to quickly create
@@ -419,6 +420,11 @@ the green button, you’re done</p>
 <li><p>push everything and create pull review -&gt; comparison MuseScore file gets pushed automatically</p></li>
 <li><p>request review by annotator</p></li>
 </ol>
+</div>
+<div class="section" id="approving-review-requesting-changes">
+<h3>Approving review &amp; requesting changes<a class="headerlink" href="#approving-review-requesting-changes" title="Permalink to this headline">¶</a></h3>
+<p>When reviewing a Pull Request by a reviewer who has gone through your annotations, checkout and pull the respective
+branch. You should find comparison MuseScore files with the suffix <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>.</p>
 </div>
 </div>
 </div>
