@@ -274,7 +274,7 @@ this:
     Giving the new pull request a meaningful title
 
 Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
-the green button, you're done
+the green button "Create pull request", you're done.
 
 
 Reviewing
