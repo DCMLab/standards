@@ -4,8 +4,8 @@ This repository contains the standard for harmonic annotations developed at the 
 
 ## Harmonic annotation standard
 
-The DCML standard for harmonic annotations consists in a set of [annotation guidelines](https://dcmlab.github.io/standards) and a [regular expression](https://github.com/DCMLab/standards/blob/master/harmony.py). The guidelines are the reference for annotators applying the standard for the task of encoding harmonic analysis, and explain how the open-source software [MuseScore](https://musescore.org/) can be used to enter chord labels into scores so that they can be
-* automatically extracted using the tools developed at the DCML, and
+The DCML standard for harmonic annotations consists in a detailed [annotation tutorial](https://dcmlab.github.io/standards/build/html/tutorial/), a [reference](https://dcmlab.github.io/standards), and a [regular expression](https://github.com/DCMLab/standards/blob/master/harmony.py). The tutorial represents the reference for annotators applying the standard for the task of encoding harmonic analysis, and explain how the open-source software [MuseScore](https://musescore.org/) can be used to enter chord labels into scores so that they can be
+* automatically extracted using the [parser](https://johentsch.github.io/ms3) developed at the DCML, and
 * split into the various encoded features using the regular expression.
 
 ### Use Cases
@@ -15,6 +15,11 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 
 ### Release Notes
+
+#### v2.3.0
+
+* Annotations may now include appended cadence labels, `PAC, IAC, HC, DC, EC, PC`, separated by a pip `|`; for example: `V}|HC`
+* `v` introduced as counterpart of `^`: it indicates that an interval replaces the lower instead of the upper note, e.g. `I(v7)` for a seventh that replaces a sixth rather than the octave.
 
 #### v2.2.0
 
