@@ -121,8 +121,8 @@ Creating a new Branch
 ^^^^^^^^^^^^^^^^^^^^^
 
 Consider which existing branch your new branch should be a copy of and check it
-out (``git checkout [branch_to_be_copied]``). Then you can simply do
-``git checkout -b [new_branch_name]`` do create a new branch. If you want to
+out, usually `main` (``git checkout main``). Then you can simply do
+``git checkout -b [new_branch_name]`` to create a new branch. If you want to
 upload, 'push', the new branch to GitHub, you can do a normal ``git push`` and
 Git will tell you the command to use, e.g.:
 
@@ -222,10 +222,21 @@ Annotating
 
 
 Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
-meaningful name. In this example, we want to annotate Corelli's first trio sonata, so we call the branch
-``op01no01``.
+meaningful name. In this example, we want to annotate the first movement of Corelli's first trio sonata, so we call
+the branch ``op01no01a``, according to the filename.
 
-Annotate your piece(s) and commit your changes locally. Everytime you push your changes to GitHub, your new labels
+Once checked out, you're ready to start annotating. Please start by adding to the MuseScore file your name and the
+version of the annotation standard you are using (currently ``2.3.0``). To do that, open the menu
+``File -> Score Properties...`` and add the information by altering or otherwise creating the fields
+``annotators`` and ``harmony_version`` with the corresponding values, as displayed below:
+
+.. figure:: img/musescore_metadata.png
+    :alt: Entering metadata in MuseScore
+    :scale: 80%
+
+    Entering metadata in MuseScore
+
+Annotate your piece and commit your changes locally. Everytime you push your changes to GitHub, your new labels
 will be checked automatically and you can see immediately if there are any syntactic errors. Simply head to the
 GitHub repository and click on the ``Actions`` tab. There you will see your last commit with a small coloured symbol:
 
@@ -281,9 +292,10 @@ Reviewing
 ---------
 
 #. Merge PR -> annotation tables are automatically pushed
-#. Checkout respective annotation branch and ``git pull --all`` (annotation tables get into your local ``main`` branch)
+#. Checkout respective annotation branch and ``git pull --all`` (annotation tables get into your local ``main`` branch: wait for that!)
 #. ``git merge main`` (annotation tables need to be in the annotation branch)
 #. review files and commit every change individually with measure number and explanation, e.g. ``"13: vii should be #vii``
+#. add your initials to the file's metadata in the field `reviewers` (``File -> Score Properties``, add the field if missing)
 #. push everything and create pull review -> comparison MuseScore file gets pushed automatically
 #. request review by annotator
 

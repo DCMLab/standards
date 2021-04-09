@@ -281,8 +281,8 @@ the local history diverges from the origin on GitHub.</p>
 <div class="section" id="creating-a-new-branch">
 <h4>Creating a new Branch<a class="headerlink" href="#creating-a-new-branch" title="Permalink to this headline">¶</a></h4>
 <p>Consider which existing branch your new branch should be a copy of and check it
-out (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">[branch_to_be_copied]</span></code>). Then you can simply do
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">[new_branch_name]</span></code> do create a new branch. If you want to
+out, usually <cite>main</cite> (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span></code>). Then you can simply do
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">[new_branch_name]</span></code> to create a new branch. If you want to
 upload, ‘push’, the new branch to GitHub, you can do a normal <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> and
 Git will tell you the command to use, e.g.:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>&gt;&gt; git push
@@ -364,9 +364,17 @@ into GitHub. Once again, don’t forget a meaningful COMMIT_MESSAGE.</p>
 <div class="section" id="annotating">
 <h3>Annotating<a class="headerlink" href="#annotating" title="Permalink to this headline">¶</a></h3>
 <p>Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
-meaningful name. In this example, we want to annotate Corelli’s first trio sonata, so we call the branch
-<code class="docutils literal notranslate"><span class="pre">op01no01</span></code>.</p>
-<p>Annotate your piece(s) and commit your changes locally. Everytime you push your changes to GitHub, your new labels
+meaningful name. In this example, we want to annotate the first movement of Corelli’s first trio sonata, so we call
+the branch <code class="docutils literal notranslate"><span class="pre">op01no01a</span></code>, according to the filename.</p>
+<p>Once checked out, you’re ready to start annotating. Please start by adding to the MuseScore file your name and the
+version of the annotation standard you are using (currently <code class="docutils literal notranslate"><span class="pre">2.3.0</span></code>). To do that, open the menu
+<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties...</span></code> and add the information by altering or otherwise creating the fields
+<code class="docutils literal notranslate"><span class="pre">annotators</span></code> and <code class="docutils literal notranslate"><span class="pre">harmony_version</span></code> with the corresponding values, as displayed below:</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/musescore_metadata.png"><img alt="Entering metadata in MuseScore" src="../_images/musescore_metadata.png" style="width: 635.2px; height: 118.4px;" /></a>
+<p class="caption"><span class="caption-text">Entering metadata in MuseScore</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Annotate your piece and commit your changes locally. Everytime you push your changes to GitHub, your new labels
 will be checked automatically and you can see immediately if there are any syntactic errors. Simply head to the
 GitHub repository and click on the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> tab. There you will see your last commit with a small coloured symbol:</p>
 <dl class="field-list simple">
@@ -381,14 +389,14 @@ GitHub repository and click on the <code class="docutils literal notranslate"><s
 </dd>
 </dl>
 <p>In the latter case, click on the failed check to get to this view:</p>
-<div class="figure align-default" id="id1">
+<div class="figure align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/github_check_perform_check.png"><img alt="Click on &quot;perform_check&quot;" src="../_images/github_check_perform_check.png" style="width: 560.8000000000001px; height: 264.0px;" /></a>
-<p class="caption"><span class="caption-text">Click on “perform_check”</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Click on “perform_check”</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>Scroll down until you see the output of the checking algorithm:</p>
-<div class="figure align-default" id="id2">
+<div class="figure align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/github_syntactical_errors.png"><img alt="Code output; syntactical errors listed in the end" src="../_images/github_syntactical_errors.png" style="width: 829.3499999999999px; height: 547.1999999999999px;" /></a>
-<p class="caption"><span class="caption-text">Code output; syntactical errors listed in the end</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Code output; syntactical errors listed in the end</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>The table shows the filename <code class="docutils literal notranslate"><span class="pre">fnames</span></code>, the measure count <code class="docutils literal notranslate"><span class="pre">MC</span></code> which corresponds to the bar number that MuseScore displays in the
 status bar on the bottom left (not always identical to the measure number (MN) in the score), the incorrect
@@ -397,15 +405,15 @@ simply correct the labels, commit and push again, and the check should pass this
 <p>Once we have finished our work (in this case all sonata movements) and want to submit it for review,
 we head to the main page of the GitHub repository where we should see a banner allowing us to quickly create
 a pull request:</p>
-<div class="figure align-default" id="id3">
+<div class="figure align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/github_pr.png"><img alt="GitHub offering to creat a new pull request" src="../_images/github_pr.png" style="width: 850.25px; height: 64.6px;" /></a>
-<p class="caption"><span class="caption-text">GitHub offering to creat a new pull request</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">GitHub offering to creat a new pull request</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>Otherwise, head to the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code> tab, click on “New pull request” and select your branch accordingly, like
 this:</p>
-<div class="figure align-default" id="id4">
+<div class="figure align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/github_create_pr.png"><img alt="Giving the new pull request a meaningful title" src="../_images/github_create_pr.png" style="width: 668.8px; height: 103.55px;" /></a>
-<p class="caption"><span class="caption-text">Giving the new pull request a meaningful title</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Giving the new pull request a meaningful title</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
 the green button “Create pull request”, you’re done.</p>
@@ -414,9 +422,10 @@ the green button “Create pull request”, you’re done.</p>
 <h3>Reviewing<a class="headerlink" href="#reviewing" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Merge PR -&gt; annotation tables are automatically pushed</p></li>
-<li><p>Checkout respective annotation branch and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--all</span></code> (annotation tables get into your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch)</p></li>
+<li><p>Checkout respective annotation branch and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--all</span></code> (annotation tables get into your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch: wait for that!)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code> (annotation tables need to be in the annotation branch)</p></li>
 <li><p>review files and commit every change individually with measure number and explanation, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;13:</span> <span class="pre">vii</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">#vii</span></code></p></li>
+<li><p>add your initials to the file’s metadata in the field <cite>reviewers</cite> (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties</span></code>, add the field if missing)</p></li>
 <li><p>push everything and create pull review -&gt; comparison MuseScore file gets pushed automatically</p></li>
 <li><p>request review by annotator</p></li>
 </ol>
