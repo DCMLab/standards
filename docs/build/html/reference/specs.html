@@ -123,6 +123,7 @@
 </li>
 <li><a class="reference internal" href="#feature-processing">Feature Processing</a><ul>
 <li><a class="reference internal" href="#splitting-the-labels">Splitting the Labels</a></li>
+<li><a class="reference internal" href="#special-symbols">Special Symbols</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#missing-features">Missing Features</a></li>
@@ -712,6 +713,48 @@ the following example.</p>
     <span class="k">return</span> <span class="n">df</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="special-symbols">
+<h3>Special Symbols<a class="headerlink" href="#special-symbols" title="Permalink to this headline">¶</a></h3>
+<p>The standard contains ‘shortcut’ symbols, in particular the augmented sixth chords <cite>Fr</cite>, <cite>Ger</cite>, and <cite>It</cite>. Originally
+they appear within the <cite>root</cite> feature but when processed, they are moved to an additional column <cite>special</cite> and
+replaced with an exact expression of their chord tones, as shown in this table:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 29%" />
+<col style="width: 15%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Special</p></th>
+<th class="head"><p>Translation</p></th>
+<th class="head"><p>root</p></th>
+<th class="head"><p>standard figbass</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>It</p></td>
+<td><p>viio6(b3)/V</p></td>
+<td><p>vii/V</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ger</p></td>
+<td><p>viio65(b3)/V</p></td>
+<td><p>vii/V</p></td>
+<td><p>∅, 6, 65</p></td>
+</tr>
+<tr class="row-even"><td><p>Fr</p></td>
+<td><p>V43(b5)/V</p></td>
+<td><p>V/V</p></td>
+<td><p>∅, 6, 43</p></td>
+</tr>
+</tbody>
+</table>
+<p>The column ‘standard figbass’ means that these <cite>figbass</cite> values are treated as the original chord form (i.e., scale
+degree <cite>b6</cite> in the bass), whereas all other values are considered as inversions. In other words, <cite>Fr</cite>, <cite>Fr6</cite>, <cite>Fr43</cite>
+are the same, just as <cite>Ger</cite>, <cite>Ger6</cite>, and <cite>Ger65</cite>. On the other hand, since <cite>It6</cite> is a triad, writing <cite>It</cite> would
+express its root form <cite>viio6(b3)/V</cite> (scale degree <cite>#4</cite> in the bass).</p>
 </div>
 </div>
 <div class="section" id="missing-features">
