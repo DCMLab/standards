@@ -354,6 +354,29 @@ the following example.
   :language: python
 
 
+Special Symbols
+---------------
+
+The standard contains 'shortcut' symbols, in particular the augmented sixth chords `Fr`, `Ger`, and `It`. Originally
+they appear within the `root` feature but when processed, they are moved to an additional column `special` and
+replaced with an exact expression of their chord tones, as shown in this table:
+
++---------+--------------+-------+------------------+
+| Special | Translation  | root  | standard figbass |
++=========+==============+=======+==================+
+| It      | viio6(b3)/V  | vii/V | 6                |
++---------+--------------+-------+------------------+
+| Ger     | viio65(b3)/V | vii/V | ∅, 6, 65         |
++---------+--------------+-------+------------------+
+| Fr      | V43(b5)/V    | V/V   | ∅, 6, 43         |
++---------+--------------+-------+------------------+
+
+The column 'standard figbass' means that these `figbass` values are treated as the original chord form (i.e., scale
+degree `b6` in the bass), whereas all other values are considered as inversions. In other words, `Fr`, `Fr6`, `Fr43`
+are the same, just as `Ger`, `Ger6`, and `Ger65`. On the other hand, since `It6` is a triad, writing `It` would
+express its root form `viio6(b3)/V` (scale degree `#4` in the bass).
+
+
 
 Missing Features
 ================
