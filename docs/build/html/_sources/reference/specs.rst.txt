@@ -371,10 +371,13 @@ replaced with an exact expression of their chord tones, as shown in this table:
 | Fr      | V43(b5)/V    | V/V   | ∅, 6, 43         |
 +---------+--------------+-------+------------------+
 
-The column 'standard figbass' means that these `figbass` values are treated as the original chord form (i.e., scale
-degree `b6` in the bass), whereas all other values are considered as inversions. In other words, `Fr`, `Fr6`, `Fr43`
-are the same, just as `Ger`, `Ger6`, and `Ger65`. On the other hand, since `It6` is a triad, writing `It` would
-express its root form `viio6(b3)/V` (scale degree `#4` in the bass).
+The column 'standard figbass' means that these ``figbass`` values are treated as the original chord form (i.e., scale
+degree ``b6`` in the bass), whereas all other values are considered as inversions. In other words, ``Fr``, ``Fr6``, ``Fr43``
+are the same, just as ``Ger``, ``Ger6``, and ``Ger65``. In both cases, the latter form (which corresponds to the
+European parlance 'augmented 43' and 'augmented 65' for the two chords) indicates how to express inversions. For example,
+an inversion of ``Ger65`` where ``#4`` is the bass note would be written as ``Ger7``; and ``Fr7`` has scale degree
+``2`` in the bass. Since ``It6`` is a triad, writing ``It`` (i.e., ``figbass = ∅``) would translate to its root
+position ``viio(b3)/V`` (scale degree ``#4`` in the bass).
 
 
 
