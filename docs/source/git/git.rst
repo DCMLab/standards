@@ -325,9 +325,11 @@ Reviewing review & reaching expert consensus
 --------------------------------------------
 
 Once your file(s) got reviewed, the reviewer creates a pull request (PR) and requests your review. You should
-receive an e-mail notification, if not, please check your GitHub settings.
+receive an e-mail notification, if not, please check your GitHub settings. Now your task is to go through all changes
+and see whether you agree with all of them. Here is how:
 
-Now your task is to go through all changes and see whether you agree with all of them. Here is how:
+How to review a review
+^^^^^^^^^^^^^^^^^^^^^^
 
 Open the PR from your notification e-mail or to GitHub and open the ``Pull requests`` tab where you should see it.
 The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
@@ -351,6 +353,9 @@ labels removed by the reviewer in red, and labels added by the reviewer in green
 The sole purpose of this file is to help you with the review of the review and will be deleted
 at some later point (it is not listed in the metadata either).
 
+How to finish the review of the review
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
 change that you agree with, there is nothing you need to do. In cases where you don't agree, you write a comment
 on GitHub and discuss with the reviewer until you find a solution that satisfies both analytical views. If consensus
@@ -359,6 +364,9 @@ Once you push the changes, they will be included into the PR and the comparison 
 As soon as the original file contains a set of annotations that you and the reviewer agree to be the best possible
 solution, your reward is the satisfaction of pressing the green button to merge the PR.
 
+How to start a discussion
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To start a discussion, click on the commit you disagree with. On the left you see in red your previous version and
 on the left, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
 that lets you add your comment. It is important that you add the measure number so that the reviewer can find
@@ -366,6 +374,7 @@ the spot and react to your comment.
 
 .. figure:: img/pr_comment.png
     :alt: Starting a discussion by commenting the reviewer's commit
+    :scale: 95%
 
     Starting a discussion by commenting the reviewer's commit
 

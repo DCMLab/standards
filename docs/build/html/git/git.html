@@ -127,7 +127,12 @@
 <li><a class="reference internal" href="#annotation-workflow">Annotation Workflow</a><ul>
 <li><a class="reference internal" href="#annotating">Annotating</a></li>
 <li><a class="reference internal" href="#reviewing">Reviewing</a></li>
-<li><a class="reference internal" href="#reviewing-review-reaching-expert-consensus">Reviewing review &amp; reaching expert consensus</a></li>
+<li><a class="reference internal" href="#reviewing-review-reaching-expert-consensus">Reviewing review &amp; reaching expert consensus</a><ul>
+<li><a class="reference internal" href="#how-to-review-a-review">How to review a review</a></li>
+<li><a class="reference internal" href="#how-to-finish-the-review-of-the-review">How to finish the review of the review</a></li>
+<li><a class="reference internal" href="#how-to-start-a-discussion">How to start a discussion</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -459,8 +464,10 @@ the green button “Create pull request”, you’re done.</p>
 <div class="section" id="reviewing-review-reaching-expert-consensus">
 <h3>Reviewing review &amp; reaching expert consensus<a class="headerlink" href="#reviewing-review-reaching-expert-consensus" title="Permalink to this headline">¶</a></h3>
 <p>Once your file(s) got reviewed, the reviewer creates a pull request (PR) and requests your review. You should
-receive an e-mail notification, if not, please check your GitHub settings.</p>
-<p>Now your task is to go through all changes and see whether you agree with all of them. Here is how:</p>
+receive an e-mail notification, if not, please check your GitHub settings. Now your task is to go through all changes
+and see whether you agree with all of them. Here is how:</p>
+<div class="section" id="how-to-review-a-review">
+<h4>How to review a review<a class="headerlink" href="#how-to-review-a-review" title="Permalink to this headline">¶</a></h4>
 <p>Open the PR from your notification e-mail or to GitHub and open the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code> tab where you should see it.
 The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
 commits made by the reviewer:</p>
@@ -478,6 +485,9 @@ in your local clone and can open it in MuseScore. It shows unchanged labels in b
 labels removed by the reviewer in red, and labels added by the reviewer in green.
 The sole purpose of this file is to help you with the review of the review and will be deleted
 at some later point (it is not listed in the metadata either).</p>
+</div>
+<div class="section" id="how-to-finish-the-review-of-the-review">
+<h4>How to finish the review of the review<a class="headerlink" href="#how-to-finish-the-review-of-the-review" title="Permalink to this headline">¶</a></h4>
 <p>Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
 change that you agree with, there is nothing you need to do. In cases where you don’t agree, you write a comment
 on GitHub and discuss with the reviewer until you find a solution that satisfies both analytical views. If consensus
@@ -485,16 +495,20 @@ has been reached, you need to make the change to the <em>original</em> file (not
 Once you push the changes, they will be included into the PR and the comparison file will be updated accordingly.
 As soon as the original file contains a set of annotations that you and the reviewer agree to be the best possible
 solution, your reward is the satisfaction of pressing the green button to merge the PR.</p>
+</div>
+<div class="section" id="how-to-start-a-discussion">
+<h4>How to start a discussion<a class="headerlink" href="#how-to-start-a-discussion" title="Permalink to this headline">¶</a></h4>
 <p>To start a discussion, click on the commit you disagree with. On the left you see in red your previous version and
 on the left, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
 that lets you add your comment. It is important that you add the measure number so that the reviewer can find
 the spot and react to your comment.</p>
 <div class="figure align-default" id="id7">
-<img alt="Starting a discussion by commenting the reviewer's commit" src="../_images/pr_comment.png" />
+<a class="reference internal image-reference" href="../_images/pr_comment.png"><img alt="Starting a discussion by commenting the reviewer's commit" src="../_images/pr_comment.png" style="width: 779.9499999999999px; height: 397.09999999999997px;" /></a>
 <p class="caption"><span class="caption-text">Starting a discussion by commenting the reviewer’s commit</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <p>The comments and resulting discussions will be visible in the PR’s overview (under the list of commits). Don’t forget
 to press the Subscribe button on the right to get informed about reactions to your comments.</p>
+</div>
 </div>
 </div>
 </div>
