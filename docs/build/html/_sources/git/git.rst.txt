@@ -217,9 +217,30 @@ into GitHub. Once again, don't forget a meaningful COMMIT_MESSAGE.
 Annotation Workflow
 ===================
 
+**Short Summary**
+
+#. Annotator:
+
+   * creates a new branch named after the file to be annotated
+   * pushes annotations and corrects automatically detected errors
+   * creates Pull Request (PR)
+
+#. Reviewer:
+
+   * merges annotator's PR, and then merges the automatically created files back into the annotation branch
+   * reviews the annotations and commits every change separately
+   * creates PR and requests a review by the annotator
+
+#. Annotator:
+
+   * Pulls the changes and goes through reviewer's commits in the PR
+   * in case of disagreement, enters into discussion with reviewer until consensus is reached
+   * pushes the respective changes and merges PR
+
+More details can be found below.
+
 Annotating
 ----------
-
 
 Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
 meaningful name. In this example, we want to annotate the first movement of Corelli's first trio sonata, so we call
@@ -265,8 +286,8 @@ status bar on the bottom left (not always identical to the measure number (MN) i
 label's offset from the barline, ``mc_onset``, measured in fractions of a whole note, and the incorrect label. From here on,
 simply correct the labels, commit and push again, and the check should pass this time.
 
-Once we have finished our work (in this case all sonata movements) and want to submit it for review,
-we head to the main page of the GitHub repository where we should see a banner allowing us to quickly create
+Once you have finished your work and want to submit it for review,
+head to the main page of the GitHub repository where we should see a banner allowing you to quickly create
 a pull request:
 
 .. figure:: img/github_pr.png
@@ -291,16 +312,63 @@ the green button "Create pull request", you're done.
 Reviewing
 ---------
 
-#. Merge PR -> annotation tables are automatically pushed
-#. Checkout respective annotation branch and ``git pull --all`` (annotation tables get into your local ``main`` branch: wait for that!)
-#. ``git merge main`` (annotation tables need to be in the annotation branch)
+#. Merge PR with new annotations
+#. wait until ``ms3-bot`` automatically pushed the new annotation tables
+#. Then ``git pull --all`` --> annotation tables get into your local ``main`` branch
+#. Checkout respective annotation branch and  ``git merge main`` (make sure afterwards that the folder ``harmonies`` contains the annotation table for the file to be reviewed)
 #. review files and commit every change individually with measure number and explanation, e.g. ``"13: vii should be #vii``
 #. add your initials to the file's metadata in the field `reviewers` (``File -> Score Properties``, add the field if missing)
-#. push everything and create pull review -> comparison MuseScore file gets pushed automatically
-#. request review by annotator
+#. push everything and create pull request (PR) -> comparison MuseScore file gets pushed automatically
+#. request PR review by annotator
 
-Approving review & requesting changes
--------------------------------------
+Reviewing review & reaching expert consensus
+--------------------------------------------
 
-When reviewing a Pull Request by a reviewer who has gone through your annotations, checkout and pull the respective
-branch. You should find comparison MuseScore files with the suffix ``_reviewed``.
+Once your file(s) got reviewed, the reviewer creates a pull request (PR) and requests your review. You should
+receive an e-mail notification, if not, please check your GitHub settings.
+
+Now your task is to go through all changes and see whether you agree with all of them. Here is how:
+
+Open the PR from your notification e-mail or to GitHub and open the ``Pull requests`` tab where you should see it.
+The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
+commits made by the reviewer:
+
+.. figure:: img/pr_commits.png
+    :alt: List of commits made by the reviewer
+    :scale: 95%
+
+    List of commits made by the reviewer
+
+Clicking on one of them will show you the corresponding changes in the MuseScore file. But it might be hard for
+you to assess the changes without looking at the actual music. Therefore:
+
+The last commit, called "Added comparison files for review", was made automatically by ``ms3-bot``,
+creating an additional MuseScore file with the suffix ``_reviewed``. Therefore, the first thing you want to do to
+review the review, is locally checkout and pull the branch corresponding to the PR
+(it should be the one you created to start with). Now you should have the comparison MuseScore file  ``_reviewed``
+in your local clone and can open it in MuseScore. It shows unchanged labels in black,
+labels removed by the reviewer in red, and labels added by the reviewer in green.
+The sole purpose of this file is to help you with the review of the review and will be deleted
+at some later point (it is not listed in the metadata either).
+
+Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
+change that you agree with, there is nothing you need to do. In cases where you don't agree, you write a comment
+on GitHub and discuss with the reviewer until you find a solution that satisfies both analytical views. If consensus
+has been reached, you need to make the change to the *original* file (not the ``_reviewed`` file) and commit it.
+Once you push the changes, they will be included into the PR and the comparison file will be updated accordingly.
+As soon as the original file contains a set of annotations that you and the reviewer agree to be the best possible
+solution, your reward is the satisfaction of pressing the green button to merge the PR.
+
+To start a discussion, click on the commit you disagree with. On the left you see in red your previous version and
+on the left, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
+that lets you add your comment. It is important that you add the measure number so that the reviewer can find
+the spot and react to your comment.
+
+.. figure:: img/pr_comment.png
+    :alt: Starting a discussion by commenting the reviewer's commit
+
+    Starting a discussion by commenting the reviewer's commit
+
+The comments and resulting discussions will be visible in the PR's overview (under the list of commits). Don't forget
+to press the Subscribe button on the right to get informed about reactions to your comments.
+

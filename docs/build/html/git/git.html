@@ -127,7 +127,7 @@
 <li><a class="reference internal" href="#annotation-workflow">Annotation Workflow</a><ul>
 <li><a class="reference internal" href="#annotating">Annotating</a></li>
 <li><a class="reference internal" href="#reviewing">Reviewing</a></li>
-<li><a class="reference internal" href="#approving-review-requesting-changes">Approving review &amp; requesting changes</a></li>
+<li><a class="reference internal" href="#reviewing-review-reaching-expert-consensus">Reviewing review &amp; reaching expert consensus</a></li>
 </ul>
 </li>
 </ul>
@@ -361,6 +361,31 @@ into GitHub. Once again, don’t forget a meaningful COMMIT_MESSAGE.</p>
 </div>
 <div class="section" id="annotation-workflow">
 <h2>Annotation Workflow<a class="headerlink" href="#annotation-workflow" title="Permalink to this headline">¶</a></h2>
+<p><strong>Short Summary</strong></p>
+<ol class="arabic simple">
+<li><p>Annotator:</p>
+<ul class="simple">
+<li><p>creates a new branch named after the file to be annotated</p></li>
+<li><p>pushes annotations and corrects automatically detected errors</p></li>
+<li><p>creates Pull Request (PR)</p></li>
+</ul>
+</li>
+<li><p>Reviewer:</p>
+<ul class="simple">
+<li><p>merges annotator’s PR, and then merges the automatically created files back into the annotation branch</p></li>
+<li><p>reviews the annotations and commits every change separately</p></li>
+<li><p>creates PR and requests a review by the annotator</p></li>
+</ul>
+</li>
+<li><p>Annotator:</p>
+<ul class="simple">
+<li><p>Pulls the changes and goes through reviewer’s commits in the PR</p></li>
+<li><p>in case of disagreement, enters into discussion with reviewer until consensus is reached</p></li>
+<li><p>pushes the respective changes and merges PR</p></li>
+</ul>
+</li>
+</ol>
+<p>More details can be found below.</p>
 <div class="section" id="annotating">
 <h3>Annotating<a class="headerlink" href="#annotating" title="Permalink to this headline">¶</a></h3>
 <p>Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
@@ -402,8 +427,8 @@ GitHub repository and click on the <code class="docutils literal notranslate"><s
 status bar on the bottom left (not always identical to the measure number (MN) in the score), the incorrect
 label’s offset from the barline, <code class="docutils literal notranslate"><span class="pre">mc_onset</span></code>, measured in fractions of a whole note, and the incorrect label. From here on,
 simply correct the labels, commit and push again, and the check should pass this time.</p>
-<p>Once we have finished our work (in this case all sonata movements) and want to submit it for review,
-we head to the main page of the GitHub repository where we should see a banner allowing us to quickly create
+<p>Once you have finished your work and want to submit it for review,
+head to the main page of the GitHub repository where we should see a banner allowing you to quickly create
 a pull request:</p>
 <div class="figure align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/github_pr.png"><img alt="GitHub offering to creat a new pull request" src="../_images/github_pr.png" style="width: 850.25px; height: 64.6px;" /></a>
@@ -421,19 +446,55 @@ the green button “Create pull request”, you’re done.</p>
 <div class="section" id="reviewing">
 <h3>Reviewing<a class="headerlink" href="#reviewing" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Merge PR -&gt; annotation tables are automatically pushed</p></li>
-<li><p>Checkout respective annotation branch and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--all</span></code> (annotation tables get into your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch: wait for that!)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code> (annotation tables need to be in the annotation branch)</p></li>
+<li><p>Merge PR with new annotations</p></li>
+<li><p>wait until <code class="docutils literal notranslate"><span class="pre">ms3-bot</span></code> automatically pushed the new annotation tables</p></li>
+<li><p>Then <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--all</span></code> –&gt; annotation tables get into your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch</p></li>
+<li><p>Checkout respective annotation branch and  <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code> (make sure afterwards that the folder <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> contains the annotation table for the file to be reviewed)</p></li>
 <li><p>review files and commit every change individually with measure number and explanation, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;13:</span> <span class="pre">vii</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">#vii</span></code></p></li>
 <li><p>add your initials to the file’s metadata in the field <cite>reviewers</cite> (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties</span></code>, add the field if missing)</p></li>
-<li><p>push everything and create pull review -&gt; comparison MuseScore file gets pushed automatically</p></li>
-<li><p>request review by annotator</p></li>
+<li><p>push everything and create pull request (PR) -&gt; comparison MuseScore file gets pushed automatically</p></li>
+<li><p>request PR review by annotator</p></li>
 </ol>
 </div>
-<div class="section" id="approving-review-requesting-changes">
-<h3>Approving review &amp; requesting changes<a class="headerlink" href="#approving-review-requesting-changes" title="Permalink to this headline">¶</a></h3>
-<p>When reviewing a Pull Request by a reviewer who has gone through your annotations, checkout and pull the respective
-branch. You should find comparison MuseScore files with the suffix <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>.</p>
+<div class="section" id="reviewing-review-reaching-expert-consensus">
+<h3>Reviewing review &amp; reaching expert consensus<a class="headerlink" href="#reviewing-review-reaching-expert-consensus" title="Permalink to this headline">¶</a></h3>
+<p>Once your file(s) got reviewed, the reviewer creates a pull request (PR) and requests your review. You should
+receive an e-mail notification, if not, please check your GitHub settings.</p>
+<p>Now your task is to go through all changes and see whether you agree with all of them. Here is how:</p>
+<p>Open the PR from your notification e-mail or to GitHub and open the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code> tab where you should see it.
+The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
+commits made by the reviewer:</p>
+<div class="figure align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/pr_commits.png"><img alt="List of commits made by the reviewer" src="../_images/pr_commits.png" style="width: 826.5px; height: 330.59999999999997px;" /></a>
+<p class="caption"><span class="caption-text">List of commits made by the reviewer</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Clicking on one of them will show you the corresponding changes in the MuseScore file. But it might be hard for
+you to assess the changes without looking at the actual music. Therefore:</p>
+<p>The last commit, called “Added comparison files for review”, was made automatically by <code class="docutils literal notranslate"><span class="pre">ms3-bot</span></code>,
+creating an additional MuseScore file with the suffix <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>. Therefore, the first thing you want to do to
+review the review, is locally checkout and pull the branch corresponding to the PR
+(it should be the one you created to start with). Now you should have the comparison MuseScore file  <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>
+in your local clone and can open it in MuseScore. It shows unchanged labels in black,
+labels removed by the reviewer in red, and labels added by the reviewer in green.
+The sole purpose of this file is to help you with the review of the review and will be deleted
+at some later point (it is not listed in the metadata either).</p>
+<p>Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
+change that you agree with, there is nothing you need to do. In cases where you don’t agree, you write a comment
+on GitHub and discuss with the reviewer until you find a solution that satisfies both analytical views. If consensus
+has been reached, you need to make the change to the <em>original</em> file (not the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file) and commit it.
+Once you push the changes, they will be included into the PR and the comparison file will be updated accordingly.
+As soon as the original file contains a set of annotations that you and the reviewer agree to be the best possible
+solution, your reward is the satisfaction of pressing the green button to merge the PR.</p>
+<p>To start a discussion, click on the commit you disagree with. On the left you see in red your previous version and
+on the left, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
+that lets you add your comment. It is important that you add the measure number so that the reviewer can find
+the spot and react to your comment.</p>
+<div class="figure align-default" id="id7">
+<img alt="Starting a discussion by commenting the reviewer's commit" src="../_images/pr_comment.png" />
+<p class="caption"><span class="caption-text">Starting a discussion by commenting the reviewer’s commit</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>The comments and resulting discussions will be visible in the PR’s overview (under the list of commits). Don’t forget
+to press the Subscribe button on the right to get informed about reactions to your comments.</p>
 </div>
 </div>
 </div>
