@@ -331,7 +331,7 @@ and see whether you agree with all of them. Here is how:
 How to review a review
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Open the PR from your notification e-mail or to GitHub and open the ``Pull requests`` tab where you should see it.
+Open the PR from your notification e-mail or go to GitHub and open the ``Pull requests`` tab where you should see it.
 The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
 commits made by the reviewer:
 
@@ -347,7 +347,7 @@ you to assess the changes without looking at the actual music. Therefore:
 The last commit, called "Added comparison files for review", was made automatically by ``ms3-bot``,
 creating an additional MuseScore file with the suffix ``_reviewed``. Therefore, the first thing you want to do to
 review the review, is locally checkout and pull the branch corresponding to the PR
-(it should be the one you created to start with). Now you should have the comparison MuseScore file  ``_reviewed``
+(it should be the same you created for annotating). Now you should have the comparison MuseScore file  ``_reviewed``
 in your local clone and can open it in MuseScore. It shows unchanged labels in black,
 labels removed by the reviewer in red, and labels added by the reviewer in green.
 The sole purpose of this file is to help you with the review of the review and will be deleted
@@ -378,6 +378,6 @@ the spot and react to your comment.
 
     Starting a discussion by commenting the reviewer's commit
 
-The comments and resulting discussions will be visible in the PR's overview (under the list of commits). Don't forget
+The comments and resulting discussions will be visible in the PR's "Conversation" tab (under the list of commits). Don't forget
 to press the Subscribe button on the right to get informed about reactions to your comments.
 
