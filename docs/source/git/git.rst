@@ -11,7 +11,7 @@ Git is a version control system generally controlled via the command line.
 GitHub is a hosting service for remote Git repositories. Since the DCML hosts
 data on GitHub, a basic understanding of the Git workflow is relevant for annotators
 and reviewers. There are plenty of resources (for example
-`these videos <https://git-scm.com/doc>`__) for learning Git on the web, so this
+`these videos <https://git-scm.com/doc>`__ or `this slideshow <https://rejahrehim.com/blog/git/workshop/presentation/slide/2019/12/08/choosing-the-right-git-branching-strategy.html#1>`__) for learning Git on the web, so this
 is just a very quick guide.
 
 .. admonition:: Navigating in the command line
@@ -314,8 +314,13 @@ Reviewing
 
 #. Merge PR with new annotations
 #. wait until ``ms3-bot`` automatically pushed the new annotation tables
-#. Then ``git pull --all`` --> annotation tables get into your local ``main`` branch
-#. Checkout respective annotation branch and  ``git merge main`` (make sure afterwards that the folder ``harmonies`` contains the annotation table for the file to be reviewed)
+#. the new annotation tables need to get into the annotation/review branch to create comparison files after your review:
+
+   * shortcut: in the updated review branch, do ``git pull origin main``; your local main is not updated!
+   * thoroughly: checkout main, ``git pull``, checkout review branch, ``git merge main``
+
+#. Before the review, make sure this had the desired effect by verifying the folder ``harmonies`` contains the
+   annotation table for the file to be reviewed (i.e., a TSV file by the same name)
 #. review files and commit every change individually with measure number and explanation, e.g. ``"13: vii should be #vii``
 #. add your initials to the file's metadata in the field `reviewers` (``File -> Score Properties``, add the field if missing)
 #. push everything and create pull request (PR) -> comparison MuseScore file gets pushed automatically

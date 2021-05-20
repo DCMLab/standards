@@ -192,7 +192,7 @@
 GitHub is a hosting service for remote Git repositories. Since the DCML hosts
 data on GitHub, a basic understanding of the Git workflow is relevant for annotators
 and reviewers. There are plenty of resources (for example
-<a class="reference external" href="https://git-scm.com/doc">these videos</a>) for learning Git on the web, so this
+<a class="reference external" href="https://git-scm.com/doc">these videos</a> or <a class="reference external" href="https://rejahrehim.com/blog/git/workshop/presentation/slide/2019/12/08/choosing-the-right-git-branching-strategy.html#1">this slideshow</a>) for learning Git on the web, so this
 is just a very quick guide.</p>
 <div class="caution admonition">
 <p class="admonition-title">Navigating in the command line</p>
@@ -453,8 +453,14 @@ the green button “Create pull request”, you’re done.</p>
 <ol class="arabic simple">
 <li><p>Merge PR with new annotations</p></li>
 <li><p>wait until <code class="docutils literal notranslate"><span class="pre">ms3-bot</span></code> automatically pushed the new annotation tables</p></li>
-<li><p>Then <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--all</span></code> –&gt; annotation tables get into your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch</p></li>
-<li><p>Checkout respective annotation branch and  <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code> (make sure afterwards that the folder <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> contains the annotation table for the file to be reviewed)</p></li>
+<li><p>the new annotation tables need to get into the annotation/review branch to create comparison files after your review:</p>
+<ul class="simple">
+<li><p>shortcut: in the updated review branch, do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">main</span></code>; your local main is not updated!</p></li>
+<li><p>thoroughly: checkout main, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>, checkout review branch, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code></p></li>
+</ul>
+</li>
+<li><p>Before the review, make sure this had the desired effect by verifying the folder <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> contains the
+annotation table for the file to be reviewed (i.e., a TSV file by the same name)</p></li>
 <li><p>review files and commit every change individually with measure number and explanation, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;13:</span> <span class="pre">vii</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">#vii</span></code></p></li>
 <li><p>add your initials to the file’s metadata in the field <cite>reviewers</cite> (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties</span></code>, add the field if missing)</p></li>
 <li><p>push everything and create pull request (PR) -&gt; comparison MuseScore file gets pushed automatically</p></li>
