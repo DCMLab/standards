@@ -3,6 +3,7 @@ DCML Corpus Creation Pipeline
 *****************************
 
 #. :ref:`score_repo`
+#. :ref:`metarepos`
 
 .. _score_repo:
 
@@ -90,3 +91,21 @@ Clean metadata
   This may involve naming the first two columns ``rel_paths`` and ``fnames``. For the Mazurka example,
   `this Pull Request <https://github.com/DCMLab/chopin_mazurkas/pull/1>`__ shows the metadata cleaning and update
   of the existing files from an older MuseScore and annotation standard.
+
+.. _metarepos:
+
+Adding the repo to one or several meta-repos
+============================================
+
+The individual subcorpora can be embedded as submodules in meta-repositories. Currently, the DCML uses two of them:
+
+1. `dcml_corpora <https://github.com/DCMLab/dcml_corpora>`__ for published corpora
+2. `annotation_review <https://github.com/DCMLab/annotation_review/>`__ (private) for unpublished corpora.
+
+To add the new repo, head into the meta-repo and do
+
+.. code-block:: console
+
+  git submodule add -b main https://github.com/DCMLab/chopin_mazurkas/
+
+Just to be sure, update all submodules: ``git submodule update --remote`` and push the whole thing.
