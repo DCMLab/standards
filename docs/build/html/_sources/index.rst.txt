@@ -7,6 +7,7 @@ TOC
 
   tutorial/index
   git/git
+  pipeline/pipeline
   reference/reference
   reference/examples
   reference/specs
