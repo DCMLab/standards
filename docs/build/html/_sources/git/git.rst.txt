@@ -172,8 +172,9 @@ respective measure number.
 Create a new branch and adapt the metadata.
   As an example, let's upgrade the labels of ``op01n06a.mscx`` from version 2.1.1 to 2.3.0. In this screencast,
   the score is already open and you see how the metadata is updated and committed to a new branch called ``op01n06a``.
-  Note that the commands ``ga`` and ``gc`` are aliases, i.e. shortcut commands, which stand for ``git add -A`` and
-  ``git commit -m`` respectively.
+
+  .. note:: that the commands ``ga`` and ``gc`` are aliases, i.e. shortcut commands, which you would replace by
+     ``git add -A`` and ``git commit -m`` respectively (unless you have created your own aliases).
 
   .. figure:: img/upgrade_metadata.gif
      :alt: Updating the metadata reflecting the version upgrade.
@@ -188,14 +189,16 @@ Review and update the labels and commit your changes individually.
   The following screencast demonstrates the upgrade process of ``op01n06a.mscx``. In principle, after every change
   the file is saved and the change is committed with the measure number and an explanation.
 
+  .. note:: that the commands ``ga`` and ``gc`` are aliases, i.e. shortcut commands, which you would replace by
+     ``git add -A`` and ``git commit -m`` respectively (unless you have created your own aliases).
+
   .. _individual_commits:
 
   .. figure:: img/upgrade_commits.gif
      :alt: Giving the new pull request a meaningful title
 
-     Creating individual commits for every change or group of changes. Take note and special care of the
-     annotator's comments and questions. The screencast produces the syntax error ``V6/III(2)`` (instead of
-     ``V6(2)/III``) that is automatically detected upon push to GitHub (see screenshot below).
+     Creating individual commits for every change or group of changes. The screencast produces the syntax error
+     ``V6/III(2)`` (instead of ``V6(2)/III``) that is automatically detected upon push to GitHub (see screenshot below).
 
   As you can see, similar changes can be grouped as one commit, as for m. 2. Phrase annotations such as the added
   curly bracket in m. 1 do not need to be committed individually.
@@ -212,7 +215,10 @@ Push your commits and create a Pull Request
 
   Shortly after opening the PR, an additional review file ending on the suffix
   ``_reviewed`` will be created on GitHub and added to the PR, which you can then pull and view locally to see
-  the changes you made.
+  the changes you made: ::
+
+    git checkout op01n06a
+    git pull
 
 Reviewing a set of annotations
 ==============================
@@ -386,8 +392,8 @@ at some later point (it is not listed in the metadata either). In case this comp
 commit ``Added comparison files for review``) is missing, the reviewer might have made a procedural mistake and
 you should ask for it to be created before you review the changes.
 
-How to finish the review of the review
---------------------------------------
+How to finalize the review of the review
+----------------------------------------
 
 Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
 change that you agree with, there is nothing you need to do. In cases where you don't agree, you write a comment

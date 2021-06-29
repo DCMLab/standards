@@ -125,7 +125,7 @@
 </li>
 <li><a class="reference internal" href="#reacting-to-a-review-reaching-expert-consensus">Reacting to a review &amp; reaching expert consensus</a><ul>
 <li><a class="reference internal" href="#how-to-review-a-review">How to review a review</a></li>
-<li><a class="reference internal" href="#how-to-finish-the-review-of-the-review">How to finish the review of the review</a></li>
+<li><a class="reference internal" href="#how-to-finalize-the-review-of-the-review">How to finalize the review of the review</a></li>
 <li><a class="reference internal" href="#how-to-start-a-discussion">How to start a discussion</a></li>
 </ul>
 </li>
@@ -214,7 +214,7 @@
 <li><p><a class="reference internal" href="#reacting-to-a-review-reaching-expert-consensus" id="id24">Reacting to a review &amp; reaching expert consensus</a></p>
 <ul>
 <li><p><a class="reference internal" href="#how-to-review-a-review" id="id25">How to review a review</a></p></li>
-<li><p><a class="reference internal" href="#how-to-finish-the-review-of-the-review" id="id26">How to finish the review of the review</a></p></li>
+<li><p><a class="reference internal" href="#how-to-finalize-the-review-of-the-review" id="id26">How to finalize the review of the review</a></p></li>
 <li><p><a class="reference internal" href="#how-to-start-a-discussion" id="id27">How to start a discussion</a></p></li>
 </ul>
 </li>
@@ -399,9 +399,12 @@ the upgrade, you commit your changes individually, justifying each of them in a 
 respective measure number.</p>
 <dl>
 <dt>Create a new branch and adapt the metadata.</dt><dd><p>As an example, let’s upgrade the labels of <code class="docutils literal notranslate"><span class="pre">op01n06a.mscx</span></code> from version 2.1.1 to 2.3.0. In this screencast,
-the score is already open and you see how the metadata is updated and committed to a new branch called <code class="docutils literal notranslate"><span class="pre">op01n06a</span></code>.
-Note that the commands <code class="docutils literal notranslate"><span class="pre">ga</span></code> and <code class="docutils literal notranslate"><span class="pre">gc</span></code> are aliases, i.e. shortcut commands, which stand for <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> and
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span></code> respectively.</p>
+the score is already open and you see how the metadata is updated and committed to a new branch called <code class="docutils literal notranslate"><span class="pre">op01n06a</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>that the commands <code class="docutils literal notranslate"><span class="pre">ga</span></code> and <code class="docutils literal notranslate"><span class="pre">gc</span></code> are aliases, i.e. shortcut commands, which you would replace by
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span></code> respectively (unless you have created your own aliases).</p>
+</div>
 <div class="figure align-default" id="id10">
 <img alt="Updating the metadata reflecting the version upgrade." src="../_images/upgrade_metadata.gif" />
 <p class="caption"><span class="caption-text">Updating the metadata reflecting the version upgrade. The screencast starts at <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">corelli</span></code>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
@@ -412,11 +415,15 @@ upgrade includes a review of the existing labels, they also add their initials t
 </dd>
 <dt>Review and update the labels and commit your changes individually.</dt><dd><p>The following screencast demonstrates the upgrade process of <code class="docutils literal notranslate"><span class="pre">op01n06a.mscx</span></code>. In principle, after every change
 the file is saved and the change is committed with the measure number and an explanation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>that the commands <code class="docutils literal notranslate"><span class="pre">ga</span></code> and <code class="docutils literal notranslate"><span class="pre">gc</span></code> are aliases, i.e. shortcut commands, which you would replace by
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span></code> respectively (unless you have created your own aliases).</p>
+</div>
 <div class="figure align-default" id="id11">
 <span id="individual-commits"></span><img alt="Giving the new pull request a meaningful title" src="../_images/upgrade_commits.gif" />
-<p class="caption"><span class="caption-text">Creating individual commits for every change or group of changes. Take note and special care of the
-annotator’s comments and questions. The screencast produces the syntax error <code class="docutils literal notranslate"><span class="pre">V6/III(2)</span></code> (instead of
-<code class="docutils literal notranslate"><span class="pre">V6(2)/III</span></code>) that is automatically detected upon push to GitHub (see screenshot below).</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Creating individual commits for every change or group of changes. The screencast produces the syntax error
+<code class="docutils literal notranslate"><span class="pre">V6/III(2)</span></code> (instead of <code class="docutils literal notranslate"><span class="pre">V6(2)/III</span></code>) that is automatically detected upon push to GitHub (see screenshot below).</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <p>As you can see, similar changes can be grouped as one commit, as for m. 2. Phrase annotations such as the added
 curly bracket in m. 1 do not need to be committed individually.</p>
@@ -430,7 +437,11 @@ example, the mistake in the above screencast will be displayed like this:</p>
 </div>
 <p>Shortly after opening the PR, an additional review file ending on the suffix
 <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> will be created on GitHub and added to the PR, which you can then pull and view locally to see
-the changes you made.</p>
+the changes you made:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">op01n06a</span>
+<span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </div>
@@ -591,8 +602,8 @@ at some later point (it is not listed in the metadata either). In case this comp
 commit <code class="docutils literal notranslate"><span class="pre">Added</span> <span class="pre">comparison</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">review</span></code>) is missing, the reviewer might have made a procedural mistake and
 you should ask for it to be created before you review the changes.</p>
 </div>
-<div class="section" id="how-to-finish-the-review-of-the-review">
-<h3><a class="toc-backref" href="#id26">How to finish the review of the review</a><a class="headerlink" href="#how-to-finish-the-review-of-the-review" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-finalize-the-review-of-the-review">
+<h3><a class="toc-backref" href="#id26">How to finalize the review of the review</a><a class="headerlink" href="#how-to-finalize-the-review-of-the-review" title="Permalink to this headline">¶</a></h3>
 <p>Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
 change that you agree with, there is nothing you need to do. In cases where you don’t agree, you write a comment
 on GitHub (see next subsection) and discuss with the reviewer until you find a solution that satisfies both analytical
