@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DCML Corpus Creation Pipeline &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Annotation Reference" href="../reference/reference.html" />
+    <link rel="prev" title="DCML annotation workflow" href="../git/git.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          DCML Guidelines</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Other pages <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Annotation Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/musescore.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/first_label.html">The first label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/first_phrase.html">The first phrase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/detail.html">Level of detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/localkey.html">Changing the local key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/counterpoint.html">Contrapuntal patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/features.html">Some more features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git.html">DCML annotation workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#short-summary">Short summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#annotating">Annotating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#quick-git-reference">Quick Git Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DCML Corpus Creation Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">Collect and prepare the digital edition in the latest MuseScore format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files">Creating a repository with unannotated MuseScore files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos">Adding the repo to one or several meta-repos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-syntax">The syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-remainder-of-the-reference-is-currently-under-reconstruction">The remainder of the Reference is currently under reconstruction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/examples.html">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#phrase-structure">Phrase Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#figured-bass">Figured Bass</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/specs.html">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#what-is-being-encoded">What is being encoded?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#feature-processing">Feature Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#missing-features">Missing Features</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">This Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">DCML Corpus Creation Pipeline</a><ul>
+<li><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">Collect and prepare the digital edition in the latest MuseScore format</a><ul>
+<li><a class="reference internal" href="#prior-research">Prior research</a></li>
+<li><a class="reference internal" href="#look-up-and-check-existing-scores">Look up and check existing scores</a></li>
+<li><a class="reference internal" href="#typeset-non-existent-files">Typeset non-existent files</a></li>
+<li><a class="reference internal" href="#file-curation">File curation</a></li>
+<li><a class="reference internal" href="#create-metadata">Create metadata</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files">Creating a repository with unannotated MuseScore files</a><ul>
+<li><a class="reference internal" href="#variant-1-using-the-template-repository">Variant 1: Using the template repository</a></li>
+<li><a class="reference internal" href="#variant-2-starting-from-scratch">Variant 2: Starting from scratch</a></li>
+<li><a class="reference internal" href="#variant-3-splitting-an-existing-repository">Variant 3: Splitting an existing repository</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos">Adding the repo to one or several meta-repos</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../git/git.html" title="Previous Chapter: DCML annotation workflow"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; DCML annotati...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../reference/reference.html" title="Next Chapter: Annotation Reference"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Annotation Reference &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/pipeline/pipeline.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="dcml-corpus-creation-pipeline">
+<h1>DCML Corpus Creation Pipeline<a class="headerlink" href="#dcml-corpus-creation-pipeline" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" id="id1">Collect and prepare the digital edition in the latest MuseScore format</a></p>
+<ul>
+<li><p><a class="reference internal" href="#prior-research" id="id2">Prior research</a></p></li>
+<li><p><a class="reference internal" href="#look-up-and-check-existing-scores" id="id3">Look up and check existing scores</a></p></li>
+<li><p><a class="reference internal" href="#typeset-non-existent-files" id="id4">Typeset non-existent files</a></p></li>
+<li><p><a class="reference internal" href="#file-curation" id="id5">File curation</a></p></li>
+<li><p><a class="reference internal" href="#create-metadata" id="id6">Create metadata</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files" id="id7">Creating a repository with unannotated MuseScore files</a></p>
+<ul>
+<li><p><a class="reference internal" href="#variant-1-using-the-template-repository" id="id8">Variant 1: Using the template repository</a></p></li>
+<li><p><a class="reference internal" href="#variant-2-starting-from-scratch" id="id9">Variant 2: Starting from scratch</a></p></li>
+<li><p><a class="reference internal" href="#variant-3-splitting-an-existing-repository" id="id10">Variant 3: Splitting an existing repository</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos" id="id11">Adding the repo to one or several meta-repos</a></p></li>
+</ul>
+</div>
+<div class="section" id="collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">
+<span id="get-scores"></span><h2><a class="toc-backref" href="#id1">Collect and prepare the digital edition in the latest MuseScore format</a><a class="headerlink" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prior-research">
+<h3><a class="toc-backref" href="#id2">Prior research</a><a class="headerlink" href="#prior-research" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Check which pieces make up the collection</p></li>
+<li><p>how they are grouped</p></li>
+<li><p>what naming or numbering conventions exist</p></li>
+<li><p>which editions there are</p></li>
+<li><p>if different versions of the pieces exist.</p></li>
+<li><p>Come up with a list (and hierarchy) of names. Here, you can already think of a good naming/numbering convention for the corpus.</p></li>
+<li><p>It might be good to create the list of the overarching group of works even if your corpus will contain only parts of it, for the sake of a better overview.</p></li>
+<li><p>Example: Going from the <a class="reference external" href="http://www3.cpdl.org/wiki/index.php/Claudio_Monteverdi">list of Monteverdi’s Madrigal books</a>
+to an <a class="reference external" href="https://github.com/DCMLab/corpora/blob/master/annotations/Monteverdi-Madrigals/readme.md">initial README file</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="look-up-and-check-existing-scores">
+<h3><a class="toc-backref" href="#id3">Look up and check existing scores</a><a class="headerlink" href="#look-up-and-check-existing-scores" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>All scores available need to be checked and compared:</dt><dd><ul>
+<li><p>reference edition</p></li>
+<li><p>completeness</p></li>
+<li><p>quality &amp; errors</p></li>
+<li><p>license (later publication!)</p></li>
+<li><p>file format and expected conversion losses</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Where to check</dt><dd><ul>
+<li><p>First: musescore.com because the scores are in the target format</p></li>
+<li><p>musicalion.com (not free to publish: need to ask first)</p></li>
+<li><p>choral music: CPDL</p></li>
+<li><p><a class="reference external" href="http://kern.ccarh.org/">http://kern.ccarh.org/</a> lossless humdrum 2 musescore conversion needed</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="typeset-non-existent-files">
+<h3><a class="toc-backref" href="#id4">Typeset non-existent files</a><a class="headerlink" href="#typeset-non-existent-files" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>pick reference edition and send commission to transcriber</p></li>
+<li><p>depending on the music, prices may vary between 5 and 20 CHF per page</p></li>
+</ul>
+</div>
+<div class="section" id="file-curation">
+<h3><a class="toc-backref" href="#id5">File curation</a><a class="headerlink" href="#file-curation" title="Permalink to this headline">¶</a></h3>
+<p>The scores need to be corrected on the basis of a reference edition/manuscript.
+We have a collaborative document with detailed
+<a class="reference external" href="https://docs.google.com/document/d/1Q2svEUSsE7OCetik8An__gsEwQCYNfFJlHFMF9dRce4/edit#heading=h.8hrcm7m3udll">Score correction guidelines</a>.
+It also stipulates which information from the reference edition/manuscript needs to be encoded in what way.
+Please send a request to be added to the document.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Convert to MuseScore format</dt><dd><ul>
+<li><p>XML, CAP: can be done with MuseScore’s batch converter plugin or with <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">convert</span></code></p></li>
+<li><p>CAPX: Conversion to CAP or XML with DCML’s Capella license</p></li>
+<li><p>MUSX: Conversion to XML with private Finale copy</p></li>
+<li><p>SIB: Conversion to XML with Sibelius on DCML’s iMac</p></li>
+<li><p>LY: no good conversion available</p></li>
+<li><p>KRN: hum2xml can be used but it would be preferable to have our own converter to MuseScore</p></li>
+<li><p>results need to be checked; especially markup such as slurs, arpeggios, trills etc. often get screwed</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Renaming</dt><dd><ul>
+<li><p>Decide on naming convention and create a map (without extensions) from old to new filenames</p></li>
+<li><dl class="simple">
+<dt>Sometimes, files need to be split at that point because they contain several movements</dt><dd><ul>
+<li><p>For this, you introduce section breaks separating the movements</p></li>
+<li><p>After every section break, you have to re-insert the time and key signature or add it into the split file</p></li>
+<li><p>Start with the last movement, select it and do <cite>File -&gt; Save Selection</cite></p></li>
+<li><p>Repeat for all movements</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Rename the files</p></li>
+<li><p>Possibly add a small script that automatically renames the source files</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Use parser/checking tool and/or manual checks for consistency</dt><dd><ul>
+<li><dl class="simple">
+<dt>certain bars need to be excluded from the bar count:</dt><dd><ul>
+<li><p>anacrusis</p></li>
+<li><p>pickup measures throughout the piece</p></li>
+<li><p>second voltas (i.e. second repeats)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>irregular measure lengths need to complete each other</dt><dd><ul>
+<li><p>e.g. when a repeated section starts with a pickup measure, the last measure of the repeated section needs to be shorter</p></li>
+<li><p>anacrusis is substracted from the last bar</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>if in the reference edition the bar count restarts in the middle of the piece (e.g. in some variation movements), you can</dt><dd><ul>
+<li><p>either: split the movement into individual files (not preferable if you want to keep the movement as one coherent unit)</p></li>
+<li><p>or: have two versions, one working version with continuous (unambiguous) measure numbers that depart from the reference edition, and one that is provided separately, that has the original (ambiguous) measure numbering but is not used for computational purposes. The reset of the counter should not be done via “add to measure count” using a negative number, but rather via section breaks.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="create-metadata">
+<h3><a class="toc-backref" href="#id6">Create metadata</a><a class="headerlink" href="#create-metadata" title="Permalink to this headline">¶</a></h3>
+<p>All metadata fields are automatically extracted (by our workflow script that use <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">extract</span> <span class="pre">-D</span></code>) and represented
+in the <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> file. To conveniently populate the metadata fields in the MSCX files, you can also create
+the corresponding columns in the existing <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> files and use <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span></code> to update the
+Musescore files.</p>
+<p>Populate the following default fields (if applicable):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">composer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">movementNumer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">movementTitle</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> (URL of the adapted digital edition)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workNumer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workTitle</span></code></p></li>
+</ul>
+<p>Add to that the following custom fields (if applicable):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">composed_start</span></code>, <code class="docutils literal notranslate"><span class="pre">composed_end</span></code> (identical values if one exact year is known)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">typesetter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_integrity</span></code> (person who made the score match the reference edition/manuscript)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">annotators</span></code> (name, if several annotations or iterations, specify in parenthesis who did what)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reviewers</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">harmony_version</span></code> (version of the DCML harmony annotation standard used)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">imslp</span></code> (URL of the work’s Wiki page)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">musicbrainz</span></code> (work URI)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">viaf</span></code> (work URI)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wikidata</span></code> (e.g. <a class="reference external" href="http://www.wikidata.org/entity/Q2194957">http://www.wikidata.org/entity/Q2194957</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="creating-a-repository-with-unannotated-musescore-files">
+<span id="score-repo"></span><h2><a class="toc-backref" href="#id7">Creating a repository with unannotated MuseScore files</a><a class="headerlink" href="#creating-a-repository-with-unannotated-musescore-files" title="Permalink to this headline">¶</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
+needs to be complete and the file names final.</p>
+</div>
+<p>Before starting annotating a corpus, a repo with the standard folder structure needs to be created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── MS3
+└── pdf
+</pre></div>
+</div>
+<p>The directory <code class="docutils literal notranslate"><span class="pre">MS3</span></code> contains the unannotated MuseScore files and <code class="docutils literal notranslate"><span class="pre">PDF</span></code> the print edition or manuscript which they
+encode. In order to activate the annotation workflow (i.e. the automatic scripts triggered on the GitHub servers
+by certain events related to annotation and review), the folder <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> needs to be copied from
+the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>. It also contains our
+standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file which prevents temporary files from being tracked and uploaded.</p>
+<div class="section" id="variant-1-using-the-template-repository">
+<h3><a class="toc-backref" href="#id8">Variant 1: Using the template repository</a><a class="headerlink" href="#variant-1-using-the-template-repository" title="Permalink to this headline">¶</a></h3>
+<p>You can create the new repo directly from the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>
+by heading there and clicking on ‘Use this template’. In this variant, every push to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch results
+in metadata, measures and notes being extracted from all changed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> files. Note that renaming and deleting
+files will lead to undesired effects that will have to be checked and corrected manually.</p>
+</div>
+<div class="section" id="variant-2-starting-from-scratch">
+<h3><a class="toc-backref" href="#id9">Variant 2: Starting from scratch</a><a class="headerlink" href="#variant-2-starting-from-scratch" title="Permalink to this headline">¶</a></h3>
+<p>Or you simply create the new repo with the above-mentioned folder structure and add the workflow scripts when
+the scores are prepared. In this case, you will have to use the <a class="reference external" href="https://pypi.org/project/ms3">Python library ms3</a>
+to extract metadata, notes, and measures manually.</p>
+</div>
+<div class="section" id="variant-3-splitting-an-existing-repository">
+<h3><a class="toc-backref" href="#id10">Variant 3: Splitting an existing repository</a><a class="headerlink" href="#variant-3-splitting-an-existing-repository" title="Permalink to this headline">¶</a></h3>
+<p>This is for the special case that the MuseScore files in question are already sitting in a subfolder of an existing
+repository which is to be transferred into the new repo including the files’ Git histories. This variant is a bit
+more involved and requires prior installation of the <a class="reference external" href="https://github.com/newren/git-filter-repo">git filter-repo</a>
+command which is recommended by the Git developers for replacing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">filter-branch</span></code>.</p>
+<dl>
+<dt>Setting</dt><dd><p>As an example, we will create a new repository <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> (Repo B) which will include all files situated in the
+existing repository <code class="docutils literal notranslate"><span class="pre">corpora</span></code> (Repo A) in the subfolder <code class="docutils literal notranslate"><span class="pre">annotations/Chopin-Mazurkas</span></code>, with the workflow scripts
+added on top.</p>
+</dd>
+<dt>Create the new repo B</dt><dd><p>On GitHub, we use the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a> to create
+the target repo <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> with the workflow files and the standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. Locally, we initialize
+an empty Git repo that will be connected upstream at a later point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">chopin_mazurkas</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">chopin_mazurkas</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">init</span>
+</pre></div>
+</div>
+<p>Make sure that your Git is configured to use the name <code class="docutils literal notranslate"><span class="pre">main</span></code> for the default branch, which can be achieved using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">init.defaultBranch</span> <span class="pre">main</span></code>.</p>
+</dd>
+<dt>Clone repo A and transfer files</dt><dd><p>We start off with a fresh clone of <code class="docutils literal notranslate"><span class="pre">corpora</span></code>, head into it and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="nb">filter</span><span class="o">-</span><span class="n">repo</span> <span class="o">--</span><span class="n">subdirectory</span><span class="o">-</span><span class="nb">filter</span> <span class="n">annotations</span><span class="o">/</span><span class="n">Chopin</span><span class="o">-</span><span class="n">Mazurkas</span><span class="o">/</span> <span class="o">--</span><span class="n">target</span> <span class="o">../</span><span class="n">chopin_mazurkas</span>
+</pre></div>
+</div>
+<p>which will copy all files from <code class="docutils literal notranslate"><span class="pre">annotations/Chopin-Mazurkas/</span></code> to the freshly initialized repo
+<code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> together with their full commit histories. If there is a README file, rename it to <code class="docutils literal notranslate"><span class="pre">README.md</span></code>.</p>
+</dd>
+<dt>Connect local repo B to the remote repo B</dt><dd><p>The local <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> now contains the files at the top level together with the full commit
+history (check out <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>). Now we can connect it to the remote and merge the workflow scripts from there:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">DCMLab</span><span class="o">/</span><span class="n">chopin_mazurkas</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">main</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">unrelated</span><span class="o">-</span><span class="n">histories</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+</dd>
+<dt>Clean metadata</dt><dd><p>In case there was an older <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> it should now be automatically updated and you might have to clean it.
+This may involve naming the first two columns <code class="docutils literal notranslate"><span class="pre">rel_paths</span></code> and <code class="docutils literal notranslate"><span class="pre">fnames</span></code>. For the Mazurka example,
+<a class="reference external" href="https://github.com/DCMLab/chopin_mazurkas/pull/1">this Pull Request</a> shows the metadata cleaning and update
+of the existing files from an older MuseScore and annotation standard.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="adding-the-repo-to-one-or-several-meta-repos">
+<span id="metarepos"></span><h2><a class="toc-backref" href="#id11">Adding the repo to one or several meta-repos</a><a class="headerlink" href="#adding-the-repo-to-one-or-several-meta-repos" title="Permalink to this headline">¶</a></h2>
+<p>The individual subcorpora can be embedded as submodules in meta-repositories. Currently, the DCML uses two of them:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/DCMLab/dcml_corpora">dcml_corpora</a> for published corpora</p></li>
+<li><p><a class="reference external" href="https://github.com/DCMLab/annotation_review/">annotation_review</a> (private) for unpublished corpora.</p></li>
+</ol>
+<p>To add the new repo, head into the meta-repo and do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="o">-</span><span class="n">b</span> <span class="n">main</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">DCMLab</span><span class="o">/</span><span class="n">chopin_mazurkas</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Just to be sure, update all submodules: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--remote</span></code> and push the whole thing.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
