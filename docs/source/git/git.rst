@@ -315,7 +315,7 @@ Now you are ready to start your review.
     decision in the process merges the PR. As a last step, go to the main branch, wait for the automatic
     ``Automatically added TSV files from parse with ms3`` commit, and check if the corresponding table row in the
     README got updated correctly (otherwise, the metadata fields in the MuseScore file were not correctly populated).
-
+    The piece has now been finalized and is ready for eventual publication. Thank you!
 
 
 Reviewing a set of upgraded annotations
@@ -347,7 +347,7 @@ receive an e-mail notification, if not, please check your GitHub settings. Now y
 and see whether you agree with all of them. Here is how:
 
 How to review a review
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 Open the PR from your notification e-mail or go to GitHub and open the ``Pull requests`` tab where you should see it.
 The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
@@ -365,28 +365,49 @@ you to assess the changes without looking at the actual music. Therefore:
 The last commit, called "Added comparison files for review", was made automatically by ``ms3-bot``,
 creating an additional MuseScore file with the suffix ``_reviewed``. Therefore, the first thing you want to do to
 review the review, is locally checkout and pull the branch corresponding to the PR
-(it should be the same you created for annotating). Now you should have the comparison MuseScore file  ``_reviewed``
+(it should be the same you created for annotating). As an example, if in the PR it says
+
+.. figure:: img/github_pr_description.png
+    :alt: johentsch wants to merge 2 commits into main from op01n01a
+    :scale: 95%
+
+    johentsch wants to merge 2 commits into main from op01n01a
+
+it means you do::
+
+  git checkout op01n01a
+  git pull
+
+Now you should have the comparison MuseScore file  ``_reviewed``
 in your local clone and can open it in MuseScore. It shows unchanged labels in black,
 labels removed by the reviewer in red, and labels added by the reviewer in green.
 The sole purpose of this file is to help you with the review of the review and will be deleted
-at some later point (it is not listed in the metadata either).
+at some later point (it is not listed in the metadata either). In case this comparison file (and the corresponding
+commit ``Added comparison files for review``) is missing, the reviewer might have made a procedural mistake and
+you should ask for it to be created before you review the changes.
 
 How to finish the review of the review
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 
 Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
 change that you agree with, there is nothing you need to do. In cases where you don't agree, you write a comment
-on GitHub and discuss with the reviewer until you find a solution that satisfies both analytical views. If consensus
-has been reached, you need to make the change to the *original* file (not the ``_reviewed`` file) and commit it.
+on GitHub (see next subsection) and discuss with the reviewer until you find a solution that satisfies both analytical
+views. In addition, you may want to suggest a new label by integrating it in the *original* file (not the
+``_reviewed`` file) and committing the change with a meaningful commit message that includes the measure number
+(e.g. ``"14.4: included my original solution V43(4) as an alternative solution"``).
 Once you push the changes, they will be included into the PR and the comparison file will be updated accordingly.
 As soon as the original file contains a set of annotations that you and the reviewer agree to be the best possible
-solution, your reward is the satisfaction of pressing the green button to merge the PR.
+solution, the person who made the last
+decision in the process merges the PR. As a last step, go to the main branch, wait for the automatic
+``Automatically added TSV files from parse with ms3`` commit, and check if the corresponding table row in the
+README got updated correctly (otherwise, the metadata fields in the MuseScore file were not correctly populated).
+The piece has now been finalized and is ready for eventual publication. Thank you!
 
 How to start a discussion
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 To start a discussion, click on the commit you disagree with. On the left you see in red your previous version and
-on the left, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
+on the right, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
 that lets you add your comment. It is important that you add the measure number so that the reviewer can find
 the spot and react to your comment.
 
@@ -398,8 +419,8 @@ the spot and react to your comment.
 
     Starting a discussion by commenting the reviewer's commit
 
-The comments and resulting discussions will be visible in the PR's "Conversation" tab (under the list of commits). Don't forget
-to press the Subscribe button on the right to get informed about reactions to your comments.
+The comments and resulting discussions will be visible in the PR's "Conversation" tab (under the list of commits).
+Don't forget to press the Subscribe button on the right to get informed about reactions to your comments.
 
 
 
