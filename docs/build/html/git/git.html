@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Version control with Git &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
+    <title>DCML annotation workflow &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
@@ -67,13 +67,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorial/features.html">Some more features</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Version control with Git</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick Reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#annotation-workflow">Annotation Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DCML annotation workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#short-summary">Short summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#annotating">Annotating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrading-annotations">Upgrading annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reviewing-a-set-of-annotations">Reviewing a set of annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-git-reference">Quick Git Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pipeline/pipeline.html">DCML Corpus Creation Pipeline</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html#creating-a-repository-with-empty-musescore-files">Creating a repository with empty MuseScore files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">Collect and prepare the digital edition in the latest MuseScore format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html#creating-a-repository-with-unannotated-musescore-files">Creating a repository with unannotated MuseScore files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html#adding-the-repo-to-one-or-several-meta-repos">Adding the repo to one or several meta-repos</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Reference</a><ul>
@@ -108,8 +113,22 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Version control with Git</a><ul>
-<li><a class="reference internal" href="#quick-reference">Quick Reference</a><ul>
+<li><a class="reference internal" href="#">DCML annotation workflow</a><ul>
+<li><a class="reference internal" href="#short-summary">Short summary</a></li>
+<li><a class="reference internal" href="#annotating">Annotating</a></li>
+<li><a class="reference internal" href="#upgrading-annotations">Upgrading annotations</a></li>
+<li><a class="reference internal" href="#reviewing-a-set-of-annotations">Reviewing a set of annotations</a><ul>
+<li><a class="reference internal" href="#reviewing-a-new-set-of-annotations">Reviewing a new set of annotations</a></li>
+<li><a class="reference internal" href="#reviewing-a-set-of-upgraded-annotations">Reviewing a set of upgraded annotations</a></li>
+<li><a class="reference internal" href="#reviewing-review-reaching-expert-consensus">Reviewing review &amp; reaching expert consensus</a><ul>
+<li><a class="reference internal" href="#how-to-review-a-review">How to review a review</a></li>
+<li><a class="reference internal" href="#how-to-finish-the-review-of-the-review">How to finish the review of the review</a></li>
+<li><a class="reference internal" href="#how-to-start-a-discussion">How to start a discussion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quick-git-reference">Quick Git Reference</a><ul>
 <li><a class="reference internal" href="#installing-git">Installing Git</a></li>
 <li><a class="reference internal" href="#cloning-a-repository-from-github">Cloning a Repository from GitHub</a></li>
 <li><a class="reference internal" href="#selecting-the-right-branch">Selecting the right Branch</a><ul>
@@ -124,17 +143,6 @@
 <li><a class="reference internal" href="#applying-changes-to-the-origin-directly">Applying Changes to the Origin Directly</a><ul>
 <li><a class="reference internal" href="#small-changes-to-a-text-file">Small Changes to a Text File</a></li>
 <li><a class="reference internal" href="#overwriting-a-file-with-changes">Overwriting a File with Changes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#annotation-workflow">Annotation Workflow</a><ul>
-<li><a class="reference internal" href="#annotating">Annotating</a></li>
-<li><a class="reference internal" href="#reviewing">Reviewing</a></li>
-<li><a class="reference internal" href="#reviewing-review-reaching-expert-consensus">Reviewing review &amp; reaching expert consensus</a><ul>
-<li><a class="reference internal" href="#how-to-review-a-review">How to review a review</a></li>
-<li><a class="reference internal" href="#how-to-finish-the-review-of-the-review">How to finish the review of the review</a></li>
-<li><a class="reference internal" href="#how-to-start-a-discussion">How to start a discussion</a></li>
 </ul>
 </li>
 </ul>
@@ -188,10 +196,429 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="version-control-with-git">
-<h1>Version control with Git<a class="headerlink" href="#version-control-with-git" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="quick-reference">
-<span id="git-intro"></span><h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="dcml-annotation-workflow">
+<h1>DCML annotation workflow<a class="headerlink" href="#dcml-annotation-workflow" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#short-summary" id="id17">Short summary</a></p></li>
+<li><p><a class="reference internal" href="#annotating" id="id18">Annotating</a></p></li>
+<li><p><a class="reference internal" href="#upgrading-annotations" id="id19">Upgrading annotations</a></p></li>
+<li><p><a class="reference internal" href="#reviewing-a-set-of-annotations" id="id20">Reviewing a set of annotations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#reviewing-a-new-set-of-annotations" id="id21">Reviewing a new set of annotations</a></p></li>
+<li><p><a class="reference internal" href="#reviewing-a-set-of-upgraded-annotations" id="id22">Reviewing a set of upgraded annotations</a></p></li>
+<li><p><a class="reference internal" href="#reviewing-review-reaching-expert-consensus" id="id23">Reviewing review &amp; reaching expert consensus</a></p>
+<ul>
+<li><p><a class="reference internal" href="#how-to-review-a-review" id="id24">How to review a review</a></p></li>
+<li><p><a class="reference internal" href="#how-to-finish-the-review-of-the-review" id="id25">How to finish the review of the review</a></p></li>
+<li><p><a class="reference internal" href="#how-to-start-a-discussion" id="id26">How to start a discussion</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#quick-git-reference" id="id27">Quick Git Reference</a></p>
+<ul>
+<li><p><a class="reference internal" href="#installing-git" id="id28">Installing Git</a></p></li>
+<li><p><a class="reference internal" href="#cloning-a-repository-from-github" id="id29">Cloning a Repository from GitHub</a></p></li>
+<li><p><a class="reference internal" href="#selecting-the-right-branch" id="id30">Selecting the right Branch</a></p>
+<ul>
+<li><p><a class="reference internal" href="#git-branching-primer" id="id31">Git Branching Primer</a></p></li>
+<li><p><a class="reference internal" href="#what-s-my-branch" id="id32">What’s my branch?</a></p></li>
+<li><p><a class="reference internal" href="#changing-to-a-different-branch" id="id33">Changing to a Different Branch</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-branch" id="id34">Creating a new Branch</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#applying-changes-to-the-repository" id="id35">Applying Changes to the Repository</a></p></li>
+<li><p><a class="reference internal" href="#uploading-changes-to-github" id="id36">Uploading Changes to GitHub</a></p></li>
+<li><p><a class="reference internal" href="#applying-changes-to-the-origin-directly" id="id37">Applying Changes to the Origin Directly</a></p>
+<ul>
+<li><p><a class="reference internal" href="#small-changes-to-a-text-file" id="id38">Small Changes to a Text File</a></p></li>
+<li><p><a class="reference internal" href="#overwriting-a-file-with-changes" id="id39">Overwriting a File with Changes</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is of utmost importance that annotators have a basic understanding of version control and branching
+via Git before they get familiar with the DCML annotation workflow. The <a class="reference internal" href="#git-intro"><span class="std std-ref">Quick reference</span></a> below
+contains the bare minimum of what annotators need to know, but if you’re completely new to Git, please make sure
+to read, watch, or do a couple of tutorials online.</p>
+</div>
+<div class="section" id="short-summary">
+<h2><a class="toc-backref" href="#id17">Short summary</a><a class="headerlink" href="#short-summary" title="Permalink to this headline">¶</a></h2>
+<p><strong>Short Summary</strong></p>
+<ol class="arabic simple">
+<li><p>Annotator:</p>
+<ul class="simple">
+<li><p>creates a new branch (splitting off of <code class="docutils literal notranslate"><span class="pre">main</span></code>!) named after the file to be annotated</p></li>
+<li><p>pushes annotations and corrects automatically detected errors</p></li>
+<li><p>creates Pull Request (PR)</p></li>
+</ul>
+</li>
+<li><p>Reviewer:</p>
+<ul class="simple">
+<li><p>merges annotator’s PR, and then merges the automatically created files back into the annotation branch</p></li>
+<li><p>reviews the annotations and commits every change separately</p></li>
+<li><p>creates PR and requests a review by the annotator</p></li>
+</ul>
+</li>
+<li><p>Annotator:</p>
+<ul class="simple">
+<li><p>Pulls the changes and goes through reviewer’s commits in the PR</p></li>
+<li><p>in case of disagreement, enters into discussion with reviewer until consensus is reached</p></li>
+<li><p>pushes the respective changes and merges PR</p></li>
+</ul>
+</li>
+</ol>
+<p>More details can be found below.</p>
+</div>
+<div class="section" id="annotating">
+<span id="id1"></span><h2><a class="toc-backref" href="#id18">Annotating</a><a class="headerlink" href="#annotating" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>Head to your local clone of the repository in which you want to annotate a piece and update the main branch.</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+</dd>
+<dt>Create a new branch that has exactly the same name as the file you are going to annotate.</dt><dd><p>In this example, we want to annotate the first movement of Corelli’s first trio sonata which is called
+<code class="docutils literal notranslate"><span class="pre">op01n01a.mscx</span></code>, so we do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">op01n01a</span>
+</pre></div>
+</div>
+</dd>
+<dt>Annotate the piece.</dt><dd><p>Open <code class="docutils literal notranslate"><span class="pre">op01n01a.mscx</span></code> with the latest version of MuseScore and insert your labels while saving the file
+from time to time. Don’t forget to create the following metadata fields by going through the menu
+<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties...</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">annotators</span></code> (plural form!): your name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">harmony_version</span></code>: version of the annotation standard you are using (currently 2.3.0)</p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/musescore_metadata.png"><img alt="Entering metadata in MuseScore" src="../_images/musescore_metadata.png" style="width: 635.2px; height: 118.4px;" /></a>
+<p class="caption"><span class="caption-text">Entering metadata in MuseScore</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</dd>
+<dt>Commit your changes locally and describe the commit in the commit message.</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">-</span><span class="n">A</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;annotated mm. 1-15&quot;</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Since you’ll use these commands quite a lot, you might want to create aliases, i.e., shortcut commands,
+for example <code class="docutils literal notranslate"><span class="pre">ga</span></code> and <code class="docutils literal notranslate"><span class="pre">gc</span></code>. A web search for “create alias [your operation system]” will tell you how.</p>
+</div>
+<p>Other examples for meaningful commit messages could be <code class="docutils literal notranslate"><span class="pre">&quot;annotated</span> <span class="pre">the</span> <span class="pre">entire</span> <span class="pre">movement&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;fixed</span> <span class="pre">syntax</span> <span class="pre">error</span>
+<span class="pre">in</span> <span class="pre">m.</span> <span class="pre">17&quot;</span></code></p>
+</dd>
+<dt>Push your commits to GitHub and check if syntactical errors are detected.</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the first time you will be asked to connect your new local branch to GitHub using the command
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--set-upstream</span> <span class="pre">origin</span> <span class="pre">op01n01a</span></code> or whatever the name of the new branch is.</p>
+</div>
+<p>Everytime you push your commits to GitHub, your new labels will be checked automatically and you can see
+immediately if there are any syntactic errors. Simply head to the GitHub repository and click on the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> tab.
+There you will see your last commit with a small coloured symbol:</p>
+<dl class="field-list">
+<dt class="field-odd">yellow</dt>
+<dd class="field-odd"><p>Check in progress (wait a couple of seconds)</p>
+</dd>
+<dt class="field-even">green</dt>
+<dd class="field-even"><p>Everything OK</p>
+</dd>
+<dt class="field-odd">red</dt>
+<dd class="field-odd"><p>Syntactical error(s) detected</p>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/github_actions_tab.png"><img alt="The last commit listed in the ``Actions`` tab with the red icon symbolizing that the syntax check failed." src="../_images/github_actions_tab.png" style="width: 720.0px; height: 55.2px;" /></a>
+<p class="caption"><span class="caption-text">The last commit listed in the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> tab with the red icon symbolizing that the syntax check failed.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt>If the syntax check fails, correct all errors in your local MuseScore file and commit them, again with an explanatory commit message.</dt><dd><p>Still under the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> tab, click on the failed syntax check and then on <code class="docutils literal notranslate"><span class="pre">perform_check</span></code></p>
+<div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/github_check_perform_check.png"><img alt="Click on &quot;perform_check&quot;" src="../_images/github_check_perform_check.png" style="width: 728.0px; height: 276.8px;" /></a>
+<p class="caption"><span class="caption-text">Click on “perform_check”</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>Scroll down until you see the output of the checking algorithm:</p>
+<div class="figure align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/github_syntactical_errors.png"><img alt="Code output; syntactical errors listed in the end" src="../_images/github_syntactical_errors.png" style="width: 829.3499999999999px; height: 547.1999999999999px;" /></a>
+<p class="caption"><span class="caption-text">Code output; syntactical errors listed at the end</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>The table shows the filename <code class="docutils literal notranslate"><span class="pre">fnames</span></code>, the measure count <code class="docutils literal notranslate"><span class="pre">MC</span></code> which corresponds to the bar number that MuseScore displays in the
+status bar on the bottom left (not always identical to the measure number (MN) in the score), the incorrect
+label’s offset from the barline, <code class="docutils literal notranslate"><span class="pre">mc_onset</span></code>, measured in fractions of a whole note, and the incorrect label. From here on,
+simply correct the labels, commit and push again, and the check should pass this time.</p>
+</dd>
+<dt>Once all your labels are syntactically correct, create a Pull Request.</dt><dd><p>There are (at least) three different ways for creating a Pull Request (i.e. a request for merging your annotations
+from the new branch into <code class="docutils literal notranslate"><span class="pre">main</span></code>):</p>
+<ol class="arabic">
+<li><p>Head to the main page of the GitHub repository where you should see a banner allowing you to quickly create
+a pull request:</p>
+<div class="figure align-default" id="id6">
+<img alt="GitHub offering to creat a new pull request" src="../_images/github_pr.png" />
+<p class="caption"><span class="caption-text">GitHub offering to create a new pull request with the recently pushed annotations</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</li>
+<li><p>Otherwise, select the new branch from the dropdown menu</p>
+<div class="figure align-default" id="id7">
+<img alt="Selecting a branch on GitHub" src="../_images/github_select_branch.png" />
+<p class="caption"><span class="caption-text">Selecting a branch on GitHub</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>and click on <code class="docutils literal notranslate"><span class="pre">Contribute</span> <span class="pre">-&gt;</span> <span class="pre">Open</span> <span class="pre">pull</span> <span class="pre">request</span></code></p>
+<div class="figure align-default" id="id8">
+<img alt="Opening a PR directly from the branch." src="../_images/github_open_pr_from_branch.png" />
+<p class="caption"><span class="caption-text">Opening a PR directly from the branch.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</li>
+<li><p>Or, head to the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code> tab, click on “New pull request” and select your branch accordingly, like this:</p>
+<div class="figure align-default" id="id9">
+<img alt="Giving the new pull request a meaningful title" src="../_images/github_create_pr.png" />
+<p class="caption"><span class="caption-text">Giving the new pull request a meaningful title</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</li>
+</ol>
+</dd>
+</dl>
+<p>Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
+the green button “Create pull request”, you’re done. In case more pieces were commissioned to you, you can continue
+annotating, but make sure to create the new branch for the next piece after checking out and updating <code class="docutils literal notranslate"><span class="pre">main</span></code> first!</p>
+</div>
+<div class="section" id="upgrading-annotations">
+<h2><a class="toc-backref" href="#id19">Upgrading annotations</a><a class="headerlink" href="#upgrading-annotations" title="Permalink to this headline">¶</a></h2>
+<p>Upgrading an existing set of annotations created under an older version of the DCML annotation standard roughly
+follows the same workflow as the <a class="reference internal" href="#annotating"><span class="std std-ref">creation of new labels</span></a> above. The main difference is that during
+the upgrade, you commit your changes individually, justifying each of them in a commit message starting with the
+respective measure number.</p>
+<dl>
+<dt>Create a new branch and adapt the metadata.</dt><dd><p>As an example, let’s upgrade the labels of <code class="docutils literal notranslate"><span class="pre">op01n06a.mscx</span></code> from version 2.1.1 to 2.3.0. In this screencast,
+the score is already open and you see how the metadata is updated and committed to a new branch called <code class="docutils literal notranslate"><span class="pre">op01n06a</span></code>.
+Note that the commands <code class="docutils literal notranslate"><span class="pre">ga</span></code> and <code class="docutils literal notranslate"><span class="pre">gc</span></code> are aliases, i.e. shortcut commands, which stand for <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> and
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span></code> respectively.</p>
+<div class="figure align-default" id="id10">
+<img alt="Updating the metadata reflecting the version upgrade." src="../_images/upgrade_metadata.gif" />
+<p class="caption"><span class="caption-text">Updating the metadata reflecting the version upgrade. The screencast starts at <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">corelli</span></code>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<p>As you can see, the metadata field <code class="docutils literal notranslate"><span class="pre">annotators</span></code> is updated in a way that the old version is added to the previous
+annotators and that the upgrader adds themselves to the annotators, indicating the new versions. Since the version
+upgrade includes a review of the existing labels, they also add their initials to the <code class="docutils literal notranslate"><span class="pre">reviewers</span></code> field.</p>
+</dd>
+<dt>Review and update the labels and commit your changes individually.</dt><dd><p>The following screencast demonstrates the upgrade process of <code class="docutils literal notranslate"><span class="pre">op01n06a.mscx</span></code>. In principle, after every change
+the file is saved and the change is committed with the measure number and an explanation.</p>
+<div class="figure align-default" id="id11">
+<span id="individual-commits"></span><img alt="Giving the new pull request a meaningful title" src="../_images/upgrade_commits.gif" />
+<p class="caption"><span class="caption-text">Creating individual commits for every change or group of changes. Take note and special care of the
+annotator’s comments and questions. The screencast produces the syntax error <code class="docutils literal notranslate"><span class="pre">V6/III(2)</span></code> (instead of
+<code class="docutils literal notranslate"><span class="pre">V6(2)/III</span></code>) that is automatically detected upon push to GitHub (see screenshot below).</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<p>As you can see, similar changes can be grouped as one commit, as for m. 2. Phrase annotations such as the added
+curly bracket in m. 1 do not need to be committed individually.</p>
+</dd>
+<dt>Push your commits and create a Pull Request</dt><dd><p>From here on, the procedure is the same as for new annotations, only that the PR will be called something like
+<code class="docutils literal notranslate"><span class="pre">Upgraded</span> <span class="pre">op06n01a</span> <span class="pre">to</span> <span class="pre">2.3.0</span></code>. Just like for new annotations, your version will be syntactically checked. For
+example, the mistake in the above screencast will be displayed like this:</p>
+<div class="figure align-default" id="id12">
+<img alt="Automatically detected syntax error from above, as displayed on GitHub." src="../_images/github_syntax_error.png" />
+<p class="caption"><span class="caption-text">Automatically detected syntax error from above, as displayed on GitHub.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+<p>Shortly after opening the PR, an additional review file ending on the suffix
+<code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> will be created on GitHub and added to the PR, which you can then pull and view locally to see
+the changes you made.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="reviewing-a-set-of-annotations">
+<h2><a class="toc-backref" href="#id20">Reviewing a set of annotations</a><a class="headerlink" href="#reviewing-a-set-of-annotations" title="Permalink to this headline">¶</a></h2>
+<p>Reviewing a set of new annotations and a set of annotations upgraded to a new version works essentially the same way,
+but with one important difference. To review new annotations, you first need to merge the PR into <code class="docutils literal notranslate"><span class="pre">main</span></code> and create
+a new one after you finished your review. For upgraded annotations, this is not necessary and you can push your commits
+into the open PR right away. The reason for this is the automatic creation of the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> files,
+as explained in the following.</p>
+<p>In order for the reviewer or upgrader to comprehend the changes you made during your review, not only do you need
+to commit and explain your changes individually (indicating the measure number of the respective change). Also,
+an additional copy of the MuseScore file in question will be automatically created where your changes are highlighted
+with different colours. The creation of such a <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file depends on the presence of an automatically
+extracted TSV file which includes a table with the labels as they were before you made your changes. For new
+annotations, this file needs to be generated by merging the PR with the new annotations into <code class="docutils literal notranslate"><span class="pre">main</span></code>. In the case
+of a PR with upgraded labels, the TSV file with the previous labels should already be present, indicated by the fact
+that a <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file should already have been pushed into this PR by the ms3-bot (e.g., in the following
+screenshot, the commit <code class="docutils literal notranslate"><span class="pre">Added</span> <span class="pre">comparison</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">review</span></code>).</p>
+<div class="section" id="reviewing-a-new-set-of-annotations">
+<span id="new-annotations"></span><h3><a class="toc-backref" href="#id21">Reviewing a new set of annotations</a><a class="headerlink" href="#reviewing-a-new-set-of-annotations" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>First, open the Pull Request containing the new labels and check if all syntactic errors have been corrected.</dt><dd><p>As can be seen in the following image, in the PR, all commits made by the annotator and by the ms3-bot are listed,
+two in this example.</p>
+<div class="figure align-default" id="id13">
+<img alt="A pull request were some syntactic errors have not been corrected yet." src="../_images/github_pr_commits.png" />
+<p class="caption"><span class="caption-text">A pull request were some syntactic errors have not been corrected yet.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+<p>It is important to note that the last commit made by the annotator (<code class="docutils literal notranslate"><span class="pre">fully</span> <span class="pre">annotated</span> <span class="pre">op01n01a</span></code>) has a red cross instead of a green check. Although
+the last commit by the ms3-bot has a green check, the error persists (bot’s commits are not checked for syntactical
+correctness). In this case, please leave a comment below, asking the annotator to correct the labels and to let you
+know once they are done.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>It is important to never merge syntactically incorrect labels into <code class="docutils literal notranslate"><span class="pre">main</span></code> because such errors would
+propagate to other branches, causing failed syntax checks for your fellow annotators.</p>
+</div>
+</dd>
+<dt>Merge the PR</dt><dd><p>Once there are no syntactical errors left, take note of the annotator’s comments, if any, to be able to react to them,
+and click on ‘Merge pull request’. This will trigger the script that
+extracts the new labels and pushes the corresponding TSV file to the <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> folder. Go to the main branch
+and wait about 30 seconds, refreshing the page sporadically to see whether the ms3-bot has made the commit called
+<code class="docutils literal notranslate"><span class="pre">Automatically</span> <span class="pre">added</span> <span class="pre">TSV</span> <span class="pre">files</span> <span class="pre">from</span> <span class="pre">parse</span> <span class="pre">with</span> <span class="pre">ms3</span></code>. Then you’re ready to continue.</p>
+</dd>
+<dt>Merge the updated <code class="docutils literal notranslate"><span class="pre">main</span></code> branch into the updated annotation branch.</dt><dd><p>The newly created TSV files needs to be present in the annotation branch where you perform the review. Therefore,
+assuming you are reviewing <code class="docutils literal notranslate"><span class="pre">op01n01a.mscx</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">pull</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">op01n01a</span>
+<span class="n">git</span> <span class="n">pull</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">main</span>
+</pre></div>
+</div>
+</dd>
+<dt>Now you are ready to start your review.</dt><dd><ul>
+<li><p>At first you start by adding your initials to the metadata field <code class="docutils literal notranslate"><span class="pre">reviewers</span></code> (plural!), comma-separated in case
+the field is already populated. Doing that, you may also want to check whether the annotator spelled the fields
+<code class="docutils literal notranslate"><span class="pre">annotators</span></code> and <code class="docutils literal notranslate"><span class="pre">harmony_version</span></code> correctly.</p></li>
+<li><p>Reviewing a new set of annotations means reading through the labels to see whether you agree with
+each of them on the basis of the <a class="reference internal" href="../tutorial/index.html"><span class="doc">annotation tutorial</span></a>, paying special attention to
+consistency within the piece and consistency across similar annotated pieces.</p></li>
+<li><p>For every label where you feel the need to remove, reinsert, or replace it, you do the change directly in the
+MuseScore file, save it, and commit the alteration giving as a commit message the measure number(s) and your
+justification. In the case of obvious mistakes, it is enough to indicate the replacement, as in
+<code class="docutils literal notranslate"><span class="pre">&quot;4:</span> <span class="pre">#viio/V</span> <span class="pre">=&gt;</span> <span class="pre">viio/V&quot;</span></code>. You may indicate commits were your change is a suggestion that you would be happy
+to discuss by a trailing question mark, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;15.2:</span> <span class="pre">how</span> <span class="pre">about</span> <span class="pre">including</span> <span class="pre">V65</span> <span class="pre">as</span> <span class="pre">an</span> <span class="pre">alternative</span> <span class="pre">label?&quot;</span></code>.
+You may also address the comments and questions that the annotator had left with their original PR in commit
+messages, or you could address them in comments, as explained below.
+The procedure is technically identical with the <a class="reference internal" href="#individual-commits"><span class="std std-ref">example screencast above</span></a>.</p></li>
+<li><p>Once you are happy with the labels in their entirety, you are ready to push your changes, see whether the
+syntax check passes, and launch a new Pull Request entitled <code class="docutils literal notranslate"><span class="pre">Reviewed</span> <span class="pre">[file</span> <span class="pre">name]</span></code> (you may do this even
+before the syntax check finishes, since you can always add commits to a PR). While or after opening the PR,
+please request a review from the annotator through this interface on the right side:</p>
+<div class="figure align-default" id="id14">
+<img alt="GitHub usually suggests the annotator for a review, otherwise use the menu to select the user handle." src="../_images/github_review_suggestions.png" />
+<p class="caption"><span class="caption-text">GitHub usually suggests the annotator for a review, otherwise use the menu to select the user handle.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+</li>
+<li><p>Naturally, you may include comments or points worth discussing in the description of your PR. You can also
+add comments on the bottom of the page, or attach a comment to a certain commit/change to have the changed
+labels displayed together with your comment. To do that, in the open PR, you click on the commit in question,
+and, in the particular line in the source code, click the plus symbol, as can be seen in the
+<a class="reference internal" href="#pr-comment"><span class="std std-ref">screenshot below</span></a>. Be sure to always include a measure number, so that your respondent can
+find the spot in the MuseScore file.</p></li>
+<li><p>From here on, monitor your GitHub notifications for reactions to your PR from the annotator. Use the comment
+function to discuss individual solutions until you find a consensual one for each controversial label. This
+process usually includes you and the annotator committing further changes to the MuseScore file with
+expressive commit messages (always including the measure number). In case you are working with the automatically
+generated <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file to display all changes made in the PR, be aware that you never commit changes to this
+file, since they will be overwritten automatically.</p></li>
+<li><p>In the (rare) case where you would be unable to form a consensus, please include in the discussion a third person
+of whom you think they could bring in weighty arguments. Another way would be to bring the discussion to a
+Mattermost channel if you think the question requires a fundamental decision based on a larger consensus.</p></li>
+<li><p>Once the new annotations correspond to a consensus between you and the annotator, the person who made the last
+decision in the process merges the PR. As a last step, go to the main branch, wait for the automatic
+<code class="docutils literal notranslate"><span class="pre">Automatically</span> <span class="pre">added</span> <span class="pre">TSV</span> <span class="pre">files</span> <span class="pre">from</span> <span class="pre">parse</span> <span class="pre">with</span> <span class="pre">ms3</span></code> commit, and check if the corresponding table row in the
+README got updated correctly (otherwise, the metadata fields in the MuseScore file were not correctly populated).</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="reviewing-a-set-of-upgraded-annotations">
+<h3><a class="toc-backref" href="#id22">Reviewing a set of upgraded annotations</a><a class="headerlink" href="#reviewing-a-set-of-upgraded-annotations" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>Making use of the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file.</dt><dd><p>In the case that existing labels were upgraded, the corresponding TSV file was already present in the <code class="docutils literal notranslate"><span class="pre">harmonies</span></code>
+folder, meaning that after every push into the open PR, ms3-bot updates the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file to reflect <cite>all</cite>
+changes made within the PR.
+This means that for starting the review, you can checkout and pull the corresponding branch and view the file to
+see all changes made by the upgrader. Once you commit your changes on top,
+the file will be updated to reflect the changes between the deprecated labels
+(those that the upgrader updated) and the final version after your review. If you were to instead generate a file
+reflecting only the differences before and after <cite>your</cite> review, you would have to follow the steps in the
+<a class="reference internal" href="#new-annotations"><span class="std std-ref">previous section</span></a>, i.e. merge the PR and open a new one.</p>
+</dd>
+<dt>Review the labels</dt><dd><p>The procedure is essentially the same as the one for reviewing new annotations. The difference is that you focus
+more on the labels changed by the upgrader, exercising particular care for potential inconsistencies that might
+have arisen; for example by applying a change to one place but not to an analogous one; or by having missed a
+subtle aspect in the previous, replaced label, that actually made for an ideal solution; etc.</p>
+</dd>
+</dl>
+<ol class="arabic simple">
+<li><p>Merge PR with new annotations</p></li>
+<li><p>wait until <code class="docutils literal notranslate"><span class="pre">ms3-bot</span></code> automatically pushed the new annotation tables</p></li>
+<li><p>the new annotation tables need to get into the annotation/review branch to create comparison files after your review:</p>
+<ul class="simple">
+<li><p>shortcut: in the updated review branch, do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">main</span></code>; your local main is not updated!</p></li>
+<li><p>thoroughly: checkout main, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>, checkout review branch, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code></p></li>
+</ul>
+</li>
+<li><p>Before the review, make sure this had the desired effect by verifying the folder <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> contains the
+annotation table for the file to be reviewed (i.e., a TSV file by the same name)</p></li>
+<li><p>review files and commit every change individually with measure number and explanation, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;13:</span> <span class="pre">vii</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">#vii</span></code></p></li>
+<li><p>add your initials to the file’s metadata in the field <cite>reviewers</cite> (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties</span></code>, add the field if missing)</p></li>
+<li><p>push everything and create pull request (PR) -&gt; comparison MuseScore file gets pushed automatically</p></li>
+<li><p>request PR review by annotator</p></li>
+</ol>
+</div>
+<div class="section" id="reviewing-review-reaching-expert-consensus">
+<h3><a class="toc-backref" href="#id23">Reviewing review &amp; reaching expert consensus</a><a class="headerlink" href="#reviewing-review-reaching-expert-consensus" title="Permalink to this headline">¶</a></h3>
+<p>Once your file(s) got reviewed, the reviewer creates a pull request (PR) and requests your review. You should
+receive an e-mail notification, if not, please check your GitHub settings. Now your task is to go through all changes
+and see whether you agree with all of them. Here is how:</p>
+<div class="section" id="how-to-review-a-review">
+<h4><a class="toc-backref" href="#id24">How to review a review</a><a class="headerlink" href="#how-to-review-a-review" title="Permalink to this headline">¶</a></h4>
+<p>Open the PR from your notification e-mail or go to GitHub and open the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code> tab where you should see it.
+The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
+commits made by the reviewer:</p>
+<div class="figure align-default" id="id15">
+<a class="reference internal image-reference" href="../_images/pr_commits.png"><img alt="List of commits made by the reviewer" src="../_images/pr_commits.png" style="width: 827.4499999999999px; height: 254.6px;" /></a>
+<p class="caption"><span class="caption-text">List of commits made by the reviewer</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+<p>Clicking on one of them will show you the corresponding changes in the MuseScore file. But it might be hard for
+you to assess the changes without looking at the actual music. Therefore:</p>
+<p>The last commit, called “Added comparison files for review”, was made automatically by <code class="docutils literal notranslate"><span class="pre">ms3-bot</span></code>,
+creating an additional MuseScore file with the suffix <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>. Therefore, the first thing you want to do to
+review the review, is locally checkout and pull the branch corresponding to the PR
+(it should be the same you created for annotating). Now you should have the comparison MuseScore file  <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>
+in your local clone and can open it in MuseScore. It shows unchanged labels in black,
+labels removed by the reviewer in red, and labels added by the reviewer in green.
+The sole purpose of this file is to help you with the review of the review and will be deleted
+at some later point (it is not listed in the metadata either).</p>
+</div>
+<div class="section" id="how-to-finish-the-review-of-the-review">
+<h4><a class="toc-backref" href="#id25">How to finish the review of the review</a><a class="headerlink" href="#how-to-finish-the-review-of-the-review" title="Permalink to this headline">¶</a></h4>
+<p>Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
+change that you agree with, there is nothing you need to do. In cases where you don’t agree, you write a comment
+on GitHub and discuss with the reviewer until you find a solution that satisfies both analytical views. If consensus
+has been reached, you need to make the change to the <em>original</em> file (not the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file) and commit it.
+Once you push the changes, they will be included into the PR and the comparison file will be updated accordingly.
+As soon as the original file contains a set of annotations that you and the reviewer agree to be the best possible
+solution, your reward is the satisfaction of pressing the green button to merge the PR.</p>
+</div>
+<div class="section" id="how-to-start-a-discussion">
+<h4><a class="toc-backref" href="#id26">How to start a discussion</a><a class="headerlink" href="#how-to-start-a-discussion" title="Permalink to this headline">¶</a></h4>
+<p>To start a discussion, click on the commit you disagree with. On the left you see in red your previous version and
+on the left, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
+that lets you add your comment. It is important that you add the measure number so that the reviewer can find
+the spot and react to your comment.</p>
+<div class="figure align-default" id="id16">
+<span id="pr-comment"></span><a class="reference internal image-reference" href="../_images/pr_comment.png"><img alt="Starting a discussion by commenting the reviewer's commit" src="../_images/pr_comment.png" style="width: 779.9499999999999px; height: 397.09999999999997px;" /></a>
+<p class="caption"><span class="caption-text">Starting a discussion by commenting the reviewer’s commit</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
+<p>The comments and resulting discussions will be visible in the PR’s “Conversation” tab (under the list of commits). Don’t forget
+to press the Subscribe button on the right to get informed about reactions to your comments.</p>
+</div>
+</div>
+</div>
+<div class="section" id="quick-git-reference">
+<span id="git-intro"></span><h2><a class="toc-backref" href="#id27">Quick Git Reference</a><a class="headerlink" href="#quick-git-reference" title="Permalink to this headline">¶</a></h2>
 <p>Git is a version control system generally controlled via the command line.
 GitHub is a hosting service for remote Git repositories. Since the DCML hosts
 data on GitHub, a basic understanding of the Git workflow is relevant for annotators
@@ -207,7 +634,7 @@ where “you are”, otherwise try <code class="docutils literal notranslate"><s
 of letters of the folder you want to “go to”, you can press [TAB] to autocomplete.</p>
 </div>
 <div class="section" id="installing-git">
-<h3>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id28">Installing Git</a><a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h3>
 <p>Check in your terminal if Git is already installed:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>&gt;&gt; git --version
 <span class="go">git version 2.29.2</span>
@@ -218,7 +645,7 @@ of letters of the folder you want to “go to”, you can press [TAB] to autocom
 for instructions.</p>
 </div>
 <div class="section" id="cloning-a-repository-from-github">
-<h3>Cloning a Repository from GitHub<a class="headerlink" href="#cloning-a-repository-from-github" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id29">Cloning a Repository from GitHub</a><a class="headerlink" href="#cloning-a-repository-from-github" title="Permalink to this headline">¶</a></h3>
 <p>Go to the GitHub repository, click on the <code class="docutils literal notranslate"><span class="pre">Code</span></code> button and copy the URL:
 <img alt="github_url" src="../_images/github_url.png" /></p>
 <p>Then, in your terminal, navigate (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[folder]</span></code>) to the place where you want
@@ -235,12 +662,12 @@ git config –global credential.helper ‘cache –timeout=10800’</p>
 </div>
 </div>
 <div class="section" id="selecting-the-right-branch">
-<h3>Selecting the right Branch<a class="headerlink" href="#selecting-the-right-branch" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id30">Selecting the right Branch</a><a class="headerlink" href="#selecting-the-right-branch" title="Permalink to this headline">¶</a></h3>
 <p>Note that to apply any Git command, you need to navigate to any folder within
 your local clone of the repository, otherwise you get <code class="docutils literal notranslate"><span class="pre">fatal:</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">git</span>
 <span class="pre">repository</span> <span class="pre">(or</span> <span class="pre">any</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">parent</span> <span class="pre">directories)</span></code>.</p>
 <div class="section" id="git-branching-primer">
-<h4>Git Branching Primer<a class="headerlink" href="#git-branching-primer" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id31">Git Branching Primer</a><a class="headerlink" href="#git-branching-primer" title="Permalink to this headline">¶</a></h4>
 <p>A Git repository often holds several versions, called ‘branches’, in parallel,
 each with their own version history. The way the
 <a class="reference external" href="https://nvie.com/posts/a-successful-git-branching-model/">Git branching model</a>
@@ -260,7 +687,7 @@ thus synchronising both histories. The merged branch can then be deleted.</p></l
 </ul>
 </div>
 <div class="section" id="what-s-my-branch">
-<h4>What’s my branch?<a class="headerlink" href="#what-s-my-branch" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id32">What’s my branch?</a><a class="headerlink" href="#what-s-my-branch" title="Permalink to this headline">¶</a></h4>
 <p>One of the most important Git commands is <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> which tells you not only
 what branch you are on (which branch is ‘checked out’), but also by how much its
 local history deviates from the history of the ‘origin’, i.e. the remote version
@@ -279,7 +706,7 @@ missing two changes, ‘commits’, from the origin on GitHub. Git also suggests
 to integrate, ‘merge’, these two commits by going <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>.</p>
 </div>
 <div class="section" id="changing-to-a-different-branch">
-<h4>Changing to a Different Branch<a class="headerlink" href="#changing-to-a-different-branch" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id33">Changing to a Different Branch</a><a class="headerlink" href="#changing-to-a-different-branch" title="Permalink to this headline">¶</a></h4>
 <p>Get a list of all available branches: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code>. Choose the one where you
 want to apply your changes to your local clone, e.g. the branch <code class="docutils literal notranslate"><span class="pre">develop</span></code>, and
 do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">[branch]</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">develop</span></code>. If you don’t get any
@@ -288,7 +715,7 @@ current (local!) state of history. A new <code class="docutils literal notransla
 the local history diverges from the origin on GitHub.</p>
 </div>
 <div class="section" id="creating-a-new-branch">
-<h4>Creating a new Branch<a class="headerlink" href="#creating-a-new-branch" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id34">Creating a new Branch</a><a class="headerlink" href="#creating-a-new-branch" title="Permalink to this headline">¶</a></h4>
 <p>Consider which existing branch your new branch should be a copy of and check it
 out, usually <cite>main</cite> (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span></code>). Then you can simply do
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">[new_branch_name]</span></code> to create a new branch. If you want to
@@ -304,7 +731,7 @@ Git will tell you the command to use, e.g.:</p>
 </div>
 </div>
 <div class="section" id="applying-changes-to-the-repository">
-<h3>Applying Changes to the Repository<a class="headerlink" href="#applying-changes-to-the-repository" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id35">Applying Changes to the Repository</a><a class="headerlink" href="#applying-changes-to-the-repository" title="Permalink to this headline">¶</a></h3>
 <p>First, decide which branch you want to apply changes to and check it out locally.
 Generally speaking, you will never apply changes, ‘commits’, to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
 <p>Every time you have made changes that you want to register as ‘commits’ in your
@@ -334,7 +761,7 @@ a couple of measures, please include the measure numbers in the commit message
 to facilitate review.</p>
 </div>
 <div class="section" id="uploading-changes-to-github">
-<h3>Uploading Changes to GitHub<a class="headerlink" href="#uploading-changes-to-github" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id36">Uploading Changes to GitHub</a><a class="headerlink" href="#uploading-changes-to-github" title="Permalink to this headline">¶</a></h3>
 <p>Once you have finished your work for the day, you want to upload, ‘push’, all
 your registered commits to the branch’s origin on GitHub. First you will make
 sure to integrate all commits that other people might have pushed to the remote
@@ -348,13 +775,13 @@ change (“Ours”) and someone else’s change(“Theirs”).</p>
 <p>Once the pull succeeded, you can upload via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
 </div>
 <div class="section" id="applying-changes-to-the-origin-directly">
-<h3>Applying Changes to the Origin Directly<a class="headerlink" href="#applying-changes-to-the-origin-directly" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id37">Applying Changes to the Origin Directly</a><a class="headerlink" href="#applying-changes-to-the-origin-directly" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes when you’re feeling lazy, i.e. very rarely, you may apply changes to
 the repository’s origin on GitHub directly without taking the usual detour of
 committing to your local clone and then pushing. This can be done via the
 GitHub browser interface. Don’t forget to pull such commits to your local clone.</p>
 <div class="section" id="small-changes-to-a-text-file">
-<h4>Small Changes to a Text File<a class="headerlink" href="#small-changes-to-a-text-file" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id38">Small Changes to a Text File</a><a class="headerlink" href="#small-changes-to-a-text-file" title="Permalink to this headline">¶</a></h4>
 <p>Once again, make sure you are in the correct branch to apply your changes to by
 selecting it from the drop-down menu on the left: <img alt="github_url" src="../_images/github_url.png" /></p>
 <p>Navigate to the file you want to change and click the edit button: <img alt="github_edit" src="../_images/github_edit.png" /></p>
@@ -362,162 +789,9 @@ selecting it from the drop-down menu on the left: <img alt="github_url" src="../
 naturally you will specify a meaningful COMMIT_MESSAGE: <img alt="github_commit" src="../_images/github_commit.png" /></p>
 </div>
 <div class="section" id="overwriting-a-file-with-changes">
-<h4>Overwriting a File with Changes<a class="headerlink" href="#overwriting-a-file-with-changes" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id39">Overwriting a File with Changes</a><a class="headerlink" href="#overwriting-a-file-with-changes" title="Permalink to this headline">¶</a></h4>
 <p>If you want to apply local changes to a file directly, you may drag-and-drop it
 into GitHub. Once again, don’t forget a meaningful COMMIT_MESSAGE.</p>
-</div>
-</div>
-</div>
-<div class="section" id="annotation-workflow">
-<h2>Annotation Workflow<a class="headerlink" href="#annotation-workflow" title="Permalink to this headline">¶</a></h2>
-<p><strong>Short Summary</strong></p>
-<ol class="arabic simple">
-<li><p>Annotator:</p>
-<ul class="simple">
-<li><p>creates a new branch named after the file to be annotated</p></li>
-<li><p>pushes annotations and corrects automatically detected errors</p></li>
-<li><p>creates Pull Request (PR)</p></li>
-</ul>
-</li>
-<li><p>Reviewer:</p>
-<ul class="simple">
-<li><p>merges annotator’s PR, and then merges the automatically created files back into the annotation branch</p></li>
-<li><p>reviews the annotations and commits every change separately</p></li>
-<li><p>creates PR and requests a review by the annotator</p></li>
-</ul>
-</li>
-<li><p>Annotator:</p>
-<ul class="simple">
-<li><p>Pulls the changes and goes through reviewer’s commits in the PR</p></li>
-<li><p>in case of disagreement, enters into discussion with reviewer until consensus is reached</p></li>
-<li><p>pushes the respective changes and merges PR</p></li>
-</ul>
-</li>
-</ol>
-<p>More details can be found below.</p>
-<div class="section" id="annotating">
-<h3>Annotating<a class="headerlink" href="#annotating" title="Permalink to this headline">¶</a></h3>
-<p>Head to your local clone of the repository in which you want to annotate a piece and create a new branch with a
-meaningful name. In this example, we want to annotate the first movement of Corelli’s first trio sonata, so we call
-the branch <code class="docutils literal notranslate"><span class="pre">op01no01a</span></code>, according to the filename.</p>
-<p>Once checked out, you’re ready to start annotating. Please start by adding to the MuseScore file your name and the
-version of the annotation standard you are using (currently <code class="docutils literal notranslate"><span class="pre">2.3.0</span></code>). To do that, open the menu
-<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties...</span></code> and add the information by altering or otherwise creating the fields
-<code class="docutils literal notranslate"><span class="pre">annotators</span></code> and <code class="docutils literal notranslate"><span class="pre">harmony_version</span></code> with the corresponding values, as displayed below:</p>
-<div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/musescore_metadata.png"><img alt="Entering metadata in MuseScore" src="../_images/musescore_metadata.png" style="width: 635.2px; height: 118.4px;" /></a>
-<p class="caption"><span class="caption-text">Entering metadata in MuseScore</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<p>Annotate your piece and commit your changes locally. Everytime you push your changes to GitHub, your new labels
-will be checked automatically and you can see immediately if there are any syntactic errors. Simply head to the
-GitHub repository and click on the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> tab. There you will see your last commit with a small coloured symbol:</p>
-<dl class="field-list simple">
-<dt class="field-odd">yellow</dt>
-<dd class="field-odd"><p>Check in progress</p>
-</dd>
-<dt class="field-even">green</dt>
-<dd class="field-even"><p>Everything OK</p>
-</dd>
-<dt class="field-odd">red</dt>
-<dd class="field-odd"><p>Syntactical error(s) detected</p>
-</dd>
-</dl>
-<p>In the latter case, click on the failed check to get to this view:</p>
-<div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/github_check_perform_check.png"><img alt="Click on &quot;perform_check&quot;" src="../_images/github_check_perform_check.png" style="width: 560.8000000000001px; height: 264.0px;" /></a>
-<p class="caption"><span class="caption-text">Click on “perform_check”</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<p>Scroll down until you see the output of the checking algorithm:</p>
-<div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="../_images/github_syntactical_errors.png"><img alt="Code output; syntactical errors listed in the end" src="../_images/github_syntactical_errors.png" style="width: 829.3499999999999px; height: 547.1999999999999px;" /></a>
-<p class="caption"><span class="caption-text">Code output; syntactical errors listed in the end</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<p>The table shows the filename <code class="docutils literal notranslate"><span class="pre">fnames</span></code>, the measure count <code class="docutils literal notranslate"><span class="pre">MC</span></code> which corresponds to the bar number that MuseScore displays in the
-status bar on the bottom left (not always identical to the measure number (MN) in the score), the incorrect
-label’s offset from the barline, <code class="docutils literal notranslate"><span class="pre">mc_onset</span></code>, measured in fractions of a whole note, and the incorrect label. From here on,
-simply correct the labels, commit and push again, and the check should pass this time.</p>
-<p>Once you have finished your work and want to submit it for review,
-head to the main page of the GitHub repository where we should see a banner allowing you to quickly create
-a pull request:</p>
-<div class="figure align-default" id="id4">
-<a class="reference internal image-reference" href="../_images/github_pr.png"><img alt="GitHub offering to creat a new pull request" src="../_images/github_pr.png" style="width: 850.25px; height: 64.6px;" /></a>
-<p class="caption"><span class="caption-text">GitHub offering to creat a new pull request</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-<p>Otherwise, head to the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code> tab, click on “New pull request” and select your branch accordingly, like
-this:</p>
-<div class="figure align-default" id="id5">
-<a class="reference internal image-reference" href="../_images/github_create_pr.png"><img alt="Giving the new pull request a meaningful title" src="../_images/github_create_pr.png" style="width: 668.8px; height: 103.55px;" /></a>
-<p class="caption"><span class="caption-text">Giving the new pull request a meaningful title</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
-<p>Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
-the green button “Create pull request”, you’re done.</p>
-</div>
-<div class="section" id="reviewing">
-<h3>Reviewing<a class="headerlink" href="#reviewing" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li><p>Merge PR with new annotations</p></li>
-<li><p>wait until <code class="docutils literal notranslate"><span class="pre">ms3-bot</span></code> automatically pushed the new annotation tables</p></li>
-<li><p>the new annotation tables need to get into the annotation/review branch to create comparison files after your review:</p>
-<ul class="simple">
-<li><p>shortcut: in the updated review branch, do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">main</span></code>; your local main is not updated!</p></li>
-<li><p>thoroughly: checkout main, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>, checkout review branch, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span></code></p></li>
-</ul>
-</li>
-<li><p>Before the review, make sure this had the desired effect by verifying the folder <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> contains the
-annotation table for the file to be reviewed (i.e., a TSV file by the same name)</p></li>
-<li><p>review files and commit every change individually with measure number and explanation, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;13:</span> <span class="pre">vii</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">#vii</span></code></p></li>
-<li><p>add your initials to the file’s metadata in the field <cite>reviewers</cite> (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties</span></code>, add the field if missing)</p></li>
-<li><p>push everything and create pull request (PR) -&gt; comparison MuseScore file gets pushed automatically</p></li>
-<li><p>request PR review by annotator</p></li>
-</ol>
-</div>
-<div class="section" id="reviewing-review-reaching-expert-consensus">
-<h3>Reviewing review &amp; reaching expert consensus<a class="headerlink" href="#reviewing-review-reaching-expert-consensus" title="Permalink to this headline">¶</a></h3>
-<p>Once your file(s) got reviewed, the reviewer creates a pull request (PR) and requests your review. You should
-receive an e-mail notification, if not, please check your GitHub settings. Now your task is to go through all changes
-and see whether you agree with all of them. Here is how:</p>
-<div class="section" id="how-to-review-a-review">
-<h4>How to review a review<a class="headerlink" href="#how-to-review-a-review" title="Permalink to this headline">¶</a></h4>
-<p>Open the PR from your notification e-mail or go to GitHub and open the <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code> tab where you should see it.
-The PR lets you inspect all changes and start discussions. Most importantly, after opening it, you will see all
-commits made by the reviewer:</p>
-<div class="figure align-default" id="id6">
-<a class="reference internal image-reference" href="../_images/pr_commits.png"><img alt="List of commits made by the reviewer" src="../_images/pr_commits.png" style="width: 827.4499999999999px; height: 254.6px;" /></a>
-<p class="caption"><span class="caption-text">List of commits made by the reviewer</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
-<p>Clicking on one of them will show you the corresponding changes in the MuseScore file. But it might be hard for
-you to assess the changes without looking at the actual music. Therefore:</p>
-<p>The last commit, called “Added comparison files for review”, was made automatically by <code class="docutils literal notranslate"><span class="pre">ms3-bot</span></code>,
-creating an additional MuseScore file with the suffix <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>. Therefore, the first thing you want to do to
-review the review, is locally checkout and pull the branch corresponding to the PR
-(it should be the same you created for annotating). Now you should have the comparison MuseScore file  <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code>
-in your local clone and can open it in MuseScore. It shows unchanged labels in black,
-labels removed by the reviewer in red, and labels added by the reviewer in green.
-The sole purpose of this file is to help you with the review of the review and will be deleted
-at some later point (it is not listed in the metadata either).</p>
-</div>
-<div class="section" id="how-to-finish-the-review-of-the-review">
-<h4>How to finish the review of the review<a class="headerlink" href="#how-to-finish-the-review-of-the-review" title="Permalink to this headline">¶</a></h4>
-<p>Now you can go through the list of commits one by one and check how they play out in the comparison file. For every
-change that you agree with, there is nothing you need to do. In cases where you don’t agree, you write a comment
-on GitHub and discuss with the reviewer until you find a solution that satisfies both analytical views. If consensus
-has been reached, you need to make the change to the <em>original</em> file (not the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file) and commit it.
-Once you push the changes, they will be included into the PR and the comparison file will be updated accordingly.
-As soon as the original file contains a set of annotations that you and the reviewer agree to be the best possible
-solution, your reward is the satisfaction of pressing the green button to merge the PR.</p>
-</div>
-<div class="section" id="how-to-start-a-discussion">
-<h4>How to start a discussion<a class="headerlink" href="#how-to-start-a-discussion" title="Permalink to this headline">¶</a></h4>
-<p>To start a discussion, click on the commit you disagree with. On the left you see in red your previous version and
-on the left, in green, the changes made by the reviewer. Hovering over the code lines, you will see a blue plus
-that lets you add your comment. It is important that you add the measure number so that the reviewer can find
-the spot and react to your comment.</p>
-<div class="figure align-default" id="id7">
-<a class="reference internal image-reference" href="../_images/pr_comment.png"><img alt="Starting a discussion by commenting the reviewer's commit" src="../_images/pr_comment.png" style="width: 779.9499999999999px; height: 397.09999999999997px;" /></a>
-<p class="caption"><span class="caption-text">Starting a discussion by commenting the reviewer’s commit</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
-<p>The comments and resulting discussions will be visible in the PR’s “Conversation” tab (under the list of commits). Don’t forget
-to press the Subscribe button on the right to get informed about reactions to your comments.</p>
 </div>
 </div>
 </div>

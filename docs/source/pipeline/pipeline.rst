@@ -2,19 +2,127 @@
 DCML Corpus Creation Pipeline
 *****************************
 
-#. :ref:`score_repo`
-#. :ref:`metarepos`
+.. contents:: Contents
+   :local:
+
+.. _get_scores:
+
+Collect and prepare the digital edition in the latest MuseScore format
+======================================================================
+
+Prior research
+--------------
+
+* Check which pieces make up the collection
+* how they are grouped
+* what naming or numbering conventions exist
+* which editions there are
+* if different versions of the pieces exist.
+* Come up with a list (and hierarchy) of names. Here, you can already think of a good naming/numbering convention for the corpus.
+* It might be good to create the list of the overarching group of works even if your corpus will contain only parts of it, for the sake of a better overview.
+* Example: Going from the `list of Monteverdi's Madrigal books <http://www3.cpdl.org/wiki/index.php/Claudio_Monteverdi>`__
+  to an `initial README file <https://github.com/DCMLab/corpora/blob/master/annotations/Monteverdi-Madrigals/readme.md>`__.
+
+Look up and check existing scores
+---------------------------------
+
+
+* All scores available need to be checked and compared:
+    * reference edition
+    * completeness
+    * quality & errors
+    * license (later publication!)
+    * file format and expected conversion losses
+* Where to check
+    * First: musescore.com because the scores are in the target format
+    * musicalion.com (not free to publish: need to ask first)
+    * choral music: CPDL
+    * http://kern.ccarh.org/ lossless humdrum 2 musescore conversion needed
+
+Typeset non-existent files
+--------------------------
+
+* pick reference edition and send commission to transcriber
+* depending on the music, prices may vary between 5 and 20 CHF per page
+
+File curation
+-------------
+
+The scores need to be corrected on the basis of a reference edition/manuscript.
+We have a collaborative document with detailed
+`Score correction guidelines <https://docs.google.com/document/d/1Q2svEUSsE7OCetik8An__gsEwQCYNfFJlHFMF9dRce4/edit#heading=h.8hrcm7m3udll>`__.
+It also stipulates which information from the reference edition/manuscript needs to be encoded in what way.
+Please send a request to be added to the document.
+
+* Convert to MuseScore format
+    * XML, CAP: can be done with MuseScore's batch converter plugin or with ``ms3 convert``
+    * CAPX: Conversion to CAP or XML with DCML's Capella license
+    * MUSX: Conversion to XML with private Finale copy
+    * SIB: Conversion to XML with Sibelius on DCML's iMac
+    * LY: no good conversion available
+    * KRN: hum2xml can be used but it would be preferable to have our own converter to MuseScore
+    * results need to be checked; especially markup such as slurs, arpeggios, trills etc. often get screwed
+* Renaming
+    * Decide on naming convention and create a map (without extensions) from old to new filenames
+    * Sometimes, files need to be split at that point because they contain several movements
+        * For this, you introduce section breaks separating the movements
+        * After every section break, you have to re-insert the time and key signature or add it into the split file
+        * Start with the last movement, select it and do `File -> Save Selection`
+        * Repeat for all movements
+    * Rename the files
+    * Possibly add a small script that automatically renames the source files
+* Use parser/checking tool and/or manual checks for consistency
+    * certain bars need to be excluded from the bar count:
+        * anacrusis
+        * pickup measures throughout the piece
+        * second voltas (i.e. second repeats)
+    * irregular measure lengths need to complete each other
+        * e.g. when a repeated section starts with a pickup measure, the last measure of the repeated section needs to be shorter
+        * anacrusis is substracted from the last bar
+    * if in the reference edition the bar count restarts in the middle of the piece (e.g. in some variation movements), you can
+        * either: split the movement into individual files (not preferable if you want to keep the movement as one coherent unit)
+        * or: have two versions, one working version with continuous (unambiguous) measure numbers that depart from the reference edition, and one that is provided separately, that has the original (ambiguous) measure numbering but is not used for computational purposes. The reset of the counter should not be done via "add to measure count" using a negative number, but rather via section breaks.
+
+
+Create metadata
+---------------
+
+All metadata fields are automatically extracted (by our workflow script that use ``ms3 extract -D``) and represented
+in the ``metadata.tsv`` file. To conveniently populate the metadata fields in the MSCX files, you can also create
+the corresponding columns in the existing ``metadata.tsv`` files and use ``ms3 metadata`` to update the
+Musescore files.
+
+Populate the following default fields (if applicable):
+
+* ``composer``
+* ``movementNumer``
+* ``movementTitle``
+* ``source`` (URL of the adapted digital edition)
+* ``workNumer``
+* ``workTitle``
+
+Add to that the following custom fields (if applicable):
+
+* ``composed_start``, ``composed_end`` (identical values if one exact year is known)
+* ``typesetter``
+* ``score_integrity`` (person who made the score match the reference edition/manuscript)
+* ``annotators`` (name, if several annotations or iterations, specify in parenthesis who did what)
+* ``reviewers``
+* ``harmony_version`` (version of the DCML harmony annotation standard used)
+* ``imslp`` (URL of the work's Wiki page)
+* ``musicbrainz`` (work URI)
+* ``viaf`` (work URI)
+* ``wikidata`` (e.g. `<http://www.wikidata.org/entity/Q2194957>`__)
 
 .. _score_repo:
 
 Creating a repository with unannotated MuseScore files
 ======================================================
 
-.. danger:: After we start the annotation workflow, no MuseScore files should be added. removed, or renamed!
+.. danger:: After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
+   needs to be complete and the file names final.
 
-Before starting annotating a corpus, a repo with the standard folder structure needs to be created:
-
-.. code-block:: console
+Before starting annotating a corpus, a repo with the standard folder structure needs to be created: ::
 
   .
   ├── MS3
@@ -57,9 +165,7 @@ Setting
 Create the new repo B
   On GitHub, we use the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__ to create
   the target repo ``chopin_mazurkas`` with the workflow files and the standard ``.gitignore``. Locally, we initialize
-  an empty Git repo that will be connected upstream at a later point:
-
-  .. code-block:: console
+  an empty Git repo that will be connected upstream at a later point: ::
 
     mkdir chopin_mazurkas && cd chopin_mazurkas && git init
 
@@ -67,9 +173,7 @@ Create the new repo B
   ``git config --global init.defaultBranch main``.
 
 Clone repo A and transfer files
-  We start off with a fresh clone of ``corpora``, head into it and run
-
-  .. code-block:: console
+  We start off with a fresh clone of ``corpora``, head into it and run: ::
 
     git filter-repo --subdirectory-filter annotations/Chopin-Mazurkas/ --target ../chopin_mazurkas
 
@@ -78,9 +182,7 @@ Clone repo A and transfer files
 
 Connect local repo B to the remote repo B
   The local ``chopin_mazurkas`` now contains the files at the top level together with the full commit
-  history (check out ``git log``). Now we can connect it to the remote and merge the workflow scripts from there:
-
-  .. code-block:: console
+  history (check out ``git log``). Now we can connect it to the remote and merge the workflow scripts from there: ::
 
     git remote add origin git@github.com:DCMLab/chopin_mazurkas.git
     git pull origin main --allow-unrelated-histories
@@ -102,9 +204,7 @@ The individual subcorpora can be embedded as submodules in meta-repositories. Cu
 1. `dcml_corpora <https://github.com/DCMLab/dcml_corpora>`__ for published corpora
 2. `annotation_review <https://github.com/DCMLab/annotation_review/>`__ (private) for unpublished corpora.
 
-To add the new repo, head into the meta-repo and do
-
-.. code-block:: console
+To add the new repo, head into the meta-repo and do ::
 
   git submodule add -b main https://github.com/DCMLab/chopin_mazurkas/
 
