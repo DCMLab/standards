@@ -339,22 +339,8 @@ Review the labels
   subtle aspect in the previous, replaced label, that actually made for an ideal solution; etc.
 
 
-#. Merge PR with new annotations
-#. wait until ``ms3-bot`` automatically pushed the new annotation tables
-#. the new annotation tables need to get into the annotation/review branch to create comparison files after your review:
-
-   * shortcut: in the updated review branch, do ``git pull origin main``; your local main is not updated!
-   * thoroughly: checkout main, ``git pull``, checkout review branch, ``git merge main``
-
-#. Before the review, make sure this had the desired effect by verifying the folder ``harmonies`` contains the
-   annotation table for the file to be reviewed (i.e., a TSV file by the same name)
-#. review files and commit every change individually with measure number and explanation, e.g. ``"13: vii should be #vii``
-#. add your initials to the file's metadata in the field `reviewers` (``File -> Score Properties``, add the field if missing)
-#. push everything and create pull request (PR) -> comparison MuseScore file gets pushed automatically
-#. request PR review by annotator
-
-Reviewing review & reaching expert consensus
---------------------------------------------
+Reacting to a review & reaching expert consensus
+================================================
 
 Once your file(s) got reviewed, the reviewer creates a pull request (PR) and requests your review. You should
 receive an e-mail notification, if not, please check your GitHub settings. Now your task is to go through all changes
