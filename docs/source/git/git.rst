@@ -13,7 +13,6 @@ DCML annotation workflow
 Short summary
 =============
 
-**Short Summary**
 
 #. Annotator:
 
