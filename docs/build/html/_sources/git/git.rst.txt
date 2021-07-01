@@ -17,7 +17,7 @@ Short summary
 #. Annotator:
 
    * creates a new branch (splitting off of ``main``!) named after the file to be annotated
-   * pushes annotations and corrects automatically detected errors
+   * pushes annotations and corrects errors that were :ref:`automatically detected on GitHub <syntax_errors>`,
    * creates Pull Request (PR)
 
 #. Reviewer:
@@ -78,6 +78,8 @@ Commit your changes locally and describe the commit in the commit message.
   Other examples for meaningful commit messages could be ``"annotated the entire movement"`` or ``"fixed syntax error
   in m. 17"``
 
+.. _syntax_errors:
+
 Push your commits to GitHub and check if syntactical errors are detected.
   ::
 
@@ -99,6 +101,7 @@ Push your commits to GitHub and check if syntactical errors are detected.
       :scale: 80%
 
       The last commit listed in the ``Actions`` tab with the red icon symbolizing that the syntax check failed.
+
 
 If the syntax check fails, correct all errors in your local MuseScore file and commit them, again with an explanatory commit message.
   Still under the ``Actions`` tab, click on the failed syntax check and then on ``perform_check``
@@ -257,8 +260,11 @@ First, open the Pull Request containing the new labels and check if all syntacti
   correctness). In this case, please leave a comment below, asking the annotator to correct the labels and to let you
   know once they are done.
 
-  .. danger:: It is important to never merge syntactically incorrect labels into ``main`` because such errors would
-     propagate to other branches, causing failed syntax checks for your fellow annotators.
+.. admonition:: Warning
+   :class: danger
+
+   It is important to never merge syntactically incorrect labels into ``main`` because such errors would
+   propagate to other branches, causing failed syntax checks for your fellow annotators.
 
 Merge the PR
   Once there are no syntactical errors left, take note of the annotator's comments, if any, to be able to react to them,
