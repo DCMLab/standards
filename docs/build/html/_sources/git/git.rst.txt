@@ -283,6 +283,8 @@ Merge the updated ``main`` branch into the updated annotation branch.
     git pull
     git merge main
 
+.. _how_to_review:
+
 Now you are ready to start your review.
   * At first you start by adding your initials to the metadata field ``reviewers`` (plural!), comma-separated in case
     the field is already populated. Doing that, you may also want to check whether the annotator spelled the fields
@@ -344,7 +346,7 @@ Making use of the ``_reviewed`` file.
   :ref:`previous section <new_annotations>`, i.e. merge the PR and open a new one.
 
 Review the labels
-  The procedure is essentially the same as the one for reviewing new annotations. The difference is that you focus
+  The procedure is essentially the same as the one for :ref:`reviewing new annotations <how_to_review>` above. The difference is that you focus
   more on the labels changed by the upgrader, exercising particular care for potential inconsistencies that might
   have arisen; for example by applying a change to one place but not to an analogous one; or by having missed a
   subtle aspect in the previous, replaced label, that actually made for an ideal solution; etc.
