@@ -231,7 +231,7 @@ a new one after you finished your review. For upgraded annotations, this is not 
 into the open PR right away. The reason for this is the automatic creation of the ``_reviewed`` files,
 as explained in the following.
 
-In order for the reviewer or upgrader to comprehend the changes you made during your review, not only do you need
+In order for the annotator or upgrader to comprehend the changes you made during your review, not only do you need
 to commit and explain your changes individually (indicating the measure number of the respective change). Also,
 an additional copy of the MuseScore file in question will be automatically created where your changes are highlighted
 with different colours. The creation of such a ``_reviewed`` file depends on the presence of an automatically
