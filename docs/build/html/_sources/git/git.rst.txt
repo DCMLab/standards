@@ -648,20 +648,25 @@ Overwriting a File with Changes
 If you want to apply local changes to a file directly, you may drag-and-drop it
 into GitHub. Once again, don't forget a meaningful COMMIT_MESSAGE.
 
+Creating a GitHub account
+=========================
+
+Head to https://github.com/signup and follow the instructions.
+
 GitHub Desktop
---------------
+==============
 
 GitHub Desktop is a GUI (graphical user interface) available for Windows and MacOS.
 It dispenses with using git commands in the terminal but can (also)
 lead to unwanted behaviour and needs to be handled with just the same care.
 
 Installing GitHub Desktop
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 Head to https://desktop.github.com/, download the installer for your operation system and install it.
 
 First start
-^^^^^^^^^^^
+-----------
 
 Starting for the first time you are greeted by a screen similar to this one:
 
@@ -674,7 +679,7 @@ Starting for the first time you are greeted by a screen similar to this one:
 What most people will want to do is "Clone a repository from the internet".
 
 Cloning a repository
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 There are many ways to perform the task of creating a copy of a Git repository on your local disc.
 You can use the menu ``File -> Clone repository...``. Or you open the repository panel and click on the repository
@@ -701,7 +706,7 @@ https://github.com/DCMLab/schubert_dances and click on ``Code -> Open with GitHu
     :scale: 40%
 
 The user interface
-^^^^^^^^^^^^^^^^^^
+------------------
 
 After cloning a repository, you will mostly operate with these three buttons:
 
