@@ -667,7 +667,7 @@ Starting for the first time you are greeted by a screen similar to this one:
 
 .. figure:: img/desktop_start.png
     :alt: Starting GitHub desktop for the first time
-    :scale: 60%
+    :scale: 30%
 
     Starting GitHub desktop for the first time
 
@@ -682,23 +682,23 @@ selector and click on ``Add -> Clone repository...``:
 
 .. figure:: img/desktop_add.png
     :alt: Getting to the clone menu
-    :scale: 60%
+    :scale: 50%
 
 When you get to the clone window, usually you have a URL, so you click on the URL tab, paste the repository's URL,
 and select where on your disc you want to create a local clone:
 
 .. figure:: img/desktop_clone.png
     :alt: Pasting a URL to create a local repository clone
-    :scale: 60%
+    :scale: 50%
 
     Pasting a URL to create a local repository clone
 
 Another simple way of cloning a GitHub repo is from the browser. For example, you can go to
-https://github.com/DCMLab/schubert_dances and click on ``Code -> Open in GitHub Desktop``:
+https://github.com/DCMLab/schubert_dances and click on ``Code -> Open with GitHub Desktop``:
 
 .. figure:: img/desktop_browser.png
     :alt: Cloning directly from browser
-    :scale: 60%
+    :scale: 40%
 
 The user interface
 ^^^^^^^^^^^^^^^^^^

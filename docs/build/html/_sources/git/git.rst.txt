@@ -630,6 +630,10 @@ GitHub browser interface. Don't forget to pull such commits to your local clone.
 Small Changes to a Text File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. |github_url| image:: img/github_url.png
+.. |github_edit| image:: img/github_edit.png
+.. |github_commit| image:: img/github_commit.png
+
 Once again, make sure you are in the correct branch to apply your changes to by
 selecting it from the drop-down menu on the left: |github_url|
 
@@ -644,8 +648,76 @@ Overwriting a File with Changes
 If you want to apply local changes to a file directly, you may drag-and-drop it
 into GitHub. Once again, don't forget a meaningful COMMIT_MESSAGE.
 
-.. |github_url| image:: img/github_url.png
-.. |github_edit| image:: img/github_edit.png
-.. |github_commit| image:: img/github_commit.png
+GitHub Desktop
+--------------
+
+GitHub Desktop is a GUI (graphical user interface) available for Windows and MacOS.
+It dispenses with using git commands in the terminal but can (also)
+lead to unwanted behaviour and needs to be handled with just the same care.
+
+Installing GitHub Desktop
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Head to https://desktop.github.com/, download the installer for your operation system and install it.
+
+First start
+^^^^^^^^^^^
+
+Starting for the first time you are greeted by a screen similar to this one:
+
+.. figure:: img/desktop_start.png
+    :alt: Starting GitHub desktop for the first time
+    :scale: 30%
+
+    Starting GitHub desktop for the first time
+
+What most people will want to do is "Clone a repository from the internet".
+
+Cloning a repository
+^^^^^^^^^^^^^^^^^^^^
+
+There are many ways to perform the task of creating a copy of a Git repository on your local disc.
+You can use the menu ``File -> Clone repository...``. Or you open the repository panel and click on the repository
+selector and click on ``Add -> Clone repository...``:
+
+.. figure:: img/desktop_add.png
+    :alt: Getting to the clone menu
+    :scale: 50%
+
+When you get to the clone window, usually you have a URL, so you click on the URL tab, paste the repository's URL,
+and select where on your disc you want to create a local clone:
+
+.. figure:: img/desktop_clone.png
+    :alt: Pasting a URL to create a local repository clone
+    :scale: 50%
+
+    Pasting a URL to create a local repository clone
+
+Another simple way of cloning a GitHub repo is from the browser. For example, you can go to
+https://github.com/DCMLab/schubert_dances and click on ``Code -> Open with GitHub Desktop``:
+
+.. figure:: img/desktop_browser.png
+    :alt: Cloning directly from browser
+    :scale: 40%
+
+The user interface
+^^^^^^^^^^^^^^^^^^
+
+After cloning a repository, you will mostly operate with these three buttons:
+
+.. figure:: img/desktop_buttons.png
+    :alt: The three main buttons in GitHub Desktop
+
+The left one allows you to switch between different repositories that you have cloned. The middle one allows you to
+select or create the branch you want to change. The right one allows you to exchange data between your local clone
+and the origin (i.e. GitHub). Its principal actions are "Fetch origin", i.e. integrate changes from GitHub into your
+local clone, and "Push origin" to upload all commits you made locally to GitHub. If you have created a new branch locally,
+the button says "Publish branch" and allows for adding your branch to GitHub.
+
+
+
+
+
+
 
 
