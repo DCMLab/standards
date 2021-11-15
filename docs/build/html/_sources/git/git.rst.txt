@@ -705,6 +705,10 @@ https://github.com/DCMLab/schubert_dances and click on ``Code -> Open with GitHu
     :alt: Cloning directly from browser
     :scale: 40%
 
+.. note:: You know that it worked when the interface looks like in the screenshot below, i.e. "Current repository"
+    displays the name of the repo you have cloned. In the middle of the main frame you will see several buttons and
+    one of them allows you to display the cloned files ("Show in Explorer/Finder").
+
 The user interface
 ------------------
 
