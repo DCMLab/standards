@@ -36,10 +36,8 @@ in a Gantt chart like so:
 .. raw:: html
    :file: interactive/K309-3_gantt.html
 
-.. rst-class:: center
-
-W.A. Mozart: *Piano Sonata No. 7 in C major*, K. 309, III. Rondeau, Allegretto grazioso
-Disposition of keys modulated to (blue) and secondary keys (red).
+:Gantt chart: W.A. Mozart: *Piano Sonata No. 7 in C major*, K. 309, III. Rondeau, Allegretto grazioso.
+    Disposition of keys modulated to (blue) and secondary keys (red).
 
 In other words, annotate in a way, that the keys that your annotations modulate
 to would lead to a Gantt chart where the yellow bars represent the disposition

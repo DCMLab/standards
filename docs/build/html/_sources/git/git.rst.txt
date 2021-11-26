@@ -162,6 +162,33 @@ Give the pull request a meaningful name and feel free to add anything worth know
 the green button "Create pull request", you're done. In case more pieces were commissioned to you, you can continue
 annotating, but make sure to create the new branch for the next piece after checking out and updating ``main`` first!
 
+.. _modulation_plans:
+
+Modulation plans
+----------------
+
+Since November 2021, the DCML workflow includes a new feature, namely the automated creation of modulation plans.
+Once a Pull Request (PR) is created, modulation plans are generated and updated for all altered MuseScore files. They
+come in the form of HTML files and are stored in the folder ``tonicizations``. After you create a PR or push into an
+existing one, the ms3-bot will commit these files, so in order to view them, you need to wait for the bot's commit
+and then pull it into your local clone.
+
+For example, in `this PR <https://github.com/DCMLab/schubert_dances/pull/516>`__,
+the annotator pushed a new set of annotations, requested a review and then the bot added
+the HTML file in the commit "Added comparison files for review". In order to view the file, the annotator will
+do a ``git pull``, find it in the folder ``tonicizations`` and open it in a browser:
+
+.. raw:: html
+   :file: interactive/D718walzer01.html
+
+:Gantt chart: *Automatically generated modulation plan in HTML format, displayed through a browser.*
+
+The modulation plans display the tonal hierarchy represented by your annotations and allow you to check if your labels
+correspond to your understanding of the piece's structure. The keys that the piece modulates to are shown in blue,
+temporary tonicizations (slash notation) are shown in red, and adjacency of the tonicized numerals in green. More
+detailed information on the keys is shown when hovering over the figure. If you find inconsistencies, simply
+correct them in your MuseScore file and commit them into the open PR, the modulation plan will be updated and overwritten,
+so you can pull it and check it once more.
 
 Upgrading annotations
 =====================
@@ -215,9 +242,10 @@ Push your commits and create a Pull Request
 
      Automatically detected syntax error from above, as displayed on GitHub.
 
-  Shortly after opening the PR, an additional review file ending on the suffix
-  ``_reviewed`` will be created on GitHub and added to the PR, which you can then pull and view locally to see
-  the changes you made: ::
+  Shortly after opening the PR, the ms3-bot will create two additional files that will help you and the reviewer
+  understand your changes: An additional MuseScore file showing all changes you have made, and a :ref:`modulation plan <modulation_plans>`
+  (in the folder ``tonicizations``) reflecting your updated set of labels. To see these files, you will need to
+  update your local clone so that it includes the bot's commit: ::
 
     git checkout op01n06a
     git pull
@@ -289,6 +317,9 @@ Now you are ready to start your review.
   * At first you start by adding your initials to the metadata field ``reviewers`` (plural!), comma-separated in case
     the field is already populated. Doing that, you may also want to check whether the annotator spelled the fields
     ``annotators`` and ``harmony_version`` correctly.
+  * **Update November 2021** At any point of the review, check the associated :ref:`modulation plan <modulation_plans>`
+    by finding the corresponding HTML file in the folder ``tonicizations`` and opening it in your browser. It helps
+    to check if the tonal structure expressed by the labels corresponds to the one you and the annotator have in mind.
   * Reviewing a new set of annotations means reading through the labels to see whether you agree with
     each of them on the basis of the :doc:`annotation tutorial <../tutorial/index>`, paying special attention to
     consistency within the piece and consistency across similar annotated pieces.
