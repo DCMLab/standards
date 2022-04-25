@@ -202,13 +202,14 @@ annotations, it is preferable to arrange them in a human-readable way.
   using ``Esc``.
 * If expressions overlap with notes, you can drag them manually as well. But if
   this is often the case, you might want to
-* change the distance between the chord symbols and the respective system for
-  the entire document by changing the value under
-  ``Style -> General... -> Chord Symbols, Fretboard Diagrams -> Default vertical position``.
-  A usable value might lie around ``6.00sp``. If the distance is good but
-  chord symbols overlap with the above system, you might want to
-* change the distance between all systems by raising the value of
-  ``Format -> Style -> Chord Symbols``.
+
+  * change the distance between the chord symbols and the respective system for
+    the entire document by changing the value under
+    ``Style -> General... -> Chord Symbols, Fretboard Diagrams -> Default vertical position``.
+    A usable value might lie around ``6.00sp``. If the distance is good but
+    chord symbols overlap with the above system, you might want to
+  * change the distance between all systems by raising the value of
+    ``Format -> Style -> Chord Symbols``.
 
 
 Start annotation tutorial

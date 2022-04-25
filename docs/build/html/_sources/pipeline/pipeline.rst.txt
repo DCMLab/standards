@@ -194,15 +194,23 @@ Clean metadata
   `this Pull Request <https://github.com/DCMLab/chopin_mazurkas/pull/1>`__ shows the metadata cleaning and update
   of the existing files from an older MuseScore and annotation standard.
 
+Keeping track of the new repo
+=============================
+
+#. Give write access to the `annotators` team on GitHub.
+#. Add the new repo to the corresponding meta-repositories (at least to ``all_subcorpora``).
+#. Add the new repo to the annotation workflow (drop-down menus etc.)
+
 .. _metarepos:
 
 Adding the repo to one or several meta-repos
-============================================
+--------------------------------------------
 
-The individual subcorpora can be embedded as submodules in meta-repositories. Currently, the DCML uses two of them:
+The individual subcorpora can be embedded as submodules in meta-repositories. These meta-repos are listed in the private
+`meta_repositories <https://github.com/DCMLab/meta_repositories>`__ repo. Currently, the most important ones are:
 
 1. `dcml_corpora <https://github.com/DCMLab/dcml_corpora>`__ for published corpora
-2. `annotation_review <https://github.com/DCMLab/annotation_review/>`__ (private) for unpublished corpora.
+2. `all_subcorpora <https://github.com/DCMLab/all_subcorpora>`__ (private) for all published and unpublished corpora.
 
 To add the new repo, head into the meta-repo and do ::
 

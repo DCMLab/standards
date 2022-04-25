@@ -3,7 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Annotation Reference &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
@@ -73,6 +74,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#reviewing-a-set-of-annotations">Reviewing a set of annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#reacting-to-a-review-reaching-expert-consensus">Reacting to a review &amp; reaching expert consensus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#quick-git-reference">Quick Git Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#creating-a-github-account">Creating a GitHub account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#github-desktop">GitHub Desktop</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pipeline/pipeline.html">DCML Corpus Creation Pipeline</a><ul>
@@ -176,9 +179,9 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="annotation-reference">
+  <section id="annotation-reference">
 <h1>Annotation Reference<a class="headerlink" href="#annotation-reference" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Thank you for your interest in the DCML harmony annotation standard. Harmonic
 analysis is a notoriously complex task, as of now very difficult to
@@ -190,7 +193,7 @@ machine-readable format. This document serves as a reference for looking
 up aspects of its syntax together with some examples. If you want to learn how DCML
 annotators use MuseScore to enter harmonic analysis directly into
 digital scores, please refer to our <a class="reference internal" href="../tutorial/index.html"><span class="doc">annotation tutorial</span></a>.</p>
-<div class="section" id="what-is-it">
+<section id="what-is-it">
 <h3>What is it?<a class="headerlink" href="#what-is-it" title="Permalink to this headline">¶</a></h3>
 <p>In its essence, the standard consists of two things: A set of rules
 for constructing chord labels in a standardized way and this reference
@@ -205,20 +208,20 @@ each row represents a label and each column one of its properties
 such as position in the score, the key it occurs in, the chord
 tones it represents, and its different features. This reference is
 mainly concerned with explaining what these different properties are.</p>
-</div>
-<div class="section" id="about-this-reference">
+</section>
+<section id="about-this-reference">
 <h3>About this reference<a class="headerlink" href="#about-this-reference" title="Permalink to this headline">¶</a></h3>
 <p>Everyone is free to use the proposed standard for encoding harmonic analyses
 in ways, contexts, and environments of their free choice. The goal of this reference
 is not to tell anyone how they should analyse harmony. Instead, its purpose
 is to clarify what the different parts of the syntax are supposed to express
 in order to allow analysts to communicate their musical interpretations in
-a precise yet consistent manner. The examples and recommendations are supposed to
+a precise and consistent manner. The examples and recommendations are supposed to
 be guidelines that have as a goal to make annotations from different users
 comparable and interoperable.</p>
-</div>
-</div>
-<div class="section" id="the-syntax">
+</section>
+</section>
+<section id="the-syntax">
 <h2>The syntax<a class="headerlink" href="#the-syntax" title="Permalink to this headline">¶</a></h2>
 <p>Every chord symbol <em>must</em> have at least one compulsory Roman numeral and <em>may</em>
 start with an indication of key, followed by a separating dot. Such an
@@ -226,7 +229,7 @@ indication sets the context for the attached Roman
 numeral <em>and</em> for all subsequent symbols up to the next indication of
 key. Phrase annotations represent a separate standard. Therefore they can
 stand alone, without a chord label, or at the very end of one.</p>
-<div class="section" id="indication-of-key">
+<section id="indication-of-key">
 <h3>Indication of key.<a class="headerlink" href="#indication-of-key" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The first symbol written in a score always starts with the absolute
@@ -247,7 +250,7 @@ the music then stays in the key of <code class="docutils literal notranslate"><s
 paragraph), you can write <code class="docutils literal notranslate"><span class="pre">vi.V</span></code> right away. Every following <code class="docutils literal notranslate"><span class="pre">i</span></code>
 symbol designates the new tonic.</p></li>
 </ul>
-<div class="section" id="example">
+<section id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">ii65/V</span> <span class="pre">V7/V</span> <span class="pre">V</span></code> and <code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">V.ii65</span> <span class="pre">V7</span> <span class="pre">I</span></code> (from the Schumann example
 below), in general, express the same chords but a preference has to be
@@ -286,12 +289,8 @@ progression would be standing in the key of V:
 remaining unchanged (<code class="docutils literal notranslate"><span class="pre">/V</span></code>) because it is <strong>relative</strong> to the local
 key; whereas the <strong>change of local key</strong> would indicate the
 <em>absolute</em> key instead: <code class="docutils literal notranslate"><span class="pre">V.I6</span> <span class="pre">II.ii65</span> <span class="pre">V7</span> <span class="pre">I(4)</span></code></p>
-</div>
+</aside>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 42%" />
-<col style="width: 58%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Approriate annotation</p></th>
 <th class="head"><p>Unappropriate annotation</p></th>
@@ -308,10 +307,6 @@ key; whereas the <strong>change of local key</strong> would indicate the
 <p>The rationale behind this logic can be seen in these automated key
 analyses of two different annotations of the same piece:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 49%" />
-<col style="width: 51%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>With too many changes of local key</p></th>
 <th class="head"><p>After correction to relative keys</p></th>
@@ -325,13 +320,13 @@ analyses of two different annotations of the same piece:</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-<div class="section" id="the-remainder-of-the-reference-is-currently-under-reconstruction">
+</section>
+</section>
+</section>
+<section id="the-remainder-of-the-reference-is-currently-under-reconstruction">
 <h2>The remainder of the Reference is currently under reconstruction<a class="headerlink" href="#the-remainder-of-the-reference-is-currently-under-reconstruction" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -346,7 +341,7 @@ analyses of two different annotations of the same piece:</p>
     </p>
     <p>
         &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
 </footer>

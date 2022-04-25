@@ -3,7 +3,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Technical Specifications &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
@@ -72,6 +73,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#reviewing-a-set-of-annotations">Reviewing a set of annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#reacting-to-a-review-reaching-expert-consensus">Reacting to a review &amp; reaching expert consensus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#quick-git-reference">Quick Git Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#creating-a-github-account">Creating a GitHub account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#github-desktop">GitHub Desktop</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pipeline/pipeline.html">DCML Corpus Creation Pipeline</a><ul>
@@ -181,7 +184,7 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="technical-specifications">
+  <section id="technical-specifications">
 <h1>Technical Specifications<a class="headerlink" href="#technical-specifications" title="Permalink to this headline">¶</a></h1>
 <p>These specs fulfill at least two purposes:</p>
 <ul class="simple">
@@ -192,11 +195,11 @@
 and everyone who wants to help improving them can be on the same page. The
 current state of the corresponding discussions can be seen in this repo’s
 <a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a>.</p>
-<div class="section" id="what-is-being-encoded">
+<section id="what-is-being-encoded">
 <h2>What is being encoded?<a class="headerlink" href="#what-is-being-encoded" title="Permalink to this headline">¶</a></h2>
 <p>This section elicits the general principles and assumptions underlying the
 DCML harmony annotation standard.</p>
-<div class="section" id="segmentations">
+<section id="segmentations">
 <h3>Segmentations<a class="headerlink" href="#segmentations" title="Permalink to this headline">¶</a></h3>
 <p>DCML harmony labels represent a score segmentation on various levels:</p>
 <ul class="simple">
@@ -239,8 +242,8 @@ at all – the annotator wants to use phrase annotations.</p>
 <p>The following section explains how the segmentations’ timestamps are
 encoded whereas the expression of chord and non-chord tones will be
 specified in the <a class="reference internal" href="#regex"><span class="std std-ref">regEx</span></a> section below.</p>
-</div>
-<div class="section" id="timestamps">
+</section>
+<section id="timestamps">
 <span id="id1"></span><h3>Timestamps<a class="headerlink" href="#timestamps" title="Permalink to this headline">¶</a></h3>
 <p>The way DCML harmony labels are entered in the <a class="reference external" href="https://musescore.org/en/download">MuseScore 3</a>
 notation software ensures that each of them is attached to a timestamp in the
@@ -305,18 +308,13 @@ examples below. However, for referencing a position in the score, the MN-onset
 needs to be converted into the correct MC-onset. Implementation-wise this can
 be accomplished by keeping track of each MC’s ‘offset’ from the corresponding
 MN’s beginning, which in most cases will be 0.</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <span id="label-lists"></span><img alt="Measure counts vs. measure numbers for an anacrusis" src="../_images/mc-mn-anacrusis.png" />
-<p class="caption"><span class="caption-text"><strong>Correct timestamps for the beginning of Bourrée I from Bach’s
+<figcaption>
+<p><span class="caption-text"><strong>Correct timestamps for the beginning of Bourrée I from Bach’s
 `English Suite No. 1` BWV 806.</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 32%" />
-<col style="width: 32%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>mc</p></th>
 <th class="head"><p>mn</p></th>
@@ -348,25 +346,20 @@ MN’s beginning, which in most cases will be 0.</p>
 </tbody>
 </table>
 </div>
-</div>
+</figcaption>
+</figure>
 <p>Note how in this example, the first labels’
 position is given as <code class="docutils literal notranslate"><span class="pre">onset</span> <span class="pre">==</span> <span class="pre">3/4</span></code> because MN 0 was internally treated as
 the second part of a split bar, resulting in the above-mentioned ‘offset’
 value for MC 1 to be <code class="docutils literal notranslate"><span class="pre">3/4</span></code> which would translate correctly to beat
 4 in 4/4 meter or beat 2.5 in 2/2.</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <img alt="Measure counts vs. measure numbers for first and second endings" src="../_images/mc-mn-voltas.png" />
-<p class="caption"><span class="caption-text"><strong>mm. 16ff. of the same piece as an example for correct timestamps in the case
+<figcaption>
+<p><span class="caption-text"><strong>mm. 16ff. of the same piece as an example for correct timestamps in the case
 of first and second endings.</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 21%" />
-<col style="width: 21%" />
-<col style="width: 21%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>mc</p></th>
 <th class="head"><p>mn</p></th>
@@ -427,7 +420,8 @@ of first and second endings.</strong></span><a class="headerlink" href="#id3" ti
 </tbody>
 </table>
 </div>
-</div>
+</figcaption>
+</figure>
 <p>Note how MCs identify every measure unit of the score unambiguously whereas the
 official conventions intend MNs 16 and 17 to have two different appearances
 which are commonly distinguished by writing <cite>16a, 16b, 17a, 17b</cite>. In order to
@@ -447,12 +441,6 @@ for which the ‘Exclude from bar count’ flag is set and the column ‘numberi
 offset’ represents values for “Add to bar number”. Empty cells represent zero
 values.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 32%" />
-<col style="width: 47%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>mc</p></th>
 <th class="head"><p>mn</p></th>
@@ -488,13 +476,13 @@ values.</p>
 </tr>
 </tbody>
 </table>
-<div class="section" id="floating-point-timestamps">
+<section id="floating-point-timestamps">
 <h4>Floating point timestamps<a class="headerlink" href="#floating-point-timestamps" title="Permalink to this headline">¶</a></h4>
 <p>Bla bla</p>
-</div>
-</div>
-</div>
-<div class="section" id="the-regex-regular-expression">
+</section>
+</section>
+</section>
+<section id="the-regex-regular-expression">
 <span id="regex"></span><h2>The regEx (Regular Expression)<a class="headerlink" href="#the-regex-regular-expression" title="Permalink to this headline">¶</a></h2>
 <p>The regular expression (regEx) is the backbone of the DCML annotation standard.
 It  expresses its entire chord alphabet by defining the syntactic rules of  the
@@ -529,7 +517,7 @@ been released).</p>
 <span class="s2">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="fetching-and-compiling-the-regex">
+<section id="fetching-and-compiling-the-regex">
 <h3>Fetching and Compiling the regEx<a class="headerlink" href="#fetching-and-compiling-the-regex" title="Permalink to this headline">¶</a></h3>
 <p>In Python, you could fetch and compile a particular version of the regEx like
 this:</p>
@@ -552,13 +540,13 @@ this:</p>
 <span class="n">pre_release</span> <span class="o">=</span> <span class="n">get_regex</span><span class="p">(</span><span class="s1">&#39;develop&#39;</span><span class="p">)</span>  <span class="c1"># uses a branch name</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="structure-of-the-regex">
+</section>
+<section id="structure-of-the-regex">
 <h3>Structure of the regEx<a class="headerlink" href="#structure-of-the-regex" title="Permalink to this headline">¶</a></h3>
 <p>In the current version, the overall structure of the regex is
 <code class="docutils literal notranslate"><span class="pre">(harmony_label)?(phrase_label)?</span></code> where <code class="docutils literal notranslate"><span class="pre">phrase_label</span></code> corresponds to the
 regEx’s last group and <code class="docutils literal notranslate"><span class="pre">harmony_label</span></code> to everything before.</p>
-<div class="section" id="structure-of-the-harmony-labels">
+<section id="structure-of-the-harmony-labels">
 <h4>Structure of the Harmony Labels<a class="headerlink" href="#structure-of-the-harmony-labels" title="Permalink to this headline">¶</a></h4>
 <p>Simplifying the regEx’s harmony part to the included groups, we get</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(globalkey)?
@@ -579,8 +567,8 @@ is (Roman) <code class="docutils literal notranslate"><span class="pre">numeral<
 included in the <code class="docutils literal notranslate"><span class="pre">chord</span></code> group, together with the features <code class="docutils literal notranslate"><span class="pre">form,</span> <span class="pre">figbass,</span>
 <span class="pre">changes,</span> <span class="pre">relativeroot</span></code> which fully define a harmony’s chord tones and
 (structural, non-ornamental) non-chord tones.</p>
-</div>
-<div class="section" id="structure-of-the-phrase-labels">
+</section>
+<section id="structure-of-the-phrase-labels">
 <h4>Structure of the Phrase Labels<a class="headerlink" href="#structure-of-the-phrase-labels" title="Permalink to this headline">¶</a></h4>
 <p>Phrase labels can stand alone or follow a harmony label. A phrase label can be
 one of the following symbols:</p>
@@ -598,10 +586,10 @@ ending, e.g. the position of a cadence’s ultima. This implies that everything
 that follows <code class="docutils literal notranslate"><span class="pre">}</span></code> yet precedes the subsequent <code class="docutils literal notranslate"><span class="pre">{</span></code> is still considered as part
 of the same phrase, be it an annexe, a general pause, a transition etc. It
 follows that calculating full phrase lengths is achieved from <code class="docutils literal notranslate"><span class="pre">{</span></code> to <code class="docutils literal notranslate"><span class="pre">{</span></code>.</p>
-</div>
-</div>
-</div>
-<div class="section" id="feature-processing">
+</section>
+</section>
+</section>
+<section id="feature-processing">
 <h2>Feature Processing<a class="headerlink" href="#feature-processing" title="Permalink to this headline">¶</a></h2>
 <p>This section reflects the current specification of how every feature included in
 the regEx is or can be processed. It’s purpose is both internal documentation
@@ -613,7 +601,7 @@ exemplified by Python 3 functions.</p>
 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">pandas DataFrame</a>
 that includes labels and their <a class="reference internal" href="#timestamps"><span class="std std-ref">timestamps</span></a>. The example
 functions use the same column names as the <a class="reference internal" href="#label-lists"><span class="std std-ref">above examples</span></a>.</p>
-<div class="section" id="splitting-the-labels">
+<section id="splitting-the-labels">
 <h3>Splitting the Labels<a class="headerlink" href="#splitting-the-labels" title="Permalink to this headline">¶</a></h3>
 <p>The goal in this section is to split raw harmony labels into the encoded
 features using a particular version of the standard’s regular expression
@@ -722,19 +710,13 @@ the following example.</p>
     <span class="k">return</span> <span class="n">df</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="special-symbols">
+</section>
+<section id="special-symbols">
 <h3>Special Symbols<a class="headerlink" href="#special-symbols" title="Permalink to this headline">¶</a></h3>
 <p>The standard contains ‘shortcut’ symbols, in particular the augmented sixth chords <cite>Fr</cite>, <cite>Ger</cite>, and <cite>It</cite>. Originally
 they appear within the <cite>root</cite> feature but when processed, they are moved to an additional column <cite>special</cite> and
 replaced with an exact expression of their chord tones, as shown in this table:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 29%" />
-<col style="width: 15%" />
-<col style="width: 38%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Special</p></th>
 <th class="head"><p>Translation</p></th>
@@ -767,16 +749,16 @@ European parlance ‘augmented 43’ and ‘augmented 65’ for the two chords) 
 an inversion of <code class="docutils literal notranslate"><span class="pre">Ger65</span></code> where <code class="docutils literal notranslate"><span class="pre">#4</span></code> is the bass note would be written as <code class="docutils literal notranslate"><span class="pre">Ger7</span></code>; and <code class="docutils literal notranslate"><span class="pre">Fr7</span></code> has scale degree
 <code class="docutils literal notranslate"><span class="pre">2</span></code> in the bass. Since <code class="docutils literal notranslate"><span class="pre">It6</span></code> is a triad, writing <code class="docutils literal notranslate"><span class="pre">It</span></code> (i.e., <code class="docutils literal notranslate"><span class="pre">figbass</span> <span class="pre">=</span> <span class="pre">∅</span></code>) would translate to its root
 position <code class="docutils literal notranslate"><span class="pre">viio(b3)/V</span></code> (scale degree <code class="docutils literal notranslate"><span class="pre">#4</span></code> in the bass).</p>
-</div>
-</div>
-<div class="section" id="missing-features">
+</section>
+</section>
+<section id="missing-features">
 <h2>Missing Features<a class="headerlink" href="#missing-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>encoding exact (or transposed) repetition of labels (facilitating corrections)</p></li>
 <li><p>vertical segmentation of which voice/s has/have the melody</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -791,7 +773,7 @@ position <code class="docutils literal notranslate"><span class="pre">viio(b3)/V
     </p>
     <p>
         &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
 </footer>

@@ -42,7 +42,7 @@ in ways, contexts, and environments of their free choice. The goal of this refer
 is not to tell anyone how they should analyse harmony. Instead, its purpose
 is to clarify what the different parts of the syntax are supposed to express
 in order to allow analysts to communicate their musical interpretations in
-a precise yet consistent manner. The examples and recommendations are supposed to
+a precise and consistent manner. The examples and recommendations are supposed to
 be guidelines that have as a goal to make annotations from different users
 comparable and interoperable.
 
