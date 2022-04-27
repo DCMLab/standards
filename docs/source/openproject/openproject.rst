@@ -5,6 +5,9 @@ Work package management with OpenProject
 To facilitate assigning work packages, reviews, and accounting, we are using a self-hosted
 `OpenProject instance <https://op-musicology.epfl.ch>`__.
 
+.. contents:: Contents
+   :local:
+
 Basic Principle
 ===============
 
@@ -26,7 +29,6 @@ User Interface
 
 .. figure:: img/op_overview.png
      :alt: Overview over OpenProject's user interface
-     :scale: 99%
 
 1. Make sure to access the project ``Harmony Annotations`` (you need to be added by an admin).
 2. Go to ``Work packages``.
