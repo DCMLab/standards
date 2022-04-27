@@ -7,6 +7,7 @@ TOC
 
   tutorial/index
   git/git
+  openproject/openproject
   pipeline/pipeline
   reference/reference
   reference/examples

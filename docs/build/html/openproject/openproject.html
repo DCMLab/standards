@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Work package management with OpenProject &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DCML Corpus Creation Pipeline" href="../pipeline/pipeline.html" />
+    <link rel="prev" title="DCML annotation workflow" href="../git/git.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          DCML Guidelines</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Other pages <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Annotation Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/musescore.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/first_label.html">The first label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/first_phrase.html">The first phrase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/detail.html">Level of detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/localkey.html">Changing the local key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/counterpoint.html">Contrapuntal patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/features.html">Some more features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git.html">DCML annotation workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#short-summary">Short summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#annotating">Annotating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#upgrading-annotations">Upgrading annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#reviewing-a-set-of-annotations">Reviewing a set of annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#reacting-to-a-review-reaching-expert-consensus">Reacting to a review &amp; reaching expert consensus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#quick-git-reference">Quick Git Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#creating-a-github-account">Creating a GitHub account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#github-desktop">GitHub Desktop</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Work package management with OpenProject</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-principle">Basic Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-interface">User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taking-on-an-assignment">Taking on an assignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-unit-costs">Logging unit costs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline/pipeline.html">DCML Corpus Creation Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">Collect and prepare the digital edition in the latest MuseScore format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html#creating-a-repository-with-unannotated-musescore-files">Creating a repository with unannotated MuseScore files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline/pipeline.html#keeping-track-of-the-new-repo">Keeping track of the new repo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-syntax">The syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html#the-remainder-of-the-reference-is-currently-under-reconstruction">The remainder of the Reference is currently under reconstruction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/examples.html">Questions &amp; Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#modulation-and-secondary-keys">Modulation and Secondary Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#phrase-structure">Phrase Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/examples.html#figured-bass">Figured Bass</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/specs.html">Technical Specifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#what-is-being-encoded">What is being encoded?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#the-regex-regular-expression">The regEx (Regular Expression)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#feature-processing">Feature Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/specs.html#missing-features">Missing Features</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">This Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Work package management with OpenProject</a><ul>
+<li><a class="reference internal" href="#basic-principle">Basic Principle</a></li>
+<li><a class="reference internal" href="#user-interface">User Interface</a></li>
+<li><a class="reference internal" href="#taking-on-an-assignment">Taking on an assignment</a><ul>
+<li><a class="reference internal" href="#taking-on-new-annotations-or-an-annotation-upgrade">Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code></a></li>
+<li><a class="reference internal" href="#taking-on-a-review">Taking on a review</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logging-unit-costs">Logging unit costs</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../git/git.html" title="Previous Chapter: DCML annotation workflow"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; DCML annotati...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../pipeline/pipeline.html" title="Next Chapter: DCML Corpus Creation Pipeline"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">DCML Corpus C... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/openproject/openproject.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <section id="work-package-management-with-openproject">
+<h1>Work package management with OpenProject<a class="headerlink" href="#work-package-management-with-openproject" title="Permalink to this headline">¶</a></h1>
+<p>To facilitate assigning work packages, reviews, and accounting, we are using a self-hosted
+<a class="reference external" href="https://op-musicology.epfl.ch">OpenProject instance</a>.</p>
+<section id="basic-principle">
+<h2>Basic Principle<a class="headerlink" href="#basic-principle" title="Permalink to this headline">¶</a></h2>
+<p>Independent on which task you are performing, you simply need to remember to change the status before and after working
+on a piece. This way it is possible to self-assign without duplicating any work. Each package corresponds to one piece
+that needs to be annotated (package type <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code>) or upgraded (package type <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code>).
+Each package traverses the following statuses, in this order:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">available</span></code>: to be disregarded for now</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Available</span></code>: to be (self-)assigned; the “Assignee” field should be empty and once filled the status needs to be changed to</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">progress</span></code>: currently being undertaken by the person marked in the “Assignee” field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code>: the annotator/upgrader has finished and the person (self-)assigned in the “Reviewer” field should
+begin their review</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">review</span></code>: review &amp; subsequent discussions currently in progress</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Done</span></code>: PR has been merged.</p></li>
+</ul>
+</section>
+<section id="user-interface">
+<h2>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/op_overview.png"><img alt="Overview over OpenProject's user interface" src="../_images/op_overview.png" style="width: 1411.74px; height: 290.07px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Make sure to access the project <code class="docutils literal notranslate"><span class="pre">Harmony</span> <span class="pre">Annotations</span></code> (you need to be added by an admin).</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span></code>.</p></li>
+<li><p>To see or alter information of a work package, click on its ID or use the blue menu that appears when hovering
+over the right end of the row.</p></li>
+<li><p>Use the filters to see only particular work packages.</p></li>
+<li><p>Use the menu <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">as...</span></code> to save a filtered view.</p></li>
+<li><p>Find saved views in the <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span></code> sub-menu</p></li>
+</ol>
+</section>
+<section id="taking-on-an-assignment">
+<h2>Taking on an assignment<a class="headerlink" href="#taking-on-an-assignment" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>In the work package sub-menu, use the <code class="docutils literal notranslate"><span class="pre">Assigned</span> <span class="pre">to</span> <span class="pre">me</span></code> default view to check if any of the packages assigned to you
+require your action. Finish any open tasks before taking on new ones.</p></li>
+<li><p>Use the view <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code> to display work packages that have status <code class="docutils literal notranslate"><span class="pre">Available</span></code> or <code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code>.</p></li>
+<li><p>Assign yourself, change the status, and the date.</p></li>
+<li><p>Perform the task and include the ID of the work package in the description of your Pull Request (see below).</p></li>
+<li><p>Change the status, log the costs.</p></li>
+<li><p>Follow the progress of the Pull Request and the work package and, if needed, ping fellow annotators to undertake the review.</p></li>
+</ol>
+<p>Only when the Pull Request is merged and the work package status set to <code class="docutils literal notranslate"><span class="pre">Done</span></code> can assignee and reviewer invoice the task.</p>
+<section id="taking-on-new-annotations-or-an-annotation-upgrade">
+<h3>Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code><a class="headerlink" href="#taking-on-new-annotations-or-an-annotation-upgrade" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/op_assignment.png"><img alt="Details page of a work package" src="../_images/op_assignment.png" style="width: 278.0px; height: 291.0px;" /></a>
+</figure>
+<p>Open the details of the corresponding work package.</p>
+<ol class="arabic simple">
+<li><p>Change the status from <code class="docutils literal notranslate"><span class="pre">Available</span></code> to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">progress</span></code>.</p></li>
+<li><p>Add your name to the field “Assignee” (which should be empty).</p></li>
+<li><p>Set the “Start date” to <code class="docutils literal notranslate"><span class="pre">Today</span></code>.</p></li>
+</ol>
+<p><strong>Once you have completed the job:</strong></p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/op_github.png"><img alt="The GitHub pane of a work package" src="../_images/op_github.png" style="width: 379.5px; height: 336.5px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>You want the Pull Request to show up in the “GitHub” pane of the work packages so that the reviewer can easily find it.</p></li>
+<li><p>For that you simply find the package’s ID, (e.g. 40) and include <code class="docutils literal notranslate"><span class="pre">OP#40</span></code> (or whatever the ID is) in the description of your PR.</p></li>
+<li><p>Then take note of the number of measures and open the menu <code class="docutils literal notranslate"><span class="pre">More</span> <span class="pre">-&gt;</span> <span class="pre">Log</span> <span class="pre">unit</span> <span class="pre">costs</span></code> (see below).</p></li>
+</ol>
+</section>
+<section id="taking-on-a-review">
+<h3>Taking on a review<a class="headerlink" href="#taking-on-a-review" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/op_review.png"><img alt="How to assign a work package as a reviewer" src="../_images/op_review.png" style="width: 543.0px; height: 275.5px;" /></a>
+</figure>
+<p>Open the details of the corresponding work package.</p>
+<ol class="arabic simple">
+<li><p>Change the status from <code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code> to <code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">review</span></code>.</p></li>
+<li><p>If you hadn’t been assigned already, add your name to the field “Reviewer”.</p></li>
+<li><p>Set the “Finish date” to something like in a week from now.</p></li>
+<li><p>Find the Pull Request in the GitHub pane.</p></li>
+<li><p>Once the review is finished, log the costs.</p></li>
+</ol>
+</section>
+</section>
+<section id="logging-unit-costs">
+<h2>Logging unit costs<a class="headerlink" href="#logging-unit-costs" title="Permalink to this headline">¶</a></h2>
+<p>OpenProject computes the amount to be invoiced for each work package based on the number of measures.</p>
+<ol class="arabic simple">
+<li><p>Open the work package in question and find the number in the field “Measures”.</p></li>
+<li><p>Open the context menu (<code class="docutils literal notranslate"><span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">More</span></code>) and select <code class="docutils literal notranslate"><span class="pre">Log</span> <span class="pre">unit</span> <span class="pre">costs</span></code>.</p></li>
+<li><p>In the mask that opens,</p>
+<ul class="simple">
+<li><p>under <code class="docutils literal notranslate"><span class="pre">Cost</span> <span class="pre">type</span></code> select the kind of service you provided (and thus the associated tariff).</p></li>
+<li><p>enter the number of measures in the field <code class="docutils literal notranslate"><span class="pre">Units</span></code></p></li>
+</ul>
+</li>
+<li><p>Click “Save”.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/op_costs.png"><img alt="How to log unit costs" src="../_images/op_costs.png" style="width: 648.0px; height: 348.8px;" /></a>
+</figure>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
