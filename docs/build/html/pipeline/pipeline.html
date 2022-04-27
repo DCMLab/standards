@@ -88,7 +88,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DCML Corpus Creation Pipeline</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">Collect and prepare the digital edition in the latest MuseScore format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files">Creating a repository with unannotated MuseScore files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#keeping-track-of-the-new-repo">Keeping track of the new repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-and-adding-the-new-repo">Configuring and adding the new repo</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Reference</a><ul>
@@ -138,7 +138,7 @@
 <li><a class="reference internal" href="#variant-3-splitting-an-existing-repository">Variant 3: Splitting an existing repository</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#keeping-track-of-the-new-repo">Keeping track of the new repo</a><ul>
+<li><a class="reference internal" href="#configuring-and-adding-the-new-repo">Configuring and adding the new repo</a><ul>
 <li><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos">Adding the repo to one or several meta-repos</a></li>
 </ul>
 </li>
@@ -212,7 +212,7 @@
 <li><p><a class="reference internal" href="#variant-3-splitting-an-existing-repository" id="id10">Variant 3: Splitting an existing repository</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#keeping-track-of-the-new-repo" id="id11">Keeping track of the new repo</a></p>
+<li><p><a class="reference internal" href="#configuring-and-adding-the-new-repo" id="id11">Configuring and adding the new repo</a></p>
 <ul>
 <li><p><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos" id="id12">Adding the repo to one or several meta-repos</a></p></li>
 </ul>
@@ -445,13 +445,23 @@ of the existing files from an older MuseScore and annotation standard.</p>
 </dl>
 </section>
 </section>
-<section id="keeping-track-of-the-new-repo">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">Keeping track of the new repo</a><a class="headerlink" href="#keeping-track-of-the-new-repo" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Give write access to the <cite>annotators</cite> team on GitHub.</p></li>
-<li><p>Add the new repo to the corresponding meta-repositories (at least to <code class="docutils literal notranslate"><span class="pre">all_subcorpora</span></code>).</p></li>
-<li><p>Add the new repo to the annotation workflow (drop-down menus etc.)</p></li>
-</ol>
+<section id="configuring-and-adding-the-new-repo">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Configuring and adding the new repo</a><a class="headerlink" href="#configuring-and-adding-the-new-repo" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Set the standard repo settings on GitHub:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/pr_settings.png"><img alt="Repository settings on GitHub" src="../_images/pr_settings.png" style="width: 395.0px; height: 239.0px;" /></a>
+</figure>
+</li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Branches</span></code>, create a branch protection rule for the main branch:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/branch_protection.png"><img alt="Protecting the main branch on GitHub" src="../_images/branch_protection.png" style="width: 392.0px; height: 250.0px;" /></a>
+</figure>
+</li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Collaborators</span> <span class="pre">and</span> <span class="pre">teams</span></code> give write access to the <code class="docutils literal notranslate"><span class="pre">annotators</span></code> team.</p></li>
+<li><p>Add the new repo to the corresponding meta-repositories (at least to <code class="docutils literal notranslate"><span class="pre">all_subcorpora</span></code>, see below).</p></li>
+<li><p>Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)</p></li>
+</ul>
 <section id="adding-the-repo-to-one-or-several-meta-repos">
 <span id="metarepos"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink">Adding the repo to one or several meta-repos</a><a class="headerlink" href="#adding-the-repo-to-one-or-several-meta-repos" title="Permalink to this headline">¶</a></h3>
 <p>The individual subcorpora can be embedded as submodules in meta-repositories. These meta-repos are listed in the private

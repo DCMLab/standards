@@ -122,6 +122,7 @@ Creating a repository with unannotated MuseScore files
 .. danger:: After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
    needs to be complete and the file names final.
 
+
 Before starting annotating a corpus, a repo with the standard folder structure needs to be created: ::
 
   .
@@ -194,12 +195,25 @@ Clean metadata
   `this Pull Request <https://github.com/DCMLab/chopin_mazurkas/pull/1>`__ shows the metadata cleaning and update
   of the existing files from an older MuseScore and annotation standard.
 
-Keeping track of the new repo
-=============================
+Configuring and adding the new repo
+===================================
 
-#. Give write access to the `annotators` team on GitHub.
-#. Add the new repo to the corresponding meta-repositories (at least to ``all_subcorpora``).
-#. Add the new repo to the annotation workflow (drop-down menus etc.)
+* Set the standard repo settings on GitHub:
+
+  .. figure:: pr_settings.png
+       :alt: Repository settings on GitHub
+       :scale: 50%
+
+* Under ``Branches``, create a branch protection rule for the main branch:
+
+  .. figure:: branch_protection.png
+       :alt: Protecting the main branch on GitHub
+       :scale: 50%
+
+* Under ``Collaborators and teams`` give write access to the ``annotators`` team.
+* Add the new repo to the corresponding meta-repositories (at least to ``all_subcorpora``, see below).
+* Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)
+
 
 .. _metarepos:
 
