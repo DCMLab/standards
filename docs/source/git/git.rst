@@ -274,6 +274,28 @@ screenshot, the commit ``Added comparison files for review``).
 Reviewing a new set of annotations
 ----------------------------------
 
+.. admonition:: Update May 2022
+   :class: note
+
+   The procedure described in the following (i.e. the reviewer to merge the PR into ``main``, merge the updated ``main``
+   back into the annotation branch and create a new PR) is slightly redundant and soon to be deprecated. Additionally,
+   it is currently not working because merging a PR now requires at least 1 reviewer's approval on GitHub. Before the
+   automatic scripts will be updated to solve this problem, the best workaround requires the reviewer to install and
+   run a program in order to generate and commit a TSV file, which normally the ``ms3-bot`` would have done.
+   If the steps below don't make any sense to you, please contact us so we can set everything up together for the time being.
+
+   1. `Python 3 <https://www.python.org/downloads/>`__ needs to be installed on your system. If asked, have the
+      commands ``python`` and ``pip`` added to your PATH.
+   2. Install the program (a parser for MuseScore 3 files) via pip: ``pip install -U ms3``.
+   3. Navigate to the GitHub repo in question (using ``cd``) and checkout the Pull Request to be reviewed.
+   4. Issue the command ``ms3 extract -X -f MS3/{filename}`` replacing ``{filename}`` with the file you are about to review.
+   5. Take note of the log messages. The last one should say that the file ``harmonies/{filename}.tsv`` has been written,
+      which you can verify via ``git status``.
+   6. Commit the file using a message such as ``extracted annotations``.
+   7. Now you are ready to perform the review, committing one change at a time.
+   8. Leave the annotator/upgrader a comment with an ``@``-mention to make sure they are informed.
+
+
 First, open the Pull Request containing the new labels and check if all syntactic errors have been corrected.
   As can be seen in the following image, in the PR, all commits made by the annotator and by the ms3-bot are listed,
   two in this example.
