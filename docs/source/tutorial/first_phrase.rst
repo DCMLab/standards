@@ -10,6 +10,13 @@ phrase annotations using
 curly brackets ``{}``. They may stand alone or be the last character of a chord
 label.
 
+.. note
+
+   The term phrase, here, is not used in the Schenkerian sense. If you are coming from this tradition, maybe think of
+   "grouping structure" instead. What our phrase labels demarcate basically corresponds to the punctuation that
+   musicians use, for example, to know where to breathe or where to begin during a rehearsal. Cadences, in principle,
+   occur rarely without a phrase ending but many phrases end without a cadence.
+
 The opening bracket is put on a phrase's first event, so the previous Beethoven
 example would actually start like this:
 
