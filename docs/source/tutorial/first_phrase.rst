@@ -41,6 +41,13 @@ Note that the ``}`` sits on beat 1, the structural ending of the sentence.
 Cadence Labels
 ==============
 
+The DCML guidelines require writing more cadence labels than most theorists naturally would. The reason is that,
+with respect to cadences, we follow a schema-theoretic approach in the sense that formal considerations are only one
+of several aspects to take into account when deciding if something deserves a cadence label or not. As a consequence,
+if a cadence was to be repeated in the exact same or in a highly similar way, the cadence label needs to be repeated
+as well, even if from a formal perspective, only one instance would be considered as the "real" cadence. This
+guideline is meant to optimize the labels for training schema detection algorithms (rather than form analyzers).
+
 Every time you spot a complete or attempted cadence, please mark its ultima with one of these five cadence labels,
 separated from the chord label by a pipe ``|``:
 
@@ -66,7 +73,9 @@ separated from the chord label by a pipe ``|``:
 
 As becomes clear in the example above, in case the ultima is suspended, the cadence label marks the moment of its
 completion, whereas its structural position is marked by the ``}`` on beat 1. If cadence label and
-structural phrase ending occurs, ``}`` goes last (e.g. ``i|PAC}``).
+structural phrase ending co-occur, ``}`` goes last (e.g. ``i|PAC}``). In principle, a cadence label can occur without
+a harmony label (as in ``|EC``) but in reality this would be a rare exception.
+
 
 
 
