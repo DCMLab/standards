@@ -10,7 +10,7 @@ phrase annotations using
 curly brackets ``{}``. They may stand alone or be the last character of a chord
 label.
 
-.. note
+.. note::
 
    The term phrase, here, is not used in the Schenkerian sense. If you are coming from this tradition, maybe think of
    "grouping structure" instead. What our phrase labels demarcate basically corresponds to the punctuation that
