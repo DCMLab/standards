@@ -140,7 +140,6 @@ Open the details of the corresponding work package.
 
 .. figure:: img/linking_pr.gif
    :alt: Linking a Pull Request to a Work Package.
-   :scale: 90%
 
    Linking a Pull Request to a Work Package. It doesn't matter that in this case the PR is already merged and the
    package marked as ``Done``.
@@ -167,7 +166,6 @@ Open the details of the corresponding work package.
 
 .. figure:: img/reviewing_pr.gif
    :alt: How to approve a PR
-   :scale: 90%
 
    How to approve a PR (the screencast skips the actual review process which usually includes commits, comments, and
    metadata update).
@@ -193,7 +191,6 @@ OpenProject computes the amount to be invoiced for each work package based on th
 
 .. figure:: img/logging_costs.gif
    :alt: How to log unit costs
-   :scale: 90%
 
    How to log unit costs. Here, the WPs in questions did not have a ``Finish date`` yet. For convenience, the respective
    column is added to the view but the date can also be entered in the WP's Overview.
@@ -217,7 +214,6 @@ Creating a cost report
 
 .. figure:: img/cost_report.gif
    :alt: How to generate a cost report.
-   :scale: 90%
 
    How to generate a cost report.
 
@@ -255,7 +251,6 @@ It contains one sheet per cost type and from here it is simple to group measures
 
 .. figure:: img/invoice_items.png
    :alt: How to compute grouped items for the invoice.
-   :scale: 90%
 
    How to compute grouped items for the invoice. In this case, all WPs belong to the same corpus, so the item would be
    ``Creating new annotations | jc_bach_sonatas (825 bars) | 412.50 CHF``. If the sheet contains WPs from several repos,
