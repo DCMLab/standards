@@ -200,13 +200,13 @@ Configuring and adding the new repo
 
 * Set the standard repo settings on GitHub:
 
-  .. figure:: pr_settings.png
+  .. figure:: img/pr_settings.png
        :alt: Repository settings on GitHub
        :scale: 50%
 
 * Under ``Branches``, create a branch protection rule for the main branch:
 
-  .. figure:: branch_protection.png
+  .. figure:: img/branch_protection.png
        :alt: Protecting the main branch on GitHub
        :scale: 50%
 
@@ -231,3 +231,8 @@ To add the new repo, head into the meta-repo and do ::
   git submodule add -b main https://github.com/DCMLab/chopin_mazurkas/
 
 Just to be sure, update all submodules: ``git submodule update --remote`` and push the whole thing.
+
+
+Creating work packages on OpenProject
+-------------------------------------
+
