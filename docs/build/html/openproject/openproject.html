@@ -79,8 +79,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Work package management with OpenProject</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#user-interface">User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#work-packages-wps">Work Packages (WPs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#taking-on-an-assignment">Taking on an assignment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logging-unit-costs">Logging unit costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-invoices">Writing invoices</a></li>
@@ -125,14 +125,18 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Work package management with OpenProject</a><ul>
-<li><a class="reference internal" href="#workflow">Workflow</a><ul>
-<li><a class="reference internal" href="#in-a-nutshell">In a nutshell</a></li>
-<li><a class="reference internal" href="#in-more-detail">In more detail</a></li>
+<li><a class="reference internal" href="#user-interface">User Interface</a></li>
+<li><a class="reference internal" href="#work-packages-wps">Work Packages (WPs)</a><ul>
+<li><a class="reference internal" href="#life-cycle">Life cycle</a></li>
+<li><a class="reference internal" href="#workflow">Workflow</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#user-interface">User Interface</a></li>
 <li><a class="reference internal" href="#taking-on-an-assignment">Taking on an assignment</a><ul>
-<li><a class="reference internal" href="#taking-on-new-annotations-or-an-annotation-upgrade">Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code></a></li>
+<li><a class="reference internal" href="#taking-on-new-annotations-or-an-annotation-upgrade">Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code></a><ul>
+<li><a class="reference internal" href="#before-the-task">Before the task</a></li>
+<li><a class="reference internal" href="#after-the-task">After the task</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#taking-on-a-review">Taking on a review</a></li>
 </ul>
 </li>
@@ -140,6 +144,7 @@
 <li><a class="reference internal" href="#writing-invoices">Writing invoices</a><ul>
 <li><a class="reference internal" href="#creating-a-cost-report">Creating a cost report</a></li>
 <li><a class="reference internal" href="#writing-an-invoice">Writing an invoice</a></li>
+<li><a class="reference internal" href="#the-first-invoice">The first invoice</a></li>
 </ul>
 </li>
 </ul>
@@ -198,51 +203,77 @@
 <div class="contents local topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#workflow" id="id7">Workflow</a></p>
+<li><p><a class="reference internal" href="#user-interface" id="id8">User Interface</a></p></li>
+<li><p><a class="reference internal" href="#work-packages-wps" id="id9">Work Packages (WPs)</a></p>
 <ul>
-<li><p><a class="reference internal" href="#in-a-nutshell" id="id8">In a nutshell</a></p></li>
-<li><p><a class="reference internal" href="#in-more-detail" id="id9">In more detail</a></p></li>
+<li><p><a class="reference internal" href="#life-cycle" id="id10">Life cycle</a></p></li>
+<li><p><a class="reference internal" href="#workflow" id="id11">Workflow</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#user-interface" id="id10">User Interface</a></p></li>
-<li><p><a class="reference internal" href="#taking-on-an-assignment" id="id11">Taking on an assignment</a></p>
+<li><p><a class="reference internal" href="#taking-on-an-assignment" id="id12">Taking on an assignment</a></p>
 <ul>
-<li><p><a class="reference internal" href="#taking-on-new-annotations-or-an-annotation-upgrade" id="id12">Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code></a></p></li>
-<li><p><a class="reference internal" href="#taking-on-a-review" id="id13">Taking on a review</a></p></li>
+<li><p><a class="reference internal" href="#taking-on-new-annotations-or-an-annotation-upgrade" id="id13">Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code></a></p>
+<ul>
+<li><p><a class="reference internal" href="#before-the-task" id="id14">Before the task</a></p></li>
+<li><p><a class="reference internal" href="#after-the-task" id="id15">After the task</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#logging-unit-costs" id="id14">Logging unit costs</a></p></li>
-<li><p><a class="reference internal" href="#writing-invoices" id="id15">Writing invoices</a></p>
+<li><p><a class="reference internal" href="#taking-on-a-review" id="id16">Taking on a review</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#logging-unit-costs" id="id17">Logging unit costs</a></p></li>
+<li><p><a class="reference internal" href="#writing-invoices" id="id18">Writing invoices</a></p>
 <ul>
-<li><p><a class="reference internal" href="#creating-a-cost-report" id="id16">Creating a cost report</a></p></li>
-<li><p><a class="reference internal" href="#writing-an-invoice" id="id17">Writing an invoice</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-cost-report" id="id19">Creating a cost report</a></p></li>
+<li><p><a class="reference internal" href="#writing-an-invoice" id="id20">Writing an invoice</a></p></li>
+<li><p><a class="reference internal" href="#the-first-invoice" id="id21">The first invoice</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<section id="workflow">
-<h2><a class="toc-backref" href="#id7">Workflow</a><a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
-<section id="in-a-nutshell">
-<h3><a class="toc-backref" href="#id8">In a nutshell</a><a class="headerlink" href="#in-a-nutshell" title="Permalink to this headline">¶</a></h3>
-<p>Independent on which task you are performing, you simply need to remember to change the status <strong>before and after</strong> working
-on a piece. This way it is possible to self-assign without duplicating any work. Each package corresponds to one piece
-that needs to be annotated (package type <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code>) or upgraded (package type <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code>).
-Each package traverses the following statuses, in this order:</p>
+<section id="user-interface">
+<h2><a class="toc-backref" href="#id8">User Interface</a><a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default">
+<img alt="Overview over OpenProject's user interface" src="../_images/op_overview.png" />
+</figure>
+<ol class="arabic simple">
+<li><p>Make sure to access the project <code class="docutils literal notranslate"><span class="pre">Harmony</span> <span class="pre">Annotations</span></code> (you need to be added by an admin).</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span></code>.</p></li>
+<li><p>To see or alter information of a work package, click on its ID or use the blue menu that appears when hovering
+over the right end of the row.</p></li>
+<li><p>Use the filters to see only particular work packages.</p></li>
+<li><p>Use the menu <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">as...</span></code> to save a filtered view.</p></li>
+<li><p>Find saved views in the <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span></code> sub-menu.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">and</span> <span class="pre">costs</span></code> is where you can <a class="reference internal" href="#creating-cost-report"><span class="std std-ref">create cost reports</span></a>.</p></li>
+</ol>
+</section>
+<section id="work-packages-wps">
+<h2><a class="toc-backref" href="#id9">Work Packages (WPs)</a><a class="headerlink" href="#work-packages-wps" title="Permalink to this headline">¶</a></h2>
+<p>Each package corresponds to one piece that needs to be annotated (package type <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code>)
+or upgraded (package type <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code>). Independent on which task you are performing, you simply need to
+remember to change the status <strong>before and after</strong> working on a piece. This way it is possible to self-assign without
+duplicating any work.</p>
+<section id="life-cycle">
+<h3><a class="toc-backref" href="#id10">Life cycle</a><a class="headerlink" href="#life-cycle" title="Permalink to this headline">¶</a></h3>
+<p>Each package traverses the following statuses, in this order:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">available</span></code>: to be disregarded for now</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Available</span></code>: to be (self-)assigned; the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> field should be empty and once filled the status needs to be changed to</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Available</span></code>: to be (self-)assigned; the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> field should be empty and, once filled, the status needs to be changed to</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">progress</span></code>: currently being undertaken by the person marked in the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> field</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code>: the annotator/upgrader has finished and the person (self-)assigned in the <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> field should
 begin their review</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">review</span></code>: review &amp; subsequent discussions currently in progress (refer to the PR).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Done</span></code>: <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> as approved the PR which consequently has been merged by the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Done</span></code>: <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> has approved the PR which consequently has been merged by the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code>. <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span></code>
+is set to the current date.</p></li>
 </ul>
+<p>The responsibility lies with the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> to make this life cycle as long as necessary and as short as possible.
+This might involve contacting fellow annotators in case the workflow has gotten stuck.</p>
 </section>
-<section id="in-more-detail">
-<h3><a class="toc-backref" href="#id9">In more detail</a><a class="headerlink" href="#in-more-detail" title="Permalink to this headline">¶</a></h3>
+<section id="workflow">
+<span id="op-workflow"></span><h3><a class="toc-backref" href="#id11">Workflow</a><a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h3>
 <dl>
 <dt>Decide what you want to work on.</dt><dd><p>As a general principle, please give preference to finalizing tasks before
-addressing new work packages (WPs). Starting from May 2022, both <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> and <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> may only invoice
+addressing new work packages (WPs). Both <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> and <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> may only invoice
 work packages that have reached the status <code class="docutils literal notranslate"><span class="pre">Done</span></code>, meaning that the associated Pull Request (PR) has been reviewed
 and merged.</p>
 <ul>
@@ -254,10 +285,9 @@ are involved (always make sure you are subscribed on GitHub in order to receive 
 <li><p>you are the <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> for packages with status <code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code></p></li>
 </ul>
 <p>Usually, if this is the case, it is because of an agreement you have made with DCML. The default is that people
-self-assign.</p>
+self-assign (in which case the status should be <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">progress</span></code> or <code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">review</span></code>).</p>
 </li>
-<li><p>If your desk is clean and you want to take on a new task, use the
-<code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span> <span class="pre">-&gt;</span> <span class="pre">To</span> <span class="pre">Do</span></code> view.
+<li><p>If your desk is clean and you want to take on a new task, use the <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span> <span class="pre">-&gt;</span> <span class="pre">To</span> <span class="pre">Do</span></code> view.
 Please give preference to the packages with status <code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code> in order to finalize them quickly, to make
 them invoiceable, and to get them out of our way.</p></li>
 </ul>
@@ -267,15 +297,15 @@ them invoiceable, and to get them out of our way.</p></li>
 you can enter your name and set the status to <code class="docutils literal notranslate"><span class="pre">Under</span> <span class="pre">review</span></code>. Otherwise, the review has been assigned to
 someone else. For details, <a class="reference internal" href="#taking-on-a-review"><span class="std std-ref">see below</span></a>.</p></li>
 <li><p>If you are addressing a package with status <code class="docutils literal notranslate"><span class="pre">Available</span></code>, the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> field needs to be empty so
-you can enter your name and set the status to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">progress</span></code> <strong>and the ``Start date`` to “Today”</strong>.
+you can enter your name and set the status to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">progress</span></code> <strong>and the Start date to “Today”</strong>.
 Otherwise, the task has been assigned to someone else. For details, <a class="reference internal" href="#taking-on-a-task"><span class="std std-ref">see below</span></a>.</p></li>
 </ul>
 </dd>
 <dt>Perform the task according to the usual <a class="reference internal" href="../git/git.html"><span class="doc">GitHub workflow</span></a>.</dt><dd><ul class="simple">
 <li><p>If you are the WP’s <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> you end your task by creating a Pull Request that you link to the WP by including
-the WP’s URL in the PR’s description (<a class="reference internal" href="#taking-on-a-task"><span class="std std-ref">see screencast below</span></a>).</p></li>
+the WP’s URL in the PR’s description (<a class="reference internal" href="#linking-pr"><span class="std std-ref">see screencast below</span></a>).</p></li>
 <li><p>If you are the WP’s <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> your task ideally ends with you having committed to the PR to the point where you
-approve it (<a class="reference internal" href="#taking-on-a-review"><span class="std std-ref">see screencast below</span></a>).</p></li>
+approve it (<a class="reference internal" href="#reviewing-pr"><span class="std std-ref">see screencast below</span></a>).</p></li>
 </ul>
 </dd>
 <dt>Change the WP’s status and <a class="reference internal" href="#logging-costs"><span class="std std-ref">log the costs</span></a>.</dt><dd><ul class="simple">
@@ -297,37 +327,34 @@ cost items.</p></li>
 </dl>
 </section>
 </section>
-<section id="user-interface">
-<h2><a class="toc-backref" href="#id10">User Interface</a><a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
-<figure class="align-default">
-<img alt="Overview over OpenProject's user interface" src="../_images/op_overview.png" />
-</figure>
-<ol class="arabic simple">
-<li><p>Make sure to access the project <code class="docutils literal notranslate"><span class="pre">Harmony</span> <span class="pre">Annotations</span></code> (you need to be added by an admin).</p></li>
-<li><p>Go to <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span></code>.</p></li>
-<li><p>To see or alter information of a work package, click on its ID or use the blue menu that appears when hovering
-over the right end of the row.</p></li>
-<li><p>Use the filters to see only particular work packages.</p></li>
-<li><p>Use the menu <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">as...</span></code> to save a filtered view.</p></li>
-<li><p>Find saved views in the <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">packages</span></code> sub-menu</p></li>
-</ol>
-</section>
 <section id="taking-on-an-assignment">
-<h2><a class="toc-backref" href="#id11">Taking on an assignment</a><a class="headerlink" href="#taking-on-an-assignment" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">Taking on an assignment</a><a class="headerlink" href="#taking-on-an-assignment" title="Permalink to this headline">¶</a></h2>
+<p>Once more, the <a class="reference internal" href="#op-workflow"><span class="std std-ref">workflow described above</span></a> in a nutshell:</p>
 <ol class="arabic simple">
 <li><p>In the work package sub-menu, use the <code class="docutils literal notranslate"><span class="pre">Assigned</span> <span class="pre">to</span> <span class="pre">me</span></code> default view to check if any of the packages assigned to you
 require your action. Finish any open tasks before taking on new ones.</p></li>
 <li><p>Use the view <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code> to display work packages that have status <code class="docutils literal notranslate"><span class="pre">Available</span></code> or <code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code>.</p></li>
-<li><p>Assign yourself, change the status, and the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">date</span></code>.</p></li>
-<li><p>Perform the task and include the URL of the work package in the description of your Pull Request (see below).</p></li>
-<li><p>Change the status, log the costs.</p></li>
-<li><p>Follow the progress of the Pull Request and the work package and, if needed, ping fellow annotators to undertake the review.</p></li>
-<li><p>Once the PR has been reviewed and a consensual solution found, the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> merge the PR, sets the status to
-<code class="docutils literal notranslate"><span class="pre">Done</span></code> and the <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span></code> to today. Only at this point can assignee and reviewer
-<a class="reference internal" href="#creating-cost-report"><span class="std std-ref">invoice the task</span></a>.</p></li>
+<li><p>Assign yourself, change the status.</p>
+<ul class="simple">
+<li><p>If you are the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code>, also change the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">date</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Perform the task. If you are the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code>:</p>
+<ul class="simple">
+<li><p>include the URL of the work package in the description of your Pull Request, and</p></li>
+<li><p>change the status to <code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Log the costs.</p></li>
+<li><p>Follow the progress of the Pull Request and help it to be merged soon.</p></li>
+<li><p>Once the PR has been reviewed and a consensual solution found, the <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> merges the PR, sets the status to
+<code class="docutils literal notranslate"><span class="pre">Done</span></code> and the <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span></code> to the current date. Only at this point can assignee and reviewer
+<a class="reference internal" href="#writing-invoices"><span class="std std-ref">invoice the task</span></a>.</p></li>
 </ol>
 <section id="taking-on-new-annotations-or-an-annotation-upgrade">
-<span id="taking-on-a-task"></span><h3><a class="toc-backref" href="#id12">Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code></a><a class="headerlink" href="#taking-on-new-annotations-or-an-annotation-upgrade" title="Permalink to this headline">¶</a></h3>
+<span id="taking-on-a-task"></span><h3><a class="toc-backref" href="#id13">Taking on <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">annotations</span></code> or an <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">upgrade</span></code></a><a class="headerlink" href="#taking-on-new-annotations-or-an-annotation-upgrade" title="Permalink to this headline">¶</a></h3>
+<section id="before-the-task">
+<h4><a class="toc-backref" href="#id14">Before the task</a><a class="headerlink" href="#before-the-task" title="Permalink to this headline">¶</a></h4>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/op_assignment.png"><img alt="Details page of a work package" src="../_images/op_assignment.png" style="width: 278.0px; height: 291.0px;" /></a>
 </figure>
@@ -337,29 +364,32 @@ require your action. Finish any open tasks before taking on new ones.</p></li>
 <li><p>Add your name to the field “Assignee” (which should be empty).</p></li>
 <li><p>Set the “Start date” to <code class="docutils literal notranslate"><span class="pre">Today</span></code>.</p></li>
 </ol>
-<p><strong>Once you have completed the job:</strong></p>
+</section>
+<section id="after-the-task">
+<h4><a class="toc-backref" href="#id15">After the task</a><a class="headerlink" href="#after-the-task" title="Permalink to this headline">¶</a></h4>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/op_github.png"><img alt="The GitHub pane of a work package" src="../_images/op_github.png" style="width: 379.5px; height: 336.5px;" /></a>
 </figure>
 <ol class="arabic simple">
 <li><p>You want the Pull Request to show up in the “GitHub” pane of the work packages so that the reviewer can easily find it.</p></li>
 <li><p>For that you simply open the work package and copy its URL into the description of your PR (see screencast).  Compared
-to using the short string that OP suggests to you (e.g. <code class="docutils literal notranslate"><span class="pre">OP#40</span></code> for the WP with ID 40) the URL has the advantage
+to using the short string that OP suggests to you (e.g. <code class="docutils literal notranslate"><span class="pre">OP#81</span></code> for the WP with ID 81) the URL has the advantage
 that when you merge the PR later, you get to the WP more quickly to set the status to <code class="docutils literal notranslate"><span class="pre">Done</span></code>.</p></li>
 <li><p>Then take note of the number of measures and <a class="reference internal" href="#logging-costs"><span class="std std-ref">log the costs</span></a>.</p></li>
 <li><p>Once your PR has been approved and you agree with the reviewer’s changes, you are responsible for merging the PR,
 changing the WP’s status to <code class="docutils literal notranslate"><span class="pre">Done</span></code> and, importantly, setting the <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span></code> to “Today”.</p></li>
 </ol>
-<figure class="align-default" id="id2">
-<img alt="Linking a Pull Request to a Work Package." src="../_images/linking_pr.gif" />
+<figure class="align-default" id="id3">
+<span id="linking-pr"></span><img alt="Linking a Pull Request to a Work Package." src="../_images/linking_pr.gif" />
 <figcaption>
 <p><span class="caption-text">Linking a Pull Request to a Work Package. It doesn’t matter that in this case the PR is already merged and the
-package marked as <code class="docutils literal notranslate"><span class="pre">Done</span></code>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+package marked as <code class="docutils literal notranslate"><span class="pre">Done</span></code>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
+</section>
 <section id="taking-on-a-review">
-<span id="id1"></span><h3><a class="toc-backref" href="#id13">Taking on a review</a><a class="headerlink" href="#taking-on-a-review" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3><a class="toc-backref" href="#id16">Taking on a review</a><a class="headerlink" href="#taking-on-a-review" title="Permalink to this headline">¶</a></h3>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/op_review.png"><img alt="How to assign a work package as a reviewer" src="../_images/op_review.png" style="width: 543.0px; height: 275.5px;" /></a>
 </figure>
@@ -374,17 +404,17 @@ package marked as <code class="docutils literal notranslate"><span class="pre">D
 find consensus as efficiently as possible. It is a matter of teamwork to get the PR to a mergeable state and
 thus the work package to status <code class="docutils literal notranslate"><span class="pre">Done</span></code>, invoiceable for both.</p></li>
 </ol>
-<figure class="align-default" id="id3">
-<img alt="How to approve a PR" src="../_images/reviewing_pr.gif" />
+<figure class="align-default" id="id4">
+<span id="reviewing-pr"></span><img alt="How to approve a PR" src="../_images/reviewing_pr.gif" />
 <figcaption>
 <p><span class="caption-text">How to approve a PR (the screencast skips the actual review process which usually includes commits, comments, and
-metadata update).</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+metadata update).</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="logging-unit-costs">
-<span id="logging-costs"></span><h2><a class="toc-backref" href="#id14">Logging unit costs</a><a class="headerlink" href="#logging-unit-costs" title="Permalink to this headline">¶</a></h2>
+<span id="logging-costs"></span><h2><a class="toc-backref" href="#id17">Logging unit costs</a><a class="headerlink" href="#logging-unit-costs" title="Permalink to this headline">¶</a></h2>
 <p>OpenProject computes the amount to be invoiced for each work package based on the number of measures.</p>
 <ol class="arabic simple">
 <li><p>Open the Work Package in question and find the number in the field “Measures”. In case the status is <code class="docutils literal notranslate"><span class="pre">Done</span></code>,
@@ -398,16 +428,16 @@ please verify that the <code class="docutils literal notranslate"><span class="p
 </li>
 <li><p>Click “Save”.</p></li>
 </ol>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <img alt="How to log unit costs" src="../_images/logging_costs.gif" />
 <figcaption>
 <p><span class="caption-text">How to log unit costs. Here, the WPs in questions did not have a <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span></code> yet. For convenience, the respective
-column is added to the view but the date can also be entered in the WP’s Overview.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+column is added to the view but the date can also be entered in the WP’s Overview.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="writing-invoices">
-<h2><a class="toc-backref" href="#id15">Writing invoices</a><a class="headerlink" href="#writing-invoices" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2><a class="toc-backref" href="#id18">Writing invoices</a><a class="headerlink" href="#writing-invoices" title="Permalink to this headline">¶</a></h2>
 <p>As you know already, you can invoice your finalized tasks at any given moment. Tasks are finalized when a Work Package’s
 <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> and <code class="docutils literal notranslate"><span class="pre">Reviewer</span></code> reach expert consensus on a set of annotations. Therefore, you can invoice tasks only
 after the respective WP has reached the status <code class="docutils literal notranslate"><span class="pre">Done</span></code>.</p>
@@ -415,18 +445,18 @@ after the respective WP has reached the status <code class="docutils literal not
 Therefore it is important that you don’t forget to <a class="reference internal" href="#logging-costs"><span class="std std-ref">log your costs</span></a> after performing a task
 and that <code class="docutils literal notranslate"><span class="pre">Assignee</span></code> set the WP’s <code class="docutils literal notranslate"><span class="pre">Finish</span></code> date to “Today” when setting the status to <code class="docutils literal notranslate"><span class="pre">Done</span></code>.</p>
 <section id="creating-a-cost-report">
-<span id="creating-cost-report"></span><h3><a class="toc-backref" href="#id16">Creating a cost report</a><a class="headerlink" href="#creating-a-cost-report" title="Permalink to this headline">¶</a></h3>
-<figure class="align-default" id="id5">
+<span id="creating-cost-report"></span><h3><a class="toc-backref" href="#id19">Creating a cost report</a><a class="headerlink" href="#creating-a-cost-report" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id6">
 <img alt="How to generate a cost report." src="../_images/cost_report.gif" />
 <figcaption>
-<p><span class="caption-text">How to generate a cost report.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">How to generate a cost report.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
 <li><p>Head to the “Time and Costs” menu and select the “Ready for invoicing” view.</p></li>
-<li><p>Add the filter <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span> <span class="pre">&gt;=</span> <span class="pre">[day</span> <span class="pre">after</span> <span class="pre">your</span> <span class="pre">last</span> <span class="pre">invoice]</span></code>. If this is your first invoice, you can skip this
-step.</p></li>
-<li><p>Click “Apply” and verify if the displayed unit costs indeed cover the finalized WPs you have undertaken. If a WP
+<li><p>Add the filter <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span> <span class="pre">&gt;=</span> <span class="pre">[day</span> <span class="pre">after</span> <span class="pre">your</span> <span class="pre">last</span> <span class="pre">invoice]</span></code>. If this is your <a class="reference internal" href="#first-invoice"><span class="std std-ref">first invoice</span></a>,
+you can skip this step.</p></li>
+<li><p>Click “Apply” and verify that the displayed unit costs indeed cover the finalized WPs you have undertaken. If a WP
 is not shown, at least one of these three things must be true:</p>
 <ul class="simple">
 <li><p>You have not <a class="reference internal" href="#logging-costs"><span class="std std-ref">logged your costs</span></a>.</p></li>
@@ -440,7 +470,7 @@ for the invoice (see below).</p></li>
 </ol>
 </section>
 <section id="writing-an-invoice">
-<h3><a class="toc-backref" href="#id17">Writing an invoice</a><a class="headerlink" href="#writing-an-invoice" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id20">Writing an invoice</a><a class="headerlink" href="#writing-an-invoice" title="Permalink to this headline">¶</a></h3>
 <p>For the actual invoice you can use <a class="reference external" href="https://drive.switch.ch/index.php/s/lfNUOJ987AvFuvg">our template</a>
 or your own as long as it contains</p>
 <ul class="simple">
@@ -455,14 +485,34 @@ or your own as long as it contains</p>
 </ul>
 <p>To compute the individual per-repository numbers easily, you can simply open the exported XLS (Excel) file:
 It contains one sheet per cost type and from here it is simple to group measures and costs per repository using <code class="docutils literal notranslate"><span class="pre">=SUM()</span></code>.</p>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id7">
 <img alt="How to compute grouped items for the invoice." src="../_images/invoice_items.png" />
 <figcaption>
 <p><span class="caption-text">How to compute grouped items for the invoice. In this case, all WPs belong to the same corpus, so the item would be
 <code class="docutils literal notranslate"><span class="pre">Creating</span> <span class="pre">new</span> <span class="pre">annotations</span> <span class="pre">|</span> <span class="pre">jc_bach_sonatas</span> <span class="pre">(825</span> <span class="pre">bars)</span> <span class="pre">|</span> <span class="pre">412.50</span> <span class="pre">CHF</span></code>. If the sheet contains WPs from several repos,
-use <code class="docutils literal notranslate"><span class="pre">=SUM()</span></code> to group measures and costs.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+use <code class="docutils literal notranslate"><span class="pre">=SUM()</span></code> to group measures and costs.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="the-first-invoice">
+<span id="first-invoice"></span><h3><a class="toc-backref" href="#id21">The first invoice</a><a class="headerlink" href="#the-first-invoice" title="Permalink to this headline">¶</a></h3>
+<p>For your first invoice the difference is twofold:</p>
+<ul class="simple">
+<li><p>Since there has been no previous invoice, the work packages do not need a <code class="docutils literal notranslate"><span class="pre">Finish</span> <span class="pre">date</span></code>. You simply
+<a class="reference internal" href="#creating-cost-report"><span class="std std-ref">generate a cost report</span></a> based on all costs you have logged for packages with status
+<code class="docutils literal notranslate"><span class="pre">Done</span></code>.</p></li>
+<li><p>In order for your first invoice to be treated, the university administration needs you to send along the following documents:</p>
+<ul>
+<li><p>a copy of an ID (ID, passport, or driver’s license)</p></li>
+<li><p>a document proving that the bank details indicated on the invoice are associated to you
+(e.g. copy of your banking card or a document showing your name and bank details, provided by your bank)</p></li>
+</ul>
+</li>
+</ul>
+<p>Make sure that the work packages you want to invoice are present in OpenProject, that your name appears in the relevant
+columns, and that you have <a class="reference internal" href="#logging-costs"><span class="std std-ref">logged the costs</span></a>. An easy way to do this is by using OP’s filter
+functionality and by adding the column “Unit costs” to your view. Complete the information where missing. Then
+you may proceed with <a class="reference internal" href="#creating-cost-report"><span class="std std-ref">Creating a cost report</span></a>.</p>
 </section>
 </section>
 </section>
