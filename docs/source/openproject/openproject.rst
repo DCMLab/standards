@@ -275,12 +275,23 @@ or your own as long as it contains
 To compute the individual per-repository numbers easily, you can simply open the exported XLS (Excel) file:
 It contains one sheet per cost type and from here it is simple to group measures and costs per repository using ``=SUM()``.
 
-.. figure:: img/invoice_items.png
+.. note::
+
+   This screencast uses LibreOffice to open the cost report. The process (of sorting and summing) should work exactly
+   the same way in other spreadsheets such as Excel or Numbers.
+
+.. figure:: img/invoice_items.gif
    :alt: How to compute grouped items for the invoice.
 
-   How to compute grouped items for the invoice. In this case, all WPs belong to the same corpus, so the item would be
-   ``Creating new annotations | jc_bach_sonatas (825 bars) | 412.50 CHF``. If the sheet contains WPs from several repos,
-   use ``=SUM()`` to group measures and costs.
+   Screencast showing how to get from the various sub-sheets contained in the automatically generated
+   :ref:`cost report <creating_cost_report>` to items for the invoice grouper per task per repository. Note that the
+   screencast stops after the tasks "Creating new annotations" and "Upgrading existing annotations", which is why the
+   invoice items do not yet sum up at the end. Before the WPs in the "Upgrading existing annotations" sheet can be
+   easily grouped per repository, the sheet needs to be sorted by their IDs.
+
+Once you have the invoice PDF ready, please give both files the same name starting with a backwards (``YYMMDD``) date,
+for example: ``220519_Johannes_Hentschel.pdf`` for the invoice and ``220519_Johannes_Hentschel.xls`` for the
+cost report.
 
 .. _first_invoice:
 

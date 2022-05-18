@@ -485,14 +485,24 @@ or your own as long as it contains</p>
 </ul>
 <p>To compute the individual per-repository numbers easily, you can simply open the exported XLS (Excel) file:
 It contains one sheet per cost type and from here it is simple to group measures and costs per repository using <code class="docutils literal notranslate"><span class="pre">=SUM()</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This screencast uses LibreOffice to open the cost report. The process (of sorting and summing) should work exactly
+the same way in other spreadsheets such as Excel or Numbers.</p>
+</div>
 <figure class="align-default" id="id7">
-<img alt="How to compute grouped items for the invoice." src="../_images/invoice_items.png" />
+<img alt="How to compute grouped items for the invoice." src="../_images/invoice_items.gif" />
 <figcaption>
-<p><span class="caption-text">How to compute grouped items for the invoice. In this case, all WPs belong to the same corpus, so the item would be
-<code class="docutils literal notranslate"><span class="pre">Creating</span> <span class="pre">new</span> <span class="pre">annotations</span> <span class="pre">|</span> <span class="pre">jc_bach_sonatas</span> <span class="pre">(825</span> <span class="pre">bars)</span> <span class="pre">|</span> <span class="pre">412.50</span> <span class="pre">CHF</span></code>. If the sheet contains WPs from several repos,
-use <code class="docutils literal notranslate"><span class="pre">=SUM()</span></code> to group measures and costs.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Screencast showing how to get from the various sub-sheets contained in the automatically generated
+<a class="reference internal" href="#creating-cost-report"><span class="std std-ref">cost report</span></a> to items for the invoice grouper per task per repository. Note that the
+screencast stops after the tasks “Creating new annotations” and “Upgrading existing annotations”, which is why the
+invoice items do not yet sum up at the end. Before the WPs in the “Upgrading existing annotations” sheet can be
+easily grouped per repository, the sheet needs to be sorted by their IDs.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
+<p>Once you have the invoice PDF ready, please give both files the same name starting with a backwards (<code class="docutils literal notranslate"><span class="pre">YYMMDD</span></code>) date,
+for example: <code class="docutils literal notranslate"><span class="pre">220519_Johannes_Hentschel.pdf</span></code> for the invoice and <code class="docutils literal notranslate"><span class="pre">220519_Johannes_Hentschel.xls</span></code> for the
+cost report.</p>
 </section>
 <section id="the-first-invoice">
 <span id="first-invoice"></span><h3><a class="toc-backref" href="#id21">The first invoice</a><a class="headerlink" href="#the-first-invoice" title="Permalink to this headline">¶</a></h3>
