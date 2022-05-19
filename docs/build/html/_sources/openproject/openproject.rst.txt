@@ -211,6 +211,8 @@ OpenProject computes the amount to be invoiced for each work package based on th
 
    * under ``Cost type`` select the kind of service you provided (and thus the associated tariff).
    * enter the number of measures in the field ``Units``
+   * for convenience (see the section on :ref:`writing invoices <invoicing>`), write the repository name in the
+     ``Comment`` field.
 
 4. Click "Save".
 
@@ -218,7 +220,8 @@ OpenProject computes the amount to be invoiced for each work package based on th
    :alt: How to log unit costs
 
    How to log unit costs. Here, the WPs in questions did not have a ``Finish date`` yet. For convenience, the respective
-   column is added to the view but the date can also be entered in the WP's Overview.
+   column is added to the view but the date can also be entered in the WP's Overview. Here, the annotator is not
+   including the repository name (scarlatti_sonatas) in the ``Comment`` field although it would be a good idea.
 
 .. _writing_invoices:
 
@@ -257,6 +260,8 @@ Creating a cost report
 #. Use the different sheets contained in the Excel file to sum up measures and costs to come up with the items
    for the invoice (see below).
 
+.. _invoicing:
+
 Writing an invoice
 ------------------
 
@@ -272,26 +277,60 @@ or your own as long as it contains
 * your bank details
 * your signature
 
-To compute the individual per-repository numbers easily, you can simply open the exported XLS (Excel) file:
-It contains one sheet per cost type and from here it is simple to group measures and costs per repository using ``=SUM()``.
-
-.. note::
-
-   This screencast uses LibreOffice to open the cost report. The process (of sorting and summing) should work exactly
-   the same way in other spreadsheets such as Excel or Numbers.
-
-.. figure:: img/invoice_items.gif
-   :alt: How to compute grouped items for the invoice.
-
-   Screencast showing how to get from the various sub-sheets contained in the automatically generated
-   :ref:`cost report <creating_cost_report>` to items for the invoice grouper per task per repository. Note that the
-   screencast stops after the tasks "Creating new annotations" and "Upgrading existing annotations", which is why the
-   invoice items do not yet sum up at the end. Before the WPs in the "Upgrading existing annotations" sheet can be
-   easily grouped per repository, the sheet needs to be sorted by their IDs.
-
 Once you have the invoice PDF ready, please give both files the same name starting with a backwards (``YYMMDD``) date,
 for example: ``220519_Johannes_Hentschel.pdf`` for the invoice and ``220519_Johannes_Hentschel.xls`` for the
 cost report.
+
+To compute the individual per-repository items easily, simply open the exported XLS (Excel) file and pick one
+of the two methods described in the following.
+
+.. note::
+
+   This following screencasts use LibreOffice to open the cost report. The process of sorting and creating sums or
+   pivot tables should work exactly the same way in other spreadsheets such as Excel or Numbers.
+
+From cost report to invoice items - Variant 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The first variant is easier but more work.
+
+The cost report contains one sheet per cost type, so you need to go through the four sheets and
+
+* if all packages are from one corpus, create one item per cost type;
+* if the packages are from several corpora, use ``=SUM()`` to sum up sub-groups of measures ("units") and costs,
+  and create one item per repository
+
+.. figure:: img/invoice_items.gif
+   :alt: How to compute grouped items for the invoice.
+   :scale: 35%
+
+   Screencast showing the first variant of how to get from the various sub-sheets contained in the automatically generated
+   :ref:`cost report <creating_cost_report>` to items for the invoice grouped per task per repository. Note that the
+   screencast stops after the tasks "Creating new annotations" and "Upgrading existing annotations", which is why the
+   invoice items do not yet sum up at the end. In order to more easily group the WPs in the  "Upgrading existing
+   annotations" sheet that belong to different repositories, the sheet needs to be sorted by their IDs.
+
+From cost report to invoice items - Variant 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The second variant is slightly more involved but less work.
+
+Here you only work on the first sheet ("Cash value"). In order to create a pivot table you need to add the
+repository name for every work package (unless you had already included the names in the ``Comment`` field while
+logging the costs), which might be easier if they are sorted. Then you go to
+``Insert -> Pivot table`` and distribute the columns as is most convenient for you. A good suggestion is
+
+* Columns = ``Comment`` (the column where you put the repository names)
+* Rows = ``Cost type``
+* Data = ``Units`` and ``Costs``
+
+.. figure:: img/pivot_table.gif
+   :alt: How to compute grouped items for the invoice.
+   :scale: 50%
+
+   Screencast showing the second variant of how to get from the various sub-sheets contained in the automatically generated
+   :ref:`cost report <creating_cost_report>` to items for the invoice grouped per task per repository.
+
 
 .. _first_invoice:
 
