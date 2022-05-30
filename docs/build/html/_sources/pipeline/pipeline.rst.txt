@@ -236,3 +236,27 @@ Just to be sure, update all submodules: ``git submodule update --remote`` and pu
 Creating work packages on OpenProject
 -------------------------------------
 
+#. Follow the instructions for `create_work_packages.py` under https://github.com/DCMLab/openproject_scripts/
+
+   - set the column ``parent`` to the name of the repository
+   - rename the columns ``fnames`` and ``last_mn``
+   - find out the status of all pieces and fill the column ``status``. Accordingly:
+   - if annotations are present, rename ``annotators => assignee`` and make sure that every cell contains exactly one
+     user name (``First Last``) known to OpenProject;
+   - if review is done or ongoing, do the same for the renamed column ``reviewers => reviewer``
+
+#. Create a new view in OpenProject:
+
+   - open any of the existing corpora views
+   - replace the ``Parent`` filter with the repo name
+   - in the menu, select ``Save as...``
+   - enter the repo name and check ``Public``
+
+#. Add the webhook to the repo
+
+   - go to a repo for which the webhook is already set up
+   - in the repo settings, go to ``Webhooks``, click ``Edit``, and copy the ``Payload URL``
+   - in the new repo, go to ``Settings -> Webhooks -> Add webhook`` and insert the copied ``Payload URL``
+   - set the ``Content type`` to "application/json"
+   - Below, select "Send me **everything**" and click ``Add webhook``
+

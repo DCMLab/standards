@@ -329,7 +329,8 @@ logging the costs), which might be easier if they are sorted. Then you go to
    :scale: 50%
 
    Screencast showing the second variant of how to get from the various sub-sheets contained in the automatically generated
-   :ref:`cost report <creating_cost_report>` to items for the invoice grouped per task per repository.
+   :ref:`cost report <creating_cost_report>` to items for the invoice grouped per task per repository using a
+   pivot table.
 
 
 .. _first_invoice:
