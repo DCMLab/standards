@@ -211,6 +211,9 @@ Configuring and adding the new repo
        :scale: 50%
 
 * Under ``Collaborators and teams`` give write access to the ``annotators`` team.
+* Under ``Pages`` set the Source to the root ``/`` of the branch ``gh-pages`` (which should have been
+  automatically created by the workflow when pushing the first MuseScore files). Add the page's URL as the
+  repo's website.
 * Add the new repo to the corresponding meta-repositories (at least to ``all_subcorpora``, see below).
 * Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)
 
