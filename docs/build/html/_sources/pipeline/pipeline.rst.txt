@@ -242,11 +242,13 @@ Creating work packages on OpenProject
 #. Follow the instructions for `create_work_packages.py` under https://github.com/DCMLab/openproject_scripts/
 
    - set the column ``parent`` to the name of the repository
-   - rename the columns ``fnames`` and ``last_mn``
+   - rename the columns ``fnames => name`` and ``last_mn => measures``
    - find out the status of all pieces and fill the column ``status``. Accordingly:
-   - if annotations are present, rename ``annotators => assignee`` and make sure that every cell contains exactly one
+   - if annotations are present and need to be updated, rename ``annotators => reviewer`` and make sure that every cell contains exactly one
      user name (``First Last``) known to OpenProject;
    - if review is done or ongoing, do the same for the renamed column ``reviewers => reviewer``
+   - if annotations are present and finalized, the work package, in theory, does not need to be created; if it is,
+     it should have status "Not available". Filling the fields ``assignee`` and ``reviewer``, is not needed unless for invoicing purposes
 
 #. Create a new view in OpenProject:
 
@@ -262,4 +264,6 @@ Creating work packages on OpenProject
    - in the new repo, go to ``Settings -> Webhooks -> Add webhook`` and insert the copied ``Payload URL``
    - set the ``Content type`` to "application/json"
    - Below, select "Send me **everything**" and click ``Add webhook``
+
+#. Add the new work packages to the master sheet for the administrative staff
 

@@ -488,11 +488,13 @@ repo’s website.</p></li>
 <li><p>Follow the instructions for <cite>create_work_packages.py</cite> under <a class="reference external" href="https://github.com/DCMLab/openproject_scripts/">https://github.com/DCMLab/openproject_scripts/</a></p>
 <ul class="simple">
 <li><p>set the column <code class="docutils literal notranslate"><span class="pre">parent</span></code> to the name of the repository</p></li>
-<li><p>rename the columns <code class="docutils literal notranslate"><span class="pre">fnames</span></code> and <code class="docutils literal notranslate"><span class="pre">last_mn</span></code></p></li>
+<li><p>rename the columns <code class="docutils literal notranslate"><span class="pre">fnames</span> <span class="pre">=&gt;</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">last_mn</span> <span class="pre">=&gt;</span> <span class="pre">measures</span></code></p></li>
 <li><p>find out the status of all pieces and fill the column <code class="docutils literal notranslate"><span class="pre">status</span></code>. Accordingly:</p></li>
-<li><p>if annotations are present, rename <code class="docutils literal notranslate"><span class="pre">annotators</span> <span class="pre">=&gt;</span> <span class="pre">assignee</span></code> and make sure that every cell contains exactly one
+<li><p>if annotations are present and need to be updated, rename <code class="docutils literal notranslate"><span class="pre">annotators</span> <span class="pre">=&gt;</span> <span class="pre">reviewer</span></code> and make sure that every cell contains exactly one
 user name (<code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">Last</span></code>) known to OpenProject;</p></li>
 <li><p>if review is done or ongoing, do the same for the renamed column <code class="docutils literal notranslate"><span class="pre">reviewers</span> <span class="pre">=&gt;</span> <span class="pre">reviewer</span></code></p></li>
+<li><p>if annotations are present and finalized, the work package, in theory, does not need to be created; if it is,
+it should have status “Not available”. Filling the fields <code class="docutils literal notranslate"><span class="pre">assignee</span></code> and <code class="docutils literal notranslate"><span class="pre">reviewer</span></code>, is not needed unless for invoicing purposes</p></li>
 </ul>
 </li>
 <li><p>Create a new view in OpenProject:</p>
@@ -512,6 +514,7 @@ user name (<code class="docutils literal notranslate"><span class="pre">First</s
 <li><p>Below, select “Send me <strong>everything</strong>” and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">webhook</span></code></p></li>
 </ul>
 </li>
+<li><p>Add the new work packages to the master sheet for the administrative staff</p></li>
 </ol>
 </section>
 </section>
