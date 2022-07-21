@@ -231,7 +231,7 @@ The individual subcorpora can be embedded as submodules in meta-repositories. Th
 
 To add the new repo, head into the meta-repo and do ::
 
-  git submodule add -b main https://github.com/DCMLab/chopin_mazurkas/
+  git submodule add -b main git@github.com:DCMLab/chopin_mazurkas.git
 
 Just to be sure, update all submodules: ``git submodule update --remote`` and push the whole thing.
 
