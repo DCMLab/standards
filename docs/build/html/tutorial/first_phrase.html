@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The first phrase &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,7 +12,11 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Show answer';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -23,10 +27,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
-<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -178,9 +182,9 @@
     <div class="body col-md-12 content" role="main">
       
   <section id="the-first-phrase">
-<h1>The first phrase<a class="headerlink" href="#the-first-phrase" title="Permalink to this headline">¶</a></h1>
+<h1>The first phrase<a class="headerlink" href="#the-first-phrase" title="Permalink to this heading">¶</a></h1>
 <section id="phrase-annotations">
-<h2>Phrase annotations<a class="headerlink" href="#phrase-annotations" title="Permalink to this headline">¶</a></h2>
+<h2>Phrase annotations<a class="headerlink" href="#phrase-annotations" title="Permalink to this heading">¶</a></h2>
 <p>The DCML standard includes a rudimentary (because non-hierarchical) form of
 phrase annotations using
 curly brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code>. They may stand alone or be the last character of a chord
@@ -212,7 +216,7 @@ interlocking’, <code class="docutils literal notranslate"><span class="pre">}{
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">}</span></code> sits on beat 1, the structural ending of the sentence.</p>
 </section>
 <section id="cadence-labels">
-<h2>Cadence Labels<a class="headerlink" href="#cadence-labels" title="Permalink to this headline">¶</a></h2>
+<h2>Cadence Labels<a class="headerlink" href="#cadence-labels" title="Permalink to this heading">¶</a></h2>
 <p>The DCML guidelines require writing more cadence labels than most theorists naturally would. The reason is that,
 with respect to cadences, we follow a schema-theoretic approach in the sense that formal considerations are only one
 of several aspects to take into account when deciding if something deserves a cadence label or not. As a consequence,
@@ -221,7 +225,7 @@ as well, even if from a formal perspective, only one instance would be considere
 guideline is meant to optimize the labels for training schema detection algorithms (rather than form analyzers).</p>
 <p>Every time you spot a complete or attempted cadence, please mark its ultima with one of these five cadence labels,
 separated from the chord label by a pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>:</p>
-<table class="colwidths-auto docutils align-center" id="id3">
+<table class="docutils align-center" id="id3">
 <caption><span class="caption-text">Cadence labels.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Label</p></th>
@@ -262,13 +266,13 @@ structural phrase ending co-occur, <code class="docutils literal notranslate"><s
 a harmony label (as in <code class="docutils literal notranslate"><span class="pre">|EC</span></code>) but in reality this would be a rare exception.</p>
 </section>
 <section id="chord-syntax">
-<h2>Chord syntax<a class="headerlink" href="#chord-syntax" title="Permalink to this headline">¶</a></h2>
+<h2>Chord syntax<a class="headerlink" href="#chord-syntax" title="Permalink to this heading">¶</a></h2>
 <p>The remaining chord labels are achieved by simply typing the characters
 <code class="docutils literal notranslate"><span class="pre">V65</span> <span class="pre">i</span> <span class="pre">#viio6</span> <span class="pre">i6</span> <span class="pre">iio6</span> <span class="pre">V(4)}</span> <span class="pre">V</span></code>. Note how every label fully defines the chord
 type: Uppercase numerals express a major third, lowercase numerals a minor third,
 diminished and augmented triads are indicated with <code class="docutils literal notranslate"><span class="pre">o</span></code> and <code class="docutils literal notranslate"><span class="pre">+</span></code>. Inverted triads are followed by
 <code class="docutils literal notranslate"><span class="pre">6</span></code> or <code class="docutils literal notranslate"><span class="pre">64</span></code> (not <code class="docutils literal notranslate"><span class="pre">46</span></code>), leading to these combinations:</p>
-<table class="colwidths-auto docutils align-center" id="id4" style="width: 70%">
+<table class="docutils align-center" id="id4" style="width: 70%">
 <caption><span class="caption-text">Triads. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Root</p></th>
@@ -313,7 +317,7 @@ one out of <code class="docutils literal notranslate"><span class="pre">7</span>
 </div>
 <p>In addition to the types based on the four triads, there are the special symbols
 <code class="docutils literal notranslate"><span class="pre">%</span></code> for half diminished chords and <code class="docutils literal notranslate"><span class="pre">M</span></code> for chords with a major seventh:</p>
-<table class="colwidths-auto docutils align-center" id="id5" style="width: 75%">
+<table class="docutils align-center" id="id5" style="width: 75%">
 <caption><span class="caption-text">Seventh chords. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Root</p></th>
@@ -442,7 +446,7 @@ their implications.</p>
     </p>
     <p>
         &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Getting started &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,7 +12,11 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Show answer';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -23,10 +27,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
-<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -199,10 +203,10 @@
     <div class="body col-md-12 content" role="main">
       
   <section id="getting-started">
-<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
 <p>Welcome to the DCML harmony annotation tutorial!</p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>The goal of this tutorial is to provide a systematic and condensed way of conveying the annotation philosophy and
 principles (aka “the guidelines”) behind the annotation standard. What has been condensed are more than two years
 of discussions between the music theory experts involved in the standard’s creation and application, i.e. between
@@ -227,9 +231,9 @@ unclear we invite you to leave us your feedback and suggestions on our
 <a class="reference external" href="https://github.com/DCMLab/standards/issues">issue tracker</a>.</p>
 </section>
 <section id="preparing-this-tutorial">
-<h2>Preparing this tutorial<a class="headerlink" href="#preparing-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<h2>Preparing this tutorial<a class="headerlink" href="#preparing-this-tutorial" title="Permalink to this heading">¶</a></h2>
 <section id="get-the-files">
-<h3>Get the files<a class="headerlink" href="#get-the-files" title="Permalink to this headline">¶</a></h3>
+<h3>Get the files<a class="headerlink" href="#get-the-files" title="Permalink to this heading">¶</a></h3>
 <p>The DCML stores all its research data in Github repositories and the history of
 every single file is tracked using the software <a class="reference external" href="https://git-scm.com/">Git</a>.
 Therefore, everyone involved with creating and reviewing annotations needs to be
@@ -243,17 +247,17 @@ clone <a class="reference external" href="https://github.com/DCMLab/annotation_t
 and unpack it to your disk.</p>
 </section>
 <section id="get-the-latest-version-of-musescore-3">
-<h3>Get the latest version of MuseScore 3<a class="headerlink" href="#get-the-latest-version-of-musescore-3" title="Permalink to this headline">¶</a></h3>
+<h3>Get the latest version of MuseScore 3<a class="headerlink" href="#get-the-latest-version-of-musescore-3" title="Permalink to this heading">¶</a></h3>
 <p>Please make sure to be using the latest stable version from the
 <a class="reference external" href="https://musescore.org/download">MuseScore 3 download page</a>.</p>
 <section id="downloading-musescore">
-<h4>Downloading MuseScore<a class="headerlink" href="#downloading-musescore" title="Permalink to this headline">¶</a></h4>
+<h4>Downloading MuseScore<a class="headerlink" href="#downloading-musescore" title="Permalink to this heading">¶</a></h4>
 <p>Head to the link above and download the installer for your operation system. If
 you’re using Linux but the latest version is not available in your package
 manager, you can download and execute the AppImage.</p>
 </section>
 <section id="already-have-it-installed">
-<h4>Already have it installed?<a class="headerlink" href="#already-have-it-installed" title="Permalink to this headline">¶</a></h4>
+<h4>Already have it installed?<a class="headerlink" href="#already-have-it-installed" title="Permalink to this heading">¶</a></h4>
 <p>In case your local installation does not prompt you about the latest updates,
 you may check your current version through <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">About...</span></code>. If your version
 does not match the latest stable version on the download page, please upgrade.</p>
@@ -266,13 +270,13 @@ does not match the latest stable version on the download page, please upgrade.</
 </section>
 </section>
 <section id="placing-the-annotation-cursor">
-<h2>Placing the annotation cursor<a class="headerlink" href="#placing-the-annotation-cursor" title="Permalink to this headline">¶</a></h2>
+<h2>Placing the annotation cursor<a class="headerlink" href="#placing-the-annotation-cursor" title="Permalink to this heading">¶</a></h2>
 <p>To start writing your first labels, open up a score, e.g. <code class="docutils literal notranslate"><span class="pre">corelli_op01n01a.mscx</span></code>,
 click on the note to which you want to attach the label, and go to
 <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">-&gt;</span> <span class="pre">Text</span> <span class="pre">-&gt;</span> <span class="pre">Roman</span> <span class="pre">Numeral</span> <span class="pre">Analysis</span></code>. A cursor appears under the note so you
 can start writing Roman numerals, skipping from note to note using <code class="docutils literal notranslate"><span class="pre">[SPACE]</span></code>.</p>
 <section id="keyboard-shortcuts">
-<h3>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h3>
+<h3>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this heading">¶</a></h3>
 <p>Shortcuts are mainly there to impress your friends but they also save you a lot
 of time. Therefore this tutorial introduces the most important ones where,
 depending on your keyboard, the keys have different names. We use the following
@@ -302,7 +306,7 @@ click “Clear”</p></li>
 </figure>
 </section>
 <section id="moving-the-annotation-cursor">
-<h3>Moving the annotation cursor<a class="headerlink" href="#moving-the-annotation-cursor" title="Permalink to this headline">¶</a></h3>
+<h3>Moving the annotation cursor<a class="headerlink" href="#moving-the-annotation-cursor" title="Permalink to this heading">¶</a></h3>
 <p>Having clicked on the first note in the lowest staff and pressed your shortcut,
 you can enter the Roman numeral and</p>
 <ul class="simple">
@@ -320,9 +324,9 @@ you can enter the Roman numeral and</p>
 </section>
 </section>
 <section id="background-knowledge-and-tricks">
-<h2>Background knowledge and tricks<a class="headerlink" href="#background-knowledge-and-tricks" title="Permalink to this headline">¶</a></h2>
+<h2>Background knowledge and tricks<a class="headerlink" href="#background-knowledge-and-tricks" title="Permalink to this heading">¶</a></h2>
 <section id="mscz-vs-mscx">
-<h3>MSCZ vs. MSCX<a class="headerlink" href="#mscz-vs-mscx" title="Permalink to this headline">¶</a></h3>
+<h3>MSCZ vs. MSCX<a class="headerlink" href="#mscz-vs-mscx" title="Permalink to this heading">¶</a></h3>
 <p>There are two types of MuseScore files. The software saves files
 automatically in the compressed format <code class="docutils literal notranslate"><span class="pre">.mscz</span></code>, creating smaller file
 sizes. However, we work with the uncompressed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> format because
@@ -334,14 +338,14 @@ this format by using <code class="docutils literal notranslate"><span class="pre
 </figure>
 </section>
 <section id="navigating-in-musescore">
-<h3>Navigating in MuseScore<a class="headerlink" href="#navigating-in-musescore" title="Permalink to this headline">¶</a></h3>
+<h3>Navigating in MuseScore<a class="headerlink" href="#navigating-in-musescore" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">F12</span></code> opens the navigator which facilitates finding places in the score.</p>
 <p>If you prefer scrolling
 through pages vertically instead of horizontally, change
 <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">-&gt;</span> <span class="pre">Preferences...</span> <span class="pre">-&gt;</span> <span class="pre">Canvas</span> <span class="pre">-&gt;</span> <span class="pre">Scroll</span> <span class="pre">pages</span></code></p>
 </section>
 <section id="editing-annotations">
-<h3>Editing annotations<a class="headerlink" href="#editing-annotations" title="Permalink to this headline">¶</a></h3>
+<h3>Editing annotations<a class="headerlink" href="#editing-annotations" title="Permalink to this heading">¶</a></h3>
 <p>If you want to change a chord symbol, double click (or tap) on it to get
 into chord edit mode. To delete one, get out of edit mode (<cite>Esc</cite>), click on the
 symbol once to select it, and press <code class="docutils literal notranslate"><span class="pre">Delete</span></code>.</p>
@@ -353,7 +357,7 @@ cut it with <code class="docutils literal notranslate"><span class="pre">Ctrl</s
 insert it with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">V</span></code>.</p>
 </section>
 <section id="copying-several-annotations">
-<h3>Copying several annotations<a class="headerlink" href="#copying-several-annotations" title="Permalink to this headline">¶</a></h3>
+<h3>Copying several annotations<a class="headerlink" href="#copying-several-annotations" title="Permalink to this heading">¶</a></h3>
 <p>If you find an exact repetition, make sure, it actually is an exact
 repetition first before copying symbols. Then, go to the symbols you
 want to copy. Draw a selection frame around the symbols or select the
@@ -366,7 +370,7 @@ no other symbols exist in the range where you paste to avoid duplicates
 or twofold annotations for the same position.</p>
 </section>
 <section id="visibility">
-<h3>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h3>
+<h3>Visibility<a class="headerlink" href="#visibility" title="Permalink to this heading">¶</a></h3>
 <p>Although not important for the computerised analysis of your
 annotations, it is preferable to arrange them in a human-readable way.</p>
 <ul class="simple">
@@ -389,7 +393,7 @@ chord symbols overlap with the above system, you might want to</p></li>
 </section>
 </section>
 <section id="start-annotation-tutorial">
-<h2>Start annotation tutorial<a class="headerlink" href="#start-annotation-tutorial" title="Permalink to this headline">¶</a></h2>
+<h2>Start annotation tutorial<a class="headerlink" href="#start-annotation-tutorial" title="Permalink to this heading">¶</a></h2>
 <p>Do you know how to place your annotation and cursor and how to move it around?
 Once you have finished a section, you can go to the next section by clicking
 on it in the navigation menu, in this case called <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">first</span> <span class="pre">label</span></code>.</p>
@@ -409,7 +413,7 @@ on it in the navigation menu, in this case called <code class="docutils literal 
     </p>
     <p>
         &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>
