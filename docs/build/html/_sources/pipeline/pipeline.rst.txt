@@ -21,7 +21,7 @@ Prior research
 * Come up with a list (and hierarchy) of names. Here, you can already think of a good naming/numbering convention for the corpus.
 * It might be good to create the list of the overarching group of works even if your corpus will contain only parts of it, for the sake of a better overview.
 * Example: Going from the `list of Monteverdi's Madrigal books <http://www3.cpdl.org/wiki/index.php/Claudio_Monteverdi>`__
-  to an `initial README file <https://github.com/DCMLab/corpora/blob/master/annotations/Monteverdi-Madrigals/readme.md>`__.
+  to an `initial README file <https://github.com/DCMLab/monteverdi_madrigals/>`__.
 
 Look up and check existing scores
 ---------------------------------
@@ -243,6 +243,8 @@ Creating work packages on OpenProject
 
    - set the column ``parent`` to the name of the repository
    - rename the columns ``fnames => name`` and ``last_mn => measures``
+   - if the new work packages are for annotation upgrades rather than new annotations, add the column ``work_package_type``
+     with value ``Annotation Upgrade``
    - find out the status of all pieces and fill the column ``status``. Accordingly:
    - if annotations are present and need to be updated, rename ``annotators => reviewer`` and make sure that every cell contains exactly one
      user name (``First Last``) known to OpenProject;

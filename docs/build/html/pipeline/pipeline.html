@@ -239,7 +239,7 @@
 <li><p>Come up with a list (and hierarchy) of names. Here, you can already think of a good naming/numbering convention for the corpus.</p></li>
 <li><p>It might be good to create the list of the overarching group of works even if your corpus will contain only parts of it, for the sake of a better overview.</p></li>
 <li><p>Example: Going from the <a class="reference external" href="http://www3.cpdl.org/wiki/index.php/Claudio_Monteverdi">list of Monteverdi’s Madrigal books</a>
-to an <a class="reference external" href="https://github.com/DCMLab/corpora/blob/master/annotations/Monteverdi-Madrigals/readme.md">initial README file</a>.</p></li>
+to an <a class="reference external" href="https://github.com/DCMLab/monteverdi_madrigals/">initial README file</a>.</p></li>
 </ul>
 </section>
 <section id="look-up-and-check-existing-scores">
@@ -493,6 +493,8 @@ repo’s website.</p></li>
 <ul class="simple">
 <li><p>set the column <code class="docutils literal notranslate"><span class="pre">parent</span></code> to the name of the repository</p></li>
 <li><p>rename the columns <code class="docutils literal notranslate"><span class="pre">fnames</span> <span class="pre">=&gt;</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">last_mn</span> <span class="pre">=&gt;</span> <span class="pre">measures</span></code></p></li>
+<li><p>if the new work packages are for annotation upgrades rather than new annotations, add the column <code class="docutils literal notranslate"><span class="pre">work_package_type</span></code>
+with value <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">Upgrade</span></code></p></li>
 <li><p>find out the status of all pieces and fill the column <code class="docutils literal notranslate"><span class="pre">status</span></code>. Accordingly:</p></li>
 <li><p>if annotations are present and need to be updated, rename <code class="docutils literal notranslate"><span class="pre">annotators</span> <span class="pre">=&gt;</span> <span class="pre">reviewer</span></code> and make sure that every cell contains exactly one
 user name (<code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">Last</span></code>) known to OpenProject;</p></li>
