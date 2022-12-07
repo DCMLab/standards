@@ -6,7 +6,7 @@ DCML annotation workflow
    :local:
 
 .. note:: It is of utmost importance that annotators have a basic understanding of version control and branching
-   via Git before they get familiar with the DCML annotation workflow. The :ref:`Quick reference <git-intro>` below
+   via Git before they get familiar with the DCML annotation workflow. Our :ref:`Quick reference <git-intro>`
    contains the bare minimum of what annotators need to know, but if you're completely new to Git, please make sure
    to read, watch, or do a couple of tutorials online.
 
@@ -96,16 +96,16 @@ Push your commits to GitHub and check if syntactical errors are detected.
   :green: Everything OK
   :red: Syntactical error(s) detected
 
-    .. figure:: img/github_actions_tab.png
-      :alt: The last commit listed in the ``Actions`` tab with the red icon symbolizing that the syntax check failed.
-      :scale: 80%
+  .. figure:: img/github_actions_tab.png
+    :alt: The last commit listed in the ``Actions`` tab with the red icon symbolizing that the syntax check failed.
+    :scale: 80%
 
-      The last commit listed in the ``Actions`` tab with the red icon symbolizing that the syntax check failed.
+    The last commit listed in the ``Actions`` tab with the red icon symbolizing that the syntax check failed.
 
 
-When tests have failed, please go back to your local MuseScore file and commit the changes necessary to make them pass
-next time you push. Remember to include explanatory commit messages and measure numbers.
-Still under the ``Actions`` tab, click on the failed syntax check and then on ``perform_check``
+  When tests have failed, please go back to your local MuseScore file and commit the changes necessary to make them pass
+  next time you push. Remember to include explanatory commit messages and measure numbers.
+  Still under the ``Actions`` tab, click on the failed syntax check and then on ``perform_check``
 
   .. figure:: img/github_check_perform_check.png
       :alt: Click on "perform_check"
@@ -117,7 +117,7 @@ Still under the ``Actions`` tab, click on the failed syntax check and then on ``
 
   .. figure:: img/github_syntactical_errors.png
       :alt: Log of ms3 review showing incorrect labels
-      :scale: 99%
+      :scale: 90%
 
       Output log of the `ms3 review` command; use the search bar to go through every `_WARNING`.
 

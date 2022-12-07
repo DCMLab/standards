@@ -81,7 +81,7 @@ Self-assign.
     you can enter your name and set the status to ``In progress`` **and the Start date to "Today"**.
     Otherwise, the task has been assigned to someone else. For details, :ref:`see below <taking_on_a_task>`.
 
-Perform the task according to the usual :doc:`GitHub workflow <../git/git>`.
+Perform the task according to the usual :doc:`GitHub workflow <../workflow/workflow>`.
   * If you are the WP's ``Assignee`` you end your task by creating a Pull Request that you link to the WP by including
     the WP's URL in the PR's description (:ref:`see screencast below <linking_pr>`).
   * If you are the WP's ``Reviewer`` your task ideally ends with you having committed to the PR to the point where you
