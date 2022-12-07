@@ -6,8 +6,8 @@ TOC
   :maxdepth: 2
 
   tutorial/index
+  onboarding
   git/git
-  openproject/openproject
   pipeline/pipeline
   reference/reference
   reference/examples
