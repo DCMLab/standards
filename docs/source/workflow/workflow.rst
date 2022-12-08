@@ -4,6 +4,7 @@ DCML annotation workflow
 
 .. contents:: Contents
    :local:
+   :depth: 2
 
 .. note:: It is of utmost importance that annotators have a basic understanding of version control and branching
    via Git before they get familiar with the DCML annotation workflow. Our :ref:`Quick reference <git-intro>`
@@ -88,8 +89,17 @@ Push your commits to GitHub and check if syntactical errors are detected.
      ``git push --set-upstream origin op01n01a`` or whatever the name of the new branch is.
 
   Everytime you push your commits to GitHub, the scores you've modified will be checked automatically and you can see
-  immediately if there are any syntactic errors or where the notes in the score do not match the label.
-  Simply head to the GitHub repository and click on the ``Actions`` tab.
+  immediately if there are any syntactic errors or where the notes in the score do not match the label. At the end
+  of the automated check, a bot will add or modify two :ref:`review reports <review_reports>` that might help you spot
+  or make sense of errors. To see these files, you will need to update your local clone so that it includes
+  the bot's commit: ::
+
+    git checkout op01n06a
+    git pull
+
+
+  If you want to see the test result,
+  simply head to the GitHub repository and click on the ``Actions`` tab.
   There you will see your last commit with a small coloured symbol:
 
   :yellow: Check in progress (wait a couple of seconds)
@@ -124,9 +134,9 @@ Push your commits to GitHub and check if syntactical errors are detected.
   Where applicable, every warning comes with a measure count ``MC`` and/or a measure number ``MN``. MC corresponds
   to the bar number that MuseScore displays in the
   status bar on the bottom left (not always identical to the measure number (MN) in the score). The warning's message
-  is hopefully expressive enough for you to know what to do. If not or you're unsure, you may look it up in thea
-  label's offset from the barline, ``mc_onset``, measured in fractions of a whole note, and the incorrect label. From here on,
-  simply correct the labels, commit and push again, and the check should pass this time.
+  is hopefully expressive enough for you to know what to do. If not or you're unsure, you may look it up in the
+  :ref:`section on warnings <warnings>` below. After doing the necessary steps, commit and push again,
+  and the test should pass this time.
 
 Once all your labels are syntactically correct, create a Pull Request.
   There are (at least) three different ways for creating a Pull Request (i.e. a request for merging your annotations
@@ -161,14 +171,69 @@ Once all your labels are syntactically correct, create a Pull Request.
 
         Giving the new pull request a meaningful title
 
-Give the pull request a meaningful name and feel free to add anything worth knowing below. Once you confirm with
+Give the pull request a meaningful name including the exact file name, and
+include the URL of the OpenProject work package in the description.
+Feel free to add anything worth knowing below, e.g. specific measures where you would like to ask the reviewer for
+a second opinion. Once you confirm with
 the green button "Create pull request", you're done. In case more pieces were commissioned to you, you can continue
 annotating, but make sure to create the new branch for the next piece after checking out and updating ``main`` first!
+
+.. _review_reports:
+
+Review reports
+--------------
+
+.. note::
+
+   Don't forget to update your branch using ``git pull`` after the bot has committed files.
+
+If a commit includes modified MuseScore files, a bot will check them and add or update two review reports which are
+located in the folder called ``reviewed``. They include
+
+* a score where all non-chord tones are colored in red and, if the score already contained labels before the commit, it
+  displays the changes applied to the labels in green and red;
+* and a TSV file that lists all the labels and where the last 6 columns contain the results of this coloring:
+
+.. figure:: img/review_report_tsv.png
+   :alt: Giving the new pull request a meaningful title
+
+   Example review report for the beginning of Corelli's ``op01n06a`` (showing only relevant columns).
+
+The ``chord`` column is the one that is translated into ``chord_tones``. Different from the TSV files in the
+``harmonies`` folder, where it displays scale degrees, the integers here are to be interpreted as absolute notes
+expressed on the line of fifths. For example, the first chord, ``i`` translates to ``(5, 2, 6)``, and reads as
+``B, D, F#``. The last six columns describe properties of all notes that start in the given chord segment:
+
+* ``n_colored``: Number of red notes, i.e. notes that are not covered by the chord label.
+* ``n_untouched``: Number of black notes, i.e. notes that are included in the label.
+* ``count_ratio``: Ratio between red vs. all notes in the segment. Values over 0.6 will cause the test to fail and
+  warn the annotator.
+* ``dur_colored``: Summed durations of red notes, expressed in quarter notes.
+* ``dur_untouched``: Summed durations of black notes, in quarters.
+* ``dur_ratio``: Ratio between summed durations of red vs. duration of all notes in the segment.
+
+.. admonition:: December 2022
+   :class: caution
+
+   As of now, this check suffers from the problem that it considers only note heads in the given chord segment, meaning
+   that notes sounding since earlier are not taken into account and that durations are not cut off when the chord segment
+   ends. This will be improved in a future version.
+
+.. admonition:: Little trick
+   :class: note
+
+   To quickly make sense of higher values on the line of fifths, such as ``(10, 7, 6)`` in the second row, it helps to
+   think in chromatic shifts, 7 fifths. In other words we can read this as ``#3, #0, #-1``, i.e. ``#A, #C, #F``.
 
 .. _modulation_plans:
 
 Modulation plans
 ----------------
+
+.. admonition:: December 2022
+   :class: caution
+
+   The updated workflow does not yet output modulation plans.
 
 Since November 2021, the DCML workflow includes a new feature, namely the automated creation of modulation plans.
 Once a Pull Request (PR) is created, modulation plans are generated and updated for all altered MuseScore files. They
@@ -256,48 +321,18 @@ Push your commits and create a Pull Request
 Reviewing a set of annotations
 ==============================
 
-Reviewing a set of new annotations and a set of annotations upgraded to a new version works essentially the same way,
-but with one important difference. To review new annotations, you first need to merge the PR into ``main`` and create
-a new one after you finished your review. For upgraded annotations, this is not necessary and you can push your commits
-into the open PR right away. The reason for this is the automatic creation of the ``_reviewed`` files,
-as explained in the following.
+.. admonition:: Update December 2022
+   :class: note
 
-In order for the annotator or upgrader to comprehend the changes you made during your review, not only do you need
-to commit and explain your changes individually (indicating the measure number of the respective change). Also,
-an additional copy of the MuseScore file in question will be automatically created where your changes are highlighted
-with different colours. The creation of such a ``_reviewed`` file depends on the presence of an automatically
-extracted TSV file which includes a table with the labels as they were before you made your changes. For new
-annotations, this file needs to be generated by merging the PR with the new annotations into ``main``. In the case
-of a PR with upgraded labels, the TSV file with the previous labels should already be present, indicated by the fact
-that a ``_reviewed`` file should already have been pushed into this PR by the ms3-bot (e.g., in the following
-screenshot, the commit ``Added comparison files for review``).
+   Before the update, this section explained how the reviewer would have to first merge the PR and then merge the main
+   branch back into the annotation branch. This is not required anymore and reviewers simply add commits into the
+   open PR.
+
 
 .. _new_annotations:
 
-Reviewing a new set of annotations
-----------------------------------
-
-.. admonition:: Update May 2022
-   :class: note
-
-   The procedure described in the following (i.e. the reviewer to merge the PR into ``main``, merge the updated ``main``
-   back into the annotation branch and create a new PR) is slightly redundant and soon to be deprecated. Additionally,
-   it is currently not working because merging a PR now requires at least 1 reviewer's approval on GitHub. Before the
-   automatic scripts will be updated to solve this problem, the best workaround requires the reviewer to install and
-   run a program in order to generate and commit a TSV file, which normally the ``ms3-bot`` would have done.
-   If the steps below don't make any sense to you, please contact us so we can set everything up together for the time being.
-
-   1. `Python 3 <https://www.python.org/downloads/>`__ needs to be installed on your system. If asked, have the
-      commands ``python`` and ``pip`` added to your PATH.
-   2. Install the program (a parser for MuseScore 3 files) via pip: ``pip install -U ms3``.
-   3. Navigate to the GitHub repo in question (using ``cd``) and checkout the Pull Request to be reviewed.
-   4. Issue the command ``ms3 extract -X -f MS3/{filename}`` replacing ``{filename}`` with the file you are about to review.
-   5. Take note of the log messages. The last one should say that the file ``harmonies/{filename}.tsv`` has been written,
-      which you can verify via ``git status``.
-   6. Commit the file using a message such as ``extracted annotations``.
-   7. Now you are ready to perform the review, committing one change at a time.
-   8. Leave the annotator/upgrader a comment with an ``@``-mention to make sure they are informed.
-
+Preparing the review
+--------------------
 
 First, open the Pull Request containing the new labels and check if all syntactic errors have been corrected.
   As can be seen in the following image, in the PR, all commits made by the annotator and by the ms3-bot are listed,
@@ -313,36 +348,25 @@ First, open the Pull Request containing the new labels and check if all syntacti
   correctness). In this case, please leave a comment below, asking the annotator to correct the labels and to let you
   know once they are done.
 
-.. admonition:: Warning
-   :class: danger
 
-   It is important to never merge syntactically incorrect labels into ``main`` because such errors would
-   propagate to other branches, causing failed syntax checks for your fellow annotators.
+Checkout the annotation branch and pull the changes.
+  ::
 
-Merge the PR
-  Once there are no syntactical errors left, take note of the annotator's comments, if any, to be able to react to them,
-  and click on 'Merge pull request'. This will trigger the script that
-  extracts the new labels and pushes the corresponding TSV file to the ``harmonies`` folder. Go to the main branch
-  and wait about 30 seconds, refreshing the page sporadically to see whether the ms3-bot has made the commit called
-  ``Automatically added TSV files from parse with ms3``. Then you're ready to continue.
-
-Merge the updated ``main`` branch into the updated annotation branch.
-  The newly created TSV files needs to be present in the annotation branch where you perform the review. Therefore,
-  assuming you are reviewing ``op01n01a.mscx``: ::
-
-    git checkout main
+    git checkout <branch>
     git pull
-    git checkout op01n01a
-    git pull
-    git merge main
 
 .. _how_to_review:
+
+Doing the review
+----------------
 
 Now you are ready to start your review.
   * At first you start by adding your initials to the metadata field ``reviewers`` (plural!), comma-separated in case
     the field is already populated. Doing that, you may also want to check whether the annotator spelled the fields
     ``annotators`` and ``harmony_version`` correctly.
-  * **Update November 2021** At any point of the review, check the associated :ref:`modulation plan <modulation_plans>`
+  * Check if the score has an invisible (unless written by the composer) metronome mark reflecting a tempo that you
+    could agree on. If not, create or modify it as an individual commit.
+  * **Update November 2021** If present, check the associated :ref:`modulation plan <modulation_plans>`
     by finding the corresponding HTML file in the folder ``tonicizations`` and opening it in your browser. It helps
     to check if the tonal structure expressed by the labels corresponds to the one you and the annotator have in mind.
   * Reviewing a new set of annotations means reading through the labels to see whether you agree with
@@ -356,35 +380,28 @@ Now you are ready to start your review.
     You may also address the comments and questions that the annotator had left with their original PR in commit
     messages, or you could address them in comments, as explained below.
     The procedure is technically identical with the :ref:`example screencast above <individual_commits>`.
-  * Once you are happy with the labels in their entirety, you are ready to push your changes, see whether the
-    syntax check passes, and launch a new Pull Request entitled ``Reviewed [file name]`` (you may do this even
-    before the syntax check finishes, since you can always add commits to a PR). While or after opening the PR,
-    please request a review from the annotator through this interface on the right side:
+  * Once you are happy with the labels in their entirety, you are ready to push your changes and see whether the
+    syntax check passes.
+  * **Important:** Go the ``Files changed`` tab in the Pull Request, click on "Review changes", set the radio button to
+    ``Approve``, leave the annotator a few friendly words, and click on "Submit review". Before you do this step, the
+    PR cannot be merged. By approving you are giving "green light" for the merge. If, on the other hand, you think
+    the set of labels isn't quite there yet, you can set the radio button to "Request changes" and write a detailed
+    comment on what you think needs further improvement, justifying why you did not do the change yourself.
 
-    .. figure:: img/github_review_suggestions.png
-       :alt: GitHub usually suggests the annotator for a review, otherwise use the menu to select the user handle.
+Engage in the discussion
+------------------------
 
-       GitHub usually suggests the annotator for a review, otherwise use the menu to select the user handle.
-  * Naturally, you may include comments or points worth discussing in the description of your PR. You can also
-    add comments on the bottom of the page, or attach a comment to a certain commit/change to have the changed
-    labels displayed together with your comment. To do that, in the open PR, you click on the commit in question,
-    and, in the particular line in the source code, click the plus symbol, as can be seen in the
-    :ref:`screenshot below <pr_comment>`. Be sure to always include a measure number, so that your respondent can
-    find the spot in the MuseScore file.
-  * From here on, monitor your GitHub notifications for reactions to your PR from the annotator. Use the comment
-    function to discuss individual solutions until you find a consensual one for each controversial label. This
-    process usually includes you and the annotator committing further changes to the MuseScore file with
-    expressive commit messages (always including the measure number). In case you are working with the automatically
-    generated ``_reviewed`` file to display all changes made in the PR, be aware that you never commit changes to this
-    file, since they will be overwritten automatically.
-  * In the (rare) case where you would be unable to form a consensus, please include in the discussion a third person
-    of whom you think they could bring in weighty arguments. Another way would be to bring the discussion to a
-    Mattermost channel if you think the question requires a fundamental decision based on a larger consensus.
-  * Once the new annotations correspond to a consensus between you and the annotator, the person who made the last
-    decision in the process merges the PR. As a last step, go to the main branch, wait for the automatic
-    ``Automatically added TSV files from parse with ms3`` commit, and check if the corresponding table row in the
-    README got updated correctly (otherwise, the metadata fields in the MuseScore file were not correctly populated).
-    The piece has now been finalized and is ready for eventual publication. Thank you!
+* From here on, monitor your GitHub notifications for reactions to your PR from the annotator. Use the comment
+  function to discuss individual solutions until you find a consensual one for each controversial label. This
+  process usually includes you and the annotator committing further changes to the MuseScore file with
+  expressive commit messages (always including the measure number). In case you are working with the automatically
+  generated ``_reviewed`` file to display the changes made in the last commits, be aware that you never commit changes to this
+  file, since they will be overwritten automatically.
+* In the (rare) case where you would be unable to form a consensus, please include in the discussion a third person
+  of whom you think they could bring in weighty arguments. Another way would be to bring the discussion to a
+  Mattermost channel if you think the question requires a fundamental decision based on a larger consensus.
+* Once the new annotations correspond to a consensus between you and the annotator, please "approve the change"
+  (see above) so that the annotator can merge the PR.
 
 
 Reviewing a set of upgraded annotations
@@ -509,27 +526,39 @@ There can be a range of reasons why you may see a ``WARNING`` in the output log 
    in the code. If you think it is, please `create an issue <https://github.com/DCMLab/dcml_corpus_workflow/issues>`__
    and point us to the error, e.g. by pasting the output or a link to it, and the score in question so we can look into it.
 
-
+In cases where the checker detects an irregularity in a score, e.g. irregular measure lengths that don't add up,
+and you notice that the irregularity is musically warranted (for instance, it could be a cadenza), you can prevent
+that particular warning from being displayed again by adding it to an :ref:`IGNORED_WARNINGS <ignored_warnings>` file.
 
 Syntax errors
 -------------
 
+.. _warning_8:
 
 #8 DCML_HARMONY_KEY_NOT_SPECIFIED_ERROR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_12:
+
 #12 DCML_HARMONY_INCOMPLETE_LOCALKEY_COLUMN_ERROR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _warning_13:
 
 #13 DCML_HARMONY_INCOMPLETE_PEDAL_COLUMN_ERROR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_15:
 
 #15 DCML_HARMONY_SYNTAX_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_16:
+
 #16 DCML_PHRASE_INCONGRUENCY_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _warning_17:
 
 #17 DCML_EXPANSION_FAILED_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -540,15 +569,22 @@ Syntax errors
 Semantic mismatches
 -------------------
 
+.. _warning_6:
+
 #6 DCML_HARMONY_SUPERFLUOUS_TONE_REPLACEMENT_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_18:
 
 #18 DCML_SEVENTH_CORD_WITH_ALTERED_SEVENTH_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_19:
+
 #19 DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 Irregularities and score encoding errors
 ----------------------------------------
@@ -558,40 +594,59 @@ Irregularities and score encoding errors
 #1 MCS_NOT_EXCLUDED_FROM_BARCOUNT_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_2:
+
 #2 INCORRECT_VOLTA_MN_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _warning_3:
 
 #3 INCOMPLETE_MC_WRONGLY_COMPLETED_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_4:
+
 #4 VOLTAS_WITH_DIFFERING_LENGTHS_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _warning_5:
 
 #5 MISSING_END_REPEAT_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_9:
 
 #9 COMPETING_MEASURE_INFO_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_14:
 
 #14 LOGGER_NOT_IN_USE_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_20:
 
 #20 UNUSED_FINE_MARKER_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_21:
+
 #21 PLAY_UNTIL_IS_MISSING_LABEL_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_22:
+
 #22 JUMP_TO_IS_MISSING_LABEL_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _warning_23:
 
 #23 MISSING_TIME_SIGNATURE_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 No time signature present throughout the piece. Needs adding one.
+
+.. _warning_24:
 
 #24 BEGINNING_WITHOUT_TIME_SIGNATURE_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -600,6 +655,8 @@ This warning shows when more than just the first bar has no time signature (if i
 it is considered to be an incipit). Please check if a time signature is missing or add the warning
 to :ref:`ignored_warnings`.
 
+.. _warning_25:
+
 #25 INVALID_REPEAT_STRUCTURE = 25
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -607,3 +664,24 @@ to :ref:`ignored_warnings`.
 
 IGNORED_WARNINGS
 ----------------
+
+In cases where ms3 detects an irregularity in a score, e.g. irregular measure lengths that don't add up,
+and you notice that the irregularity is musically warranted (for instance, it could be a cadenza), you can prevent
+that particular warning from being displayed again by adding it to an IGNORED_WARNINGS file. In other words,
+you go to your clone of the repository, open a new text file called ``ÌGNORED_WARNINGS`` (without file extension),
+and copy in the warning that you want to compress. You can either be lazy and copy the whole log message:
+
+.. parsed-literal::
+
+   VOLTAS_WITH_DIFFERING_LENGTHS_WARNING (4, 17) ms3.Parse.bach_en_fr_suites.BWV806_08_Bouree_I -- /home/hentsche/PycharmProjects/ms3/src/ms3/bs4_measures.py (line 817) treat_group():
+       Volta group of MC 17 contains voltas with different lengths: [2, 1] Check for correct computation of MNs and copy this message into an IGNORED_WARNINGS file to make the warning disappear.
+
+Or, the preferred way, would be to include only the heading up to the ``--``, and include a comment on why this warning
+should be ignored in the future, e.g.:
+
+.. parsed-literal::
+
+   VOLTAS_WITH_DIFFERING_LENGTHS_WARNING (4, 17) ms3.Parse.bach_en_fr_suites.BWV806_08_Bouree_I
+       First volta has two bars, m. 16a and m. 1b. Encoded as two measure numbering offsets, MC 18 has -15 and MC 19 has +15 because it's m. 16b.
+
+Commit the file and the warning should disappear. Otherwise, please `file an issue with ms3 <https://github.com/johentsch/ms3/issues>`__.
