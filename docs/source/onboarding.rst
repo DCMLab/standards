@@ -23,9 +23,9 @@ Working as an annotator
 * Before we commit to collaborating with potential annotators, we ask them to go through a
   trial onboarding phase during which they may familiarize themselves with the workflow and annotation syntax.
   Annotation tasks performed during the trial are remunerated at the same rate as regular annotation work.
-* If both sides accept to proceed after this trial phase, the newly trained collaborator begins to self-assign annotation tasks from a
-  list of available work packages, which consist in the identification of harmonic content, grouping structure, and cadence types
-  in the selected pieces.
+* If both sides accept to proceed after this trial phase, the newly trained collaborator begins to self-assign annotation
+  and review tasks from a list of available work packages, which consist in the identification of harmonic content,
+  grouping structure, and cadence types in the selected pieces.
 * Annotation labels must adhere to the `DCML Harmony Annotation Standard <https://dcmlab.github.io/standards`__.
   They are submitted for review using the :doc:`../workflow/workflow` which requires good knowledge and handling of
   the version control software `git <https://git-scm.com/>`__.
@@ -67,10 +67,10 @@ The tariffs for the aforementioned tasks are as follows:
 * reviewing new annotations created by someone else: 0.40 CHF per measure
 * reviewing annotations upgraded by someone else: 0.20 CHF per measure
 
-We have painstakingly adjusted these tarrifs and believe they are fair: while harmonic contents per measure vary, payments tend to even out over several commissions.
+We have painstakingly adjusted these tarifs and believe they are fair: while harmonic contents per measure vary, payments tend to even out over several commissions.
 
 The remuneration for each task is logged alongside the title of the respective work package once finalized. Whenever an annotator decides
-to invoice one or several commissions, (s)he can generate an automatic report and attach it to the invoice. Payments
+to invoice one or several commissions, they can generate an automatic report and attach it to the invoice. Payments
 usually arrive less than three weeks after sending an invoice.
 
 

@@ -5,8 +5,10 @@ TOC
 .. toctree::
   :maxdepth: 2
 
-  tutorial/index
   onboarding
+  workflow/workflow
+  openproject/openproject
+  tutorial/index
   git/git
   pipeline/pipeline
   reference/reference
