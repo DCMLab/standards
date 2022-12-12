@@ -69,8 +69,8 @@ The tariffs for the aforementioned tasks are as follows:
 
 We have painstakingly adjusted these tarifs and believe they are fair: while harmonic contents per measure vary, payments tend to even out over several commissions.
 
-The remuneration for each task is logged alongside the title of the respective work package once finalized. Whenever an annotator decides
-to invoice one or several commissions, they can generate an automatic report and attach it to the invoice. Payments
+The remuneration for each task is logged alongside the title of the respective work package once finalized. Once decided
+to invoice one or several commissions, an annotator can generate an automatic report and attach it to the invoice. Payments
 usually arrive less than three weeks after sending an invoice.
 
 
