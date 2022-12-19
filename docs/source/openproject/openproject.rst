@@ -103,6 +103,7 @@ Finalize the WP.
     cost items.
 
 
+
 Taking on an assignment
 =======================
 
@@ -143,6 +144,8 @@ Open the details of the corresponding work package.
 1. Change the status from ``Available`` to ``In progress``.
 2. Add your name to the field "Assignee" (which should be empty).
 3. Set the "Start date" to ``Today``.
+
+.. _after_the_task:
 
 After the task
 ~~~~~~~~~~~~~~
