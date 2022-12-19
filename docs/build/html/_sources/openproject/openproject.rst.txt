@@ -81,7 +81,7 @@ Self-assign.
     you can enter your name and set the status to ``In progress`` **and the Start date to "Today"**.
     Otherwise, the task has been assigned to someone else. For details, :ref:`see below <taking_on_a_task>`.
 
-Perform the task according to the usual :doc:`GitHub workflow <../git/git>`.
+Perform the task according to the usual :doc:`GitHub workflow <../workflow/workflow>`.
   * If you are the WP's ``Assignee`` you end your task by creating a Pull Request that you link to the WP by including
     the WP's URL in the PR's description (:ref:`see screencast below <linking_pr>`).
   * If you are the WP's ``Reviewer`` your task ideally ends with you having committed to the PR to the point where you
@@ -101,6 +101,7 @@ Finalize the WP.
   * The WP's status is changed to ``Done`` so it can show up in the :ref:`cost reports <creating_cost_report>`.
   * The WP's ``Finish date`` needs to be set to "Today" so as to allow for filtering out previously invoiced
     cost items.
+
 
 
 Taking on an assignment
@@ -143,6 +144,8 @@ Open the details of the corresponding work package.
 1. Change the status from ``Available`` to ``In progress``.
 2. Add your name to the field "Assignee" (which should be empty).
 3. Set the "Start date" to ``Today``.
+
+.. _after_the_task:
 
 After the task
 ~~~~~~~~~~~~~~

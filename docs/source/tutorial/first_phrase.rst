@@ -2,6 +2,15 @@
 The first phrase
 ****************
 
+Tempo marking
+=============
+
+Before you start annotating you want to get familiar with the piece in question (if you aren't already) and get an
+idea of the tempo and harmonic rhythm you're imagining for it. Once you've made up your mind, please drag a metronome
+mark with the relevant note value from the ``Tempo`` palette into the first measure, double click to change the value,
+and press ``V`` to set it to invisible (it becomes grey). If the palettes don't show, toggle them via ``F9`` or
+``View -> Palettes``.
+
 Phrase annotations
 ==================
 

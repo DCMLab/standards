@@ -4,8 +4,8 @@ This repository contains the standard for harmonic annotations developed at the 
 
 ## Harmonic annotation standard
 
-The DCML standard for harmonic annotations consists in a set of [annotation guidelines](https://github.com/DCMLab/standards/blob/master/guidelines/english.md) and a [regular expression](https://github.com/DCMLab/standards/blob/master/harmony.py). The guidelines are the reference for annotators applying the standard for the task of encoding harmonic analysis, and explain how the open-source software [MuseScore](https://musescore.org/) can be used to enter chord labels into scores so that they can be
-* automatically extracted using the tools developed at the DCML, and
+The DCML standard for harmonic annotations consists in a detailed [annotation tutorial](https://dcmlab.github.io/standards/build/html/tutorial/), a [reference](https://dcmlab.github.io/standards), and a [regular expression](https://github.com/DCMLab/standards/blob/master/harmony.py). The tutorial represents the reference for annotators applying the standard for the task of encoding harmonic analysis, and explain how the open-source software [MuseScore 3](https://github.com/musescore/MuseScore/releases/tag/v3.6.2) can be used to enter chord labels into scores so that they can be
+* automatically extracted using the [parser](https://johentsch.github.io/ms3) developed at the DCML, and
 * split into the various encoded features using the regular expression.
 
 ### Use Cases
@@ -15,6 +15,11 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 
 ### Release Notes
+
+#### v2.3.0
+
+* Annotations may now include appended cadence labels, `PAC, IAC, HC, DC, EC, PC`, separated by a pip `|`; for example: `V}|HC`
+* `v` introduced as counterpart of `^`: it indicates that an interval replaces the lower instead of the upper note, e.g. `I(v7)` for a seventh that replaces a sixth rather than the octave.
 
 #### v2.2.0
 
@@ -31,7 +36,7 @@ The DCML standard for harmonic annotations consists in a set of [annotation guid
 
 * In this version of the regex, `@none` is admitted as a symbol and interpreted as a numeral (root).
 * The position of the initial dot was moved because the prior version did not accept some correct labels, such as `.bIII.bIII`.
-* Guidelines updated on the [use of augmented sixth chords](https://github.com/DCMLab/standards/blob/develop/guidelines/english.md#augmented-6th-chords-fr-ger-it6).
+* Guidelines updated on the use of augmented sixth chords.
 
 #### v2.1.0
 

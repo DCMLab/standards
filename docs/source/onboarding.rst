@@ -26,14 +26,14 @@ Working as an annotator
 * If both sides accept to proceed after this trial phase, the newly trained collaborator begins to self-assign annotation
   and review tasks from a list of available work packages, which consist in the identification of harmonic content,
   grouping structure, and cadence types in the selected pieces.
-* Annotation labels must adhere to the `DCML Harmony Annotation Standard <https://dcmlab.github.io/standards`__.
+* Annotation labels must adhere to the `DCML Harmony Annotation Standard <https://dcmlab.github.io/standards>`__.
   They are submitted for review using the :doc:`../workflow/workflow` which requires good knowledge and handling of
   the version control software `git <https://git-scm.com/>`__.
 
 To get an idea of the whole process, you may refer to the following two publications:
 
-- Conference paper on the annotation workflow: `https://doi.org/10.5281/zenodo.5624416`__ (the essential sections are 3 through 4.4)
-- Data report on the Annotated Mozart Sonatas: `http://doi.org/10.5334/tismir.63`__
+- Conference paper on the annotation workflow: `<https://doi.org/10.5281/zenodo.5624416>`__ (the essential sections are 3 through 4.4)
+- Data report on the Annotated Mozart Sonatas: `<http://doi.org/10.5334/tismir.63>`__
 
 Tasks
 -----
@@ -106,7 +106,7 @@ How to get involved
 ===================
 
 If you're interested in becoming an annotator and fulfill the minimum requirements above, we invite you to introduce
-yourself and express your interest in an email to `dcml.annotators@epfl.ch`__. We will let you know whether we have
+yourself and express your interest in an email to `dcml.annotators@epfl.ch <dcml.annotators@epfl.ch>`__. We will let you know whether we have
 openings for new annotators or not. If so, we will invite you to proceed as follows.
 
 Before the trial phase
