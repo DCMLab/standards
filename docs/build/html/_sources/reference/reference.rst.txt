@@ -26,7 +26,7 @@ you encounter. In this context, we use the words 'symbols', 'chord
 symbols', 'labels', 'expressions', and 'annotations' interchangeably.
 Generally you encounter them in two different contexts: Either
 when you open a digital score in the XML format of the open-source
-notation software `MuseScore 3 <https://musescore.org/en/download>`__,
+notation software `MuseScore 3.6.2 <https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__,
 or in the form of an annotation table, that is a table in which
 each row represents a label and each column one of its properties
 such as position in the score, the key it occurs in, the chord

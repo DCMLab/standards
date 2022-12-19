@@ -296,27 +296,55 @@ via Git before they get familiar with the DCML annotation workflow. Our <a class
 contains the bare minimum of what annotators need to know, but if you’re completely new to Git, please make sure
 to read, watch, or do a couple of tutorials online.</p>
 </div>
+<div class="caution admonition">
+<p class="admonition-title">Summary of workflow update December 2022</p>
+<ul class="simple">
+<li><p>Before annotating or upgrading a piece, the assignee adds an invisible metronome marking to the first bar.</p></li>
+<li><p>Annotation/Upgrade and Review take place in the same Pull Request (no prior merging into <code class="docutils literal notranslate"><span class="pre">main</span></code>!).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> files now to be found in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> folder. A couple of things are new:</p>
+<ul>
+<li><p>The red and green labels now reflect the changes between the current set of labels and the previous bot commit,
+i.e. since the last time someone pushed changes to the MuseScore file in question.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> files show all out-of-label notes in red.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> folder additionally contains <a class="reference internal" href="#review-reports"><span class="std std-ref">TSV files that reflect the note coloring</span></a></p></li>
+</ul>
+</li>
+<li><p>When the bot checks the modified scores and encounters any warnings (including those concerning mismatches between
+labels and scores) it will write them into the <code class="docutils literal notranslate"><span class="pre">warnings.log</span></code> file for you to look them up. It’s commit message
+will end on <code class="docutils literal notranslate"><span class="pre">(tests</span> <span class="pre">failed)</span></code>.</p></li>
+<li><p>Everytime a Pull Request is merged, the bot will perform the review on all scores. That is to say, the
+<code class="docutils literal notranslate"><span class="pre">warnings.log</span></code> file on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch shows all remaining errors.</p></li>
+<li><p>Sometimes, warnings that cause the tests to fail are due to irregularities in the original scores. To make the
+test pass anyway, we <a class="reference internal" href="#ignored-warnings"><span class="std std-ref">add the warning to an IGNORED_WARNINGS</span></a> file, potentially with a
+comment for other humans.</p></li>
+</ul>
+</div>
 <section id="short-summary">
 <h2><a class="toc-backref" href="#id22" role="doc-backlink">Short summary</a><a class="headerlink" href="#short-summary" title="Permalink to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Annotator:</p>
 <ul class="simple">
-<li><p>creates a new branch (splitting off of <code class="docutils literal notranslate"><span class="pre">main</span></code>!) named after the file to be annotated</p></li>
-<li><p>pushes annotations and corrects errors that were <a class="reference internal" href="#syntax-errors"><span class="std std-ref">automatically detected on GitHub</span></a>,</p></li>
-<li><p>creates Pull Request (PR)</p></li>
+<li><p>(<a class="reference internal" href="../openproject/openproject.html#taking-on-a-task"><span class="std std-ref">Takes on the work package via OpenProject</span></a>)</p></li>
+<li><p><strong>creates a new branch (splitting off of the main branch!) named after the file to be annotated</strong></p></li>
+<li><p><strong>pushes annotations and corrects errors that were</strong> <a class="reference internal" href="#syntax-errors"><span class="std std-ref">automatically detected on GitHub</span></a>,</p></li>
+<li><p><strong>creates Pull Request (PR)</strong></p></li>
+<li><p>(<a class="reference internal" href="../openproject/openproject.html#after-the-task"><span class="std std-ref">On OpenProject: links PR, changes status, logs costs</span></a>)</p></li>
 </ul>
 </li>
 <li><p>Reviewer:</p>
 <ul class="simple">
-<li><p>reviews the annotations and commits every change separately into the open PR</p></li>
-<li><p>approves the changes on GitHub, enabling the annotator to agree and merge</p></li>
+<li><p>(<a class="reference internal" href="../openproject/openproject.html#taking-on-a-review"><span class="std std-ref">Takes on the work package via OpenProject</span></a>)</p></li>
+<li><p><strong>reviews the annotations and commits every change separately into the open PR</strong></p></li>
+<li><p><strong>approves the changes on GitHub, enabling the annotator to agree and merge</strong></p></li>
+<li><p>(<a class="reference internal" href="../openproject/openproject.html#logging-costs"><span class="std std-ref">Logs the cost on OpenProject</span></a>)</p></li>
 </ul>
 </li>
 <li><p>Annotator:</p>
 <ul class="simple">
-<li><p>Pulls the changes and goes through reviewer’s commits in the PR</p></li>
-<li><p>in case of disagreement, enters into discussion with reviewer until consensus is reached</p></li>
-<li><p>merges PR as soon as both parties agree on a set of labels.</p></li>
+<li><p><strong>Pulls the changes and goes through reviewer’s commits in the PR</strong></p></li>
+<li><p><strong>in case of disagreement, enters into discussion with reviewer until consensus is reached</strong></p></li>
+<li><p><strong>merges PR as soon as both parties agree on a set of labels.</strong></p></li>
+<li><p>(<a class="reference internal" href="../openproject/openproject.html#after-the-task"><span class="std std-ref">Finalizes the package on OpenProject, enabling invoicing</span></a>)</p></li>
 </ul>
 </li>
 </ol>
@@ -349,6 +377,11 @@ from time to time. Don’t forget to create the following metadata fields by goi
 <p><span class="caption-text">Entering metadata in MuseScore</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
+<p>Then, make sure that the score has an invisible metronome mark that reflects the tempo you’re imagining.</p>
+<div class="note admonition">
+<p class="admonition-title">Tip</p>
+<p>There are online metronomes that let you tap/click and tell you the tempo, e.g. <a class="reference external" href="https://online-metronome.org/">https://online-metronome.org/</a></p>
+</div>
 </dd>
 <dt>Commit your changes locally and describe the commit in the commit message.</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">-</span><span class="n">A</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;annotated mm. 1-15&quot;</span>
@@ -466,8 +499,12 @@ a pull request:</p>
 include the URL of the OpenProject work package in the description.
 Feel free to add anything worth knowing below, e.g. specific measures where you would like to ask the reviewer for
 a second opinion. Once you confirm with
-the green button “Create pull request”, you’re done. In case more pieces were commissioned to you, you can continue
-annotating, but make sure to create the new branch for the next piece after checking out and updating <code class="docutils literal notranslate"><span class="pre">main</span></code> first!</p>
+the green button “Create pull request”, you’re done on GitHub; don’t forget to
+<a class="reference internal" href="../openproject/openproject.html#after-the-task"><span class="std std-ref">change the status and log the costs on OpenProject</span></a>.</p>
+<div class="caution admonition">
+<p class="admonition-title">Important</p>
+<p>Before you continue with the next task, make sure to checkout and pull the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch before creating the new branch.</p>
+</div>
 <section id="review-reports">
 <span id="id2"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink">Review reports</a><a class="headerlink" href="#review-reports" title="Permalink to this heading">¶</a></h3>
 <div class="admonition note">
@@ -690,7 +727,7 @@ two in this example.</p>
 <p><span class="caption-text">A pull request were some syntactic errors have not been corrected yet.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>It is important to note that the last commit made by the annotator (<code class="docutils literal notranslate"><span class="pre">fully</span> <span class="pre">annotated</span> <span class="pre">op01n01a</span></code>) has a red cross instead of a green check. Although
+<p>It is important to notice that the last commit made by the annotator (<code class="docutils literal notranslate"><span class="pre">writes</span> <span class="pre">metadata</span> <span class="pre">into</span> <span class="pre">scores</span></code>) has a red cross instead of a green check. Although
 the last commit by the ms3-bot has a green check, the error persists (bot’s commits are not checked for syntactical
 correctness). In this case, please leave a comment below, asking the annotator to correct the labels and to let you
 know once they are done.</p>
@@ -755,9 +792,8 @@ Mattermost channel if you think the question requires a fundamental decision bas
 <section id="reviewing-a-set-of-upgraded-annotations">
 <h3><a class="toc-backref" href="#id31" role="doc-backlink">Reviewing a set of upgraded annotations</a><a class="headerlink" href="#reviewing-a-set-of-upgraded-annotations" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
-<dt>Making use of the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file.</dt><dd><p>In the case that existing labels were upgraded, the corresponding TSV file was already present in the <code class="docutils literal notranslate"><span class="pre">harmonies</span></code>
-folder, meaning that after every push into the open PR, ms3-bot updates the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file to reflect <cite>all</cite>
-changes made within the PR.
+<dt>Making use of the <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file.</dt><dd><p>In the case that existing labels were upgraded, the bot will have created a <code class="docutils literal notranslate"><span class="pre">_reviewed</span></code> file in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> folder
+that shows which labels between the current and the last bot commit.
 This means that for starting the review, you can checkout and pull the corresponding branch and view the file to
 see all changes made by the upgrader. Once you commit your changes on top,
 the file will be updated to reflect the changes between the deprecated labels

@@ -58,8 +58,8 @@ and unpack it to your disk.
 Get the latest version of MuseScore 3
 -------------------------------------
 
-Please make sure to be using the latest stable version from the
-`MuseScore 3 download page <https://musescore.org/download>`__.
+Please make sure to be using version 3.6.2 from the
+`official GitHub page <https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__.
 
 Downloading MuseScore
 ^^^^^^^^^^^^^^^^^^^^^

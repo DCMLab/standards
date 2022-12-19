@@ -11,26 +11,53 @@ DCML annotation workflow
    contains the bare minimum of what annotators need to know, but if you're completely new to Git, please make sure
    to read, watch, or do a couple of tutorials online.
 
+.. admonition:: Summary of workflow update December 2022
+   :class: caution
+
+   * Before annotating or upgrading a piece, the assignee adds an invisible metronome marking to the first bar.
+   * Annotation/Upgrade and Review take place in the same Pull Request (no prior merging into ``main``!).
+   * ``_reviewed`` files now to be found in the ``reviewed`` folder. A couple of things are new:
+
+     * The red and green labels now reflect the changes between the current set of labels and the previous bot commit,
+       i.e. since the last time someone pushed changes to the MuseScore file in question.
+     * The ``_reviewed`` files show all out-of-label notes in red.
+     * The ``reviewed`` folder additionally contains :ref:`TSV files that reflect the note coloring <review_reports>`
+
+   * When the bot checks the modified scores and encounters any warnings (including those concerning mismatches between
+     labels and scores) it will write them into the ``warnings.log`` file for you to look them up. It's commit message
+     will end on ``(tests failed)``.
+   * Everytime a Pull Request is merged, the bot will perform the review on all scores. That is to say, the
+     ``warnings.log`` file on the ``main`` branch shows all remaining errors.
+   * Sometimes, warnings that cause the tests to fail are due to irregularities in the original scores. To make the
+     test pass anyway, we :ref:`add the warning to an IGNORED_WARNINGS <ignored_warnings>` file, potentially with a
+     comment for other humans.
+
+
 Short summary
 =============
 
 
 #. Annotator:
 
-   * creates a new branch (splitting off of ``main``!) named after the file to be annotated
-   * pushes annotations and corrects errors that were :ref:`automatically detected on GitHub <syntax_errors>`,
-   * creates Pull Request (PR)
+   * (:ref:`Takes on the work package via OpenProject <taking_on_a_task>`)
+   * **creates a new branch (splitting off of the main branch!) named after the file to be annotated**
+   * **pushes annotations and corrects errors that were** :ref:`automatically detected on GitHub <syntax_errors>`,
+   * **creates Pull Request (PR)**
+   * (:ref:`On OpenProject: links PR, changes status, logs costs <after_the_task>`)
 
 #. Reviewer:
 
-   * reviews the annotations and commits every change separately into the open PR
-   * approves the changes on GitHub, enabling the annotator to agree and merge
+   * (:ref:`Takes on the work package via OpenProject <taking_on_a_review>`)
+   * **reviews the annotations and commits every change separately into the open PR**
+   * **approves the changes on GitHub, enabling the annotator to agree and merge**
+   * (:ref:`Logs the cost on OpenProject <logging_costs>`)
 
 #. Annotator:
 
-   * Pulls the changes and goes through reviewer's commits in the PR
-   * in case of disagreement, enters into discussion with reviewer until consensus is reached
-   * merges PR as soon as both parties agree on a set of labels.
+   * **Pulls the changes and goes through reviewer's commits in the PR**
+   * **in case of disagreement, enters into discussion with reviewer until consensus is reached**
+   * **merges PR as soon as both parties agree on a set of labels.**
+   * (:ref:`Finalizes the package on OpenProject, enabling invoicing <after_the_task>`)
 
 More details can be found below.
 
@@ -65,6 +92,13 @@ Annotate the piece.
       :scale: 80%
 
       Entering metadata in MuseScore
+
+  Then, make sure that the score has an invisible metronome mark that reflects the tempo you're imagining.
+
+  .. admonition:: Tip
+     :class: note
+
+     There are online metronomes that let you tap/click and tell you the tempo, e.g. https://online-metronome.org/
 
 Commit your changes locally and describe the commit in the commit message.
   ::
@@ -175,8 +209,13 @@ Give the pull request a meaningful name including the exact file name, and
 include the URL of the OpenProject work package in the description.
 Feel free to add anything worth knowing below, e.g. specific measures where you would like to ask the reviewer for
 a second opinion. Once you confirm with
-the green button "Create pull request", you're done. In case more pieces were commissioned to you, you can continue
-annotating, but make sure to create the new branch for the next piece after checking out and updating ``main`` first!
+the green button "Create pull request", you're done on GitHub; don't forget to
+:ref:`change the status and log the costs on OpenProject <after_the_task>`.
+
+.. admonition:: Important
+   :class: caution
+
+   Before you continue with the next task, make sure to checkout and pull the ``main`` branch before creating the new branch.
 
 .. _review_reports:
 
@@ -343,7 +382,7 @@ First, open the Pull Request containing the new labels and check if all syntacti
 
      A pull request were some syntactic errors have not been corrected yet.
 
-  It is important to note that the last commit made by the annotator (``fully annotated op01n01a``) has a red cross instead of a green check. Although
+  It is important to notice that the last commit made by the annotator (``writes metadata into scores``) has a red cross instead of a green check. Although
   the last commit by the ms3-bot has a green check, the error persists (bot's commits are not checked for syntactical
   correctness). In this case, please leave a comment below, asking the annotator to correct the labels and to let you
   know once they are done.
@@ -408,9 +447,8 @@ Reviewing a set of upgraded annotations
 ---------------------------------------
 
 Making use of the ``_reviewed`` file.
-  In the case that existing labels were upgraded, the corresponding TSV file was already present in the ``harmonies``
-  folder, meaning that after every push into the open PR, ms3-bot updates the ``_reviewed`` file to reflect `all`
-  changes made within the PR.
+  In the case that existing labels were upgraded, the bot will have created a ``_reviewed`` file in the ``reviewed`` folder
+  that shows which labels between the current and the last bot commit.
   This means that for starting the review, you can checkout and pull the corresponding branch and view the file to
   see all changes made by the upgrader. Once you commit your changes on top,
   the file will be updated to reflect the changes between the deprecated labels
