@@ -71,7 +71,7 @@ how your Git should handle these solutions. Please use the following command to 
 
 (If you want to set the behaviour for each repository individually, omit ``--global``.) Another thing that will make
 your life a bit easier is the auto-stash behaviour. In short, it dispenses with the obligation to commit all your
-local modifications when pulling. To activate it globally:
+local modifications when pulling. To activate it globally::
 
   git config --global rebase.autoStash true
 
@@ -79,27 +79,29 @@ Choose your favourite text editor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes you are asked to edit, store, and close a pre-configured commit message in a text editor.
-`GitHub has a few example commands <git config --global pull.rebase true>`__ of how you can change which text editor
-should be used.
+`This blog post has a few example commands <https://medium.com/geekculture/a-step-by-step-guide-to-setting-up-git-config-global-properties-db6dbce30fa8>`__
+but they all boil down to::
+
+  git config --global core.editor <editor>
 
 Automatically creating remote branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Maybe you've also had this _eureka_ moment when you discovered that the command to create and track a new
-remote branch can be shortened from
+remote branch can be shortened from::
 
   git push --set-upstream-to origin <annotation_branch>
 
-to
+to::
 
   git push -u origin <annotation_branch>
 
-or even
+or even::
 
   git push -u
 
 but what if you never had to think about it anymore by having Git do it automatically for you?
-If you would like that, you can set:
+If you would like that, you can set::
 
   git config --global push.autoSetupRemote true
 
