@@ -328,36 +328,39 @@ how your Git should handle these solutions. Please use the following command to 
 <p>(If you want to set the behaviour for each repository individually, omit <code class="docutils literal notranslate"><span class="pre">--global</span></code>.) Another thing that will make
 your life a bit easier is the auto-stash behaviour. In short, it dispenses with the obligation to commit all your
 local modifications when pulling. To activate it globally:</p>
-<blockquote>
-<div><p>git config –global rebase.autoStash true</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">rebase</span><span class="o">.</span><span class="n">autoStash</span> <span class="n">true</span>
+</pre></div>
+</div>
 </section>
 <section id="choose-your-favourite-text-editor">
 <h3><a class="toc-backref" href="#id9" role="doc-backlink">Choose your favourite text editor</a><a class="headerlink" href="#choose-your-favourite-text-editor" title="Permalink to this heading">¶</a></h3>
 <p>Sometimes you are asked to edit, store, and close a pre-configured commit message in a text editor.
-<a class="reference external" href="gitconfig--globalpull.rebasetrue">GitHub has a few example commands</a> of how you can change which text editor
-should be used.</p>
+<a class="reference external" href="https://medium.com/geekculture/a-step-by-step-guide-to-setting-up-git-config-global-properties-db6dbce30fa8">This blog post has a few example commands</a>
+but they all boil down to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">core</span><span class="o">.</span><span class="n">editor</span> <span class="o">&lt;</span><span class="n">editor</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </section>
 <section id="automatically-creating-remote-branches">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink">Automatically creating remote branches</a><a class="headerlink" href="#automatically-creating-remote-branches" title="Permalink to this heading">¶</a></h3>
 <p>Maybe you’ve also had this _eureka_ moment when you discovered that the command to create and track a new
-remote branch can be shortened from</p>
-<blockquote>
-<div><p>git push –set-upstream-to origin &lt;annotation_branch&gt;</p>
-</div></blockquote>
-<p>to</p>
-<blockquote>
-<div><p>git push -u origin &lt;annotation_branch&gt;</p>
-</div></blockquote>
-<p>or even</p>
-<blockquote>
-<div><p>git push -u</p>
-</div></blockquote>
+remote branch can be shortened from:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">upstream</span><span class="o">-</span><span class="n">to</span> <span class="n">origin</span> <span class="o">&lt;</span><span class="n">annotation_branch</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="o">&lt;</span><span class="n">annotation_branch</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or even:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span>
+</pre></div>
+</div>
 <p>but what if you never had to think about it anymore by having Git do it automatically for you?
 If you would like that, you can set:</p>
-<blockquote>
-<div><p>git config –global push.autoSetupRemote true</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">push</span><span class="o">.</span><span class="n">autoSetupRemote</span> <span class="n">true</span>
+</pre></div>
+</div>
 <p>if your Git version is &gt;= 2.37 (late 2022).</p>
 </section>
 </section>
