@@ -87,7 +87,7 @@ but they all boil down to::
 Automatically creating remote branches
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Maybe you've also had this _eureka_ moment when you discovered that the command to create and track a new
+Maybe you've also had this *eureka* moment when you discovered that the command to create and track a new
 remote branch can be shortened from::
 
   git push --set-upstream-to origin <annotation_branch>
