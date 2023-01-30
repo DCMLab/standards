@@ -103,7 +103,7 @@ Annotate the piece.
 Commit your changes locally and describe the commit in the commit message.
   ::
 
-    git add -A
+    git add MS3
     git commit -m "annotated mm. 1-15"
 
   .. hint:: Since you'll use these commands quite a lot, you might want to create aliases, i.e., shortcut commands,
@@ -310,7 +310,7 @@ Create a new branch and adapt the metadata.
   the score is already open and you see how the metadata is updated and committed to a new branch called ``op01n06a``.
 
   .. note:: that the commands ``ga`` and ``gc`` are aliases, i.e. shortcut commands, which you would replace by
-     ``git add -A`` and ``git commit -m`` respectively (unless you have created your own aliases).
+     ``git add MS3`` and ``git commit -m`` respectively (unless you have created your own aliases).
 
   .. figure:: img/upgrade_metadata.gif
      :alt: Updating the metadata reflecting the version upgrade.
@@ -326,7 +326,7 @@ Review and update the labels and commit your changes individually.
   the file is saved and the change is committed with the measure number and an explanation.
 
   .. note:: that the commands ``ga`` and ``gc`` are aliases, i.e. shortcut commands, which you would replace by
-     ``git add -A`` and ``git commit -m`` respectively (unless you have created your own aliases).
+     ``git add MS3`` and ``git commit -m`` respectively (unless you have created your own aliases).
 
   .. _individual_commits:
 
