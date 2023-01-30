@@ -14,6 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script>let toggleHintShow = 'Show answer';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -96,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../git/git.html">Quick Git Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#installing-git">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git.html#configuring-git">Configuring Git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#cloning-a-repository-from-github">Cloning a Repository from GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#selecting-the-right-branch">Selecting the right Branch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git.html#applying-changes-to-the-repository">Applying Changes to the Repository</a></li>
@@ -556,7 +558,7 @@ this:</p>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 
 <span class="k">def</span> <span class="nf">get_regex</span><span class="p">(</span><span class="n">git_branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    git_branch : :obj:`str`</span>
@@ -646,7 +648,7 @@ with negative lookahead needs to be used, e.g. like this:</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">split_alternatives</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Splits labels that come with an alternative separated by &#39;-&#39; and adds</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Splits labels that come with an alternative separated by &#39;-&#39; and adds</span>
 <span class="sd">        a new column. Only one alternative is taken into account. `df` is</span>
 <span class="sd">        mutated inplace.</span>
 
@@ -690,7 +692,7 @@ the following example.</p>
 <span class="kn">from</span> <span class="nn">split_alternatives</span> <span class="kn">import</span> <span class="n">split_alternatives</span>
 
 <span class="k">def</span> <span class="nf">split_labels</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">regex</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="p">{},</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Split harmony labels complying with the DCML syntax into columns holding their various features.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Split harmony labels complying with the DCML syntax into columns holding their various features.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -737,7 +739,7 @@ the following example.</p>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">spl</span><span class="p">[</span><span class="n">features</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">mistakes</span> <span class="o">=</span> <span class="n">spl</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">all</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">mistakes</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The following chords could not be parsed:</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mistakes</span><span class="p">,</span> <span class="p">:</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The following chords could not be parsed:</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mistakes</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 </pre></div>
 </div>
@@ -804,7 +806,7 @@ position <code class="docutils literal notranslate"><span class="pre">viio(b3)/V
     </p>
     <p>
         &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br/>
     </p>
   </div>
 </footer>

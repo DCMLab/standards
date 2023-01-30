@@ -41,25 +41,83 @@ If the command fails install Git with your system's package manger or head to
 `this page <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>`__
 for instructions.
 
+.. _configuring_git:
+
+Configuring Git
+---------------
+
+If this is the first time you are using Git, there are a few things you will need to set up before
+you can really get started.
+
+Setting up SSH
+^^^^^^^^^^^^^^
+
+In order to clone and push to private repositories (invisible to the public) you need to tell your Git installation
+to use a cryptographic SSH key that identifies you. Simply follow the step-by-step instructions on GitHub
+for the following to steps (make sure you have selected the correct operation system). It's  mostly a matter of
+copying the commands into your terminal and pressing Enter:
+
+#. GitHub docs on `Generating a new SSH key and adding it to the ssh-agent <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`__
+#. GitHub docs on `Adding a new SSH key to your GitHub account <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account>`__
+
+Merge or rebase?
+^^^^^^^^^^^^^^^^
+
+It happens to everyone: You push your latest commits but forgot to pull the latest changes that the bot made after
+your last push: the local branch and the remote branch have diverged! The first time this happens you will be asked
+how your Git should handle these solutions. Please use the following command to set the default behaviour to rebase:
+
+  git config --global pull.rebase true
+
+(If you want to set the behaviour for each repository individually, omit ``--global``.) Another thing that will make
+your life a bit easier is the auto-stash behaviour. In short, it dispenses with the obligation to commit all your
+local modifications when pulling. To activate it globally:
+
+  git config --global rebase.autoStash true
+
+Choose your favourite text editor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes you are asked to edit, store, and close a pre-configured commit message in a text editor.
+`GitHub has a few example commands <git config --global pull.rebase true>`__ of how you can change which text editor
+should be used.
+
+Automatically creating remote branches
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Maybe you've also had this _eureka_ moment when you discovered that the command to create and track a new
+remote branch can be shortened from
+
+  git push --set-upstream-to origin <annotation_branch>
+
+to
+
+  git push -u origin <annotation_branch>
+
+or even
+
+  git push -u
+
+but what if you never had to think about it anymore by having Git do it automatically for you?
+If you would like that, you can set:
+
+  git config --global push.autoSetupRemote true
+
+if your Git version is >= 2.37 (late 2022).
+
+
 Cloning a Repository from GitHub
 --------------------------------
 
-Go to the GitHub repository, click on the ``Code`` button and copy the URL:
+Go to the GitHub repository, click on the ``Code`` button, click on ``SSH``, and copy the URL:
 |github_url|
 
 Then, in your terminal, navigate (``cd [folder]``) to the place where you want
 your local clone of the repository and do a simple ``git clone [copied URL]``.
-If asked, log in with your GitHub credentials. This copies the entire repository,
-including the entire history and all branches to your disk. From now on you will
+If it fails, it might be because it's a private repo and you need to add your SSH key to GitHub first
+(see the :ref:`configuring_git` section above). From now on you will
 be constantly harmonizing the history of your local clone with the history of the
 'origin', i.e. the 'remote' repository on GitHub.
-
-.. note::
-
-    In order to cache your credentials, avoiding to re-enter them for a certain
-    period, config your Git, for example, to 3 hours:
-    git config --global credential.helper 'cache --timeout=10800'
-
 
 
 Selecting the right Branch
@@ -138,6 +196,11 @@ Git will tell you the command to use, e.g.:
 
     git push --set-upstream origin new_branch_name
 
+.. note::
+
+    The :ref:`configuring_git` section suggests a couple of settings to make your like easier, such as for
+    automatically setting up the new remote branch.
+
 Applying Changes to the Repository
 ----------------------------------
 
@@ -149,7 +212,7 @@ local history, you will be using the same two commands:
 
 .. code-block:: console
 
-  git add -A
+  git add MS3
   git commit -m "[COMMIT_MESSAGE]"
 
 As a rule of thumb you should use these commands as often as possible for at least
@@ -178,7 +241,7 @@ Uploading Changes to GitHub
 Once you have finished your work for the day, you want to upload, 'push', all
 your registered commits to the branch's origin on GitHub. First you will make
 sure to integrate all commits that other people might have pushed to the remote
-branch in between: ``git pull``. Git tries to integrate, 'merge', the other
+branch in between: ``git pull``. Git tries to integrate, 'rebase' or 'merge', the other
 contributors' changes with your local changes. If you and someone else have made
 changes in the same places of the same file, Git will let you know about this
 'merge conflict' and ask you to resolve all of these conflicts. This is most
