@@ -60,14 +60,14 @@ tasks reviewed.
 Remuneration and invoicing
 --------------------------
 
-The tariffs for the aforementioned tasks are as follows:
+The tariffs for the aforementioned tasks (since January 2023) are as follows:
 
 * new annotations: 0.50 CHF per measure
-* upgrading existing annotations: 0.40 CHF per measure
-* reviewing new annotations created by someone else: 0.40 CHF per measure
-* reviewing annotations upgraded by someone else: 0.20 CHF per measure
+* upgrading existing annotations: 0.50 CHF per measure
+* reviewing new annotations created by someone else: 0.50 CHF per measure
+* reviewing annotations upgraded by someone else: 0.50 CHF per measure
 
-We have painstakingly adjusted these tarifs and believe they are fair: while harmonic contents per measure vary, payments tend to even out over several commissions.
+While harmonic contents per measure vary, payments tend to even out over several commissions.
 
 The remuneration for each task is logged alongside the title of the respective work package once finalized. Whenever an annotator decides
 to invoice one or several commissions, they can generate an automatic report and attach it to the invoice. Payments
@@ -92,7 +92,8 @@ Minimum requirements
 
 * a Master’s degree in Music Theory (or equivalent);
 * excellent knowledge of tonal harmony, contrapuntal patterns, and schemata;
-* a computer running the latest version of `MuseScore <https://musescore.org/>`__;
+* a computer running `MuseScore 3.6.2 <`https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__
+  (which you can run alongside your MuseScore 4);
 * willingness to undertake tasks on a regular basis;
 * a bank account under your name, which accepts money transfers from Switzerland.
 
