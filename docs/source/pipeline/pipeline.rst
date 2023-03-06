@@ -92,13 +92,20 @@ in the ``metadata.tsv`` file. To conveniently populate the metadata fields in th
 the corresponding columns in the existing ``metadata.tsv`` files and use ``ms3 metadata`` to update the
 Musescore files.
 
+.. warning::
+
+   Although many editors open TSV files, many of them silently change values, e.g. by removing
+   ``.0`` from decimal values (LibreOffice) or turning a ``4/4`` time signature into a date (Excel,
+   Numbers). One editor that doesn't to that is VScode. Make sure to **always** view the diff before
+   committing changes to ``metadata.tsv`` to avoid unwanted modifications or, worse, loss of data.
+
 Populate the following default fields (if applicable):
 
 * ``composer``
 * ``movementNumer``
 * ``movementTitle``
 * ``source`` (URL of the adapted digital edition)
-* ``workNumer``
+* ``workNumber``
 * ``workTitle``
 
 Add to that the following custom fields (if applicable):
@@ -109,7 +116,7 @@ Add to that the following custom fields (if applicable):
 * ``annotators`` (name, if several annotations or iterations, specify in parenthesis who did what)
 * ``reviewers``
 * ``harmony_version`` (version of the DCML harmony annotation standard used)
-* ``imslp`` (URL of the work's Wiki page)
+* ``imslp`` (URL of the work's Wiki page, e.g. https://imslp.org/wiki/Piano_Sonata_No.1_in_C_major%2C_K.279/189d_%28Mozart%2C_Wolfgang_Amadeus%29)
 * ``musicbrainz`` (work URI)
 * ``viaf`` (work URI)
 * ``wikidata`` (e.g. `<http://www.wikidata.org/entity/Q2194957>`__)
