@@ -131,6 +131,12 @@ hard to come by, but musicbrainz has already a good number of them. For composit
 parts is somewhat arbitrary (consider the grouping into tracks for recordings of the same opera), the question of
 unique identification is an open problem.
 
+.. note::
+
+   Whereas in filenames we avoid all diacritical signs, accents, Umlaute etc., the metadata needs to include them
+   accurately encoded in UTF-8. For example, write ``Antonín Dvořák``, not ``Antonin Dvorak``. Whenever in doubt,
+   go with the English Wikidata/Wikipedia.
+
 Default fields
 --------------
 
@@ -142,7 +148,8 @@ composer
 
 workTitle
   Name of the entire work/cycle, e.g. ``Winterreise`` or ``Piano Sonata No. 1 in C major`` without any catalogue
-  or opus numbers.
+  or opus numbers. The title should largely correspond to the English ``label`` of the corresponding (or future)
+  Wikidata item.
 
 workNumber
   This is where opus and catalogue numbers go, e.g. ``Op. 33, No. 3, BI 115-3``.
@@ -158,19 +165,94 @@ source
   URL of the adapted digital edition, e.g. a link to musescore.com or kern.humdrum.org.
 
 
-Custom fields
--------------
+Required custom fields
+----------------------
 
-* ``composed_start``, ``composed_end`` (identical values if one exact year is known)
-* ``typesetter``
+The following fields need to be populated.
+
+composed_start, composed_end
+  Each of these two fields needs to contain a 4-digit year number such that taken together they represent the time span
+  during which the piece was composed according to ``composed_source``. If the time span lies within the same year,
+  both fields contain the same number. If the source indicates an open interval (e.g. ``?-1789``), we use the
+  `EDTF <https://www.loc.gov/standards/datetime/>`__ convention to indicate the unknown date (here ``composed_start``)
+  as ``..``. If no composition date is known, we use the following dates as fallback, in that order:
+
+  #. year of the princeps edition
+  #. musicologically informed time span (e.g. the composer's "sad phase" from x-y)
+  #. composer's life span
+
+  In any of these cases, an explaining comment should be added to the ``composed_source`` field.
+
+composed_source
+  The reference to where the ``composed_start`` and ``composed_end`` dates come from. Could be a URL such as
+  `<https://en.wikipedia.org/wiki/List_of_compositions_by_Edvard_Grieg>`__, the name of a dictionary or work catalogue,
+  or bibliographical data of a book. The latter would be required in the case of using a "musicologically informed
+  time span" (see above). This field is free text and, in the absence of composition dates, should contain additional
+  information on what exactly the years represent, e.g.
+  ``dates represent the "late period" of composer X's work, as proposed by author Y in book Z, page n``.
+
+
+Identifiers where available
+---------------------------
+
+Identifiers are important for making data findable and interoperable but might not always be available. Nevertheless,
+the goal should be to find minimum one of the work or part-of-work identifiers listed below. Wikidata identifiers
+are the gold standard because they often come with a mapping to all other kinds of identifiers. In addition,
+Wikidata is a knowledge graph which lets us easily pull additional metadata. The site has the drawback
+that identifiers for less known works are mostly missing as of yet and so are identifiers for individual movements.
+Until the fundamental problem of community-wide work identifiers is solved, we should aim at completing missing
+Wikidata items and foster the graph's function as a Linked Open Data hub and registry for all other sorts of
+identifiers.
+
+wikidata
+  This field is used to identify the ``work`` with the full URL of its corresponding Wikidata item, e.g.
+  `<http://www.wikidata.org/entity/Q2194957>`__. If the ``composer`` and ``workTitle`` field are properly filled in,
+  they can be reconciled with, i.e. matched to,
+  Wikidata `using OpenRefine <https://openrefine.org/docs/manual/reconciling>`__.
+
+musicbrainz
+  musicbrainz.org has a whole lot of different identifiers, in particular for identifying individual recordings down
+  to the level of CD tracks. The ones we're interested here are work identifiers (make sure the URI starts with
+  ``https://musicbrainz.org/work/``). The project is very advanced with creating identifiers on the
+  sub-work (movement) level and we use those whenever available (see screenshot below).
+  If not, we repeat the the work ID for each movement.
+
+.. figure:: img/musicbrainz_work.png
+   :alt: Example for a work displayed on musicbrainz.
+   :scale: 70%
+
+   Example of a work displayed on musicbrainz (note the URL). In this case, it lists identifiers for its three
+   movements so we would be using these.
+
+viaf
+  Work URI, e.g. `<https://viaf.org/viaf/181040674>`__
+
+imslp
+  URL of the work's Wiki page, e.g.
+  `<https://imslp.org/wiki/Piano_Sonata_No.1_in_C_major%2C_K.279/189d_%28Mozart%2C_Wolfgang_Amadeus%29>`__
+
+pdf
+  We use this field, if applicable and available, to store the permanent link to the source PDF which the
+  digital score is supposed to represent. Most often this will be an IMSLP "permlink" pointing to a particular
+  edition through its ID, such as `<https://imslp.org/wiki/Special:ReverseLookup/1689>`__ (the corresponding PDF file
+  name starts with ``IMSLP01689``). Such a permlink is available via the edition's menu, by clicking on ``File permlink``.
+
+Contributors and annotations
+----------------------------
+
+Custom fields to give credit to contributors and to keep track of versions of annotation standards and the likes.
+
+typesetter
+  Name/identifier of the person who engraved the
+
 * ``score_integrity`` (person who made the score match the reference edition/manuscript)
 * ``annotators`` (name, if several annotations or iterations, specify in parenthesis who did what)
 * ``reviewers``
 * ``harmony_version`` (version of the DCML harmony annotation standard used)
-* ``imslp`` (URL of the work's Wiki page, e.g. https://imslp.org/wiki/Piano_Sonata_No.1_in_C_major%2C_K.279/189d_%28Mozart%2C_Wolfgang_Amadeus%29)
-* ``musicbrainz`` (work URI)
-* ``viaf`` (work URI)
-* ``wikidata`` (e.g. `<http://www.wikidata.org/entity/Q2194957>`__)
+* ``
+
+
+
 
 .. _score_repo:
 
