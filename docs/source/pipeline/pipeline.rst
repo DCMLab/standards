@@ -123,6 +123,12 @@ The command ``ms3 extract -D`` extracts the metadata fields from the MuseScore f
 the ``value`` from the corresponding file. Likewise, this can be used to batch-edit the metadata of several or all
 MuseScore files in the corpus by editing the ``metadata.tsv`` file and calling the command ``ms3 metadata``.
 
+.. warning::
+
+   Before manipulating ``metadata.tsv`` make sure to call ``ms3 extract -D``, ensuring that it is up to date
+   with the metadata contained in the MuseScore files. Otherwise the command ``ms3 metadata`` would overwrite
+   newer values, resulting in the criminal offense of undoing other people's work.
+
 DCML corpora usually come with one MuseScore file per movement, hence we follow the convention that anything related to
 ``work`` describes the whole group (Suite, Symphony, etc.) or cycle (e.g. song cycle), and fields containing
 ``movement`` or ``mvt`` its individual parts. It follows that in the ``metadata.tsv`` file titles, catalogue numbers,
@@ -235,21 +241,105 @@ pdf
   We use this field, if applicable and available, to store the permanent link to the source PDF which the
   digital score is supposed to represent. Most often this will be an IMSLP "permlink" pointing to a particular
   edition through its ID, such as `<https://imslp.org/wiki/Special:ReverseLookup/1689>`__ (the corresponding PDF file
-  name starts with ``IMSLP01689``). Such a permlink is available via the edition's menu, by clicking on ``File permlink``.
+  name starts with ``IMSLP01689``). Such a permlink is available via the edition's menu, by clicking on
+  ``File permlink``.
+
+P<number> (<description>)
+  Columns with a Wikidata "P-number" are used for storing a reconciliation with the Wikidata knowledge graph. For
+  example, the column ``P86 (composer)`` contains both the ID of the
+  `property 'composer' <https://www.wikidata.org/wiki/Property:P86>`__ and in parenthesis the English label of the
+  property. The values of the column are the "Q-numbers" of the composer item. For more information, refer to
+  :ref:`reconciling` below.
+
 
 Contributors and annotations
 ----------------------------
 
 Custom fields to give credit to contributors and to keep track of versions of annotation standards and the likes.
+The preferred identifiers for persons are ORCIDs such as ``0000-0002-1986-9545`` or given as URL, such as
+`<https://orcid.org/0000-0002-1986-9545>`__.
 
 typesetter
-  Name/identifier of the person who engraved the
+  Name/identifier/homepage of the person(s) or company who engraved the digital edition or major parts of it.
 
-* ``score_integrity`` (person who made the score match the reference edition/manuscript)
-* ``annotators`` (name, if several annotations or iterations, specify in parenthesis who did what)
-* ``reviewers``
-* ``harmony_version`` (version of the DCML harmony annotation standard used)
-* ``
+score_integrity
+  Name/identifier/homepage of the person(s) or company who reviewed and corrected the score to make it
+  match the reference edition/manuscript (potentially referenced under ``pdf``).
+
+annotators
+  Name/identifier of each person who contributed new labels. If the file contains several types/versions/iterations,
+  specify in parenthesis who did what.
+
+reviewers
+  Name/identifier of each person who reviewed annotation labels, potentially modifying them.
+  If a review pertained only to a particular type/version/iteration, specify in parenthesis which one.
+
+harmony_version
+  Version of the DCML harmony annotation standard used, e.g. ``2.3.0``.
+
+.. _reconciling:
+
+Reconciling metadata with Wikidata
+----------------------------------
+
+Wikidata is a knowledge graph in which
+
+* each node (a noun considered as subject or object of a relation) is identified by a "Q-number" such as ``Q636399``
+  (`the song "Smoke on the Water" <https://www.wikidata.org/wiki/Q636399>`__),
+* each edge (a verb or property) by a "P-number" such as ``P921``
+  (`the property "main subject" <https://www.wikidata.org/wiki/Property:P921>`__, in this example pointing to the node
+  `Q81085137 <https://www.wikidata.org/wiki/Q81085137>`__).
+
+Reconciling metadata with Wikidata means linking values to nodes in the graph by assigning the relevant Q-numbers,
+which can be comfortably achieved with the software ``OpenRefine <https://openrefine.org/>``. As an example,
+we take the insufficiently populated ``metadata.tsv`` from the Annotated Beethoven Corpus version 2.1
+(`link <https://raw.githubusercontent.com/DCMLab/ABC/v2.1/metadata.tsv>`__).
+
+The goal is to reconcile the composer and his 16 string quartets with Wikidata. As a first step, we need to make sure
+that our metadata table contains values that OpenRefine can reconcile with Wikidata's node labels. Here, we can
+use the file names and some regular expression magic to fill the columns:
+
+
+.. figure:: img/abc_metadata.png
+   :alt: ABC metadata.tsv with populated columns.
+   :scale: 80%
+
+   ABC metadata.tsv with populated ``composer``, ``workTitle``, ``movementNumber``, and ``workNumber`` columns.
+
+Next, we load the file into OpenRefine, click on ``Next »``, check the preview, adapt the setting for loading the
+TSV file if needed (usually it isn't), name the project and click on ``Create project »``.
+
+
+.. figure:: img/openrefine_project.png
+   :alt: Creating a project by loading the metadata.tsv file into OpenRefine.
+   :scale: 80%
+
+   Creating a project by loading the ``metadata.tsv`` file into OpenRefine.
+
+Now we can start reconciling the values of a column by opening it's menu ``Reconcile -> Start reconciling...``.
+
+.. figure:: img/openrefine_start.png
+   :alt: Opening the reconciliation pane in OpenRefine.
+   :scale: 80%
+
+   Opening the reconciliation pane in OpenRefine.
+
+The upcoming pane has a list of services on the left side that should include at least ``Wikidata (en)``, which is
+what we click on. OpenRefine tries to guess the item type that the values could be matched with and correctly suggests
+``Q5 (human)``. Since the correct type Q5 is already selected we can go ahead with ``Start reconciling...``. Once
+the process is complete, a new facet appears on the left side that lets us view the different types of match results.
+In this example, all 70 movements have type ``none`` and we need to pick the correct item that corresponds to the
+composer in question.
+
+
+.. figure:: img/openrefine_match.png
+   :alt: Selecting the corresponding Wikidata item.
+   :scale: 70%
+
+   Selecting the corresponding Wikidata item to automatically assign it to all cells.
+
+Sometimes, OpenRefine does not suggest any item. In this case, supposing an item does indeed exist, we can go to
+the column's menu ``Reconcile -> Actions -> Match all filtered cells to...`` and manually search for the item.
 
 
 
