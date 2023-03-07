@@ -87,10 +87,19 @@ Please send a request to be added to the document.
 Create metadata
 ---------------
 
-All metadata fields are automatically extracted (by our workflow script that use ``ms3 extract -D``) and represented
-in the ``metadata.tsv`` file. To conveniently populate the metadata fields in the MSCX files, you can also create
-the corresponding columns in the existing ``metadata.tsv`` files and use ``ms3 metadata`` to update the
-Musescore files.
+All metadata fields are automatically extracted by the dcml_corpus_workflow and represented in the repository's
+``metadata.tsv`` file. However, at the beginning this file needs to be created using the command ``ms3 extract -D -a``.
+The first column, ``fname``, is used as IDs for the corpus and needs to be checked. In case the corpus contains
+several alternative scores for the same piece, the main MuseScore file should have the shortest file name and the
+alternative scores' file names should begin with the same ``fname`` plus a suffix or a different file extension.
+Upon creation of the ``metadata.tsv`` file, all scores will be listed and you can safely remove the rows corresponding
+to the alternative versions to prevent them being processed by ms3.
+
+Once the ``metadata.tsv`` is there and contains one row per piece, metadata curation is as straightforward as
+updating values and adding columns to the file and then calling
+``ms3 metadata`` to write the updated values into the corresponding Musescore files. Be aware that calling
+``ms3 extract -D`` will overwrite the manual changes in the TSV file with any value existing in the MuseScore files.
+so make sure to commit your manual modifications to not loose them.
 
 .. warning::
 
@@ -99,9 +108,25 @@ Musescore files.
    Numbers). One editor that doesn't to that is VScode. Make sure to **always** view the diff before
    committing changes to ``metadata.tsv`` to avoid unwanted modifications or, worse, loss of data.
 
+Once the ``metadata.tsv`` is there and contains one row per piece, you can either continue with the following section
+on enriching metadata, or first create the repository (see further below) so that the metadata curation is
+part of the Git history.
+
+Curating and enriching metadata
+===============================
+
 Populate the following default fields (if applicable):
 
-* ``composer``
+composer
+  Full name as displayed in the English Wikipedia. For example,
+  `Tchaikovsky <https://en.wikipedia.org/wiki/Pyotr_Ilyich_Tchaikovsky>`__ gets ``Pyotr Ilyich Tchaikovsky``.
+
+workTitle
+  Name of the entire work/cycle, e.g. ``Winterreise`` or ``Piano Sonata No. 1 in C major`` without any catalogue o
+
+workNumber
+
+
 * ``movementNumer``
 * ``movementTitle``
 * ``source`` (URL of the adapted digital edition)
