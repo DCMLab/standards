@@ -295,6 +295,9 @@ which can be comfortably achieved with the software ``OpenRefine <https://openre
 we take the insufficiently populated ``metadata.tsv`` from the Annotated Beethoven Corpus version 2.1
 (`link <https://raw.githubusercontent.com/DCMLab/ABC/v2.1/metadata.tsv>`__).
 
+Creating a new OpenRefine project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The goal is to reconcile the composer and his 16 string quartets with Wikidata. As a first step, we need to make sure
 that our metadata table contains values that OpenRefine can reconcile with Wikidata's node labels. Here, we can
 use the file names and some regular expression magic to fill the columns:
@@ -315,6 +318,9 @@ TSV file if needed (usually it isn't), name the project and click on ``Create pr
    :scale: 80%
 
    Creating a project by loading the ``metadata.tsv`` file into OpenRefine.
+
+Reconciling a column
+^^^^^^^^^^^^^^^^^^^^
 
 Now we can start reconciling the values of a column by opening it's menu ``Reconcile -> Start reconciling...``.
 
@@ -341,7 +347,53 @@ composer in question.
 Sometimes, OpenRefine does not suggest any item. In this case, supposing an item does indeed exist, we can go to
 the column's menu ``Reconcile -> Actions -> Match all filtered cells to...`` and manually search for the item.
 
+Once everything has been correctly matched, we can automatically create a new column to store the Q-numbers.
+This is as easy as accessing the column menu ``Reconcile -> Add entity identifiers column...``. When asked for the
+new column name, we use the
+`QuickStatements CSV logic <https://www.wikidata.org/wiki/Help:QuickStatements#CSV_file_syntax>`__ which boils down to
+thinking of each row as the subject of a ``(subject, verb, object)`` triple, and storing ``object`` Q-numbers in
+``verb`` columns. In this example, we are storing Q-numbers that correspond to the pieces
+`'composer' property <https://www.wikidata.org/wiki/Property:P86>`__ and therefore we name the new column
+``P86 (composer)``:
 
+.. figure:: img/openrefine_composer_ids.png
+   :alt: Metadata table with the newly created column "P86 (composer)" pointing to the matched Q-number(s).
+   :scale: 70%
+
+   Metadata table with the newly created column ``P86 (composer)`` pointing to the matched Q-number(s).
+
+The result can now easily written back to the original file using the menu ``Export -> Tab-separated value`` in order
+to then insert the new values into the MuseScore files. Please make sure to check the diff of the updated
+``metadata.tsv`` before committing to prevent committing unwanted changes or, even worse, having them written
+into the scores.
+
+Pulling additional information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Obviously, with all cells having the same composer value we would have obtained this result faster manually. But using
+OpenRefine gives us the advantage that, from here on, we can pull additional information on the composer item
+from the Wikidata knowledge graph. For that we simply access the matched composer column's menu
+``Edit column -> Add columns from reconciled values`` which will lead us to a list of properties that we can simply
+click on to create additional columns. For example, we can easily add columns called
+"country of citizenship", "native language", "place of birth", "place of death" and "religion or worldview".
+In this example, we have created the additional column ``P27 (country of citizenship)`` which would allow other people
+to access the reconciled item and pull additional information such as geographic coordinates.
+
+.. figure:: img/openrefine_pull.png
+   :alt: Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.
+   :scale: 70%
+
+   Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.
+
+Now that the composer column is reconciled we can see if the works in question already have IDs on Wikidata.
+We repeat the steps above for the column ``workTitle`` but with the difference that this time we can help
+OpenRefine with lookup by constraining the items based on the previous work.
+
+.. figure:: img/openrefine_constrain.png
+   :alt: Matching the workTitle column constraint by the reconciled composer column.
+   :scale: 70%
+
+   Matching the workTitle column constraint by the reconciled composer column.
 
 
 .. _score_repo:

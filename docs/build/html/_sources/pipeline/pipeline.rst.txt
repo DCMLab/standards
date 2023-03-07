@@ -87,10 +87,19 @@ Please send a request to be added to the document.
 Create metadata
 ---------------
 
-All metadata fields are automatically extracted (by our workflow script that use ``ms3 extract -D``) and represented
-in the ``metadata.tsv`` file. To conveniently populate the metadata fields in the MSCX files, you can also create
-the corresponding columns in the existing ``metadata.tsv`` files and use ``ms3 metadata`` to update the
-Musescore files.
+All metadata fields are automatically extracted by the dcml_corpus_workflow and represented in the repository's
+``metadata.tsv`` file. However, at the beginning this file needs to be created using the command ``ms3 extract -D -a``.
+The first column, ``fname``, is used as IDs for the corpus and needs to be checked. In case the corpus contains
+several alternative scores for the same piece, the main MuseScore file should have the shortest file name and the
+alternative scores' file names should begin with the same ``fname`` plus a suffix or a different file extension.
+Upon creation of the ``metadata.tsv`` file, all scores will be listed and you can safely remove the rows corresponding
+to the alternative versions to prevent them being processed by ms3.
+
+Once the ``metadata.tsv`` is there and contains one row per piece, metadata curation is as straightforward as
+updating values and adding columns to the file and then calling
+``ms3 metadata`` to write the updated values into the corresponding Musescore files. Be aware that calling
+``ms3 extract -D`` will overwrite the manual changes in the TSV file with any value existing in the MuseScore files.
+so make sure to commit your manual modifications to not loose them.
 
 .. warning::
 
@@ -99,27 +108,293 @@ Musescore files.
    Numbers). One editor that doesn't to that is VScode. Make sure to **always** view the diff before
    committing changes to ``metadata.tsv`` to avoid unwanted modifications or, worse, loss of data.
 
-Populate the following default fields (if applicable):
+Once the ``metadata.tsv`` is there and contains one row per piece, you can either continue with the following section
+on enriching metadata, or first create the repository (see further below) so that the metadata curation is
+part of the Git history.
 
-* ``composer``
-* ``movementNumer``
-* ``movementTitle``
-* ``source`` (URL of the adapted digital edition)
-* ``workNumber``
-* ``workTitle``
+Curating and enriching metadata
+===============================
 
-Add to that the following custom fields (if applicable):
+In MuseScore, metadata is stored as ``key -> value`` pairs and can be accessed and modified via the menu
+``File -> Score Properties...``. Some fields are there by default, others have to be created using the ``New`` button.
+It is very important that the fields are named correctly (double-check for spelling mistakes) and all lowercase.
+The command ``ms3 extract -D`` extracts the metadata fields from the MuseScore files, updating the
+``metadata.tsv`` file in a way that every row corresponds to a MuseScore file where every ``key`` is a column showing
+the ``value`` from the corresponding file. Likewise, this can be used to batch-edit the metadata of several or all
+MuseScore files in the corpus by editing the ``metadata.tsv`` file and calling the command ``ms3 metadata``.
 
-* ``composed_start``, ``composed_end`` (identical values if one exact year is known)
-* ``typesetter``
-* ``score_integrity`` (person who made the score match the reference edition/manuscript)
-* ``annotators`` (name, if several annotations or iterations, specify in parenthesis who did what)
-* ``reviewers``
-* ``harmony_version`` (version of the DCML harmony annotation standard used)
-* ``imslp`` (URL of the work's Wiki page, e.g. https://imslp.org/wiki/Piano_Sonata_No.1_in_C_major%2C_K.279/189d_%28Mozart%2C_Wolfgang_Amadeus%29)
-* ``musicbrainz`` (work URI)
-* ``viaf`` (work URI)
-* ``wikidata`` (e.g. `<http://www.wikidata.org/entity/Q2194957>`__)
+.. warning::
+
+   Before manipulating ``metadata.tsv`` make sure to call ``ms3 extract -D``, ensuring that it is up to date
+   with the metadata contained in the MuseScore files. Otherwise the command ``ms3 metadata`` would overwrite
+   newer values, resulting in the criminal offense of undoing other people's work.
+
+DCML corpora usually come with one MuseScore file per movement, hence we follow the convention that anything related to
+``work`` describes the whole group (Suite, Symphony, etc.) or cycle (e.g. song cycle), and fields containing
+``movement`` or ``mvt`` its individual parts. It follows that in the ``metadata.tsv`` file titles, catalogue numbers,
+URIs etc. are repeated and identical for the parts of a ``work``. Identifiers for individual movements are often
+hard to come by, but musicbrainz has already a good number of them. For compositions where the subdivision into
+parts is somewhat arbitrary (consider the grouping into tracks for recordings of the same opera), the question of
+unique identification is an open problem.
+
+.. note::
+
+   Whereas in filenames we avoid all diacritical signs, accents, Umlaute etc., the metadata needs to include them
+   accurately encoded in UTF-8. For example, write ``Antonín Dvořák``, not ``Antonin Dvorak``. Whenever in doubt,
+   go with the English Wikidata/Wikipedia.
+
+Default fields
+--------------
+
+The following default fields should be populated where applicable:
+
+composer
+  Full name as displayed in the English Wikipedia. For example,
+  `Tchaikovsky <https://en.wikipedia.org/wiki/Pyotr_Ilyich_Tchaikovsky>`__ gets ``Pyotr Ilyich Tchaikovsky``.
+
+workTitle
+  Name of the entire work/cycle, e.g. ``Winterreise`` or ``Piano Sonata No. 1 in C major`` without any catalogue
+  or opus numbers. The title should largely correspond to the English ``label`` of the corresponding (or future)
+  Wikidata item.
+
+workNumber
+  This is where opus and catalogue numbers go, e.g. ``Op. 33, No. 3, BI 115-3``.
+
+movementNumer
+  Ordinal number of the movement or part. Should be an arabic integer, e.g. ``2`` (not ``2.``, not ``II``).
+
+movementTitle
+  Title of the part, e.g. song title, or ``Andante`` (not ``II. Andante``). If unclear, CD track titles might serve
+  as an orientation.
+
+source
+  URL of the adapted digital edition, e.g. a link to musescore.com or kern.humdrum.org.
+
+
+Required custom fields
+----------------------
+
+The following fields need to be populated.
+
+composed_start, composed_end
+  Each of these two fields needs to contain a 4-digit year number such that taken together they represent the time span
+  during which the piece was composed according to ``composed_source``. If the time span lies within the same year,
+  both fields contain the same number. If the source indicates an open interval (e.g. ``?-1789``), we use the
+  `EDTF <https://www.loc.gov/standards/datetime/>`__ convention to indicate the unknown date (here ``composed_start``)
+  as ``..``. If no composition date is known, we use the following dates as fallback, in that order:
+
+  #. year of the princeps edition
+  #. musicologically informed time span (e.g. the composer's "sad phase" from x-y)
+  #. composer's life span
+
+  In any of these cases, an explaining comment should be added to the ``composed_source`` field.
+
+composed_source
+  The reference to where the ``composed_start`` and ``composed_end`` dates come from. Could be a URL such as
+  `<https://en.wikipedia.org/wiki/List_of_compositions_by_Edvard_Grieg>`__, the name of a dictionary or work catalogue,
+  or bibliographical data of a book. The latter would be required in the case of using a "musicologically informed
+  time span" (see above). This field is free text and, in the absence of composition dates, should contain additional
+  information on what exactly the years represent, e.g.
+  ``dates represent the "late period" of composer X's work, as proposed by author Y in book Z, page n``.
+
+
+Identifiers where available
+---------------------------
+
+Identifiers are important for making data findable and interoperable but might not always be available. Nevertheless,
+the goal should be to find minimum one of the work or part-of-work identifiers listed below. Wikidata identifiers
+are the gold standard because they often come with a mapping to all other kinds of identifiers. In addition,
+Wikidata is a knowledge graph which lets us easily pull additional metadata. The site has the drawback
+that identifiers for less known works are mostly missing as of yet and so are identifiers for individual movements.
+Until the fundamental problem of community-wide work identifiers is solved, we should aim at completing missing
+Wikidata items and foster the graph's function as a Linked Open Data hub and registry for all other sorts of
+identifiers.
+
+wikidata
+  This field is used to identify the ``work`` with the full URL of its corresponding Wikidata item, e.g.
+  `<http://www.wikidata.org/entity/Q2194957>`__. If the ``composer`` and ``workTitle`` field are properly filled in,
+  they can be reconciled with, i.e. matched to,
+  Wikidata `using OpenRefine <https://openrefine.org/docs/manual/reconciling>`__.
+
+musicbrainz
+  musicbrainz.org has a whole lot of different identifiers, in particular for identifying individual recordings down
+  to the level of CD tracks. The ones we're interested here are work identifiers (make sure the URI starts with
+  ``https://musicbrainz.org/work/``). The project is very advanced with creating identifiers on the
+  sub-work (movement) level and we use those whenever available (see screenshot below).
+  If not, we repeat the the work ID for each movement.
+
+.. figure:: img/musicbrainz_work.png
+   :alt: Example for a work displayed on musicbrainz.
+   :scale: 70%
+
+   Example of a work displayed on musicbrainz (note the URL). In this case, it lists identifiers for its three
+   movements so we would be using these.
+
+viaf
+  Work URI, e.g. `<https://viaf.org/viaf/181040674>`__
+
+imslp
+  URL of the work's Wiki page, e.g.
+  `<https://imslp.org/wiki/Piano_Sonata_No.1_in_C_major%2C_K.279/189d_%28Mozart%2C_Wolfgang_Amadeus%29>`__
+
+pdf
+  We use this field, if applicable and available, to store the permanent link to the source PDF which the
+  digital score is supposed to represent. Most often this will be an IMSLP "permlink" pointing to a particular
+  edition through its ID, such as `<https://imslp.org/wiki/Special:ReverseLookup/1689>`__ (the corresponding PDF file
+  name starts with ``IMSLP01689``). Such a permlink is available via the edition's menu, by clicking on
+  ``File permlink``.
+
+P<number> (<description>)
+  Columns with a Wikidata "P-number" are used for storing a reconciliation with the Wikidata knowledge graph. For
+  example, the column ``P86 (composer)`` contains both the ID of the
+  `property 'composer' <https://www.wikidata.org/wiki/Property:P86>`__ and in parenthesis the English label of the
+  property. The values of the column are the "Q-numbers" of the composer item. For more information, refer to
+  :ref:`reconciling` below.
+
+
+Contributors and annotations
+----------------------------
+
+Custom fields to give credit to contributors and to keep track of versions of annotation standards and the likes.
+The preferred identifiers for persons are ORCIDs such as ``0000-0002-1986-9545`` or given as URL, such as
+`<https://orcid.org/0000-0002-1986-9545>`__.
+
+typesetter
+  Name/identifier/homepage of the person(s) or company who engraved the digital edition or major parts of it.
+
+score_integrity
+  Name/identifier/homepage of the person(s) or company who reviewed and corrected the score to make it
+  match the reference edition/manuscript (potentially referenced under ``pdf``).
+
+annotators
+  Name/identifier of each person who contributed new labels. If the file contains several types/versions/iterations,
+  specify in parenthesis who did what.
+
+reviewers
+  Name/identifier of each person who reviewed annotation labels, potentially modifying them.
+  If a review pertained only to a particular type/version/iteration, specify in parenthesis which one.
+
+harmony_version
+  Version of the DCML harmony annotation standard used, e.g. ``2.3.0``.
+
+.. _reconciling:
+
+Reconciling metadata with Wikidata
+----------------------------------
+
+Wikidata is a knowledge graph in which
+
+* each node (a noun considered as subject or object of a relation) is identified by a "Q-number" such as ``Q636399``
+  (`the song "Smoke on the Water" <https://www.wikidata.org/wiki/Q636399>`__),
+* each edge (a verb or property) by a "P-number" such as ``P921``
+  (`the property "main subject" <https://www.wikidata.org/wiki/Property:P921>`__, in this example pointing to the node
+  `Q81085137 <https://www.wikidata.org/wiki/Q81085137>`__).
+
+Reconciling metadata with Wikidata means linking values to nodes in the graph by assigning the relevant Q-numbers,
+which can be comfortably achieved with the software ``OpenRefine <https://openrefine.org/>``. As an example,
+we take the insufficiently populated ``metadata.tsv`` from the Annotated Beethoven Corpus version 2.1
+(`link <https://raw.githubusercontent.com/DCMLab/ABC/v2.1/metadata.tsv>`__).
+
+Creating a new OpenRefine project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The goal is to reconcile the composer and his 16 string quartets with Wikidata. As a first step, we need to make sure
+that our metadata table contains values that OpenRefine can reconcile with Wikidata's node labels. Here, we can
+use the file names and some regular expression magic to fill the columns:
+
+
+.. figure:: img/abc_metadata.png
+   :alt: ABC metadata.tsv with populated columns.
+   :scale: 80%
+
+   ABC metadata.tsv with populated ``composer``, ``workTitle``, ``movementNumber``, and ``workNumber`` columns.
+
+Next, we load the file into OpenRefine, click on ``Next »``, check the preview, adapt the setting for loading the
+TSV file if needed (usually it isn't), name the project and click on ``Create project »``.
+
+
+.. figure:: img/openrefine_project.png
+   :alt: Creating a project by loading the metadata.tsv file into OpenRefine.
+   :scale: 80%
+
+   Creating a project by loading the ``metadata.tsv`` file into OpenRefine.
+
+Reconciling a column
+^^^^^^^^^^^^^^^^^^^^
+
+Now we can start reconciling the values of a column by opening it's menu ``Reconcile -> Start reconciling...``.
+
+.. figure:: img/openrefine_start.png
+   :alt: Opening the reconciliation pane in OpenRefine.
+   :scale: 80%
+
+   Opening the reconciliation pane in OpenRefine.
+
+The upcoming pane has a list of services on the left side that should include at least ``Wikidata (en)``, which is
+what we click on. OpenRefine tries to guess the item type that the values could be matched with and correctly suggests
+``Q5 (human)``. Since the correct type Q5 is already selected we can go ahead with ``Start reconciling...``. Once
+the process is complete, a new facet appears on the left side that lets us view the different types of match results.
+In this example, all 70 movements have type ``none`` and we need to pick the correct item that corresponds to the
+composer in question.
+
+
+.. figure:: img/openrefine_match.png
+   :alt: Selecting the corresponding Wikidata item.
+   :scale: 70%
+
+   Selecting the corresponding Wikidata item to automatically assign it to all cells.
+
+Sometimes, OpenRefine does not suggest any item. In this case, supposing an item does indeed exist, we can go to
+the column's menu ``Reconcile -> Actions -> Match all filtered cells to...`` and manually search for the item.
+
+Once everything has been correctly matched, we can automatically create a new column to store the Q-numbers.
+This is as easy as accessing the column menu ``Reconcile -> Add entity identifiers column...``. When asked for the
+new column name, we use the
+`QuickStatements CSV logic <https://www.wikidata.org/wiki/Help:QuickStatements#CSV_file_syntax>`__ which boils down to
+thinking of each row as the subject of a ``(subject, verb, object)`` triple, and storing ``object`` Q-numbers in
+``verb`` columns. In this example, we are storing Q-numbers that correspond to the pieces
+`'composer' property <https://www.wikidata.org/wiki/Property:P86>`__ and therefore we name the new column
+``P86 (composer)``:
+
+.. figure:: img/openrefine_composer_ids.png
+   :alt: Metadata table with the newly created column "P86 (composer)" pointing to the matched Q-number(s).
+   :scale: 70%
+
+   Metadata table with the newly created column ``P86 (composer)`` pointing to the matched Q-number(s).
+
+The result can now easily written back to the original file using the menu ``Export -> Tab-separated value`` in order
+to then insert the new values into the MuseScore files. Please make sure to check the diff of the updated
+``metadata.tsv`` before committing to prevent committing unwanted changes or, even worse, having them written
+into the scores.
+
+Pulling additional information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Obviously, with all cells having the same composer value we would have obtained this result faster manually. But using
+OpenRefine gives us the advantage that, from here on, we can pull additional information on the composer item
+from the Wikidata knowledge graph. For that we simply access the matched composer column's menu
+``Edit column -> Add columns from reconciled values`` which will lead us to a list of properties that we can simply
+click on to create additional columns. For example, we can easily add columns called
+"country of citizenship", "native language", "place of birth", "place of death" and "religion or worldview".
+In this example, we have created the additional column ``P27 (country of citizenship)`` which would allow other people
+to access the reconciled item and pull additional information such as geographic coordinates.
+
+.. figure:: img/openrefine_pull.png
+   :alt: Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.
+   :scale: 70%
+
+   Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.
+
+Now that the composer column is reconciled we can see if the works in question already have IDs on Wikidata.
+We repeat the steps above for the column ``workTitle`` but with the difference that this time we can help
+OpenRefine with lookup by constraining the items based on the previous work.
+
+.. figure:: img/openrefine_constrain.png
+   :alt: Matching the workTitle column constraint by the reconciled composer column.
+   :scale: 70%
+
+   Matching the workTitle column constraint by the reconciled composer column.
+
 
 .. _score_repo:
 
