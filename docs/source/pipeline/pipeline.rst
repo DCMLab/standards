@@ -115,25 +115,51 @@ part of the Git history.
 Curating and enriching metadata
 ===============================
 
-Populate the following default fields (if applicable):
+In MuseScore, metadata is stored as ``key -> value`` pairs and can be accessed and modified via the menu
+``File -> Score Properties...``. Some fields are there by default, others have to be created using the ``New`` button.
+It is very important that the fields are named correctly (double-check for spelling mistakes) and all lowercase.
+The command ``ms3 extract -D`` extracts the metadata fields from the MuseScore files, updating the
+``metadata.tsv`` file in a way that every row corresponds to a MuseScore file where every ``key`` is a column showing
+the ``value`` from the corresponding file. Likewise, this can be used to batch-edit the metadata of several or all
+MuseScore files in the corpus by editing the ``metadata.tsv`` file and calling the command ``ms3 metadata``.
+
+DCML corpora usually come with one MuseScore file per movement, hence we follow the convention that anything related to
+``work`` describes the whole group (Suite, Symphony, etc.) or cycle (e.g. song cycle), and fields containing
+``movement`` or ``mvt`` its individual parts. It follows that in the ``metadata.tsv`` file titles, catalogue numbers,
+URIs etc. are repeated and identical for the parts of a ``work``. Identifiers for individual movements are often
+hard to come by, but musicbrainz has already a good number of them. For compositions where the subdivision into
+parts is somewhat arbitrary (consider the grouping into tracks for recordings of the same opera), the question of
+unique identification is an open problem.
+
+Default fields
+--------------
+
+The following default fields should be populated where applicable:
 
 composer
   Full name as displayed in the English Wikipedia. For example,
   `Tchaikovsky <https://en.wikipedia.org/wiki/Pyotr_Ilyich_Tchaikovsky>`__ gets ``Pyotr Ilyich Tchaikovsky``.
 
 workTitle
-  Name of the entire work/cycle, e.g. ``Winterreise`` or ``Piano Sonata No. 1 in C major`` without any catalogue o
+  Name of the entire work/cycle, e.g. ``Winterreise`` or ``Piano Sonata No. 1 in C major`` without any catalogue
+  or opus numbers.
 
 workNumber
+  This is where opus and catalogue numbers go, e.g. ``Op. 33, No. 3, BI 115-3``.
+
+movementNumer
+  Ordinal number of the movement or part. Should be an arabic integer, e.g. ``2`` (not ``2.``, not ``II``).
+
+movementTitle
+  Title of the part, e.g. song title, or ``Andante`` (not ``II. Andante``). If unclear, CD track titles might serve
+  as an orientation.
+
+source
+  URL of the adapted digital edition, e.g. a link to musescore.com or kern.humdrum.org.
 
 
-* ``movementNumer``
-* ``movementTitle``
-* ``source`` (URL of the adapted digital edition)
-* ``workNumber``
-* ``workTitle``
-
-Add to that the following custom fields (if applicable):
+Custom fields
+-------------
 
 * ``composed_start``, ``composed_end`` (identical values if one exact year is known)
 * ``typesetter``
