@@ -109,8 +109,167 @@ so make sure to commit your manual modifications to not loose them.
    committing changes to ``metadata.tsv`` to avoid unwanted modifications or, worse, loss of data.
 
 Once the ``metadata.tsv`` is there and contains one row per piece, you can either continue with the following section
-on enriching metadata, or first create the repository (see further below) so that the metadata curation is
-part of the Git history.
+and create the new Git repository or :ref:`enrich the metadata <enriching_metadata>` first. Since enriching metadata
+involves modifying the scores, however, it is preferable to make metadata curation part of the Git history.
+
+
+
+.. _score_repo:
+
+Creating a repository with unannotated MuseScore files
+======================================================
+
+.. danger:: After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
+   needs to be complete and the file names final.
+
+
+Before starting annotating a corpus, a repo with the standard folder structure needs to be created: ::
+
+  .
+  ├── MS3
+  └── pdf
+
+The directory ``MS3`` contains the unannotated MuseScore files and ``PDF`` the print edition or manuscript which they
+encode. In order to activate the annotation workflow (i.e. the automatic scripts triggered on the GitHub servers
+by certain events related to annotation and review), the folder ``.github/workflows`` needs to be copied from
+the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__. It also contains our
+standard ``.gitignore`` file which prevents temporary files from being tracked and uploaded.
+
+Variant 1: Using the template repository
+----------------------------------------
+
+You can create the new repo directly from the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__
+by heading there and clicking on 'Use this template'. In this variant, every push to the ``main`` branch results
+in metadata, measures and notes being extracted from all changed ``.mscx`` files. Note that renaming and deleting
+files will lead to undesired effects that will have to be checked and corrected manually.
+
+Variant 2: Starting from scratch
+--------------------------------
+
+Or you simply create the new repo with the above-mentioned folder structure and add the workflow scripts when
+the scores are prepared. In this case, you will have to use the `Python library ms3 <https://pypi.org/project/ms3>`__
+to extract metadata, notes, and measures manually.
+
+Variant 3: Splitting an existing repository
+-------------------------------------------
+
+This is for the special case that the MuseScore files in question are already sitting in a subfolder of an existing
+repository which is to be transferred into the new repo including the files' Git histories. This variant is a bit
+more involved and requires prior installation of the `git filter-repo <https://github.com/newren/git-filter-repo>`__
+command which is recommended by the Git developers for replacing ``git filter-branch``.
+
+Setting
+  As an example, we will create a new repository ``chopin_mazurkas`` (Repo B) which will include all files situated in the
+  existing repository ``corpora`` (Repo A) in the subfolder ``annotations/Chopin-Mazurkas``, with the workflow scripts
+  added on top.
+
+Create the new repo B
+  On GitHub, we use the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__ to create
+  the target repo ``chopin_mazurkas`` with the workflow files and the standard ``.gitignore``. Locally, we initialize
+  an empty Git repo that will be connected upstream at a later point: ::
+
+    mkdir chopin_mazurkas && cd chopin_mazurkas && git init
+
+  Make sure that your Git is configured to use the name ``main`` for the default branch, which can be achieved using
+  ``git config --global init.defaultBranch main``.
+
+Clone repo A and transfer files
+  We start off with a fresh clone of ``corpora``, head into it and run: ::
+
+    git filter-repo --subdirectory-filter annotations/Chopin-Mazurkas/ --target ../chopin_mazurkas
+
+  which will copy all files from ``annotations/Chopin-Mazurkas/`` to the freshly initialized repo
+  ``chopin_mazurkas`` together with their full commit histories. If there is a README file, rename it to ``README.md``.
+
+Connect local repo B to the remote repo B
+  The local ``chopin_mazurkas`` now contains the files at the top level together with the full commit
+  history (check out ``git log``). Now we can connect it to the remote and merge the workflow scripts from there: ::
+
+    git remote add origin git@github.com:DCMLab/chopin_mazurkas.git
+    git pull origin main --allow-unrelated-histories
+    git push -u origin main
+
+Clean metadata
+  In case there was an older ``metadata.tsv`` it should now be automatically updated and you might have to clean it.
+  This may involve naming the first two columns ``rel_paths`` and ``fnames``. For the Mazurka example,
+  `this Pull Request <https://github.com/DCMLab/chopin_mazurkas/pull/1>`__ shows the metadata cleaning and update
+  of the existing files from an older MuseScore and annotation standard.
+
+Configuring and adding the new repo
+===================================
+
+* Set the standard repo settings on GitHub:
+
+  .. figure:: img/pr_settings.png
+       :alt: Repository settings on GitHub
+       :scale: 50%
+
+* Under ``Branches``, create a branch protection rule for the main branch:
+
+  .. figure:: img/branch_protection.png
+       :alt: Protecting the main branch on GitHub
+       :scale: 50%
+
+* Under ``Collaborators and teams`` give write access to the ``annotators`` team.
+* Under ``Pages`` set the Source to the root ``/`` of the branch ``gh-pages`` (which should have been
+  automatically created by the workflow when pushing the first MuseScore files). Add the page's URL as the
+  repo's website.
+* Add the new repo to the corresponding meta-repositories (at least to ``all_subcorpora``, see below).
+* Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)
+
+
+.. _metarepos:
+
+Adding the repo to one or several meta-repos
+--------------------------------------------
+
+The individual subcorpora can be embedded as submodules in meta-repositories. These meta-repos are listed in the private
+`meta_repositories <https://github.com/DCMLab/meta_repositories>`__ repo. Currently, the most important ones are:
+
+1. `dcml_corpora <https://github.com/DCMLab/dcml_corpora>`__ for published corpora
+2. `all_subcorpora <https://github.com/DCMLab/all_subcorpora>`__ (private) for all published and unpublished corpora.
+
+To add the new repo, head into the meta-repo and do ::
+
+  git submodule add -b main git@github.com:DCMLab/chopin_mazurkas.git
+
+Just to be sure, update all submodules: ``git submodule update --remote`` and push the whole thing.
+
+
+Creating work packages on OpenProject
+-------------------------------------
+
+#. Follow the instructions for `create_work_packages.py` under https://github.com/DCMLab/openproject_scripts/
+
+   - set the column ``parent`` to the name of the repository
+   - rename the columns ``fnames => name`` and ``last_mn => measures``
+   - if the new work packages are for annotation upgrades rather than new annotations, add the column ``work_package_type``
+     with value ``Annotation Upgrade``
+   - find out the status of all pieces and fill the column ``status``. Accordingly:
+   - if annotations are present and need to be updated, rename ``annotators => reviewer`` and make sure that every cell contains exactly one
+     user name (``First Last``) known to OpenProject;
+   - if review is done or ongoing, do the same for the renamed column ``reviewers => reviewer``
+   - if annotations are present and finalized, the work package, in theory, does not need to be created; if it is,
+     it should have status "Not available". Filling the fields ``assignee`` and ``reviewer``, is not needed unless for invoicing purposes
+
+#. Create a new view in OpenProject:
+
+   - open any of the existing corpora views
+   - replace the ``Parent`` filter with the repo name
+   - in the menu, select ``Save as...``
+   - enter the repo name and check ``Public``
+
+#. Add the webhook to the repo
+
+   - go to a repo for which the webhook is already set up
+   - in the repo settings, go to ``Webhooks``, click ``Edit``, and copy the ``Payload URL``
+   - in the new repo, go to ``Settings -> Webhooks -> Add webhook`` and insert the copied ``Payload URL``
+   - set the ``Content type`` to "application/json"
+   - Below, select "Send me **everything**" and click ``Add webhook``
+
+#. Add the new work packages to the master sheet for the administrative staff
+
+.. _enriching_metadata:
 
 Curating and enriching metadata
 ===============================
@@ -394,160 +553,3 @@ OpenRefine with lookup by constraining the items based on the previous work.
    :scale: 70%
 
    Matching the workTitle column constraint by the reconciled composer column.
-
-
-.. _score_repo:
-
-Creating a repository with unannotated MuseScore files
-======================================================
-
-.. danger:: After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
-   needs to be complete and the file names final.
-
-
-Before starting annotating a corpus, a repo with the standard folder structure needs to be created: ::
-
-  .
-  ├── MS3
-  └── pdf
-
-The directory ``MS3`` contains the unannotated MuseScore files and ``PDF`` the print edition or manuscript which they
-encode. In order to activate the annotation workflow (i.e. the automatic scripts triggered on the GitHub servers
-by certain events related to annotation and review), the folder ``.github/workflows`` needs to be copied from
-the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__. It also contains our
-standard ``.gitignore`` file which prevents temporary files from being tracked and uploaded.
-
-Variant 1: Using the template repository
-----------------------------------------
-
-You can create the new repo directly from the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__
-by heading there and clicking on 'Use this template'. In this variant, every push to the ``main`` branch results
-in metadata, measures and notes being extracted from all changed ``.mscx`` files. Note that renaming and deleting
-files will lead to undesired effects that will have to be checked and corrected manually.
-
-Variant 2: Starting from scratch
---------------------------------
-
-Or you simply create the new repo with the above-mentioned folder structure and add the workflow scripts when
-the scores are prepared. In this case, you will have to use the `Python library ms3 <https://pypi.org/project/ms3>`__
-to extract metadata, notes, and measures manually.
-
-Variant 3: Splitting an existing repository
--------------------------------------------
-
-This is for the special case that the MuseScore files in question are already sitting in a subfolder of an existing
-repository which is to be transferred into the new repo including the files' Git histories. This variant is a bit
-more involved and requires prior installation of the `git filter-repo <https://github.com/newren/git-filter-repo>`__
-command which is recommended by the Git developers for replacing ``git filter-branch``.
-
-Setting
-  As an example, we will create a new repository ``chopin_mazurkas`` (Repo B) which will include all files situated in the
-  existing repository ``corpora`` (Repo A) in the subfolder ``annotations/Chopin-Mazurkas``, with the workflow scripts
-  added on top.
-
-Create the new repo B
-  On GitHub, we use the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__ to create
-  the target repo ``chopin_mazurkas`` with the workflow files and the standard ``.gitignore``. Locally, we initialize
-  an empty Git repo that will be connected upstream at a later point: ::
-
-    mkdir chopin_mazurkas && cd chopin_mazurkas && git init
-
-  Make sure that your Git is configured to use the name ``main`` for the default branch, which can be achieved using
-  ``git config --global init.defaultBranch main``.
-
-Clone repo A and transfer files
-  We start off with a fresh clone of ``corpora``, head into it and run: ::
-
-    git filter-repo --subdirectory-filter annotations/Chopin-Mazurkas/ --target ../chopin_mazurkas
-
-  which will copy all files from ``annotations/Chopin-Mazurkas/`` to the freshly initialized repo
-  ``chopin_mazurkas`` together with their full commit histories. If there is a README file, rename it to ``README.md``.
-
-Connect local repo B to the remote repo B
-  The local ``chopin_mazurkas`` now contains the files at the top level together with the full commit
-  history (check out ``git log``). Now we can connect it to the remote and merge the workflow scripts from there: ::
-
-    git remote add origin git@github.com:DCMLab/chopin_mazurkas.git
-    git pull origin main --allow-unrelated-histories
-    git push -u origin main
-
-Clean metadata
-  In case there was an older ``metadata.tsv`` it should now be automatically updated and you might have to clean it.
-  This may involve naming the first two columns ``rel_paths`` and ``fnames``. For the Mazurka example,
-  `this Pull Request <https://github.com/DCMLab/chopin_mazurkas/pull/1>`__ shows the metadata cleaning and update
-  of the existing files from an older MuseScore and annotation standard.
-
-Configuring and adding the new repo
-===================================
-
-* Set the standard repo settings on GitHub:
-
-  .. figure:: img/pr_settings.png
-       :alt: Repository settings on GitHub
-       :scale: 50%
-
-* Under ``Branches``, create a branch protection rule for the main branch:
-
-  .. figure:: img/branch_protection.png
-       :alt: Protecting the main branch on GitHub
-       :scale: 50%
-
-* Under ``Collaborators and teams`` give write access to the ``annotators`` team.
-* Under ``Pages`` set the Source to the root ``/`` of the branch ``gh-pages`` (which should have been
-  automatically created by the workflow when pushing the first MuseScore files). Add the page's URL as the
-  repo's website.
-* Add the new repo to the corresponding meta-repositories (at least to ``all_subcorpora``, see below).
-* Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)
-
-
-.. _metarepos:
-
-Adding the repo to one or several meta-repos
---------------------------------------------
-
-The individual subcorpora can be embedded as submodules in meta-repositories. These meta-repos are listed in the private
-`meta_repositories <https://github.com/DCMLab/meta_repositories>`__ repo. Currently, the most important ones are:
-
-1. `dcml_corpora <https://github.com/DCMLab/dcml_corpora>`__ for published corpora
-2. `all_subcorpora <https://github.com/DCMLab/all_subcorpora>`__ (private) for all published and unpublished corpora.
-
-To add the new repo, head into the meta-repo and do ::
-
-  git submodule add -b main git@github.com:DCMLab/chopin_mazurkas.git
-
-Just to be sure, update all submodules: ``git submodule update --remote`` and push the whole thing.
-
-
-Creating work packages on OpenProject
--------------------------------------
-
-#. Follow the instructions for `create_work_packages.py` under https://github.com/DCMLab/openproject_scripts/
-
-   - set the column ``parent`` to the name of the repository
-   - rename the columns ``fnames => name`` and ``last_mn => measures``
-   - if the new work packages are for annotation upgrades rather than new annotations, add the column ``work_package_type``
-     with value ``Annotation Upgrade``
-   - find out the status of all pieces and fill the column ``status``. Accordingly:
-   - if annotations are present and need to be updated, rename ``annotators => reviewer`` and make sure that every cell contains exactly one
-     user name (``First Last``) known to OpenProject;
-   - if review is done or ongoing, do the same for the renamed column ``reviewers => reviewer``
-   - if annotations are present and finalized, the work package, in theory, does not need to be created; if it is,
-     it should have status "Not available". Filling the fields ``assignee`` and ``reviewer``, is not needed unless for invoicing purposes
-
-#. Create a new view in OpenProject:
-
-   - open any of the existing corpora views
-   - replace the ``Parent`` filter with the repo name
-   - in the menu, select ``Save as...``
-   - enter the repo name and check ``Public``
-
-#. Add the webhook to the repo
-
-   - go to a repo for which the webhook is already set up
-   - in the repo settings, go to ``Webhooks``, click ``Edit``, and copy the ``Payload URL``
-   - in the new repo, go to ``Settings -> Webhooks -> Add webhook`` and insert the copied ``Payload URL``
-   - set the ``Content type`` to "application/json"
-   - Below, select "Send me **everything**" and click ``Add webhook``
-
-#. Add the new work packages to the master sheet for the administrative staff
-
