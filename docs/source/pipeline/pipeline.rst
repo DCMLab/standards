@@ -335,6 +335,8 @@ Required custom fields
 
 The following fields need to be populated.
 
+.. _composition_year_columns:
+
 composed_start, composed_end
   Each of these two fields needs to contain a 4-digit year number such that taken together they represent the time span
   during which the piece was composed according to ``composed_source``. If the time span lies within the same year,
@@ -453,11 +455,12 @@ Reconciling metadata with Wikidata means linking values to nodes in the graph by
 which can be comfortably achieved with the software ``OpenRefine <https://openrefine.org/>``. As an example,
 we take the insufficiently populated ``metadata.tsv`` from the Annotated Beethoven Corpus version 2.1
 (`link <https://raw.githubusercontent.com/DCMLab/ABC/v2.1/metadata.tsv>`__).
+The goal of this step-by-step guide is to reconcile the composer and his 16 string quartets with Wikidata.
 
 Creating a new OpenRefine project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The goal is to reconcile the composer and his 16 string quartets with Wikidata. As a first step, we need to make sure
+As a first step, we need to make sure
 that our metadata table contains values that OpenRefine can reconcile with Wikidata's node labels. Here, we can
 use the file names and some regular expression magic to fill the columns:
 
@@ -511,7 +514,7 @@ This is as easy as accessing the column menu ``Reconcile -> Add entity identifie
 new column name, we use the
 `QuickStatements CSV logic <https://www.wikidata.org/wiki/Help:QuickStatements#CSV_file_syntax>`__ which boils down to
 thinking of each row as the subject of a ``(subject, verb, object)`` triple, and storing ``object`` Q-numbers in
-``verb`` columns. In this example, we are storing Q-numbers that correspond to the pieces
+``verb`` columns. In this example, we are storing Q-numbers that correspond to the pieces'
 `'composer' property <https://www.wikidata.org/wiki/Property:P86>`__ and therefore we name the new column
 ``P86 (composer)``:
 
@@ -526,30 +529,94 @@ to then insert the new values into the MuseScore files. Please make sure to chec
 ``metadata.tsv`` before committing to prevent committing unwanted changes or, even worse, having them written
 into the scores.
 
-Pulling additional information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Reconciling the ``workTitle`` column
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Obviously, with all cells having the same composer value we would have obtained this result faster manually. But using
-OpenRefine gives us the advantage that, from here on, we can pull additional information on the composer item
-from the Wikidata knowledge graph. For that we simply access the matched composer column's menu
-``Edit column -> Add columns from reconciled values`` which will lead us to a list of properties that we can simply
-click on to create additional columns. For example, we can easily add columns called
-"country of citizenship", "native language", "place of birth", "place of death" and "religion or worldview".
-In this example, we have created the additional column ``P27 (country of citizenship)`` which would allow other people
-to access the reconciled item and pull additional information such as geographic coordinates.
+Many Wikidata items can be expected to bear labels such as ``String Quartet No. 1`` and therefore there is quite some
+ambiguity involved in matching. Since we have already reconciled the ``composer`` column, we can use it to constrain
+the reconciliation of the ``workTitle`` column to pieces that have been composed by Beethoven.
 
-.. figure:: img/openrefine_pull.png
-   :alt: Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.
-   :scale: 70%
-
-   Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.
-
-Now that the composer column is reconciled we can see if the works in question already have IDs on Wikidata.
-We repeat the steps above for the column ``workTitle`` but with the difference that this time we can help
-OpenRefine with lookup by constraining the items based on the previous work.
+To achieve that, we bring up the reconciliation pane and, once more, OpenRefine correctly infers the type of the
+items that we are trying to match, ``Q105543609 (musical work/composition)``. On the right side, we assign the
+property ``P86 (composer)`` to the ``composer`` column by typing ``composer`` and selecting the correct property.
 
 .. figure:: img/openrefine_constrain.png
    :alt: Matching the workTitle column constraint by the reconciled composer column.
    :scale: 70%
 
    Matching the workTitle column constraint by the reconciled composer column.
+
+In this case, we can try to additionally use the ``workNumber`` column. This makes sense without prior reconciliation
+because the corresponding property ``P10855 (opus number)`` has a literal data type, string. In other words,
+Wikidata users populate this property with free text rather than with a Q-number. We cannot be sure that the property
+is present at all and, if it is, whether the strings follow a consistent format. Another source of inconsistency
+could be a confusion with ``P528 (catalog code)``,
+`as discussed here <https://www.wikidata.org/wiki/Wikidata:Property_proposal/opus_number#%7B%7Bint%3ATalk%7D%7D>`__.
+In an ideal world we would not only consume metadata from the knowledge graph but also help cleaning it up for our
+domain.....
+
+.. figure:: img/openrefine_work_ids.png
+   :alt: Matching Beethoven string quartets with the correct Wikidata items.
+   :scale: 70%
+
+   Matching Beethoven string quartets with the correct Wikidata items.
+
+The screenshot shows that 53 were matched automatically and 17 are ambiguous. In theory we could automatically
+match them based on their match score but, as we can see, this would wrongly match our ``String Quartet No. 15``
+with the item ``Q270886 (String Quartet No. 8)``, meaning we need to go through the works and select the right match
+carefully. However, once we have matched No. 15 with the correct item and see that for the other ambiguous pieces
+the correct items have the highest match score respectively, we can use the
+``Reconcile -> Actions -> Match each cell to its best candidate`` shortcut to finalize the task.
+
+.. note::
+
+   In the name of thoroughness, we also need to take a look at the automatically matched items to avoid
+   false positives.
+
+
+
+Pulling additional information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Obviously, with all cells having the same composer value we would have been faster to create the ``P86 (composer)``
+column manually, filling in the value ``Q255`` for all cells. But using
+OpenRefine gives us the advantage that, once reconciled, we can pull additional information on the composer item
+from the Wikidata knowledge graph. For that we simply access the matched composer column's menu
+``Edit column -> Add columns from reconciled values`` which will lead us to a list of properties that we can simply
+click on to create additional columns. For example, we can easily add columns called
+"country of citizenship", "native language", "place of birth", "place of death" and "religion or worldview".
+
+This step can be repeated for the added columns. The screenshot shows the column ``country`` that was created by
+pulling the property ``P17 (country)`` for the ``Electorate of Cologne`` items. In addition the columns
+``MusicBrainz work ID``, ``publication date``, ``tonality``, and ``IMSLP ID`` have been created from the
+reconciled work IDs.
+
+.. figure:: img/openrefine_result.png
+   :alt: Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.
+   :scale: 70%
+
+   Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items;
+   displayed for the 16 first movements.
+
+After exporting the newly gained values to our original ``metadata.tsv``, we can process them further, for example,
+
+* by turning the publication dates that come in ISO format into our default
+  :ref:`composition year columns <composition_year_columns>` which contain only a year number;
+* by integrating the values in the ``tonality`` column into the ``workTitle`` column (to get something along the lines
+  of ``String Quartet No. 1 in F major``, for example);
+* by renaming the column ``IMSLP ID`` to its default name ``imslp``;
+* by using the column ``MusicBrainz work ID`` for automatically retrieving IDs for the individual movements for our
+  default column ``musicbrainz``; as well as values for the column ``movementTitle``, for example.
+
+Future work: Sub-work-level items
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Wikidata has a simple mechanism for linking a work to its parts, such as movements. Consider for example the item
+for Joseph Haydn's Trumpet Concerto in E-flat major, Hob. VIIe:1, `Q1585960 <https://www.wikidata.org/wiki/Q1585960>`__.
+The property ``P527 (has part(s))`` links it to the three items that represent its three movements, each of which is
+linked to its parent item via ``P361 (part of)``. The problem is that in the majority of cases, such sub-work-level
+items do not exist yet. MusicBrainz work IDs, on the other hand, are often available (because they are required
+to identify CD tracks). Once we have reconciled our scores representing individual movements with Wikidata work IDs,
+it would be actually a small step to go ahead and create items for the movements automatically via OpenRefine.
+We should consider doing this at least for the cases where sub-work-level IDs are already available on
+MusicBrainz. We could also consider to link the items to our scores in one go.
