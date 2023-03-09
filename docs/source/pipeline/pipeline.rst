@@ -382,7 +382,7 @@ musicbrainz
   to the level of CD tracks. The ones we're interested here are work identifiers (make sure the URI starts with
   ``https://musicbrainz.org/work/``). The project is very advanced with creating identifiers on the
   sub-work (movement) level and we use those whenever available (see screenshot below).
-  If not, we repeat the the work ID for each movement.
+  If not, we repeat the work ID for each movement.
 
 .. figure:: img/musicbrainz_work.png
    :alt: Example for a work displayed on musicbrainz.

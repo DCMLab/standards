@@ -112,9 +112,9 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DCML Corpus Creation Pipeline</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">Collect and prepare the digital edition in the latest MuseScore format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#curating-and-enriching-metadata">Curating and enriching metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files">Creating a repository with unannotated MuseScore files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-and-adding-the-new-repo">Configuring and adding the new repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#curating-and-enriching-metadata">Curating and enriching metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Annotation Reference</a><ul>
@@ -158,19 +158,6 @@
 <li><a class="reference internal" href="#create-metadata">Create metadata</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#curating-and-enriching-metadata">Curating and enriching metadata</a><ul>
-<li><a class="reference internal" href="#default-fields">Default fields</a></li>
-<li><a class="reference internal" href="#required-custom-fields">Required custom fields</a></li>
-<li><a class="reference internal" href="#identifiers-where-available">Identifiers where available</a></li>
-<li><a class="reference internal" href="#contributors-and-annotations">Contributors and annotations</a></li>
-<li><a class="reference internal" href="#reconciling-metadata-with-wikidata">Reconciling metadata with Wikidata</a><ul>
-<li><a class="reference internal" href="#creating-a-new-openrefine-project">Creating a new OpenRefine project</a></li>
-<li><a class="reference internal" href="#reconciling-a-column">Reconciling a column</a></li>
-<li><a class="reference internal" href="#pulling-additional-information">Pulling additional information</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files">Creating a repository with unannotated MuseScore files</a><ul>
 <li><a class="reference internal" href="#variant-1-using-the-template-repository">Variant 1: Using the template repository</a></li>
 <li><a class="reference internal" href="#variant-2-starting-from-scratch">Variant 2: Starting from scratch</a></li>
@@ -180,6 +167,21 @@
 <li><a class="reference internal" href="#configuring-and-adding-the-new-repo">Configuring and adding the new repo</a><ul>
 <li><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos">Adding the repo to one or several meta-repos</a></li>
 <li><a class="reference internal" href="#creating-work-packages-on-openproject">Creating work packages on OpenProject</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#curating-and-enriching-metadata">Curating and enriching metadata</a><ul>
+<li><a class="reference internal" href="#default-fields">Default fields</a></li>
+<li><a class="reference internal" href="#required-custom-fields">Required custom fields</a></li>
+<li><a class="reference internal" href="#identifiers-where-available">Identifiers where available</a></li>
+<li><a class="reference internal" href="#contributors-and-annotations">Contributors and annotations</a></li>
+<li><a class="reference internal" href="#reconciling-metadata-with-wikidata">Reconciling metadata with Wikidata</a><ul>
+<li><a class="reference internal" href="#creating-a-new-openrefine-project">Creating a new OpenRefine project</a></li>
+<li><a class="reference internal" href="#reconciling-a-column">Reconciling a column</a></li>
+<li><a class="reference internal" href="#reconciling-the-worktitle-column">Reconciling the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column</a></li>
+<li><a class="reference internal" href="#pulling-additional-information">Pulling additional information</a></li>
+<li><a class="reference internal" href="#future-work-sub-work-level-items">Future work: Sub-work-level items</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -236,49 +238,51 @@
 <div class="contents local topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" id="id9">Collect and prepare the digital edition in the latest MuseScore format</a></p>
+<li><p><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" id="id10">Collect and prepare the digital edition in the latest MuseScore format</a></p>
 <ul>
-<li><p><a class="reference internal" href="#prior-research" id="id10">Prior research</a></p></li>
-<li><p><a class="reference internal" href="#look-up-and-check-existing-scores" id="id11">Look up and check existing scores</a></p></li>
-<li><p><a class="reference internal" href="#typeset-non-existent-files" id="id12">Typeset non-existent files</a></p></li>
-<li><p><a class="reference internal" href="#file-curation" id="id13">File curation</a></p></li>
-<li><p><a class="reference internal" href="#create-metadata" id="id14">Create metadata</a></p></li>
+<li><p><a class="reference internal" href="#prior-research" id="id11">Prior research</a></p></li>
+<li><p><a class="reference internal" href="#look-up-and-check-existing-scores" id="id12">Look up and check existing scores</a></p></li>
+<li><p><a class="reference internal" href="#typeset-non-existent-files" id="id13">Typeset non-existent files</a></p></li>
+<li><p><a class="reference internal" href="#file-curation" id="id14">File curation</a></p></li>
+<li><p><a class="reference internal" href="#create-metadata" id="id15">Create metadata</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#curating-and-enriching-metadata" id="id15">Curating and enriching metadata</a></p>
+<li><p><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files" id="id16">Creating a repository with unannotated MuseScore files</a></p>
 <ul>
-<li><p><a class="reference internal" href="#default-fields" id="id16">Default fields</a></p></li>
-<li><p><a class="reference internal" href="#required-custom-fields" id="id17">Required custom fields</a></p></li>
-<li><p><a class="reference internal" href="#identifiers-where-available" id="id18">Identifiers where available</a></p></li>
-<li><p><a class="reference internal" href="#contributors-and-annotations" id="id19">Contributors and annotations</a></p></li>
-<li><p><a class="reference internal" href="#reconciling-metadata-with-wikidata" id="id20">Reconciling metadata with Wikidata</a></p>
-<ul>
-<li><p><a class="reference internal" href="#creating-a-new-openrefine-project" id="id21">Creating a new OpenRefine project</a></p></li>
-<li><p><a class="reference internal" href="#reconciling-a-column" id="id22">Reconciling a column</a></p></li>
-<li><p><a class="reference internal" href="#pulling-additional-information" id="id23">Pulling additional information</a></p></li>
+<li><p><a class="reference internal" href="#variant-1-using-the-template-repository" id="id17">Variant 1: Using the template repository</a></p></li>
+<li><p><a class="reference internal" href="#variant-2-starting-from-scratch" id="id18">Variant 2: Starting from scratch</a></p></li>
+<li><p><a class="reference internal" href="#variant-3-splitting-an-existing-repository" id="id19">Variant 3: Splitting an existing repository</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#configuring-and-adding-the-new-repo" id="id20">Configuring and adding the new repo</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos" id="id21">Adding the repo to one or several meta-repos</a></p></li>
+<li><p><a class="reference internal" href="#creating-work-packages-on-openproject" id="id22">Creating work packages on OpenProject</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files" id="id24">Creating a repository with unannotated MuseScore files</a></p>
+<li><p><a class="reference internal" href="#curating-and-enriching-metadata" id="id23">Curating and enriching metadata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#variant-1-using-the-template-repository" id="id25">Variant 1: Using the template repository</a></p></li>
-<li><p><a class="reference internal" href="#variant-2-starting-from-scratch" id="id26">Variant 2: Starting from scratch</a></p></li>
-<li><p><a class="reference internal" href="#variant-3-splitting-an-existing-repository" id="id27">Variant 3: Splitting an existing repository</a></p></li>
+<li><p><a class="reference internal" href="#default-fields" id="id24">Default fields</a></p></li>
+<li><p><a class="reference internal" href="#required-custom-fields" id="id25">Required custom fields</a></p></li>
+<li><p><a class="reference internal" href="#identifiers-where-available" id="id26">Identifiers where available</a></p></li>
+<li><p><a class="reference internal" href="#contributors-and-annotations" id="id27">Contributors and annotations</a></p></li>
+<li><p><a class="reference internal" href="#reconciling-metadata-with-wikidata" id="id28">Reconciling metadata with Wikidata</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-new-openrefine-project" id="id29">Creating a new OpenRefine project</a></p></li>
+<li><p><a class="reference internal" href="#reconciling-a-column" id="id30">Reconciling a column</a></p></li>
+<li><p><a class="reference internal" href="#reconciling-the-worktitle-column" id="id31">Reconciling the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column</a></p></li>
+<li><p><a class="reference internal" href="#pulling-additional-information" id="id32">Pulling additional information</a></p></li>
+<li><p><a class="reference internal" href="#future-work-sub-work-level-items" id="id33">Future work: Sub-work-level items</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#configuring-and-adding-the-new-repo" id="id28">Configuring and adding the new repo</a></p>
-<ul>
-<li><p><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos" id="id29">Adding the repo to one or several meta-repos</a></p></li>
-<li><p><a class="reference internal" href="#creating-work-packages-on-openproject" id="id30">Creating work packages on OpenProject</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <section id="collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">
-<span id="get-scores"></span><h2><a class="toc-backref" href="#id9">Collect and prepare the digital edition in the latest MuseScore format</a><a class="headerlink" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" title="Permalink to this heading">¶</a></h2>
+<span id="get-scores"></span><h2><a class="toc-backref" href="#id10">Collect and prepare the digital edition in the latest MuseScore format</a><a class="headerlink" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" title="Permalink to this heading">¶</a></h2>
 <section id="prior-research">
-<h3><a class="toc-backref" href="#id10">Prior research</a><a class="headerlink" href="#prior-research" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">Prior research</a><a class="headerlink" href="#prior-research" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Check which pieces make up the collection</p></li>
 <li><p>how they are grouped</p></li>
@@ -292,7 +296,7 @@ to an <a class="reference external" href="https://github.com/DCMLab/monteverdi_m
 </ul>
 </section>
 <section id="look-up-and-check-existing-scores">
-<h3><a class="toc-backref" href="#id11">Look up and check existing scores</a><a class="headerlink" href="#look-up-and-check-existing-scores" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">Look up and check existing scores</a><a class="headerlink" href="#look-up-and-check-existing-scores" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>All scores available need to be checked and compared:</dt><dd><ul>
@@ -318,14 +322,14 @@ to an <a class="reference external" href="https://github.com/DCMLab/monteverdi_m
 </ul>
 </section>
 <section id="typeset-non-existent-files">
-<h3><a class="toc-backref" href="#id12">Typeset non-existent files</a><a class="headerlink" href="#typeset-non-existent-files" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">Typeset non-existent files</a><a class="headerlink" href="#typeset-non-existent-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>pick reference edition and send commission to transcriber</p></li>
 <li><p>depending on the music, prices may vary between 5 and 20 CHF per page</p></li>
 </ul>
 </section>
 <section id="file-curation">
-<h3><a class="toc-backref" href="#id13">File curation</a><a class="headerlink" href="#file-curation" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">File curation</a><a class="headerlink" href="#file-curation" title="Permalink to this heading">¶</a></h3>
 <p>The scores need to be corrected on the basis of a reference edition/manuscript.
 We have a collaborative document with detailed
 <a class="reference external" href="https://docs.google.com/document/d/1Q2svEUSsE7OCetik8An__gsEwQCYNfFJlHFMF9dRce4/edit#heading=h.8hrcm7m3udll">Score correction guidelines</a>.
@@ -398,7 +402,7 @@ Please send a request to be added to the document.</p>
 </ul>
 </section>
 <section id="create-metadata">
-<h3><a class="toc-backref" href="#id14">Create metadata</a><a class="headerlink" href="#create-metadata" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">Create metadata</a><a class="headerlink" href="#create-metadata" title="Permalink to this heading">¶</a></h3>
 <p>All metadata fields are automatically extracted by the dcml_corpus_workflow and represented in the repository’s
 <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> file. However, at the beginning this file needs to be created using the command <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">extract</span> <span class="pre">-D</span> <span class="pre">-a</span></code>.
 The first column, <code class="docutils literal notranslate"><span class="pre">fname</span></code>, is used as IDs for the corpus and needs to be checked. In case the corpus contains
@@ -419,12 +423,158 @@ Numbers). One editor that doesn’t to that is VScode. Make sure to <strong>alwa
 committing changes to <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> to avoid unwanted modifications or, worse, loss of data.</p>
 </div>
 <p>Once the <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> is there and contains one row per piece, you can either continue with the following section
-on enriching metadata, or first create the repository (see further below) so that the metadata curation is
-part of the Git history.</p>
+and create the new Git repository or <a class="reference internal" href="#enriching-metadata"><span class="std std-ref">enrich the metadata</span></a> first. Since enriching metadata
+involves modifying the scores, however, it is preferable to make metadata curation part of the Git history.</p>
+</section>
+</section>
+<section id="creating-a-repository-with-unannotated-musescore-files">
+<span id="score-repo"></span><h2><a class="toc-backref" href="#id16">Creating a repository with unannotated MuseScore files</a><a class="headerlink" href="#creating-a-repository-with-unannotated-musescore-files" title="Permalink to this heading">¶</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
+needs to be complete and the file names final.</p>
+</div>
+<p>Before starting annotating a corpus, a repo with the standard folder structure needs to be created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── MS3
+└── pdf
+</pre></div>
+</div>
+<p>The directory <code class="docutils literal notranslate"><span class="pre">MS3</span></code> contains the unannotated MuseScore files and <code class="docutils literal notranslate"><span class="pre">PDF</span></code> the print edition or manuscript which they
+encode. In order to activate the annotation workflow (i.e. the automatic scripts triggered on the GitHub servers
+by certain events related to annotation and review), the folder <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> needs to be copied from
+the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>. It also contains our
+standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file which prevents temporary files from being tracked and uploaded.</p>
+<section id="variant-1-using-the-template-repository">
+<h3><a class="toc-backref" href="#id17">Variant 1: Using the template repository</a><a class="headerlink" href="#variant-1-using-the-template-repository" title="Permalink to this heading">¶</a></h3>
+<p>You can create the new repo directly from the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>
+by heading there and clicking on ‘Use this template’. In this variant, every push to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch results
+in metadata, measures and notes being extracted from all changed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> files. Note that renaming and deleting
+files will lead to undesired effects that will have to be checked and corrected manually.</p>
+</section>
+<section id="variant-2-starting-from-scratch">
+<h3><a class="toc-backref" href="#id18">Variant 2: Starting from scratch</a><a class="headerlink" href="#variant-2-starting-from-scratch" title="Permalink to this heading">¶</a></h3>
+<p>Or you simply create the new repo with the above-mentioned folder structure and add the workflow scripts when
+the scores are prepared. In this case, you will have to use the <a class="reference external" href="https://pypi.org/project/ms3">Python library ms3</a>
+to extract metadata, notes, and measures manually.</p>
+</section>
+<section id="variant-3-splitting-an-existing-repository">
+<h3><a class="toc-backref" href="#id19">Variant 3: Splitting an existing repository</a><a class="headerlink" href="#variant-3-splitting-an-existing-repository" title="Permalink to this heading">¶</a></h3>
+<p>This is for the special case that the MuseScore files in question are already sitting in a subfolder of an existing
+repository which is to be transferred into the new repo including the files’ Git histories. This variant is a bit
+more involved and requires prior installation of the <a class="reference external" href="https://github.com/newren/git-filter-repo">git filter-repo</a>
+command which is recommended by the Git developers for replacing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">filter-branch</span></code>.</p>
+<dl>
+<dt>Setting</dt><dd><p>As an example, we will create a new repository <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> (Repo B) which will include all files situated in the
+existing repository <code class="docutils literal notranslate"><span class="pre">corpora</span></code> (Repo A) in the subfolder <code class="docutils literal notranslate"><span class="pre">annotations/Chopin-Mazurkas</span></code>, with the workflow scripts
+added on top.</p>
+</dd>
+<dt>Create the new repo B</dt><dd><p>On GitHub, we use the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a> to create
+the target repo <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> with the workflow files and the standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. Locally, we initialize
+an empty Git repo that will be connected upstream at a later point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">chopin_mazurkas</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">chopin_mazurkas</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">init</span>
+</pre></div>
+</div>
+<p>Make sure that your Git is configured to use the name <code class="docutils literal notranslate"><span class="pre">main</span></code> for the default branch, which can be achieved using
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">init.defaultBranch</span> <span class="pre">main</span></code>.</p>
+</dd>
+<dt>Clone repo A and transfer files</dt><dd><p>We start off with a fresh clone of <code class="docutils literal notranslate"><span class="pre">corpora</span></code>, head into it and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="nb">filter</span><span class="o">-</span><span class="n">repo</span> <span class="o">--</span><span class="n">subdirectory</span><span class="o">-</span><span class="nb">filter</span> <span class="n">annotations</span><span class="o">/</span><span class="n">Chopin</span><span class="o">-</span><span class="n">Mazurkas</span><span class="o">/</span> <span class="o">--</span><span class="n">target</span> <span class="o">../</span><span class="n">chopin_mazurkas</span>
+</pre></div>
+</div>
+<p>which will copy all files from <code class="docutils literal notranslate"><span class="pre">annotations/Chopin-Mazurkas/</span></code> to the freshly initialized repo
+<code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> together with their full commit histories. If there is a README file, rename it to <code class="docutils literal notranslate"><span class="pre">README.md</span></code>.</p>
+</dd>
+<dt>Connect local repo B to the remote repo B</dt><dd><p>The local <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> now contains the files at the top level together with the full commit
+history (check out <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>). Now we can connect it to the remote and merge the workflow scripts from there:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">DCMLab</span><span class="o">/</span><span class="n">chopin_mazurkas</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">main</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">unrelated</span><span class="o">-</span><span class="n">histories</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+</dd>
+<dt>Clean metadata</dt><dd><p>In case there was an older <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> it should now be automatically updated and you might have to clean it.
+This may involve naming the first two columns <code class="docutils literal notranslate"><span class="pre">rel_paths</span></code> and <code class="docutils literal notranslate"><span class="pre">fnames</span></code>. For the Mazurka example,
+<a class="reference external" href="https://github.com/DCMLab/chopin_mazurkas/pull/1">this Pull Request</a> shows the metadata cleaning and update
+of the existing files from an older MuseScore and annotation standard.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="configuring-and-adding-the-new-repo">
+<h2><a class="toc-backref" href="#id20">Configuring and adding the new repo</a><a class="headerlink" href="#configuring-and-adding-the-new-repo" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Set the standard repo settings on GitHub:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/pr_settings.png"><img alt="Repository settings on GitHub" src="../_images/pr_settings.png" style="width: 395.0px; height: 239.0px;" /></a>
+</figure>
+</li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Branches</span></code>, create a branch protection rule for the main branch:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/branch_protection.png"><img alt="Protecting the main branch on GitHub" src="../_images/branch_protection.png" style="width: 392.0px; height: 250.0px;" /></a>
+</figure>
+</li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Collaborators</span> <span class="pre">and</span> <span class="pre">teams</span></code> give write access to the <code class="docutils literal notranslate"><span class="pre">annotators</span></code> team.</p></li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Pages</span></code> set the Source to the root <code class="docutils literal notranslate"><span class="pre">/</span></code> of the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> (which should have been
+automatically created by the workflow when pushing the first MuseScore files). Add the page’s URL as the
+repo’s website.</p></li>
+<li><p>Add the new repo to the corresponding meta-repositories (at least to <code class="docutils literal notranslate"><span class="pre">all_subcorpora</span></code>, see below).</p></li>
+<li><p>Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)</p></li>
+</ul>
+<section id="adding-the-repo-to-one-or-several-meta-repos">
+<span id="metarepos"></span><h3><a class="toc-backref" href="#id21">Adding the repo to one or several meta-repos</a><a class="headerlink" href="#adding-the-repo-to-one-or-several-meta-repos" title="Permalink to this heading">¶</a></h3>
+<p>The individual subcorpora can be embedded as submodules in meta-repositories. These meta-repos are listed in the private
+<a class="reference external" href="https://github.com/DCMLab/meta_repositories">meta_repositories</a> repo. Currently, the most important ones are:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/DCMLab/dcml_corpora">dcml_corpora</a> for published corpora</p></li>
+<li><p><a class="reference external" href="https://github.com/DCMLab/all_subcorpora">all_subcorpora</a> (private) for all published and unpublished corpora.</p></li>
+</ol>
+<p>To add the new repo, head into the meta-repo and do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="o">-</span><span class="n">b</span> <span class="n">main</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">DCMLab</span><span class="o">/</span><span class="n">chopin_mazurkas</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Just to be sure, update all submodules: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--remote</span></code> and push the whole thing.</p>
+</section>
+<section id="creating-work-packages-on-openproject">
+<h3><a class="toc-backref" href="#id22">Creating work packages on OpenProject</a><a class="headerlink" href="#creating-work-packages-on-openproject" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Follow the instructions for <cite>create_work_packages.py</cite> under <a class="reference external" href="https://github.com/DCMLab/openproject_scripts/">https://github.com/DCMLab/openproject_scripts/</a></p>
+<ul class="simple">
+<li><p>set the column <code class="docutils literal notranslate"><span class="pre">parent</span></code> to the name of the repository</p></li>
+<li><p>rename the columns <code class="docutils literal notranslate"><span class="pre">fnames</span> <span class="pre">=&gt;</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">last_mn</span> <span class="pre">=&gt;</span> <span class="pre">measures</span></code></p></li>
+<li><p>if the new work packages are for annotation upgrades rather than new annotations, add the column <code class="docutils literal notranslate"><span class="pre">work_package_type</span></code>
+with value <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">Upgrade</span></code></p></li>
+<li><p>find out the status of all pieces and fill the column <code class="docutils literal notranslate"><span class="pre">status</span></code>. Accordingly:</p></li>
+<li><p>if annotations are present and need to be updated, rename <code class="docutils literal notranslate"><span class="pre">annotators</span> <span class="pre">=&gt;</span> <span class="pre">reviewer</span></code> and make sure that every cell contains exactly one
+user name (<code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">Last</span></code>) known to OpenProject;</p></li>
+<li><p>if review is done or ongoing, do the same for the renamed column <code class="docutils literal notranslate"><span class="pre">reviewers</span> <span class="pre">=&gt;</span> <span class="pre">reviewer</span></code></p></li>
+<li><p>if annotations are present and finalized, the work package, in theory, does not need to be created; if it is,
+it should have status “Not available”. Filling the fields <code class="docutils literal notranslate"><span class="pre">assignee</span></code> and <code class="docutils literal notranslate"><span class="pre">reviewer</span></code>, is not needed unless for invoicing purposes</p></li>
+</ul>
+</li>
+<li><p>Create a new view in OpenProject:</p>
+<ul class="simple">
+<li><p>open any of the existing corpora views</p></li>
+<li><p>replace the <code class="docutils literal notranslate"><span class="pre">Parent</span></code> filter with the repo name</p></li>
+<li><p>in the menu, select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">as...</span></code></p></li>
+<li><p>enter the repo name and check <code class="docutils literal notranslate"><span class="pre">Public</span></code></p></li>
+</ul>
+</li>
+<li><p>Add the webhook to the repo</p>
+<ul class="simple">
+<li><p>go to a repo for which the webhook is already set up</p></li>
+<li><p>in the repo settings, go to <code class="docutils literal notranslate"><span class="pre">Webhooks</span></code>, click <code class="docutils literal notranslate"><span class="pre">Edit</span></code>, and copy the <code class="docutils literal notranslate"><span class="pre">Payload</span> <span class="pre">URL</span></code></p></li>
+<li><p>in the new repo, go to <code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Webhooks</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">webhook</span></code> and insert the copied <code class="docutils literal notranslate"><span class="pre">Payload</span> <span class="pre">URL</span></code></p></li>
+<li><p>set the <code class="docutils literal notranslate"><span class="pre">Content</span> <span class="pre">type</span></code> to “application/json”</p></li>
+<li><p>Below, select “Send me <strong>everything</strong>” and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">webhook</span></code></p></li>
+</ul>
+</li>
+<li><p>Add the new work packages to the master sheet for the administrative staff</p></li>
+</ol>
 </section>
 </section>
 <section id="curating-and-enriching-metadata">
-<h2><a class="toc-backref" href="#id15">Curating and enriching metadata</a><a class="headerlink" href="#curating-and-enriching-metadata" title="Permalink to this heading">¶</a></h2>
+<span id="enriching-metadata"></span><h2><a class="toc-backref" href="#id23">Curating and enriching metadata</a><a class="headerlink" href="#curating-and-enriching-metadata" title="Permalink to this heading">¶</a></h2>
 <p>In MuseScore, metadata is stored as <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">-&gt;</span> <span class="pre">value</span></code> pairs and can be accessed and modified via the menu
 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties...</span></code>. Some fields are there by default, others have to be created using the <code class="docutils literal notranslate"><span class="pre">New</span></code> button.
 It is very important that the fields are named correctly (double-check for spelling mistakes) and all lowercase.
@@ -452,7 +602,7 @@ accurately encoded in UTF-8. For example, write <code class="docutils literal no
 go with the English Wikidata/Wikipedia.</p>
 </div>
 <section id="default-fields">
-<h3><a class="toc-backref" href="#id16">Default fields</a><a class="headerlink" href="#default-fields" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id24">Default fields</a><a class="headerlink" href="#default-fields" title="Permalink to this heading">¶</a></h3>
 <p>The following default fields should be populated where applicable:</p>
 <dl class="simple">
 <dt>composer</dt><dd><p>Full name as displayed in the English Wikipedia. For example,
@@ -474,9 +624,9 @@ as an orientation.</p>
 </dl>
 </section>
 <section id="required-custom-fields">
-<h3><a class="toc-backref" href="#id17">Required custom fields</a><a class="headerlink" href="#required-custom-fields" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id25">Required custom fields</a><a class="headerlink" href="#required-custom-fields" title="Permalink to this heading">¶</a></h3>
 <p>The following fields need to be populated.</p>
-<dl>
+<dl id="composition-year-columns">
 <dt>composed_start, composed_end</dt><dd><p>Each of these two fields needs to contain a 4-digit year number such that taken together they represent the time span
 during which the piece was composed according to <code class="docutils literal notranslate"><span class="pre">composed_source</span></code>. If the time span lies within the same year,
 both fields contain the same number. If the source indicates an open interval (e.g. <code class="docutils literal notranslate"><span class="pre">?-1789</span></code>), we use the
@@ -499,7 +649,7 @@ information on what exactly the years represent, e.g.
 </dl>
 </section>
 <section id="identifiers-where-available">
-<h3><a class="toc-backref" href="#id18">Identifiers where available</a><a class="headerlink" href="#identifiers-where-available" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id26">Identifiers where available</a><a class="headerlink" href="#identifiers-where-available" title="Permalink to this heading">¶</a></h3>
 <p>Identifiers are important for making data findable and interoperable but might not always be available. Nevertheless,
 the goal should be to find minimum one of the work or part-of-work identifiers listed below. Wikidata identifiers
 are the gold standard because they often come with a mapping to all other kinds of identifiers. In addition,
@@ -549,7 +699,7 @@ property. The values of the column are the “Q-numbers” of the composer item.
 </dl>
 </section>
 <section id="contributors-and-annotations">
-<h3><a class="toc-backref" href="#id19">Contributors and annotations</a><a class="headerlink" href="#contributors-and-annotations" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id27">Contributors and annotations</a><a class="headerlink" href="#contributors-and-annotations" title="Permalink to this heading">¶</a></h3>
 <p>Custom fields to give credit to contributors and to keep track of versions of annotation standards and the likes.
 The preferred identifiers for persons are ORCIDs such as <code class="docutils literal notranslate"><span class="pre">0000-0002-1986-9545</span></code> or given as URL, such as
 <a class="reference external" href="https://orcid.org/0000-0002-1986-9545">https://orcid.org/0000-0002-1986-9545</a>.</p>
@@ -570,7 +720,7 @@ If a review pertained only to a particular type/version/iteration, specify in pa
 </dl>
 </section>
 <section id="reconciling-metadata-with-wikidata">
-<span id="reconciling"></span><h3><a class="toc-backref" href="#id20">Reconciling metadata with Wikidata</a><a class="headerlink" href="#reconciling-metadata-with-wikidata" title="Permalink to this heading">¶</a></h3>
+<span id="reconciling"></span><h3><a class="toc-backref" href="#id28">Reconciling metadata with Wikidata</a><a class="headerlink" href="#reconciling-metadata-with-wikidata" title="Permalink to this heading">¶</a></h3>
 <p>Wikidata is a knowledge graph in which</p>
 <ul class="simple">
 <li><p>each node (a noun considered as subject or object of a relation) is identified by a “Q-number” such as <code class="docutils literal notranslate"><span class="pre">Q636399</span></code>
@@ -582,10 +732,11 @@ If a review pertained only to a particular type/version/iteration, specify in pa
 <p>Reconciling metadata with Wikidata means linking values to nodes in the graph by assigning the relevant Q-numbers,
 which can be comfortably achieved with the software <code class="docutils literal notranslate"><span class="pre">OpenRefine</span> <span class="pre">&lt;https://openrefine.org/&gt;</span></code>. As an example,
 we take the insufficiently populated <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> from the Annotated Beethoven Corpus version 2.1
-(<a class="reference external" href="https://raw.githubusercontent.com/DCMLab/ABC/v2.1/metadata.tsv">link</a>).</p>
+(<a class="reference external" href="https://raw.githubusercontent.com/DCMLab/ABC/v2.1/metadata.tsv">link</a>).
+The goal of this step-by-step guide is to reconcile the composer and his 16 string quartets with Wikidata.</p>
 <section id="creating-a-new-openrefine-project">
-<h4><a class="toc-backref" href="#id21">Creating a new OpenRefine project</a><a class="headerlink" href="#creating-a-new-openrefine-project" title="Permalink to this heading">¶</a></h4>
-<p>The goal is to reconcile the composer and his 16 string quartets with Wikidata. As a first step, we need to make sure
+<h4><a class="toc-backref" href="#id29">Creating a new OpenRefine project</a><a class="headerlink" href="#creating-a-new-openrefine-project" title="Permalink to this heading">¶</a></h4>
+<p>As a first step, we need to make sure
 that our metadata table contains values that OpenRefine can reconcile with Wikidata’s node labels. Here, we can
 use the file names and some regular expression magic to fill the columns:</p>
 <figure class="align-default" id="id2">
@@ -604,7 +755,7 @@ TSV file if needed (usually it isn’t), name the project and click on <code cla
 </figure>
 </section>
 <section id="reconciling-a-column">
-<h4><a class="toc-backref" href="#id22">Reconciling a column</a><a class="headerlink" href="#reconciling-a-column" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id30">Reconciling a column</a><a class="headerlink" href="#reconciling-a-column" title="Permalink to this heading">¶</a></h4>
 <p>Now we can start reconciling the values of a column by opening it’s menu <code class="docutils literal notranslate"><span class="pre">Reconcile</span> <span class="pre">-&gt;</span> <span class="pre">Start</span> <span class="pre">reconciling...</span></code>.</p>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/openrefine_start.png"><img alt="Opening the reconciliation pane in OpenRefine." src="../_images/openrefine_start.png" style="width: 372.8px; height: 372.0px;" /></a>
@@ -631,7 +782,7 @@ This is as easy as accessing the column menu <code class="docutils literal notra
 new column name, we use the
 <a class="reference external" href="https://www.wikidata.org/wiki/Help:QuickStatements#CSV_file_syntax">QuickStatements CSV logic</a> which boils down to
 thinking of each row as the subject of a <code class="docutils literal notranslate"><span class="pre">(subject,</span> <span class="pre">verb,</span> <span class="pre">object)</span></code> triple, and storing <code class="docutils literal notranslate"><span class="pre">object</span></code> Q-numbers in
-<code class="docutils literal notranslate"><span class="pre">verb</span></code> columns. In this example, we are storing Q-numbers that correspond to the pieces
+<code class="docutils literal notranslate"><span class="pre">verb</span></code> columns. In this example, we are storing Q-numbers that correspond to the pieces’
 <a class="reference external" href="https://www.wikidata.org/wiki/Property:P86">‘composer’ property</a> and therefore we name the new column
 <code class="docutils literal notranslate"><span class="pre">P86</span> <span class="pre">(composer)</span></code>:</p>
 <figure class="align-default" id="id6">
@@ -645,178 +796,89 @@ to then insert the new values into the MuseScore files. Please make sure to chec
 <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> before committing to prevent committing unwanted changes or, even worse, having them written
 into the scores.</p>
 </section>
+<section id="reconciling-the-worktitle-column">
+<h4><a class="toc-backref" href="#id31">Reconciling the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column</a><a class="headerlink" href="#reconciling-the-worktitle-column" title="Permalink to this heading">¶</a></h4>
+<p>Many Wikidata items can be expected to bear labels such as <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Quartet</span> <span class="pre">No.</span> <span class="pre">1</span></code> and therefore there is quite some
+ambiguity involved in matching. Since we have already reconciled the <code class="docutils literal notranslate"><span class="pre">composer</span></code> column, we can use it to constrain
+the reconciliation of the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column to pieces that have been composed by Beethoven.</p>
+<p>To achieve that, we bring up the reconciliation pane and, once more, OpenRefine correctly infers the type of the
+items that we are trying to match, <code class="docutils literal notranslate"><span class="pre">Q105543609</span> <span class="pre">(musical</span> <span class="pre">work/composition)</span></code>. On the right side, we assign the
+property <code class="docutils literal notranslate"><span class="pre">P86</span> <span class="pre">(composer)</span></code> to the <code class="docutils literal notranslate"><span class="pre">composer</span></code> column by typing <code class="docutils literal notranslate"><span class="pre">composer</span></code> and selecting the correct property.</p>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/openrefine_constrain.png"><img alt="Matching the workTitle column constraint by the reconciled composer column." src="../_images/openrefine_constrain.png" style="width: 629.3px; height: 410.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">Matching the workTitle column constraint by the reconciled composer column.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>In this case, we can try to additionally use the <code class="docutils literal notranslate"><span class="pre">workNumber</span></code> column. This makes sense without prior reconciliation
+because the corresponding property <code class="docutils literal notranslate"><span class="pre">P10855</span> <span class="pre">(opus</span> <span class="pre">number)</span></code> has a literal data type, string. In other words,
+Wikidata users populate this property with free text rather than with a Q-number. We cannot be sure that the property
+is present at all and, if it is, whether the strings follow a consistent format. Another source of inconsistency
+could be a confusion with <code class="docutils literal notranslate"><span class="pre">P528</span> <span class="pre">(catalog</span> <span class="pre">code)</span></code>,
+<a class="reference external" href="https://www.wikidata.org/wiki/Wikidata:Property_proposal/opus_number#%7B%7Bint%3ATalk%7D%7D">as discussed here</a>.
+In an ideal world we would not only consume metadata from the knowledge graph but also help cleaning it up for our
+domain…..</p>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="../_images/openrefine_work_ids.png"><img alt="Matching Beethoven string quartets with the correct Wikidata items." src="../_images/openrefine_work_ids.png" style="width: 590.8px; height: 301.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Matching Beethoven string quartets with the correct Wikidata items.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The screenshot shows that 53 were matched automatically and 17 are ambiguous. In theory we could automatically
+match them based on their match score but, as we can see, this would wrongly match our <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Quartet</span> <span class="pre">No.</span> <span class="pre">15</span></code>
+with the item <code class="docutils literal notranslate"><span class="pre">Q270886</span> <span class="pre">(String</span> <span class="pre">Quartet</span> <span class="pre">No.</span> <span class="pre">8)</span></code>, meaning we need to go through the works and select the right match
+carefully. However, once we have matched No. 15 with the correct item and see that for the other ambiguous pieces
+the correct items have the highest match score respectively, we can use the
+<code class="docutils literal notranslate"><span class="pre">Reconcile</span> <span class="pre">-&gt;</span> <span class="pre">Actions</span> <span class="pre">-&gt;</span> <span class="pre">Match</span> <span class="pre">each</span> <span class="pre">cell</span> <span class="pre">to</span> <span class="pre">its</span> <span class="pre">best</span> <span class="pre">candidate</span></code> shortcut to finalize the task.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the name of thoroughness, we also need to take a look at the automatically matched items to avoid
+false positives.</p>
+</div>
+</section>
 <section id="pulling-additional-information">
-<h4><a class="toc-backref" href="#id23">Pulling additional information</a><a class="headerlink" href="#pulling-additional-information" title="Permalink to this heading">¶</a></h4>
-<p>Obviously, with all cells having the same composer value we would have obtained this result faster manually. But using
-OpenRefine gives us the advantage that, from here on, we can pull additional information on the composer item
+<h4><a class="toc-backref" href="#id32">Pulling additional information</a><a class="headerlink" href="#pulling-additional-information" title="Permalink to this heading">¶</a></h4>
+<p>Obviously, with all cells having the same composer value we would have been faster to create the <code class="docutils literal notranslate"><span class="pre">P86</span> <span class="pre">(composer)</span></code>
+column manually, filling in the value <code class="docutils literal notranslate"><span class="pre">Q255</span></code> for all cells. But using
+OpenRefine gives us the advantage that, once reconciled, we can pull additional information on the composer item
 from the Wikidata knowledge graph. For that we simply access the matched composer column’s menu
 <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">column</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">columns</span> <span class="pre">from</span> <span class="pre">reconciled</span> <span class="pre">values</span></code> which will lead us to a list of properties that we can simply
 click on to create additional columns. For example, we can easily add columns called
-“country of citizenship”, “native language”, “place of birth”, “place of death” and “religion or worldview”.
-In this example, we have created the additional column <code class="docutils literal notranslate"><span class="pre">P27</span> <span class="pre">(country</span> <span class="pre">of</span> <span class="pre">citizenship)</span></code> which would allow other people
-to access the reconciled item and pull additional information such as geographic coordinates.</p>
-<figure class="align-default" id="id7">
-<a class="reference internal image-reference" href="../_images/openrefine_pull.png"><img alt="Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items." src="../_images/openrefine_pull.png" style="width: 621.5999999999999px; height: 304.5px;" /></a>
+“country of citizenship”, “native language”, “place of birth”, “place of death” and “religion or worldview”.</p>
+<p>This step can be repeated for the added columns. The screenshot shows the column <code class="docutils literal notranslate"><span class="pre">country</span></code> that was created by
+pulling the property <code class="docutils literal notranslate"><span class="pre">P17</span> <span class="pre">(country)</span></code> for the <code class="docutils literal notranslate"><span class="pre">Electorate</span> <span class="pre">of</span> <span class="pre">Cologne</span></code> items. In addition the columns
+<code class="docutils literal notranslate"><span class="pre">MusicBrainz</span> <span class="pre">work</span> <span class="pre">ID</span></code>, <code class="docutils literal notranslate"><span class="pre">publication</span> <span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">tonality</span></code>, and <code class="docutils literal notranslate"><span class="pre">IMSLP</span> <span class="pre">ID</span></code> have been created from the
+reconciled work IDs.</p>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="../_images/openrefine_result.png"><img alt="Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items." src="../_images/openrefine_result.png" style="width: 1204.0px; height: 784.6999999999999px;" /></a>
 <figcaption>
-<p><span class="caption-text">Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Additional columns pulled from the Wikidata knowledge graph based on the reconciled composer items;
+displayed for the 16 first movements.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Now that the composer column is reconciled we can see if the works in question already have IDs on Wikidata.
-We repeat the steps above for the column <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> but with the difference that this time we can help
-OpenRefine with lookup by constraining the items based on the previous work.</p>
-<figure class="align-default" id="id8">
-<a class="reference internal image-reference" href="../_images/openrefine_constrain.png"><img alt="Matching the workTitle column constraint by the reconciled composer column." src="../_images/openrefine_constrain.png" style="width: 604.0999999999999px; height: 163.1px;" /></a>
-<figcaption>
-<p><span class="caption-text">Matching the workTitle column constraint by the reconciled composer column.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-</section>
-<section id="creating-a-repository-with-unannotated-musescore-files">
-<span id="score-repo"></span><h2><a class="toc-backref" href="#id24">Creating a repository with unannotated MuseScore files</a><a class="headerlink" href="#creating-a-repository-with-unannotated-musescore-files" title="Permalink to this heading">¶</a></h2>
-<div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
-needs to be complete and the file names final.</p>
-</div>
-<p>Before starting annotating a corpus, a repo with the standard folder structure needs to be created:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
-├── MS3
-└── pdf
-</pre></div>
-</div>
-<p>The directory <code class="docutils literal notranslate"><span class="pre">MS3</span></code> contains the unannotated MuseScore files and <code class="docutils literal notranslate"><span class="pre">PDF</span></code> the print edition or manuscript which they
-encode. In order to activate the annotation workflow (i.e. the automatic scripts triggered on the GitHub servers
-by certain events related to annotation and review), the folder <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> needs to be copied from
-the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>. It also contains our
-standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file which prevents temporary files from being tracked and uploaded.</p>
-<section id="variant-1-using-the-template-repository">
-<h3><a class="toc-backref" href="#id25">Variant 1: Using the template repository</a><a class="headerlink" href="#variant-1-using-the-template-repository" title="Permalink to this heading">¶</a></h3>
-<p>You can create the new repo directly from the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>
-by heading there and clicking on ‘Use this template’. In this variant, every push to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch results
-in metadata, measures and notes being extracted from all changed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> files. Note that renaming and deleting
-files will lead to undesired effects that will have to be checked and corrected manually.</p>
-</section>
-<section id="variant-2-starting-from-scratch">
-<h3><a class="toc-backref" href="#id26">Variant 2: Starting from scratch</a><a class="headerlink" href="#variant-2-starting-from-scratch" title="Permalink to this heading">¶</a></h3>
-<p>Or you simply create the new repo with the above-mentioned folder structure and add the workflow scripts when
-the scores are prepared. In this case, you will have to use the <a class="reference external" href="https://pypi.org/project/ms3">Python library ms3</a>
-to extract metadata, notes, and measures manually.</p>
-</section>
-<section id="variant-3-splitting-an-existing-repository">
-<h3><a class="toc-backref" href="#id27">Variant 3: Splitting an existing repository</a><a class="headerlink" href="#variant-3-splitting-an-existing-repository" title="Permalink to this heading">¶</a></h3>
-<p>This is for the special case that the MuseScore files in question are already sitting in a subfolder of an existing
-repository which is to be transferred into the new repo including the files’ Git histories. This variant is a bit
-more involved and requires prior installation of the <a class="reference external" href="https://github.com/newren/git-filter-repo">git filter-repo</a>
-command which is recommended by the Git developers for replacing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">filter-branch</span></code>.</p>
-<dl>
-<dt>Setting</dt><dd><p>As an example, we will create a new repository <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> (Repo B) which will include all files situated in the
-existing repository <code class="docutils literal notranslate"><span class="pre">corpora</span></code> (Repo A) in the subfolder <code class="docutils literal notranslate"><span class="pre">annotations/Chopin-Mazurkas</span></code>, with the workflow scripts
-added on top.</p>
-</dd>
-<dt>Create the new repo B</dt><dd><p>On GitHub, we use the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a> to create
-the target repo <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> with the workflow files and the standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. Locally, we initialize
-an empty Git repo that will be connected upstream at a later point:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">chopin_mazurkas</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">chopin_mazurkas</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">init</span>
-</pre></div>
-</div>
-<p>Make sure that your Git is configured to use the name <code class="docutils literal notranslate"><span class="pre">main</span></code> for the default branch, which can be achieved using
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">init.defaultBranch</span> <span class="pre">main</span></code>.</p>
-</dd>
-<dt>Clone repo A and transfer files</dt><dd><p>We start off with a fresh clone of <code class="docutils literal notranslate"><span class="pre">corpora</span></code>, head into it and run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="nb">filter</span><span class="o">-</span><span class="n">repo</span> <span class="o">--</span><span class="n">subdirectory</span><span class="o">-</span><span class="nb">filter</span> <span class="n">annotations</span><span class="o">/</span><span class="n">Chopin</span><span class="o">-</span><span class="n">Mazurkas</span><span class="o">/</span> <span class="o">--</span><span class="n">target</span> <span class="o">../</span><span class="n">chopin_mazurkas</span>
-</pre></div>
-</div>
-<p>which will copy all files from <code class="docutils literal notranslate"><span class="pre">annotations/Chopin-Mazurkas/</span></code> to the freshly initialized repo
-<code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> together with their full commit histories. If there is a README file, rename it to <code class="docutils literal notranslate"><span class="pre">README.md</span></code>.</p>
-</dd>
-<dt>Connect local repo B to the remote repo B</dt><dd><p>The local <code class="docutils literal notranslate"><span class="pre">chopin_mazurkas</span></code> now contains the files at the top level together with the full commit
-history (check out <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>). Now we can connect it to the remote and merge the workflow scripts from there:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">DCMLab</span><span class="o">/</span><span class="n">chopin_mazurkas</span><span class="o">.</span><span class="n">git</span>
-<span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">main</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">unrelated</span><span class="o">-</span><span class="n">histories</span>
-<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
-</pre></div>
-</div>
-</dd>
-<dt>Clean metadata</dt><dd><p>In case there was an older <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> it should now be automatically updated and you might have to clean it.
-This may involve naming the first two columns <code class="docutils literal notranslate"><span class="pre">rel_paths</span></code> and <code class="docutils literal notranslate"><span class="pre">fnames</span></code>. For the Mazurka example,
-<a class="reference external" href="https://github.com/DCMLab/chopin_mazurkas/pull/1">this Pull Request</a> shows the metadata cleaning and update
-of the existing files from an older MuseScore and annotation standard.</p>
-</dd>
-</dl>
-</section>
-</section>
-<section id="configuring-and-adding-the-new-repo">
-<h2><a class="toc-backref" href="#id28">Configuring and adding the new repo</a><a class="headerlink" href="#configuring-and-adding-the-new-repo" title="Permalink to this heading">¶</a></h2>
-<ul>
-<li><p>Set the standard repo settings on GitHub:</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../_images/pr_settings.png"><img alt="Repository settings on GitHub" src="../_images/pr_settings.png" style="width: 395.0px; height: 239.0px;" /></a>
-</figure>
-</li>
-<li><p>Under <code class="docutils literal notranslate"><span class="pre">Branches</span></code>, create a branch protection rule for the main branch:</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../_images/branch_protection.png"><img alt="Protecting the main branch on GitHub" src="../_images/branch_protection.png" style="width: 392.0px; height: 250.0px;" /></a>
-</figure>
-</li>
-<li><p>Under <code class="docutils literal notranslate"><span class="pre">Collaborators</span> <span class="pre">and</span> <span class="pre">teams</span></code> give write access to the <code class="docutils literal notranslate"><span class="pre">annotators</span></code> team.</p></li>
-<li><p>Under <code class="docutils literal notranslate"><span class="pre">Pages</span></code> set the Source to the root <code class="docutils literal notranslate"><span class="pre">/</span></code> of the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> (which should have been
-automatically created by the workflow when pushing the first MuseScore files). Add the page’s URL as the
-repo’s website.</p></li>
-<li><p>Add the new repo to the corresponding meta-repositories (at least to <code class="docutils literal notranslate"><span class="pre">all_subcorpora</span></code>, see below).</p></li>
-<li><p>Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)</p></li>
-</ul>
-<section id="adding-the-repo-to-one-or-several-meta-repos">
-<span id="metarepos"></span><h3><a class="toc-backref" href="#id29">Adding the repo to one or several meta-repos</a><a class="headerlink" href="#adding-the-repo-to-one-or-several-meta-repos" title="Permalink to this heading">¶</a></h3>
-<p>The individual subcorpora can be embedded as submodules in meta-repositories. These meta-repos are listed in the private
-<a class="reference external" href="https://github.com/DCMLab/meta_repositories">meta_repositories</a> repo. Currently, the most important ones are:</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/DCMLab/dcml_corpora">dcml_corpora</a> for published corpora</p></li>
-<li><p><a class="reference external" href="https://github.com/DCMLab/all_subcorpora">all_subcorpora</a> (private) for all published and unpublished corpora.</p></li>
-</ol>
-<p>To add the new repo, head into the meta-repo and do</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="o">-</span><span class="n">b</span> <span class="n">main</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">DCMLab</span><span class="o">/</span><span class="n">chopin_mazurkas</span><span class="o">.</span><span class="n">git</span>
-</pre></div>
-</div>
-<p>Just to be sure, update all submodules: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--remote</span></code> and push the whole thing.</p>
-</section>
-<section id="creating-work-packages-on-openproject">
-<h3><a class="toc-backref" href="#id30">Creating work packages on OpenProject</a><a class="headerlink" href="#creating-work-packages-on-openproject" title="Permalink to this heading">¶</a></h3>
-<ol class="arabic simple">
-<li><p>Follow the instructions for <cite>create_work_packages.py</cite> under <a class="reference external" href="https://github.com/DCMLab/openproject_scripts/">https://github.com/DCMLab/openproject_scripts/</a></p>
+<p>After exporting the newly gained values to our original <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code>, we can process them further, for example,</p>
 <ul class="simple">
-<li><p>set the column <code class="docutils literal notranslate"><span class="pre">parent</span></code> to the name of the repository</p></li>
-<li><p>rename the columns <code class="docutils literal notranslate"><span class="pre">fnames</span> <span class="pre">=&gt;</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">last_mn</span> <span class="pre">=&gt;</span> <span class="pre">measures</span></code></p></li>
-<li><p>if the new work packages are for annotation upgrades rather than new annotations, add the column <code class="docutils literal notranslate"><span class="pre">work_package_type</span></code>
-with value <code class="docutils literal notranslate"><span class="pre">Annotation</span> <span class="pre">Upgrade</span></code></p></li>
-<li><p>find out the status of all pieces and fill the column <code class="docutils literal notranslate"><span class="pre">status</span></code>. Accordingly:</p></li>
-<li><p>if annotations are present and need to be updated, rename <code class="docutils literal notranslate"><span class="pre">annotators</span> <span class="pre">=&gt;</span> <span class="pre">reviewer</span></code> and make sure that every cell contains exactly one
-user name (<code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">Last</span></code>) known to OpenProject;</p></li>
-<li><p>if review is done or ongoing, do the same for the renamed column <code class="docutils literal notranslate"><span class="pre">reviewers</span> <span class="pre">=&gt;</span> <span class="pre">reviewer</span></code></p></li>
-<li><p>if annotations are present and finalized, the work package, in theory, does not need to be created; if it is,
-it should have status “Not available”. Filling the fields <code class="docutils literal notranslate"><span class="pre">assignee</span></code> and <code class="docutils literal notranslate"><span class="pre">reviewer</span></code>, is not needed unless for invoicing purposes</p></li>
+<li><p>by turning the publication dates that come in ISO format into our default
+<a class="reference internal" href="#composition-year-columns"><span class="std std-ref">composition year columns</span></a> which contain only a year number;</p></li>
+<li><p>by integrating the values in the <code class="docutils literal notranslate"><span class="pre">tonality</span></code> column into the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column (to get something along the lines
+of <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Quartet</span> <span class="pre">No.</span> <span class="pre">1</span> <span class="pre">in</span> <span class="pre">F</span> <span class="pre">major</span></code>, for example);</p></li>
+<li><p>by renaming the column <code class="docutils literal notranslate"><span class="pre">IMSLP</span> <span class="pre">ID</span></code> to its default name <code class="docutils literal notranslate"><span class="pre">imslp</span></code>;</p></li>
+<li><p>by using the column <code class="docutils literal notranslate"><span class="pre">MusicBrainz</span> <span class="pre">work</span> <span class="pre">ID</span></code> for automatically retrieving IDs for the individual movements for our
+default column <code class="docutils literal notranslate"><span class="pre">musicbrainz</span></code>; as well as values for the column <code class="docutils literal notranslate"><span class="pre">movementTitle</span></code>, for example.</p></li>
 </ul>
-</li>
-<li><p>Create a new view in OpenProject:</p>
-<ul class="simple">
-<li><p>open any of the existing corpora views</p></li>
-<li><p>replace the <code class="docutils literal notranslate"><span class="pre">Parent</span></code> filter with the repo name</p></li>
-<li><p>in the menu, select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">as...</span></code></p></li>
-<li><p>enter the repo name and check <code class="docutils literal notranslate"><span class="pre">Public</span></code></p></li>
-</ul>
-</li>
-<li><p>Add the webhook to the repo</p>
-<ul class="simple">
-<li><p>go to a repo for which the webhook is already set up</p></li>
-<li><p>in the repo settings, go to <code class="docutils literal notranslate"><span class="pre">Webhooks</span></code>, click <code class="docutils literal notranslate"><span class="pre">Edit</span></code>, and copy the <code class="docutils literal notranslate"><span class="pre">Payload</span> <span class="pre">URL</span></code></p></li>
-<li><p>in the new repo, go to <code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Webhooks</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">webhook</span></code> and insert the copied <code class="docutils literal notranslate"><span class="pre">Payload</span> <span class="pre">URL</span></code></p></li>
-<li><p>set the <code class="docutils literal notranslate"><span class="pre">Content</span> <span class="pre">type</span></code> to “application/json”</p></li>
-<li><p>Below, select “Send me <strong>everything</strong>” and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">webhook</span></code></p></li>
-</ul>
-</li>
-<li><p>Add the new work packages to the master sheet for the administrative staff</p></li>
-</ol>
+</section>
+<section id="future-work-sub-work-level-items">
+<h4><a class="toc-backref" href="#id33">Future work: Sub-work-level items</a><a class="headerlink" href="#future-work-sub-work-level-items" title="Permalink to this heading">¶</a></h4>
+<p>Wikidata has a simple mechanism for linking a work to its parts, such as movements. Consider for example the item
+for Joseph Haydn’s Trumpet Concerto in E-flat major, Hob. VIIe:1, <a class="reference external" href="https://www.wikidata.org/wiki/Q1585960">Q1585960</a>.
+The property <code class="docutils literal notranslate"><span class="pre">P527</span> <span class="pre">(has</span> <span class="pre">part(s))</span></code> links it to the three items that represent its three movements, each of which is
+linked to its parent item via <code class="docutils literal notranslate"><span class="pre">P361</span> <span class="pre">(part</span> <span class="pre">of)</span></code>. The problem is that in the majority of cases, such sub-work-level
+items do not exist yet. MusicBrainz work IDs, on the other hand, are often available (because they are required
+to identify CD tracks). Once we have reconciled our scores representing individual movements with Wikidata work IDs,
+it would be actually a small step to go ahead and create items for the movements automatically via OpenRefine.
+We should consider doing this at least for the cases where sub-work-level IDs are already available on
+MusicBrainz. We could also consider to link the items to our scores in one go.</p>
+</section>
 </section>
 </section>
 </section>
