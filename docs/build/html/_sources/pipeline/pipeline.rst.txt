@@ -637,12 +637,15 @@ environments. To date, it also requires access to DCML's private repos.
 
 In a nutshell:
 
-#. All currently ongoing work needs to be finalized first before the repo itself can be finalized.
+#. All currently ongoing work needs to be :ref:`finalized <ongoing_work>` first before the repo itself can be finalized.
+#. The repository :ref:`structure <repo_structure>` needs to be checked and updated if necessary.
 
 
 
 As a running example, let's consider this
 `pre-clean commit of peri_euridice <https://github.com/DCMLab/peri_euridice/tree/2129571849c267bee97d293b8fcc9fc3a27603b8>`__.
+
+.. _ongoing_work:
 
 Finalize ongoing work
 ---------------------
@@ -700,3 +703,161 @@ Here is how the branches are to be cleaned up:
     remove an original branch if it has been rebased and merged.
 
 This step is completed once we are left with the branches ``main`` and ``gh-pages`` only.
+
+
+.. _repo_structure:
+
+Update repository structure
+---------------------------
+
+All steps in this section are to be performed locally and, once completed, to be merged through a reviewed PR. This
+section requires using two different versions of ``ms3``, namely the latest 1.x version, ``ms3<2.0.0``, and the latest
+2.x version, ``ms3>=2``. This can be achieved by using virtual environments. One very practical solution to this,
+which we use in this documentation, is through the ``pipx`` package. It lets us install the two different versions and
+add a suffix to each so we have both versions available without having to switch environments. We use the following
+setup:
+
+.. code-block:: bash
+
+   pip install pipx
+   pipx install --suffix 1 "ms3<2.0.0"
+   pipx install --suffix 2 "ms3>=2.0.0"
+
+This lets us use the old version with ``ms31`` and the new one with ``ms32``. We can check our setup via
+
+.. code-block:: bash
+
+   pipx list
+   # Output (latest versions as per the 17th of July 2023):
+   # package ms3 1.2.12 (ms31), installed using Python 3.10.11
+   #  - ms31
+   # package ms3 2.0.0 (ms32), installed using Python 3.10.11
+   #  - ms32
+
+And we can test the commands like this:
+
+.. code-block:: bash
+
+   ms31 --version
+   # Output: 1.2.12
+   ms32 --version
+   # Output: 2.0.0
+
+3. Create a version tag
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Now that there is no work in progress is the perfect time for creating a version tag. The syntax is
+
+.. code-block:: bash
+
+   git tag -a <version> -m "<description>"
+
+Every version number has the form ``v<ms3>.<counter>``, which means it
+
+* starts with a "v" (for "version")
+* is followed by the major version of ms3 used to extract the data (i.e., "0" for ms3<1.0.0, "1" for versions 1.0.0 -
+  1.2.11, and "2" for versions >= 2.0.0)
+* followed by a dot
+* and a monotonic counter starting from 0 that is incremented by one for every new version.
+
+In the default case, right now, the current version has been extracted through the workflow with ``ms3`` version 1.
+If you want to be sure you can either
+
+* check the column ``ms3_version`` in ``metadata.tsv``, or
+* the file extensions of the TSV files: Startin with version 2, they include the facet name such that, for example,
+  all files in the folder ``notes`` end with ``.notes.tsv``. If this is not the case, as is expected, the new
+  version shoud start with "1".
+
+In order to find out the next version number, we need to look at the existing tags. We can see the list with
+
+.. code-block:: bash
+
+   git tag -n
+
+And we can see the latest version with
+
+.. code-block:: bash
+
+   git describe --tags --abbrev=0
+
+which will output "fatal: No names found, cannot describe anything." if there are no tags yet. Depending on the output
+we assign:
+
+* ``v1.0`` if there are no tags yet or only tags starting with "v0"
+* ``v1.1`` if the latest tag is ``v1.0``
+* ``v1.10`` if the latest tag is ``v1.9``
+* etc.
+
+We assign the tag to the current commit together with a message (just like in a commit), for example
+
+.. code-block:: bash
+
+   git tag -a v1.0 -m "Fully annotated corpus before finalizing it for publication."
+   git push --tags
+
+The second command pushes the tag to GitHub.
+
+Please note that this specification has been newly added (July 2023) and you may encounter a repository that has
+already a version above "v1": In such a case, please discuss with DCML members how to proceed.
+
+
+4. Remove the automated GitHub workflow and all deprecated files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+During finalization we are performing the workflow tasks manually using the ``ms3 review`` command. So we want to
+deactivate the GitHub action by simply removing the folder ``.github`` and committing the change.
+
+Then we streamline the repository to harmonize it with the other ones.
+By default, every repo should come with the folders
+
+* ``MS3``
+* ``harmonies``
+* ``measures``
+* ``notes``
+* ``pdf``
+* ``reviewed``
+
+each containing one file per row in ``metadata.tsv``, and with the files
+
+* ``README.md``
+* ``metadata.tsv``
+
+Things to be removed if present (one commit each list item):
+
+* the folder ``tonicizations``
+* top-level files ending on ``.log``.
+
+For all other things, please ask on Mattermost before deleting.
+
+In the ``peri_euridice`` example, there were two misplaced ``_reviewed.mscx`` files in the ``MS3`` folder which had
+to be removed.
+
+
+
+5. Update the extracted files to ms3 version 2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Assuming that the current data has been extracted with ``ms3`` version 1.x, before we update the data, we first extract
+one last time with the old version (hence the setup at the beginning of the section). We do this by running
+
+.. code-block:: bash
+
+   ms31 extract -M -N -X -D
+
+(for measure, notes, expanded, metadata) and commit the results with the message ``ms3 extract -M -N -X -D (v1.2.12)``
+(assuming that the latest v1 is ``v1.2.12``).
+
+Then we update the data to v2 in four steps:
+
+* First, we delete the folders ``measures``, ``notes``, and ``harmonies`` without committing the change.
+* Then we run ``ms32 extract -M -N -X -D``;
+* commit everything with the message ``ms3 extract -M -N -X -D (v2.0.0)`` (or whatever the latest version is);
+* assign a new tag, e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.0.0"`` (see step 3).
+
+
+
+
+
+
+
+
