@@ -804,8 +804,10 @@ already a version above "v1": In such a case, please discuss with DCML members h
 4. Remove the automated GitHub workflow and all deprecated files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-During finalization we are performing the workflow tasks manually using the ``ms3 review`` command. So we want to
-deactivate the GitHub action by simply removing the folder ``.github`` and committing the change.
+Now that we have pinned the version, we can start streamlining the repository structure on a new branch, e.g.
+"repo_update", and then create a pull request. During finalization we are performing the workflow tasks manually
+using the ``ms3 review`` command. So we want to
+**deactivate the GitHub action** by simply removing the folder ``.github`` and committing the change.
 
 Then we streamline the repository to harmonize it with the other ones.
 By default, every repo should come with the folders
@@ -822,7 +824,7 @@ each containing one file per row in ``metadata.tsv``, and with the files
 * ``README.md``
 * ``metadata.tsv``
 
-Things to be removed if present (one commit each list item):
+Things to be removed, if present (one commit each list item):
 
 * the folder ``tonicizations``
 * top-level files ending on ``.log``.
@@ -853,6 +855,43 @@ Then we update the data to v2 in four steps:
 * Then we run ``ms32 extract -M -N -X -D``;
 * commit everything with the message ``ms3 extract -M -N -X -D (v2.0.0)`` (or whatever the latest version is);
 * assign a new tag, e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.0.0"`` (see step 3).
+
+The branch is now ready to be reviewed and then merged through a Pull Request. Only if this one is merged can we
+proceed with either metadata cleaning or eliminating warnings.
+
+
+.. _eliminating_warnings:
+
+Eliminating all warnings
+------------------------
+
+.. note::
+
+   This section is a draft.
+
+Once the repository has been updated with ``ms3`` version 2, only this version should be used for the remaining tasks.
+The first step is to create a new branch for the task, e.g. "warnings" and to update the current state of warnings by
+using
+
+* ``ms3 review -M -N -X -D`` (or, if you continue with the setup above, ``ms32 review -M -N -X -D``) and
+* committing the changes with the message ``ms3 review -M -N -X -D (v2.0.0)`` (or whatever the latest version is).
+
+If there is nothing to be committed, we're already done. Otherwise, we need to fix the warnings one after the other.
+Every time we (think we) have addressed a warning (or group of warnings), we execute the review command again to see if
+it has indeed disappeared. Since most warnings concern one particular file, we can use the command with the argument
+``-i`` (long form ``--include``), followed by a regular expression matching only the file(s) we want to check. For
+example, if the filename convention is something like ``op<##>n<##>_<movement>.mscx``, we could execute
+``ms3 review -M -N -X -D -i op02`` to review all file containing "op02" in their names, or "02n02" for op.2, no.2 only,
+etc. Once successfully addressed (or explicitly ignored), we commit the change with an informative commit
+message (just like during a review) explaining the change.
+
+Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
+particular place and found that the warning is not justified, please add it to the ``IGNORED_WARNINGS`` file, followed
+by a concise comment, which *can* replace the indented warning text following the header that includes the logger name,
+but *must* begin each new line with a TAB. The comment should clarify for future readers why the warning is
+ill-founded. If you are not sure, please ask on Mattermost. Over the course of time and based on these questions, we
+will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
+fix the validator).
 
 
 
