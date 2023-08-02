@@ -622,6 +622,14 @@ Semantic mismatches
 #19 DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _warning_27:
+
+#27 DCML_DEFAULT_CORRECTION_WARNING
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Appears when a very common mismatch is automatically corrected before computing the chord tones for a label.
+Currently this is the case for all labels with root ``vii#`` when the localkey is major.
+
 
 
 Irregularities and score encoding errors
@@ -695,8 +703,48 @@ to :ref:`ignored_warnings`.
 
 .. _warning_25:
 
-#25 INVALID_REPEAT_STRUCTURE = 25
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#25 INVALID_REPEAT_STRUCTURE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _warning_26:
+
+#26 UNFOLDING_REPEATS_FAILED_WARNING
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _warning_28:
+
+#28 WRONGLY_ENCODED_POSITION_WARNING
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Shown when a ``quarterbeats`` column is to be added to a table but the events are not in chronological order, which
+results in incorrect values in the ``duration_qb`` column computed from the ``quarterbeats`` column (events that would
+result in negative durations are exluded). Since the tables normally are in chronological order, this is most likely
+a mistake in the encoding resulting in a negative ``mc_onset``.
+
+.. _warning_29:
+
+#29 FIRST_BAR_MISSING_TEMPO_MARK_WARNING
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Every piece should begin with a hidden metronome mark indicating the beat unit of the piece (e.g. dotted quarters
+in compound ``6/8`` meter). Consequently, there should be additional marks if the beat unit changes later in the piece.
+Ideally, the marks are inserted by the harmonic annotator to indicate the tempo they were imagining while annotating.
+Otherwise, the tempo is to be chosen based on a reasonable judgement, potentially consulting one or several recordings.
+Hiding the metronome mark ensures it is not mistaken for one written by the composer.
+
+.. warnings 30 & 31:
+
+   #30 CORRECTED_INSTRUMENT_TRACKNAME_WARNING and #31 INCONSISTENT_INSTRUMENT_CHANGE_WITHIN_PART are excluded from this
+   # documentation because they occur when calling "ms3 metadata --instrumentation" and speak for themselves.
+
+.. _warning_32:
+
+#32 FRICTIONLESS_VALIDATION_ERROR_WARNING
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Appears when an extracted TSV file cannot be successfully validated against the corresponding ``.json`` descriptor
+file. This is probably due to a bug, please `file an issue with ms3`_.
+
 
 .. _ignored_warnings:
 
@@ -722,4 +770,7 @@ should be ignored in the future, e.g.:
    VOLTAS_WITH_DIFFERING_LENGTHS_WARNING (4, 17) ms3.Parse.bach_en_fr_suites.BWV806_08_Bouree_I
        First volta has two bars, m. 16a and m. 1b. Encoded as two measure numbering offsets, MC 18 has -15 and MC 19 has +15 because it's m. 16b.
 
-Commit the file and the warning should disappear. Otherwise, please `file an issue with ms3 <https://github.com/johentsch/ms3/issues>`__.
+Commit the file and the warning should disappear. Otherwise, please `file an issue with ms3`_.
+
+
+.. _file an issue with ms3: https://github.com/johentsch/ms3/issues
