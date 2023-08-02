@@ -879,10 +879,21 @@ Then we update the data to v2 in four steps:
   file browser).
 * Then we run ``ms32 extract -M -N -X -D``;
 * commit everything with the message ``"ms3 extract -M -N -X -D (v2.0.0)"`` (or whatever the latest version is);
-* assign a new tag, e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.0.0"`` (see step 3).
 
-The branch is now ready to be reviewed and then merged through a Pull Request. Only if this one is merged can we
-proceed with either metadata cleaning or eliminating warnings.
+The branch is now ready to be reviewed and then merged through a Pull Request:
+
+.. figure:: img/peri_harmonization_pr.png
+   :alt: Screenshot showing a Pull Request harmonizing the repository by deleting and updating files.
+   :scale: 80%
+
+   Screenshot showing a Pull Request harmonizing the repository by deleting and updating files. Note that the
+   description links the PR to the work package on OpenProject and that the label corresponds to the work package type.
+
+Once the PR has been created, you can update the work package status to "Needs review".
+Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
+Once merged, we can assign assign a new tag,
+e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.0.0"`` (see step 3).
+
 
 
 .. _eliminating_warnings:
