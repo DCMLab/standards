@@ -1,4 +1,3 @@
-# Regular expression needs to be compiled using re.compile(regex, re.VERBOSE)
 regex = r"""
     ^(\.?
         ((?P<globalkey>[a-gA-G](b*|\#*))\.)?
@@ -13,6 +12,6 @@ regex = r"""
         )
         (?P<pedalend>\])?
     )?
-    (\|(?P<cadence>((HC|PAC|IAC|DC|EC|PC)(\..+?)?)))?
+    (|(?P<cadence>((HC|PAC|IAC|DC|EC)(\..*?)?)))?
     (?P<phraseend>(\\\\|\{|\}|\}\{))?$
     """
