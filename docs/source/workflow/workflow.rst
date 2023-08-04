@@ -112,14 +112,14 @@ Commit your changes locally and describe the commit in the commit message.
   Other examples for meaningful commit messages could be ``"annotated the entire movement"`` or ``"fixed syntax error
   in m. 17"``. Please include measure numbers whenever applicable.
 
-.. _syntax_errors:
 
 Push your commits to GitHub and check if syntactical errors are detected.
   ::
 
     git push
 
-  .. note:: At the first time you will be asked to connect your new local branch to GitHub using the command
+  .. note:: At first (unless you have activated ``push.autoSetupRemote``, see :ref:`configuring_git`)
+     you will be asked to connect your new local branch to GitHub using the command
      ``git push --set-upstream origin op01n01a`` or whatever the name of the new branch is.
 
   Everytime you push your commits to GitHub, the scores you've modified will be checked automatically and you can see
@@ -552,21 +552,55 @@ Don't forget to press the Subscribe button on the right to get informed about re
 What to do about the warnings?
 ==============================
 
-There can be a range of reasons why you may see a ``WARNING`` in the output log of the automated tests.
+There can be a range of reasons why you may see a ``WARNING`` in the output log of the automated tests. They may arise
+due to
 
-#. One or several labels do not conform to the current version DCML harmony annotation syntax.
-#. The parentheses of organ point or phrase annotations do not add up to complete pairs.
-#. One or several labels express chord tones that match badly or not at all with the notes in the given segment(s).
-#. There is an encoding error or inconsistency in the MuseScore file (e.g. one that leads to wrong measure numbers)
-   which needs to be fixed. Since oddities are omnipresent in music, we sometimes want to suppress a warning and
-   leave a comment saying as humans that the exception from the norm is justified.
-#. Sometimes you don't get a warning but instead a (somewhat cryptic) error, which might actually a bug, i.e. mistake
-   in the code. If you think it is, please `create an issue <https://github.com/DCMLab/dcml_corpus_workflow/issues>`__
-   and point us to the error, e.g. by pasting the output or a link to it, and the score in question so we can look into it.
+* :ref:`syntax_errors` (e.g., one or several labels do not conform to the current version DCML harmony annotation syntax)
+* :ref:`semantic_errors` (i.e., one or several labels express chord tones that match the notes in the given segment(s)
+  badly or not at all)
+* :ref:`encoding_errors` (e.g. one that leads to wrong measure numbers)
 
-In cases where the checker detects an irregularity in a score, e.g. irregular measure lengths that don't add up,
-and you notice that the irregularity is musically warranted (for instance, it could be a cadenza), you can prevent
-that particular warning from being displayed again by adding it to an :ref:`IGNORED_WARNINGS <ignored_warnings>` file.
+If you are currently annotation or reviewing annotations, you need to take care of the first two types. Should you
+encounter encoding errors, please mention them in your Pull Request. In case your test fails but, instead of a warning,
+you get a (somewhat cryptic) error, this might actually a bug, i.e. mistake in the code. If you think it is,
+please `create an issue <https://github.com/DCMLab/dcml_corpus_workflow/issues>`__
+and point us to the error, e.g. by pasting the output or a link to it, and the score in question so we can look into it.
+
+There are three ways to deal with a warning:
+
+Fix it.
+  If the warning message is clear and points you to the relevant spot in the score, you simply go ahead, fix it and
+  commit the change. If not, please look at the list of warnings below to see if there are instructions on how to
+  fix it. Otherwise, please ask for help on Mattermost.
+
+  If you have the ``ms3`` command set up locally, before pushing you can run
+
+  .. code-block:: bash
+
+     ms3 review -M -N -X -F -D -i <filename>
+
+  in order to see if the warning is indeed gone. ``<filename>`` is a regular expression that lets you filter the files
+  you want to check. For example, if the filename convention is something like ``op<##>n<##>_<movement>.mscx``, we could
+  execute ``ms3 review -M -N -X -F -D -i op02`` to review all files containing "op02" in their names, or "02n02" for
+  op.2, no.2 only.
+
+Declare it a false positive.
+  If you think the warning is not warranted, you can add it to the :ref:`IGNORED_WARNINGS <ignored_warnings>` file
+  together with an explanation why this warning should be ignored for all times.
+  This will prevent it from being displayed again.
+
+Create an issue to make sure someone deals with it later.
+  If dealing with a warning that is not part of your current workflow (e.g., an encoding error when annotating or
+  harmonizing), you can create an issue for the relevant repository on GitHub to make sure someone deals with it later.
+  If you want to get your PR through despite the warning, please add a comment mentioning that.
+
+.. note::
+
+   If the following list of warnings does not include information on how to fix one, it is assumed that the warning
+   message itself is expressive enough. Otherwise, please let us know, e.g. by
+   `creating an issue on GitHub <https://github.com/DCMLab/standards/issues>`__.
+
+.. _syntax_errors:
 
 Syntax errors
 -------------
@@ -603,6 +637,8 @@ Syntax errors
 
 
 
+.. _semantic_errors:
+
 
 Semantic mismatches
 -------------------
@@ -622,6 +658,20 @@ Semantic mismatches
 #19 DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Appears when the ratio between out-of-label notes and all notes in the segment is above a pre-defined threshold.
+This validation currently has the limitation that notes which overlap into the segment are not taken into account,
+only those that appear as a note head.
+
+.. The following paragraph is a copy of the note in :ref:`eliminating_warnings`.
+
+Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
+particular place and found that the warning is not justified, please add it to the :ref:`IGNORED_WARNINGS <ignored_warnings>` file, followed
+by a concise comment, which *can* replace the indented warning text following the header that includes the logger name,
+but *must* begin each new line with a TAB. The comment should clarify for future readers why the warning is
+ill-founded. If you are not sure, please ask on Mattermost. Over the course of time and based on these questions, we
+will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
+fix the validator).
+
 .. _warning_27:
 
 #27 DCML_DEFAULT_CORRECTION_WARNING
@@ -631,6 +681,7 @@ Appears when a very common mismatch is automatically corrected before computing 
 Currently this is the case for all labels with root ``vii#`` when the localkey is major.
 
 
+.. _encoding_errors:
 
 Irregularities and score encoding errors
 ----------------------------------------
@@ -754,8 +805,10 @@ IGNORED_WARNINGS
 In cases where ms3 detects an irregularity in a score, e.g. irregular measure lengths that don't add up,
 and you notice that the irregularity is musically warranted (for instance, it could be a cadenza), you can prevent
 that particular warning from being displayed again by adding it to an IGNORED_WARNINGS file. In other words,
-you go to your clone of the repository, open a new text file called ``ÌGNORED_WARNINGS`` (without file extension),
-and copy in the warning that you want to compress. You can either be lazy and copy the whole log message:
+you go to your clone of the repository and check if an ``IGNORED_WARNINGS`` file is already present. Otherwise,
+open a new text file called ``IGNORED_WARNINGS`` (without file extension).
+
+Copy the warning that you want to suppress. You can either be lazy and copy the whole log message:
 
 .. parsed-literal::
 
@@ -770,7 +823,12 @@ should be ignored in the future, e.g.:
    VOLTAS_WITH_DIFFERING_LENGTHS_WARNING (4, 17) ms3.Parse.bach_en_fr_suites.BWV806_08_Bouree_I
        First volta has two bars, m. 16a and m. 1b. Encoded as two measure numbering offsets, MC 18 has -15 and MC 19 has +15 because it's m. 16b.
 
+The comment can have multiple lines but it is important that each line (except the header) begins with a ``<TAB>``,
+like in the examples here.
+
 Commit the file and the warning should disappear. Otherwise, please `file an issue with ms3`_.
+
+
 
 
 .. _file an issue with ms3: https://github.com/johentsch/ms3/issues

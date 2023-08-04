@@ -1155,7 +1155,13 @@ e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <sp
 <span id="eliminating-warnings"></span><h3><a class="toc-backref" href="#id46" role="doc-backlink">Eliminating all warnings</a><a class="headerlink" href="#eliminating-all-warnings" title="Permalink to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This section is a draft.</p>
+<p>Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
+particular place and found that the warning is not justified, please add it to the <a class="reference internal" href="../workflow/workflow.html#ignored-warnings"><span class="std std-ref">IGNORED_WARNINGS</span></a> file, followed
+by a concise comment, which <em>can</em> replace the indented warning text following the header that includes the logger name,
+but <em>must</em> begin each new line with a TAB. The comment should clarify for future readers why the warning is
+ill-founded. If you are not sure, please ask on Mattermost. Over the course of time and based on these questions, we
+will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
+fix the validator).</p>
 </div>
 <p>Once the repository has been updated with <code class="docutils literal notranslate"><span class="pre">ms3</span></code> version 2, only this version should be used for the remaining tasks.
 The first step is to create a new branch for the task, e.g. “warnings” and to update the current state of warnings by
@@ -1165,20 +1171,13 @@ using</p>
 <li><p>committing the changes with the message <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v2.0.1)</span></code> (or whatever the latest version is).</p></li>
 </ul>
 <p>If there is nothing to be committed, we’re already done. Otherwise, we need to fix the warnings one after the other.
-Every time we (think we) have addressed a warning (or group of warnings), we execute the review command again to see if
-it has indeed disappeared. Since most warnings concern one particular file, we can use the command with the argument
-<code class="docutils literal notranslate"><span class="pre">-i</span></code> (long form <code class="docutils literal notranslate"><span class="pre">--include</span></code>), followed by a regular expression matching only the file(s) we want to check. For
-example, if the filename convention is something like <code class="docutils literal notranslate"><span class="pre">op&lt;##&gt;n&lt;##&gt;_&lt;movement&gt;.mscx</span></code>, we could execute
-<code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-i</span> <span class="pre">op02</span></code> to review all file containing “op02” in their names, or “02n02” for op.2, no.2 only,
-etc. Once successfully addressed (or explicitly ignored), we commit the change with an informative commit
-message (just like during a review) explaining the change.</p>
-<p>Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
-particular place and found that the warning is not justified, please add it to the <code class="docutils literal notranslate"><span class="pre">IGNORED_WARNINGS</span></code> file, followed
-by a concise comment, which <em>can</em> replace the indented warning text following the header that includes the logger name,
-but <em>must</em> begin each new line with a TAB. The comment should clarify for future readers why the warning is
-ill-founded. If you are not sure, please ask on Mattermost. Over the course of time and based on these questions, we
-will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
-fix the validator).</p>
+There are three ways to deal with a warning:</p>
+<ul class="simple">
+<li><p>Fix it, execute <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-i</span> <span class="pre">&lt;filename&gt;</span></code> to see if it has disappeared, and commit the change.</p></li>
+<li><p>Declare it a false positive.</p></li>
+<li><p>Create an issue to make sure someone deals with it later.</p></li>
+</ul>
+<p>For more details, please refer to the <a class="reference internal" href="../workflow/workflow.html#warnings"><span class="std std-ref">What to do about the warnings?</span></a> section of the annotation workflow.</p>
 </section>
 </section>
 </section>

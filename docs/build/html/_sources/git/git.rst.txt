@@ -69,9 +69,13 @@ how your Git should handle these solutions. Please use the following command to 
 
   git config --global pull.rebase true
 
-(If you want to set the behaviour for each repository individually, omit ``--global``.) Another thing that will make
-your life a bit easier is the auto-stash behaviour. In short, it dispenses with the obligation to commit all your
-local modifications when pulling. To activate it globally::
+This will apply your local commits to the HEAD of the remote branch, rather than creating a merge commit.
+(If you want to set the behaviour for each repository individually, omit ``--global``.)
+
+Autostash
+^^^^^^^^^
+Another thing that will make your life a bit easier is the auto-stash behaviour. In short, it dispenses with the
+obligation to commit (or manually stash) all your local modifications when pulling. To activate it globally::
 
   git config --global rebase.autoStash true
 

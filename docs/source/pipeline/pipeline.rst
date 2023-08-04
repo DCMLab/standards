@@ -914,7 +914,13 @@ Eliminating all warnings
 
 .. note::
 
-   This section is a draft.
+    Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
+    particular place and found that the warning is not justified, please add it to the :ref:`IGNORED_WARNINGS <ignored_warnings>` file, followed
+    by a concise comment, which *can* replace the indented warning text following the header that includes the logger name,
+    but *must* begin each new line with a TAB. The comment should clarify for future readers why the warning is
+    ill-founded. If you are not sure, please ask on Mattermost. Over the course of time and based on these questions, we
+    will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
+    fix the validator).
 
 Once the repository has been updated with ``ms3`` version 2, only this version should be used for the remaining tasks.
 The first step is to create a new branch for the task, e.g. "warnings" and to update the current state of warnings by
@@ -924,21 +930,17 @@ using
 * committing the changes with the message ``ms3 review -M -N -X -F -D (v2.0.1)`` (or whatever the latest version is).
 
 If there is nothing to be committed, we're already done. Otherwise, we need to fix the warnings one after the other.
-Every time we (think we) have addressed a warning (or group of warnings), we execute the review command again to see if
-it has indeed disappeared. Since most warnings concern one particular file, we can use the command with the argument
-``-i`` (long form ``--include``), followed by a regular expression matching only the file(s) we want to check. For
-example, if the filename convention is something like ``op<##>n<##>_<movement>.mscx``, we could execute
-``ms3 review -M -N -X -F -D -i op02`` to review all file containing "op02" in their names, or "02n02" for op.2, no.2 only,
-etc. Once successfully addressed (or explicitly ignored), we commit the change with an informative commit
-message (just like during a review) explaining the change.
+There are three ways to deal with a warning:
 
-Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
-particular place and found that the warning is not justified, please add it to the ``IGNORED_WARNINGS`` file, followed
-by a concise comment, which *can* replace the indented warning text following the header that includes the logger name,
-but *must* begin each new line with a TAB. The comment should clarify for future readers why the warning is
-ill-founded. If you are not sure, please ask on Mattermost. Over the course of time and based on these questions, we
-will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
-fix the validator).
+* Fix it, execute ``ms3 review -M -N -X -F -D -i <filename>`` to see if it has disappeared, and commit the change.
+* Declare it a false positive.
+* Create an issue to make sure someone deals with it later.
+
+For more details, please refer to the :ref:`warnings` section of the annotation workflow.
+
+
+
+
 
 
 

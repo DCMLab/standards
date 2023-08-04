@@ -169,7 +169,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#what-to-do-about-the-warnings">What to do about the warnings?</a><ul>
-<li><a class="reference internal" href="#id4">Syntax errors</a><ul>
+<li><a class="reference internal" href="#syntax-errors">Syntax errors</a><ul>
 <li><a class="reference internal" href="#dcml-harmony-key-not-specified-error">#8 DCML_HARMONY_KEY_NOT_SPECIFIED_ERROR</a></li>
 <li><a class="reference internal" href="#dcml-harmony-incomplete-localkey-column-error">#12 DCML_HARMONY_INCOMPLETE_LOCALKEY_COLUMN_ERROR</a></li>
 <li><a class="reference internal" href="#dcml-harmony-incomplete-pedal-column-error">#13 DCML_HARMONY_INCOMPLETE_PEDAL_COLUMN_ERROR</a></li>
@@ -287,7 +287,7 @@
 </li>
 <li><p><a class="reference internal" href="#what-to-do-about-the-warnings" id="id36">What to do about the warnings?</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id4" id="id37">Syntax errors</a></p></li>
+<li><p><a class="reference internal" href="#syntax-errors" id="id37">Syntax errors</a></p></li>
 <li><p><a class="reference internal" href="#semantic-mismatches" id="id38">Semantic mismatches</a></p></li>
 <li><p><a class="reference internal" href="#irregularities-and-score-encoding-errors" id="id39">Irregularities and score encoding errors</a></p></li>
 <li><p><a class="reference internal" href="#ignored-warnings" id="id40">IGNORED_WARNINGS</a></p></li>
@@ -401,14 +401,13 @@ for example <code class="docutils literal notranslate"><span class="pre">ga</spa
 <p>Other examples for meaningful commit messages could be <code class="docutils literal notranslate"><span class="pre">&quot;annotated</span> <span class="pre">the</span> <span class="pre">entire</span> <span class="pre">movement&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;fixed</span> <span class="pre">syntax</span> <span class="pre">error</span>
 <span class="pre">in</span> <span class="pre">m.</span> <span class="pre">17&quot;</span></code>. Please include measure numbers whenever applicable.</p>
 </dd>
-</dl>
-<dl id="syntax-errors">
 <dt>Push your commits to GitHub and check if syntactical errors are detected.</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>At the first time you will be asked to connect your new local branch to GitHub using the command
+<p>At first (unless you have activated <code class="docutils literal notranslate"><span class="pre">push.autoSetupRemote</span></code>, see <a class="reference internal" href="../git/git.html#configuring-git"><span class="std std-ref">Configuring Git</span></a>)
+you will be asked to connect your new local branch to GitHub using the command
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--set-upstream</span> <span class="pre">origin</span> <span class="pre">op01n01a</span></code> or whatever the name of the new branch is.</p>
 </div>
 <p>Everytime you push your commits to GitHub, the scores you’ve modified will be checked automatically and you can see
@@ -891,23 +890,50 @@ Don’t forget to press the Subscribe button on the right to get informed about 
 </section>
 <section id="what-to-do-about-the-warnings">
 <span id="warnings"></span><h2><a class="toc-backref" href="#id36" role="doc-backlink">What to do about the warnings?</a><a class="headerlink" href="#what-to-do-about-the-warnings" title="Permalink to this heading">¶</a></h2>
-<p>There can be a range of reasons why you may see a <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> in the output log of the automated tests.</p>
-<ol class="arabic simple">
-<li><p>One or several labels do not conform to the current version DCML harmony annotation syntax.</p></li>
-<li><p>The parentheses of organ point or phrase annotations do not add up to complete pairs.</p></li>
-<li><p>One or several labels express chord tones that match badly or not at all with the notes in the given segment(s).</p></li>
-<li><p>There is an encoding error or inconsistency in the MuseScore file (e.g. one that leads to wrong measure numbers)
-which needs to be fixed. Since oddities are omnipresent in music, we sometimes want to suppress a warning and
-leave a comment saying as humans that the exception from the norm is justified.</p></li>
-<li><p>Sometimes you don’t get a warning but instead a (somewhat cryptic) error, which might actually a bug, i.e. mistake
-in the code. If you think it is, please <a class="reference external" href="https://github.com/DCMLab/dcml_corpus_workflow/issues">create an issue</a>
-and point us to the error, e.g. by pasting the output or a link to it, and the score in question so we can look into it.</p></li>
-</ol>
-<p>In cases where the checker detects an irregularity in a score, e.g. irregular measure lengths that don’t add up,
-and you notice that the irregularity is musically warranted (for instance, it could be a cadenza), you can prevent
-that particular warning from being displayed again by adding it to an <a class="reference internal" href="#ignored-warnings"><span class="std std-ref">IGNORED_WARNINGS</span></a> file.</p>
-<section id="id4">
-<h3><a class="toc-backref" href="#id37" role="doc-backlink">Syntax errors</a><a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<p>There can be a range of reasons why you may see a <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> in the output log of the automated tests. They may arise
+due to</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#syntax-errors"><span class="std std-ref">Syntax errors</span></a> (e.g., one or several labels do not conform to the current version DCML harmony annotation syntax)</p></li>
+<li><p><a class="reference internal" href="#semantic-errors"><span class="std std-ref">Semantic mismatches</span></a> (i.e., one or several labels express chord tones that match the notes in the given segment(s)
+badly or not at all)</p></li>
+<li><p><a class="reference internal" href="#encoding-errors"><span class="std std-ref">Irregularities and score encoding errors</span></a> (e.g. one that leads to wrong measure numbers)</p></li>
+</ul>
+<p>If you are currently annotation or reviewing annotations, you need to take care of the first two types. Should you
+encounter encoding errors, please mention them in your Pull Request. In case your test fails but, instead of a warning,
+you get a (somewhat cryptic) error, this might actually a bug, i.e. mistake in the code. If you think it is,
+please <a class="reference external" href="https://github.com/DCMLab/dcml_corpus_workflow/issues">create an issue</a>
+and point us to the error, e.g. by pasting the output or a link to it, and the score in question so we can look into it.</p>
+<p>There are three ways to deal with a warning:</p>
+<dl>
+<dt>Fix it.</dt><dd><p>If the warning message is clear and points you to the relevant spot in the score, you simply go ahead, fix it and
+commit the change. If not, please look at the list of warnings below to see if there are instructions on how to
+fix it. Otherwise, please ask for help on Mattermost.</p>
+<p>If you have the <code class="docutils literal notranslate"><span class="pre">ms3</span></code> command set up locally, before pushing you can run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ms3<span class="w"> </span>review<span class="w"> </span>-M<span class="w"> </span>-N<span class="w"> </span>-X<span class="w"> </span>-F<span class="w"> </span>-D<span class="w"> </span>-i<span class="w"> </span>&lt;filename&gt;
+</pre></div>
+</div>
+<p>in order to see if the warning is indeed gone. <code class="docutils literal notranslate"><span class="pre">&lt;filename&gt;</span></code> is a regular expression that lets you filter the files
+you want to check. For example, if the filename convention is something like <code class="docutils literal notranslate"><span class="pre">op&lt;##&gt;n&lt;##&gt;_&lt;movement&gt;.mscx</span></code>, we could
+execute <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-i</span> <span class="pre">op02</span></code> to review all files containing “op02” in their names, or “02n02” for
+op.2, no.2 only.</p>
+</dd>
+<dt>Declare it a false positive.</dt><dd><p>If you think the warning is not warranted, you can add it to the <a class="reference internal" href="#ignored-warnings"><span class="std std-ref">IGNORED_WARNINGS</span></a> file
+together with an explanation why this warning should be ignored for all times.
+This will prevent it from being displayed again.</p>
+</dd>
+<dt>Create an issue to make sure someone deals with it later.</dt><dd><p>If dealing with a warning that is not part of your current workflow (e.g., an encoding error when annotating or
+harmonizing), you can create an issue for the relevant repository on GitHub to make sure someone deals with it later.
+If you want to get your PR through despite the warning, please add a comment mentioning that.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the following list of warnings does not include information on how to fix one, it is assumed that the warning
+message itself is expressive enough. Otherwise, please let us know, e.g. by
+<a class="reference external" href="https://github.com/DCMLab/standards/issues">creating an issue on GitHub</a>.</p>
+</div>
+<section id="syntax-errors">
+<span id="id4"></span><h3><a class="toc-backref" href="#id37" role="doc-backlink">Syntax errors</a><a class="headerlink" href="#syntax-errors" title="Permalink to this heading">¶</a></h3>
 <section id="dcml-harmony-key-not-specified-error">
 <span id="warning-8"></span><h4>#8 DCML_HARMONY_KEY_NOT_SPECIFIED_ERROR<a class="headerlink" href="#dcml-harmony-key-not-specified-error" title="Permalink to this heading">¶</a></h4>
 </section>
@@ -928,7 +954,7 @@ that particular warning from being displayed again by adding it to an <a class="
 </section>
 </section>
 <section id="semantic-mismatches">
-<h3><a class="toc-backref" href="#id38" role="doc-backlink">Semantic mismatches</a><a class="headerlink" href="#semantic-mismatches" title="Permalink to this heading">¶</a></h3>
+<span id="semantic-errors"></span><h3><a class="toc-backref" href="#id38" role="doc-backlink">Semantic mismatches</a><a class="headerlink" href="#semantic-mismatches" title="Permalink to this heading">¶</a></h3>
 <section id="dcml-harmony-superfluous-tone-replacement-warning">
 <span id="warning-6"></span><h4>#6 DCML_HARMONY_SUPERFLUOUS_TONE_REPLACEMENT_WARNING<a class="headerlink" href="#dcml-harmony-superfluous-tone-replacement-warning" title="Permalink to this heading">¶</a></h4>
 </section>
@@ -937,6 +963,16 @@ that particular warning from being displayed again by adding it to an <a class="
 </section>
 <section id="dcml-non-chord-tones-above-threshold-warning">
 <span id="warning-19"></span><h4>#19 DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING<a class="headerlink" href="#dcml-non-chord-tones-above-threshold-warning" title="Permalink to this heading">¶</a></h4>
+<p>Appears when the ratio between out-of-label notes and all notes in the segment is above a pre-defined threshold.
+This validation currently has the limitation that notes which overlap into the segment are not taken into account,
+only those that appear as a note head.</p>
+<p>Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
+particular place and found that the warning is not justified, please add it to the <a class="reference internal" href="#ignored-warnings"><span class="std std-ref">IGNORED_WARNINGS</span></a> file, followed
+by a concise comment, which <em>can</em> replace the indented warning text following the header that includes the logger name,
+but <em>must</em> begin each new line with a TAB. The comment should clarify for future readers why the warning is
+ill-founded. If you are not sure, please ask on Mattermost. Over the course of time and based on these questions, we
+will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
+fix the validator).</p>
 </section>
 <section id="dcml-default-correction-warning">
 <span id="warning-27"></span><h4>#27 DCML_DEFAULT_CORRECTION_WARNING<a class="headerlink" href="#dcml-default-correction-warning" title="Permalink to this heading">¶</a></h4>
@@ -945,7 +981,7 @@ Currently this is the case for all labels with root <code class="docutils litera
 </section>
 </section>
 <section id="irregularities-and-score-encoding-errors">
-<h3><a class="toc-backref" href="#id39" role="doc-backlink">Irregularities and score encoding errors</a><a class="headerlink" href="#irregularities-and-score-encoding-errors" title="Permalink to this heading">¶</a></h3>
+<span id="encoding-errors"></span><h3><a class="toc-backref" href="#id39" role="doc-backlink">Irregularities and score encoding errors</a><a class="headerlink" href="#irregularities-and-score-encoding-errors" title="Permalink to this heading">¶</a></h3>
 <section id="mcs-not-excluded-from-barcount-warning">
 <span id="warning-1"></span><h4>#1 MCS_NOT_EXCLUDED_FROM_BARCOUNT_WARNING<a class="headerlink" href="#mcs-not-excluded-from-barcount-warning" title="Permalink to this heading">¶</a></h4>
 </section>
@@ -1018,8 +1054,9 @@ file. This is probably due to a bug, please <a class="reference external" href="
 <p>In cases where ms3 detects an irregularity in a score, e.g. irregular measure lengths that don’t add up,
 and you notice that the irregularity is musically warranted (for instance, it could be a cadenza), you can prevent
 that particular warning from being displayed again by adding it to an IGNORED_WARNINGS file. In other words,
-you go to your clone of the repository, open a new text file called <code class="docutils literal notranslate"><span class="pre">ÌGNORED_WARNINGS</span></code> (without file extension),
-and copy in the warning that you want to compress. You can either be lazy and copy the whole log message:</p>
+you go to your clone of the repository and check if an <code class="docutils literal notranslate"><span class="pre">IGNORED_WARNINGS</span></code> file is already present. Otherwise,
+open a new text file called <code class="docutils literal notranslate"><span class="pre">IGNORED_WARNINGS</span></code> (without file extension).</p>
+<p>Copy the warning that you want to suppress. You can either be lazy and copy the whole log message:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VOLTAS_WITH_DIFFERING_LENGTHS_WARNING</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span> <span class="n">ms3</span><span class="o">.</span><span class="n">Parse</span><span class="o">.</span><span class="n">bach_en_fr_suites</span><span class="o">.</span><span class="n">BWV806_08_Bouree_I</span> <span class="o">--</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">hentsche</span><span class="o">/</span><span class="n">PycharmProjects</span><span class="o">/</span><span class="n">ms3</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">ms3</span><span class="o">/</span><span class="n">bs4_measures</span><span class="o">.</span><span class="n">py</span> <span class="p">(</span><span class="n">line</span> <span class="mi">817</span><span class="p">)</span> <span class="n">treat_group</span><span class="p">():</span>
     <span class="n">Volta</span> <span class="n">group</span> <span class="n">of</span> <span class="n">MC</span> <span class="mi">17</span> <span class="n">contains</span> <span class="n">voltas</span> <span class="k">with</span> <span class="n">different</span> <span class="n">lengths</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="n">Check</span> <span class="k">for</span> <span class="n">correct</span> <span class="n">computation</span> <span class="n">of</span> <span class="n">MNs</span> <span class="ow">and</span> <span class="n">copy</span> <span class="n">this</span> <span class="n">message</span> <span class="n">into</span> <span class="n">an</span> <span class="n">IGNORED_WARNINGS</span> <span class="n">file</span> <span class="n">to</span> <span class="n">make</span> <span class="n">the</span> <span class="n">warning</span> <span class="n">disappear</span><span class="o">.</span>
 </pre></div>
@@ -1030,6 +1067,8 @@ should be ignored in the future, e.g.:</p>
     <span class="n">First</span> <span class="n">volta</span> <span class="n">has</span> <span class="n">two</span> <span class="n">bars</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span> <span class="mi">16</span><span class="n">a</span> <span class="ow">and</span> <span class="n">m</span><span class="o">.</span> <span class="mi">1</span><span class="n">b</span><span class="o">.</span> <span class="n">Encoded</span> <span class="k">as</span> <span class="n">two</span> <span class="n">measure</span> <span class="n">numbering</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">MC</span> <span class="mi">18</span> <span class="n">has</span> <span class="o">-</span><span class="mi">15</span> <span class="ow">and</span> <span class="n">MC</span> <span class="mi">19</span> <span class="n">has</span> <span class="o">+</span><span class="mi">15</span> <span class="n">because</span> <span class="n">it</span><span class="s1">&#39;s m. 16b.</span>
 </pre></div>
 </div>
+<p>The comment can have multiple lines but it is important that each line (except the header) begins with a <code class="docutils literal notranslate"><span class="pre">&lt;TAB&gt;</span></code>,
+like in the examples here.</p>
 <p>Commit the file and the warning should disappear. Otherwise, please <a class="reference external" href="https://github.com/johentsch/ms3/issues">file an issue with ms3</a>.</p>
 </section>
 </section>
