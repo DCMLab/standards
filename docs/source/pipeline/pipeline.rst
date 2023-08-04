@@ -828,7 +828,8 @@ and with the folders
 * ``reviewed``
 
 each containing one file per row in ``metadata.tsv`` (with the exception of ``pdf`` which often includes fewer files).
-Some repos might also include some of the following files:
+If form annotations are present, the repo will also have a ``form_labels`` folder. Apart from that,
+some repos might also include some of the following files:
 
 * ``.gitignore``
 * ``IGNORED_WARNINGS``
@@ -868,17 +869,17 @@ one last time with the old version (hence the setup at the beginning of the sect
 
 .. code-block:: bash
 
-   ms31 extract -M -N -X -D
+   ms31 extract -M -N -X -F -D
 
-(for measure, notes, expanded, metadata) and commit the results with the message ``"ms3 extract -M -N -X -D (v1.2.12)"``
+(for measure, notes, expanded, metadata) and commit the results with the message ``"ms3 extract -M -N -X -F -D (v1.2.12)"``
 (assuming that the latest v1 is ``v1.2.12``).
 
 Then we update the data to v2 in four steps:
 
-* First, we delete the folders ``measures``, ``notes``, and ``harmonies`` without committing the change (e.g., in your
-  file browser).
-* Then we run ``ms32 extract -M -N -X -D``;
-* commit everything with the message ``"ms3 extract -M -N -X -D (v2.0.0)"`` (or whatever the latest version is);
+* First, we delete the folders ``measures``, ``notes``, and ``harmonies`` (and any other facet folders that might be
+  present, such as ``form_labels``), without committing the change (e.g., in your file browser).
+* Then we run ``ms32 extract -M -N -X -F -D``;
+* commit everything with the message ``"ms3 extract -M -N -X -F -D (v2.0.0)"`` (or whatever the latest version is);
 
 The branch is now ready to be reviewed and then merged through a Pull Request:
 
@@ -909,15 +910,15 @@ Once the repository has been updated with ``ms3`` version 2, only this version s
 The first step is to create a new branch for the task, e.g. "warnings" and to update the current state of warnings by
 using
 
-* ``ms3 review -M -N -X -D`` (or, if you continue with the setup above, ``ms32 review -M -N -X -D``) and
-* committing the changes with the message ``ms3 review -M -N -X -D (v2.0.0)`` (or whatever the latest version is).
+* ``ms3 review -M -N -X -F -D`` (or, if you continue with the setup above, ``ms32 review -M -N -X -F -D``) and
+* committing the changes with the message ``ms3 review -M -N -X -F -D (v2.0.0)`` (or whatever the latest version is).
 
 If there is nothing to be committed, we're already done. Otherwise, we need to fix the warnings one after the other.
 Every time we (think we) have addressed a warning (or group of warnings), we execute the review command again to see if
 it has indeed disappeared. Since most warnings concern one particular file, we can use the command with the argument
 ``-i`` (long form ``--include``), followed by a regular expression matching only the file(s) we want to check. For
 example, if the filename convention is something like ``op<##>n<##>_<movement>.mscx``, we could execute
-``ms3 review -M -N -X -D -i op02`` to review all file containing "op02" in their names, or "02n02" for op.2, no.2 only,
+``ms3 review -M -N -X -F -D -i op02`` to review all file containing "op02" in their names, or "02n02" for op.2, no.2 only,
 etc. Once successfully addressed (or explicitly ignored), we commit the change with an informative commit
 message (just like during a review) explaining the change.
 
