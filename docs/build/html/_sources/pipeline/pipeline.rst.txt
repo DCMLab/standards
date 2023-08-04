@@ -638,9 +638,14 @@ environments or ``pipx`` (see below). To date, it also requires access to DCML's
 In a nutshell:
 
 #. All currently ongoing work needs to be :ref:`finalized <ongoing_work>` first before the repo itself can be finalized.
-#. (Work package type ``Harmonize repo structure & versions``) The repository :ref:`structure <repo_structure>` needs to be checked and updated if necessary.
+#. (Work package type ``Harmonize repo structure & versions``) The repository :ref:`structure <repo_structure>` needs
+   to be checked and updated if necessary.
 
+.. note::
 
+   As a general principle, whenever you discover an oddity concerning a repository and/or a particular score which
+   will need to be fixed at a later point, please create a concise issue making ample use of screenshots. This does
+   not include anomalies that are covered by a WARNING message.
 
 As a running example, let's consider this
 `pre-clean commit of peri_euridice <https://github.com/DCMLab/peri_euridice/tree/2129571849c267bee97d293b8fcc9fc3a27603b8>`__.
