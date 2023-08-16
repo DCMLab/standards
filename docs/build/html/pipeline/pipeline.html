@@ -196,6 +196,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#eliminating-all-warnings">Eliminating all warnings</a></li>
+<li><a class="reference internal" href="#finalizing-the-metadata">Finalizing the metadata</a></li>
 </ul>
 </li>
 </ul>
@@ -308,6 +309,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#eliminating-all-warnings" id="id46">Eliminating all warnings</a></p></li>
+<li><p><a class="reference internal" href="#finalizing-the-metadata" id="id47">Finalizing the metadata</a></p></li>
 </ul>
 </li>
 </ul>
@@ -928,7 +930,10 @@ environments or <code class="docutils literal notranslate"><span class="pre">pip
 <ol class="arabic simple">
 <li><p>All currently ongoing work needs to be <a class="reference internal" href="#ongoing-work"><span class="std std-ref">finalized</span></a> first before the repo itself can be finalized.</p></li>
 <li><p>(Work package type <code class="docutils literal notranslate"><span class="pre">Harmonize</span> <span class="pre">repo</span> <span class="pre">structure</span> <span class="pre">&amp;</span> <span class="pre">versions</span></code>) The repository <a class="reference internal" href="#repo-structure"><span class="std std-ref">structure</span></a> needs
-to be checked and updated if necessary.</p></li>
+to be checked and updated if necessary. Once the PR is merged, the remaining two work packages can be addressed
+in parallel:</p></li>
+<li><p>(WP type <code class="docutils literal notranslate"><span class="pre">Eliminate</span> <span class="pre">warnings</span></code>) All warnings need to be <a class="reference internal" href="#eliminating-warnings"><span class="std std-ref">eliminated</span></a> and</p></li>
+<li><p>(WP type <code class="docutils literal notranslate"><span class="pre">Metadata</span></code>) the metadata needs <a class="reference internal" href="#finalizing-metadata"><span class="std std-ref">finalizing</span></a>.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1184,6 +1189,28 @@ know).</p>
 </ul>
 <p>Proceed that way until all <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> files are gone (or contain warnings that you have created an issue for) and
 create a Pull Request.</p>
+</section>
+<section id="finalizing-the-metadata">
+<span id="finalizing-metadata"></span><h3><a class="toc-backref" href="#id47" role="doc-backlink">Finalizing the metadata</a><a class="headerlink" href="#finalizing-the-metadata" title="Permalink to this heading">¶</a></h3>
+<p>This last and important step has a lot of overlap with the other chapters on this page, those preceding the
+“Finalizing a repository for publication” one: For a repository that has been created using the DCML corpus creation
+pipeline documented here, the metadata, hopefully is in a good state already. However, quite a number of repositories
+have been created before the inception of this pipeline and have to be brought up to speed.</p>
+<p>Apart from that, this section is currently (August 2023) focusing on roundabout 20 repositories that have a long and
+pretty wild history (which does not always involve a lot of metadata love, unfortunately) so that this task may
+involve a considerable amount of detective’s work, digging through commit histories to find out the origin of a file,
+comparing a score with one found on musescore.com to discover its original source, etc. The golden rule is: Everything
+is allows as long as it contributes to a better presentable dataset.</p>
+<p>The finalization focuses on the following aspects:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> file and the corresponding metadata fields in the MuseScore files it describes.</p></li>
+<li><p>The scores’ prelims, i.e. the header presenting a movement’s title, composer, etc. (likewise manageable through
+the <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> file).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">README.md</span></code> with some standardized general information and some corpus-specific text blobs.</p></li>
+<li><p>The <a class="reference external" href="https://github.com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv">all_subcorpora.csv</a> file
+that is used to automatically deploy a corpus-specific website based on filling a homepage template with the values
+in that table.</p></li>
+</ul>
 </section>
 </section>
 </section>

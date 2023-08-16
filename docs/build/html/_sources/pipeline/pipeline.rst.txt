@@ -639,7 +639,10 @@ In a nutshell:
 
 #. All currently ongoing work needs to be :ref:`finalized <ongoing_work>` first before the repo itself can be finalized.
 #. (Work package type ``Harmonize repo structure & versions``) The repository :ref:`structure <repo_structure>` needs
-   to be checked and updated if necessary.
+   to be checked and updated if necessary. Once the PR is merged, the remaining two work packages can be addressed
+   in parallel:
+#. (WP type ``Eliminate warnings``) All warnings need to be :ref:`eliminated <eliminating_warnings>` and
+#. (WP type ``Metadata``) the metadata needs :ref:`finalizing <finalizing_metadata>`.
 
 .. note::
 
@@ -945,6 +948,31 @@ Otherwise, we need to fix the warnings one after the other. For more detailed in
 Proceed that way until all ``.warnings`` files are gone (or contain warnings that you have created an issue for) and
 create a Pull Request.
 
+.. _finalizing_metadata:
+
+Finalizing the metadata
+-----------------------
+
+This last and important step has a lot of overlap with the other chapters on this page, those preceding the
+"Finalizing a repository for publication" one: For a repository that has been created using the DCML corpus creation
+pipeline documented here, the metadata, hopefully is in a good state already. However, quite a number of repositories
+have been created before the inception of this pipeline and have to be brought up to speed.
+
+Apart from that, this section is currently (August 2023) focusing on roundabout 20 repositories that have a long and
+pretty wild history (which does not always involve a lot of metadata love, unfortunately) so that this task may
+involve a considerable amount of detective's work, digging through commit histories to find out the origin of a file,
+comparing a score with one found on musescore.com to discover its original source, etc. The golden rule is: Everything
+is allows as long as it contributes to a better presentable dataset.
+
+The finalization focuses on the following aspects:
+
+* The ``metadata.tsv`` file and the corresponding metadata fields in the MuseScore files it describes.
+* The scores' prelims, i.e. the header presenting a movement's title, composer, etc. (likewise manageable through
+  the ``metadata.tsv`` file).
+* The ``README.md`` with some standardized general information and some corpus-specific text blobs.
+* The `all_subcorpora.csv <https://github.com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv>`__ file
+  that is used to automatically deploy a corpus-specific website based on filling a homepage template with the values
+  in that table.
 
 
 
