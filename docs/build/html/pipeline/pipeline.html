@@ -1135,7 +1135,7 @@ one last time with the old version (hence the setup at the beginning of the sect
 <li><p>First, we delete the folders <code class="docutils literal notranslate"><span class="pre">measures</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>, and <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> (and any other facet folders that might be
 present, such as <code class="docutils literal notranslate"><span class="pre">form_labels</span></code>), without committing the change (e.g., in your file browser).</p></li>
 <li><p>Then we run <code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">extract</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span></code>;</p></li>
-<li><p>commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">extract</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v2.0.1)&quot;</span></code> (or whatever the latest version is);</p></li>
+<li><p>commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">extract</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v2.1.0)&quot;</span></code> (or whatever the latest version is);</p></li>
 </ul>
 <p>The branch is now ready to be reviewed and then merged through a Pull Request:</p>
 <figure class="align-default" id="id12">
@@ -1148,7 +1148,7 @@ description links the PR to the work package on OpenProject and that the label c
 <p>Once the PR has been created, you can update the work package status to “Needs review”.
 Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
 Once merged, we can assign assign a new tag,
-e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">v2.0</span> <span class="pre">-m</span> <span class="pre">&quot;Extracted</span> <span class="pre">facets</span> <span class="pre">using</span> <span class="pre">ms3</span> <span class="pre">version</span> <span class="pre">2.0.1&quot;</span></code> (see step 3).</p>
+e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">v2.0</span> <span class="pre">-m</span> <span class="pre">&quot;Extracted</span> <span class="pre">facets</span> <span class="pre">using</span> <span class="pre">ms3</span> <span class="pre">version</span> <span class="pre">2.1.0&quot;</span></code> (see step 3).</p>
 </section>
 </section>
 <section id="eliminating-all-warnings">
@@ -1168,7 +1168,7 @@ The first step is to create a new branch for the task, e.g. “warnings” and t
 using</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span></code> (or, if you continue with the setup above, <code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span></code>) and</p></li>
-<li><p>committing the changes with the message <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v2.0.1)</span></code> (or whatever the latest version is).</p></li>
+<li><p>committing the changes with the message <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v2.1.0)</span></code> (or whatever the latest version is).</p></li>
 </ul>
 <p>If there is nothing to be committed, we’re already done. Otherwise, we need to fix the warnings one after the other.
 There are three ways to deal with a warning:</p>

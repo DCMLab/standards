@@ -889,7 +889,7 @@ Then we update the data to v2 in four steps:
 * First, we delete the folders ``measures``, ``notes``, and ``harmonies`` (and any other facet folders that might be
   present, such as ``form_labels``), without committing the change (e.g., in your file browser).
 * Then we run ``ms32 extract -M -N -X -F -D``;
-* commit everything with the message ``"ms3 extract -M -N -X -F -D (v2.0.1)"`` (or whatever the latest version is);
+* commit everything with the message ``"ms3 extract -M -N -X -F -D (v2.1.0)"`` (or whatever the latest version is);
 
 The branch is now ready to be reviewed and then merged through a Pull Request:
 
@@ -903,7 +903,7 @@ The branch is now ready to be reviewed and then merged through a Pull Request:
 Once the PR has been created, you can update the work package status to "Needs review".
 Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
 Once merged, we can assign assign a new tag,
-e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.0.1"`` (see step 3).
+e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.1.0"`` (see step 3).
 
 
 
@@ -927,7 +927,7 @@ The first step is to create a new branch for the task, e.g. "warnings" and to up
 using
 
 * ``ms3 review -M -N -X -F -D`` (or, if you continue with the setup above, ``ms32 review -M -N -X -F -D``) and
-* committing the changes with the message ``ms3 review -M -N -X -F -D (v2.0.1)`` (or whatever the latest version is).
+* committing the changes with the message ``ms3 review -M -N -X -F -D (v2.1.0)`` (or whatever the latest version is).
 
 If there is nothing to be committed, we're already done. Otherwise, we need to fix the warnings one after the other.
 There are three ways to deal with a warning:
