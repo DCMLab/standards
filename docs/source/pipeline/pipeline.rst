@@ -291,10 +291,10 @@ MuseScore files in the corpus by editing the ``metadata.tsv`` file and calling t
 DCML corpora usually come with one MuseScore file per movement, hence we follow the convention that anything related to
 ``work`` describes the whole group (Suite, Symphony, etc.) or cycle (e.g. song cycle), and fields containing
 ``movement`` or ``mvt`` its individual parts. It follows that in the ``metadata.tsv`` file titles, catalogue numbers,
-URIs etc. are repeated and identical for the parts of a ``work``. Identifiers for individual movements are often
-hard to come by, but musicbrainz has already a good number of them. For compositions where the subdivision into
-parts is somewhat arbitrary (consider the grouping into tracks for recordings of the same opera), the question of
-unique identification is an open problem.
+URIs etc. may be repeated and identical for the parts of a ``work``. Identifiers for individual movements are often
+hard to come by, but `MusicBrainz <https://musicbrainz.org/>`__ has already a good number of them. For compositions
+where the subdivision into parts is somewhat arbitrary (consider the grouping into tracks for recordings of the same
+opera), the question of unique identification is an open problem.
 
 .. note::
 
@@ -364,7 +364,7 @@ Identifiers where available
 
 Identifiers are important for making data findable and interoperable but might not always be available. Nevertheless,
 the goal should be to find minimum one of the work or part-of-work identifiers listed below. Wikidata identifiers
-are the gold standard because they often come with a mapping to all other kinds of identifiers. In addition,
+are the gold standard because they often come with a mapping to all sorts of other identifiers. In addition,
 Wikidata is a knowledge graph which lets us easily pull additional metadata. The site has the drawback
 that identifiers for less known works are mostly missing as of yet and so are identifiers for individual movements.
 Until the fundamental problem of community-wide work identifiers is solved, we should aim at completing missing
