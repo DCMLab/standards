@@ -929,14 +929,22 @@ using
 * ``ms3 review -M -N -X -F -D`` (or, if you continue with the setup above, ``ms32 review -M -N -X -F -D``) and
 * committing the changes with the message ``ms3 review -M -N -X -F -D (v2.1.0)`` (or whatever the latest version is).
 
-If there is nothing to be committed, we're already done. Otherwise, we need to fix the warnings one after the other.
-There are three ways to deal with a warning:
+Our goal is to eliminate the presence of any file ending on ``.warnings`` in the ``reviewed`` folder (they are simple
+text files). The review command stores occurring warnings in one such file per piece and deletes those files where all
+warnings have been dealt with. In other words, when no ``<piece>.warnings`` is present, we're done already (if, however,
+you spotted a warning in the output of the review command that wasn't captured, that's probably a bug, please let us
+know).
 
-* Fix it, execute ``ms3 review -M -N -X -F -D -i <filename>`` to see if it has disappeared, and commit the change.
+Otherwise, we need to fix the warnings one after the other. For more detailed instructions, please refer to the
+:ref:`warnings` section of the annotation workflow. To quickly sum it up, there are three ways to deal with a warning:
+
+* Fix it, execute ``ms3 review -M -N -X -F -D -i <filename>`` to see if it has disappeared, and commit the changes.
 * Declare it a false positive.
 * Create an issue to make sure someone deals with it later.
 
-For more details, please refer to the :ref:`warnings` section of the annotation workflow.
+Proceed that way until all ``.warnings`` files are gone (or contain warnings that you have created an issue for) and
+create a Pull Request.
+
 
 
 
