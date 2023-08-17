@@ -957,26 +957,65 @@ create a Pull Request.
 Finalizing the metadata
 -----------------------
 
-This last and important step has a lot of overlap with the other chapters on this page, those preceding the
-"Finalizing a repository for publication" one: For a repository that has been created using the DCML corpus creation
-pipeline documented here, the metadata, hopefully is in a good state already. However, quite a number of repositories
+This last and important step has a lot of overlap with :ref:`enriching_metadata` above. That is because metadata can
+(and should) be added at any given point in time.
+
+.. figure:: img/love_note.png
+     :alt: Repository settings on GitHub
+     :scale: 30%
+
+If you're lucky the repository has been created using the DCML corpus creation
+pipeline documented here and the metadata is already in a good state already. However, quite a number of repositories
 have been created before the inception of this pipeline and have to be brought up to speed.
 
-Apart from that, this section is currently (August 2023) focusing on roundabout 20 repositories that have a long and
+This section is currently (August 2023) focusing on roundabout 20 repositories that have a long and
 pretty wild history (which does not always involve a lot of metadata love, unfortunately) so that this task may
 involve a considerable amount of detective's work, digging through commit histories to find out the origin of a file,
 comparing a score with one found on musescore.com to discover its original source, etc. The golden rule is: Everything
-is allows as long as it contributes to a better presentable dataset.
+is allowed as long as it contributes to a better presentable dataset.
 
 The finalization focuses on the following aspects:
 
-* The ``metadata.tsv`` file and the corresponding metadata fields in the MuseScore files it describes.
+* The :ref:`metadata_tsv` file and the corresponding metadata fields in the MuseScore files it describes.
 * The scores' prelims, i.e. the header presenting a movement's title, composer, etc. (likewise manageable through
   the ``metadata.tsv`` file).
 * The ``README.md`` with some standardized general information and some corpus-specific text blobs.
 * The `all_subcorpora.csv <https://github.com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv>`__ file
   that is used to automatically deploy a corpus-specific website based on filling a homepage template with the values
   in that table.
+
+.. _metadata_tsv:
+
+``metadata.tsv``
+^^^^^^^^^^^^^^^^
+
+Please make sure that the fields documented above under :ref:`enriching_metadata` are filled to the best possible extent.
+For quick reference:
+
+Check that ``metadata.tsv`` contains exactly one row per MuseScore file in the ``MS3`` folder.
+  Background info: By default, ``ms3`` commands select only files listed in the ``metadata.tsv`` for parsing,
+  which is a mechanism that allows for the inclusion of other, auxiliary or corpus-external scores. To be 100% sure
+  that all files are included we can call  ``ms3 extract -D -a``. The only case that that cannot be automatically fixed is
+  is when ``metadata.tsv`` contains rows pertaining to files that do not exist anymore (for instance when they have
+  been renamed or split). In such a case, please delete the corresponding rows manually.
+Bring the file up to date using ``ms3 extract -D``.
+  Making sure that the TSV file corresponds to the current state of the metadata in the MuseScore files.
+Make your edits to the ``metadata.tsv`` file, commiting each change individually.
+  For example, add and fill the columns ``composed_start``, ``composed_end`` and ``composed_source`` and commit them
+  with the message "adds composition dates" (or similar).
+Once all columns have been cleaned to your satisfaction, update the corresponding fields in the MuseScore files.
+  For that you execute ``ms3 metadata``, inspect the changes using ``git diff`` and, if everything is looking good,
+  you re-extract via ``ms3 extract -D`` (which usually results in a re-ordering of manually added columns and commit
+  the changes with the message "writes updated metadata into MuseScore files", or similar.
+
+.. note::
+
+   Note that the correspondence between columns in ``metadata.tsv`` and fields in the MuseScore files relies on
+   *exact* string matching and, to minimize erroneous mismatches, all field names are lowercased. In case you discover
+   a misspelled column, you can rename it and call ``ms3 metadata --remove``. This will remove the fields from the
+   MuseScore files for which no corresponding column exists in ``metadata.tsv``.
+
+
 
 
 
