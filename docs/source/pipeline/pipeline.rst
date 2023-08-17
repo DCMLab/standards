@@ -75,7 +75,11 @@ Please send a request to be added to the document.
     * certain bars need to be excluded from the bar count:
         * anacrusis
         * pickup measures throughout the piece
-        * second voltas (i.e. second repeats)
+    * alternative endings are different versions of the same measure numbers
+        * to make sure that the second ending has the same measure number as the first one, go to the "Measure properties"
+          of the first one and enter in the field "Add to measure count:" the negative number of bars of the first ending.
+        * In the example of two endings with the default measure numbers ``[15|16][17|18]``, we add ``-2`` to the measure
+          count of ``17`` and thus achieve ``[15|16][15|16]``.
     * irregular measure lengths need to complete each other
         * e.g. when a repeated section starts with a pickup measure, the last measure of the repeated section needs to be shorter
         * anacrusis is substracted from the last bar
