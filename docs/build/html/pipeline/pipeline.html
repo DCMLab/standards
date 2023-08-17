@@ -198,6 +198,7 @@
 <li><a class="reference internal" href="#eliminating-all-warnings">Eliminating all warnings</a></li>
 <li><a class="reference internal" href="#finalizing-the-metadata">Finalizing the metadata</a><ul>
 <li><a class="reference internal" href="#metadata-tsv"><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code></a></li>
+<li><a class="reference internal" href="#score-prelims-and-instrumentation">Score prelims and instrumentation</a></li>
 </ul>
 </li>
 </ul>
@@ -315,6 +316,7 @@
 <li><p><a class="reference internal" href="#finalizing-the-metadata" id="id48">Finalizing the metadata</a></p>
 <ul>
 <li><p><a class="reference internal" href="#metadata-tsv" id="id49"><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code></a></p></li>
+<li><p><a class="reference internal" href="#score-prelims-and-instrumentation" id="id50">Score prelims and instrumentation</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1224,7 +1226,7 @@ is allowed as long as it contributes to a better presentable dataset.</p>
 <p>The finalization focuses on the following aspects:</p>
 <ul class="simple">
 <li><p>The <a class="reference internal" href="#metadata-tsv"><span class="std std-ref">metadata.tsv</span></a> file and the corresponding metadata fields in the MuseScore files it describes.</p></li>
-<li><p>The scores’ prelims, i.e. the header presenting a movement’s title, composer, etc. (likewise manageable through
+<li><p>The <a class="reference internal" href="#score-prelims"><span class="std std-ref">Score prelims and instrumentation</span></a>, i.e. the header presenting a movement’s title, composer, etc. (likewise manageable through
 the <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> file).</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">README.md</span></code> with some standardized general information and some corpus-specific text blobs.</p></li>
 <li><p>The <a class="reference external" href="https://github.com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv">all_subcorpora.csv</a> file
@@ -1259,6 +1261,43 @@ the changes with the message “writes updated metadata into MuseScore files”,
 a misspelled column, you can rename it and call <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--remove</span></code>. This will remove the fields from the
 MuseScore files for which no corresponding column exists in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code>.</p>
 </div>
+</section>
+<section id="score-prelims-and-instrumentation">
+<span id="score-prelims"></span><h4><a class="toc-backref" href="#id50" role="doc-backlink">Score prelims and instrumentation</a><a class="headerlink" href="#score-prelims-and-instrumentation" title="Permalink to this heading">¶</a></h4>
+<p>The prelims are the header of a score that contains information about the piece. In MuseScore, they consist of up to
+five text fields which can be arbitrarily arranged in within the “Vertical box” at the top of the MuseScore file:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/prelims_tchaikovsky_op37a06.png"><img alt="Prelims of Tchaikovsky op. 37a, no. 6" src="../_images/prelims_tchaikovsky_op37a06.png" style="width: 1869.0px; height: 766.5px;" /></a>
+</figure>
+<p>The values of these fields are extracted and updated just like the metadata fields. The command <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">extract</span> <span class="pre">-D</span></code>
+writes the values for the existing fields into the columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title_text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subtitle_text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lyricist_text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">composer_text</span></code></p></li>
+<li><p>(<code class="docutils literal notranslate"><span class="pre">part_text</span></code>)</p></li>
+</ul>
+<p>These columns should appear next to each other in the table so you can see if some of them are not present, in which
+case you can simply add those that you want to use. Once you have updated the values in question, you commit the change
+to the TSV file first and then run <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--prelims</span></code> in order to write the changes into the file.</p>
+<p>Usually you can compose these columns from the metadata fields that you have already cleaned in the previous step. For
+example, you can simply copy the <code class="docutils literal notranslate"><span class="pre">composer</span></code> column into <code class="docutils literal notranslate"><span class="pre">composer_text</span></code> column and commit. The lyricist field is
+generally used for vocal music or in special cases like the Tchaikovsky piece shown above that comes with a poem.
+For a dataset of sonatas, the title column could be composed, for example, by using the <code class="docutils literal notranslate"><span class="pre">CONCATENATE</span></code> function of
+your spreadsheet in order to combine the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column with the <code class="docutils literal notranslate"><span class="pre">workNumber</span></code> column in some meaningful way.</p>
+<p>In general, there are two possibilities to use title and subtitle. When unsure, please ask on Mattermost.</p>
+<ul class="simple">
+<li><p>Title for the work, subtitle for the movement. Would be typical for a sonata movement.</p></li>
+<li><p>Title for the part-of-work, subtitle for the cycle, typical for a cycle (as shown above).</p></li>
+</ul>
+<p>The instrumentation can be changed by filling in default instrument names into the columns for the respective staves,
+e.g. <code class="docutils literal notranslate"><span class="pre">staff_1_instrument</span></code> for the upper staff. The new values are written into the document by running
+<code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--instrumentation</span></code>.</p>
+<p>Once the scores have been updated/created, you will need to open each MuseScore file to check on their visual
+arrangement because it does not happen automatically. Please do not change the font settings unless strictly necessary.
+The arrangement is arbitrary and should be somewhat satisfying visually (again, take the Tchaikovsky example above).
+Arranging the layout may involve making the vertical box larger.</p>
 </section>
 </section>
 </section>

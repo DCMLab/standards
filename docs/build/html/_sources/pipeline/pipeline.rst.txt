@@ -977,7 +977,7 @@ is allowed as long as it contributes to a better presentable dataset.
 The finalization focuses on the following aspects:
 
 * The :ref:`metadata_tsv` file and the corresponding metadata fields in the MuseScore files it describes.
-* The scores' prelims, i.e. the header presenting a movement's title, composer, etc. (likewise manageable through
+* The :ref:`score_prelims`, i.e. the header presenting a movement's title, composer, etc. (likewise manageable through
   the ``metadata.tsv`` file).
 * The ``README.md`` with some standardized general information and some corpus-specific text blobs.
 * The `all_subcorpora.csv <https://github.com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv>`__ file
@@ -1014,6 +1014,53 @@ Once all columns have been cleaned to your satisfaction, update the correspondin
    *exact* string matching and, to minimize erroneous mismatches, all field names are lowercased. In case you discover
    a misspelled column, you can rename it and call ``ms3 metadata --remove``. This will remove the fields from the
    MuseScore files for which no corresponding column exists in ``metadata.tsv``.
+
+.. _score_prelims:
+
+Score prelims and instrumentation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The prelims are the header of a score that contains information about the piece. In MuseScore, they consist of up to
+five text fields which can be arbitrarily arranged in within the "Vertical box" at the top of the MuseScore file:
+
+.. figure:: img/prelims_tchaikovsky_op37a06.png
+     :alt: Prelims of Tchaikovsky op. 37a, no. 6
+     :scale: 50%
+
+The values of these fields are extracted and updated just like the metadata fields. The command ``ms3 extract -D``
+writes the values for the existing fields into the columns:
+
+* ``title_text``
+* ``subtitle_text``
+* ``lyricist_text``
+* ``composer_text``
+* (``part_text``)
+
+These columns should appear next to each other in the table so you can see if some of them are not present, in which
+case you can simply add those that you want to use. Once you have updated the values in question, you commit the change
+to the TSV file first and then run ``ms3 metadata --prelims`` in order to write the changes into the file.
+
+Usually you can compose these columns from the metadata fields that you have already cleaned in the previous step. For
+example, you can simply copy the ``composer`` column into ``composer_text`` column and commit. The lyricist field is
+generally used for vocal music or in special cases like the Tchaikovsky piece shown above that comes with a poem.
+For a dataset of sonatas, the title column could be composed, for example, by using the ``CONCATENATE`` function of
+your spreadsheet in order to combine the ``workTitle`` column with the ``workNumber`` column in some meaningful way.
+
+In general, there are two possibilities to use title and subtitle. When unsure, please ask on Mattermost.
+
+* Title for the work, subtitle for the movement. Would be typical for a sonata movement.
+* Title for the part-of-work, subtitle for the cycle, typical for a cycle (as shown above).
+
+The instrumentation can be changed by filling in default instrument names into the columns for the respective staves,
+e.g. ``staff_1_instrument`` for the upper staff. The new values are written into the document by running
+``ms3 metadata --instrumentation``.
+
+Once the scores have been updated/created, you will need to open each MuseScore file to check on their visual
+arrangement because it does not happen automatically. Please do not change the font settings unless strictly necessary.
+The arrangement is arbitrary and should be somewhat satisfying visually (again, take the Tchaikovsky example above).
+Arranging the layout may involve making the vertical box larger.
+
+
 
 
 
