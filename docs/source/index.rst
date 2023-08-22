@@ -11,6 +11,7 @@ TOC
   tutorial/index
   git/git
   pipeline/pipeline
+  scores/guidelines
   reference/reference
   reference/examples
   reference/specs
