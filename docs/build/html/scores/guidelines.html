@@ -116,7 +116,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DCML Score Conventions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dividing-a-score-into-separate-files">Dividing a Score into separate files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-principles">General Principles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#glossary-terminology">Glossary, Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#score-elements">Score Elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#early-music">Early Music</a></li>
@@ -156,7 +156,14 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">DCML Score Conventions</a><ul>
+<li><a class="reference internal" href="#general-principles">General Principles</a><ul>
+<li><a class="reference internal" href="#get-the-latest-version-of-musescore-3">Get the latest version of MuseScore 3</a></li>
+<li><a class="reference internal" href="#organization-into-movements-or-pieces">Organization into movements or pieces</a><ul>
 <li><a class="reference internal" href="#dividing-a-score-into-separate-files">Dividing a Score into separate files</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#glossary-terminology">Glossary, Terminology</a><ul>
 <li><a class="reference internal" href="#system">System</a></li>
 <li><a class="reference internal" href="#staff-pl-staves">Staff (<em>pl.</em> staves)</a></li>
@@ -249,53 +256,110 @@
 <nav class="contents local" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#dividing-a-score-into-separate-files" id="id1">Dividing a Score into separate files</a></p></li>
-<li><p><a class="reference internal" href="#glossary-terminology" id="id2">Glossary, Terminology</a></p>
+<li><p><a class="reference internal" href="#general-principles" id="id1">General Principles</a></p>
 <ul>
-<li><p><a class="reference internal" href="#system" id="id3">System</a></p></li>
-<li><p><a class="reference internal" href="#staff-pl-staves" id="id4">Staff (<em>pl.</em> staves)</a></p></li>
-<li><p><a class="reference internal" href="#voice-notational-layer" id="id5">Voice (Notational Layer)</a></p></li>
-<li><p><a class="reference internal" href="#head-stem" id="id6">Head &amp; Stem</a></p></li>
-<li><p><a class="reference internal" href="#flag-beam" id="id7">Flag &amp; Beam</a></p></li>
+<li><p><a class="reference internal" href="#get-the-latest-version-of-musescore-3" id="id2">Get the latest version of MuseScore 3</a></p></li>
+<li><p><a class="reference internal" href="#organization-into-movements-or-pieces" id="id3">Organization into movements or pieces</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dividing-a-score-into-separate-files" id="id4">Dividing a Score into separate files</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#score-elements" id="id8">Score Elements</a></p>
-<ul>
-<li><p><a class="reference internal" href="#line-breaks" id="id9">Line Breaks</a></p></li>
-<li><p><a class="reference internal" href="#musescore-metadata-title-information-etc" id="id10">MuseScore Metadata, Title information etc.</a></p></li>
-<li><p><a class="reference internal" href="#staff-brackets-bar-lines" id="id11">Staff Brackets, Bar lines</a></p></li>
-<li><p><a class="reference internal" href="#cross-staff-notation" id="id12">Cross-staff notation</a></p></li>
-<li><p><a class="reference internal" href="#first-and-second-endings-voltas" id="id13">First and second endings (“voltas”)</a></p></li>
-<li><p><a class="reference internal" href="#sections-within-a-movement-e-g-trio" id="id14">Sections within a movement (e.g. “Trio”)</a></p></li>
-<li><p><a class="reference internal" href="#beams" id="id15">Beams</a></p></li>
-<li><p><a class="reference internal" href="#notational-layers-stem-direction" id="id16">Notational Layers &amp; Stem direction</a></p></li>
-<li><p><a class="reference internal" href="#piano-pedals" id="id17">Piano pedals</a></p></li>
-<li><p><a class="reference internal" href="#metronome-numbers" id="id18">Metronome numbers</a></p></li>
-<li><p><a class="reference internal" href="#cresc-decresc" id="id19">Cresc. / Decresc.</a></p></li>
-<li><p><a class="reference internal" href="#titles-and-other-metadata" id="id20">Titles and other metadata</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#early-music" id="id21">Early Music</a></p>
+<li><p><a class="reference internal" href="#glossary-terminology" id="id5">Glossary, Terminology</a></p>
 <ul>
-<li><p><a class="reference internal" href="#preparatory-staves" id="id22">Preparatory staves</a></p></li>
-<li><p><a class="reference internal" href="#accidentals" id="id23">Accidentals</a></p></li>
-<li><p><a class="reference internal" href="#text" id="id24">Text</a></p></li>
-<li><p><a class="reference internal" href="#ligaturae" id="id25">Ligaturae</a></p></li>
-<li><p><a class="reference internal" href="#meter" id="id26">Meter</a></p></li>
-<li><p><a class="reference internal" href="#metadata" id="id27">Metadata</a></p></li>
+<li><p><a class="reference internal" href="#system" id="id6">System</a></p></li>
+<li><p><a class="reference internal" href="#staff-pl-staves" id="id7">Staff (<em>pl.</em> staves)</a></p></li>
+<li><p><a class="reference internal" href="#voice-notational-layer" id="id8">Voice (Notational Layer)</a></p></li>
+<li><p><a class="reference internal" href="#head-stem" id="id9">Head &amp; Stem</a></p></li>
+<li><p><a class="reference internal" href="#flag-beam" id="id10">Flag &amp; Beam</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#corrections-to-automate" id="id28">Corrections to automate</a></p>
+<li><p><a class="reference internal" href="#score-elements" id="id11">Score Elements</a></p>
 <ul>
-<li><p><a class="reference internal" href="#general" id="id29">General</a></p></li>
-<li><p><a class="reference internal" href="#files-converted-from-kern-humdrum" id="id30">Files converted from Kern/Humdrum</a></p></li>
-<li><p><a class="reference internal" href="#annotations" id="id31">Annotations</a></p></li>
+<li><p><a class="reference internal" href="#line-breaks" id="id12">Line Breaks</a></p></li>
+<li><p><a class="reference internal" href="#musescore-metadata-title-information-etc" id="id13">MuseScore Metadata, Title information etc.</a></p></li>
+<li><p><a class="reference internal" href="#staff-brackets-bar-lines" id="id14">Staff Brackets, Bar lines</a></p></li>
+<li><p><a class="reference internal" href="#cross-staff-notation" id="id15">Cross-staff notation</a></p></li>
+<li><p><a class="reference internal" href="#first-and-second-endings-voltas" id="id16">First and second endings (“voltas”)</a></p></li>
+<li><p><a class="reference internal" href="#sections-within-a-movement-e-g-trio" id="id17">Sections within a movement (e.g. “Trio”)</a></p></li>
+<li><p><a class="reference internal" href="#beams" id="id18">Beams</a></p></li>
+<li><p><a class="reference internal" href="#notational-layers-stem-direction" id="id19">Notational Layers &amp; Stem direction</a></p></li>
+<li><p><a class="reference internal" href="#piano-pedals" id="id20">Piano pedals</a></p></li>
+<li><p><a class="reference internal" href="#metronome-numbers" id="id21">Metronome numbers</a></p></li>
+<li><p><a class="reference internal" href="#cresc-decresc" id="id22">Cresc. / Decresc.</a></p></li>
+<li><p><a class="reference internal" href="#titles-and-other-metadata" id="id23">Titles and other metadata</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#early-music" id="id24">Early Music</a></p>
+<ul>
+<li><p><a class="reference internal" href="#preparatory-staves" id="id25">Preparatory staves</a></p></li>
+<li><p><a class="reference internal" href="#accidentals" id="id26">Accidentals</a></p></li>
+<li><p><a class="reference internal" href="#text" id="id27">Text</a></p></li>
+<li><p><a class="reference internal" href="#ligaturae" id="id28">Ligaturae</a></p></li>
+<li><p><a class="reference internal" href="#meter" id="id29">Meter</a></p></li>
+<li><p><a class="reference internal" href="#metadata" id="id30">Metadata</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#corrections-to-automate" id="id31">Corrections to automate</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general" id="id32">General</a></p></li>
+<li><p><a class="reference internal" href="#files-converted-from-kern-humdrum" id="id33">Files converted from Kern/Humdrum</a></p></li>
+<li><p><a class="reference internal" href="#annotations" id="id34">Annotations</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
+<section id="general-principles">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">General Principles</a><a class="headerlink" href="#general-principles" title="Permalink to this heading">¶</a></h2>
+<p>These guidelines are intended to ensure that the scores produced by and for the DCML are consistent and high-quality
+encodings of some print or manuscript edition. Although they represent digital editions, first and foremost they
+are to be considered as <em>research data</em>. As such, we neglect details of layout in favour of rigorous conventions
+regarding the semantically correct encoding of score elements. Semantic, in this context, means that wherever
+possible the various score elements are to be created with the corresponding tools and features that the
+typesetting software MuseScore provides. For example, a <code class="docutils literal notranslate"><span class="pre">cresc.</span></code> performance indication must not be encoded
+as a “normal” staff text: It has the semantics of a dynamic marking and is available as such in the “Lines” palette.
+A large part of these guidelines is concerned with stipulating how various score elements are to be encoded.</p>
+<section id="get-the-latest-version-of-musescore-3">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Get the latest version of MuseScore 3</a><a class="headerlink" href="#get-the-latest-version-of-musescore-3" title="Permalink to this heading">¶</a></h3>
+<p>Unfortunately, MuseScore 4 does not allow opening an <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> (i.e. uncompressed) MuseScore file and store it back.
+As long as <a class="reference external" href="https://github.com/musescore/MuseScore/issues/15995">this issue</a> is not resolved, we are sticking to
+the latest version of MuseScore 3, which is 3.6.2. You can download it from the
+<a class="reference external" href="https://github.com/musescore/MuseScore/releases/tag/v3.6.2">official GitHub page</a>.
+Head to the link above and download the installer for your operation system. If
+you’re using Linux you can downgrade the package in your package manager or, instead, download and execute the AppImage.</p>
+</section>
+<section id="organization-into-movements-or-pieces">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Organization into movements or pieces</a><a class="headerlink" href="#organization-into-movements-or-pieces" title="Permalink to this heading">¶</a></h3>
+<p>A major use case for the scores is the study of tonal music in all its aspects. It has proven worthwhile to
+organize the scores into units which, tonally, stand for themselves in one way or another. Three aspects play a
+role when deciding into how many different files to split a musical expression:</p>
+<ol class="arabic simple">
+<li><p><strong>measure numbering</strong>: it should make sense to start with 0 or 1</p></li>
+<li><p><strong>global key</strong>: it should make (at least some) sense to analyze the contents under a single global tonic</p></li>
+<li><p><strong>(formal) closure</strong>: ideally, the contents of a file can be characterized as having beginning, middle, and end</p></li>
+</ol>
+<p>Parts-of-work that are frequently separated into different files are:</p>
+<ul class="simple">
+<li><p>movements</p></li>
+<li><p>pieces within a cycle</p></li>
+<li><p>sections within a movement (e.g. “Trio”)</p></li>
+</ul>
+<p>For reference in case of doubt, here are a few DCML corpora that are noteworthy in some aspect:</p>
+<ul class="simple">
+<li><p>In <a class="reference external" href="https://github.com/DCMLab/corelli">Corelli’s Trio sonatas</a>, the division into movements can be somewhat
+arbitrary and some of the files contain nothing more than a slow transition of a few bars’ length.</p></li>
+<li><p>In <a class="reference external" href="https://github.com/DCMLab/schubert_dances">Schubert’s Piano dances</a>, the Trios are consistently split from
+the dances they belong to.</p></li>
+<li><p>In <a class="reference external" href="https://github.com/DCMLab/mozart_piano_sonatas/">Mozart’s Piano sonatas</a>, on the other hand, the two
+variation movements are <em>not</em> split into separate files, leading to an alternative counting of measures (which is
+also used by the Digital Mozart Edition (DME) issued at the Mozarteum Salzburg) where new variations do not restart
+with measure 1 or 0.</p></li>
+</ul>
+<p>If you find yourself in the situation where you need to split a MuseScore file into several parts you can refer
+to the following section.</p>
 <section id="dividing-a-score-into-separate-files">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Dividing a Score into separate files</a><a class="headerlink" href="#dividing-a-score-into-separate-files" title="Permalink to this heading">¶</a></h2>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Dividing a Score into separate files</a><a class="headerlink" href="#dividing-a-score-into-separate-files" title="Permalink to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Open up the MuseScore file &amp; the original print for comparison.</p></li>
 <li><p>Find out about the file name convention or invent one.</p></li>
@@ -307,42 +371,44 @@
 <li><p>Delete bars (Ctrl + Del)</p></li>
 </ol>
 </section>
+</section>
+</section>
 <section id="glossary-terminology">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Glossary, Terminology</a><a class="headerlink" href="#glossary-terminology" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Glossary, Terminology</a><a class="headerlink" href="#glossary-terminology" title="Permalink to this heading">¶</a></h2>
 <img alt="../_images/score_glossary.png" src="../_images/score_glossary.png" />
 <section id="system">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">System</a><a class="headerlink" href="#system" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">System</a><a class="headerlink" href="#system" title="Permalink to this heading">¶</a></h3>
 <p>The “line” of a score including all staves.</p>
 </section>
 <section id="staff-pl-staves">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Staff (<em>pl.</em> staves)</a><a class="headerlink" href="#staff-pl-staves" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Staff (<em>pl.</em> staves)</a><a class="headerlink" href="#staff-pl-staves" title="Permalink to this heading">¶</a></h3>
 <p>A score layer commonly represented by five staff lines.</p>
 </section>
 <section id="voice-notational-layer">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Voice (Notational Layer)</a><a class="headerlink" href="#voice-notational-layer" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Voice (Notational Layer)</a><a class="headerlink" href="#voice-notational-layer" title="Permalink to this heading">¶</a></h3>
 <p>Contrary to the musical term, voice designates one of the four notational layers. Voices 1 (blue) and 3 (red) by default have upwards stems and beams, voice 2 (green) and 4 (purple) downward ones; unless only voice 1 is present, then the stem direction is automatic. In the score example, staff 1 has two voices and staff 2 only one.</p>
 </section>
 <section id="head-stem">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Head &amp; Stem</a><a class="headerlink" href="#head-stem" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Head &amp; Stem</a><a class="headerlink" href="#head-stem" title="Permalink to this heading">¶</a></h3>
 <p>Every note consists of a note head (round in most cases) and every note smaller than a whole note has a stem which is the line extending upwards or downward from the stem, or both.</p>
 </section>
 <section id="flag-beam">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Flag &amp; Beam</a><a class="headerlink" href="#flag-beam" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Flag &amp; Beam</a><a class="headerlink" href="#flag-beam" title="Permalink to this heading">¶</a></h3>
 <p>Individual notes smaller than a quarter have at least one flag but adjacent flags are usually represented as beams. In the score example every four eighth notes are connected by a beam.</p>
 </section>
 </section>
 <section id="score-elements">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Score Elements</a><a class="headerlink" href="#score-elements" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Score Elements</a><a class="headerlink" href="#score-elements" title="Permalink to this heading">¶</a></h2>
 <section id="line-breaks">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Line Breaks</a><a class="headerlink" href="#line-breaks" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Line Breaks</a><a class="headerlink" href="#line-breaks" title="Permalink to this heading">¶</a></h3>
 <p>Don’t need to correspond to the original. Where existing line breaks in the digital edition bring forth awkward layout, they should be deleted.</p>
 </section>
 <section id="musescore-metadata-title-information-etc">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">MuseScore Metadata, Title information etc.</a><a class="headerlink" href="#musescore-metadata-title-information-etc" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">MuseScore Metadata, Title information etc.</a><a class="headerlink" href="#musescore-metadata-title-information-etc" title="Permalink to this heading">¶</a></h3>
 <p>Eventually the Metadata (File -&gt; Score Properties) should be clean (i.e. complete) but this can be done in an automated step. The same goes for adding title, composer etc. for the score. So if you’re more satisfied with your work when you add this info, use Add -&gt; Text -&gt; Title/Subtitle/Composer…</p>
 </section>
 <section id="staff-brackets-bar-lines">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Staff Brackets, Bar lines</a><a class="headerlink" href="#staff-brackets-bar-lines" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Staff Brackets, Bar lines</a><a class="headerlink" href="#staff-brackets-bar-lines" title="Permalink to this heading">¶</a></h3>
 <p>The brackets at the beginning of the staves make for a more professional look and are easy to add. The same goes for barlines extending over staves.</p>
 <ul class="simple">
 <li><p><strong>Brackets:</strong> Palette -&gt; Brackets -&gt; Drag into score -&gt; use the handle to extend</p></li>
@@ -350,11 +416,11 @@
 </ul>
 </section>
 <section id="cross-staff-notation">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">Cross-staff notation</a><a class="headerlink" href="#cross-staff-notation" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Cross-staff notation</a><a class="headerlink" href="#cross-staff-notation" title="Permalink to this heading">¶</a></h3>
 <p>In print editions of piano music you sometimes find the left hand notated in the upper staff or vice versa. By default, this should not be reproduced.</p>
 </section>
 <section id="first-and-second-endings-voltas">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">First and second endings (“voltas”)</a><a class="headerlink" href="#first-and-second-endings-voltas" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">First and second endings (“voltas”)</a><a class="headerlink" href="#first-and-second-endings-voltas" title="Permalink to this heading">¶</a></h3>
 <p>The convention is that second, third etc. endings are seen as alternative versions of the same measure numbers (MN). Therefore, the bar counts need to be adapted in MuseScore accordingly. If the voltas have length 1, it is sufficient to “Exclude from bar count” all voltas except the first one. For voltas spanning n &gt; 1 measures, for every volta except the first, the first measure needs to be adjusted with “Add to bar number = -n”.</p>
 <p>Example:</p>
 <ul class="simple">
@@ -363,7 +429,7 @@
 </ul>
 </section>
 <section id="sections-within-a-movement-e-g-trio">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink">Sections within a movement (e.g. “Trio”)</a><a class="headerlink" href="#sections-within-a-movement-e-g-trio" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Sections within a movement (e.g. “Trio”)</a><a class="headerlink" href="#sections-within-a-movement-e-g-trio" title="Permalink to this heading">¶</a></h3>
 <p>Individual sections, in particular ones with differing time and/or key signatures, occur frequently in musical settings such as variation movements or Minuet + Trio. Three important considerations are:</p>
 <ul class="simple">
 <li><p>how to layout the section breaks</p></li>
@@ -382,27 +448,27 @@
 <p>If the movement contains jumps such as D.C./da capo or D.S./dal segno, make sure that these signs exist and have the correct <strong>labels</strong>. For example, if at the end of a Trio there is a “Menuetto da capo” you need to make sure that the first section, the Minuet, is played once more, <strong>without repeats</strong>, and without continuing to the Trio. This can be achieved by creating a “D.C. al Fine” from the “Repeats &amp; Jumps” pallette, adapting the text, and, importantly, by creating a “Fine” at the end of the minuet. The “Play repeats” option is correctly disabled by default.</p>
 </section>
 <section id="beams">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">Beams</a><a class="headerlink" href="#beams" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Beams</a><a class="headerlink" href="#beams" title="Permalink to this heading">¶</a></h3>
 <p>Beams can be adjusted for aesthetic reasons but don’t need to be.</p>
 </section>
 <section id="notational-layers-stem-direction">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Notational Layers &amp; Stem direction</a><a class="headerlink" href="#notational-layers-stem-direction" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Notational Layers &amp; Stem direction</a><a class="headerlink" href="#notational-layers-stem-direction" title="Permalink to this heading">¶</a></h3>
 <p>As long as there is only one voice (notational layer) per staff, the automatic stem directions are perfectly fine. If there are more than one, the four layers of MuseScore should be used in order to reproduce the stem directions as in the original. By default, voices 1 and 3 have upward stems, voices 2 and 4 downward stems.</p>
 </section>
 <section id="piano-pedals">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Piano pedals</a><a class="headerlink" href="#piano-pedals" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Piano pedals</a><a class="headerlink" href="#piano-pedals" title="Permalink to this heading">¶</a></h3>
 <p>Since the use of the sustain pedal is part of a pianist’s personal style, pedal markings are to be considered as rough suggestions and often they are added by editors. They should be included if they can be found in the original manuscripts.</p>
 </section>
 <section id="metronome-numbers">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Metronome numbers</a><a class="headerlink" href="#metronome-numbers" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Metronome numbers</a><a class="headerlink" href="#metronome-numbers" title="Permalink to this heading">¶</a></h3>
 <p>Like pedals, they should be included only if they can be found in the original manuscript.</p>
 </section>
 <section id="cresc-decresc">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Cresc. / Decresc.</a><a class="headerlink" href="#cresc-decresc" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Cresc. / Decresc.</a><a class="headerlink" href="#cresc-decresc" title="Permalink to this heading">¶</a></h3>
 <p>Should not be written as plain text, instead use the symbol from the “Lines” palette. If the original score has no line, make it as short as possible (the length of the note value)</p>
 </section>
 <section id="titles-and-other-metadata">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink">Titles and other metadata</a><a class="headerlink" href="#titles-and-other-metadata" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Titles and other metadata</a><a class="headerlink" href="#titles-and-other-metadata" title="Permalink to this heading">¶</a></h3>
 <p>Metadata can be inserted automatically but if you want to do it by hand, use</p>
 <ul class="simple">
 <li><p><strong>Title</strong> for the title of the work group (e.g. “4 Mazurkas, op. 6”) or the work if it is standalone</p></li>
@@ -411,9 +477,9 @@
 </section>
 </section>
 <section id="early-music">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">Early Music</a><a class="headerlink" href="#early-music" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Early Music</a><a class="headerlink" href="#early-music" title="Permalink to this heading">¶</a></h2>
 <section id="preparatory-staves">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Preparatory staves</a><a class="headerlink" href="#preparatory-staves" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Preparatory staves</a><a class="headerlink" href="#preparatory-staves" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Create a horizontal frame between the first and second bar of the score. The isolated measure on the left of the frame will be referred to as the preparatory staff for each part.</p></li>
 <li><p>Exclude the preparatory staff from the measure count, and make the content of the bar invisible.</p></li>
@@ -424,7 +490,7 @@
 </ul>
 </section>
 <section id="accidentals">
-<h3><a class="toc-backref" href="#id23" role="doc-backlink">Accidentals</a><a class="headerlink" href="#accidentals" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Accidentals</a><a class="headerlink" href="#accidentals" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>When copying from a manuscript or primary source, only transcribe accidentals that are present in the original, without adding <em>musica ficta</em> or other editorial interventions.</p></li>
 <li><p>Since ancient sources do not assume measure boundaries, always interpret an accidental as only referring to the note it is attached to. This implies that every successive note in the same or the following measure that the accidental would apply to needs to have a natural sign in parentheses. In other words, the only notes having accidentals without parantheses are those in the original source. Please stick to this convention because it facilitates the task for the person who will go through all accidentals seperately.</p></li>
@@ -433,7 +499,7 @@
 </ul>
 </section>
 <section id="text">
-<h3><a class="toc-backref" href="#id24" role="doc-backlink">Text</a><a class="headerlink" href="#text" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Text</a><a class="headerlink" href="#text" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p>When transcribing from manuscripts or other primary sources, spelling inconsistencies and lexical archaisms for the same word should be transcribed as they occur in the source.</p></li>
 <li><p>On the contrary, ancient typographical features should be systematically modernized. This includes:</p>
@@ -460,13 +526,13 @@
 </ul>
 </section>
 <section id="ligaturae">
-<h3><a class="toc-backref" href="#id25" role="doc-backlink">Ligaturae</a><a class="headerlink" href="#ligaturae" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Ligaturae</a><a class="headerlink" href="#ligaturae" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>If the source marks <em>ligaturae</em>, include them as dashed slurs (<em>Line type</em> → <em>Dashed</em> in the Inspector).</p></li>
 </ul>
 </section>
 <section id="meter">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">Meter</a><a class="headerlink" href="#meter" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Meter</a><a class="headerlink" href="#meter" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p>Transcriptions preserve original note values, not halved ones.</p></li>
 <li><p>Meter changes:</p>
@@ -483,16 +549,16 @@
 </ul>
 </section>
 <section id="metadata">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add the field <em>originalClefs</em> and report the original clefs from the topmost to the bottom staff. E.g., “c1, c2, c4, f4”, where “c1” stands for a C-clef on the lowest line of the staff, c2 for a C-clef on the second-lowest line etc.</p></li>
 </ul>
 </section>
 </section>
 <section id="corrections-to-automate">
-<h2><a class="toc-backref" href="#id28" role="doc-backlink">Corrections to automate</a><a class="headerlink" href="#corrections-to-automate" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id31" role="doc-backlink">Corrections to automate</a><a class="headerlink" href="#corrections-to-automate" title="Permalink to this heading">¶</a></h2>
 <section id="general">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>make sure no notes are vertically shifted</p></li>
 </ul>
@@ -505,7 +571,7 @@
 </ul>
 </section>
 <section id="annotations">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">Annotations</a><a class="headerlink" href="#annotations" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">Annotations</a><a class="headerlink" href="#annotations" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>delete empty harmony tags</p></li>
 <li><p>labels missing initial dot</p></li>
