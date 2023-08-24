@@ -198,12 +198,19 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#update-repository-structure">Update repository structure</a><ul>
-<li><a class="reference internal" href="#create-a-version-tag">3. Create a version tag</a></li>
+<li><a class="reference internal" href="#re-extract-everything-and-create-a-version-tag">3. Re-extract everything and create a version tag</a><ul>
+<li><a class="reference internal" href="#a-re-extract-everything">3a) Re-extract everything</a></li>
+<li><a class="reference internal" href="#b-assign-a-version-tag">3b) Assign a version tag</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#remove-the-automated-github-workflow-and-all-deprecated-files">4. Remove the automated GitHub workflow and all deprecated files</a></li>
 <li><a class="reference internal" href="#update-the-extracted-files-to-ms3-version-2">5. Update the extracted files to ms3 version 2</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#eliminating-all-warnings">Eliminating all warnings</a></li>
+<li><a class="reference internal" href="#eliminating-all-warnings">Eliminating all warnings</a><ul>
+<li><a class="reference internal" href="#a-typical-example">A typical example</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#finalizing-the-metadata">Finalizing the metadata</a><ul>
 <li><a class="reference internal" href="#metadata-tsv"><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code></a></li>
 <li><a class="reference internal" href="#score-prelims-and-instrumentation">Score prelims and instrumentation</a></li>
@@ -265,66 +272,75 @@
 <nav class="contents local" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" id="id14">Collect and prepare the digital edition in the latest MuseScore format</a></p>
+<li><p><a class="reference internal" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" id="id15">Collect and prepare the digital edition in the latest MuseScore format</a></p>
 <ul>
-<li><p><a class="reference internal" href="#prior-research" id="id15">Prior research</a></p></li>
-<li><p><a class="reference internal" href="#look-up-and-check-existing-scores" id="id16">Look up and check existing scores</a></p></li>
-<li><p><a class="reference internal" href="#typeset-non-existent-files" id="id17">Typeset non-existent files</a></p></li>
-<li><p><a class="reference internal" href="#file-curation" id="id18">File curation</a></p></li>
-<li><p><a class="reference internal" href="#create-metadata" id="id19">Create metadata</a></p></li>
+<li><p><a class="reference internal" href="#prior-research" id="id16">Prior research</a></p></li>
+<li><p><a class="reference internal" href="#look-up-and-check-existing-scores" id="id17">Look up and check existing scores</a></p></li>
+<li><p><a class="reference internal" href="#typeset-non-existent-files" id="id18">Typeset non-existent files</a></p></li>
+<li><p><a class="reference internal" href="#file-curation" id="id19">File curation</a></p></li>
+<li><p><a class="reference internal" href="#create-metadata" id="id20">Create metadata</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files" id="id20">Creating a repository with unannotated MuseScore files</a></p>
+<li><p><a class="reference internal" href="#creating-a-repository-with-unannotated-musescore-files" id="id21">Creating a repository with unannotated MuseScore files</a></p>
 <ul>
-<li><p><a class="reference internal" href="#variant-1-using-the-template-repository" id="id21">Variant 1: Using the template repository</a></p></li>
-<li><p><a class="reference internal" href="#variant-2-starting-from-scratch" id="id22">Variant 2: Starting from scratch</a></p></li>
-<li><p><a class="reference internal" href="#variant-3-splitting-an-existing-repository" id="id23">Variant 3: Splitting an existing repository</a></p></li>
+<li><p><a class="reference internal" href="#variant-1-using-the-template-repository" id="id22">Variant 1: Using the template repository</a></p></li>
+<li><p><a class="reference internal" href="#variant-2-starting-from-scratch" id="id23">Variant 2: Starting from scratch</a></p></li>
+<li><p><a class="reference internal" href="#variant-3-splitting-an-existing-repository" id="id24">Variant 3: Splitting an existing repository</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#configuring-and-adding-the-new-repo" id="id24">Configuring and adding the new repo</a></p>
+<li><p><a class="reference internal" href="#configuring-and-adding-the-new-repo" id="id25">Configuring and adding the new repo</a></p>
 <ul>
-<li><p><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos" id="id25">Adding the repo to one or several meta-repos</a></p></li>
-<li><p><a class="reference internal" href="#creating-work-packages-on-openproject" id="id26">Creating work packages on OpenProject</a></p></li>
+<li><p><a class="reference internal" href="#adding-the-repo-to-one-or-several-meta-repos" id="id26">Adding the repo to one or several meta-repos</a></p></li>
+<li><p><a class="reference internal" href="#creating-work-packages-on-openproject" id="id27">Creating work packages on OpenProject</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#curating-and-enriching-metadata" id="id27">Curating and enriching metadata</a></p>
+<li><p><a class="reference internal" href="#curating-and-enriching-metadata" id="id28">Curating and enriching metadata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#default-fields" id="id28">Default fields</a></p></li>
-<li><p><a class="reference internal" href="#required-custom-fields" id="id29">Required custom fields</a></p></li>
-<li><p><a class="reference internal" href="#identifiers-where-available" id="id30">Identifiers where available</a></p></li>
-<li><p><a class="reference internal" href="#contributors-and-annotations" id="id31">Contributors and annotations</a></p></li>
-<li><p><a class="reference internal" href="#reconciling-metadata-with-wikidata" id="id32">Reconciling metadata with Wikidata</a></p>
+<li><p><a class="reference internal" href="#default-fields" id="id29">Default fields</a></p></li>
+<li><p><a class="reference internal" href="#required-custom-fields" id="id30">Required custom fields</a></p></li>
+<li><p><a class="reference internal" href="#identifiers-where-available" id="id31">Identifiers where available</a></p></li>
+<li><p><a class="reference internal" href="#contributors-and-annotations" id="id32">Contributors and annotations</a></p></li>
+<li><p><a class="reference internal" href="#reconciling-metadata-with-wikidata" id="id33">Reconciling metadata with Wikidata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#creating-a-new-openrefine-project" id="id33">Creating a new OpenRefine project</a></p></li>
-<li><p><a class="reference internal" href="#reconciling-a-column" id="id34">Reconciling a column</a></p></li>
-<li><p><a class="reference internal" href="#reconciling-the-worktitle-column" id="id35">Reconciling the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column</a></p></li>
-<li><p><a class="reference internal" href="#pulling-additional-information" id="id36">Pulling additional information</a></p></li>
-<li><p><a class="reference internal" href="#future-work-sub-work-level-items" id="id37">Future work: Sub-work-level items</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-openrefine-project" id="id34">Creating a new OpenRefine project</a></p></li>
+<li><p><a class="reference internal" href="#reconciling-a-column" id="id35">Reconciling a column</a></p></li>
+<li><p><a class="reference internal" href="#reconciling-the-worktitle-column" id="id36">Reconciling the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column</a></p></li>
+<li><p><a class="reference internal" href="#pulling-additional-information" id="id37">Pulling additional information</a></p></li>
+<li><p><a class="reference internal" href="#future-work-sub-work-level-items" id="id38">Future work: Sub-work-level items</a></p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#finalizing-a-repository-for-publication" id="id38">Finalizing a repository for publication</a></p>
+<li><p><a class="reference internal" href="#finalizing-a-repository-for-publication" id="id39">Finalizing a repository for publication</a></p>
 <ul>
-<li><p><a class="reference internal" href="#finalize-ongoing-work" id="id39">Finalize ongoing work</a></p>
+<li><p><a class="reference internal" href="#finalize-ongoing-work" id="id40">Finalize ongoing work</a></p>
 <ul>
-<li><p><a class="reference internal" href="#check-openproject" id="id40">0. Check OpenProject</a></p></li>
-<li><p><a class="reference internal" href="#addressing-open-pull-requests" id="id41">1. Addressing open Pull Requests</a></p></li>
-<li><p><a class="reference internal" href="#check-for-unmerged-branches" id="id42">2. Check for unmerged branches</a></p></li>
+<li><p><a class="reference internal" href="#check-openproject" id="id41">0. Check OpenProject</a></p></li>
+<li><p><a class="reference internal" href="#addressing-open-pull-requests" id="id42">1. Addressing open Pull Requests</a></p></li>
+<li><p><a class="reference internal" href="#check-for-unmerged-branches" id="id43">2. Check for unmerged branches</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#update-repository-structure" id="id43">Update repository structure</a></p>
+<li><p><a class="reference internal" href="#update-repository-structure" id="id44">Update repository structure</a></p>
 <ul>
-<li><p><a class="reference internal" href="#create-a-version-tag" id="id44">3. Create a version tag</a></p></li>
-<li><p><a class="reference internal" href="#remove-the-automated-github-workflow-and-all-deprecated-files" id="id45">4. Remove the automated GitHub workflow and all deprecated files</a></p></li>
-<li><p><a class="reference internal" href="#update-the-extracted-files-to-ms3-version-2" id="id46">5. Update the extracted files to ms3 version 2</a></p></li>
+<li><p><a class="reference internal" href="#re-extract-everything-and-create-a-version-tag" id="id45">3. Re-extract everything and create a version tag</a></p>
+<ul>
+<li><p><a class="reference internal" href="#a-re-extract-everything" id="id46">3a) Re-extract everything</a></p></li>
+<li><p><a class="reference internal" href="#b-assign-a-version-tag" id="id47">3b) Assign a version tag</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#eliminating-all-warnings" id="id47">Eliminating all warnings</a></p></li>
-<li><p><a class="reference internal" href="#finalizing-the-metadata" id="id48">Finalizing the metadata</a></p>
+<li><p><a class="reference internal" href="#remove-the-automated-github-workflow-and-all-deprecated-files" id="id48">4. Remove the automated GitHub workflow and all deprecated files</a></p></li>
+<li><p><a class="reference internal" href="#update-the-extracted-files-to-ms3-version-2" id="id49">5. Update the extracted files to ms3 version 2</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#eliminating-all-warnings" id="id50">Eliminating all warnings</a></p>
 <ul>
-<li><p><a class="reference internal" href="#metadata-tsv" id="id49"><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code></a></p></li>
-<li><p><a class="reference internal" href="#score-prelims-and-instrumentation" id="id50">Score prelims and instrumentation</a></p></li>
+<li><p><a class="reference internal" href="#a-typical-example" id="id51">A typical example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#finalizing-the-metadata" id="id52">Finalizing the metadata</a></p>
+<ul>
+<li><p><a class="reference internal" href="#metadata-tsv" id="id53"><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code></a></p></li>
+<li><p><a class="reference internal" href="#score-prelims-and-instrumentation" id="id54">Score prelims and instrumentation</a></p></li>
 </ul>
 </li>
 </ul>
@@ -332,9 +348,9 @@
 </ul>
 </nav>
 <section id="collect-and-prepare-the-digital-edition-in-the-latest-musescore-format">
-<span id="get-scores"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">Collect and prepare the digital edition in the latest MuseScore format</a><a class="headerlink" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" title="Permalink to this heading">¶</a></h2>
+<span id="get-scores"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink">Collect and prepare the digital edition in the latest MuseScore format</a><a class="headerlink" href="#collect-and-prepare-the-digital-edition-in-the-latest-musescore-format" title="Permalink to this heading">¶</a></h2>
 <section id="prior-research">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">Prior research</a><a class="headerlink" href="#prior-research" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Prior research</a><a class="headerlink" href="#prior-research" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Check which pieces make up the collection</p></li>
 <li><p>how they are grouped</p></li>
@@ -348,7 +364,7 @@ to an <a class="reference external" href="https://github.com/DCMLab/monteverdi_m
 </ul>
 </section>
 <section id="look-up-and-check-existing-scores">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Look up and check existing scores</a><a class="headerlink" href="#look-up-and-check-existing-scores" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Look up and check existing scores</a><a class="headerlink" href="#look-up-and-check-existing-scores" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>All scores available need to be checked and compared:</dt><dd><ul>
@@ -374,14 +390,14 @@ to an <a class="reference external" href="https://github.com/DCMLab/monteverdi_m
 </ul>
 </section>
 <section id="typeset-non-existent-files">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Typeset non-existent files</a><a class="headerlink" href="#typeset-non-existent-files" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Typeset non-existent files</a><a class="headerlink" href="#typeset-non-existent-files" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>pick reference edition and send commission to transcriber</p></li>
 <li><p>depending on the music, prices may vary between 5 and 20 CHF per page</p></li>
 </ul>
 </section>
 <section id="file-curation">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">File curation</a><a class="headerlink" href="#file-curation" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">File curation</a><a class="headerlink" href="#file-curation" title="Permalink to this heading">¶</a></h3>
 <p>The scores need to be corrected on the basis of a reference edition/manuscript.
 We have a collaborative document with detailed
 <a class="reference external" href="https://docs.google.com/document/d/1Q2svEUSsE7OCetik8An__gsEwQCYNfFJlHFMF9dRce4/edit#heading=h.8hrcm7m3udll">Score correction guidelines</a>.
@@ -463,7 +479,7 @@ count of <code class="docutils literal notranslate"><span class="pre">17</span><
 </ul>
 </section>
 <section id="create-metadata">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Create metadata</a><a class="headerlink" href="#create-metadata" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Create metadata</a><a class="headerlink" href="#create-metadata" title="Permalink to this heading">¶</a></h3>
 <p>All metadata fields are automatically extracted by the dcml_corpus_workflow and represented in the repository’s
 <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> file. However, at the beginning this file needs to be created using the command <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">extract</span> <span class="pre">-D</span> <span class="pre">-a</span></code>.
 The first column, <code class="docutils literal notranslate"><span class="pre">fname</span></code>, is used as IDs for the corpus and needs to be checked. In case the corpus contains
@@ -489,7 +505,7 @@ involves modifying the scores, however, it is preferable to make metadata curati
 </section>
 </section>
 <section id="creating-a-repository-with-unannotated-musescore-files">
-<span id="score-repo"></span><h2><a class="toc-backref" href="#id20" role="doc-backlink">Creating a repository with unannotated MuseScore files</a><a class="headerlink" href="#creating-a-repository-with-unannotated-musescore-files" title="Permalink to this heading">¶</a></h2>
+<span id="score-repo"></span><h2><a class="toc-backref" href="#id21" role="doc-backlink">Creating a repository with unannotated MuseScore files</a><a class="headerlink" href="#creating-a-repository-with-unannotated-musescore-files" title="Permalink to this heading">¶</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>After we start the annotation workflow, no MuseScore files should be added. removed, or renamed! The edition
@@ -507,20 +523,20 @@ by certain events related to annotation and review), the folder <code class="doc
 the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>. It also contains our
 standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file which prevents temporary files from being tracked and uploaded.</p>
 <section id="variant-1-using-the-template-repository">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink">Variant 1: Using the template repository</a><a class="headerlink" href="#variant-1-using-the-template-repository" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Variant 1: Using the template repository</a><a class="headerlink" href="#variant-1-using-the-template-repository" title="Permalink to this heading">¶</a></h3>
 <p>You can create the new repo directly from the <a class="reference external" href="https://github.com/DCMLab/annotation_workflow_template">template repository</a>
 by heading there and clicking on ‘Use this template’. In this variant, every push to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch results
 in metadata, measures and notes being extracted from all changed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> files. Note that renaming and deleting
 files will lead to undesired effects that will have to be checked and corrected manually.</p>
 </section>
 <section id="variant-2-starting-from-scratch">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Variant 2: Starting from scratch</a><a class="headerlink" href="#variant-2-starting-from-scratch" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Variant 2: Starting from scratch</a><a class="headerlink" href="#variant-2-starting-from-scratch" title="Permalink to this heading">¶</a></h3>
 <p>Or you simply create the new repo with the above-mentioned folder structure and add the workflow scripts when
 the scores are prepared. In this case, you will have to use the <a class="reference external" href="https://pypi.org/project/ms3">Python library ms3</a>
 to extract metadata, notes, and measures manually.</p>
 </section>
 <section id="variant-3-splitting-an-existing-repository">
-<h3><a class="toc-backref" href="#id23" role="doc-backlink">Variant 3: Splitting an existing repository</a><a class="headerlink" href="#variant-3-splitting-an-existing-repository" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Variant 3: Splitting an existing repository</a><a class="headerlink" href="#variant-3-splitting-an-existing-repository" title="Permalink to this heading">¶</a></h3>
 <p>This is for the special case that the MuseScore files in question are already sitting in a subfolder of an existing
 repository which is to be transferred into the new repo including the files’ Git histories. This variant is a bit
 more involved and requires prior installation of the <a class="reference external" href="https://github.com/newren/git-filter-repo">git filter-repo</a>
@@ -563,7 +579,7 @@ of the existing files from an older MuseScore and annotation standard.</p>
 </section>
 </section>
 <section id="configuring-and-adding-the-new-repo">
-<h2><a class="toc-backref" href="#id24" role="doc-backlink">Configuring and adding the new repo</a><a class="headerlink" href="#configuring-and-adding-the-new-repo" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Configuring and adding the new repo</a><a class="headerlink" href="#configuring-and-adding-the-new-repo" title="Permalink to this heading">¶</a></h2>
 <ul>
 <li><p>Set the standard repo settings on GitHub:</p>
 <figure class="align-default">
@@ -583,7 +599,7 @@ repo’s website.</p></li>
 <li><p>Add the new repo to the annotation workflow (drop-down menus, OpenProject, WebHooks etc.)</p></li>
 </ul>
 <section id="adding-the-repo-to-one-or-several-meta-repos">
-<span id="metarepos"></span><h3><a class="toc-backref" href="#id25" role="doc-backlink">Adding the repo to one or several meta-repos</a><a class="headerlink" href="#adding-the-repo-to-one-or-several-meta-repos" title="Permalink to this heading">¶</a></h3>
+<span id="metarepos"></span><h3><a class="toc-backref" href="#id26" role="doc-backlink">Adding the repo to one or several meta-repos</a><a class="headerlink" href="#adding-the-repo-to-one-or-several-meta-repos" title="Permalink to this heading">¶</a></h3>
 <p>The individual subcorpora can be embedded as submodules in meta-repositories. These meta-repos are listed in the private
 <a class="reference external" href="https://github.com/DCMLab/meta_repositories">meta_repositories</a> repo. Currently, the most important ones are:</p>
 <ol class="arabic simple">
@@ -597,7 +613,7 @@ repo’s website.</p></li>
 <p>Just to be sure, update all submodules: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--remote</span></code> and push the whole thing.</p>
 </section>
 <section id="creating-work-packages-on-openproject">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">Creating work packages on OpenProject</a><a class="headerlink" href="#creating-work-packages-on-openproject" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">Creating work packages on OpenProject</a><a class="headerlink" href="#creating-work-packages-on-openproject" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Follow the instructions for <cite>create_work_packages.py</cite> under <a class="reference external" href="https://github.com/DCMLab/openproject_scripts/">https://github.com/DCMLab/openproject_scripts/</a></p>
 <ul class="simple">
@@ -635,7 +651,7 @@ it should have status “Not available”. Filling the fields <code class="docut
 </section>
 </section>
 <section id="curating-and-enriching-metadata">
-<span id="enriching-metadata"></span><h2><a class="toc-backref" href="#id27" role="doc-backlink">Curating and enriching metadata</a><a class="headerlink" href="#curating-and-enriching-metadata" title="Permalink to this heading">¶</a></h2>
+<span id="enriching-metadata"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink">Curating and enriching metadata</a><a class="headerlink" href="#curating-and-enriching-metadata" title="Permalink to this heading">¶</a></h2>
 <p>In MuseScore, metadata is stored as <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">-&gt;</span> <span class="pre">value</span></code> pairs and can be accessed and modified via the menu
 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Score</span> <span class="pre">Properties...</span></code>. Some fields are there by default, others have to be created using the <code class="docutils literal notranslate"><span class="pre">New</span></code> button.
 It is very important that the fields are named correctly (double-check for spelling mistakes) and all lowercase.
@@ -663,7 +679,7 @@ accurately encoded in UTF-8. For example, write <code class="docutils literal no
 go with the English Wikidata/Wikipedia.</p>
 </div>
 <section id="default-fields">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">Default fields</a><a class="headerlink" href="#default-fields" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Default fields</a><a class="headerlink" href="#default-fields" title="Permalink to this heading">¶</a></h3>
 <p>The following default fields should be populated where applicable:</p>
 <dl class="simple">
 <dt>composer</dt><dd><p>Full name as displayed in the English Wikipedia. For example,
@@ -685,7 +701,7 @@ as an orientation.</p>
 </dl>
 </section>
 <section id="required-custom-fields">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">Required custom fields</a><a class="headerlink" href="#required-custom-fields" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Required custom fields</a><a class="headerlink" href="#required-custom-fields" title="Permalink to this heading">¶</a></h3>
 <p>The following fields need to be populated.</p>
 <dl id="composition-year-columns">
 <dt>composed_start, composed_end</dt><dd><p>Each of these two fields needs to contain a 4-digit year number such that taken together they represent the time span
@@ -710,7 +726,7 @@ information on what exactly the years represent, e.g.
 </dl>
 </section>
 <section id="identifiers-where-available">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">Identifiers where available</a><a class="headerlink" href="#identifiers-where-available" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Identifiers where available</a><a class="headerlink" href="#identifiers-where-available" title="Permalink to this heading">¶</a></h3>
 <p>Identifiers are important for making data findable and interoperable but might not always be available. Nevertheless,
 the goal should be to find minimum one of the work or part-of-work identifiers listed below. Wikidata identifiers
 are the gold standard because they often come with a mapping to all sorts of other identifiers. In addition,
@@ -760,7 +776,7 @@ property. The values of the column are the “Q-numbers” of the composer item.
 </dl>
 </section>
 <section id="contributors-and-annotations">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">Contributors and annotations</a><a class="headerlink" href="#contributors-and-annotations" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">Contributors and annotations</a><a class="headerlink" href="#contributors-and-annotations" title="Permalink to this heading">¶</a></h3>
 <p>Custom fields to give credit to contributors and to keep track of versions of annotation standards and the likes.
 The preferred identifiers for persons are ORCIDs such as <code class="docutils literal notranslate"><span class="pre">0000-0002-1986-9545</span></code> or given as URL, such as
 <a class="reference external" href="https://orcid.org/0000-0002-1986-9545">https://orcid.org/0000-0002-1986-9545</a>.</p>
@@ -781,7 +797,7 @@ If a review pertained only to a particular type/version/iteration, specify in pa
 </dl>
 </section>
 <section id="reconciling-metadata-with-wikidata">
-<span id="reconciling"></span><h3><a class="toc-backref" href="#id32" role="doc-backlink">Reconciling metadata with Wikidata</a><a class="headerlink" href="#reconciling-metadata-with-wikidata" title="Permalink to this heading">¶</a></h3>
+<span id="reconciling"></span><h3><a class="toc-backref" href="#id33" role="doc-backlink">Reconciling metadata with Wikidata</a><a class="headerlink" href="#reconciling-metadata-with-wikidata" title="Permalink to this heading">¶</a></h3>
 <p>Wikidata is a knowledge graph in which</p>
 <ul class="simple">
 <li><p>each node (a noun considered as subject or object of a relation) is identified by a “Q-number” such as <code class="docutils literal notranslate"><span class="pre">Q636399</span></code>
@@ -796,7 +812,7 @@ we take the insufficiently populated <code class="docutils literal notranslate">
 (<a class="reference external" href="https://raw.githubusercontent.com/DCMLab/ABC/v2.1/metadata.tsv">link</a>).
 The goal of this step-by-step guide is to reconcile the composer and his 16 string quartets with Wikidata.</p>
 <section id="creating-a-new-openrefine-project">
-<h4><a class="toc-backref" href="#id33" role="doc-backlink">Creating a new OpenRefine project</a><a class="headerlink" href="#creating-a-new-openrefine-project" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id34" role="doc-backlink">Creating a new OpenRefine project</a><a class="headerlink" href="#creating-a-new-openrefine-project" title="Permalink to this heading">¶</a></h4>
 <p>As a first step, we need to make sure
 that our metadata table contains values that OpenRefine can reconcile with Wikidata’s node labels. Here, we can
 use the file names and some regular expression magic to fill the columns:</p>
@@ -816,7 +832,7 @@ TSV file if needed (usually it isn’t), name the project and click on <code cla
 </figure>
 </section>
 <section id="reconciling-a-column">
-<h4><a class="toc-backref" href="#id34" role="doc-backlink">Reconciling a column</a><a class="headerlink" href="#reconciling-a-column" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id35" role="doc-backlink">Reconciling a column</a><a class="headerlink" href="#reconciling-a-column" title="Permalink to this heading">¶</a></h4>
 <p>Now we can start reconciling the values of a column by opening it’s menu <code class="docutils literal notranslate"><span class="pre">Reconcile</span> <span class="pre">-&gt;</span> <span class="pre">Start</span> <span class="pre">reconciling...</span></code>.</p>
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/openrefine_start.png"><img alt="Opening the reconciliation pane in OpenRefine." src="../_images/openrefine_start.png" style="width: 372.8px; height: 372.0px;" /></a>
@@ -858,7 +874,7 @@ to then insert the new values into the MuseScore files. Please make sure to chec
 into the scores.</p>
 </section>
 <section id="reconciling-the-worktitle-column">
-<h4><a class="toc-backref" href="#id35" role="doc-backlink">Reconciling the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column</a><a class="headerlink" href="#reconciling-the-worktitle-column" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">Reconciling the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column</a><a class="headerlink" href="#reconciling-the-worktitle-column" title="Permalink to this heading">¶</a></h4>
 <p>Many Wikidata items can be expected to bear labels such as <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Quartet</span> <span class="pre">No.</span> <span class="pre">1</span></code> and therefore there is quite some
 ambiguity involved in matching. Since we have already reconciled the <code class="docutils literal notranslate"><span class="pre">composer</span></code> column, we can use it to constrain
 the reconciliation of the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column to pieces that have been composed by Beethoven.</p>
@@ -898,7 +914,7 @@ false positives.</p>
 </div>
 </section>
 <section id="pulling-additional-information">
-<h4><a class="toc-backref" href="#id36" role="doc-backlink">Pulling additional information</a><a class="headerlink" href="#pulling-additional-information" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">Pulling additional information</a><a class="headerlink" href="#pulling-additional-information" title="Permalink to this heading">¶</a></h4>
 <p>Obviously, with all cells having the same composer value we would have been faster to create the <code class="docutils literal notranslate"><span class="pre">P86</span> <span class="pre">(composer)</span></code>
 column manually, filling in the value <code class="docutils literal notranslate"><span class="pre">Q255</span></code> for all cells. But using
 OpenRefine gives us the advantage that, once reconciled, we can pull additional information on the composer item
@@ -929,7 +945,7 @@ default column <code class="docutils literal notranslate"><span class="pre">musi
 </ul>
 </section>
 <section id="future-work-sub-work-level-items">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">Future work: Sub-work-level items</a><a class="headerlink" href="#future-work-sub-work-level-items" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">Future work: Sub-work-level items</a><a class="headerlink" href="#future-work-sub-work-level-items" title="Permalink to this heading">¶</a></h4>
 <p>Wikidata has a simple mechanism for linking a work to its parts, such as movements. Consider for example the item
 for Joseph Haydn’s Trumpet Concerto in E-flat major, Hob. VIIe:1, <a class="reference external" href="https://www.wikidata.org/wiki/Q1585960">Q1585960</a>.
 The property <code class="docutils literal notranslate"><span class="pre">P527</span> <span class="pre">(has</span> <span class="pre">part(s))</span></code> links it to the three items that represent its three movements, each of which is
@@ -943,7 +959,7 @@ MusicBrainz. We could also consider to link the items to our scores in one go.</
 </section>
 </section>
 <section id="finalizing-a-repository-for-publication">
-<h2><a class="toc-backref" href="#id38" role="doc-backlink">Finalizing a repository for publication</a><a class="headerlink" href="#finalizing-a-repository-for-publication" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id39" role="doc-backlink">Finalizing a repository for publication</a><a class="headerlink" href="#finalizing-a-repository-for-publication" title="Permalink to this heading">¶</a></h2>
 <p>This section describes some of the steps that might be necessary to clean up a repository and make it presentable to
 the public. Rather than a fixed sequence of steps, this process is driven by the expected shape and completeness
 allowing the repo to qualify as uniform with other published DCML corpora. It requires knowledge of the commandline,
@@ -970,9 +986,9 @@ not include anomalies that are covered by a WARNING message.</p>
 <p>As a running example, let’s consider this
 <a class="reference external" href="https://github.com/DCMLab/peri_euridice/tree/2129571849c267bee97d293b8fcc9fc3a27603b8">pre-clean commit of peri_euridice</a>.</p>
 <section id="finalize-ongoing-work">
-<span id="ongoing-work"></span><h3><a class="toc-backref" href="#id39" role="doc-backlink">Finalize ongoing work</a><a class="headerlink" href="#finalize-ongoing-work" title="Permalink to this heading">¶</a></h3>
+<span id="ongoing-work"></span><h3><a class="toc-backref" href="#id40" role="doc-backlink">Finalize ongoing work</a><a class="headerlink" href="#finalize-ongoing-work" title="Permalink to this heading">¶</a></h3>
 <section id="check-openproject">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">0. Check OpenProject</a><a class="headerlink" href="#check-openproject" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id41" role="doc-backlink">0. Check OpenProject</a><a class="headerlink" href="#check-openproject" title="Permalink to this heading">¶</a></h4>
 <p>If there are work packages for this repo, we should make sure that all of them have been marked as “Done”.</p>
 <figure class="align-default" id="id11">
 <a class="reference internal image-reference" href="../_images/peri_workpackages_done.png"><img alt="Screenshot from OpenProject showing that all work packages for the repo have been marked as &quot;Done&quot;." src="../_images/peri_workpackages_done.png" style="width: 398.29999999999995px; height: 221.2px;" /></a>
@@ -982,11 +998,11 @@ not include anomalies that are covered by a WARNING message.</p>
 </figure>
 </section>
 <section id="addressing-open-pull-requests">
-<h4><a class="toc-backref" href="#id41" role="doc-backlink">1. Addressing open Pull Requests</a><a class="headerlink" href="#addressing-open-pull-requests" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id42" role="doc-backlink">1. Addressing open Pull Requests</a><a class="headerlink" href="#addressing-open-pull-requests" title="Permalink to this heading">¶</a></h4>
 <p>If there are open PRs, we need to check their nature and ping  the people involved, asking them for progress.</p>
 </section>
 <section id="check-for-unmerged-branches">
-<h4><a class="toc-backref" href="#id42" role="doc-backlink">2. Check for unmerged branches</a><a class="headerlink" href="#check-for-unmerged-branches" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id43" role="doc-backlink">2. Check for unmerged branches</a><a class="headerlink" href="#check-for-unmerged-branches" title="Permalink to this heading">¶</a></h4>
 <p>By first clicking on <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">branches</span></code> and then on <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">branches</span></code>, you see the current state of affairs:</p>
 <figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/peri_old_branches.png"><img alt="Screenshot from GitHub showing that there are few stale branches and some that have not been merged." src="../_images/peri_old_branches.png" style="width: 90%;" /></a>
@@ -1021,7 +1037,7 @@ remove an original branch if it has been rebased and merged.</p></li>
 </section>
 </section>
 <section id="update-repository-structure">
-<span id="repo-structure"></span><h3><a class="toc-backref" href="#id43" role="doc-backlink">Update repository structure</a><a class="headerlink" href="#update-repository-structure" title="Permalink to this heading">¶</a></h3>
+<span id="repo-structure"></span><h3><a class="toc-backref" href="#id44" role="doc-backlink">Update repository structure</a><a class="headerlink" href="#update-repository-structure" title="Permalink to this heading">¶</a></h3>
 <p>All steps in this section are to be performed locally and, once completed, to be merged through a reviewed PR. This
 section requires using two different versions of <code class="docutils literal notranslate"><span class="pre">ms3</span></code>, namely the latest 1.x version, <code class="docutils literal notranslate"><span class="pre">ms3&lt;2.0.0</span></code>, and the latest
 2.x version, <code class="docutils literal notranslate"><span class="pre">ms3&gt;=2</span></code>. This can be achieved by using virtual environments. One very practical solution to this,
@@ -1053,10 +1069,35 @@ ms32<span class="w"> </span>--version
 <p>Please upgrade your <code class="docutils literal notranslate"><span class="pre">ms32</span></code> frequently to the latest version of ms3 version 2 by executing
 <code class="docutils literal notranslate"><span class="pre">pipx</span> <span class="pre">install</span> <span class="pre">--force</span> <span class="pre">--pip-args=-U</span> <span class="pre">--suffix</span> <span class="pre">2</span> <span class="pre">&quot;ms3&gt;=2.0.0&quot;</span></code>.</p>
 </div>
-<section id="create-a-version-tag">
-<h4><a class="toc-backref" href="#id44" role="doc-backlink">3. Create a version tag</a><a class="headerlink" href="#create-a-version-tag" title="Permalink to this heading">¶</a></h4>
+<section id="re-extract-everything-and-create-a-version-tag">
+<h4><a class="toc-backref" href="#id45" role="doc-backlink">3. Re-extract everything and create a version tag</a><a class="headerlink" href="#re-extract-everything-and-create-a-version-tag" title="Permalink to this heading">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Version tags are attached to one particular commit and can be used instead of the commit SHA to refer to it.
+This is particularly useful in the present context when the <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span></code> command is called with the
+<code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">[GIT_REVISION]</span></code> flag which allows us, for example, to create a comparison between the current version and
+the version tagged “v1.0” by calling <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-c</span> <span class="pre">v1.0</span></code>.</p>
+</div>
 <p>Now that there is no work in progress is the perfect time for creating a version tag in order to describe the current
 status of the repository for future reference. The documentation assumes that you have checked out and pulled <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<p>From here, we create the new branch, e.g. “repo_structure”, which will take all commits added in the following
+sections.</p>
+<section id="a-re-extract-everything">
+<h5><a class="toc-backref" href="#id46" role="doc-backlink">3a) Re-extract everything</a><a class="headerlink" href="#a-re-extract-everything" title="Permalink to this heading">¶</a></h5>
+<p>Before we pin a version number to the current state of the repository, and before updating it with ms3 v2, we extract
+the default TSV facets one last time with ms3 v1 by executing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ms31<span class="w"> </span>extract<span class="w"> </span>-M<span class="w"> </span>-N<span class="w"> </span>-X<span class="w"> </span>-F<span class="w"> </span>-D
+</pre></div>
+</div>
+<p>(for measure, notes, expanded, form, and metadata). Please make sure that the folders <code class="docutils literal notranslate"><span class="pre">notes</span></code> and <code class="docutils literal notranslate"><span class="pre">measures</span></code>
+contain the same number of TSV files as the folder <code class="docutils literal notranslate"><span class="pre">MS3</span></code> contains MSCX files and that the <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> contains
+that same number of rows (plus one for the column headers). If this is not the case, please refer to the first point
+under <a class="reference internal" href="#metadata-tsv"><span class="std std-ref">metadata.tsv</span></a> and/or ask on Mattermost how to proceed.</p>
+<p>Then we commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">extract</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v1.2.12)&quot;</span></code>
+(assuming that the latest v1 is <code class="docutils literal notranslate"><span class="pre">v1.2.12</span></code>).</p>
+</section>
+<section id="b-assign-a-version-tag">
+<span id="version-tags"></span><h5><a class="toc-backref" href="#id47" role="doc-backlink">3b) Assign a version tag</a><a class="headerlink" href="#b-assign-a-version-tag" title="Permalink to this heading">¶</a></h5>
 <p>The syntax is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>&lt;version&gt;<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;&lt;description&gt;&quot;</span>
 </pre></div>
@@ -1098,16 +1139,17 @@ we assign:</p>
 git<span class="w"> </span>push<span class="w"> </span>--tags
 </pre></div>
 </div>
-<p>The second command pushes the tag to GitHub.</p>
+<p>The second command pushes the tag to GitHub (but we don’t create the Pull Request yet, only after step 5).</p>
 <p>Please note that this specification has been newly added (July 2023) and you may encounter a repository that has
 already a version above “v1”: In such a case, please discuss with DCML members how to proceed.</p>
 </section>
+</section>
 <section id="remove-the-automated-github-workflow-and-all-deprecated-files">
-<h4><a class="toc-backref" href="#id45" role="doc-backlink">4. Remove the automated GitHub workflow and all deprecated files</a><a class="headerlink" href="#remove-the-automated-github-workflow-and-all-deprecated-files" title="Permalink to this heading">¶</a></h4>
-<p>Now that we have pinned the version, we can start streamlining the repository structure on a new branch, e.g.
-“repo_structure”, and then create a pull request. During finalization we are performing the workflow tasks manually
+<h4><a class="toc-backref" href="#id48" role="doc-backlink">4. Remove the automated GitHub workflow and all deprecated files</a><a class="headerlink" href="#remove-the-automated-github-workflow-and-all-deprecated-files" title="Permalink to this heading">¶</a></h4>
+<p>Now that we have pinned the version, we can start streamlining the repository structur.
+During finalization we will be performing the workflow tasks manually
 using the <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span></code> command. So we want to first
-<strong>deactivate the GitHub action</strong> by simply removing the folder <code class="docutils literal notranslate"><span class="pre">.github</span></code> (using the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">.github</span></code>)
+<strong>deactivate the GitHub actions</strong> by simply removing the folder <code class="docutils literal notranslate"><span class="pre">.github</span></code> (using the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">.github</span></code>)
 and committing the change.</p>
 <p>Then we streamline the repository to harmonize it with the other ones.
 By default, every repo should come with the files</p>
@@ -1153,21 +1195,31 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </div>
 </section>
 <section id="update-the-extracted-files-to-ms3-version-2">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">5. Update the extracted files to ms3 version 2</a><a class="headerlink" href="#update-the-extracted-files-to-ms3-version-2" title="Permalink to this heading">¶</a></h4>
-<p>Assuming that the current data has been extracted with <code class="docutils literal notranslate"><span class="pre">ms3</span></code> version 1.x, before we update the data, we first extract
-one last time with the old version (hence the setup at the beginning of the section). We do this by running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ms31<span class="w"> </span>extract<span class="w"> </span>-M<span class="w"> </span>-N<span class="w"> </span>-X<span class="w"> </span>-F<span class="w"> </span>-D
-</pre></div>
+<span id="update-with-ms32"></span><h4><a class="toc-backref" href="#id49" role="doc-backlink">5. Update the extracted files to ms3 version 2</a><a class="headerlink" href="#update-the-extracted-files-to-ms3-version-2" title="Permalink to this heading">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Annotators are familiar with the comparisons between labels in the <code class="docutils literal notranslate"><span class="pre">_reviewed.mscx</span></code> files in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code>
+folder. So far, these comparisons have been used, rather ineffectively, to display the differences from one push
+to another in the same pull request. Now, August 2023, we are starting to make better use of this principle, by
+accumulating all differences between the current set of labels and those at the time of the last version tag.
+In the future, this will become part of the semi-automated DCML annotation workflow, but, for now, we achieve this
+by passing the flag <code class="docutils literal notranslate"><span class="pre">-c</span></code> to the <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span></code> command (which, in return, passes it to <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">compare</span></code> in the
+background). Without passing a Git revision to the flag, the comparison would be performed against the set of TSVs
+currently present in the <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> folder (which was what happened during a PR with annotation labels). In the
+present context, however, we want to pass a git revision, which could be a commit SHA (full or shortened), a branch
+name, Git sugar such as <code class="docutils literal notranslate"><span class="pre">HEAD~2</span></code> (two commits before the current one), or, importantly, a tag.</p>
 </div>
-<p>(for measure, notes, expanded, metadata) and commit the results with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">extract</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v1.2.12)&quot;</span></code>
-(assuming that the latest v1 is <code class="docutils literal notranslate"><span class="pre">v1.2.12</span></code>).</p>
-<p>Then we update the data to v2 in four steps:</p>
+<p>With the repo readily streamlined we update the data to ms3 v2 in three steps:</p>
 <ul class="simple">
 <li><p>First, we delete the folders <code class="docutils literal notranslate"><span class="pre">measures</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>, and <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> (and any other facet folders that might be
 present, such as <code class="docutils literal notranslate"><span class="pre">form_labels</span></code>), without committing the change (e.g., in your file browser).</p></li>
-<li><p>Then we run <code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">extract</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span></code>;</p></li>
-<li><p>commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">extract</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v2.1.0)&quot;</span></code> (or whatever the latest version is);</p></li>
+<li><p>Then we find out (or remember) the latest v1.x <a class="reference internal" href="#version-tags"><span class="std std-ref">version tag</span></a>, let’s assume its <code class="docutils literal notranslate"><span class="pre">v1.0</span></code>, and
+run <code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span></code>.</p></li>
+<li><p>commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span> <span class="pre">(v2.1.0)&quot;</span></code>, i.e., the command you have
+executed, followed by the ms3 version number that was used.</p></li>
 </ul>
+<p>The review command will also create <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> files in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> folder which reflect the health of the
+dataset.</p>
 <p>The branch is now ready to be reviewed and then merged through a Pull Request:</p>
 <figure class="align-default" id="id13">
 <a class="reference internal image-reference" href="../_images/peri_harmonization_pr.png"><img alt="Screenshot showing a Pull Request harmonizing the repository by deleting and updating files." src="../_images/peri_harmonization_pr.png" style="width: 709.6px; height: 555.2px;" /></a>
@@ -1178,12 +1230,12 @@ description links the PR to the work package on OpenProject and that the label c
 </figure>
 <p>Once the PR has been created, you can update the work package status to “Needs review”.
 Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
-Once merged, we can assign assign a new tag,
-e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">v2.0</span> <span class="pre">-m</span> <span class="pre">&quot;Extracted</span> <span class="pre">facets</span> <span class="pre">using</span> <span class="pre">ms3</span> <span class="pre">version</span> <span class="pre">2.1.0&quot;</span></code> (see step 3).</p>
+The person who merges should then assign a new version tag,
+e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">v2.0</span> <span class="pre">-m</span> <span class="pre">&quot;Extracted</span> <span class="pre">facets</span> <span class="pre">using</span> <span class="pre">ms3</span> <span class="pre">version</span> <span class="pre">2.1.0&quot;</span></code>.</p>
 </section>
 </section>
 <section id="eliminating-all-warnings">
-<span id="eliminating-warnings"></span><h3><a class="toc-backref" href="#id47" role="doc-backlink">Eliminating all warnings</a><a class="headerlink" href="#eliminating-all-warnings" title="Permalink to this heading">¶</a></h3>
+<span id="eliminating-warnings"></span><h3><a class="toc-backref" href="#id50" role="doc-backlink">Eliminating all warnings</a><a class="headerlink" href="#eliminating-all-warnings" title="Permalink to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please keep in mind that the validator is simply a tool for detecting potential problems. If you have checked a
@@ -1194,12 +1246,27 @@ ill-founded. If you are not sure, please ask on Mattermost. Over the course of t
 will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
 fix the validator).</p>
 </div>
-<p>Once the repository has been updated with <code class="docutils literal notranslate"><span class="pre">ms3</span></code> version 2, only this version should be used for the remaining tasks.
+<p>This work package, once again, is addressed by committing to a single branch which is to be merged via a reviewed
+pull request. The status transition works the same way, i.e.</p>
+<ul class="simple">
+<li><p>accept package –&gt; <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">progress</span></code></p></li>
+<li><p>create PR –&gt; <code class="docutils literal notranslate"><span class="pre">Needs</span> <span class="pre">review</span></code></p></li>
+<li><p>collaborator reviews &amp; merges –&gt; <code class="docutils literal notranslate"><span class="pre">Done</span></code></p></li>
+</ul>
+<p>This work package, normally, is made available only after finalizing the repo structure, that is, there should be
+some v2.x tag. By eliminating all warnings we are creating a new version and want all changes applied to the labels
+to be reflected in the <code class="docutils literal notranslate"><span class="pre">_reviewed.mscx</span></code> files (as mentioned in the <a class="reference internal" href="#update-with-ms32"><span class="std std-ref">info box above</span></a>). Hence,
+whenever we call <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span></code> (which will be a lot), we need to pass the current version tag to the <code class="docutils literal notranslate"><span class="pre">-c</span></code> flag
+(e.g. <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">v2.0</span></code>). The documentation will therefore say <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span></code> where we fill in the latest version tag.
+This we can easily retrieve using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">describe</span> <span class="pre">--tags</span> <span class="pre">--abbrev=0</span></code>.</p>
+<p>Since the repository has been updated with <code class="docutils literal notranslate"><span class="pre">ms3</span></code> version 2, only this version should be used for the remaining tasks.
 The first step is to create a new branch for the task, e.g. “warnings” and to update the current state of warnings by
 using</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span></code> (or, if you continue with the setup above, <code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span></code>) and</p></li>
-<li><p>committing the changes with the message <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">(v2.1.0)</span></code> (or whatever the latest version is).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span></code> (or, if you continue with the setup above,
+<code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span></code>) and</p></li>
+<li><p>committing the changes (if any) with the message <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span> <span class="pre">(v2.1.0)</span></code>, i.e.,
+the command you have executed, followed by the ms3 version number that was used.</p></li>
 </ul>
 <p>Our goal is to eliminate the presence of any file ending on <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> folder (they are simple
 text files). The review command stores occurring warnings in one such file per piece and deletes those files where all
@@ -1209,15 +1276,103 @@ know).</p>
 <p>Otherwise, we need to fix the warnings one after the other. For more detailed instructions, please refer to the
 <a class="reference internal" href="../workflow/workflow.html#warnings"><span class="std std-ref">What to do about the warnings?</span></a> section of the annotation workflow. To quickly sum it up, there are three ways to deal with a warning:</p>
 <ul class="simple">
-<li><p>Fix it, execute <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-i</span> <span class="pre">&lt;filename&gt;</span></code> to see if it has disappeared, and commit the changes.</p></li>
+<li><p>Fix it, execute <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span> <span class="pre">-i</span> <span class="pre">&lt;filename&gt;</span></code> to see if it has disappeared, and commit
+all changes at once.</p></li>
 <li><p>Declare it a false positive.</p></li>
 <li><p>Create an issue to make sure someone deals with it later.</p></li>
 </ul>
-<p>Proceed that way until all <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> files are gone (or contain warnings that you have created an issue for) and
-create a Pull Request.</p>
+<p>Proceed that way until all <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> files are gone (or contain only warnings that you have created an issue for)
+and then open a Pull Request for review.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When fixing other people’s labels, please try to intuit the solution that integrates optimally with the
+analytical context, i.e. the surrounding labels, rather than what you think would be the optimal solution, because
+that would probably entail a complete review to ensure a consistent set of labels. The purpose of this work package
+is mainly to get rid of typos and blatant inconsistencies.</p>
+</div>
+<section id="a-typical-example">
+<h4><a class="toc-backref" href="#id51" role="doc-backlink">A typical example</a><a class="headerlink" href="#a-typical-example" title="Permalink to this heading">¶</a></h4>
+<p>The file <code class="docutils literal notranslate"><span class="pre">peri_euridice_scene_1.warnings</span></code> looks as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Warnings<span class="w"> </span>encountered<span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>last<span class="w"> </span>execution<span class="w"> </span>of<span class="w"> </span>ms3<span class="w"> </span><span class="nv">review</span>
+<span class="o">============================================================</span>
+
+INCOMPLETE_MC_WRONGLY_COMPLETED_WARNING<span class="w"> </span><span class="o">(</span><span class="m">3</span>,<span class="w"> </span><span class="m">46</span><span class="o">)</span><span class="w"> </span>ms3.Parse.peri_euridice.peri_euridice_scene_1
+<span class="w">  </span>The<span class="w"> </span>incomplete<span class="w"> </span>MC<span class="w"> </span><span class="m">46</span><span class="w"> </span><span class="o">(</span>timesig<span class="w"> </span><span class="m">3</span>/2,<span class="w"> </span>act_dur<span class="w"> </span><span class="m">1</span>/2<span class="o">)</span><span class="w"> </span>is<span class="w"> </span>completed<span class="w"> </span>by<span class="w"> </span><span class="m">1</span><span class="w"> </span>incorrect<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>expected:<span class="w"> </span><span class="m">1</span><span class="o">)</span>:
+<span class="w">  </span><span class="o">{</span><span class="m">47</span>:<span class="w"> </span>Fraction<span class="o">(</span><span class="m">3</span>,<span class="w"> </span><span class="m">1</span><span class="o">)}</span>
+FIRST_BAR_MISSING_TEMPO_MARK_WARNING<span class="w"> </span><span class="o">(</span><span class="m">29</span>,<span class="o">)</span><span class="w"> </span>ms3.Parse.peri_euridice.peri_euridice_scene_1
+<span class="w">  </span>No<span class="w"> </span>metronome<span class="w"> </span>mark<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>very<span class="w"> </span>first<span class="w"> </span>measure<span class="w"> </span>nor<span class="w"> </span>anywhere<span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>score.
+<span class="w">  </span>*<span class="w"> </span>Please<span class="w"> </span>add<span class="w"> </span>one<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>very<span class="w"> </span>beginning<span class="w"> </span>and<span class="w"> </span>hide<span class="w"> </span>it<span class="w"> </span><span class="k">if</span><span class="w"> </span>it<span class="s1">&#39;s not from the original print edition.</span>
+<span class="s1">  * Make sure to choose the rhythmic unit that corresponds to beats in this piece and to set another mark wherever that unit changes.</span>
+<span class="s1">  * The tempo marks can be rough estimates, maybe cross-checked with a recording.</span>
+<span class="s1">DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 64, &#39;</span><span class="m">1</span>/2<span class="s1">&#39;, &#39;</span>VIIM7<span class="s1">&#39;) ms3.Parse.peri_euridice.peri_euridice_scene_1</span>
+<span class="s1">  The label &#39;</span>VIIM7<span class="s1">&#39; in m. 62, onset 1/2 (MC 64, onset 1/2) seems not to correspond well to the score (which does not necessarily mean it is wrong).</span>
+<span class="s1">  In the context of G.i, it expresses the scale degrees (&#39;</span><span class="m">7</span><span class="s1">&#39;, &#39;</span><span class="m">2</span><span class="s1">&#39;, &#39;</span><span class="m">4</span><span class="s1">&#39;, &#39;</span><span class="c1">#6&#39;) [(&#39;F&#39;, &#39;A&#39;, &#39;C&#39;, &#39;E&#39;)].</span>
+<span class="w">  </span>The<span class="w"> </span>corresponding<span class="w"> </span>score<span class="w"> </span>segment<span class="w"> </span>has<span class="w"> </span><span class="m">0</span><span class="w"> </span>within-label<span class="w"> </span>and<span class="w"> </span><span class="m">2</span><span class="w"> </span>out-of-label<span class="w"> </span>note<span class="w"> </span>onsets,<span class="w"> </span>a<span class="w"> </span>ratio<span class="w"> </span>of<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>.6<span class="w"> </span><span class="o">(</span>the<span class="w"> </span>current,<span class="w"> </span>arbitrary,<span class="w"> </span>threshold<span class="o">)</span>.
+<span class="w">  </span>If<span class="w"> </span>it<span class="w"> </span>turns<span class="w"> </span>out<span class="w"> </span>the<span class="w"> </span>label<span class="w"> </span>is<span class="w"> </span>correct,<span class="w"> </span>please<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span>header<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>warning<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>IGNORED_WARNINGS,<span class="w"> </span>ideally<span class="w"> </span>followed<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>free-text<span class="w"> </span>comment<span class="w"> </span><span class="k">in</span><span class="w"> </span>subsequent<span class="w"> </span>lines<span class="w"> </span>starting<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>space<span class="w"> </span>or<span class="w"> </span>tab.
+DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING<span class="w"> </span><span class="o">(</span><span class="m">19</span>,<span class="w"> </span><span class="m">72</span>,<span class="w"> </span><span class="s1">&#39;3/2&#39;</span>,<span class="w"> </span><span class="s1">&#39;V&#39;</span><span class="o">)</span><span class="w"> </span>ms3.Parse.peri_euridice.peri_euridice_scene_1
+<span class="w">  </span>The<span class="w"> </span>label<span class="w"> </span><span class="s1">&#39;V&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>m.<span class="w"> </span><span class="m">70</span>,<span class="w"> </span>onset<span class="w"> </span><span class="m">3</span>/2<span class="w"> </span><span class="o">(</span>MC<span class="w"> </span><span class="m">72</span>,<span class="w"> </span>onset<span class="w"> </span><span class="m">3</span>/2<span class="o">)</span><span class="w"> </span>seems<span class="w"> </span>not<span class="w"> </span>to<span class="w"> </span>correspond<span class="w"> </span>well<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>score<span class="w"> </span><span class="o">(</span>which<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>necessarily<span class="w"> </span>mean<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>wrong<span class="o">)</span>.
+<span class="w">  </span>In<span class="w"> </span>the<span class="w"> </span>context<span class="w"> </span>of<span class="w"> </span>G.i,<span class="w"> </span>it<span class="w"> </span>expresses<span class="w"> </span>the<span class="w"> </span>scale<span class="w"> </span>degrees<span class="w"> </span><span class="o">(</span><span class="s1">&#39;5&#39;</span>,<span class="w"> </span><span class="s1">&#39;#7&#39;</span>,<span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">[(</span><span class="s1">&#39;D&#39;</span>,<span class="w"> </span><span class="s1">&#39;F#&#39;</span>,<span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="o">)]</span>.
+<span class="w">  </span>The<span class="w"> </span>corresponding<span class="w"> </span>score<span class="w"> </span>segment<span class="w"> </span>has<span class="w"> </span><span class="m">0</span><span class="w"> </span>within-label<span class="w"> </span>and<span class="w"> </span><span class="m">2</span><span class="w"> </span>out-of-label<span class="w"> </span>note<span class="w"> </span>onsets,<span class="w"> </span>a<span class="w"> </span>ratio<span class="w"> </span>of<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>.6<span class="w"> </span><span class="o">(</span>the<span class="w"> </span>current,<span class="w"> </span>arbitrary,<span class="w"> </span>threshold<span class="o">)</span>.
+<span class="w">  </span>If<span class="w"> </span>it<span class="w"> </span>turns<span class="w"> </span>out<span class="w"> </span>the<span class="w"> </span>label<span class="w"> </span>is<span class="w"> </span>correct,<span class="w"> </span>please<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span>header<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>warning<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>IGNORED_WARNINGS,<span class="w"> </span>ideally<span class="w"> </span>followed<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>free-text<span class="w"> </span>comment<span class="w"> </span><span class="k">in</span><span class="w"> </span>subsequent<span class="w"> </span>lines<span class="w"> </span>starting<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>space<span class="w"> </span>or<span class="w"> </span>tab.
+DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING<span class="w"> </span><span class="o">(</span><span class="m">19</span>,<span class="w"> </span><span class="m">94</span>,<span class="w"> </span><span class="s1">&#39;0&#39;</span>,<span class="w"> </span><span class="s1">&#39;III6&#39;</span><span class="o">)</span><span class="w"> </span>ms3.Parse.peri_euridice.peri_euridice_scene_1
+<span class="w">  </span>The<span class="w"> </span>label<span class="w"> </span><span class="s1">&#39;III6&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>m.<span class="w"> </span><span class="m">92</span>,<span class="w"> </span>onset<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>MC<span class="w"> </span><span class="m">94</span>,<span class="w"> </span>onset<span class="w"> </span><span class="m">0</span><span class="o">)</span><span class="w"> </span>seems<span class="w"> </span>not<span class="w"> </span>to<span class="w"> </span>correspond<span class="w"> </span>well<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>score<span class="w"> </span><span class="o">(</span>which<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>necessarily<span class="w"> </span>mean<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>wrong<span class="o">)</span>.
+<span class="w">  </span>In<span class="w"> </span>the<span class="w"> </span>context<span class="w"> </span>of<span class="w"> </span>G.i,<span class="w"> </span>it<span class="w"> </span>expresses<span class="w"> </span>the<span class="w"> </span>scale<span class="w"> </span>degrees<span class="w"> </span><span class="o">(</span><span class="s1">&#39;5&#39;</span>,<span class="w"> </span><span class="s1">&#39;7&#39;</span>,<span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">[(</span><span class="s1">&#39;D&#39;</span>,<span class="w"> </span><span class="s1">&#39;F&#39;</span>,<span class="w"> </span><span class="s1">&#39;Bb&#39;</span><span class="o">)]</span>.
+<span class="w">  </span>The<span class="w"> </span>corresponding<span class="w"> </span>score<span class="w"> </span>segment<span class="w"> </span>has<span class="w"> </span><span class="m">1</span><span class="w"> </span>within-label<span class="w"> </span>and<span class="w"> </span><span class="m">2</span><span class="w"> </span>out-of-label<span class="w"> </span>note<span class="w"> </span>onsets,<span class="w"> </span>a<span class="w"> </span>ratio<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.6666666666666666<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>.6<span class="w"> </span><span class="o">(</span>the<span class="w"> </span>current,<span class="w"> </span>arbitrary,<span class="w"> </span>threshold<span class="o">)</span>.
+<span class="w">  </span>If<span class="w"> </span>it<span class="w"> </span>turns<span class="w"> </span>out<span class="w"> </span>the<span class="w"> </span>label<span class="w"> </span>is<span class="w"> </span>correct,<span class="w"> </span>please<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span>header<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>warning<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>IGNORED_WARNINGS,<span class="w"> </span>ideally<span class="w"> </span>followed<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>free-text<span class="w"> </span>comment<span class="w"> </span><span class="k">in</span><span class="w"> </span>subsequent<span class="w"> </span>lines<span class="w"> </span>starting<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>space<span class="w"> </span>or<span class="w"> </span>tab.
+</pre></div>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">INCOMPLETE_MC_WRONGLY_COMPLETED_WARNING</span></code></dt><dd><p>It turns out that the inconsistency is due to an unconventional, not to say wrong, modernisation of the metric
+structure. Since we are not going to fix this right now, we
+<a class="reference external" href="https://github.com/DCMLab/peri_euridice/issues/12">create an issue</a> describing the warning, potentially
+suggesting a fix, depending on how deep we have looked into the matter. This means that the <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> file will
+persist with this warning and later in the pull request we mention the issue (by typing <code class="docutils literal notranslate"><span class="pre">#12</span></code> in this case) to
+explain why the .warnings file still exists.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">FIRST_BAR_MISSING_TEMPO_MARK_WARNING</span></code></dt><dd><p>Very frequent warning. We fix it by adding one or several <a class="reference internal" href="../scores/guidelines.html#metronome-marks"><span class="std std-ref">Metronome marks</span></a>. As with all warnings, we save the
+changed .mscx file, run <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">2.0</span> <span class="pre">-i</span> <span class="pre">scene_1</span></code> and, if the warning has
+disappeared, we commit all changes at once with a message such as “adds metronome mark to first measure” or
+“eliminates FIRST_BAR_MISSING_TEMPO_MARK_WARNING” (i.e., no need to mention that <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span></code> was used).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING</span> <span class="pre">(19,</span> <span class="pre">64,</span> <span class="pre">'1/2',</span> <span class="pre">'VIIM7')</span></code></dt><dd><p>As we learn from the warning, the label <code class="docutils literal notranslate"><span class="pre">VIIM7</span></code> of G minor does not match the notes in the score. It turns out that
+<code class="docutils literal notranslate"><span class="pre">VIM7</span></code> was meant, so we fix the label, save the file, run <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">2.0</span> <span class="pre">-i</span> <span class="pre">scene_1</span></code> and
+commit everything with a message as we would find it in an annotation review, e.g. “62: VIIM7 =&gt; VIM7”.
+The files that would typically be modified in such a commit, apart from the score, include</p>
+<ul class="simple">
+<li><p>the TSV file in <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> (changed label)</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> file in <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> (removed warning)</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">_reviewed.mscx</span></code> file (removed label in red, new label in green, notes colored differently or not anymore)</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">_reviewed.tsv</span></code> file with the updated note colouring report</p></li>
+<li><p>if your version of ms3 is newer than that of the last extraction, this will also be reflected in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code>
+and several <code class="docutils literal notranslate"><span class="pre">resource.json</span></code> metadata files.</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING</span> <span class="pre">(19,</span> <span class="pre">72,</span> <span class="pre">'3/2',</span> <span class="pre">'V')</span></code></dt><dd><p>Same as above. Should have been <code class="docutils literal notranslate"><span class="pre">V/VII</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING</span> <span class="pre">(19,</span> <span class="pre">94,</span> <span class="pre">'0',</span> <span class="pre">'III6')</span></code></dt><dd><p>With this warning we demonstrate how to fix a warning that cannot be viewed as false positive, but without having
+the change escalate into a full review of the piece.</p>
+<figure class="align-default" id="id14">
+<a class="reference internal image-reference" href="../_images/peri_scene_1_m91f.png"><img alt="Screenshot showing the Peri example in question, mm. 91-93" src="../_images/peri_scene_1_m91f.png" style="width: 641.4px; height: 523.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Screenshot showing <code class="docutils literal notranslate"><span class="pre">peri_euridice_scene_1.mscx</span></code>, mm. 91-93. The label in question is <code class="docutils literal notranslate"><span class="pre">III6</span></code>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">III</span></code> in G minor expresses a B major harmony. The music in m. 92 can be interepreted as the beginning of a
+B major - F major pendulum (continued in the following bar, not shown). In that sense, the label is inconsistent in
+that it covers the entire first half of the bar. At this moment one might be tempted to suggest some different
+interpretation of the passage but one should resist it: Otherwise one would have to read through the entire
+analysis and perform a full review lest one introduces a new inconsistency. Instead, we content ourselves by
+introducing a <code class="docutils literal notranslate"><span class="pre">V/III</span></code> on b. 2, which seems to be the least controversial solution that consistently integrates
+with the given context and resolves the warning (“m. 92, b. 2: introduces V/III as minimally invasive fix of the
+DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING”).</p>
+<p>If, in addition to this fix, the whole passage strikes us as far-fetched, we could create an issue, potentially
+assigning the original annotator to it.</p>
+</dd>
+</dl>
+</section>
 </section>
 <section id="finalizing-the-metadata">
-<span id="finalizing-metadata"></span><h3><a class="toc-backref" href="#id48" role="doc-backlink">Finalizing the metadata</a><a class="headerlink" href="#finalizing-the-metadata" title="Permalink to this heading">¶</a></h3>
+<span id="finalizing-metadata"></span><h3><a class="toc-backref" href="#id52" role="doc-backlink">Finalizing the metadata</a><a class="headerlink" href="#finalizing-the-metadata" title="Permalink to this heading">¶</a></h3>
 <p>This last and important step has a lot of overlap with <a class="reference internal" href="#enriching-metadata"><span class="std std-ref">Curating and enriching metadata</span></a> above. That is because metadata can
 (and should) be added at any given point in time.</p>
 <figure class="align-default">
@@ -1242,7 +1397,7 @@ that is used to automatically deploy a corpus-specific website based on filling 
 in that table.</p></li>
 </ul>
 <section id="metadata-tsv">
-<span id="id1"></span><h4><a class="toc-backref" href="#id49" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code></a><a class="headerlink" href="#metadata-tsv" title="Permalink to this heading">¶</a></h4>
+<span id="id1"></span><h4><a class="toc-backref" href="#id53" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code></a><a class="headerlink" href="#metadata-tsv" title="Permalink to this heading">¶</a></h4>
 <p>Please make sure that the fields documented above under <a class="reference internal" href="#enriching-metadata"><span class="std std-ref">Curating and enriching metadata</span></a> are filled to the best possible extent.
 For quick reference:</p>
 <dl class="simple">
@@ -1271,11 +1426,11 @@ MuseScore files for which no corresponding column exists in <code class="docutil
 </div>
 </section>
 <section id="score-prelims-and-instrumentation">
-<span id="score-prelims"></span><h4><a class="toc-backref" href="#id50" role="doc-backlink">Score prelims and instrumentation</a><a class="headerlink" href="#score-prelims-and-instrumentation" title="Permalink to this heading">¶</a></h4>
+<span id="score-prelims"></span><h4><a class="toc-backref" href="#id54" role="doc-backlink">Score prelims and instrumentation</a><a class="headerlink" href="#score-prelims-and-instrumentation" title="Permalink to this heading">¶</a></h4>
 <p>The prelims are the header of a score that contains information about the piece. In MuseScore, they consist of up to
 five text fields which can be arbitrarily arranged in within the “Vertical box” at the top of the MuseScore file:</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/prelims_tchaikovsky_op37a06.png"><img alt="Prelims of Tchaikovsky op. 37a, no. 6" src="../_images/prelims_tchaikovsky_op37a06.png" style="width: 1869.0px; height: 766.5px;" /></a>
+<a class="reference internal image-reference" href="../_images/prelims_tchaikovsky_op37a06.png"><img alt="Prelims of Tchaikovsky op. 37a, no. 6" src="../_images/prelims_tchaikovsky_op37a06.png" style="width: 747.6px; height: 306.6px;" /></a>
 </figure>
 <p>The values of these fields are extracted and updated just like the metadata fields. The command <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">extract</span> <span class="pre">-D</span></code>
 writes the values for the existing fields into the columns:</p>

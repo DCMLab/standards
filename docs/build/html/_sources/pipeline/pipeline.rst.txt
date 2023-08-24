@@ -759,11 +759,44 @@ And we can test the commands like this:
    Please upgrade your ``ms32`` frequently to the latest version of ms3 version 2 by executing
    ``pipx install --force --pip-args=-U --suffix 2 "ms3>=2.0.0"``.
 
-3. Create a version tag
-^^^^^^^^^^^^^^^^^^^^^^^
+3. Re-extract everything and create a version tag
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+   Version tags are attached to one particular commit and can be used instead of the commit SHA to refer to it.
+   This is particularly useful in the present context when the ``ms3 review`` command is called with the
+   ``-c [GIT_REVISION]`` flag which allows us, for example, to create a comparison between the current version and
+   the version tagged "v1.0" by calling ``ms3 review -c v1.0``.
 
 Now that there is no work in progress is the perfect time for creating a version tag in order to describe the current
 status of the repository for future reference. The documentation assumes that you have checked out and pulled ``main``.
+
+From here, we create the new branch, e.g. "repo_structure", which will take all commits added in the following
+sections.
+
+3a) Re-extract everything
+"""""""""""""""""""""""""
+
+Before we pin a version number to the current state of the repository, and before updating it with ms3 v2, we extract
+the default TSV facets one last time with ms3 v1 by executing
+
+.. code-block:: bash
+
+   ms31 extract -M -N -X -F -D
+
+(for measure, notes, expanded, form, and metadata). Please make sure that the folders ``notes`` and ``measures``
+contain the same number of TSV files as the folder ``MS3`` contains MSCX files and that the ``metadata.tsv`` contains
+that same number of rows (plus one for the column headers). If this is not the case, please refer to the first point
+under :ref:`metadata_tsv` and/or ask on Mattermost how to proceed.
+
+Then we commit everything with the message ``"ms3 extract -M -N -X -F -D (v1.2.12)"``
+(assuming that the latest v1 is ``v1.2.12``).
+
+.. _version_tags:
+
+3b) Assign a version tag
+""""""""""""""""""""""""
 
 The syntax is
 
@@ -814,7 +847,7 @@ We assign the tag to the current commit together with a message (just like in a 
    git tag -a v1.0 -m "Fully annotated corpus before finalizing it for publication."
    git push --tags
 
-The second command pushes the tag to GitHub.
+The second command pushes the tag to GitHub (but we don't create the Pull Request yet, only after step 5).
 
 Please note that this specification has been newly added (July 2023) and you may encounter a repository that has
 already a version above "v1": In such a case, please discuss with DCML members how to proceed.
@@ -823,10 +856,10 @@ already a version above "v1": In such a case, please discuss with DCML members h
 4. Remove the automated GitHub workflow and all deprecated files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that we have pinned the version, we can start streamlining the repository structure on a new branch, e.g.
-"repo_structure", and then create a pull request. During finalization we are performing the workflow tasks manually
+Now that we have pinned the version, we can start streamlining the repository structur.
+During finalization we will be performing the workflow tasks manually
 using the ``ms3 review`` command. So we want to first
-**deactivate the GitHub action** by simply removing the folder ``.github`` (using the command ``git rm -r .github``)
+**deactivate the GitHub actions** by simply removing the folder ``.github`` (using the command ``git rm -r .github``)
 and committing the change.
 
 Then we streamline the repository to harmonize it with the other ones.
@@ -876,27 +909,35 @@ The command sequence used in the present Peri example:
    git rm -r tonicizations
    git commit -m "removes tonicizations"
 
-
+.. _update_with_ms32:
 
 5. Update the extracted files to ms3 version 2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Assuming that the current data has been extracted with ``ms3`` version 1.x, before we update the data, we first extract
-one last time with the old version (hence the setup at the beginning of the section). We do this by running
+.. note::
 
-.. code-block:: bash
+   Annotators are familiar with the comparisons between labels in the ``_reviewed.mscx`` files in the ``reviewed``
+   folder. So far, these comparisons have been used, rather ineffectively, to display the differences from one push
+   to another in the same pull request. Now, August 2023, we are starting to make better use of this principle, by
+   accumulating all differences between the current set of labels and those at the time of the last version tag.
+   In the future, this will become part of the semi-automated DCML annotation workflow, but, for now, we achieve this
+   by passing the flag ``-c`` to the ``ms3 review`` command (which, in return, passes it to ``ms3 compare`` in the
+   background). Without passing a Git revision to the flag, the comparison would be performed against the set of TSVs
+   currently present in the ``harmonies`` folder (which was what happened during a PR with annotation labels). In the
+   present context, however, we want to pass a git revision, which could be a commit SHA (full or shortened), a branch
+   name, Git sugar such as ``HEAD~2`` (two commits before the current one), or, importantly, a tag.
 
-   ms31 extract -M -N -X -F -D
-
-(for measure, notes, expanded, metadata) and commit the results with the message ``"ms3 extract -M -N -X -F -D (v1.2.12)"``
-(assuming that the latest v1 is ``v1.2.12``).
-
-Then we update the data to v2 in four steps:
+With the repo readily streamlined we update the data to ms3 v2 in three steps:
 
 * First, we delete the folders ``measures``, ``notes``, and ``harmonies`` (and any other facet folders that might be
   present, such as ``form_labels``), without committing the change (e.g., in your file browser).
-* Then we run ``ms32 extract -M -N -X -F -D``;
-* commit everything with the message ``"ms3 extract -M -N -X -F -D (v2.1.0)"`` (or whatever the latest version is);
+* Then we find out (or remember) the latest v1.x :ref:`version tag <version_tags>`, let's assume its ``v1.0``, and
+  run ``ms32 review -M -N -X -F -D -c v1.0``.
+* commit everything with the message ``"ms3 review -M -N -X -F -D -c v1.0 (v2.1.0)"``, i.e., the command you have
+  executed, followed by the ms3 version number that was used.
+
+The review command will also create ``.warnings`` files in the ``reviewed`` folder which reflect the health of the
+dataset.
 
 The branch is now ready to be reviewed and then merged through a Pull Request:
 
@@ -909,8 +950,8 @@ The branch is now ready to be reviewed and then merged through a Pull Request:
 
 Once the PR has been created, you can update the work package status to "Needs review".
 Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
-Once merged, we can assign assign a new tag,
-e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.1.0"`` (see step 3).
+The person who merges should then assign a new version tag,
+e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.1.0"``.
 
 
 
@@ -929,12 +970,28 @@ Eliminating all warnings
     will complete this section with concrete instructions on how individual warnings should/can be addressed (and/or
     fix the validator).
 
-Once the repository has been updated with ``ms3`` version 2, only this version should be used for the remaining tasks.
+This work package, once again, is addressed by committing to a single branch which is to be merged via a reviewed
+pull request. The status transition works the same way, i.e.
+
+* accept package --> ``In progress``
+* create PR --> ``Needs review``
+* collaborator reviews & merges --> ``Done``
+
+This work package, normally, is made available only after finalizing the repo structure, that is, there should be
+some v2.x tag. By eliminating all warnings we are creating a new version and want all changes applied to the labels
+to be reflected in the ``_reviewed.mscx`` files (as mentioned in the :ref:`info box above <update_with_ms32>`). Hence,
+whenever we call ``ms3 review`` (which will be a lot), we need to pass the current version tag to the ``-c`` flag
+(e.g. ``-c v2.0``). The documentation will therefore say ``-c <version tag>`` where we fill in the latest version tag.
+This we can easily retrieve using ``git describe --tags --abbrev=0``.
+
+Since the repository has been updated with ``ms3`` version 2, only this version should be used for the remaining tasks.
 The first step is to create a new branch for the task, e.g. "warnings" and to update the current state of warnings by
 using
 
-* ``ms3 review -M -N -X -F -D`` (or, if you continue with the setup above, ``ms32 review -M -N -X -F -D``) and
-* committing the changes with the message ``ms3 review -M -N -X -F -D (v2.1.0)`` (or whatever the latest version is).
+* ``ms3 review -M -N -X -F -D -c <version tag>`` (or, if you continue with the setup above,
+  ``ms32 review -M -N -X -F -D -c <version tag>``) and
+* committing the changes (if any) with the message ``ms3 review -M -N -X -F -D -c <version tag> (v2.1.0)``, i.e.,
+  the command you have executed, followed by the ms3 version number that was used.
 
 Our goal is to eliminate the presence of any file ending on ``.warnings`` in the ``reviewed`` folder (they are simple
 text files). The review command stores occurring warnings in one such file per piece and deletes those files where all
@@ -945,12 +1002,106 @@ know).
 Otherwise, we need to fix the warnings one after the other. For more detailed instructions, please refer to the
 :ref:`warnings` section of the annotation workflow. To quickly sum it up, there are three ways to deal with a warning:
 
-* Fix it, execute ``ms3 review -M -N -X -F -D -i <filename>`` to see if it has disappeared, and commit the changes.
+* Fix it, execute ``ms3 review -M -N -X -F -D -c <version tag> -i <filename>`` to see if it has disappeared, and commit
+  all changes at once.
 * Declare it a false positive.
 * Create an issue to make sure someone deals with it later.
 
-Proceed that way until all ``.warnings`` files are gone (or contain warnings that you have created an issue for) and
-create a Pull Request.
+Proceed that way until all ``.warnings`` files are gone (or contain only warnings that you have created an issue for)
+and then open a Pull Request for review.
+
+.. note::
+
+   When fixing other people's labels, please try to intuit the solution that integrates optimally with the
+   analytical context, i.e. the surrounding labels, rather than what you think would be the optimal solution, because
+   that would probably entail a complete review to ensure a consistent set of labels. The purpose of this work package
+   is mainly to get rid of typos and blatant inconsistencies.
+
+A typical example
+^^^^^^^^^^^^^^^^^
+
+The file ``peri_euridice_scene_1.warnings`` looks as follows:
+
+.. code-block:: bash
+
+    Warnings encountered during the last execution of ms3 review
+    ============================================================
+
+    INCOMPLETE_MC_WRONGLY_COMPLETED_WARNING (3, 46) ms3.Parse.peri_euridice.peri_euridice_scene_1
+      The incomplete MC 46 (timesig 3/2, act_dur 1/2) is completed by 1 incorrect duration (expected: 1):
+      {47: Fraction(3, 1)}
+    FIRST_BAR_MISSING_TEMPO_MARK_WARNING (29,) ms3.Parse.peri_euridice.peri_euridice_scene_1
+      No metronome mark found in the very first measure nor anywhere else in the score.
+      * Please add one at the very beginning and hide it if it's not from the original print edition.
+      * Make sure to choose the rhythmic unit that corresponds to beats in this piece and to set another mark wherever that unit changes.
+      * The tempo marks can be rough estimates, maybe cross-checked with a recording.
+    DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 64, '1/2', 'VIIM7') ms3.Parse.peri_euridice.peri_euridice_scene_1
+      The label 'VIIM7' in m. 62, onset 1/2 (MC 64, onset 1/2) seems not to correspond well to the score (which does not necessarily mean it is wrong).
+      In the context of G.i, it expresses the scale degrees ('7', '2', '4', '#6') [('F', 'A', 'C', 'E')].
+      The corresponding score segment has 0 within-label and 2 out-of-label note onsets, a ratio of 1.0 > 0.6 (the current, arbitrary, threshold).
+      If it turns out the label is correct, please add the header of this warning to the IGNORED_WARNINGS, ideally followed by a free-text comment in subsequent lines starting with a space or tab.
+    DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 72, '3/2', 'V') ms3.Parse.peri_euridice.peri_euridice_scene_1
+      The label 'V' in m. 70, onset 3/2 (MC 72, onset 3/2) seems not to correspond well to the score (which does not necessarily mean it is wrong).
+      In the context of G.i, it expresses the scale degrees ('5', '#7', '2') [('D', 'F#', 'A')].
+      The corresponding score segment has 0 within-label and 2 out-of-label note onsets, a ratio of 1.0 > 0.6 (the current, arbitrary, threshold).
+      If it turns out the label is correct, please add the header of this warning to the IGNORED_WARNINGS, ideally followed by a free-text comment in subsequent lines starting with a space or tab.
+    DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 94, '0', 'III6') ms3.Parse.peri_euridice.peri_euridice_scene_1
+      The label 'III6' in m. 92, onset 0 (MC 94, onset 0) seems not to correspond well to the score (which does not necessarily mean it is wrong).
+      In the context of G.i, it expresses the scale degrees ('5', '7', '3') [('D', 'F', 'Bb')].
+      The corresponding score segment has 1 within-label and 2 out-of-label note onsets, a ratio of 0.6666666666666666 > 0.6 (the current, arbitrary, threshold).
+      If it turns out the label is correct, please add the header of this warning to the IGNORED_WARNINGS, ideally followed by a free-text comment in subsequent lines starting with a space or tab.
+
+``INCOMPLETE_MC_WRONGLY_COMPLETED_WARNING``
+  It turns out that the inconsistency is due to an unconventional, not to say wrong, modernisation of the metric
+  structure. Since we are not going to fix this right now, we
+  `create an issue <https://github.com/DCMLab/peri_euridice/issues/12>`__ describing the warning, potentially
+  suggesting a fix, depending on how deep we have looked into the matter. This means that the ``.warnings`` file will
+  persist with this warning and later in the pull request we mention the issue (by typing ``#12`` in this case) to
+  explain why the .warnings file still exists.
+``FIRST_BAR_MISSING_TEMPO_MARK_WARNING``
+  Very frequent warning. We fix it by adding one or several :ref:`metronome_marks`. As with all warnings, we save the
+  changed .mscx file, run ``ms3 review -M -N -X -F -D -c 2.0 -i scene_1`` and, if the warning has
+  disappeared, we commit all changes at once with a message such as "adds metronome mark to first measure" or
+  "eliminates FIRST_BAR_MISSING_TEMPO_MARK_WARNING" (i.e., no need to mention that ``ms3 review`` was used).
+``DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 64, '1/2', 'VIIM7')``
+  As we learn from the warning, the label ``VIIM7`` of G minor does not match the notes in the score. It turns out that
+  ``VIM7`` was meant, so we fix the label, save the file, run ``ms3 review -M -N -X -F -D -c 2.0 -i scene_1`` and
+  commit everything with a message as we would find it in an annotation review, e.g. "62: VIIM7 => VIM7".
+  The files that would typically be modified in such a commit, apart from the score, include
+
+  * the TSV file in ``harmonies`` (changed label)
+  * the ``.warnings`` file in ``reviewed`` (removed warning)
+  * the ``_reviewed.mscx`` file (removed label in red, new label in green, notes colored differently or not anymore)
+  * the ``_reviewed.tsv`` file with the updated note colouring report
+  * if your version of ms3 is newer than that of the last extraction, this will also be reflected in ``metadata.tsv``
+    and several ``resource.json`` metadata files.
+
+``DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 72, '3/2', 'V')``
+  Same as above. Should have been ``V/VII``.
+
+``DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 94, '0', 'III6')``
+  With this warning we demonstrate how to fix a warning that cannot be viewed as false positive, but without having
+  the change escalate into a full review of the piece.
+
+  .. figure:: img/peri_scene_1_m91f.png
+      :alt: Screenshot showing the Peri example in question, mm. 91-93
+      :scale: 30%
+
+      Screenshot showing ``peri_euridice_scene_1.mscx``, mm. 91-93. The label in question is ``III6``.
+
+  ``III`` in G minor expresses a B major harmony. The music in m. 92 can be interepreted as the beginning of a
+  B major - F major pendulum (continued in the following bar, not shown). In that sense, the label is inconsistent in
+  that it covers the entire first half of the bar. At this moment one might be tempted to suggest some different
+  interpretation of the passage but one should resist it: Otherwise one would have to read through the entire
+  analysis and perform a full review lest one introduces a new inconsistency. Instead, we content ourselves by
+  introducing a ``V/III`` on b. 2, which seems to be the least controversial solution that consistently integrates
+  with the given context and resolves the warning ("m. 92, b. 2: introduces V/III as minimally invasive fix of the
+  DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING").
+
+  If, in addition to this fix, the whole passage strikes us as far-fetched, we could create an issue, potentially
+  assigning the original annotator to it.
+
+
 
 .. _finalizing_metadata:
 
@@ -1025,7 +1176,7 @@ five text fields which can be arbitrarily arranged in within the "Vertical box" 
 
 .. figure:: img/prelims_tchaikovsky_op37a06.png
      :alt: Prelims of Tchaikovsky op. 37a, no. 6
-     :scale: 50%
+     :scale: 20%
 
 The values of these fields are extracted and updated just like the metadata fields. The command ``ms3 extract -D``
 writes the values for the existing fields into the columns:
