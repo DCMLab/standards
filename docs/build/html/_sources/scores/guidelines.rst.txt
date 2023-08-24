@@ -5,8 +5,51 @@ DCML Score Conventions
 .. contents:: Contents
    :local:
 
+General Principles
+==================
+
+These guidelines are intended to ensure that the scores produced by and for the DCML are consistent and high-quality
+encodings of some print or manuscript edition. Although they represent digital editions, first and foremost they
+are to be considered as *research data*. As such, we neglect details of layout in favour of rigorous conventions
+regarding the semantically correct encoding of score elements. Semantic, in this context, means that wherever
+possible the various score elements are to be created with the corresponding tools and features that the
+typesetting software MuseScore provides. For example, a ``cresc.`` performance indication must not be encoded
+as a "normal" staff text: It has the semantics of a dynamic marking and is available as such in the "Lines" palette.
+A large part of these guidelines is concerned with stipulating how various score elements are to be encoded.
+
+Organization into movements or pieces
+-------------------------------------
+
+A major use case for the scores is the study of tonal music in all its aspects. It has proven worthwhile to
+organize the scores into units which, tonally, stand for themselves in one way or another. Three aspects play a
+role when deciding into how many different files to split a musical expression:
+
+#. **measure numbering**: it should make sense to start with 0 or 1
+#. **global key**: it should make (at least some) sense to analyze the contents under a single global tonic
+#. **(formal) closure**: ideally, the contents of a file can be characterized as having beginning, middle, and end
+
+Parts-of-work that are frequently separated into different files are:
+
+* movements
+* pieces within a cycle
+* sections within a movement (e.g. "Trio")
+
+For reference in case of doubt, here are a few DCML corpora that are noteworthy in some aspect:
+
+* In `Corelli's Trio sonatas <https://github.com/DCMLab/corelli>`__, the division into movements can be somewhat
+  arbitrary and some of the files contain nothing more than a slow transition of a few bars' length.
+* In `Schubert's Piano dances <https://github.com/DCMLab/schubert_dances>`__, the Trios are consistently split from
+  the dances they belong to.
+* In `Mozart's Piano sonatas <https://github.com/DCMLab/mozart_piano_sonatas/>`__, on the other hand, the two
+  variation movements are *not* split into separate files, leading to an alternative counting of measures (which is
+  also used by the Digital Mozart Edition (DME) issued at the Mozarteum Salzburg) where new variations do not restart
+  with measure 1 or 0.
+
+If you find yourself in the situation where you need to split a MuseScore file into several parts you can refer
+to the following section.
+
 Dividing a Score into separate files
-====================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Open up the MuseScore file & the original print for comparison.
 
