@@ -135,15 +135,56 @@ Piano pedals
 
 Since the use of the sustain pedal is part of a pianist’s personal style, pedal markings are to be considered as rough suggestions and often they are added by editors. They should be included if they can be found in the original manuscripts.
 
-Metronome numbers
------------------
+.. _metronome_marks:
 
-Like pedals, they should be included only if they can be found in the original manuscript. 
+Metronome marks
+---------------
+
+Each score should have a metronome mark in the first measure. If the source does not contain one, it should be added
+as an invisible mark. The base value should reflect the beat unit of the music and the bpm value should correspond
+to a reasonable estimate of the tempo when averaged over various performances. Notably, when the base unit or the
+tempo indication changes later in the piece, another metronome mark should be added.
+
+Please make sure to add an (invisible) metronome mark **even if the piece begins with a :ref:`tempo indication
+<tempo_indications>**. The reason is that the latter encodes the tempo based on quarters, whereas the
+metronome additionally encodes the information on what is considered to be the beat unit.
+
+In order to add a metronome mark, you select the first measure in the first staff and, in the "Tempo" palette,
+click on the metronome mark with the corresponding beat unit. Double-click on it and change the number to change the
+tempo. In the inspector (F8), the "Tempo" value is updated accordingly and shows the tempo you are encoding, but
+converted to a base unit of quarters (in the screenshot below, "𝅗𝅥 = 64" corresponds to "128.00BPM"). There you can
+also uncheck the "Visible" box to hide the marking (or press [V]).
+
+If the required base unit is not available in the palette, create one of the existing metronome marks, double-click,
+and press [F2] to open the "Special Characters" pop up. There you can select the base unit and insert it (and
+prolongation dot) accordingly. Again, check in the inspector if the tempo is encoded correctly.
+
+.. figure:: img/metronome.png
+   :alt: Screenshot from MuseScore 3 showing how to insert a metronome mark
+   :scale: 50%
+
+   On the left, the "Tempo" palette (F9) is shown. On the right, the "Inspector" (F8) that shows the encoded tempo
+   in terms of quarters per minute. The "Special Characters" pop up in the center can be opened by pressing [F2] while
+   editing the metronome mark (double click).
+
+.. _tempo_indications:
+
+Tempo indications (aka movement title)
+--------------------------------------
+
+The most frequent tempo indications such as ``Andante`` or ``Allegro`` are available from the "Tempo" palette.
+For those that are not available, you insert one of the available ones and modify its text by double-clicking on it.
+Then you open the inspector (F8) and change the value of "Tempo" (in the "Tempo Text" pane) to a plausible value
+(measured in quarters per minute). In addition, please also add a :ref:`metronome mark <metronome_marks>` in order
+to encode the beat unit.
 
 Cresc. / Decresc.
 -----------------
 
-Should not be written as plain text, instead use the symbol from the "Lines" palette. If the original score has no line, make it as short as possible (the length of the note value)
+Should not be written as plain text, instead use the symbol from the "Lines" palette. If the original score has no line,
+make it as short as possible (the length of the note value). The length of a line is modified by selecting its right
+handle (square), holding [C]+[S] and moving the end of the line with the right and left arrow keys. Alternatively,
+the handle can be dragged with the mouse.
 
 Titles and other metadata
 -------------------------
