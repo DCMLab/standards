@@ -71,7 +71,8 @@ specified in the :ref:`regEx <regex>` section below.
 Timestamps
 ----------
 
-The way DCML harmony labels are entered in the `MuseScore 3 <https://musescore.org/en/download>`__
+The way DCML harmony labels are entered in the
+`MuseScore 3.6.2 <https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__
 notation software ensures that each of them is attached to a timestamp in the
 score. The software allows for attaching several labels to the same time point,
 even in the same staff but annotators are asked to avoid this and to use

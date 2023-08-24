@@ -17,6 +17,17 @@ typesetting software MuseScore provides. For example, a ``cresc.`` performance i
 as a "normal" staff text: It has the semantics of a dynamic marking and is available as such in the "Lines" palette.
 A large part of these guidelines is concerned with stipulating how various score elements are to be encoded.
 
+Get the latest version of MuseScore 3
+-------------------------------------
+
+Unfortunately, MuseScore 4 does not allow opening an ``.mscx`` (i.e. uncompressed) MuseScore file and store it back.
+As long as `this issue <https://github.com/musescore/MuseScore/issues/15995>`__ is not resolved, we are sticking to
+the latest version of MuseScore 3, which is 3.6.2. You can download it from the
+`official GitHub page <https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__.
+Head to the link above and download the installer for your operation system. If
+you're using Linux you can downgrade the package in your package manager or, instead, download and execute the AppImage.
+
+
 Organization into movements or pieces
 -------------------------------------
 
