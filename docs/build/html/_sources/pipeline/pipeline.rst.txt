@@ -722,6 +722,31 @@ This step is completed once we are left with the branches ``main`` and ``gh-page
 Update repository structure
 ---------------------------
 
+.. admonition:: The short version
+  :class: caution
+
+  .. code-block:: bash
+
+      git checkout main && git pull
+      git checkout -b repo_structure
+      ms31 extract -M -N -X -F -D
+      git add . && git commit -m "ms3 extract -M -N -X -F -D (v1.2.12)"
+      git tag -a v1.0 -m "Corpus fully annotated and extracted with ms3 v1.2.12 before finalizing it for publication"
+      git rm -r .github && git commit -m "removes annotation workflow"
+      git rm -r tonicizations && git commit -m "removes tonicizations"
+      git rm warnings.log && git commit -m "removes warnings.log"
+
+  Manually remove the folders ``reviewed``, ``measures``, ``notes``, and ``harmonies`` which will be replaced in the
+  following (don't commit the deletion separately).
+
+  .. code-block:: bash
+
+      ms32 review -M -N -X -F -D -c v1.0
+      git add . && git commit -m "ms3 review -M -N -X -F -D -c v1.0 (v2.1.0)"
+      git push --atomic
+
+
+
 All steps in this section are to be performed locally and, once completed, to be merged through a reviewed PR. This
 section requires using two different versions of ``ms3``, namely the latest 1.x version, ``ms3<2.0.0``, and the latest
 2.x version, ``ms3>=2``. This can be achieved by using virtual environments. One very practical solution to this,
@@ -844,7 +869,7 @@ We assign the tag to the current commit together with a message (just like in a 
 
 .. code-block:: bash
 
-   git tag -a v1.0 -m "Fully annotated corpus before finalizing it for publication."
+   git tag -a v1.0 -m "Corpus fully annotated and extracted with ms3 v1.2.12 before finalizing it for publication"
    git push --tags
 
 The second command pushes the tag to GitHub (but we don't create the Pull Request yet, only after step 5).
@@ -929,8 +954,8 @@ The command sequence used in the present Peri example:
 
 With the repo readily streamlined we update the data to ms3 v2 in three steps:
 
-* First, we delete the folders ``measures``, ``notes``, and ``harmonies`` (and any other facet folders that might be
-  present, such as ``form_labels``), without committing the change (e.g., in your file browser).
+* First, we delete the folders ``reviewed``, ``measures``, ``notes``, and ``harmonies`` (and any other facet folders
+  that might be present, such as ``form_labels``), without committing the change (e.g., in your file browser).
 * Then we find out (or remember) the latest v1.x :ref:`version tag <version_tags>`, let's assume its ``v1.0``, and
   run ``ms32 review -M -N -X -F -D -c v1.0``.
 * commit everything with the message ``"ms3 review -M -N -X -F -D -c v1.0 (v2.1.0)"``, i.e., the command you have

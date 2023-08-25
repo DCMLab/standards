@@ -1038,6 +1038,26 @@ remove an original branch if it has been rebased and merged.</p></li>
 </section>
 <section id="update-repository-structure">
 <span id="repo-structure"></span><h3><a class="toc-backref" href="#id44" role="doc-backlink">Update repository structure</a><a class="headerlink" href="#update-repository-structure" title="Permalink to this heading">¶</a></h3>
+<div class="caution admonition">
+<p class="admonition-title">The short version</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>repo_structure
+ms31<span class="w"> </span>extract<span class="w"> </span>-M<span class="w"> </span>-N<span class="w"> </span>-X<span class="w"> </span>-F<span class="w"> </span>-D
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ms3 extract -M -N -X -F -D (v1.2.12)&quot;</span>
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Corpus fully annotated and extracted with ms3 v1.2.12 before finalizing it for publication&quot;</span>
+git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>.github<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;removes annotation workflow&quot;</span>
+git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>tonicizations<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;removes tonicizations&quot;</span>
+git<span class="w"> </span>rm<span class="w"> </span>warnings.log<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;removes warnings.log&quot;</span>
+</pre></div>
+</div>
+<p>Manually remove the folders <code class="docutils literal notranslate"><span class="pre">reviewed</span></code>, <code class="docutils literal notranslate"><span class="pre">measures</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>, and <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> which will be replaced in the
+following (don’t commit the deletion separately).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ms32<span class="w"> </span>review<span class="w"> </span>-M<span class="w"> </span>-N<span class="w"> </span>-X<span class="w"> </span>-F<span class="w"> </span>-D<span class="w"> </span>-c<span class="w"> </span>v1.0
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ms3 review -M -N -X -F -D -c v1.0 (v2.1.0)&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>--atomic
+</pre></div>
+</div>
+</div>
 <p>All steps in this section are to be performed locally and, once completed, to be merged through a reviewed PR. This
 section requires using two different versions of <code class="docutils literal notranslate"><span class="pre">ms3</span></code>, namely the latest 1.x version, <code class="docutils literal notranslate"><span class="pre">ms3&lt;2.0.0</span></code>, and the latest
 2.x version, <code class="docutils literal notranslate"><span class="pre">ms3&gt;=2</span></code>. This can be achieved by using virtual environments. One very practical solution to this,
@@ -1135,7 +1155,7 @@ we assign:</p>
 <li><p>etc.</p></li>
 </ul>
 <p>We assign the tag to the current commit together with a message (just like in a commit), for example</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Fully annotated corpus before finalizing it for publication.&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Corpus fully annotated and extracted with ms3 v1.2.12 before finalizing it for publication&quot;</span>
 git<span class="w"> </span>push<span class="w"> </span>--tags
 </pre></div>
 </div>
@@ -1211,8 +1231,8 @@ name, Git sugar such as <code class="docutils literal notranslate"><span class="
 </div>
 <p>With the repo readily streamlined we update the data to ms3 v2 in three steps:</p>
 <ul class="simple">
-<li><p>First, we delete the folders <code class="docutils literal notranslate"><span class="pre">measures</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>, and <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> (and any other facet folders that might be
-present, such as <code class="docutils literal notranslate"><span class="pre">form_labels</span></code>), without committing the change (e.g., in your file browser).</p></li>
+<li><p>First, we delete the folders <code class="docutils literal notranslate"><span class="pre">reviewed</span></code>, <code class="docutils literal notranslate"><span class="pre">measures</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>, and <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> (and any other facet folders
+that might be present, such as <code class="docutils literal notranslate"><span class="pre">form_labels</span></code>), without committing the change (e.g., in your file browser).</p></li>
 <li><p>Then we find out (or remember) the latest v1.x <a class="reference internal" href="#version-tags"><span class="std std-ref">version tag</span></a>, let’s assume its <code class="docutils literal notranslate"><span class="pre">v1.0</span></code>, and
 run <code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span></code>.</p></li>
 <li><p>commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span> <span class="pre">(v2.1.0)&quot;</span></code>, i.e., the command you have
@@ -1222,7 +1242,7 @@ executed, followed by the ms3 version number that was used.</p></li>
 dataset.</p>
 <p>The branch is now ready to be reviewed and then merged through a Pull Request:</p>
 <figure class="align-default" id="id13">
-<a class="reference internal image-reference" href="../_images/peri_harmonization_pr.png"><img alt="Screenshot showing a Pull Request harmonizing the repository by deleting and updating files." src="../_images/peri_harmonization_pr.png" style="width: 709.6px; height: 555.2px;" /></a>
+<a class="reference internal image-reference" href="../_images/peri_harmonization_pr.png"><img alt="Screenshot showing a Pull Request harmonizing the repository by deleting and updating files." src="../_images/peri_harmonization_pr.png" style="width: 713.6px; height: 492.8px;" /></a>
 <figcaption>
 <p><span class="caption-text">Screenshot showing a Pull Request harmonizing the repository by deleting and updating files. Note that the
 description links the PR to the work package on OpenProject and that the label corresponds to the work package type.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
