@@ -742,7 +742,7 @@ Update repository structure
   .. code-block:: bash
 
       ms32 review -M -N -X -F -D -c v1.0
-      git add . && git commit -m "ms3 review -M -N -X -F -D -c v1.0 (v2.1.0)"
+      git add . && git commit -m "ms3 review -M -N -X -F -D -c v1.0 (v2.1.1)"
       git push --atomic
 
 
@@ -855,7 +855,8 @@ And we can see the latest version with
 
 .. code-block:: bash
 
-   git describe --tags --abbrev=0
+   > git describe --tags --abbrev=0        # for the tag only
+   v2.0
 
 which will output "fatal: No names found, cannot describe anything." if there are no tags yet. Depending on the output
 we assign:
@@ -958,7 +959,7 @@ With the repo readily streamlined we update the data to ms3 v2 in three steps:
   that might be present, such as ``form_labels``), without committing the change (e.g., in your file browser).
 * Then we find out (or remember) the latest v1.x :ref:`version tag <version_tags>`, let's assume its ``v1.0``, and
   run ``ms32 review -M -N -X -F -D -c v1.0``.
-* commit everything with the message ``"ms3 review -M -N -X -F -D -c v1.0 (v2.1.0)"``, i.e., the command you have
+* commit everything with the message ``"ms3 review -M -N -X -F -D -c v1.0 (v2.1.1)"``, i.e., the command you have
   executed, followed by the ms3 version number that was used.
 
 The review command will also create ``.warnings`` files in the ``reviewed`` folder which reflect the health of the
@@ -976,7 +977,7 @@ The branch is now ready to be reviewed and then merged through a Pull Request:
 Once the PR has been created, you can update the work package status to "Needs review".
 Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
 The person who merges should then assign a new version tag,
-e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.1.0"``.
+e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.1.1"``.
 
 
 
@@ -1015,7 +1016,7 @@ using
 
 * ``ms3 review -M -N -X -F -D -c <version tag>`` (or, if you continue with the setup above,
   ``ms32 review -M -N -X -F -D -c <version tag>``) and
-* committing the changes (if any) with the message ``ms3 review -M -N -X -F -D -c <version tag> (v2.1.0)``, i.e.,
+* committing the changes (if any) with the message ``ms3 review -M -N -X -F -D -c <version tag> (v2.1.1)``, i.e.,
   the command you have executed, followed by the ms3 version number that was used.
 
 Our goal is to eliminate the presence of any file ending on ``.warnings`` in the ``reviewed`` folder (they are simple

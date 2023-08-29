@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>The first phrase &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=362ab14a" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=9afac83c" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=90673249"></script>
+    <script src="../_static/documentation_options.js?v=b21de401"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>let toggleHintShow = 'Show answer';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -210,9 +211,9 @@
     <div class="body col-md-12 content" role="main">
       
   <section id="the-first-phrase">
-<h1>The first phrase<a class="headerlink" href="#the-first-phrase" title="Permalink to this heading">¶</a></h1>
+<h1>The first phrase<a class="headerlink" href="#the-first-phrase" title="Link to this heading">¶</a></h1>
 <section id="tempo-marking">
-<h2>Tempo marking<a class="headerlink" href="#tempo-marking" title="Permalink to this heading">¶</a></h2>
+<h2>Tempo marking<a class="headerlink" href="#tempo-marking" title="Link to this heading">¶</a></h2>
 <p>Before you start annotating you want to get familiar with the piece in question (if you aren’t already) and get an
 idea of the tempo and harmonic rhythm you’re imagining for it. Once you’ve made up your mind, please drag a metronome
 mark with the relevant note value from the <code class="docutils literal notranslate"><span class="pre">Tempo</span></code> palette into the first measure, double click to change the value,
@@ -220,7 +221,7 @@ and press <code class="docutils literal notranslate"><span class="pre">V</span><
 <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">-&gt;</span> <span class="pre">Palettes</span></code>.</p>
 </section>
 <section id="phrase-annotations">
-<h2>Phrase annotations<a class="headerlink" href="#phrase-annotations" title="Permalink to this heading">¶</a></h2>
+<h2>Phrase annotations<a class="headerlink" href="#phrase-annotations" title="Link to this heading">¶</a></h2>
 <p>The DCML standard includes a rudimentary (because non-hierarchical) form of
 phrase annotations using
 curly brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code>. They may stand alone or be the last character of a chord
@@ -237,7 +238,7 @@ example would actually start like this:</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/phrase_01_beethoven.svg"><img alt="Annotated beginning of Beethoven's piano sonata no. 1" height="185" src="../_images/phrase_01_beethoven.svg" width="416" /></a>
 <figcaption>
-<p><span class="caption-text">Beginning of Beethoven’s piano sonata no. 1 with phrase annotation</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Beginning of Beethoven’s piano sonata no. 1 with phrase annotation</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The closing bracket is put on the perceived structural ending of the musical
@@ -246,13 +247,13 @@ the next phrase or coincides with the beginning of the next phrase (‘phrase
 interlocking’, <code class="docutils literal notranslate"><span class="pre">}{</span></code>). At the end of the Beethoven phrase we get:</p>
 <figure class="align-default" id="id2">
 <img alt="First phrase of Beethoven's piano sonata no. 1 annotated" src="../_images/phrase_02_beethoven.svg" /><figcaption>
-<p><span class="caption-text">First phrase of Beethoven’s piano sonata no. 1 annotated</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">First phrase of Beethoven’s piano sonata no. 1 annotated</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">}</span></code> sits on beat 1, the structural ending of the sentence.</p>
 </section>
 <section id="cadence-labels">
-<h2>Cadence Labels<a class="headerlink" href="#cadence-labels" title="Permalink to this heading">¶</a></h2>
+<h2>Cadence Labels<a class="headerlink" href="#cadence-labels" title="Link to this heading">¶</a></h2>
 <p>The DCML guidelines require writing more cadence labels than most theorists naturally would. The reason is that,
 with respect to cadences, we follow a schema-theoretic approach in the sense that formal considerations are only one
 of several aspects to take into account when deciding if something deserves a cadence label or not. As a consequence,
@@ -262,7 +263,7 @@ guideline is meant to optimize the labels for training schema detection algorith
 <p>Every time you spot a complete or attempted cadence, please mark its ultima with one of these five cadence labels,
 separated from the chord label by a pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>:</p>
 <table class="docutils align-center" id="id3">
-<caption><span class="caption-text">Cadence labels.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Cadence labels.</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Label</p></th>
 <th class="head"><p>Cadence type</p></th>
@@ -302,14 +303,14 @@ structural phrase ending co-occur, <code class="docutils literal notranslate"><s
 a harmony label (as in <code class="docutils literal notranslate"><span class="pre">|EC</span></code>) but in reality this would be a rare exception.</p>
 </section>
 <section id="chord-syntax">
-<h2>Chord syntax<a class="headerlink" href="#chord-syntax" title="Permalink to this heading">¶</a></h2>
+<h2>Chord syntax<a class="headerlink" href="#chord-syntax" title="Link to this heading">¶</a></h2>
 <p>The remaining chord labels are achieved by simply typing the characters
 <code class="docutils literal notranslate"><span class="pre">V65</span> <span class="pre">i</span> <span class="pre">#viio6</span> <span class="pre">i6</span> <span class="pre">iio6</span> <span class="pre">V(4)}</span> <span class="pre">V</span></code>. Note how every label fully defines the chord
 type: Uppercase numerals express a major third, lowercase numerals a minor third,
 diminished and augmented triads are indicated with <code class="docutils literal notranslate"><span class="pre">o</span></code> and <code class="docutils literal notranslate"><span class="pre">+</span></code>. Inverted triads are followed by
 <code class="docutils literal notranslate"><span class="pre">6</span></code> or <code class="docutils literal notranslate"><span class="pre">64</span></code> (not <code class="docutils literal notranslate"><span class="pre">46</span></code>), leading to these combinations:</p>
 <table class="docutils align-center" id="id4" style="width: 70%">
-<caption><span class="caption-text">Triads. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Triads. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Root</p></th>
 <th class="head"><p>Type</p></th>
@@ -354,7 +355,7 @@ one out of <code class="docutils literal notranslate"><span class="pre">7</span>
 <p>In addition to the types based on the four triads, there are the special symbols
 <code class="docutils literal notranslate"><span class="pre">%</span></code> for half diminished chords and <code class="docutils literal notranslate"><span class="pre">M</span></code> for chords with a major seventh:</p>
 <table class="docutils align-center" id="id5" style="width: 75%">
-<caption><span class="caption-text">Seventh chords. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Seventh chords. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Root</p></th>
 <th class="head"><p>Type</p></th>
@@ -418,7 +419,7 @@ one out of <code class="docutils literal notranslate"><span class="pre">7</span>
 <p class="admonition-title">Annotate <code class="docutils literal notranslate"><span class="pre">corelli_op01n01a.mscx</span></code> up to beat 1 of m. 3</p>
 <figure class="align-default" id="id6">
 <img alt="Beginning of Corelli op. 1/1 annotated" src="../_images/phrase_sol01_corelli.svg" /><figcaption>
-<p><span class="caption-text">Beginning of Corelli op. 1/1 annotated</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Beginning of Corelli op. 1/1 annotated</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="caution admonition">
@@ -444,7 +445,7 @@ rhythm speaks for the one shown here.</p></li>
 <p class="admonition-title">Annotate <code class="docutils literal notranslate"><span class="pre">gastoldi_baletto_a5_10.mscx</span></code> up to beat 1 of m. 7</p>
 <figure class="align-default" id="id7">
 <img alt="Beginning of Gastoldi Baletti a 5, no. 10 annotated" src="../_images/phrase_sol02_gastoldi.svg" /><figcaption>
-<p><span class="caption-text">Beginning of Gastoldi Baletti a 5, no. 10 annotated</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Beginning of Gastoldi Baletti a 5, no. 10 annotated</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="caution admonition">
@@ -482,7 +483,7 @@ their implications.</p>
     </p>
     <p>
         &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.4.<br/>
     </p>
   </div>
 </footer>

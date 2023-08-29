@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Annotation Reference &#8212; Harmonic Annotation Guidelines 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=362ab14a" />
     <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=9afac83c" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=90673249"></script>
+    <script src="../_static/documentation_options.js?v=b21de401"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>let toggleHintShow = 'Show answer';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -219,9 +220,9 @@
     <div class="body col-md-12 content" role="main">
       
   <section id="annotation-reference">
-<h1>Annotation Reference<a class="headerlink" href="#annotation-reference" title="Permalink to this heading">¶</a></h1>
+<h1>Annotation Reference<a class="headerlink" href="#annotation-reference" title="Link to this heading">¶</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>Thank you for your interest in the DCML harmony annotation standard. Harmonic
 analysis is a notoriously complex task, as of now very difficult to
 teach to a computer. Therefore, we need to rely on hand-annotated
@@ -233,7 +234,7 @@ up aspects of its syntax together with some examples. If you want to learn how D
 annotators use MuseScore to enter harmonic analysis directly into
 digital scores, please refer to our <a class="reference internal" href="../tutorial/index.html"><span class="doc">annotation tutorial</span></a>.</p>
 <section id="what-is-it">
-<h3>What is it?<a class="headerlink" href="#what-is-it" title="Permalink to this heading">¶</a></h3>
+<h3>What is it?<a class="headerlink" href="#what-is-it" title="Link to this heading">¶</a></h3>
 <p>In its essence, the standard consists of two things: A set of rules
 for constructing chord labels in a standardized way and this reference
 on how to apply these labels to music and how to interpret those that
@@ -249,7 +250,7 @@ tones it represents, and its different features. This reference is
 mainly concerned with explaining what these different properties are.</p>
 </section>
 <section id="about-this-reference">
-<h3>About this reference<a class="headerlink" href="#about-this-reference" title="Permalink to this heading">¶</a></h3>
+<h3>About this reference<a class="headerlink" href="#about-this-reference" title="Link to this heading">¶</a></h3>
 <p>Everyone is free to use the proposed standard for encoding harmonic analyses
 in ways, contexts, and environments of their free choice. The goal of this reference
 is not to tell anyone how they should analyse harmony. Instead, its purpose
@@ -261,7 +262,7 @@ comparable and interoperable.</p>
 </section>
 </section>
 <section id="the-syntax">
-<h2>The syntax<a class="headerlink" href="#the-syntax" title="Permalink to this heading">¶</a></h2>
+<h2>The syntax<a class="headerlink" href="#the-syntax" title="Link to this heading">¶</a></h2>
 <p>Every chord symbol <em>must</em> have at least one compulsory Roman numeral and <em>may</em>
 start with an indication of key, followed by a separating dot. Such an
 indication sets the context for the attached Roman
@@ -269,7 +270,7 @@ numeral <em>and</em> for all subsequent symbols up to the next indication of
 key. Phrase annotations represent a separate standard. Therefore they can
 stand alone, without a chord label, or at the very end of one.</p>
 <section id="indication-of-key">
-<h3>Indication of key.<a class="headerlink" href="#indication-of-key" title="Permalink to this heading">¶</a></h3>
+<h3>Indication of key.<a class="headerlink" href="#indication-of-key" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The first symbol written in a score always starts with the absolute
 indication of the entire piece’s tonality.</p></li>
@@ -290,7 +291,7 @@ paragraph), you can write <code class="docutils literal notranslate"><span class
 symbol designates the new tonic.</p></li>
 </ul>
 <section id="example">
-<h4>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
+<h4>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">ii65/V</span> <span class="pre">V7/V</span> <span class="pre">V</span></code> and <code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">V.ii65</span> <span class="pre">V7</span> <span class="pre">I</span></code> (from the Schumann example
 below), in general, express the same chords but a preference has to be
 given either to the first version - i.e., with <strong>applied chords</strong> - or
@@ -363,7 +364,7 @@ analyses of two different annotations of the same piece:</p>
 </section>
 </section>
 <section id="the-remainder-of-the-reference-is-currently-under-reconstruction">
-<h2>The remainder of the Reference is currently under reconstruction<a class="headerlink" href="#the-remainder-of-the-reference-is-currently-under-reconstruction" title="Permalink to this heading">¶</a></h2>
+<h2>The remainder of the Reference is currently under reconstruction<a class="headerlink" href="#the-remainder-of-the-reference-is-currently-under-reconstruction" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -380,7 +381,7 @@ analyses of two different annotations of the same piece:</p>
     </p>
     <p>
         &copy; Copyright 2020, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.4.<br/>
     </p>
   </div>
 </footer>
