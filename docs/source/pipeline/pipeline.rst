@@ -1238,8 +1238,54 @@ The arrangement is arbitrary and should be somewhat satisfying visually (again, 
 Arranging the layout may involve making the vertical box larger.
 
 
+An example
+""""""""""
+
+.. note::
+
+   Quick reminder to load all columns the TSV files as "Text", preventing the automatic type inference that modern
+   spreadsheets are prone to perform, modifying your data without you noticing.
+
+Let us consider the `wagner_overtures @ v2.1`_ repository.
+A glance at the relevant columns of ``metadata.tsv`` reveals the following situation:
+
+.. image:: img/wagner_metadata_tsv.png
+    :width: 98 %
+
+* The ``title_text`` is defined for both pieces, the ``subtitle_text`` only for the first one, and the ``composer_text``
+  is missing for both and therefore does not have a column. All of them encode typesetting information through
+  HTML tags which we want to get rid off.
+* The two instrument columns have the value "Piano (2)", which we want to standardize.
+
+The following image shows the updated values:
+
+* inserted a ``composer_text`` column (it does not matter where) and copied the values from the ``composer`` column
+* removed the HTML tags from the ``title_text`` and ``subtitle_text`` columns
+* as the screenshot below indicates, actually the ``title_text`` has been fully re-created by using the formula
+  ``=CONCATENATE(V2, ", ", Y2)``, yielding a concatenation of the ``workTitle`` and ``workNumber`` columns. This
+  might seem like an overkill in this example but is very convenient when dealing with larger corpora.
+* Moved the subtitle "Vorspiel" from the ``title_text`` to the ``subtitle_text`` column for the second piece.
+* Changed all instrument values to "Piano" (case insensitive, so "piano" would work as well and would be standardized
+  while updating the MuseScore files).
+
+.. image:: img/wagner_metadata_tsv.png
+    :width: 98 %
 
 
+
+.. image:: img/meistersinger_header_before.png
+    :width: 90 %
+    :align: center
+
+.. figure:: img/wagner_readme.png
+     :alt: README.md file of the wagner_overtures repositories, needing to be cleaned
+     :scale: 80%
+
+     This README.md contains only a template text and an automatically generated overview table.
+
+
+
+.. _wagner_overtures @ v2.1: https://github.com/DCMLab/wagner_overtures/releases/tag/v2.1
 
 
 
