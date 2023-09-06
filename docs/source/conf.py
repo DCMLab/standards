@@ -148,3 +148,13 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
+
+
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title,
+#  author, documentclass [howto, manual, or own class]).
+latex_engine = "lualatex"
+latex_documents = [
+    ('reference/index', 'reference.tex', 'DCML harmony annotation standard reference',
+     'Johannes Hentschel', 'report')
+]
