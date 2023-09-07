@@ -8,7 +8,7 @@ Quick Git Reference
 .. _git-intro:
 
 Introduction
-------------
+============
 
 Git is a version control system generally controlled via the command line.
 GitHub is a hosting service for remote Git repositories. Since the DCML hosts
@@ -28,7 +28,7 @@ familiar you are already with the git-related concepts.
   of letters of the folder you want to "go to", you can press [TAB] to autocomplete.
 
 Installing Git
---------------
+==============
 
 Check in your terminal if Git is already installed:
 
@@ -44,13 +44,13 @@ for instructions.
 .. _configuring_git:
 
 Configuring Git
----------------
+===============
 
 If this is the first time you are using Git, there are a few things you will need to set up before
 you can really get started.
 
 Setting up SSH
-^^^^^^^^^^^^^^
+--------------
 
 In order to clone and push to private repositories (invisible to the public) you need to tell your Git installation
 to use a cryptographic SSH key that identifies you. Simply follow the step-by-step instructions on GitHub
@@ -61,7 +61,7 @@ copying the commands into your terminal and pressing Enter:
 #. GitHub docs on `Adding a new SSH key to your GitHub account <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account>`__
 
 Merge or rebase?
-^^^^^^^^^^^^^^^^
+----------------
 
 It happens to everyone: You push your latest commits but forgot to pull the latest changes that the bot made after
 your last push: the local branch and the remote branch have diverged! The first time this happens you will be asked
@@ -73,14 +73,14 @@ This will apply your local commits to the HEAD of the remote branch, rather than
 (If you want to set the behaviour for each repository individually, omit ``--global``.)
 
 Autostash
-^^^^^^^^^
+---------
 Another thing that will make your life a bit easier is the auto-stash behaviour. In short, it dispenses with the
 obligation to commit (or manually stash) all your local modifications when pulling. To activate it globally::
 
   git config --global rebase.autoStash true
 
 Choose your favourite text editor
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 Sometimes you are asked to edit, store, and close a pre-configured commit message in a text editor.
 `This blog post has a few example commands <https://medium.com/geekculture/a-step-by-step-guide-to-setting-up-git-config-global-properties-db6dbce30fa8>`__
@@ -89,7 +89,7 @@ but they all boil down to::
   git config --global core.editor <editor>
 
 Automatically creating remote branches
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 
 Maybe you've also had this *eureka* moment when you discovered that the command to create and track a new
 remote branch can be shortened from::
@@ -111,9 +111,17 @@ If you would like that, you can set::
 
 if your Git version is >= 2.37 (late 2022).
 
+Global ``.gitignore``
+---------------------
+
+If you find yourself accidentally committing files created by your operating system, or your text editor,
+you can tell Git to ignore them by creating a global ``.gitignore`` file.
+`This Stack Overflow <https://stackoverflow.com/a/7335487>`__ explains the procedure concisely. In short,
+you create ``~/.gitignore`` and configure Git via ``git config --global core.excludesFile '~/.gitignore'``.
+
 
 Cloning a Repository from GitHub
---------------------------------
+================================
 
 Go to the GitHub repository, click on the ``Code`` button, click on ``SSH``, and copy the URL:
 |github_url|
@@ -127,14 +135,14 @@ be constantly harmonizing the history of your local clone with the history of th
 
 
 Selecting the right Branch
---------------------------
+==========================
 
 Note that to apply any Git command, you need to navigate to any folder within
 your local clone of the repository, otherwise you get ``fatal: not a git
 repository (or any of the parent directories)``.
 
 Git Branching Primer
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 A Git repository often holds several versions, called 'branches', in parallel,
 each with their own version history. The way the
@@ -154,7 +162,7 @@ experimenting and for applying as many changes as you want without changing the
   thus synchronising both histories. The merged branch can then be deleted.
 
 What's my branch?
-^^^^^^^^^^^^^^^^^
+-----------------
 
 One of the most important Git commands is ``git status`` which tells you not only
 what branch you are on (which branch is 'checked out'), but also by how much its
@@ -176,7 +184,7 @@ missing two changes, 'commits', from the origin on GitHub. Git also suggests
 to integrate, 'merge', these two commits by going ``git pull``.
 
 Changing to a Different Branch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 Get a list of all available branches: ``git branch -a``. Choose the one where you
 want to apply your changes to your local clone, e.g. the branch ``develop``, and
@@ -186,7 +194,7 @@ current (local!) state of history. A new ``git status`` will tell you whether
 the local history diverges from the origin on GitHub.
 
 Creating a new Branch
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 Consider which existing branch your new branch should be a copy of and check it
 out, usually `main` (``git checkout main``). Then you can simply do
@@ -208,7 +216,7 @@ Git will tell you the command to use, e.g.:
     automatically setting up the new remote branch.
 
 Applying Changes to the Repository
-----------------------------------
+==================================
 
 First, decide which branch you want to apply changes to and check it out locally.
 Generally speaking, you will never apply changes, 'commits', to the ``main`` branch.
@@ -242,7 +250,7 @@ a couple of measures, please include the measure numbers in the commit message
 to facilitate review.
 
 Uploading Changes to GitHub
----------------------------
+===========================
 
 Once you have finished your work for the day, you want to upload, 'push', all
 your registered commits to the branch's origin on GitHub. First you will make
@@ -258,7 +266,7 @@ change ("Ours") and someone else's change("Theirs").
 Once the pull succeeded, you can upload via ``git push``.
 
 Applying Changes to the Origin Directly
----------------------------------------
+=======================================
 
 Sometimes when you're feeling lazy, i.e. very rarely, you may apply changes to
 the repository's origin on GitHub directly without taking the usual detour of
@@ -266,7 +274,7 @@ committing to your local clone and then pushing. This can be done via the
 GitHub browser interface. Don't forget to pull such commits to your local clone.
 
 Small Changes to a Text File
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 .. |github_url| image:: img/github_url.png
 .. |github_edit| image:: img/github_edit.png
@@ -281,7 +289,7 @@ Now you may change the file directly in the browser and commit the change;
 naturally you will specify a meaningful COMMIT_MESSAGE: |github_commit|
 
 Overwriting a File with Changes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 If you want to apply local changes to a file directly, you may drag-and-drop it
 into GitHub. Once again, don't forget a meaningful COMMIT_MESSAGE.
@@ -299,12 +307,12 @@ It dispenses with using git commands in the terminal but can (also)
 lead to unwanted behaviour and needs to be handled with just the same care.
 
 Installing GitHub Desktop
--------------------------
+=========================
 
 Head to https://desktop.github.com/, download the installer for your operation system and install it.
 
 First start
------------
+===========
 
 Starting for the first time you are greeted by a screen similar to this one:
 
@@ -317,7 +325,7 @@ Starting for the first time you are greeted by a screen similar to this one:
 What most people will want to do is "Clone a repository from the internet".
 
 Cloning a repository
---------------------
+====================
 
 There are many ways to perform the task of creating a copy of a Git repository on your local disc.
 You can use the menu ``File -> Clone repository...``. Or you open the repository panel and click on the repository
@@ -348,7 +356,7 @@ https://github.com/DCMLab/schubert_dances and click on ``Code -> Open with GitHu
     one of them allows you to display the cloned files ("Show in Explorer/Finder").
 
 The user interface
-------------------
+==================
 
 After cloning a repository, you will mostly operate with these three buttons:
 
@@ -364,7 +372,14 @@ the button says "Publish branch" and allows for adding your branch to GitHub.
 
 
 
+Typical Mistakes
+================
 
+Here are a few things that have happened to all of us at some point. Reading them might allow you to learn from
+other people's mistakes.
 
+Not checking out `main` before creating a new branch
+----------------------------------------------------
 
+(in progress)
 

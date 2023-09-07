@@ -102,10 +102,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#applying-changes-to-the-repository">Applying Changes to the Repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#uploading-changes-to-github">Uploading Changes to GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#applying-changes-to-the-origin-directly">Applying Changes to the Origin Directly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-github-account">Creating a GitHub account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github-desktop">GitHub Desktop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-github-desktop">Installing GitHub Desktop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#first-start">First start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cloning-a-repository">Cloning a repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-user-interface">The user interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-mistakes">Typical Mistakes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pipeline/pipeline.html">DCML Corpus Creation Pipeline</a><ul>
@@ -165,6 +168,7 @@
 <li><a class="reference internal" href="#autostash">Autostash</a></li>
 <li><a class="reference internal" href="#choose-your-favourite-text-editor">Choose your favourite text editor</a></li>
 <li><a class="reference internal" href="#automatically-creating-remote-branches">Automatically creating remote branches</a></li>
+<li><a class="reference internal" href="#global-gitignore">Global <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#cloning-a-repository-from-github">Cloning a Repository from GitHub</a></li>
@@ -179,17 +183,19 @@
 <li><a class="reference internal" href="#uploading-changes-to-github">Uploading Changes to GitHub</a></li>
 <li><a class="reference internal" href="#applying-changes-to-the-origin-directly">Applying Changes to the Origin Directly</a><ul>
 <li><a class="reference internal" href="#small-changes-to-a-text-file">Small Changes to a Text File</a></li>
-<li><a class="reference internal" href="#overwriting-a-file-with-changes">Overwriting a File with Changes</a><ul>
+<li><a class="reference internal" href="#overwriting-a-file-with-changes">Overwriting a File with Changes</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#creating-a-github-account">Creating a GitHub account</a></li>
 <li><a class="reference internal" href="#github-desktop">GitHub Desktop</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><a class="reference internal" href="#installing-github-desktop">Installing GitHub Desktop</a></li>
 <li><a class="reference internal" href="#first-start">First start</a></li>
 <li><a class="reference internal" href="#cloning-a-repository">Cloning a repository</a></li>
 <li><a class="reference internal" href="#the-user-interface">The user interface</a></li>
+<li><a class="reference internal" href="#typical-mistakes">Typical Mistakes</a><ul>
+<li><a class="reference internal" href="#not-checking-out-main-before-creating-a-new-branch">Not checking out <cite>main</cite> before creating a new branch</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -253,34 +259,37 @@
 <li><p><a class="reference internal" href="#autostash" id="id9">Autostash</a></p></li>
 <li><p><a class="reference internal" href="#choose-your-favourite-text-editor" id="id10">Choose your favourite text editor</a></p></li>
 <li><p><a class="reference internal" href="#automatically-creating-remote-branches" id="id11">Automatically creating remote branches</a></p></li>
+<li><p><a class="reference internal" href="#global-gitignore" id="id12">Global <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#cloning-a-repository-from-github" id="id12">Cloning a Repository from GitHub</a></p></li>
-<li><p><a class="reference internal" href="#selecting-the-right-branch" id="id13">Selecting the right Branch</a></p>
+<li><p><a class="reference internal" href="#cloning-a-repository-from-github" id="id13">Cloning a Repository from GitHub</a></p></li>
+<li><p><a class="reference internal" href="#selecting-the-right-branch" id="id14">Selecting the right Branch</a></p>
 <ul>
-<li><p><a class="reference internal" href="#git-branching-primer" id="id14">Git Branching Primer</a></p></li>
-<li><p><a class="reference internal" href="#what-s-my-branch" id="id15">What’s my branch?</a></p></li>
-<li><p><a class="reference internal" href="#changing-to-a-different-branch" id="id16">Changing to a Different Branch</a></p></li>
-<li><p><a class="reference internal" href="#creating-a-new-branch" id="id17">Creating a new Branch</a></p></li>
+<li><p><a class="reference internal" href="#git-branching-primer" id="id15">Git Branching Primer</a></p></li>
+<li><p><a class="reference internal" href="#what-s-my-branch" id="id16">What’s my branch?</a></p></li>
+<li><p><a class="reference internal" href="#changing-to-a-different-branch" id="id17">Changing to a Different Branch</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-branch" id="id18">Creating a new Branch</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#applying-changes-to-the-repository" id="id18">Applying Changes to the Repository</a></p></li>
-<li><p><a class="reference internal" href="#uploading-changes-to-github" id="id19">Uploading Changes to GitHub</a></p></li>
-<li><p><a class="reference internal" href="#applying-changes-to-the-origin-directly" id="id20">Applying Changes to the Origin Directly</a></p>
+<li><p><a class="reference internal" href="#applying-changes-to-the-repository" id="id19">Applying Changes to the Repository</a></p></li>
+<li><p><a class="reference internal" href="#uploading-changes-to-github" id="id20">Uploading Changes to GitHub</a></p></li>
+<li><p><a class="reference internal" href="#applying-changes-to-the-origin-directly" id="id21">Applying Changes to the Origin Directly</a></p>
 <ul>
-<li><p><a class="reference internal" href="#small-changes-to-a-text-file" id="id21">Small Changes to a Text File</a></p></li>
-<li><p><a class="reference internal" href="#overwriting-a-file-with-changes" id="id22">Overwriting a File with Changes</a></p>
+<li><p><a class="reference internal" href="#small-changes-to-a-text-file" id="id22">Small Changes to a Text File</a></p></li>
+<li><p><a class="reference internal" href="#overwriting-a-file-with-changes" id="id23">Overwriting a File with Changes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-a-github-account" id="id24">Creating a GitHub account</a></p></li>
+<li><p><a class="reference internal" href="#github-desktop" id="id25">GitHub Desktop</a></p></li>
+<li><p><a class="reference internal" href="#installing-github-desktop" id="id26">Installing GitHub Desktop</a></p></li>
+<li><p><a class="reference internal" href="#first-start" id="id27">First start</a></p></li>
+<li><p><a class="reference internal" href="#cloning-a-repository" id="id28">Cloning a repository</a></p></li>
+<li><p><a class="reference internal" href="#the-user-interface" id="id29">The user interface</a></p></li>
+<li><p><a class="reference internal" href="#typical-mistakes" id="id30">Typical Mistakes</a></p>
 <ul>
-<li><p><a class="reference internal" href="#creating-a-github-account" id="id23">Creating a GitHub account</a></p></li>
-<li><p><a class="reference internal" href="#github-desktop" id="id24">GitHub Desktop</a></p></li>
+<li><p><a class="reference internal" href="#not-checking-out-main-before-creating-a-new-branch" id="id31">Not checking out <cite>main</cite> before creating a new branch</a></p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#installing-github-desktop" id="id25">Installing GitHub Desktop</a></p></li>
-<li><p><a class="reference internal" href="#first-start" id="id26">First start</a></p></li>
-<li><p><a class="reference internal" href="#cloning-a-repository" id="id27">Cloning a repository</a></p></li>
-<li><p><a class="reference internal" href="#the-user-interface" id="id28">The user interface</a></p></li>
 </ul>
 </nav>
 <section id="introduction">
@@ -377,9 +386,16 @@ If you would like that, you can set:</p>
 </div>
 <p>if your Git version is &gt;= 2.37 (late 2022).</p>
 </section>
+<section id="global-gitignore">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Global <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></a><a class="headerlink" href="#global-gitignore" title="Link to this heading">¶</a></h3>
+<p>If you find yourself accidentally committing files created by your operating system, or your text editor,
+you can tell Git to ignore them by creating a global <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file.
+<a class="reference external" href="https://stackoverflow.com/a/7335487">This Stack Overflow</a> explains the procedure concisely. In short,
+you create <code class="docutils literal notranslate"><span class="pre">~/.gitignore</span></code> and configure Git via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.excludesFile</span> <span class="pre">'~/.gitignore'</span></code>.</p>
+</section>
 </section>
 <section id="cloning-a-repository-from-github">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Cloning a Repository from GitHub</a><a class="headerlink" href="#cloning-a-repository-from-github" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Cloning a Repository from GitHub</a><a class="headerlink" href="#cloning-a-repository-from-github" title="Link to this heading">¶</a></h2>
 <p>Go to the GitHub repository, click on the <code class="docutils literal notranslate"><span class="pre">Code</span></code> button, click on <code class="docutils literal notranslate"><span class="pre">SSH</span></code>, and copy the URL:
 <img alt="github_url" src="../_images/github_url.png" /></p>
 <p>Then, in your terminal, navigate (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[folder]</span></code>) to the place where you want
@@ -390,12 +406,12 @@ be constantly harmonizing the history of your local clone with the history of th
 ‘origin’, i.e. the ‘remote’ repository on GitHub.</p>
 </section>
 <section id="selecting-the-right-branch">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Selecting the right Branch</a><a class="headerlink" href="#selecting-the-right-branch" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Selecting the right Branch</a><a class="headerlink" href="#selecting-the-right-branch" title="Link to this heading">¶</a></h2>
 <p>Note that to apply any Git command, you need to navigate to any folder within
 your local clone of the repository, otherwise you get <code class="docutils literal notranslate"><span class="pre">fatal:</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">git</span>
 <span class="pre">repository</span> <span class="pre">(or</span> <span class="pre">any</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">parent</span> <span class="pre">directories)</span></code>.</p>
 <section id="git-branching-primer">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink">Git Branching Primer</a><a class="headerlink" href="#git-branching-primer" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Git Branching Primer</a><a class="headerlink" href="#git-branching-primer" title="Link to this heading">¶</a></h3>
 <p>A Git repository often holds several versions, called ‘branches’, in parallel,
 each with their own version history. The way the
 <a class="reference external" href="https://nvie.com/posts/a-successful-git-branching-model/">Git branching model</a>
@@ -415,7 +431,7 @@ thus synchronising both histories. The merged branch can then be deleted.</p></l
 </ul>
 </section>
 <section id="what-s-my-branch">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">What’s my branch?</a><a class="headerlink" href="#what-s-my-branch" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">What’s my branch?</a><a class="headerlink" href="#what-s-my-branch" title="Link to this heading">¶</a></h3>
 <p>One of the most important Git commands is <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> which tells you not only
 what branch you are on (which branch is ‘checked out’), but also by how much its
 local history deviates from the history of the ‘origin’, i.e. the remote version
@@ -434,7 +450,7 @@ missing two changes, ‘commits’, from the origin on GitHub. Git also suggests
 to integrate, ‘merge’, these two commits by going <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>.</p>
 </section>
 <section id="changing-to-a-different-branch">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Changing to a Different Branch</a><a class="headerlink" href="#changing-to-a-different-branch" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Changing to a Different Branch</a><a class="headerlink" href="#changing-to-a-different-branch" title="Link to this heading">¶</a></h3>
 <p>Get a list of all available branches: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code>. Choose the one where you
 want to apply your changes to your local clone, e.g. the branch <code class="docutils literal notranslate"><span class="pre">develop</span></code>, and
 do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">[branch]</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">develop</span></code>. If you don’t get any
@@ -443,7 +459,7 @@ current (local!) state of history. A new <code class="docutils literal notransla
 the local history diverges from the origin on GitHub.</p>
 </section>
 <section id="creating-a-new-branch">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Creating a new Branch</a><a class="headerlink" href="#creating-a-new-branch" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Creating a new Branch</a><a class="headerlink" href="#creating-a-new-branch" title="Link to this heading">¶</a></h3>
 <p>Consider which existing branch your new branch should be a copy of and check it
 out, usually <cite>main</cite> (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span></code>). Then you can simply do
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">[new_branch_name]</span></code> to create a new branch. If you want to
@@ -464,7 +480,7 @@ automatically setting up the new remote branch.</p>
 </section>
 </section>
 <section id="applying-changes-to-the-repository">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Applying Changes to the Repository</a><a class="headerlink" href="#applying-changes-to-the-repository" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Applying Changes to the Repository</a><a class="headerlink" href="#applying-changes-to-the-repository" title="Link to this heading">¶</a></h2>
 <p>First, decide which branch you want to apply changes to and check it out locally.
 Generally speaking, you will never apply changes, ‘commits’, to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
 <p>Every time you have made changes that you want to register as ‘commits’ in your
@@ -494,7 +510,7 @@ a couple of measures, please include the measure numbers in the commit message
 to facilitate review.</p>
 </section>
 <section id="uploading-changes-to-github">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Uploading Changes to GitHub</a><a class="headerlink" href="#uploading-changes-to-github" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Uploading Changes to GitHub</a><a class="headerlink" href="#uploading-changes-to-github" title="Link to this heading">¶</a></h2>
 <p>Once you have finished your work for the day, you want to upload, ‘push’, all
 your registered commits to the branch’s origin on GitHub. First you will make
 sure to integrate all commits that other people might have pushed to the remote
@@ -508,13 +524,13 @@ change (“Ours”) and someone else’s change(“Theirs”).</p>
 <p>Once the pull succeeded, you can upload via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
 </section>
 <section id="applying-changes-to-the-origin-directly">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">Applying Changes to the Origin Directly</a><a class="headerlink" href="#applying-changes-to-the-origin-directly" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Applying Changes to the Origin Directly</a><a class="headerlink" href="#applying-changes-to-the-origin-directly" title="Link to this heading">¶</a></h2>
 <p>Sometimes when you’re feeling lazy, i.e. very rarely, you may apply changes to
 the repository’s origin on GitHub directly without taking the usual detour of
 committing to your local clone and then pushing. This can be done via the
 GitHub browser interface. Don’t forget to pull such commits to your local clone.</p>
 <section id="small-changes-to-a-text-file">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink">Small Changes to a Text File</a><a class="headerlink" href="#small-changes-to-a-text-file" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Small Changes to a Text File</a><a class="headerlink" href="#small-changes-to-a-text-file" title="Link to this heading">¶</a></h3>
 <p>Once again, make sure you are in the correct branch to apply your changes to by
 selecting it from the drop-down menu on the left: <img alt="github_url" src="../_images/github_url.png" /></p>
 <p>Navigate to the file you want to change and click the edit button: <img alt="github_edit" src="../_images/github_edit.png" /></p>
@@ -522,27 +538,27 @@ selecting it from the drop-down menu on the left: <img alt="github_url" src="../
 naturally you will specify a meaningful COMMIT_MESSAGE: <img alt="github_commit" src="../_images/github_commit.png" /></p>
 </section>
 <section id="overwriting-a-file-with-changes">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Overwriting a File with Changes</a><a class="headerlink" href="#overwriting-a-file-with-changes" title="Link to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Overwriting a File with Changes</a><a class="headerlink" href="#overwriting-a-file-with-changes" title="Link to this heading">¶</a></h3>
 <p>If you want to apply local changes to a file directly, you may drag-and-drop it
 into GitHub. Once again, don’t forget a meaningful COMMIT_MESSAGE.</p>
+</section>
+</section>
 <section id="creating-a-github-account">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">Creating a GitHub account</a><a class="headerlink" href="#creating-a-github-account" title="Link to this heading">¶</a></h4>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Creating a GitHub account</a><a class="headerlink" href="#creating-a-github-account" title="Link to this heading">¶</a></h2>
 <p>Head to <a class="reference external" href="https://github.com/signup">https://github.com/signup</a> and follow the instructions.</p>
 </section>
 <section id="github-desktop">
-<h4><a class="toc-backref" href="#id24" role="doc-backlink">GitHub Desktop</a><a class="headerlink" href="#github-desktop" title="Link to this heading">¶</a></h4>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">GitHub Desktop</a><a class="headerlink" href="#github-desktop" title="Link to this heading">¶</a></h2>
 <p>GitHub Desktop is a GUI (graphical user interface) available for Windows and MacOS.
 It dispenses with using git commands in the terminal but can (also)
 lead to unwanted behaviour and needs to be handled with just the same care.</p>
 </section>
-</section>
-</section>
 <section id="installing-github-desktop">
-<h2><a class="toc-backref" href="#id25" role="doc-backlink">Installing GitHub Desktop</a><a class="headerlink" href="#installing-github-desktop" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Installing GitHub Desktop</a><a class="headerlink" href="#installing-github-desktop" title="Link to this heading">¶</a></h2>
 <p>Head to <a class="reference external" href="https://desktop.github.com/">https://desktop.github.com/</a>, download the installer for your operation system and install it.</p>
 </section>
 <section id="first-start">
-<h2><a class="toc-backref" href="#id26" role="doc-backlink">First start</a><a class="headerlink" href="#first-start" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">First start</a><a class="headerlink" href="#first-start" title="Link to this heading">¶</a></h2>
 <p>Starting for the first time you are greeted by a screen similar to this one:</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/desktop_start.png"><img alt="Starting GitHub desktop for the first time" src="../_images/desktop_start.png" style="width: 578.6999999999999px; height: 461.4px;" /></a>
@@ -553,7 +569,7 @@ lead to unwanted behaviour and needs to be handled with just the same care.</p>
 <p>What most people will want to do is “Clone a repository from the internet”.</p>
 </section>
 <section id="cloning-a-repository">
-<h2><a class="toc-backref" href="#id27" role="doc-backlink">Cloning a repository</a><a class="headerlink" href="#cloning-a-repository" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Cloning a repository</a><a class="headerlink" href="#cloning-a-repository" title="Link to this heading">¶</a></h2>
 <p>There are many ways to perform the task of creating a copy of a Git repository on your local disc.
 You can use the menu <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Clone</span> <span class="pre">repository...</span></code>. Or you open the repository panel and click on the repository
 selector and click on <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">-&gt;</span> <span class="pre">Clone</span> <span class="pre">repository...</span></code>:</p>
@@ -581,7 +597,7 @@ one of them allows you to display the cloned files (“Show in Explorer/Finder�
 </div>
 </section>
 <section id="the-user-interface">
-<h2><a class="toc-backref" href="#id28" role="doc-backlink">The user interface</a><a class="headerlink" href="#the-user-interface" title="Link to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">The user interface</a><a class="headerlink" href="#the-user-interface" title="Link to this heading">¶</a></h2>
 <p>After cloning a repository, you will mostly operate with these three buttons:</p>
 <figure class="align-default">
 <img alt="The three main buttons in GitHub Desktop" src="../_images/desktop_buttons.png" />
@@ -591,6 +607,15 @@ select or create the branch you want to change. The right one allows you to exch
 and the origin (i.e. GitHub). Its principal actions are “Fetch origin”, i.e. integrate changes from GitHub into your
 local clone, and “Push origin” to upload all commits you made locally to GitHub. If you have created a new branch locally,
 the button says “Publish branch” and allows for adding your branch to GitHub.</p>
+</section>
+<section id="typical-mistakes">
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Typical Mistakes</a><a class="headerlink" href="#typical-mistakes" title="Link to this heading">¶</a></h2>
+<p>Here are a few things that have happened to all of us at some point. Reading them might allow you to learn from
+other people’s mistakes.</p>
+<section id="not-checking-out-main-before-creating-a-new-branch">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Not checking out <cite>main</cite> before creating a new branch</a><a class="headerlink" href="#not-checking-out-main-before-creating-a-new-branch" title="Link to this heading">¶</a></h3>
+<p>(in progress)</p>
+</section>
 </section>
 </section>
 
