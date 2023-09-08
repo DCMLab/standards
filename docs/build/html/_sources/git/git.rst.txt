@@ -60,6 +60,14 @@ copying the commands into your terminal and pressing Enter:
 #. GitHub docs on `Generating a new SSH key and adding it to the ssh-agent <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`__
 #. GitHub docs on `Adding a new SSH key to your GitHub account <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account>`__
 
+Automatically use SSH (even for https:// URLs)
+----------------------------------------------
+
+This practical configuration automatically replaces all ``https://github.com`` URLs with ``git@github`` URLs, so that
+you can use your SSH key for all repositories, not just the private ones.
+
+  git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+
 Merge or rebase?
 ----------------
 
