@@ -1409,10 +1409,10 @@ assigning the original annotator to it.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/love_note.png"><img alt="Repository settings on GitHub" src="../_images/love_note.png" style="width: 503.09999999999997px; height: 375.59999999999997px;" /></a>
 </figure>
-<p>If you’re lucky the repository has been created using the DCML corpus creation
-pipeline documented here and the metadata is already in a good state already. However, quite a number of repositories
+<p>If you’re lucky, the repository has been created using the DCML corpus creation
+pipeline documented here and the metadata is already in a good state. However, quite a number of repositories
 have been created before the inception of this pipeline and have to be brought up to speed.</p>
-<p>This section is currently (August 2023) focusing on roundabout 20 repositories that have a long and
+<p>This section is currently (September 2023) focused on roundabout 20 repositories that have a long and
 pretty wild history (which does not always involve a lot of metadata love, unfortunately) so that this task may
 involve a considerable amount of detective’s work, digging through commit histories to find out the origin of a file,
 comparing a score with one found on musescore.com to discover its original source, etc. The golden rule is: Everything
@@ -1443,7 +1443,8 @@ been renamed or split). In such a case, please delete the corresponding rows man
 <dt>Make your edits to the <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> file, commiting each change individually.</dt><dd><p>For example, add and fill the columns <code class="docutils literal notranslate"><span class="pre">composed_start</span></code>, <code class="docutils literal notranslate"><span class="pre">composed_end</span></code> and <code class="docutils literal notranslate"><span class="pre">composed_source</span></code> and commit them
 with the message “adds composition dates” (or similar).</p>
 </dd>
-<dt>Once all columns have been cleaned to your satisfaction, update the corresponding fields in the MuseScore files.</dt><dd><p>For that you execute <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span></code>, inspect the changes using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> and, if everything is looking good,
+<dt>Once all columns have been cleaned to your satisfaction, update the corresponding fields in the MuseScore files.</dt><dd><p>For that you execute <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span></code>, inspect the changes using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> and, if everything is looking good
+(e.g., there are no unwanted changes such as newly added but empty XML tags due to a misnamed column),
 you re-extract via <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">extract</span> <span class="pre">-D</span></code> (which usually results in a re-ordering of manually added columns and commit
 the changes with the message “writes updated metadata into MuseScore files”, or similar.</p>
 </dd>
@@ -1452,32 +1453,33 @@ the changes with the message “writes updated metadata into MuseScore files”,
 <p class="admonition-title">Note</p>
 <p>Note that the correspondence between columns in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> and fields in the MuseScore files relies on
 <em>exact</em> string matching and, to minimize erroneous mismatches, all field names are lowercased. In case you discover
-a misspelled column, you can rename it and call <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--remove</span></code>. This will remove the fields from the
-MuseScore files for which no corresponding column exists in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code>.</p>
+a misspelled column, you can rename (or remove) it and call <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--remove</span></code>. This will remove the
+metadata fields (that is, the corresponding XML tags) for which no corresponding column exists in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code>
+from the MuseScore files.</p>
 </div>
 </section>
 <section id="score-prelims-and-instrumentation">
 <span id="score-prelims"></span><h4><a class="toc-backref" href="#id55" role="doc-backlink">Score prelims and instrumentation</a><a class="headerlink" href="#score-prelims-and-instrumentation" title="Link to this heading">¶</a></h4>
 <p>The prelims are the header of a score that contains information about the piece. In MuseScore, they consist of up to
-five text fields which can be arbitrarily arranged in within the “Vertical box” at the top of the MuseScore file:</p>
+five text fields which can be arbitrarily arranged within the “Vertical box” at the top of the MuseScore file:</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/prelims_tchaikovsky_op37a06.png"><img alt="Prelims of Tchaikovsky op. 37a, no. 6" src="../_images/prelims_tchaikovsky_op37a06.png" style="width: 747.6px; height: 306.6px;" /></a>
 </figure>
 <p>The values of these fields are extracted and updated just like the metadata fields. The command <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">extract</span> <span class="pre">-D</span></code>
 writes the values for the existing fields into the columns:</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">title_text</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">subtitle_text</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lyricist_text</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">composer_text</span></code></p></li>
-<li><p>(<code class="docutils literal notranslate"><span class="pre">part_text</span></code>)</p></li>
-</ul>
+<li><p>(<code class="docutils literal notranslate"><span class="pre">part_text</span></code>, not used, automatically filled when extracting staves as individual parts such as “Violin II”)</p></li>
+</ol>
 <p>These columns should appear next to each other in the table so you can see if some of them are not present, in which
 case you can simply add those that you want to use. Once you have updated the values in question, you commit the change
 to the TSV file first and then run <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--prelims</span></code> in order to write the changes into the file.</p>
 <p>Usually you can compose these columns from the metadata fields that you have already cleaned in the previous step. For
 example, you can simply copy the <code class="docutils literal notranslate"><span class="pre">composer</span></code> column into <code class="docutils literal notranslate"><span class="pre">composer_text</span></code> column and commit. The lyricist field is
-generally used for vocal music or in special cases like the Tchaikovsky piece shown above that comes with a poem.
+generally used for vocal music; or in special cases such as the Tchaikovsky piece shown above that comes with a poem.
 For a dataset of sonatas, the title column could be composed, for example, by using the <code class="docutils literal notranslate"><span class="pre">CONCATENATE</span></code> function of
 your spreadsheet in order to combine the <code class="docutils literal notranslate"><span class="pre">workTitle</span></code> column with the <code class="docutils literal notranslate"><span class="pre">workNumber</span></code> column in some meaningful way.</p>
 <p>In general, there are two possibilities to use title and subtitle. When unsure, please ask on Mattermost.</p>
@@ -1489,9 +1491,10 @@ your spreadsheet in order to combine the <code class="docutils literal notransla
 e.g. <code class="docutils literal notranslate"><span class="pre">staff_1_instrument</span></code> for the upper staff. The new values are written into the document by running
 <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--instrumentation</span></code>.</p>
 <p>Once the scores have been updated/created, you will need to open each MuseScore file to check on their visual
-arrangement because it does not happen automatically. Please do not change the font settings unless strictly necessary.
+arrangement because it does not happen automatically. Please do not modify the default font settings (except for
+restoring the defaults) unless strictly necessary.
 The arrangement is arbitrary and should be somewhat satisfying visually (again, take the Tchaikovsky example above).
-Arranging the layout may involve making the vertical box larger.</p>
+Arranging the layout may involve enlarging the vertical box in the vertical dimension.</p>
 <section id="an-example">
 <h5><a class="toc-backref" href="#id56" role="doc-backlink">An example</a><a class="headerlink" href="#an-example" title="Link to this heading">¶</a></h5>
 <div class="admonition note">
@@ -1504,11 +1507,12 @@ A glance at the relevant columns of <code class="docutils literal notranslate"><
 <a class="reference internal image-reference" href="../_images/wagner_metadata_tsv.png"><img alt="../_images/wagner_metadata_tsv.png" src="../_images/wagner_metadata_tsv.png" style="width: 98%;" /></a>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">title_text</span></code> is defined for both pieces, the <code class="docutils literal notranslate"><span class="pre">subtitle_text</span></code> only for the first one, and the <code class="docutils literal notranslate"><span class="pre">composer_text</span></code>
-is missing for both and therefore does not have a column. All of them encode typesetting information through
-HTML tags which we want to get rid off.</p></li>
+is missing for both and therefore does not have a column. (<code class="docutils literal notranslate"><span class="pre">lyricist_text</span></code> is not needed in this case.) All present
+values encode typesetting information through HTML tags which we want to get rid off.</p></li>
 <li><p>The two instrument columns have the value “Piano (2)”, which we want to standardize.</p></li>
 </ul>
 <p>The following image shows the updated values:</p>
+<a class="reference internal image-reference" href="../_images/wagner_metadata_editing.png"><img alt="../_images/wagner_metadata_editing.png" src="../_images/wagner_metadata_editing.png" style="width: 98%;" /></a>
 <ul class="simple">
 <li><p>inserted a <code class="docutils literal notranslate"><span class="pre">composer_text</span></code> column (it does not matter where) and copied the values from the <code class="docutils literal notranslate"><span class="pre">composer</span></code> column</p></li>
 <li><p>removed the HTML tags from the <code class="docutils literal notranslate"><span class="pre">title_text</span></code> and <code class="docutils literal notranslate"><span class="pre">subtitle_text</span></code> columns</p></li>
@@ -1519,7 +1523,6 @@ might seem like an overkill in this example but is very convenient when dealing 
 <li><p>Changed all instrument values to “Piano” (case insensitive, so “piano” would work as well and would be standardized
 while updating the MuseScore files).</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/wagner_metadata_tsv.png"><img alt="../_images/wagner_metadata_tsv.png" src="../_images/wagner_metadata_tsv.png" style="width: 98%;" /></a>
 <a class="reference internal image-reference" href="../_images/meistersinger_header_before.png"><img alt="../_images/meistersinger_header_before.png" class="align-center" src="../_images/meistersinger_header_before.png" style="width: 90%;" /></a>
 <figure class="align-default" id="id15">
 <a class="reference internal image-reference" href="../_images/wagner_readme.png"><img alt="README.md file of the wagner_overtures repositories, needing to be cleaned" src="../_images/wagner_readme.png" style="width: 565.6px; height: 368.8px;" /></a>

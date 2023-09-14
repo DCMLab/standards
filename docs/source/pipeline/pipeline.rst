@@ -1138,11 +1138,11 @@ This last and important step has a lot of overlap with :ref:`enriching_metadata`
      :alt: Repository settings on GitHub
      :scale: 30%
 
-If you're lucky the repository has been created using the DCML corpus creation
-pipeline documented here and the metadata is already in a good state already. However, quite a number of repositories
+If you're lucky, the repository has been created using the DCML corpus creation
+pipeline documented here and the metadata is already in a good state. However, quite a number of repositories
 have been created before the inception of this pipeline and have to be brought up to speed.
 
-This section is currently (August 2023) focusing on roundabout 20 repositories that have a long and
+This section is currently (September 2023) focused on roundabout 20 repositories that have a long and
 pretty wild history (which does not always involve a lot of metadata love, unfortunately) so that this task may
 involve a considerable amount of detective's work, digging through commit histories to find out the origin of a file,
 comparing a score with one found on musescore.com to discover its original source, etc. The golden rule is: Everything
@@ -1178,7 +1178,8 @@ Make your edits to the ``metadata.tsv`` file, commiting each change individually
   For example, add and fill the columns ``composed_start``, ``composed_end`` and ``composed_source`` and commit them
   with the message "adds composition dates" (or similar).
 Once all columns have been cleaned to your satisfaction, update the corresponding fields in the MuseScore files.
-  For that you execute ``ms3 metadata``, inspect the changes using ``git diff`` and, if everything is looking good,
+  For that you execute ``ms3 metadata``, inspect the changes using ``git diff`` and, if everything is looking good
+  (e.g., there are no unwanted changes such as newly added but empty XML tags due to a misnamed column),
   you re-extract via ``ms3 extract -D`` (which usually results in a re-ordering of manually added columns and commit
   the changes with the message "writes updated metadata into MuseScore files", or similar.
 
@@ -1186,8 +1187,9 @@ Once all columns have been cleaned to your satisfaction, update the correspondin
 
    Note that the correspondence between columns in ``metadata.tsv`` and fields in the MuseScore files relies on
    *exact* string matching and, to minimize erroneous mismatches, all field names are lowercased. In case you discover
-   a misspelled column, you can rename it and call ``ms3 metadata --remove``. This will remove the fields from the
-   MuseScore files for which no corresponding column exists in ``metadata.tsv``.
+   a misspelled column, you can rename (or remove) it and call ``ms3 metadata --remove``. This will remove the
+   metadata fields (that is, the corresponding XML tags) for which no corresponding column exists in ``metadata.tsv``
+   from the MuseScore files.
 
 .. _score_prelims:
 
@@ -1195,7 +1197,7 @@ Score prelims and instrumentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The prelims are the header of a score that contains information about the piece. In MuseScore, they consist of up to
-five text fields which can be arbitrarily arranged in within the "Vertical box" at the top of the MuseScore file:
+five text fields which can be arbitrarily arranged within the "Vertical box" at the top of the MuseScore file:
 
 .. figure:: img/prelims_tchaikovsky_op37a06.png
      :alt: Prelims of Tchaikovsky op. 37a, no. 6
@@ -1204,11 +1206,11 @@ five text fields which can be arbitrarily arranged in within the "Vertical box" 
 The values of these fields are extracted and updated just like the metadata fields. The command ``ms3 extract -D``
 writes the values for the existing fields into the columns:
 
-* ``title_text``
-* ``subtitle_text``
-* ``lyricist_text``
-* ``composer_text``
-* (``part_text``)
+1. ``title_text``
+2. ``subtitle_text``
+3. ``lyricist_text``
+4. ``composer_text``
+5. (``part_text``, not used, automatically filled when extracting staves as individual parts such as "Violin II")
 
 These columns should appear next to each other in the table so you can see if some of them are not present, in which
 case you can simply add those that you want to use. Once you have updated the values in question, you commit the change
@@ -1216,7 +1218,7 @@ to the TSV file first and then run ``ms3 metadata --prelims`` in order to write 
 
 Usually you can compose these columns from the metadata fields that you have already cleaned in the previous step. For
 example, you can simply copy the ``composer`` column into ``composer_text`` column and commit. The lyricist field is
-generally used for vocal music or in special cases like the Tchaikovsky piece shown above that comes with a poem.
+generally used for vocal music; or in special cases such as the Tchaikovsky piece shown above that comes with a poem.
 For a dataset of sonatas, the title column could be composed, for example, by using the ``CONCATENATE`` function of
 your spreadsheet in order to combine the ``workTitle`` column with the ``workNumber`` column in some meaningful way.
 
@@ -1230,9 +1232,10 @@ e.g. ``staff_1_instrument`` for the upper staff. The new values are written into
 ``ms3 metadata --instrumentation``.
 
 Once the scores have been updated/created, you will need to open each MuseScore file to check on their visual
-arrangement because it does not happen automatically. Please do not change the font settings unless strictly necessary.
+arrangement because it does not happen automatically. Please do not modify the default font settings (except for
+restoring the defaults) unless strictly necessary.
 The arrangement is arbitrary and should be somewhat satisfying visually (again, take the Tchaikovsky example above).
-Arranging the layout may involve making the vertical box larger.
+Arranging the layout may involve enlarging the vertical box in the vertical dimension.
 
 
 An example
@@ -1250,11 +1253,14 @@ A glance at the relevant columns of ``metadata.tsv`` reveals the following situa
     :width: 98 %
 
 * The ``title_text`` is defined for both pieces, the ``subtitle_text`` only for the first one, and the ``composer_text``
-  is missing for both and therefore does not have a column. All of them encode typesetting information through
-  HTML tags which we want to get rid off.
+  is missing for both and therefore does not have a column. (``lyricist_text`` is not needed in this case.) All present
+  values encode typesetting information through HTML tags which we want to get rid off.
 * The two instrument columns have the value "Piano (2)", which we want to standardize.
 
 The following image shows the updated values:
+
+.. image:: img/wagner_metadata_editing.png
+    :width: 98 %
 
 * inserted a ``composer_text`` column (it does not matter where) and copied the values from the ``composer`` column
 * removed the HTML tags from the ``title_text`` and ``subtitle_text`` columns
@@ -1265,8 +1271,7 @@ The following image shows the updated values:
 * Changed all instrument values to "Piano" (case insensitive, so "piano" would work as well and would be standardized
   while updating the MuseScore files).
 
-.. image:: img/wagner_metadata_tsv.png
-    :width: 98 %
+
 
 
 
