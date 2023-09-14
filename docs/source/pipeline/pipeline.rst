@@ -1389,6 +1389,18 @@ The steps are:
 * ``Format -> Reset Text Style Overrides``. Suggested commit message: "resets text style overrides"
 
 
+Integrating the repository with the corpus automatization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In brief, this chore consists in making sure that
+
+* the repository is listed in `DCMLab/workflow_deployment/all_subcorpora.csv <https://github
+  .com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv>`__
+* the columns are filled with values that are appropriate for this corpus (or deliberately left blank).
+
+The cells in this CSV file correspond to template variables that are used to fill in blanks in the documentation
+homepage that is automatically deployed for each corpus, or in the basic skeletons for a ``README.md`` or a
+``.zenodo.json`` file.
 
 
 README.md
