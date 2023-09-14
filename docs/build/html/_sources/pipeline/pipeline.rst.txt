@@ -377,6 +377,8 @@ wikidata
   `<http://www.wikidata.org/entity/Q2194957>`__. If the ``composer`` and ``workTitle`` field are properly filled in,
   they can be reconciled with, i.e. matched to,
   Wikidata `using OpenRefine <https://openrefine.org/docs/manual/reconciling>`__.
+  **Tip:** If you happen to have the Wikipedia page open, you can quickly access the Wikidata item by clicking on
+  ``Wikidata item`` the ``Tools`` menu in the upper right (new layout) or in the left sidebar (old layout).
 
 musicbrainz
   musicbrainz.org has a whole lot of different identifiers, in particular for identifying individual recordings down
@@ -1249,35 +1251,148 @@ An example
 Let us consider the `wagner_overtures @ v2.1`_ repository.
 A glance at the relevant columns of ``metadata.tsv`` reveals the following situation:
 
-.. image:: img/wagner_metadata_tsv.png
+.. figure:: img/wagner_metadata_tsv.png
+    :alt: Metadata columns related to score prelims and instrumentation that need cleaning up.
     :width: 98 %
+
+    Metadata columns related to score prelims and instrumentation that need cleaning up.
+
+**1. Inspecting the metadata**
 
 * The ``title_text`` is defined for both pieces, the ``subtitle_text`` only for the first one, and the ``composer_text``
   is missing for both and therefore does not have a column. (``lyricist_text`` is not needed in this case.) All present
   values encode typesetting information through HTML tags which we want to get rid off.
 * The two instrument columns have the value "Piano (2)", which we want to standardize.
 
+**2. Update ``metadata.tsv`` & commit**
+
 The following image shows the updated values:
 
-.. image:: img/wagner_metadata_editing.png
+.. figure:: img/wagner_metadata_editing.png
+    :alt: Metadata columns related to score prelims and instrumentation after cleaning them up.
     :width: 98 %
+
+    Metadata columns related to score prelims and instrumentation after cleaning them up.
 
 * inserted a ``composer_text`` column (it does not matter where) and copied the values from the ``composer`` column
 * removed the HTML tags from the ``title_text`` and ``subtitle_text`` columns
-* as the screenshot below indicates, actually the ``title_text`` has been fully re-created by using the formula
+* as can be seen in the screenshot above, the ``title_text`` column has been fully re-created using the formula
   ``=CONCATENATE(V2, ", ", Y2)``, yielding a concatenation of the ``workTitle`` and ``workNumber`` columns. This
-  might seem like an overkill in this example but is very convenient when dealing with larger corpora.
+  might seem like an overkill in this two-row example but is very convenient when dealing with larger corpora.
 * Moved the subtitle "Vorspiel" from the ``title_text`` to the ``subtitle_text`` column for the second piece.
 * Changed all instrument values to "Piano" (case insensitive, so "piano" would work as well and would be standardized
   while updating the MuseScore files).
 
+Commit the changes with a commit message such as "updates metadata.tsv with prelims and instrumentation".
 
+**3. Execute ``ms3 metadata --prelims --instrumentation``**
 
-
-
-.. image:: img/meistersinger_header_before.png
+.. figure:: img/meistersinger_header_before.png
+    :alt: Header of the Meistersinger score before cleaning up prelims and instrumentation
     :width: 90 %
     :align: center
+
+    Header of the Meistersinger score **before** cleaning up prelims and instrumentation.
+
+.. figure:: img/meistersinger_header_after.png
+    :alt: Header of the Meistersinger score after cleaning up prelims and instrumentation
+    :width: 90 %
+    :align: center
+
+    Header of the Meistersinger score **after** cleaning up prelims and instrumentation. Font and positions
+    correspond to the defaults. See the following section on how to adjust the header to make it more appealing.
+
+**4. Inspect and commit**
+
+.. figure:: img/meistersinger_diff.png
+    :alt: Diff of the MuseScore file corresponding to the changes made by ``ms3 metadata --prelims --instrumentation``
+    :width: 98 %
+    :align: center
+
+    Diff of the MuseScore file corresponding to the changes introduced by ``ms3 metadata --prelims --instrumentation``.
+    The screenshot is taken from the `commit on GitHub <https://github
+    .com/DCMLab/wagner_overtures/commit/2965f51f1eab4508e6f52d93f44f616cd535cc9c#diff
+    -d897a19a1076385ca259162d48767a7ad4fc2398af0ba7c96d2e3913c210f06b>`__.
+
+Check the changes in the MuseScore files by opening them and using ``git diff`` and.
+Everything is alright if
+
+* the score can still be opened in MuseScore 3 without throwing an error message
+* no serious glitch has been introduced (e.g., a clef was replaced with another clef)
+* the score is playback with the appropriate instrument sound banks
+* the diff does not show any suspicious changes that seem uncalled for
+
+It is OK for the header at this point to look a bit wonky, we are going to clean it up in the next section.
+Suggested commit message: "writes updated prelims and instrumentation into MuseScore files".
+
+
+Normalizing score layout
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Since we have the scores opened already, we might as well give them a few final brushstrokes to standardize how
+they look.
+
+Header
+""""""
+
+The header of the Meistersinger score in the screenshot above will benefit from a few manual adjustments:
+
+.. figure:: img/meistersinger_header_adjusted.png
+    :alt: Header of the Meistersinger score after manually adjusting it
+    :width: 90 %
+    :align: center
+
+    Header of the Meistersinger Vorspiel after manually adjusting it.
+
+#. The vertical box was enlarged vertically (by selecting it and dragging the handle) for it to fit the default prelims.
+   This affects the beginning of the music.
+#. Each score needs to have a metronome marking. This one already had one, but since it's not part of the
+   original PDF we need to hide it (select and press ``V`` as in "visible"). Beat unit and tempo look reasonable,
+   otherwise we would adjust them at this point.
+#. Upon hiding the tempo marking it disappeared completely, which is a sign that ``View -> Show invisible`` should be
+   checked for this score so that hidden elements do not go unnoticed.
+#. The verbal tempo indication has been completed with the words that were missing from the PDF. Then it was
+   moved closer to the beginning of the music, as well as the metronome marking (even when hidden, its large
+   distance from the music was causing a gap).
+
+These steps uncovered a cascade of other necessities, which is a typical characteristic of the finalization process:
+
+* The original PDF had been missing, a good occasion to go find and include it.
+* Including the PDF from IMSLP involves adding the "reverse lookup" link to the ``metadata.tsv`` file (see
+  :ref:`enriching_metadata` above). It turns out that the identifiers have not been added to the metadata yet.
+  Having the IMSLP page open already leaves us in a good position to add them on the go. Those for the Tristan
+  score are missing as well.
+
+Score layout
+""""""""""""
+
+.. note::
+
+   This section is experimental and can be skipped.
+
+This is a quick routine for resetting the layout of a score to the default values. It is generally a good idea to do
+so, but one needs to make sure that no information is lost and that no layout atrocities are introduced by the process.
+So as basic rules:
+
+* If any of the steps result in a score that looks worse than before, it should be undone and not committed.
+* As a security measure, after each step one should execute ``ms3 extract -M -N -X -F -D`` to make sure that no
+  elements have changed during the process, otherwise one should undo and not commit, maybe leaving a note.
+* Each step should be committed individually so that it can be reverted if needed.
+* However, the same step maybe applied to all scores, and committed (without any changes introduced by ``ms3 extract``,
+  which should be have occurred either way).
+
+The steps are:
+
+* ``Format -> Style -> Reset All Styles to Default -> OK``. Suggested commit message: "resets all styles to default"
+* ``Format -> Add/Remove System Breaks -> Remove current system breaks -> OK``. Suggested commit message: "removes
+  all system breaks"
+* ``Format -> Reset Text Style Overrides``. Suggested commit message: "resets text style overrides"
+
+
+
+
+README.md
+^^^^^^^^^
 
 .. figure:: img/wagner_readme.png
      :alt: README.md file of the wagner_overtures repositories, needing to be cleaned
