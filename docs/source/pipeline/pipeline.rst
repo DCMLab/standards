@@ -1300,7 +1300,16 @@ Commit the changes with a commit message such as "updates metadata.tsv with prel
     :align: center
 
     Header of the Meistersinger score **after** cleaning up prelims and instrumentation. Font and positions
-    correspond to the defaults. See the following section on how to adjust the header to make it more appealing.
+    correspond to the defaults.
+
+.. figure:: img/meistersinger_header_adjusted.png
+    :alt: Header of the Meistersinger score after manually adjusting it
+    :width: 90 %
+    :align: center
+
+    Header of the Meistersinger Vorspiel after manually adjusting it. See the following section on
+    :ref:`how to adjust the header <adjusting_header>` to make it more appealing.
+
 
 **4. Inspect and commit**
 
@@ -1332,23 +1341,18 @@ Normalizing score layout
 Since we have the scores opened already, we might as well give them a few final brushstrokes to standardize how
 they look.
 
+.. _adjusting_header:
+
 Header
 """"""
 
-The header of the Meistersinger score in the screenshot above will benefit from a few manual adjustments:
-
-.. figure:: img/meistersinger_header_adjusted.png
-    :alt: Header of the Meistersinger score after manually adjusting it
-    :width: 90 %
-    :align: center
-
-    Header of the Meistersinger Vorspiel after manually adjusting it.
+The header of the Meistersinger score in the screenshot above has benefitted from the following manual adjustments:
 
 #. The vertical box was enlarged vertically (by selecting it and dragging the handle) for it to fit the default prelims.
    This affects the beginning of the music.
 #. Each score needs to have a metronome marking. This one already had one, but since it's not part of the
-   original PDF we need to hide it (select and press ``V`` as in "visible"). Beat unit and tempo look reasonable,
-   otherwise we would adjust them at this point.
+   original PDF we need to hide it (select and press ``V`` as in "visible"). Also, most people will intuitively clap in
+   halves to this, so this is also a good moment to replace the metronome mark accordingly.
 #. Upon hiding the tempo marking it disappeared completely, which is a sign that ``View -> Show invisible`` should be
    checked for this score so that hidden elements do not go unnoticed.
 #. The verbal tempo indication has been completed with the words that were missing from the PDF. Then it was
@@ -1360,8 +1364,8 @@ These steps uncovered a cascade of other necessities, which is a typical charact
 * The original PDF had been missing, a good occasion to go find and include it.
 * Including the PDF from IMSLP involves adding the "reverse lookup" link to the ``metadata.tsv`` file (see
   :ref:`enriching_metadata` above). It turns out that the identifiers have not been added to the metadata yet.
-  Having the IMSLP page open already leaves us in a good position to add them on the go. Those for the Tristan
-  score are missing as well.
+  Having the IMSLP page open already leaves us in a good position to add them on the go.
+* Those for the Tristan score are missing as well and are completed on the fly.
 
 Score layout
 """"""""""""
@@ -1387,7 +1391,8 @@ The steps are:
 * ``Format -> Add/Remove System Breaks -> Remove current system breaks -> OK``. Suggested commit message: "removes
   all system breaks"
 * ``Format -> Reset Text Style Overrides``. Suggested commit message: "resets text style overrides"
-
+* ``Format -> Page Settings -> Reset All Page Settings to Default``. Suggested commit message: "resets all page
+  settings to default"
 
 Integrating the repository with the corpus automatization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1398,19 +1403,76 @@ In brief, this chore consists in making sure that
   .com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv>`__
 * the columns are filled with values that are appropriate for this corpus (or deliberately left blank).
 
-The cells in this CSV file correspond to template variables that are used to fill in blanks in the documentation
-homepage that is automatically deployed for each corpus, or in the basic skeletons for a ``README.md`` or a
-``.zenodo.json`` file.
+The cells in this CSV file correspond to template variables that are used to fill in blanks in
+
+*  the `documentation homepage template <https://github
+   .com/DCMLab/corpus_docs/tree/85c559c0282ded7fd00f9b905f6eb379778038b4>`__ that is automatically deployed for each
+   corpus
+* the basic skeletons for a ``README.md`` and a ``.zenodo.json`` file.
+
+Updating ``all_subcorpora.csv``
+"""""""""""""""""""""""""""""""
+
+For a "normal" corpus, the variables that need to be filled are (get inspired from present values, too):
+
+* ``pretty_repo_name`` Human-readable title that appears as first heading in the README and as homepage title, e.g.
+  "Richard Wagner – Overtures" (note the en dash used through the column).
+* ``example_fname`` an example filename (without file extension), generally the one in the ``piece`` column of
+  ``metadata.tsv``, e.g. "WWV090_Tristan_01_Vorspiel-Prelude_Ricordi1888Floridia"
+* ``example_full_title`` the full title of the example piece that is implanted into a phrase, e.g.
+  "the “Vorspiel” of *Tristan und Isolde*" (note the use of restructuredText syntax for italics)
+
+Once these are updated, they change can be committed directly to main in this exceptional case. Suggested commit
+message: "adds template values for <corpus_name>".
+
+Deploying the homepage
+""""""""""""""""""""""
+
+.. figure:: img/run_update_homepage.png
+    :alt: Running the update_homepage workflow
+    :width: 30 %
+    :align: center
+
+
+In ``workflow_deployment/actions`` select "update_homepage" from the menu on the left or
+`click here <https://github.com/DCMLab/workflow_deployment/actions/workflows/update_homepages.yml>`__.
+Then click on "Run workflow" and then on the green "Run workflow" button. This will iterate through the rows of
+``all_subcorpora.csv`` and re-build the homepages where necessary.
+
+Coming back after a few minutes the action has hopefully terminated successfully. To be very sure, you can checkout the
+``docs`` branch of the corpus repo and check if the bot has recently pushed files. Then you can go to the GitHub page
+of the repo, click on the little cogwheel next to the "About" panel, under "Website", activate the checkbox
+"Use your GitHub Pages website", and click on "Save changes." Clicking on the pages link should bring you to the
+newly built homepage.
+
 
 
 README.md
 ^^^^^^^^^
+
+.. warning::
+
+    Note that everything under ``## Overview`` is automatically generated and everything you change beneath will be
+    relentlessly overwritten!
+
+
+The ``README.md`` file is the first thing that people see when they visit the repository on GitHub. Likewise, it
+is the start page of the automatically deployed documentation homepage. That's why our READMEs follow the same
+template, which in the beginning adds a few badgets and generic links explaining this fact for easy navigation.
+
+Often, if you're cleaning up a README, you're faced with something like this:
 
 .. figure:: img/wagner_readme.png
      :alt: README.md file of the wagner_overtures repositories, needing to be cleaned
      :scale: 80%
 
      This README.md contains only a template text and an automatically generated overview table.
+
+In order to fill our template README with values corresponding to the current corpus, we can call the script
+``workflow_deployment/src/jinja_filler.py`` with the arguments we want to fill in. By default, it runs on the files
+in the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__, leaving you with the filled
+README.md from which you can copy everything into the README.md of the corpus repository. From here you may want to
+adapt it and maybe fill it with a little bit of life, such as a short introduction to the corpus.
 
 
 
