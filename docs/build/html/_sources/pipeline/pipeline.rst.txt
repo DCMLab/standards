@@ -1164,12 +1164,15 @@ is allowed as long as it contributes to a better presentable dataset.
 The finalization focuses on the following aspects:
 
 * The :ref:`metadata_tsv` file and the corresponding metadata fields in the MuseScore files it describes.
-* The :ref:`score_prelims`, i.e. the header presenting a movement's title, composer, etc. (likewise manageable through
-  the ``metadata.tsv`` file).
-* The ``README.md`` with some standardized general information and some corpus-specific text blobs.
-* The `all_subcorpora.csv <https://github.com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv>`__ file
-  that is used to automatically deploy a corpus-specific website based on filling a homepage template with the values
+* The :ref:`score_prelims`, i.e. the header presenting a movement's title, composer, as well as the instruments
+  assigned to each staff (likewise manageable through the ``metadata.tsv`` file).
+* The :ref:`README.md <template_filling>` with some standardized general information and some corpus-specific text
+  blobs.
+* The :ref:`all_subcorpora.csv <workflow_deployment_integration>` file that is used to automatically deploy a corpus-specific website based on filling a homepage template with the values
   in that table.
+
+Once a repository is made public, it will additionally undergo the :ref:`zenodo_integration` and receive a
+``.zenodo.json`` file.
 
 .. _metadata_tsv:
 
@@ -1405,6 +1408,8 @@ The steps are:
 * ``Format -> Page Settings -> Reset All Page Settings to Default``. Suggested commit message: "resets all page
   settings to default"
 
+.. _workflow_deployment_integration:
+
 Integrating the repository with the corpus automatization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1466,10 +1471,14 @@ of the repo, click on the little cogwheel next to the "About" panel, under "Webs
 "Use your GitHub Pages website", and click on "Save changes." Clicking on the pages link should bring you to the
 newly built homepage.
 
+.. _template_filling:
 
+``README.md`` and template filling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-README.md
-^^^^^^^^^
+.. note::
+
+    TL;DR: `Checkout the example PR <https://github.com/DCMLab/bach_chorales/pull/1>`__.
 
 .. warning::
 
@@ -1492,6 +1501,9 @@ Often, if you're cleaning up a README, you're faced with something like this:
 Everything described in the following could be replaced by editing the README.md manually to achieve the desired
 result. However, if you find yourself cleaning up the READMEs for multiple repos, you will probably benefit from
 using the template filling approach.
+
+Filling the templates for multiple repositories
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 In order to run the template filler script, here's a very quick setup of a conda environment (assuming you have conda
 installed) that you can execute in your clone of the ``workflow_deployment`` repository:
@@ -1523,6 +1535,9 @@ The first argument to the script, ``-f`` defaults to the ``template_repository``
 folder per row in the CSV file. From there you can go and copy the contents of the README.md file into the README.md
 of the corresponding corpus repository, adapting it as needed.
 
+Filling the templates for a single repository
+"""""""""""""""""""""""""""""""""""""""""""""
+
 If you need to fill in for a single repo, you might be faster off just passing the arguments for it directly to the
 script, as in this example:
 
@@ -1546,14 +1561,173 @@ If the repository has at least one previous version tag **and is already public*
 the Zenodo integration, in the same branch and Pull Request. Otherwise, please create one just for the README.md.
 `Click here for an example PR <https://github.com/DCMLab/bach_chorales/pull/1>`__.
 
+.. _zenodo_integration:
 
 Zenodo integration
 ^^^^^^^^^^^^^^^^^^
 
+.. note::
 
+    TL;DR: `Checkout the example PR <https://github.com/DCMLab/bach_chorales/pull/2>`__.
 
-`EPFL community guidelines <https://zenodo.org/communities/epfl/about/>`__
+The Zenodo integration has the purpose of automatically assigning a new DOI for each new version of a copurs that is
+released on GitHub. In order to activate it, one needs to be the owner of a repository.
 
+Activating the integration for a corpus repository
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Being the owner of the repo in question (or admin of the owner organization), on can log into
+`Zenodo <https://zenodo.org/>`__ with one's GitHub account and use the menu to go
+`GitHub <https://zenodo.org/account/settings/github/>`__, a page showing all public repositories with a toggle that
+shows whether the integration is activated or not.
+
+.. figure:: img/zenodo_toggle.png
+    :alt: Zenodo GitHub integration page
+    :width: 80 %
+    :align: center
+
+    Zenodo GitHub integration page where the toggle has been set to "on".
+
+From now on, every GitHub release will be sent to Zenodo and a DOI will be assigned to the new version. This involves
+the creation of a new Zenodo record (which includes long-term archival of the data) which requires the presence of a
+``.zenodo.json`` file (if we want the record to contain any useful information).
+
+Getting the Zenodo badge ID
+"""""""""""""""""""""""""""
+
+The Zenodo badge ID allows to display a blue badge at the top of a repository's README file that always displays the DOI
+that has been automatically assigned by Zenodo to the current release (looks like the one in the screenshot below).
+Please note that the 9-digit ID is not to be confused with the 7-digit end of the DOI itself.
+
+First we create a GitHub release (or have it automatically created by the workflow) and go (back) to the Zenodo
+overview of our GitHub repositories. Clicking on the repository in question, hopefully, we should see something like
+this:
+
+.. figure:: img/zenodo_status.png
+    :alt: GitHub release successfully integrated into Zenodo
+    :width: 90 %
+    :align: center
+
+    GitHub release successfully integrated into Zenodo with a newly assigned DOI.
+
+The DOI has been successfully assigned and there is a green check saying "Published". We now can extract the Zenodo
+badge ID by clicking on the blue DOI badge and copying the 9-digit ID from one of the various fields:
+
+.. figure:: img/zenodo_badge_id.png
+    :alt: Zenodo badge ID highlighted multiple times
+    :width: 80 %
+    :align: center
+
+    After clicking on the blue DOI badge, this pane shows up, displaying the badge ID multiple times.
+
+We are now able to copy the ID and fill in the last two ``{{ zenodo_badge_id }}`` placeholders in the README.md like so:
+
+.. figure:: img/zenodo_badge_id_readme_diff.png
+    :alt: Replacing the placeholders in the README.md with the Zenodo badge ID
+    :width: 99 %
+    :align: center
+
+    Replacing the two placeholders in the README.md with the Zenodo badge ID.
+
+Then we also copy it into the corresponding cell of ``workflow_deployment/all_subcorpora.csv``.
+
+Setting up the ``.zenodo.json`` metadata file
+"""""""""""""""""""""""""""""""""""""""""""""
+
+We have two possibilities:
+
+* Either we use the ``.zenodo.json`` file that we get from the using the
+  :ref:`template filling script <template_filling>` above.
+* Or we use the Zenodo form to conveniently edit the metadata and then copy the JSON version generated by Zenodo.
+
+In both cases the contents of the file need to be carefully checked because once information ends up on Zenodo,
+it quickly propagates throughout the internet and is hard to correct.
+
+**Using the ``.zenodo.json`` generated by the template filler**
+
+We can copy the file to the top level of the corpus repository and adapt it manually. It is highly recommended to use
+a text editor with JSON syntax highlighting and validation to avoid failed releases where Zenodo rejects the file
+(e.g. because of a trailing comma after the last item in an array). The
+`zenodraft/metadata-schema-zenodo <https://github.com/zenodraft/metadata-schema-zenodo>`__ repository contains a
+JSONschema file with the full specification, e.g. all possible license values etc.
+
+The template filler leaves us with a file with
+
+* (hopefully correctly) filled-in template fields
+
+  * ``title``
+  * ``version``
+  * ``related_identifiers``
+
+* default values that probably can stay as they are
+
+  * ``license``
+  * ``description`` (as of September 2023, we are using a default description)
+  * ``grants``
+  * ``upload_type``
+  * ``communities``
+  * ``access_right``
+
+* default values that might need to be amended:
+
+  * ``contributors``, that is, engravers and annotators (``"type": "DataCollector",``), and curators
+    (``"type": "DataCurators",``); each person MUST come with an ORCID and CAN have an affiliation
+  * ``keywords``
+  * ``creators``
+  * ``publication_date``
+
+**Using the Zenodo form**
+
+From the Zenodo overview of our GitHub repositories shown in the screenshot above, we click on the DOI (the grey link,
+not the blue badge), which takes us to the record. At first it might look very incomplete:
+
+.. figure:: img/zenodo_record_before.png
+    :alt: Zenodo record with very little metadata
+    :width: 90 %
+    :align: center
+
+    Zenodo record with very little metadata. It shows the record to be "Software" (instead of a "Dataset"),
+    shows a generic title and body generated from the GitHub release, and has an incomplete author list.
+
+Clicking on "Edit" we are taken to a form where we can fill in the missing information. The form is divided into
+multiple sections which we ideally we click through and fill according to the default metadata listed in the previous
+section. It is a good idea to click "Save" often; and when everything is edited, to click on "Publish".
+
+Then we can go back to the overview of GitHub repos (shown above), click on the release and on "Metadata", from where
+we can simply copy the generated JSON into a fresh ``.zenodo.json`` file in the corpus repository; **but with one
+important exception**: The ``related_identifiers`` array contains an entry that causes the Zenodo API to reject a
+release containing it, so it is important to remove it. It is the entry that has the ``"relation": "isVersionOf"``
+and might look like this:
+
+.. code-block:: json
+
+    {
+        "scheme": "doi",
+        "identifier": "10.5281/zenodo.8364205",
+        "relation": "isVersionOf"
+    }
+
+.. warning::
+
+   Bear in mind the above-said: When you remove an entry from an array, it is important to also remove the trailing
+   comma. Ideally your text editor will do it for you or at least warn you about it.
+
+With the syntactically correct ``.zenodo.json`` file pushed to the corpus repo, the next release will show with the
+complete set of metadata and is looking `rather neat <https://zenodo.org/record/8364931>`__:
+
+.. figure:: img/zenodo_record_after.png
+    :alt: Zenodo record with complete metadata
+    :width: 90 %
+    :align: center
+
+    Zenodo record with complete metadata. It shows the record to be a "Dataset", a HTML version of the repo's README,
+    creators and contributors with ORCID links, as well as keywords, funding information, and related identifiers.
+
+Additionally, listing "epfl" in the ``communities`` field results in a request being sent to EPFL's research data
+team who will scrutinize the record according to the
+`EPFL community guidelines <https://zenodo.org/communities/epfl/about/>`__ and send us an email with the outcome.
+
+`Click here for an example PR <https://github.com/DCMLab/bach_chorales/pull/2>`__.
 
 
 
