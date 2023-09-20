@@ -136,13 +136,13 @@ Before starting annotating a corpus, a repo with the standard folder structure n
 The directory ``MS3`` contains the unannotated MuseScore files and ``PDF`` the print edition or manuscript which they
 encode. In order to activate the annotation workflow (i.e. the automatic scripts triggered on the GitHub servers
 by certain events related to annotation and review), the folder ``.github/workflows`` needs to be copied from
-the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__. It also contains our
+the `template repository`_. It also contains our
 standard ``.gitignore`` file which prevents temporary files from being tracked and uploaded.
 
 Variant 1: Using the template repository
 ----------------------------------------
 
-You can create the new repo directly from the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__
+You can create the new repo directly from the `template repository`_
 by heading there and clicking on 'Use this template'. In this variant, every push to the ``main`` branch results
 in metadata, measures and notes being extracted from all changed ``.mscx`` files. Note that renaming and deleting
 files will lead to undesired effects that will have to be checked and corrected manually.
@@ -168,7 +168,7 @@ Setting
   added on top.
 
 Create the new repo B
-  On GitHub, we use the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__ to create
+  On GitHub, we use the `template repository`_ to create
   the target repo ``chopin_mazurkas`` with the workflow files and the standard ``.gitignore``. Locally, we initialize
   an empty Git repo that will be connected upstream at a later point: ::
 
@@ -1408,23 +1408,32 @@ The steps are:
 Integrating the repository with the corpus automatization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+As a prerequisite for this section, please clone the `DCMLab/workflow_deployment/ <https://github
+.com/DCMLab/workflow_deployment>`__ repo recursively:
+
+.. code-block:: bash
+
+    git clone --recursive git@github.com:DCMLab/workflow_deployment.git
+
 In brief, this chore consists in making sure that
 
 * the repository is listed in `DCMLab/workflow_deployment/all_subcorpora.csv <https://github
   .com/DCMLab/workflow_deployment/blob/main/all_subcorpora.csv>`__
 * the columns are filled with values that are appropriate for this corpus (or deliberately left blank).
 
-The cells in this CSV file correspond to template variables that are used to fill in blanks in
+The cells in this CSV file correspond to template variables that are used to fill in the ``{{ placeholders }}`` in
+multiple text files. These files are included in the workflow_deployment repository in the form of submodules:
 
-*  the `documentation homepage template <https://github
-   .com/DCMLab/corpus_docs/tree/85c559c0282ded7fd00f9b905f6eb379778038b4>`__ that is automatically deployed for each
+*  ``corpus_docs`` includes the `documentation homepage template <https://github
+   .com/DCMLab/corpus_docs/>`__ that is automatically deployed for each
    corpus
-* the basic skeletons for a ``README.md`` and a ``.zenodo.json`` file.
+* ``template_repository`` includes (other than the current version of the GitHub workflow) basic skeletons for a
+  ``README.md`` and a ``.zenodo.json`` file (see further below).
 
 Updating ``all_subcorpora.csv``
 """""""""""""""""""""""""""""""
 
-For a "normal" corpus, the variables that need to be filled are (get inspired from present values, too):
+For a "normal" corpus, the variables that need to be filled are:
 
 * ``pretty_repo_name`` Human-readable title that appears as first heading in the README and as homepage title, e.g.
   "Richard Wagner – Overtures" (note the en dash used through the column).
@@ -1433,8 +1442,9 @@ For a "normal" corpus, the variables that need to be filled are (get inspired fr
 * ``example_full_title`` the full title of the example piece that is implanted into a phrase, e.g.
   "the “Vorspiel” of *Tristan und Isolde*" (note the use of restructuredText syntax for italics)
 
-Once these are updated, they change can be committed directly to main in this exceptional case. Suggested commit
-message: "adds template values for <corpus_name>".
+You can take inspiration from already existing entries in other rows, too.
+Once these are updated, they change can be committed directly to main in this exceptional case.
+Suggested commit message: "adds template values for <corpus_name>".
 
 Deploying the homepage
 """"""""""""""""""""""
@@ -1479,26 +1489,76 @@ Often, if you're cleaning up a README, you're faced with something like this:
 
      This README.md contains only a template text and an automatically generated overview table.
 
-In order to fill our template README with values corresponding to the current corpus, we can call the script
-``workflow_deployment/src/jinja_filler.py`` with the arguments we want to fill in. By default, it runs on the files
-in the `template repository <https://github.com/DCMLab/annotation_workflow_template>`__, leaving you with the filled
-README.md from which you can copy everything into the README.md of the corpus repository. From here you may want to
-adapt it and maybe fill it with a little bit of life, such as a short introduction to the corpus.
+Everything described in the following could be replaced by editing the README.md manually to achieve the desired
+result. However, if you find yourself cleaning up the READMEs for multiple repos, you will probably benefit from
+using the template filling approach.
 
+In order to run the template filler script, here's a very quick setup of a conda environment (assuming you have conda
+installed) that you can execute in your clone of the ``workflow_deployment`` repository:
 
+.. code-block:: bash
 
-.. _wagner_overtures @ v2.1: https://github.com/DCMLab/wagner_overtures/releases/tag/v2.1
+    conda create -n jinja pip && conda activate jinja
+    pip install -r src/requirements.txt
 
+Note that there is another ``requirements.txt`` file in the root directory of the repository, which has a whole lot
+more dependencies, needed for compiling the corpus documentation homepage. Since we don't need to do this locally,
+the ``src/requirements.txt`` file contains the bare necessities for executing the template filler. To see if and how
+it works, view its help message:
+
+.. code-block:: bash
+
+    python src/jinja_filler.py -h
+
+Most parameters correspond to columns in the ``all_subcorpora.csv`` table; meaning that if you need to fill in the
+``template_repository/README.md`` file, for multiple repositories, you might be faster off creating a CSV file,
+e.g. ``subset.csv``, by removing irrelevant rows from ``all_subcorpora.csv`` and calling
+
+.. code-block:: bash
+
+    # make sure to fill in and commit all_subcorpora.csv first before creating the subset.csv
+    python src/jinja_filler.py -csv subset.csv
+
+The first argument to the script, ``-f`` defaults to the ``template_repository`` folder and will produce one filled-in
+folder per row in the CSV file. From there you can go and copy the contents of the README.md file into the README.md
+of the corresponding corpus repository, adapting it as needed.
+
+If you need to fill in for a single repo, you might be faster off just passing the arguments for it directly to the
+script, as in this example:
+
+.. code-block:: bash
+
+    python src/jinja_filler.py\
+        -r bach_chorales\
+        -p "Johann Sebastian Bach – The Chorales"\
+        -cr v2.0
+        # include `-b` if the Zenodo badge ID is known at this point
+
+From here you may want to
+
+* create a new branch in the corpus repository,
+* copy the desired parts of the filled-in README.md file into the README.md of the corresponding corpus repository
+  and commit
+* adapt it further, filling it with a little bit of life, such as a short introduction to the corpus (the pieces),
+  origin and history, and status of the files, annotations etc.
+
+If the repository has at least one previous version tag **and is already public**, you may include the following step,
+the Zenodo integration, in the same branch and Pull Request. Otherwise, please create one just for the README.md.
+`Click here for an example PR <https://github.com/DCMLab/bach_chorales/pull/1>`__.
 
 
 Zenodo integration
 ^^^^^^^^^^^^^^^^^^
+
+
 
 `EPFL community guidelines <https://zenodo.org/communities/epfl/about/>`__
 
 
 
 
+.. _wagner_overtures @ v2.1: https://github.com/DCMLab/wagner_overtures/releases/tag/v2.1
+.. _template repository: https://github.com/DCMLab/annotation_workflow_template
 
 
 
