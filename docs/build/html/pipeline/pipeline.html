@@ -1208,6 +1208,16 @@ During finalization we will be performing the workflow tasks manually
 using the <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span></code> command. So we want to first
 <strong>deactivate the GitHub actions</strong> by simply removing the folder <code class="docutils literal notranslate"><span class="pre">.github</span></code> (using the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">.github</span></code>)
 and committing the change.</p>
+<p><strong>Important update (September 2023)</strong></p>
+<p>At this point, it is important to prevent the automatic re-installation of the workflow by the automatic
+<a class="reference external" href="https://github.com/DCMLab/workflow_deployment/">workflow_deployment</a>. The relevant change needs to be committed
+to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of this repo and consists in deleting a value in the file <code class="docutils literal notranslate"><span class="pre">all_subcorpora.csv</span></code>, namely:</p>
+<ul class="simple">
+<li><p>in the row corresponding to the corpus repository in question</p></li>
+<li><p>removing the value in the column <code class="docutils literal notranslate"><span class="pre">workflow_version</span></code>;</p></li>
+<li><p>in case the workflow is to be automatically replaced with the lastest workflow version, instead of removing the value,
+the cell should be overwritten with the value <code class="docutils literal notranslate"><span class="pre">latest</span></code>.</p></li>
+</ul>
 <p>Then we streamline the repository to harmonize it with the other ones.
 By default, every repo should come with the files</p>
 <ul class="simple">

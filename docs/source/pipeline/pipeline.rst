@@ -887,6 +887,17 @@ using the ``ms3 review`` command. So we want to first
 **deactivate the GitHub actions** by simply removing the folder ``.github`` (using the command ``git rm -r .github``)
 and committing the change.
 
+**Important update (September 2023)**
+
+At this point, it is important to prevent the automatic re-installation of the workflow by the automatic
+`workflow_deployment <https://github.com/DCMLab/workflow_deployment/>`__. The relevant change needs to be committed
+to the ``main`` branch of this repo and consists in deleting a value in the file ``all_subcorpora.csv``, namely:
+
+* in the row corresponding to the corpus repository in question
+* removing the value in the column ``workflow_version``;
+* in case the workflow is to be automatically replaced with the lastest workflow version, instead of removing the value,
+  the cell should be overwritten with the value ``latest``.
+
 Then we streamline the repository to harmonize it with the other ones.
 By default, every repo should come with the files
 
