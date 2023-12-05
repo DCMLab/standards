@@ -49,7 +49,7 @@ File curation
 -------------
 
 The scores need to be corrected on the basis of a reference edition/manuscript.
-This documentation contains a page containing the :doc:`../scores/guidelines` which
+This documentation includes the :doc:`../scores/guidelines` which
 stipulate which information from the reference edition/manuscript needs to be encoded in what way.
 Please send a request to be added to the document.
 
