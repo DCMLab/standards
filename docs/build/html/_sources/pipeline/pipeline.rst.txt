@@ -49,9 +49,8 @@ File curation
 -------------
 
 The scores need to be corrected on the basis of a reference edition/manuscript.
-We have a collaborative document with detailed
-`Score correction guidelines <https://docs.google.com/document/d/1Q2svEUSsE7OCetik8An__gsEwQCYNfFJlHFMF9dRce4/edit#heading=h.8hrcm7m3udll>`__.
-It also stipulates which information from the reference edition/manuscript needs to be encoded in what way.
+This documentation contains a page containing the :doc:`../scores/guidelines` which
+stipulate which information from the reference edition/manuscript needs to be encoded in what way.
 Please send a request to be added to the document.
 
 * Convert to MuseScore format
