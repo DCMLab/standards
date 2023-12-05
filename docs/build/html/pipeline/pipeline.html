@@ -1107,42 +1107,40 @@ git<span class="w"> </span>rm<span class="w"> </span>warnings.log<span class="w"
 </div>
 <p>Manually remove the folders <code class="docutils literal notranslate"><span class="pre">reviewed</span></code>, <code class="docutils literal notranslate"><span class="pre">measures</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>, and <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> which will be replaced in the
 following (don’t commit the deletion separately).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ms32<span class="w"> </span>review<span class="w"> </span>-M<span class="w"> </span>-N<span class="w"> </span>-X<span class="w"> </span>-F<span class="w"> </span>-D<span class="w"> </span>-c<span class="w"> </span>v1.0
-git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ms3 review -M -N -X -F -D -c v1.0 (v2.1.1)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ms3<span class="w"> </span>review<span class="w"> </span>-M<span class="w"> </span>-N<span class="w"> </span>-X<span class="w"> </span>-F<span class="w"> </span>-D<span class="w"> </span>-c<span class="w"> </span>v1.0
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;ms3 review -M -N -X -F -D -c v1.0 (ms3 v2.4.1)&quot;</span>
 git<span class="w"> </span>push<span class="w"> </span>--atomic
 </pre></div>
 </div>
 </div>
 <p>All steps in this section are to be performed locally and, once completed, to be merged through a reviewed PR. This
 section requires using two different versions of <code class="docutils literal notranslate"><span class="pre">ms3</span></code>, namely the latest 1.x version, <code class="docutils literal notranslate"><span class="pre">ms3&lt;2.0.0</span></code>, and the latest
-2.x version, <code class="docutils literal notranslate"><span class="pre">ms3&gt;=2</span></code>. This can be achieved by using virtual environments. One very practical solution to this,
-which we use in this documentation, is through the <code class="docutils literal notranslate"><span class="pre">pipx</span></code> package. It lets us install the two different versions and
-add a suffix to each so we have both versions available without having to switch environments.
+2.x version, <code class="docutils literal notranslate"><span class="pre">ms3&gt;2.0.0</span></code>. This can be achieved by using virtual environments. One very practical solution to this,
+which we use in this documentation, is through the <code class="docutils literal notranslate"><span class="pre">pipx</span></code> package. It lets us install the old version in parallel,
+by adding a suffix to the command, so we have both versions available without having to switch environments.
 After <a class="reference external" href="https://pypa.github.io/pipx/installation/">installing pipx</a>, we use the following setup:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pipx<span class="w"> </span>install<span class="w"> </span>--suffix<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s2">&quot;ms3&lt;2.0.0&quot;</span>
-pipx<span class="w"> </span>install<span class="w"> </span>--suffix<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="s2">&quot;ms3&gt;=2.0.0&quot;</span>
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>ms3
 </pre></div>
 </div>
-<p>This lets us use the old version as <code class="docutils literal notranslate"><span class="pre">ms31</span></code> and the new one as <code class="docutils literal notranslate"><span class="pre">ms32</span></code>. We can check our setup via</p>
+<p>This lets us use the old version as <code class="docutils literal notranslate"><span class="pre">ms31</span></code> and the new one as the “normal” <code class="docutils literal notranslate"><span class="pre">ms3</span></code>. We can check our setup via</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pipx<span class="w"> </span>list
-<span class="c1"># Output (latest versions as per the 17th of July 2023):</span>
+<span class="c1"># Output</span>
 <span class="c1"># package ms3 1.2.12 (ms31), installed using Python 3.10.11</span>
 <span class="c1">#  - ms31</span>
-<span class="c1"># package ms3 2.0.0 (ms32), installed using Python 3.10.11</span>
-<span class="c1">#  - ms32</span>
 </pre></div>
 </div>
 <p>And we can test the commands like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ms31<span class="w"> </span>--version
 <span class="c1"># Output: 1.2.12</span>
-ms32<span class="w"> </span>--version
-<span class="c1"># Output: 2.0.0</span>
+ms3<span class="w"> </span>--version
+<span class="c1"># Output: 2.4.1</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please upgrade your <code class="docutils literal notranslate"><span class="pre">ms32</span></code> frequently to the latest version of ms3 version 2 by executing
-<code class="docutils literal notranslate"><span class="pre">pipx</span> <span class="pre">install</span> <span class="pre">--force</span> <span class="pre">--pip-args=-U</span> <span class="pre">--suffix</span> <span class="pre">2</span> <span class="pre">&quot;ms3&gt;=2.0.0&quot;</span></code>.</p>
+<p>Please upgrade your <code class="docutils literal notranslate"><span class="pre">ms3</span></code> frequently to the latest version of ms3 version 2 by executing
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">ms3</span></code>.</p>
 </div>
 <section id="re-extract-everything-and-create-a-version-tag">
 <h4><a class="toc-backref" href="#id59" role="doc-backlink">3. Re-extract everything and create a version tag</a><a class="headerlink" href="#re-extract-everything-and-create-a-version-tag" title="Link to this heading">¶</a></h4>
@@ -1281,7 +1279,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </div>
 </section>
 <section id="update-the-extracted-files-to-ms3-version-2">
-<span id="update-with-ms32"></span><h4><a class="toc-backref" href="#id63" role="doc-backlink">5. Update the extracted files to ms3 version 2</a><a class="headerlink" href="#update-the-extracted-files-to-ms3-version-2" title="Link to this heading">¶</a></h4>
+<span id="update-with-ms3"></span><h4><a class="toc-backref" href="#id63" role="doc-backlink">5. Update the extracted files to ms3 version 2</a><a class="headerlink" href="#update-the-extracted-files-to-ms3-version-2" title="Link to this heading">¶</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Annotators are familiar with the comparisons between labels in the <code class="docutils literal notranslate"><span class="pre">_reviewed.mscx</span></code> files in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code>
@@ -1300,8 +1298,8 @@ name, Git sugar such as <code class="docutils literal notranslate"><span class="
 <li><p>First, we delete the folders <code class="docutils literal notranslate"><span class="pre">reviewed</span></code>, <code class="docutils literal notranslate"><span class="pre">measures</span></code>, <code class="docutils literal notranslate"><span class="pre">notes</span></code>, and <code class="docutils literal notranslate"><span class="pre">harmonies</span></code> (and any other facet folders
 that might be present, such as <code class="docutils literal notranslate"><span class="pre">form_labels</span></code>), without committing the change (e.g., in your file browser).</p></li>
 <li><p>Then we find out (or remember) the latest v1.x <a class="reference internal" href="#version-tags"><span class="std std-ref">version tag</span></a>, let’s assume its <code class="docutils literal notranslate"><span class="pre">v1.0</span></code>, and
-run <code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span></code>.</p></li>
-<li><p>commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span> <span class="pre">(v2.1.1)&quot;</span></code>, i.e., the command you have
+run <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span></code>.</p></li>
+<li><p>commit everything with the message <code class="docutils literal notranslate"><span class="pre">&quot;ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">v1.0</span> <span class="pre">(ms3</span> <span class="pre">v2.4.1)&quot;</span></code>, i.e., the command you have
 executed, followed by the ms3 version number that was used.</p></li>
 </ul>
 <p>The review command will also create <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> files in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> folder which reflect the health of the
@@ -1317,7 +1315,7 @@ description links the PR to the work package on OpenProject and that the label c
 <p>Once the PR has been created, you can update the work package status to “Needs review”.
 Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
 The person who merges should then assign a new version tag,
-e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">v2.0</span> <span class="pre">-m</span> <span class="pre">&quot;Extracted</span> <span class="pre">facets</span> <span class="pre">using</span> <span class="pre">ms3</span> <span class="pre">version</span> <span class="pre">2.1.1&quot;</span></code>.</p>
+e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-a</span> <span class="pre">v2.0</span> <span class="pre">-m</span> <span class="pre">&quot;Extracted</span> <span class="pre">facets</span> <span class="pre">using</span> <span class="pre">ms3</span> <span class="pre">version</span> <span class="pre">2.4.1&quot;</span></code>.</p>
 </section>
 </section>
 <section id="eliminating-all-warnings">
@@ -1341,7 +1339,7 @@ pull request. The status transition works the same way, i.e.</p>
 </ul>
 <p>This work package, normally, is made available only after finalizing the repo structure, that is, there should be
 some v2.x tag. By eliminating all warnings we are creating a new version and want all changes applied to the labels
-to be reflected in the <code class="docutils literal notranslate"><span class="pre">_reviewed.mscx</span></code> files (as mentioned in the <a class="reference internal" href="#update-with-ms32"><span class="std std-ref">info box above</span></a>). Hence,
+to be reflected in the <code class="docutils literal notranslate"><span class="pre">_reviewed.mscx</span></code> files (as mentioned in the <a class="reference internal" href="#update-with-ms3"><span class="std std-ref">info box above</span></a>). Hence,
 whenever we call <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span></code> (which will be a lot), we need to pass the current version tag to the <code class="docutils literal notranslate"><span class="pre">-c</span></code> flag
 (e.g. <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">v2.0</span></code>). The documentation will therefore say <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span></code> where we fill in the latest version tag.
 This we can easily retrieve using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">describe</span> <span class="pre">--tags</span> <span class="pre">--abbrev=0</span></code>.</p>
@@ -1350,8 +1348,8 @@ The first step is to create a new branch for the task, e.g. “warnings” and t
 using</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span></code> (or, if you continue with the setup above,
-<code class="docutils literal notranslate"><span class="pre">ms32</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span></code>) and</p></li>
-<li><p>committing the changes (if any) with the message <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span> <span class="pre">(v2.1.1)</span></code>, i.e.,
+<code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span></code>) and</p></li>
+<li><p>committing the changes (if any) with the message <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">review</span> <span class="pre">-M</span> <span class="pre">-N</span> <span class="pre">-X</span> <span class="pre">-F</span> <span class="pre">-D</span> <span class="pre">-c</span> <span class="pre">&lt;version</span> <span class="pre">tag&gt;</span> <span class="pre">(ms3</span> <span class="pre">v2.4.1)</span></code>, i.e.,
 the command you have executed, followed by the ms3 version number that was used.</p></li>
 </ul>
 <p>Our goal is to eliminate the presence of any file ending on <code class="docutils literal notranslate"><span class="pre">.warnings</span></code> in the <code class="docutils literal notranslate"><span class="pre">reviewed</span></code> folder (they are simple

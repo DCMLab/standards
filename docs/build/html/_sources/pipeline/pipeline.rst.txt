@@ -739,34 +739,32 @@ Update repository structure
 
   .. code-block:: bash
 
-      ms32 review -M -N -X -F -D -c v1.0
-      git add . && git commit -m "ms3 review -M -N -X -F -D -c v1.0 (v2.1.1)"
+      ms3 review -M -N -X -F -D -c v1.0
+      git add . && git commit -m "ms3 review -M -N -X -F -D -c v1.0 (ms3 v2.4.1)"
       git push --atomic
 
 
 
 All steps in this section are to be performed locally and, once completed, to be merged through a reviewed PR. This
 section requires using two different versions of ``ms3``, namely the latest 1.x version, ``ms3<2.0.0``, and the latest
-2.x version, ``ms3>=2``. This can be achieved by using virtual environments. One very practical solution to this,
-which we use in this documentation, is through the ``pipx`` package. It lets us install the two different versions and
-add a suffix to each so we have both versions available without having to switch environments.
+2.x version, ``ms3>2.0.0``. This can be achieved by using virtual environments. One very practical solution to this,
+which we use in this documentation, is through the ``pipx`` package. It lets us install the old version in parallel,
+by adding a suffix to the command, so we have both versions available without having to switch environments.
 After `installing pipx <https://pypa.github.io/pipx/installation/>`__, we use the following setup:
 
 .. code-block:: bash
 
    pipx install --suffix 1 "ms3<2.0.0"
-   pipx install --suffix 2 "ms3>=2.0.0"
+   pip install -U ms3
 
-This lets us use the old version as ``ms31`` and the new one as ``ms32``. We can check our setup via
+This lets us use the old version as ``ms31`` and the new one as the "normal" ``ms3``. We can check our setup via
 
 .. code-block:: bash
 
    pipx list
-   # Output (latest versions as per the 17th of July 2023):
+   # Output
    # package ms3 1.2.12 (ms31), installed using Python 3.10.11
    #  - ms31
-   # package ms3 2.0.0 (ms32), installed using Python 3.10.11
-   #  - ms32
 
 And we can test the commands like this:
 
@@ -774,13 +772,13 @@ And we can test the commands like this:
 
    ms31 --version
    # Output: 1.2.12
-   ms32 --version
-   # Output: 2.0.0
+   ms3 --version
+   # Output: 2.4.1
 
 .. note::
 
-   Please upgrade your ``ms32`` frequently to the latest version of ms3 version 2 by executing
-   ``pipx install --force --pip-args=-U --suffix 2 "ms3>=2.0.0"``.
+   Please upgrade your ``ms3`` frequently to the latest version of ms3 version 2 by executing
+   ``pip install -U ms3``.
 
 3. Re-extract everything and create a version tag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -944,7 +942,7 @@ The command sequence used in the present Peri example:
    git rm -r tonicizations
    git commit -m "removes tonicizations"
 
-.. _update_with_ms32:
+.. _update_with_ms3:
 
 5. Update the extracted files to ms3 version 2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -967,8 +965,8 @@ With the repo readily streamlined we update the data to ms3 v2 in three steps:
 * First, we delete the folders ``reviewed``, ``measures``, ``notes``, and ``harmonies`` (and any other facet folders
   that might be present, such as ``form_labels``), without committing the change (e.g., in your file browser).
 * Then we find out (or remember) the latest v1.x :ref:`version tag <version_tags>`, let's assume its ``v1.0``, and
-  run ``ms32 review -M -N -X -F -D -c v1.0``.
-* commit everything with the message ``"ms3 review -M -N -X -F -D -c v1.0 (v2.1.1)"``, i.e., the command you have
+  run ``ms3 review -M -N -X -F -D -c v1.0``.
+* commit everything with the message ``"ms3 review -M -N -X -F -D -c v1.0 (ms3 v2.4.1)"``, i.e., the command you have
   executed, followed by the ms3 version number that was used.
 
 The review command will also create ``.warnings`` files in the ``reviewed`` folder which reflect the health of the
@@ -986,7 +984,7 @@ The branch is now ready to be reviewed and then merged through a Pull Request:
 Once the PR has been created, you can update the work package status to "Needs review".
 Only when the PR has been reviewed and merged can we proceed with either metadata cleaning or eliminating warnings.
 The person who merges should then assign a new version tag,
-e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.1.1"``.
+e.g. ``git tag -a v2.0 -m "Extracted facets using ms3 version 2.4.1"``.
 
 
 
@@ -1014,7 +1012,7 @@ pull request. The status transition works the same way, i.e.
 
 This work package, normally, is made available only after finalizing the repo structure, that is, there should be
 some v2.x tag. By eliminating all warnings we are creating a new version and want all changes applied to the labels
-to be reflected in the ``_reviewed.mscx`` files (as mentioned in the :ref:`info box above <update_with_ms32>`). Hence,
+to be reflected in the ``_reviewed.mscx`` files (as mentioned in the :ref:`info box above <update_with_ms3>`). Hence,
 whenever we call ``ms3 review`` (which will be a lot), we need to pass the current version tag to the ``-c`` flag
 (e.g. ``-c v2.0``). The documentation will therefore say ``-c <version tag>`` where we fill in the latest version tag.
 This we can easily retrieve using ``git describe --tags --abbrev=0``.
@@ -1024,8 +1022,8 @@ The first step is to create a new branch for the task, e.g. "warnings" and to up
 using
 
 * ``ms3 review -M -N -X -F -D -c <version tag>`` (or, if you continue with the setup above,
-  ``ms32 review -M -N -X -F -D -c <version tag>``) and
-* committing the changes (if any) with the message ``ms3 review -M -N -X -F -D -c <version tag> (v2.1.1)``, i.e.,
+  ``ms3 review -M -N -X -F -D -c <version tag>``) and
+* committing the changes (if any) with the message ``ms3 review -M -N -X -F -D -c <version tag> (ms3 v2.4.1)``, i.e.,
   the command you have executed, followed by the ms3 version number that was used.
 
 Our goal is to eliminate the presence of any file ending on ``.warnings`` in the ``reviewed`` folder (they are simple
