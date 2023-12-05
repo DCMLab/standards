@@ -739,8 +739,8 @@ Update repository structure
 
   .. code-block:: bash
 
-      ms3 review -M -N -X -F -D -c v1.0
-      git add . && git commit -m "ms3 review -M -N -X -F -D -c v1.0 (ms3 v2.4.1)"
+      ms3 review -M -N -X -F -D -c LATEST
+      git add . && git commit -m "ms3 review -M -N -X -F -D -c LATEST (ms3 v2.4.1)"
       git push --atomic
 
 
@@ -788,7 +788,8 @@ And we can test the commands like this:
    Version tags are attached to one particular commit and can be used instead of the commit SHA to refer to it.
    This is particularly useful in the present context when the ``ms3 review`` command is called with the
    ``-c [GIT_REVISION]`` flag which allows us, for example, to create a comparison between the current version and
-   the version tagged "v1.0" by calling ``ms3 review -c v1.0``.
+   the version tagged "v1.0" by calling ``ms3 review -c v1.0``. In most cases, we want to compare with the latest
+   preceding tag for which we can use the shorthand ``ms3 review -c LATEST``.
 
 Now that there is no work in progress is the perfect time for creating a version tag in order to describe the current
 status of the repository for future reference. The documentation assumes that you have checked out and pulled ``main``.
@@ -965,8 +966,8 @@ With the repo readily streamlined we update the data to ms3 v2 in three steps:
 * First, we delete the folders ``reviewed``, ``measures``, ``notes``, and ``harmonies`` (and any other facet folders
   that might be present, such as ``form_labels``), without committing the change (e.g., in your file browser).
 * Then we find out (or remember) the latest v1.x :ref:`version tag <version_tags>`, let's assume its ``v1.0``, and
-  run ``ms3 review -M -N -X -F -D -c v1.0``.
-* commit everything with the message ``"ms3 review -M -N -X -F -D -c v1.0 (ms3 v2.4.1)"``, i.e., the command you have
+  run ``ms3 review -M -N -X -F -D -c LATEST``.
+* commit everything with the message ``"ms3 review -M -N -X -F -D -c LATEST (ms3 v2.4.1)"``, i.e., the command you have
   executed, followed by the ms3 version number that was used.
 
 The review command will also create ``.warnings`` files in the ``reviewed`` folder which reflect the health of the
@@ -1015,14 +1016,14 @@ some v2.x tag. By eliminating all warnings we are creating a new version and wan
 to be reflected in the ``_reviewed.mscx`` files (as mentioned in the :ref:`info box above <update_with_ms3>`). Hence,
 whenever we call ``ms3 review`` (which will be a lot), we need to pass the current version tag to the ``-c`` flag
 (e.g. ``-c v2.0``). The documentation will therefore say ``-c <version tag>`` where we fill in the latest version tag.
-This we can easily retrieve using ``git describe --tags --abbrev=0``.
+This we can easily retrieve using ``git describe --tags --abbrev=0``. For convenience, however, you ccan also opt for
+using ``-c LATEST`` which retrieves the latest tag for you automatically.
 
 Since the repository has been updated with ``ms3`` version 2, only this version should be used for the remaining tasks.
 The first step is to create a new branch for the task, e.g. "warnings" and to update the current state of warnings by
 using
 
-* ``ms3 review -M -N -X -F -D -c <version tag>`` (or, if you continue with the setup above,
-  ``ms3 review -M -N -X -F -D -c <version tag>``) and
+* ``ms3 review -M -N -X -F -D -c <version tag>`` (or ``-c LATEST``) and
 * committing the changes (if any) with the message ``ms3 review -M -N -X -F -D -c <version tag> (ms3 v2.4.1)``, i.e.,
   the command you have executed, followed by the ms3 version number that was used.
 
@@ -1093,12 +1094,12 @@ The file ``peri_euridice_scene_1.warnings`` looks as follows:
   explain why the .warnings file still exists.
 ``FIRST_BAR_MISSING_TEMPO_MARK_WARNING``
   Very frequent warning. We fix it by adding one or several :ref:`metronome_marks`. As with all warnings, we save the
-  changed .mscx file, run ``ms3 review -M -N -X -F -D -c 2.0 -i scene_1`` and, if the warning has
+  changed .mscx file, run ``ms3 review -M -N -X -F -D -c LATEST -i scene_1`` and, if the warning has
   disappeared, we commit all changes at once with a message such as "adds metronome mark to first measure" or
   "eliminates FIRST_BAR_MISSING_TEMPO_MARK_WARNING" (i.e., no need to mention that ``ms3 review`` was used).
 ``DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 64, '1/2', 'VIIM7')``
   As we learn from the warning, the label ``VIIM7`` of G minor does not match the notes in the score. It turns out that
-  ``VIM7`` was meant, so we fix the label, save the file, run ``ms3 review -M -N -X -F -D -c 2.0 -i scene_1`` and
+  ``VIM7`` was meant, so we fix the label, save the file, run ``ms3 review -M -N -X -F -D -c LATEST -i scene_1`` and
   commit everything with a message as we would find it in an annotation review, e.g. "62: VIIM7 => VIM7".
   The files that would typically be modified in such a commit, apart from the score, include
 
