@@ -1200,10 +1200,13 @@ Once all columns have been cleaned to your satisfaction, update the correspondin
 .. note::
 
    Note that the correspondence between columns in ``metadata.tsv`` and fields in the MuseScore files relies on
-   *exact* string matching and, to minimize erroneous mismatches, all field names are lowercased. In case you discover
-   a misspelled column, you can rename (or remove) it and call ``ms3 metadata --remove``. This will remove the
-   metadata fields (that is, the corresponding XML tags) for which no corresponding column exists in ``metadata.tsv``
-   from the MuseScore files.
+   *exact* string matching. To minimize erroneous mismatches, we use exclusively lowercase for all our custom
+   (non-default) field names. If you were using a column named ``PDF`` instead of ``pdf``, a new column with the
+   uppercase name would be added, rather than updating the existing, lowercase one. As a consequence, concatenating
+   this ``metadata.tsv`` with the one from other corpora would end up with two different columns for the same thing.
+   Whenever you discover a misspelled column, you can rename (or remove) it and call ``ms3 metadata --remove``.
+   This will remove the metadata fields (that is, the corresponding XML tags) for which no corresponding column exists
+   in ``metadata.tsv`` from the MuseScore files.
 
 .. _score_prelims:
 

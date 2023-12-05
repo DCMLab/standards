@@ -1508,10 +1508,13 @@ the changes with the message “writes updated metadata into MuseScore files”,
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note that the correspondence between columns in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> and fields in the MuseScore files relies on
-<em>exact</em> string matching and, to minimize erroneous mismatches, all field names are lowercased. In case you discover
-a misspelled column, you can rename (or remove) it and call <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--remove</span></code>. This will remove the
-metadata fields (that is, the corresponding XML tags) for which no corresponding column exists in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code>
-from the MuseScore files.</p>
+<em>exact</em> string matching. To minimize erroneous mismatches, we use exclusively lowercase for all our custom
+(non-default) field names. If you were using a column named <code class="docutils literal notranslate"><span class="pre">PDF</span></code> instead of <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, a new column with the
+uppercase name would be added, rather than updating the existing, lowercase one. As a consequence, concatenating
+this <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> with the one from other corpora would end up with two different columns for the same thing.
+Whenever you discover a misspelled column, you can rename (or remove) it and call <code class="docutils literal notranslate"><span class="pre">ms3</span> <span class="pre">metadata</span> <span class="pre">--remove</span></code>.
+This will remove the metadata fields (that is, the corresponding XML tags) for which no corresponding column exists
+in <code class="docutils literal notranslate"><span class="pre">metadata.tsv</span></code> from the MuseScore files.</p>
 </div>
 </section>
 <section id="score-prelims-and-instrumentation">
