@@ -1361,6 +1361,10 @@ they look.
 Header
 """"""
 
+.. note::
+
+   Please be sure to adjust the header manually only after filling the fields according to the section :ref:`score_prelims`.
+
 The header of the Meistersinger score in the screenshot above has benefitted from the following manual adjustments:
 
 #. The vertical box was enlarged vertically (by selecting it and dragging the handle) for it to fit the default prelims.
@@ -1385,9 +1389,16 @@ These steps uncovered a cascade of other necessities, which is a typical charact
 Score layout
 """"""""""""
 
+.. warning::
+
+   This section is experimental and can be skipped for now. If you take shot, please be extra careful to prevent any
+   unwanted loss of information.
+
 .. note::
 
-   This section is experimental and can be skipped.
+   Oftentimes, scores have hidden dynamic and articulation markup which is supposed to represent a more human-like
+   synthetic playback. Please consult with DCML on a case-by-case basis to know whether to keep or remove it
+   (the tendency should be towards the latter to avoid confusion between the official source and added information).
 
 This is a quick routine for resetting the layout of a score to the default values. It is generally a good idea to do
 so, but one needs to make sure that no information is lost and that no layout atrocities are introduced by the process.
