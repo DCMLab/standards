@@ -5,6 +5,103 @@ DCML Score Conventions
 .. contents:: Contents
    :local:
 
+Getting started
+===============
+
+* Even though MuseScore 4 has been out for a while, for technical reasons we typeset our scores in MuseScore 3.6.2
+  (which you can download `here <https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__).
+* MuseScore has many `keyboard shortcuts <https://musescore.org/en/handbook/3/keyboard-shortcuts>`__ that every encoder
+  should know (or configure to their own liking) in order to facilitate life. Typesetting is ideally
+  done with one hand on the computer keyboard (esp. numbers) and one on a MIDI keyboard.
+* Some may find it helpful to first set up the empty score to its full length and to start by including repeat signs,
+  :ref:`split measures <split_measures>`, etc. before typing the music.
+* When you store a new score for the first time, please name it according to the corpus's naming scheme and make sure
+  to to select the format ``Uncompressed MuseScore file (*.mscx)``. Also, make sure the filename you choose does
+  actually end on the ``.mscx`` extension, not on MuseScore's default, ``.mscz`` (if you don't add any extension,
+  MuseScore might give you the ``Cannot determine file type`` error).
+
+Committing new scores to Git
+----------------------------
+
+In case you're beginning a new corpus, please refer to the :doc:`../pipeline/pipeline`.
+If, instead, you're contributing to an existing repository, please follow these steps:
+
+1. **Create a new branch** for your work. This is done by typing ``git checkout -b your_branch_name`` in the terminal.
+   You could use one branch per piece/movement or one for a whole multi-movement work. In any case, the branch name
+   should be indicative of the music you're working on.
+2. Before committing a new file, make sure you add it to the corpus so that the pre-commit hook will check it for
+   errors (see below).
+3. Commit at your own pace with a descriptive message. For example, you could commit each time you finish a pass through
+   the piece with a message such as "typeset rhythm and pitch of the entire movement" or "adds dynamics and articulation".
+   Or when you're interrupting your work ("typeset measures 1-115").
+4. When you're done with a branch, create a pull request and request a review as agreed beforehand. Chances are that
+   you've also been told the name of a side branch where a new version is being prepared, so please choose that
+   branch instead of ``main`` when creating your PR.
+
+
+Installing the pre-commit hook and ms3
+--------------------------------------
+
+.. note::
+
+   You may install both libraries at the same time by issuing ``pip install pre-commit ms3``.
+
+To install ``ms3``, please execute ``pip install ms3`` in your terminal. If the command is unknown,
+you might try ``python -m pip install ms3`` instead. If that fails, you might have to install Python for your
+operating system first.
+
+You know that a repository comes with a pre-commit hook when you see a file named ``.pre-commit-config.yaml`` on its
+top level (which may, however, been hidden on Linux or Mac). To install the pre-commit hook, you need to have the
+`pre-commit <https://pre-commit.com/>`__ package installed. You can install it with the following command:
+
+.. code-block:: bash
+
+   pip install pre-commit
+
+Once you have the package installed, you can use it to install the pre-commit hook for the repositories you're working
+on by navigating to the repository's root directory and typing:
+
+.. code-block:: bash
+
+   pre-commit install
+
+This should result in a ``pre-commit installed at ...`` message and you're done.
+
+
+Adding a new piece to a corpus
+------------------------------
+
+.. warning::
+
+   If you don't add a new piece to the corpus, the pre-commit hook will fail saying
+   ``NO SCORES PARSED, NOTHING TO DO.``
+
+The pre-commit hook executes the ``ms3 review`` command every time you're trying to commit (changes to) one or
+several MuseScore files.
+By default, ``ms3`` ignores files that are not listed in ``metadata.tsv``, meaning that you need to add a new piece to
+the corpus.
+You can do this by running ``ms3 extract -D -a`` in the repository's root directory.
+This will indeed extract metadata from all MuseScore files, including old and new ones.
+If you want to shorten the process, you can exclude a portion of the file name that unambiguously identifies the new
+piece and pass it to the ``-i`` parameter (as in ``--include``), e.g. ``ms3 extract -D -a -i op53no2``.
+Don't forget to ``git add metadata.tsv`` afterwards before you commit the new MuseScore file.
+
+
+Working with the pre-commit hook
+--------------------------------
+
+When you commit, pay attention to the output of the pre-commit hook.
+
+* If you see some more lengthy output, probably there is a problem and you have not committed anything yet.
+  In this case, a ``git status`` should show you a bunch of ``.tsv`` files that ms3 has added or modified.
+  If not, the output might say ``NO SCORES PARSED, NOTHING TO DO.`` somewhere, meaning that you first need to add
+  the new piece to the corpus (see previous section).
+* Otherwise, you should see ``Review annotated MuseScore files.........................................Passed`` and
+  the following ``git status`` should reveal a clean repo.
+
+When the checks don't pass, look for the WARNING message(s) and see :ref:`if you can correct them <warnings>`.
+
+
 Dividing a Score into separate files
 ====================================
 
@@ -58,6 +155,15 @@ Individual notes smaller than a quarter have at least one flag but adjacent flag
 Score Elements
 ==============
 
+Time signature
+--------------
+
+A time signature is always and only used to set the meter of the music.
+It is never used to (only) change the duration of a measure, that's what the irregular, "Actual" measure duration
+in the Measure Properties panel is used for.
+In long cadenzas, e.g., measures typically do not follow the prescribed meter,
+but it is better to simply not change the time signature than changing it, suggesting a new (and often strange) meter.
+
 Line Breaks
 -----------
 
@@ -81,6 +187,17 @@ Cross-staff notation
 --------------------
 
 In print editions of piano music you sometimes find the left hand notated in the upper staff or vice versa. By default, this should not be reproduced.
+
+.. _split_measures:
+
+Split measures
+--------------
+
+When a double barline or repeat sign appears before the end of the measure, the measure needs to be split into two
+irregular measures. For example, when measure number 16 in 4/4 has a repeat sign after beat 3, it is split into two measures:
+MC 16 of length 3/4 and MC 17 of length 1/4. The length is to be set as "Actual" measure duration in the Measure Properties panel.
+Since the two irregular measures together make up MN 16, we need to prevent MuseScore from counting MC 17 as MN 17.
+This is achived by checking "Exclude from measure count" in the Measure Properties panel for MC 17.
 
 First and second endings ("voltas")
 -----------------------------------
@@ -185,6 +302,14 @@ Should not be written as plain text, instead use the symbol from the "Lines" pal
 make it as short as possible (the length of the note value). The length of a line is modified by selecting its right
 handle (square), holding [C]+[S] and moving the end of the line with the right and left arrow keys. Alternatively,
 the handle can be dragged with the mouse.
+
+Figured bass (Thoroughbass)
+---------------------------
+
+is important to encode and MuseScore has good support for it: https://musescore.org/en/handbook/3/figured-bass
+The original figures should be standardized as little as possible. E.g., <63> should not be shortened to <6>.
+Standardization should be reserved for cases where something cannot be displayed in MuseScore, e.g. an
+idiosyncratic symbol for raising a tone, which may be translated to a sharp or similar.
 
 Titles and other metadata
 -------------------------
