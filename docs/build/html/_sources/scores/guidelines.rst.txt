@@ -42,12 +42,24 @@ If, instead, you're contributing to an existing repository, please follow these 
 Installing the pre-commit hook and ms3
 --------------------------------------
 
-.. note::
+.. admonition:: TL;DR
+   :class: note
 
-   You may install both libraries at the same time by issuing ``pip install pre-commit ms3``.
+   .. code-block:: console
+
+      pip install pre-commit ms3
+      pre-commit install
+
+   (The second command is to be executed in the corpus repository in question.)
+
+.. admonition:: Python version
+   :class: caution
+
+   Make sure your `pip` command is based on Python version 3.10 or later. You can check this by issuing
+   ``python --version``. If this fails, on your system it could be ``python3 --version``.
 
 To install ``ms3``, please execute ``pip install ms3`` in your terminal. If the command is unknown,
-you might try ``python -m pip install ms3`` instead. If that fails, you might have to install Python for your
+you might try ``python3 -m pip install ms3`` instead. If that fails, you might have to install Python for your
 operating system first.
 
 You know that a repository comes with a pre-commit hook when you see a file named ``.pre-commit-config.yaml`` on its
@@ -80,11 +92,18 @@ The pre-commit hook executes the ``ms3 review`` command every time you're trying
 several MuseScore files.
 By default, ``ms3`` ignores files that are not listed in ``metadata.tsv``, meaning that you need to add a new piece to
 the corpus.
-You can do this by running ``ms3 extract -D -a`` in the repository's root directory.
-This will indeed extract metadata from all MuseScore files, including old and new ones.
-If you want to shorten the process, you can exclude a portion of the file name that unambiguously identifies the new
-piece and pass it to the ``-i`` parameter (as in ``--include``), e.g. ``ms3 extract -D -a -i op53no2``.
-Don't forget to ``git add metadata.tsv`` afterwards before you commit the new MuseScore file.
+You can do this by running ``ms3 extract -D -M -N -C -D -a`` in the repository's root directory.
+However, this will indeed the TSV files from all MuseScore files, including older ones.
+If you want to shorten the process, you can isolate a portion of the file name that unambiguously identifies the new
+piece(s) and pass it to the ``-i`` parameter (as in ``--include``), e.g. ``ms3 extract -D -M -N -C -D -a -i op53no2``.
+Then you can add the new score, it's new TSV files, and the updated ``metadata.tsv`` and ``README.md`` like this:
+
+.. code-block:: console
+
+   git add .
+   git commit -m "adds new score [filename].mscx" --no-verify
+
+The ``--no-verify`` option skips running the pre-commit hook.
 
 
 Working with the pre-commit hook
