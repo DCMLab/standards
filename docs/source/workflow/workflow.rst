@@ -577,11 +577,11 @@ Fix it.
 
   .. code-block:: bash
 
-     ms3 review -M -N -X -F -D -i <filename>
+     ms3 review -M -N -X -F -C -D -i <filename>
 
   in order to see if the warning is indeed gone. ``<filename>`` is a regular expression that lets you filter the files
   you want to check. For example, if the filename convention is something like ``op<##>n<##>_<movement>.mscx``, we could
-  execute ``ms3 review -M -N -X -F -D -i op02`` to review all files containing "op02" in their names, or "02n02" for
+  execute ``ms3 review -M -N -X -F -C -D -i op02`` to review all files containing "op02" in their names, or "02n02" for
   op.2, no.2 only.
 
 Declare it a false positive.

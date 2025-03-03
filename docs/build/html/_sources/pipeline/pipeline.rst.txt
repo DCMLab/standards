@@ -727,8 +727,8 @@ Update repository structure
 
       git checkout main && git pull
       git checkout -b repo_structure
-      ms31 extract -M -N -X -F -D
-      git add . && git commit -m "ms3 extract -M -N -X -F -D (v1.2.12)"
+      ms31 extract -M -N -X -F -C -D
+      git add . && git commit -m "ms3 extract -M -N -X -F -C -D (v1.2.12)"
       git tag -a v1.0 -m "Corpus fully annotated and extracted with ms3 v1.2.12 before finalizing it for publication"
       git rm -r .github && git commit -m "removes annotation workflow"
       git rm -r tonicizations && git commit -m "removes tonicizations"
@@ -739,8 +739,8 @@ Update repository structure
 
   .. code-block:: bash
 
-      ms3 review -M -N -X -F -D -c LATEST
-      git add . && git commit -m "ms3 review -M -N -X -F -D -c LATEST (ms3 v2.4.1)"
+      ms3 review -M -N -X -F -C -D -c LATEST
+      git add . && git commit -m "ms3 review -M -N -X -F -C -D -c LATEST (ms3 v2.4.1)"
       git push --atomic
 
 
@@ -805,14 +805,14 @@ the default TSV facets one last time with ms3 v1 by executing
 
 .. code-block:: bash
 
-   ms31 extract -M -N -X -F -D
+   ms31 extract -M -N -X -F -C -D
 
 (for measure, notes, expanded, form, and metadata). Please make sure that the folders ``notes`` and ``measures``
 contain the same number of TSV files as the folder ``MS3`` contains MSCX files and that the ``metadata.tsv`` contains
 that same number of rows (plus one for the column headers). If this is not the case, please refer to the first point
 under :ref:`metadata_tsv` and/or ask on Mattermost how to proceed.
 
-Then we commit everything with the message ``"ms3 extract -M -N -X -F -D (v1.2.12)"``
+Then we commit everything with the message ``"ms3 extract -M -N -X -F -C -D (v1.2.12)"``
 (assuming that the latest v1 is ``v1.2.12``).
 
 .. _version_tags:
@@ -966,8 +966,8 @@ With the repo readily streamlined we update the data to ms3 v2 in three steps:
 * First, we delete the folders ``reviewed``, ``measures``, ``notes``, and ``harmonies`` (and any other facet folders
   that might be present, such as ``form_labels``), without committing the change (e.g., in your file browser).
 * Then we find out (or remember) the latest v1.x :ref:`version tag <version_tags>`, let's assume its ``v1.0``, and
-  run ``ms3 review -M -N -X -F -D -c LATEST``.
-* commit everything with the message ``"ms3 review -M -N -X -F -D -c LATEST (ms3 v2.4.1)"``, i.e., the command you have
+  run ``ms3 review -M -N -X -F -C -D -c LATEST``.
+* commit everything with the message ``"ms3 review -M -N -X -F -C -D -c LATEST (ms3 v2.4.1)"``, i.e., the command you have
   executed, followed by the ms3 version number that was used.
 
 The review command will also create ``.warnings`` files in the ``reviewed`` folder which reflect the health of the
@@ -1023,8 +1023,8 @@ Since the repository has been updated with ``ms3`` version 2, only this version 
 The first step is to create a new branch for the task, e.g. "warnings" and to update the current state of warnings by
 using
 
-* ``ms3 review -M -N -X -F -D -c <version tag>`` (or ``-c LATEST``) and
-* committing the changes (if any) with the message ``ms3 review -M -N -X -F -D -c <version tag> (ms3 v2.4.1)``, i.e.,
+* ``ms3 review -M -N -X -F -C -D -c <version tag>`` (or ``-c LATEST``) and
+* committing the changes (if any) with the message ``ms3 review -M -N -X -F -C -D -c <version tag> (ms3 v2.4.1)``, i.e.,
   the command you have executed, followed by the ms3 version number that was used.
 
 Our goal is to eliminate the presence of any file ending on ``.warnings`` in the ``reviewed`` folder (they are simple
@@ -1036,7 +1036,7 @@ know).
 Otherwise, we need to fix the warnings one after the other. For more detailed instructions, please refer to the
 :ref:`warnings` section of the annotation workflow. To quickly sum it up, there are three ways to deal with a warning:
 
-* Fix it, execute ``ms3 review -M -N -X -F -D -c <version tag> -i <filename>`` to see if it has disappeared, and commit
+* Fix it, execute ``ms3 review -M -N -X -F -C -D -c <version tag> -i <filename>`` to see if it has disappeared, and commit
   all changes at once.
 * Declare it a false positive.
 * Create an issue to make sure someone deals with it later.
@@ -1094,12 +1094,12 @@ The file ``peri_euridice_scene_1.warnings`` looks as follows:
   explain why the .warnings file still exists.
 ``FIRST_BAR_MISSING_TEMPO_MARK_WARNING``
   Very frequent warning. We fix it by adding one or several :ref:`metronome_marks`. As with all warnings, we save the
-  changed .mscx file, run ``ms3 review -M -N -X -F -D -c LATEST -i scene_1`` and, if the warning has
+  changed .mscx file, run ``ms3 review -M -N -X -F -C -D -c LATEST -i scene_1`` and, if the warning has
   disappeared, we commit all changes at once with a message such as "adds metronome mark to first measure" or
   "eliminates FIRST_BAR_MISSING_TEMPO_MARK_WARNING" (i.e., no need to mention that ``ms3 review`` was used).
 ``DCML_NON_CHORD_TONES_ABOVE_THRESHOLD_WARNING (19, 64, '1/2', 'VIIM7')``
   As we learn from the warning, the label ``VIIM7`` of G minor does not match the notes in the score. It turns out that
-  ``VIM7`` was meant, so we fix the label, save the file, run ``ms3 review -M -N -X -F -D -c LATEST -i scene_1`` and
+  ``VIM7`` was meant, so we fix the label, save the file, run ``ms3 review -M -N -X -F -C -D -c LATEST -i scene_1`` and
   commit everything with a message as we would find it in an annotation review, e.g. "62: VIIM7 => VIM7".
   The files that would typically be modified in such a commit, apart from the score, include
 
@@ -1405,7 +1405,7 @@ so, but one needs to make sure that no information is lost and that no layout at
 So as basic rules:
 
 * If any of the steps result in a score that looks worse than before, it should be undone and not committed.
-* As a security measure, after each step one should execute ``ms3 extract -M -N -X -F -D`` to make sure that no
+* As a security measure, after each step one should execute ``ms3 extract -M -N -X -F -C -D`` to make sure that no
   elements have changed during the process, otherwise one should undo and not commit, maybe leaving a note.
 * Each step should be committed individually so that it can be reverted if needed.
 * However, the same step maybe applied to all scores, and committed (without any changes introduced by ``ms3 extract``,
