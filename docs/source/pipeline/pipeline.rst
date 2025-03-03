@@ -740,7 +740,7 @@ Update repository structure
   .. code-block:: bash
 
       ms3 review -M -N -X -F -C -D -c LATEST
-      git add . && git commit -m "ms3 review -M -N -X -F -C -D -c LATEST (ms3 v2.4.1)"
+      git add . && git commit -m "ms3 review -M -N -X -F -C -D -c LATEST (ms3 v2.5.4)"
       git push --atomic
 
 
@@ -967,7 +967,7 @@ With the repo readily streamlined we update the data to ms3 v2 in three steps:
   that might be present, such as ``form_labels``), without committing the change (e.g., in your file browser).
 * Then we find out (or remember) the latest v1.x :ref:`version tag <version_tags>`, let's assume its ``v1.0``, and
   run ``ms3 review -M -N -X -F -C -D -c LATEST``.
-* commit everything with the message ``"ms3 review -M -N -X -F -C -D -c LATEST (ms3 v2.4.1)"``, i.e., the command you have
+* commit everything with the message ``"ms3 review -M -N -X -F -C -D -c LATEST (ms3 v2.5.4)"``, i.e., the command you have
   executed, followed by the ms3 version number that was used.
 
 The review command will also create ``.warnings`` files in the ``reviewed`` folder which reflect the health of the
@@ -1024,7 +1024,7 @@ The first step is to create a new branch for the task, e.g. "warnings" and to up
 using
 
 * ``ms3 review -M -N -X -F -C -D -c <version tag>`` (or ``-c LATEST``) and
-* committing the changes (if any) with the message ``ms3 review -M -N -X -F -C -D -c <version tag> (ms3 v2.4.1)``, i.e.,
+* committing the changes (if any) with the message ``ms3 review -M -N -X -F -C -D -c <version tag> (ms3 v2.5.4)``, i.e.,
   the command you have executed, followed by the ms3 version number that was used.
 
 Our goal is to eliminate the presence of any file ending on ``.warnings`` in the ``reviewed`` folder (they are simple
