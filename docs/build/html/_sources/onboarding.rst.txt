@@ -92,7 +92,7 @@ Minimum requirements
 
 * a Master’s degree in Music Theory (or equivalent);
 * excellent knowledge of tonal harmony, contrapuntal patterns, and schemata;
-* a computer running `MuseScore 3.6.2 <`https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__
+* a computer running `MuseScore 3.6.2 <https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__
   (which you can run alongside your MuseScore 4);
 * willingness to undertake tasks on a regular basis;
 * a bank account under your name, which accepts money transfers from Switzerland.
