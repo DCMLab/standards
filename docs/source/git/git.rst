@@ -14,7 +14,7 @@ Git is a version control system generally controlled via the command line.
 GitHub is a hosting service for remote Git repositories. Since the DCML hosts
 data on GitHub, a basic understanding of the Git workflow is relevant for annotators
 and reviewers. There are plenty of resources (for example
-`these videos <https://git-scm.com/doc>`__ or `this slideshow <https://rejahrehim.com/blog/git/workshop/presentation/slide/2019/12/08/choosing-the-right-git-branching-strategy.html#1>`__) for learning Git on the web, so this
+`these videos <https://git-scm.com/doc>`__ or `this slideshow <https://rejahrehim.com/blog/git/workshop/presentation/slide/choosing-the-right-git-branching-strategy/>`__) for learning Git on the web, so this
 is just a very quick guide. It might also be useful if you want to get a feel for how
 familiar you are already with the git-related concepts.
 
