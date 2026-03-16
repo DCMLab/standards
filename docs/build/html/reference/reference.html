@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="../">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Annotation Reference &#8212; Harmonic Annotation Guidelines 2.3.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=9afac83c" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <script src="../_static/documentation_options.js?v=c3c8ae58"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script>let toggleHintShow = 'Show answer';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -130,7 +133,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Annotation Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-syntax">The syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-remainder-of-the-reference-is-currently-under-reconstruction">The remainder of the Reference is currently under reconstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary-of-the-full-syntax">Summary of the full syntax</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Questions &amp; Examples</a><ul>
@@ -163,16 +166,44 @@
 <li><a class="reference internal" href="#introduction">Introduction</a><ul>
 <li><a class="reference internal" href="#what-is-it">What is it?</a></li>
 <li><a class="reference internal" href="#about-this-reference">About this reference</a></li>
+<li><a class="reference internal" href="#general-principles">General principles</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-syntax">The syntax</a><ul>
-<li><a class="reference internal" href="#indication-of-key">Indication of key.</a><ul>
+<li><a class="reference internal" href="#indication-of-key">Indication of key</a><ul>
 <li><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#relative-key">Relative key</a></li>
+<li><a class="reference internal" href="#roman-numerals">Roman numerals</a><ul>
+<li><a class="reference internal" href="#triads">Triads</a></li>
+<li><a class="reference internal" href="#tetrads">Tetrads</a></li>
+<li><a class="reference internal" href="#augmented-sixth-chords">Augmented sixth chords</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-remainder-of-the-reference-is-currently-under-reconstruction">The remainder of the Reference is currently under reconstruction</a></li>
+<li><a class="reference internal" href="#suspensions-and-retardations">Suspensions and retardations</a><ul>
+<li><a class="reference internal" href="#replacement-from-above-suspensions">Replacement from above (suspensions)</a></li>
+<li><a class="reference internal" href="#replacement-from-below-retardations">Replacement from below (retardations)</a></li>
+<li><a class="reference internal" href="#direction-markers">Direction markers</a></li>
+<li><a class="reference internal" href="#replacement-of-octave-doublings">Replacement of octave doublings</a></li>
+<li><a class="reference internal" href="#ninth-chords">Ninth chords</a></li>
+<li><a class="reference internal" href="#replacement-of-the-root-by-its-lower-neighbour">Replacement of the root by its lower neighbour</a></li>
+<li><a class="reference internal" href="#multiple-simultaneous-changes">Multiple simultaneous changes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#added-and-missing-notes">Added and missing notes</a></li>
+<li><a class="reference internal" href="#phrase-annotations-and-cadence-labels">Phrase annotations and cadence labels</a><ul>
+<li><a class="reference internal" href="#id5">Phrase annotations</a></li>
+<li><a class="reference internal" href="#cadence-labels">Cadence labels</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pedal-points-organ-points">Pedal points (Organ points)</a></li>
+<li><a class="reference internal" href="#ambiguity">Ambiguity</a></li>
+<li><a class="reference internal" href="#unisono">Unisono</a></li>
+<li><a class="reference internal" href="#immediate-repetition-of-identical-labels">Immediate repetition of identical labels</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary-of-the-full-syntax">Summary of the full syntax</a></li>
 </ul>
 </li>
 </ul>
@@ -223,9 +254,9 @@
     <div class="body col-md-12 content" role="main">
       
   <section id="annotation-reference">
-<h1>Annotation Reference<a class="headerlink" href="#annotation-reference" title="Link to this heading">¶</a></h1>
+<h1>Annotation Reference<a class="headerlink" href="#annotation-reference" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Thank you for your interest in the DCML harmony annotation standard. Harmonic
 analysis is a notoriously complex task, as of now very difficult to
 teach to a computer. Therefore, we need to rely on hand-annotated
@@ -237,7 +268,7 @@ up aspects of its syntax together with some examples. If you want to learn how D
 annotators use MuseScore to enter harmonic analysis directly into
 digital scores, please refer to our <a class="reference internal" href="../tutorial/index.html"><span class="doc">annotation tutorial</span></a>.</p>
 <section id="what-is-it">
-<h3>What is it?<a class="headerlink" href="#what-is-it" title="Link to this heading">¶</a></h3>
+<h3>What is it?<a class="headerlink" href="#what-is-it" title="Permalink to this heading">¶</a></h3>
 <p>In its essence, the standard consists of two things: A set of rules
 for constructing chord labels in a standardized way and this reference
 on how to apply these labels to music and how to interpret those that
@@ -253,7 +284,7 @@ tones it represents, and its different features. This reference is
 mainly concerned with explaining what these different properties are.</p>
 </section>
 <section id="about-this-reference">
-<h3>About this reference<a class="headerlink" href="#about-this-reference" title="Link to this heading">¶</a></h3>
+<h3>About this reference<a class="headerlink" href="#about-this-reference" title="Permalink to this heading">¶</a></h3>
 <p>Everyone is free to use the proposed standard for encoding harmonic analyses
 in ways, contexts, and environments of their free choice. The goal of this reference
 is not to tell anyone how they should analyse harmony. Instead, its purpose
@@ -263,9 +294,44 @@ a precise and consistent manner. The examples and recommendations are supposed t
 be guidelines that have as a goal to make annotations from different users
 comparable and interoperable.</p>
 </section>
+<section id="general-principles">
+<h3>General principles<a class="headerlink" href="#general-principles" title="Permalink to this heading">¶</a></h3>
+<p>The following principles are essential for producing correct annotations:</p>
+<ul class="simple">
+<li><p>Chord symbols (i.e. Roman numerals) are attached to the moment in the
+score where the respective harmony begins. They are valid until the
+next symbol; identical symbols are never repeated consecutively
+(see <a class="reference internal" href="#repetition-of-labels"><span class="std std-ref">Immediate repetition of identical labels</span></a> for exceptions).</p></li>
+<li><p>Symbols are typically attached to the lower system of the score, even if it
+contains only rests, at the precise position where the harmony occurs.</p></li>
+<li><p>Arabic numbers indicating <a class="reference internal" href="#roman-numerals"><span class="std std-ref">inversions</span></a> or
+<a class="reference internal" href="#suspensions-and-retardations"><span class="std std-ref">chord tone changes</span></a> always appear
+in descending order (e.g. <code class="docutils literal notranslate"><span class="pre">65</span></code> or <code class="docutils literal notranslate"><span class="pre">9#74</span></code>).</p></li>
+<li><p>The information about a harmony is expressed in a fixed order
+(syntax) and orthographical errors can be automatically detected.</p></li>
+<li><p>The annotations always need to represent a consistent reading, also in the
+case of repetitions, first and second endings, dal segnos, etc.</p></li>
+<li><p>Major keys are indicated by uppercase, minor keys by lowercase letters.</p></li>
+<li><p>We annotate non-chord tones such as suspensions, retardations, and additions,
+but not ornaments (neighbour notes, passing notes, embellishments).
+See <a class="reference internal" href="../tutorial/detail.html"><span class="doc">Level of detail</span></a> in the tutorial for guidance.</p></li>
+<li><p>Before annotating, decide on the harmonic pace for the piece and maintain it
+consistently.</p></li>
+<li><p><strong>Consistency</strong> is the annotation standard’s highest maxim: While different
+annotators would interpret the same music differently, it is important
+that the same annotator interprets the same music identically.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on the source of the notation file you receive for annotation,
+it may be advisable to have a scan of the <em>Urtext</em> open for tacit correction
+of the score. At least the bar numbers must be 100% correct. Make sure that
+upbeat measures are counted by MuseScore as measure 0.</p>
+</div>
+</section>
 </section>
 <section id="the-syntax">
-<h2>The syntax<a class="headerlink" href="#the-syntax" title="Link to this heading">¶</a></h2>
+<h2>The syntax<a class="headerlink" href="#the-syntax" title="Permalink to this heading">¶</a></h2>
 <p>Every chord symbol <em>must</em> have at least one compulsory Roman numeral and <em>may</em>
 start with an indication of key, followed by a separating dot. Such an
 indication sets the context for the attached Roman
@@ -273,7 +339,7 @@ numeral <em>and</em> for all subsequent symbols up to the next indication of
 key. Phrase annotations represent a separate standard. Therefore they can
 stand alone, without a chord label, or at the very end of one.</p>
 <section id="indication-of-key">
-<h3>Indication of key.<a class="headerlink" href="#indication-of-key" title="Link to this heading">¶</a></h3>
+<h3>Indication of key<a class="headerlink" href="#indication-of-key" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The first symbol written in a score always starts with the absolute
 indication of the entire piece’s tonality.</p></li>
@@ -287,14 +353,14 @@ numerals relative to that.</p></li>
 can indicate the new key by typing <code class="docutils literal notranslate"><span class="pre">V.I</span></code> over the harmony of G
 major. All subsequent Roman numerals up to the next indication of key
 relate to the new key of G major.</p></li>
-<li><p>There is a way of annotating secondary dominants (see <a class="reference external" href="#relative-key">relative
-key</a>); however, if you find a <code class="docutils literal notranslate"><span class="pre">V/vi</span></code> chord and
+<li><p>There is a way of annotating secondary dominants (see
+<a class="reference internal" href="#relative-key"><span class="std std-ref">Relative key</span></a>); however, if you find a <code class="docutils literal notranslate"><span class="pre">V/vi</span></code> chord and
 the music then stays in the key of <code class="docutils literal notranslate"><span class="pre">vi</span></code> for a longer time (cf. next
 paragraph), you can write <code class="docutils literal notranslate"><span class="pre">vi.V</span></code> right away. Every following <code class="docutils literal notranslate"><span class="pre">i</span></code>
 symbol designates the new tonic.</p></li>
 </ul>
 <section id="example">
-<h4>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h4>
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">ii65/V</span> <span class="pre">V7/V</span> <span class="pre">V</span></code> and <code class="docutils literal notranslate"><span class="pre">I6</span> <span class="pre">V.ii65</span> <span class="pre">V7</span> <span class="pre">I</span></code> (from the Schumann example
 below), in general, express the same chords but a preference has to be
 given either to the first version - i.e., with <strong>applied chords</strong> - or
@@ -365,9 +431,604 @@ analyses of two different annotations of the same piece:</p>
 </table>
 </section>
 </section>
+<section id="relative-key">
+<span id="id1"></span><h3>Relative key<a class="headerlink" href="#relative-key" title="Permalink to this heading">¶</a></h3>
+<p>If a symbol relates to a different key than the one you are in, you can
+indicate the relative key using a slash <code class="docutils literal notranslate"><span class="pre">/</span></code>. Most prominently this is
+the case for secondary dominants such as <code class="docutils literal notranslate"><span class="pre">V65/IV</span></code>. The relative key is
+indicated as relative to the local key and does not change the local
+key.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">iv.i</span> <span class="pre">#viio6</span> <span class="pre">i6</span> <span class="pre">V65/iv</span> <span class="pre">iv</span> <span class="pre">viio7/V</span> <span class="pre">V7</span> <span class="pre">i</span></code> designates a cadence
+in the key of <code class="docutils literal notranslate"><span class="pre">iv</span></code> (here: G minor) because of the initial indication of
+key. Note that</p>
+<ul class="simple">
+<li><p>the relative keys <code class="docutils literal notranslate"><span class="pre">iv</span></code> (C minor) and <code class="docutils literal notranslate"><span class="pre">V</span></code> (D major) relate to the
+<em>local</em> key <code class="docutils literal notranslate"><span class="pre">iv</span></code> and not to the <em>global</em> (tonic) key (here: D minor);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">viio7/V</span></code> is not spelled <code class="docutils literal notranslate"><span class="pre">#viio7/V</span></code> although the bass is altered.
+The reason is that it is the natural 7th scale degree in the key of
+<code class="docutils literal notranslate"><span class="pre">V</span></code> (D <strong>major</strong>). B flat, of course, is not natural in D major but
+is clearly annotated through the choice of <code class="docutils literal notranslate"><span class="pre">viio7</span></code> rather than
+<code class="docutils literal notranslate"><span class="pre">vii%7</span></code>;</p></li>
+<li><p>combining relative key with a modulation can be counterintuitive
+because relative keys relate to the <em>local</em> key, whereas
+key indications used for modulation always relate to the <em>global</em> key.
+To avoid confusion, don’t use relative key annotation if a modulation to
+that same relative key follows.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="Relative key example" src="../_images/relativekey.png" />
+</figure>
+<p>Relative keys of relative keys can be annotated, for example the
+dominant-seventh harmony of the dominant key of the key of scale degree <cite>v</cite>: <code class="docutils literal notranslate"><span class="pre">viio/V/v</span></code>.</p>
+<div class="danger admonition">
+<p class="admonition-title">Common mistake</p>
+<p>Since the root of <code class="docutils literal notranslate"><span class="pre">viio/V</span></code> has an accidental, novice annotators are
+often tempted to write <code class="docutils literal notranslate"><span class="pre">#viio/V</span></code>. This is incorrect because the leading
+tone is scale degree <code class="docutils literal notranslate"><span class="pre">7</span></code> (not <code class="docutils literal notranslate"><span class="pre">#7</span></code>) in major. These are all correct:
+<code class="docutils literal notranslate"><span class="pre">I.viio/V</span></code>, <code class="docutils literal notranslate"><span class="pre">i.viio/V</span></code>, <code class="docutils literal notranslate"><span class="pre">I.#viio/v</span></code>, <code class="docutils literal notranslate"><span class="pre">i.#viio/v</span></code>.</p>
+</div>
 </section>
-<section id="the-remainder-of-the-reference-is-currently-under-reconstruction">
-<h2>The remainder of the Reference is currently under reconstruction<a class="headerlink" href="#the-remainder-of-the-reference-is-currently-under-reconstruction" title="Link to this heading">¶</a></h2>
+<section id="roman-numerals">
+<span id="id2"></span><h3>Roman numerals<a class="headerlink" href="#roman-numerals" title="Permalink to this heading">¶</a></h3>
+<p>The smallest possible symbols consist of a single Roman numeral. They
+stand for a major (<code class="docutils literal notranslate"><span class="pre">I,</span> <span class="pre">II,</span> <span class="pre">III,</span> <span class="pre">IV,</span> <span class="pre">V,</span> <span class="pre">VI,</span> <span class="pre">VII</span></code>) or minor
+(<code class="docutils literal notranslate"><span class="pre">i,</span> <span class="pre">ii,</span> <span class="pre">iii,</span> <span class="pre">iv,</span> <span class="pre">v,</span> <span class="pre">vi,</span> <span class="pre">vii</span></code>) triad in root position. <em>All other
+chords</em> — those which are not a major or minor root-position triad on one
+of the key’s natural degrees — need additional symbols. For altered
+scale degrees, prefix the numeral with <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">#</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">bVI</span></code> for
+an Ab major chord in the context of C major, or <code class="docutils literal notranslate"><span class="pre">#vi</span></code> for an A minor
+chord in the context of C minor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dorian and phrygian modes are annotated as minor keys; lydian and
+mixolydian as major. The root distances of <code class="docutils literal notranslate"><span class="pre">iii</span> <span class="pre">III</span> <span class="pre">vi</span> <span class="pre">VI</span> <span class="pre">vii</span> <span class="pre">VII</span></code>
+from the tonic are major intervals in major keys and minor intervals
+in minor keys. See <a class="reference internal" href="../tutorial/first_label.html"><span class="doc">The first label</span></a> in
+the tutorial for details on modes.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You always indicate the chord type <em>before</em> the inversion.</p>
+</div>
+<section id="triads">
+<h4>Triads<a class="headerlink" href="#triads" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-center" id="id7" style="width: 70%">
+<caption><span class="caption-text">Triads. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Root</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Inversions</p></th>
+<th class="head"><p>Chord type</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RN</p></td>
+<td><p>&lt;NA&gt;</p></td>
+<td><p>&lt;NA&gt;, 6, 64</p></td>
+<td><p>Major triad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">V6</span></code>, <code class="docutils literal notranslate"><span class="pre">IV64</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>rn</p></td>
+<td><p>&lt;NA&gt;</p></td>
+<td><p>&lt;NA&gt;, 6, 64</p></td>
+<td><p>Minor triad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vi</span></code>, <code class="docutils literal notranslate"><span class="pre">ii6</span></code>, <code class="docutils literal notranslate"><span class="pre">iv64</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>rn</p></td>
+<td><p>o</p></td>
+<td><p>&lt;NA&gt;, 6, 64</p></td>
+<td><p>Diminished triad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">viio</span></code>, <code class="docutils literal notranslate"><span class="pre">iio6</span></code>, <code class="docutils literal notranslate"><span class="pre">#ivo64</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>RN</p></td>
+<td><p>+</p></td>
+<td><p>&lt;NA&gt;, 6, 64</p></td>
+<td><p>Augmented triad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">III+</span></code>, <code class="docutils literal notranslate"><span class="pre">III+6</span></code>, <code class="docutils literal notranslate"><span class="pre">III+64</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tetrads">
+<h4>Tetrads<a class="headerlink" href="#tetrads" title="Permalink to this heading">¶</a></h4>
+<p>Every seventh chord is distinguished by its type and one of the inversions
+<code class="docutils literal notranslate"><span class="pre">7</span></code> (root position), <code class="docutils literal notranslate"><span class="pre">65</span></code>, <code class="docutils literal notranslate"><span class="pre">43</span></code>, or <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<div class="caution admonition">
+<p class="admonition-title">Mnemonic Hook</p>
+<p>Arabic numbers always occur in descending order.</p>
+</div>
+<table class="docutils align-center" id="id8" style="width: 75%">
+<caption><span class="caption-text">Seventh chords. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Root</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Inversions</p></th>
+<th class="head"><p>Chord type</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RN</p></td>
+<td><p>&lt;NA&gt;</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Dominant seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V7</span></code>, <code class="docutils literal notranslate"><span class="pre">IV65</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>rn</p></td>
+<td><p>&lt;NA&gt;</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Minor seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vi7</span></code>, <code class="docutils literal notranslate"><span class="pre">ii43</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>rn</p></td>
+<td><p>o</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Diminished seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vio7</span></code>, <code class="docutils literal notranslate"><span class="pre">#viio2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>RN</p></td>
+<td><p>+</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Augmented minor seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V+7</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>rn</p></td>
+<td><p>%</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Half-diminished seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vii%7</span></code>, <code class="docutils literal notranslate"><span class="pre">#vi%43</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>RN</p></td>
+<td><p>M</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Major seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IVM7</span></code>, <code class="docutils literal notranslate"><span class="pre">IIIM65</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>rn</p></td>
+<td><p>M</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Minor major seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">iiiM7</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>RN</p></td>
+<td><p>+M</p></td>
+<td><p>7, 65, 43, 2</p></td>
+<td><p>Augmented major seventh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">I+M7</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The inversion <code class="docutils literal notranslate"><span class="pre">42</span></code> is accepted as equivalent to <code class="docutils literal notranslate"><span class="pre">2</span></code> but <code class="docutils literal notranslate"><span class="pre">2</span></code> is the
+canonical form and should be preferred.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While a dominant seventh chord theoretically can appear on degrees other than
+V (e.g. <code class="docutils literal notranslate"><span class="pre">VII7</span></code> in a falling fifths progression), when the respective tonic
+follows, it should be annotated as a secondary dominant instead (e.g.
+<code class="docutils literal notranslate"><span class="pre">V7/III</span></code>). However, there are cases where the same sonority occurs as
+<code class="docutils literal notranslate"><span class="pre">IV7</span></code> or <code class="docutils literal notranslate"><span class="pre">IV65</span></code> in a minor key, which is not notated as a dominant.</p>
+</div>
+</section>
+<section id="augmented-sixth-chords">
+<span id="id3"></span><h4>Augmented sixth chords<a class="headerlink" href="#augmented-sixth-chords" title="Permalink to this heading">¶</a></h4>
+<p>The standard provides special symbols for the three augmented sixth chords:</p>
+<table class="docutils align-center" id="id9">
+<caption><span class="caption-text">Augmented sixth chords</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Root</p></th>
+<th class="head"><p>Equivalent</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">It6</span></code></p></td>
+<td><p>Italian sixth</p></td>
+<td><p>vii/V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">viio6(b3)/V</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ger6</span></code></p></td>
+<td><p>German sixth</p></td>
+<td><p>vii/V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">viio65(b3)/V</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Fr6</span></code></p></td>
+<td><p>French sixth</p></td>
+<td><p>V/V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V43(b5)/V</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The forms with their standard figured bass (<code class="docutils literal notranslate"><span class="pre">It6</span></code>, <code class="docutils literal notranslate"><span class="pre">Ger6</span></code>/<code class="docutils literal notranslate"><span class="pre">Ger65</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Fr6</span></code>/<code class="docutils literal notranslate"><span class="pre">Fr43</span></code>) all express the chord in its standard position (with scale
+degree <code class="docutils literal notranslate"><span class="pre">b6</span></code> in the bass) and are therefore equivalent. Other figured-bass
+values indicate inversions: e.g. <code class="docutils literal notranslate"><span class="pre">Ger7</span></code> has <code class="docutils literal notranslate"><span class="pre">#4</span></code> in the bass, and <code class="docutils literal notranslate"><span class="pre">Fr7</span></code>
+has scale degree <code class="docutils literal notranslate"><span class="pre">2</span></code> in the bass. Since <code class="docutils literal notranslate"><span class="pre">It6</span></code> is a triad, <code class="docutils literal notranslate"><span class="pre">It</span></code> (without
+figured bass) translates to its root position <code class="docutils literal notranslate"><span class="pre">viio(b3)/V</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In older versions of the standard, annotations were entered in MuseScore’s
+Harmony layer rather than the Roman numeral layer. In that context, a leading
+dot was required to prevent MuseScore from interpreting note names as chord
+symbols (e.g. <code class="docutils literal notranslate"><span class="pre">.Ger</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Ger6</span></code>). This leading dot is
+<strong>deprecated</strong> and should no longer be used.</p>
+</div>
+</section>
+</section>
+<section id="suspensions-and-retardations">
+<span id="id4"></span><h3>Suspensions and retardations<a class="headerlink" href="#suspensions-and-retardations" title="Permalink to this heading">¶</a></h3>
+<p>Suspensions, retardations, and other chord tone changes are annotated as
+Arabic numbers within round parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> following the Roman numeral,
+form, and inversion. The numbers designate the note’s interval <strong>to the root</strong>.
+This is independent of the chord’s inversion: the suspension <code class="docutils literal notranslate"><span class="pre">(4)</span></code> means the
+same thing in <code class="docutils literal notranslate"><span class="pre">V(4)</span></code>, <code class="docutils literal notranslate"><span class="pre">V6(4)</span></code>, <code class="docutils literal notranslate"><span class="pre">V65(4)</span></code>, <code class="docutils literal notranslate"><span class="pre">V43(4)</span></code>, and <code class="docutils literal notranslate"><span class="pre">V2(4)</span></code>
+(in two of them, the suspension is in the bass).</p>
+<p>To indicate the resolution, write the sounding chord without the change,
+e.g. <code class="docutils literal notranslate"><span class="pre">V(4)</span> <span class="pre">V7</span></code> or <code class="docutils literal notranslate"><span class="pre">V65(4)</span> <span class="pre">V65</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The intervals designated by the Arabic numbers in parentheses are diatonic
+and depend on the chord’s position in the scale and the scale itself.
+For example, <code class="docutils literal notranslate"><span class="pre">iv(4)</span></code> translates to <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">B</span> <span class="pre">C</span></code> in a C major context but to
+<code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">C</span></code> in a C minor context. Use <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">#</span></code> to alter:
+<code class="docutils literal notranslate"><span class="pre">iv(b4)</span></code> in C major yields <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">Bb</span> <span class="pre">C</span></code>.</p>
+</div>
+<section id="replacement-from-above-suspensions">
+<h4>Replacement from above (suspensions)<a class="headerlink" href="#replacement-from-above-suspensions" title="Permalink to this heading">¶</a></h4>
+<p>The digits <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">6</span></code> designate the upper neighbours of chord tones
+<code class="docutils literal notranslate"><span class="pre">1</span></code> (root), <code class="docutils literal notranslate"><span class="pre">3</span></code> (third), <code class="docutils literal notranslate"><span class="pre">5</span></code> (fifth) respectively. The replaced chord
+tone is <strong>not present</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(2)</span></code>: replaces the root</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(4)</span></code>: replaces the third</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(6)</span></code>: replaces the fifth</p></li>
+</ul>
+<div class="caution admonition">
+<p class="admonition-title">Cadential six-four</p>
+<p>The cadential six-four chord is written as <code class="docutils literal notranslate"><span class="pre">V(64)</span></code> to distinguish it from
+a passing <code class="docutils literal notranslate"><span class="pre">I64</span></code>.</p>
+</div>
+</section>
+<section id="replacement-from-below-retardations">
+<h4>Replacement from below (retardations)<a class="headerlink" href="#replacement-from-below-retardations" title="Permalink to this heading">¶</a></h4>
+<p>A retardation resolves upward. The digit <code class="docutils literal notranslate"><span class="pre">7</span></code> designates replacement of the
+root from below:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(7)</span></code>: retardation of the root (resolution goes upwards)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(#2)</span></code>: retardation of the third from below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(#4)</span></code>: retardation of the fifth from below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(#6)</span></code>: retardation of the seventh from below</p></li>
+</ul>
+</section>
+<section id="direction-markers">
+<h4>Direction markers<a class="headerlink" href="#direction-markers" title="Permalink to this heading">¶</a></h4>
+<p>When a digit has an accidental, the direction of replacement is inferred
+by default:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> before a digit implies suspension (replacement from above)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> before a digit implies retardation (replacement from below)</p></li>
+</ul>
+<p>Two explicit direction markers can override these defaults:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> (from above): forces the digit to replace the chord tone below it.
+Needed for raised suspensions, e.g. <code class="docutils literal notranslate"><span class="pre">v#2</span></code> = sharped upper neighbour
+replacing the root.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> (from below): forces the digit to replace the chord tone above it.
+Needed for unraised retardations, e.g. <code class="docutils literal notranslate"><span class="pre">^2</span></code> = diatonic 2 replacing the
+third.</p></li>
+</ul>
+<p>The complete set of replacement combinations:</p>
+<ul class="simple">
+<li><p>From above (replacing <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>): <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">b2</span></code>, <code class="docutils literal notranslate"><span class="pre">v#2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">b4</span></code>, <code class="docutils literal notranslate"><span class="pre">v#4</span></code>, <code class="docutils literal notranslate"><span class="pre">6</span></code>, <code class="docutils literal notranslate"><span class="pre">b6</span></code>, <code class="docutils literal notranslate"><span class="pre">v#6</span></code></p></li>
+<li><p>From below (replacing <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>, <code class="docutils literal notranslate"><span class="pre">7</span></code>): <code class="docutils literal notranslate"><span class="pre">^2</span></code>, <code class="docutils literal notranslate"><span class="pre">^b2</span></code>, <code class="docutils literal notranslate"><span class="pre">#2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">^4</span></code>, <code class="docutils literal notranslate"><span class="pre">^b4</span></code>, <code class="docutils literal notranslate"><span class="pre">#4</span></code>, <code class="docutils literal notranslate"><span class="pre">^6</span></code>, <code class="docutils literal notranslate"><span class="pre">^b6</span></code>, <code class="docutils literal notranslate"><span class="pre">#6</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember that the accidentals <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">#</span></code> depend on the local major or
+(natural) minor scale.</p>
+</div>
+</section>
+<section id="replacement-of-octave-doublings">
+<h4>Replacement of octave doublings<a class="headerlink" href="#replacement-of-octave-doublings" title="Permalink to this heading">¶</a></h4>
+<p>The digits <code class="docutils literal notranslate"><span class="pre">9</span></code>, <code class="docutils literal notranslate"><span class="pre">11</span></code>, <code class="docutils literal notranslate"><span class="pre">13</span></code> are used when the chord tone is present but
+replaced in one of the upper octaves:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(9)</span></code>: replaces an octave doubling of the root (root <strong>present</strong>);
+contrast with <code class="docutils literal notranslate"><span class="pre">(2)</span></code> where the root is <strong>not present</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(11)</span></code>: replaces an octave doubling of the third (third <strong>present</strong>,
+often in a lower voice or in the bass)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(13)</span></code>: replaces an octave doubling of the fifth (fifth <strong>present</strong>)</p></li>
+</ul>
+<p>For example, the “Chopin chord” (dominant seventh add 13) is expressed
+as <code class="docutils literal notranslate"><span class="pre">V7(13)</span></code> to clarify that the fifth is present and the added note is
+(at least) a ninth apart. The distinction matters for added notes too:
+<code class="docutils literal notranslate"><span class="pre">V7(+6)</span></code> (dissonance is a second) vs. <code class="docutils literal notranslate"><span class="pre">V7(+13)</span></code> (dissonance is a ninth).</p>
+</section>
+<section id="ninth-chords">
+<h4>Ninth chords<a class="headerlink" href="#ninth-chords" title="Permalink to this heading">¶</a></h4>
+<p>Dominant ninth chords illustrate the interplay of these conventions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V7(9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(b9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(v#9)</span></code>: ninth replaces an octave doubling
+of the root</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V7(^9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(^b9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(#9)</span></code>: ninth replaces an octave doubling
+of the third</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V7(+9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(+b9)</span></code>, <code class="docutils literal notranslate"><span class="pre">V7(+#9)</span></code>: ninth is an added note</p></li>
+</ul>
+</section>
+<section id="replacement-of-the-root-by-its-lower-neighbour">
+<span id="root-replacement"></span><h4>Replacement of the root by its lower neighbour<a class="headerlink" href="#replacement-of-the-root-by-its-lower-neighbour" title="Permalink to this heading">¶</a></h4>
+<p>Following the above logic, replacement of the lowest root (<code class="docutils literal notranslate"><span class="pre">1</span></code>) in the chord
+should be expressed through <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">#0</span></code> (leading tone in a minor scale).
+However, for convenience, <code class="docutils literal notranslate"><span class="pre">7</span></code> or <code class="docutils literal notranslate"><span class="pre">#7</span></code> are commonly used instead (which
+logically express replacement of an octave doubling of the root). Therefore
+<code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">7</span></code> are equivalent in nearly all cases. The exception is
+root-position chords, where the root is in the bass: Here, <code class="docutils literal notranslate"><span class="pre">0</span></code> is required
+to differentiate from replacement of an octave doubling (<code class="docutils literal notranslate"><span class="pre">7</span></code>).</p>
+</section>
+<section id="multiple-simultaneous-changes">
+<h4>Multiple simultaneous changes<a class="headerlink" href="#multiple-simultaneous-changes" title="Permalink to this heading">¶</a></h4>
+<p>If several changes are sounding at the same time, annotate all of them
+within the same parenthesis, always in descending order, e.g.
+<code class="docutils literal notranslate"><span class="pre">V(64)</span></code>, <code class="docutils literal notranslate"><span class="pre">V(42)</span></code>. A <em>cadenza doppia</em> could look like
+<code class="docutils literal notranslate"><span class="pre">V7</span> <span class="pre">V(64)</span> <span class="pre">V(4)</span> <span class="pre">V</span></code> followed by <code class="docutils literal notranslate"><span class="pre">I</span></code> or <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Designating suspensions or retardations as intervals above the root will be
+counterintuitive if you are used to thinking in figured bass. For example,
+a falling fauxbourdon <code class="docutils literal notranslate"><span class="pre">ii6</span> <span class="pre">I6</span> <span class="pre">viio6</span></code> with 7-6 suspensions has to be written
+as <code class="docutils literal notranslate"><span class="pre">ii6(2)</span> <span class="pre">ii6</span> <span class="pre">I6(2)</span> <span class="pre">I6</span> <span class="pre">viio6(2)</span> <span class="pre">viio6</span></code>. Note that you use <code class="docutils literal notranslate"><span class="pre">(2)</span></code> and not
+<code class="docutils literal notranslate"><span class="pre">(9)</span></code> because the root is not present. A Classical ending with retardation
+looks like <code class="docutils literal notranslate"><span class="pre">i(9#74)</span> <span class="pre">i</span></code>, and not <code class="docutils literal notranslate"><span class="pre">i(#742)</span> <span class="pre">i</span></code> or <code class="docutils literal notranslate"><span class="pre">i(24#7)</span> <span class="pre">i</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="added-and-missing-notes">
+<h3>Added and missing notes<a class="headerlink" href="#added-and-missing-notes" title="Permalink to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We don’t annotate neighbour notes, passing notes, or embellishments.</p>
+</div>
+<p>A typical additional note is a pedal note appearing in a voice other than the
+bass. Added notes are annotated like chord tone changes but preceded by <code class="docutils literal notranslate"><span class="pre">+</span></code>:
+the digit indicates the interval <em>from the root</em>.</p>
+<p>Example: Imagine a C major context and a pedal on G in a middle voice. The
+other voices do the progression <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">viio6</span> <span class="pre">I6</span> <span class="pre">ii6</span> <span class="pre">I64</span> <span class="pre">IV6</span> <span class="pre">Ger6</span> <span class="pre">V</span></code>. Some
+harmonies already contain the G (<code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">I6</span></code>, <code class="docutils literal notranslate"><span class="pre">I64</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>), one harmony
+supports an added G (<code class="docutils literal notranslate"><span class="pre">viio6</span></code> with G is <code class="docutils literal notranslate"><span class="pre">V43</span></code>), and the rest neither support
+G nor can it be interpreted as a suspension. Correct annotation:
+<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">V43</span> <span class="pre">I6</span> <span class="pre">ii6(+4)</span> <span class="pre">I64</span> <span class="pre">IV6(+2)</span> <span class="pre">Ger6(+7)</span> <span class="pre">V</span></code>.</p>
+<p>In analogy, <code class="docutils literal notranslate"><span class="pre">-</span></code> indicates that a given chord tone is missing <strong>and not
+implied</strong> by the music. This symbol is used rarely because in most cases the
+missing note (the fifth in particular) is considered as implied. Examples:
+pronounced empty fifths <code class="docutils literal notranslate"><span class="pre">I(-3)</span></code>, unclear third quality <code class="docutils literal notranslate"><span class="pre">I(-3)-i(-3)</span></code>,
+or missing root in two-voice counterpoint <code class="docutils literal notranslate"><span class="pre">IV(-1)</span></code>.</p>
+<figure class="align-default" id="id10">
+<img alt="Added notes example from Monteverdi" src="../_images/added_notes.png" />
+<figcaption>
+<p><span class="caption-text">Monteverdi, <em>Lamento della ninfa</em>: Distinguishing added notes from
+embellishments and suspensions (mm. 40–44).</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="phrase-annotations-and-cadence-labels">
+<span id="phrase-annotations"></span><h3>Phrase annotations and cadence labels<a class="headerlink" href="#phrase-annotations-and-cadence-labels" title="Permalink to this heading">¶</a></h3>
+<section id="id5">
+<h4>Phrase annotations<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
+<p>The DCML standard includes a non-hierarchical phrase annotation using
+curly brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code>. They may stand alone or be the last character of a
+chord label. Phrase annotations are <strong>always the label’s last part</strong>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span></code>: beginning of a phrase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">}</span></code>: structural phrase ending (typically the cadence’s ultima)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">}{</span></code>: phrase interlocking</p></li>
+</ul>
+<p>The closing bracket marks the structural ending; everything between <code class="docutils literal notranslate"><span class="pre">}</span></code> and
+the next <code class="docutils literal notranslate"><span class="pre">{</span></code> is still part of the same phrase (annexe, codetta, transition).
+Full phrase lengths are therefore calculated from <code class="docutils literal notranslate"><span class="pre">{</span></code> to <code class="docutils literal notranslate"><span class="pre">{</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The backslash <code class="docutils literal notranslate"><span class="pre">\\</span></code> is kept for backward compatibility with older versions
+of the standard where it designated a phrase ending. It has been superseded
+by the curly-bracket syntax.</p>
+</div>
+<figure class="align-default" id="id11">
+<img alt="Phrase boundaries example" src="../_images/phrase_boundaries.png" />
+<figcaption>
+<p><span class="caption-text">Corelli: Sonata da chiesa op. 1/7, I, mm. 1–4</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="cadence-labels">
+<h4>Cadence labels<a class="headerlink" href="#cadence-labels" title="Permalink to this heading">¶</a></h4>
+<p>Cadences are marked on the ultima with one of the following labels,
+separated from the chord label by a pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>:</p>
+<table class="docutils align-center" id="id12">
+<caption><span class="caption-text">Cadence labels</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Cadence type</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PAC</p></td>
+<td><p>Perfect authentic cadence</p></td>
+<td><p>Bass and upper voice closing on ^1</p></td>
+</tr>
+<tr class="row-odd"><td><p>IAC</p></td>
+<td><p>Imperfect authentic cadence</p></td>
+<td><p>Bass or upper voice not closing on ^1</p></td>
+</tr>
+<tr class="row-even"><td><p>HC</p></td>
+<td><p>Half cadence</p></td>
+<td><p>Closing on V</p></td>
+</tr>
+<tr class="row-odd"><td><p>DC</p></td>
+<td><p>Deceptive cadence</p></td>
+<td><p>Ultima not a tonic chord</p></td>
+</tr>
+<tr class="row-even"><td><p>EC</p></td>
+<td><p>Evaded cadence</p></td>
+<td><p>Cadential goal is cut off from the previous progression and groups forward</p></td>
+</tr>
+<tr class="row-odd"><td><p>PC</p></td>
+<td><p>Plagal cadence</p></td>
+<td><p>Cadential ending with ^4–^1 in the bass</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PC</span></code> label is accepted but should be used with caution. It remains
+debated for which repertoires plagal cadences constitute an appropriate
+analytical category. When in doubt, consult your reviewer.</p>
+</div>
+<p>If the ultima is suspended, the cadence label marks the moment of its
+completion, whereas the structural phrase ending <code class="docutils literal notranslate"><span class="pre">}</span></code> marks its structural
+position. When cadence label and phrase ending co-occur, <code class="docutils literal notranslate"><span class="pre">}</span></code> goes last:
+e.g. <code class="docutils literal notranslate"><span class="pre">i|PAC}</span></code>. A cadence label can occur without a harmony label
+(e.g. <code class="docutils literal notranslate"><span class="pre">|EC</span></code>) but this is rare.</p>
+<div class="caution admonition">
+<p class="admonition-title">Cadence frequency</p>
+<p>The DCML guidelines require writing more cadence labels than most theorists
+naturally would. Following a schema-theoretic approach, if a cadential
+schema is repeated in the same or a similar way, the cadence label needs to
+be repeated as well, even if from a formal perspective only one instance
+would be considered the “real” cadence.</p>
+</div>
+</section>
+</section>
+<section id="pedal-points-organ-points">
+<span id="pedal-points"></span><h3>Pedal points (Organ points)<a class="headerlink" href="#pedal-points-organ-points" title="Permalink to this heading">¶</a></h3>
+<p>If several harmonies appear over the same bass note, the start of the
+pedal point is marked by <code class="docutils literal notranslate"><span class="pre">[</span></code> and the end by <code class="docutils literal notranslate"><span class="pre">]</span></code>. In front of the opening
+<code class="docutils literal notranslate"><span class="pre">[</span></code> stands the Roman numeral corresponding to the bass note’s scale degree,
+immediately followed (within the same expression) by the first harmony above
+the pedal note. Thus, the most common pedal points start with <code class="docutils literal notranslate"><span class="pre">I[I</span></code>,
+<code class="docutils literal notranslate"><span class="pre">i[V7/iv</span></code>, or <code class="docutils literal notranslate"><span class="pre">V[V</span></code>. The pedal point ends at the end of the terminal
+symbol’s duration, i.e. it ends with the next symbol after <code class="docutils literal notranslate"><span class="pre">I]</span></code> or <code class="docutils literal notranslate"><span class="pre">V7]</span></code>.</p>
+<p>Two criteria must both apply for using the pedal-point annotation:</p>
+<ul class="simple">
+<li><p>It involves three or more distinct harmonic events sharing the same bass note.</p></li>
+<li><p>At least one harmony appears of which the pedal note is not a component.</p></li>
+</ul>
+<p>Therefore, a 5/3-6/4-5/3 contrapuntal movement (often on scale degree 1)
+is generally annotated as a simple neighboring motion: <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">I(64)</span> <span class="pre">I</span></code>
+(the pedal-point character is implied in this expression).</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="notapedal" src="../_images/notapedal.png" /></p>
+<p>(KV
+333,
+II, 19)</p>
+</td>
+<td><p>No pedal
+point
+because the
+bass is a
+constituent
+of every
+harmony.</p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="auskomponiert" src="../_images/auskomponiert.png" /></p>
+<p>(KV
+333,
+III,
+65-8)</p>
+</td>
+<td><p>This is
+considered
+a mere
+<cite>i i(64) i</cite>
+prolongation
+(only two
+distinct
+events).</p></td>
+</tr>
+</tbody>
+</table>
+<p>A rule of thumb for the harmonies above the pedal note: If the bass note is
+a part of the harmony, write the inversion corresponding to the bass note;
+otherwise, the inversion of the chord above. A more important rule can
+override this: The harmonic progression above the organ point should be
+meaningful in itself. For example, in a fauxbourdon you might highlight the
+sixth chords: <code class="docutils literal notranslate"><span class="pre">I[IV6</span> <span class="pre">iii6</span> <span class="pre">ii6</span> <span class="pre">I6</span> <span class="pre">viio6</span> <span class="pre">I]</span></code> rather than
+<code class="docutils literal notranslate"><span class="pre">I[IV64</span> <span class="pre">iii6</span> <span class="pre">ii6</span> <span class="pre">I</span> <span class="pre">viio6</span> <span class="pre">I]</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you change the local key, you need to end the pedal point with
+the previous label and start a new one.</p>
+</div>
+</section>
+<section id="ambiguity">
+<span id="id6"></span><h3>Ambiguity<a class="headerlink" href="#ambiguity" title="Permalink to this heading">¶</a></h3>
+<p>If two interpretations are possible and you are unable to make a decision,
+you can give both interpretations by separating them with a dash <code class="docutils literal notranslate"><span class="pre">-</span></code>,
+e.g. <code class="docutils literal notranslate"><span class="pre">viio6-V43</span></code>. Use this means as a last resort only and make sure
+that both interpretations are valid readings <em>within their context</em>, i.e.
+each interpretation should be valid in line with the prior and the following
+symbol. This implies that no modulation can occur within an ambiguous
+expression (such as <code class="docutils literal notranslate"><span class="pre">viio7/V-v.#viio7</span></code>) because only one of the readings
+can be correct in context with the following expression. It is possible to
+give a relative key (e.g. <code class="docutils literal notranslate"><span class="pre">I6-V6/IV</span></code>) because both options create correct
+readings.</p>
+</section>
+<section id="unisono">
+<h3>Unisono<a class="headerlink" href="#unisono" title="Permalink to this heading">¶</a></h3>
+<p>Single-voice passages generally imply harmonies which you are asked to
+infer. If the information of the melody line is too sparse to be sure
+whether it is implying <code class="docutils literal notranslate"><span class="pre">viio6</span></code> or <code class="docutils literal notranslate"><span class="pre">V43</span></code>, for example, you will most
+likely opt for an ambiguous annotation (see <a class="reference internal" href="#ambiguity"><span class="std std-ref">Ambiguity</span></a>). You are
+also free to choose one interpretation because it is more stereotypical
+or because it alludes to another passage of the same piece. If no harmony
+can be inferred — in particular where a composer deliberately withdraws
+tonal footing — use the symbol <code class="docutils literal notranslate"><span class="pre">&#64;none</span></code>.</p>
+</section>
+<section id="immediate-repetition-of-identical-labels">
+<span id="repetition-of-labels"></span><h3>Immediate repetition of identical labels<a class="headerlink" href="#immediate-repetition-of-identical-labels" title="Permalink to this heading">¶</a></h3>
+<p>There are only rare cases where identical labels should be repeated:</p>
+<ul class="simple">
+<li><p>If one label marks the beginning or ending of an organ point.</p></li>
+<li><p>If a repetition is needed to allow for a consistent reading with
+repetitions, first and second endings, dal segnos, etc.
+Example: <code class="docutils literal notranslate"><span class="pre">|</span> <span class="pre">V</span> <span class="pre">|:</span> <span class="pre">V</span> <span class="pre">I</span> <span class="pre">:|</span></code> instead of <code class="docutils literal notranslate"><span class="pre">|</span> <span class="pre">V</span> <span class="pre">|:</span> <span class="pre">I</span> <span class="pre">:|</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="summary-of-the-full-syntax">
+<h2>Summary of the full syntax<a class="headerlink" href="#summary-of-the-full-syntax" title="Permalink to this heading">¶</a></h2>
+<p>One of the longest possible expressions would be
+<code class="docutils literal notranslate"><span class="pre">bvii.V[#viio65(+b84)/#vi</span></code>. This is purely theoretical and simply a
+demonstration of order and meaning of the different syntactic components.
+With concrete examples given in relation to C major:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bvii.</span></code> in the context of a major key <em>(C major)</em> means that all
+following symbols relate to the minor key on the lowered 7th scale
+degree <em>(Bb minor)</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V[</span></code> designates the beginning of an organ point on the
+5th scale degree <em>(F)</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#viio65</span></code> stands for the first inversion of a diminished seventh chord
+on the raised 7th scale degree.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(+b84)</span></code> designates an added diminished octave (added notes usually
+occur because of pedal tones that are not in the bass) and a (not added
+but) suspended fourth, withholding the third.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/#vi</span></code> means that this chord (the <code class="docutils literal notranslate"><span class="pre">#viio65</span></code>) relates to the raised
+6th scale degree. <em>Which, in Bb minor, would be G. Therefore, the root
+of</em> <code class="docutils literal notranslate"><span class="pre">#viio65/#vi</span></code> <em>would be F#.</em></p></li>
+</ul>
+<p>Here, you can see an imaginary context, in C major, where this example
+could theoretically occur: <img alt="longexpression" src="../_images/longexpression.png" /></p>
 </section>
 </section>
 
@@ -384,7 +1045,7 @@ analyses of two different annotations of the same piece:</p>
     </p>
     <p>
         &copy; Copyright 2023, École Polytechnique Fédérale de Lausanne.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br/>
     </p>
   </div>
 </footer>

@@ -46,53 +46,41 @@ a precise and consistent manner. The examples and recommendations are supposed t
 be guidelines that have as a goal to make annotations from different users
 comparable and interoperable.
 
-.. Comments for annotators
 
-  Depending on the
-  source of the notation file that you receive for annotation, it might be
-  advisable to have a scan of the *Urtext* opened in the background for
-  tacit correction of the score. At least the bar numbers have to be 100%
-  correct. Please make sure, that upbeat measures are counted by MuseScore
-  as measure 0.
+General principles
+------------------
 
-  For the computer assisted evaluation of your data, a number of things
-  are important:
+The following principles are essential for producing correct annotations:
 
-  -  Chord symbols (i.e. Roman numerals) have to be attached to the
-     moments in the score where the respective harmony begins. They are
-     understood to be valid until the next symbol is written. That is to
-     say, identical symbols are never repeated consecutively.
-  -  The symbols have to be linked to the upper system of the score, even
-     if it contains only rests. Every symbol has to be attached to the
-     precise position where the harmony occurs. N.B.: Symbols are stored
-     with the original position, even if you move them by hand!
-  -  If a symbol starts with a note name, Musescore will save it
-     differently which annotators have to avoid by putting a dot in front
-     of the note name. For example: ``I6``, ``ii7``, ``V65`` etc. can be
-     written without a starting dot but ``.bVI`` and ``.Ger`` (German
-     sixth chord) need one, as does the initial indication of the main key
-     such as ``.Eb.I.``.
-  -  Arabic numbers indicating :ref:`inversions <roman-numerals>` or
-     :ref:`suspensions <suspensions-and-retardations>` always appear in
-     descending order (e.g. ``65`` or ``9#74``).
-  -  The information about a harmony has to be expressed in a fixed order
-     (syntax) and orthographical errors can be automatically detected.
-  -  The annotations always need to represent a consistent reading, also in the
-     case of repetitions, first and second endings, dal segnos, etc.
-  -  Major keys are indicated by uppercase, minor keys by lowercase
-     letters.
+-  Chord symbols (i.e. Roman numerals) are attached to the moment in the
+   score where the respective harmony begins. They are valid until the
+   next symbol; identical symbols are never repeated consecutively
+   (see :ref:`repetition-of-labels` for exceptions).
+-  Symbols are typically attached to the lower system of the score, even if it
+   contains only rests, at the precise position where the harmony occurs.
+-  Arabic numbers indicating :ref:`inversions <roman-numerals>` or
+   :ref:`chord tone changes <suspensions-and-retardations>` always appear
+   in descending order (e.g. ``65`` or ``9#74``).
+-  The information about a harmony is expressed in a fixed order
+   (syntax) and orthographical errors can be automatically detected.
+-  The annotations always need to represent a consistent reading, also in the
+   case of repetitions, first and second endings, dal segnos, etc.
+-  Major keys are indicated by uppercase, minor keys by lowercase letters.
+-  We annotate non-chord tones such as suspensions, retardations, and additions,
+   but not ornaments (neighbour notes, passing notes, embellishments).
+   See :doc:`Level of detail <../tutorial/detail>` in the tutorial for guidance.
+-  Before annotating, decide on the harmonic pace for the piece and maintain it
+   consistently.
+-  **Consistency** is the annotation standard's highest maxim: While different
+   annotators would interpret the same music differently, it is important
+   that the same annotator interprets the same music identically.
 
-  However, as we are slowly moving towards automated analyses,
-  **consistency** is the order of the day. In other words, while different
-  annotators would interpret the same music differently, it is important
-  that the same annotator interprets the same music identically. That is
-  to say, once you have made a difficult decision about annotating a
-  certain chord progression, you have to stick to this decision every time
-  the progression occurs. If at one point, for the sake of consistency,
-  you get the idea of :ref:`copying your
-  annotations <copying-several-annotations>` when music repeats, make
-  sure that you are dealing with an exact repetition and check the
-  annotations after copying.
+.. note::
+
+   Depending on the source of the notation file you receive for annotation,
+   it may be advisable to have a scan of the *Urtext* open for tacit correction
+   of the score. At least the bar numbers must be 100% correct. Make sure that
+   upbeat measures are counted by MuseScore as measure 0.
 
 
 
@@ -108,8 +96,8 @@ stand alone, without a chord label, or at the very end of one.
 
 
 
-Indication of key.
-------------------
+Indication of key
+-----------------
 
 -  The first symbol written in a score always starts with the absolute
    indication of the entire piece's tonality.
@@ -123,8 +111,8 @@ Indication of key.
    can indicate the new key by typing ``V.I`` over the harmony of G
    major. All subsequent Roman numerals up to the next indication of key
    relate to the new key of G major.
--  There is a way of annotating secondary dominants (see `relative
-   key <#relative-key>`__); however, if you find a ``V/vi`` chord and
+-  There is a way of annotating secondary dominants (see
+   :ref:`relative-key`); however, if you find a ``V/vi`` chord and
    the music then stays in the key of ``vi`` for a longer time (cf. next
    paragraph), you can write ``vi.V`` right away. Every following ``i``
    symbol designates the new tonic.
@@ -195,439 +183,570 @@ analyses of two different annotations of the same piece:
 | *Gantt chart showing the local keys in the first movement of Mozart's K. 533*|
 +--------------------------------------+---------------------------------------+
 
-The remainder of the Reference is currently under reconstruction
-================================================================
-
-.. HIDDEN FOR NOW
-
-  Relative key
-  ------------
-
-  If a symbol relates to a different key than the one you are in, you can
-  indicate the relative key using a slash ``/``. Most prominently this is
-  the case for secondary dominants such as ``V65/IV``. The relative key is
-  indicated as relative to the local key and does not change the local
-  key. E.g.: ``iv.i #viio6 i6 V65/iv iv viio7/V V7 i`` (see below)
-  designates a cadence in the key of ``iv`` (here: G minor) because of the
-  initial indication of key. Note that
-
-  * the relative keys ``iv`` (C
-    minor) and ``V`` (D major) relate to the *local* key ``iv`` and not to
-    the *global* (tonic) key (here: D minor);
-  * ``viio7/V`` is not spelled
-    ``#viio7/V`` although the bass is altered. The reason is that it is the
-    natural 7th scale degree in the key of ``V`` (D **major**). B flat, of
-    course, is not natural in D major but is clearly annotated through the
-    choice of ``viio7`` rather than ``vii%7``.
-  * combining relative key
-    with a modulation can be counterintuitive because relative keys relate
-    to the *local* key, whereas `key indications <#--indication-of-key-->`__
-    used for modulation always relate to the *global* key. A theoretically
-    correct but illegible and non-sensical variant of the example annotation
-    would be ``iv.i #viio6 i6 V65/iv vii.io6 #viio7/ii V7/v iv.i`` To avoid
-    confusion, don't use relative key annotation if a modulation to that
-    same relative key follows.
-
-  .. figure:: img/relativekey.png
-    :alt: relativekey
-
-  Relative keys of relative keys can be annotated, for example the
-  dominant of the dominant of the dominant: ``V7/V/V``.
-
-  .. _roman-numerals:
-
-  Roman numerals
-  --------------
-
-  The smallest possible symbols consist of a single Roman numeral. They
-  stand for a major (``I, II, III, IV, V, VI, VII``) or minor
-  (``i, ii, iii, iv, v, vi, vii``) triad in root position. *All other
-  chords* - those which are no major or minor root position triad on one
-  of the key's natural degrees - need additional symbols. For altered
-  scale degrees simply use ``[.]b/#``\ +[Roman numeral], e.g. ``.bVI`` for
-  an Ab major chord in the context of C major; or ``#vi`` for an A minor
-  chord in the context of C minor. Remember the leading dots if ``b``
-  appears at the beginning of a symbol (``V/bVI`` works but ``bVI`` not!).
-
-  .. note::
-
-     You always indicate the chord type *before* the inversion.
-
-  Triads
-  ^^^^^^
-
-  Every triad symbol must indicate the [type of triad] and its {inversion}
-  if it is one.
-
-  - Other than major triads (``I``) and minor triads (``i``) the syntax
-    provides the symbol ``o`` for diminished triads (e.g. ``viio`` in the
-    major or ``#viio`` in the minor) and the symbol ``+`` for augmented
-    triads (e.g. ``I+``). Summary:
-  - major: uppercase numeral
-  - minor: lowercase numeral
-  - diminished: lowercase numeral + ``o``
-  - augmented: uppercase numeral + ``+``
-  - Inversions are annotated by adding ``6`` or ``64`` (NOT ``46``) to
-    the triad type. Examples:
-  - ``ii6`` in major context, ``iio6`` in minor context
-  - ``viio6`` in major context, ``#viio6`` in minor context
-  - ``I64`` for a passing 64 chord on scale degree ^5 (as opposed to a
-    dominant with 64-suspension, `see
-    below <#suspensions-and-retardations>`__)
-  - ``I+6`` as a shorthand for V6/IV with augmented fifth (relative to
-    the root, `see below <#suspensions-and-retardations>`__).
-
-  Tetrads
-  ^^^^^^^
-
-  All tetrads are annotated as springing from a seventh chord. Therefore,
-  every tetrad must indicate the [type of seventh chord] AND, for example,
-  a ``7`` for root position OR ``65 43 2`` for the three possible
-  inversions.
-
-  - The possible types of root position seventh chords are:
-  - diminished seventh: lowercase numeral + ``o7``, Examples:
-    ``#viio7 iio65``
-  - half-diminished seventh: lowercase numeral + ``%7``, e.g.
-    ``viio%7 ii%43``
-  - augmented (minor) seventh: uppercase numeral + ``+7``, e.g. ``V+7``
-  - augmented major seventh: uppercase numeral + ``+M7``, e.g. ``V+M7``
-  - mm7 (minor seventh): lowercase numeral + ``7``, e.g. ``ii7 i2``
-  - mM7 (minor with major seventh): lowercase numeral + ``M7``, e.g.
-    ``ivM7`` (although, in most cases, such a chord will be annotated as
-    a retardation of 8, see below)
-  - MM7 (major seventh): uppercase numeral + ``M7``, e.g. ``IVM7 IIIM65``
-  - Mm7 (dominant seventh): ``V7``. Theoretically, it could appear on
-    other degrees than V, e.g. in a falling fifths progression:
-    ``i iv7``\ **``VII7``**\ ``IIIM7 VIM7 ii%7 V7 i`` - but in such a
-    case, where the respective tonic follows, it will be annotated as
-    (secondary) dominant:
-    ``i iv7``\ **``V7/III``**\ ``IIIM7 VIM7 ii%7 V7 i``. However, there
-    are cases where the same sonority occurs as ``IV7`` or ``IV65`` in a
-    minor key, which will not be notated as a dominant.
-  - The respective inversions are annotated by replacing ``7`` with
-    ``65`` (NOT ``56``), ``43`` (NOT ``34``) or ``2`` respectively.
-  - There are special symbols to annotate the French, German and Italian
-    sixth chords: ``.Fr``, ``.Ger`` and ``It6``. The latter actually
-    does not need an initial dot because it does not start with a note
-    name.
-
-  .. _suspensions-and-retardations:
-
-  Suspensions and retardations
-  ----------------------------
-
-  Suspensions and retardations are annotated as arabic numbers within
-  round parentheses ``()`` following the Roman numeral, form and inversion. The
-  numbers designate the note's interval **to the root**. That is to say a
-  suspensional 4 is marked as ``(4)`` in any inversion:
-  ``V(4) V6(4) V65(4) V43(4) V2(4)`` (yes, two of them have the suspension
-  in the bass). It implies, that the functional third of the chord (i.e.,
-  the third above the root) is not present. In order to indicate the
-  resolution, write the sounding chord without the suspension, e.g.
-  ``V65(4) V65`` or ``V(4) V7``. If an interval is altered, add ``#/b`` in
-  front of the digit, e.g. ``V7(b6) V7``, which is possible only in a
-  major context because in minor, the 6th would already be flat.
-
-  .. note::
-
-     The intervals designated by the arabic numbers in parantheses depend on the
-     chord's position in the scale and the scale itself!
-
-  If several suspensions are sounding at the same time, annotate all of them
-  within the same parenthesis and always in descending order, e.g.
-  ``V(64)``. A *cadenza doppia* could look like ``V7 V(64) V(4) V``
-  followed by ``I`` or ``i``.
-
-  .. note::
-
-     The digits {3, 5, 8, 10, 12} are used for alterations of chord
-     tones, and {2, 4, 6, 7, 9, 11, 13, 14} for suspensions and alterations -
-     depending on a set of rules that is explained in the following and
-     which is important to understand.
-
-  The digits stand for
-
-  * ``(2)``: Suspension of the root, meaning that
-    the **root is not present** in the chord; as opposed to
-  * ``(9)``:
-    designating the same pitch but indicating that the **root is present**
-    at the same time;
-  * ``(4)``: Suspension of the third (third not present)
-  * ``(11)``: Suspension of the third but the third is present at the same
-    time in a lower voice, in particular if the third is in the bass
-  * ``(6)``:
-    Suspension of the fifth
-  * ``(7)``: Retardation of the root, i.e. the
-    resolution goes upwards
-  * ``(#``\ *``N``*\ ``)``: digit *N* is a
-    retardation resolving upwards, e.g. ``(#2)`` retarding the third. The
-    ``#`` overrides the rule that you use ``(2)`` only if the root is not
-    present.
-  * ``(b``\ *``N``*\ ``)``: digit *N* is a suspension resolving
-    downwards.
-
-  There are cases where you need to express that, for example, a 2 is not
-  replacing the root, but the third instead. In other words you want to
-  identify it as an retardation rather than a suspension. In such a case you can
-  use the symbol ``^`` as in ``i(^2)``. This is not necessary if it is a raised
-  interval, e.g. ``i(#2)``.
-
-
-  .. Attention!::
-
-     Designating suspensions or retardations as
-     intervals above the root will be counterintuitive if you are used to
-     thinking in figured bass. For example, a falling fauxbourdon
-     ``ii6 I6 viio6`` with 7-6 suspensions has to be written as
-     ``ii6(2) ii6 I6(2) I6 viio6(2) viio6``. Note that you use ``(2)`` and
-     not ``(9)`` because the root is not present. Other than what some
-     would typically write, a Classical ending with retardation looks like
-     ``i(9#74) i``, and not ``i(#742) i`` or ``i(24#7) i``.
-
-  Added and missing notes
-  -----------------------
-
-  Generally, there are only very few notes in the Common practice era
-  which cannot be explained as suspensions or retardations.
-
-  .. note::
-
-     We don't annotate neighbour notes, passing notes nor embellishments.
-
-  A typical additional note would be that of a pedal note which appears in
-  a different voice than the bass. In this case, you would annotate the
-  additional note - analogue to a suspension - as a digit indicating the
-  interval *from the root* in parenthesis, but preceded by a ``+``.
-  Example: Imagine a C major context and a pedal on G in some middle
-  voice. Around that, the other voices do the progression
-  ``I viio6 I6 ii6 I64 IV6 .Ger V\\``: Some harmonies contain the G and
-  do not change (namely ``I``, ``I6``, ``I64`` and ``V``), one harmony
-  supports an added G (``viio6`` with G is ``V43``) and the rest neither
-  support G nor can it be interpreted as suspensions. So the correct
-  annotation would be ``I V43 I6 ii6(+4) I64 IV6(+2) .Ger(+7) V\\``.
-
-  In analogy, ``-`` can be used to indicate that a given chord tone is missing
-  and **that it is not implied** by the music. For that reason, this symbol is
-  used rarely because in most cases the missing note (the fifth in particular)
-  is considered as implied. Examples where the symbol is used are pronounced
-  empty fifths such as ``I(-3)``, or, if it is not clear which third is missing
-  (e.g. at the beginning of a piece) ``I(-3)-i(-3)``. Another application of
-  the symbol could be in chords where the root is missing, for example in
-  two-voice counterpoint (e.g. ``IV(-1)``).
-
-  Sometimes, it can seem ambiguous whether a note is an added note, a
-  suspension without resolution or an embellishment (anticipation). The
-  following example from Monteverdi's *Lamento della ninfa* might give a
-  hint how to differentiate.
-
-  .. figure:: img/added_notes.png
-    :alt: added\_notes
-
-  Compare the first halves of mm. 40, 41 and 44. The B in m. 41 is
-  interpreted as an embellishment (incomplete neighbour) although it could
-  be seen as part of a ``iio43``. The B in m. 40, however, is interpreted
-  as being more than just an embellishment (anticipation) because it is
-  more pronounced. However, unlike in m. 44, the B is neither prepared nor
-  resolved and therefore it is annotated as added note, i.e. ``i(+9)``,
-  rather than as a suspension ``i(9)``.
-
-  Phrase endings
-  --------------
-
-  The annotation of phrases consists in a separate annotation standard which
-  can be used alongside with the harmony annotations. For that it is important
-  to remember, that phrase annotations are **always the label's last part**.
-  Curly brackets ``{}`` are used for annotating phrases. For example, the first
-  phrase of a piece could begin with the label ``.C.I{``. The closing bracket ``}``
-  always marks the structural ending of a phrase - typically the target chord of a
-  cadence, e.g. ``I}``.
-
-
-     It has proven useful to listen to your completely annotated score
-     once again just to detect phrase endings and cadences.
-
-  Note that many cadences and other structural endings are followed by an
-  appendix or some transitional codetta, which is alwas the part between the
-  structural ending marked with ``}`` and the next beginning ``{``. Curly brackets
-  can stand alone (i.e. don't have to be preceded by a label) and can fall together
-  in the case of phrase interlocking: ``}{``.
-
-  .. figure:: img/phrase_boundaries.png
-     :alt: phrase\_boundaries
-
-     Corelli: Sonata da chiesa op. 1/7, I, mm. 1-4
-
-  Pedal points (Organ points)
-  ---------------------------
-
-  If several harmonies appear over the same bass note, the start of the
-  pedal point is marked by ``[`` and the end by ``]``. In front of the
-  opening ``[`` stands the Roman numeral corresponding to the bass note's
-  scale degree, immediately followed (within the same expression!) by the
-  first harmony above the bass note. Thus, the most common pedal points
-  start with ``I[I``, ``i[V7/iv`` or ``V[V``. The pedal point ends at the
-  end of the terminal symbol's duration, i.e. it ends with the next symbol
-  after ``I]`` or ``V7]``.
-
-  The two criteria must apply for using the pedal-point annotation: \* if
-  it involves three or more distinct harmonic events sharing the same bass
-  note \* at least one harmony appears of which the pedal note is not a
-  component.
-
-  Therefore, a 5/3-6/4-5/3 contrapuntal movement (often on scale degree 1)
-  is generally annotated as a simple neighboring motion over a pedal
-  point: ``I I(64) I`` (in other words, the information that we are
-  confronting a pedal-point motion is implied in this expression).
-
-  .. |notapedal| image:: img/notapedal.png
-  .. |auskomponiert| image:: img/auskomponiert.png
-
-  +-----------------+-------------+
-  | Example         | Explanation |
-  +=================+=============+
-  | |notapedal|     | No pedal    |
-  |                 | point       |
-  | (KV             | because the |
-  | 333,            | bass is a   |
-  | II, 19)         | constituent |
-  |                 | of every    |
-  |                 | harmony.    |
-  +-----------------+-------------+
-  | |auskomponiert| | This is     |
-  |                 | considered  |
-  |                 | a mere      |
-  | (KV             | `i i(64) i` |
-  | 333,            | prolongation|
-  | III,            | (only two   |
-  | 65-8)           | distinct    |
-  |                 | events).    |
-  |                 |             |
-  |                 |             |
-  +-----------------+-------------+
-
-  If you think about it, if you want to write the simple progression
-  ``I I(64) I`` as an organ point, you're left with four different
-  possibilities, depending on whether or not you include the bass note in
-  the harmonies above it: \* ``I[I IV I]`` or \* ``I[I IV64 I]`` or \*
-  ``I[I6 IV I6]`` or \* ``I[I I(64) I]``
-
-  This question occurs for nearly every organ point you will come to
-  write. A rule of thumb is: If the bass note is a part of the harmony,
-  you write the inversion corresponding to the bass note; otherwise, the
-  inversion of the chord above. But, more importantly, another rule can
-  override this: The harmonic progression above the organ point should be
-  meaningful in itself. For example, if there is a fauxbourdon, you might
-  not want to include the bass note but highlight the sixth chords:
-  ``I[IV6 iii6 ii6 I6 viio6 I]`` rather than
-  ``I[IV64 iii6 ii6 I viio6 I]``
-
-  .. note::
-
-       If you change the local key, you need to end the pedal point with
-       the previous label and start a new one. (e.g.
-       ``WWV096-Meistersinger_01_Vorspiel-Prelude_SchottKleinmichel.mscx``,
-       mm. 33f.)
-
-  .. _ambiguity:
-
-  Ambiguity
-  ---------
-
-  If two interpretations are possible and you are unable to make a
-  decision, you can give both interpretations by separating them with a
-  dash ``-``, e.g. ``viio6-V43``. Use this means as a last resort only and
-  make sure that both interpretations are valid readings *within their
-  context*, i.e. if you read each interpretation in line with the prior
-  and the following symbol. This implies that no modulation can occur
-  within an ambiguous expression (such as ``viio7/V-v.#viio7``) because
-  only one of the readings can be correct in context with the following
-  expression. It is possible to give a relative key (e.g. ``I6-V6/IV``)
-  because both options create correct readings.
-
-  Unisono
-  -------
-
-  Single voice passages generally imply harmonies which you are asked to
-  infer. If the information of the melody line is too sparse to be sure
-  whether it is implying ``viio6`` or ``V43``, for example, you will most
-  likely opt for an ambiguous annotation. However, in such a case, you are
-  also free to choose one interpretation because it is more stereotypical
-  than the other or because it alludes to another passage of the same
-  piece. If no harmony can be inferred - in particular where a composer
-  deliberately withdraws tonal footing - use the symbol ``@none``.
-
-  Immediate repetion of identical labels
-  --------------------------------------
-
-  There are only rare cases where identical labels should be repeated. These
-  include:
-
-  * If one label marks the beginning or ending of an organ point.
-  * If a repetition is needed in order to allow for consistent reading with
-    repetitions, first and second endings, dal segnos, etc.
-    Example: ``| V |: V I :|`` instead of ``| V |: I :|``
-
-  Summary of the Harmony Annotation Standard
-  ==========================================
-
-  One of the longest possible expressions would be
-  ``.bvii.V[#viio65(+b84)/#vi``. This, of course, is quite theoretical and
-  simply a demonstration of order and meaning of the different syntactic
-  components, with concrete examples given in relation to C major: \*
-  ``.bvii.``, in the context of a major key *(C major)*, means that all
+
+.. _relative-key:
+
+Relative key
+------------
+
+If a symbol relates to a different key than the one you are in, you can
+indicate the relative key using a slash ``/``. Most prominently this is
+the case for secondary dominants such as ``V65/IV``. The relative key is
+indicated as relative to the local key and does not change the local
+key.
+
+Example: ``iv.i #viio6 i6 V65/iv iv viio7/V V7 i`` designates a cadence
+in the key of ``iv`` (here: G minor) because of the initial indication of
+key. Note that
+
+* the relative keys ``iv`` (C minor) and ``V`` (D major) relate to the
+  *local* key ``iv`` and not to the *global* (tonic) key (here: D minor);
+* ``viio7/V`` is not spelled ``#viio7/V`` although the bass is altered.
+  The reason is that it is the natural 7th scale degree in the key of
+  ``V`` (D **major**). B flat, of course, is not natural in D major but
+  is clearly annotated through the choice of ``viio7`` rather than
+  ``vii%7``;
+* combining relative key with a modulation can be counterintuitive
+  because relative keys relate to the *local* key, whereas
+  key indications used for modulation always relate to the *global* key.
+  To avoid confusion, don't use relative key annotation if a modulation to
+  that same relative key follows.
+
+.. figure:: img/relativekey.png
+   :alt: Relative key example
+
+Relative keys of relative keys can be annotated, for example the
+dominant-seventh harmony of the dominant key of the key of scale degree `v`: ``viio/V/v``.
+
+.. admonition:: Common mistake
+   :class: danger
+
+   Since the root of ``viio/V`` has an accidental, novice annotators are
+   often tempted to write ``#viio/V``. This is incorrect because the leading
+   tone is scale degree ``7`` (not ``#7``) in major. These are all correct:
+   ``I.viio/V``, ``i.viio/V``, ``I.#viio/v``, ``i.#viio/v``.
+
+
+.. _roman-numerals:
+
+Roman numerals
+--------------
+
+The smallest possible symbols consist of a single Roman numeral. They
+stand for a major (``I, II, III, IV, V, VI, VII``) or minor
+(``i, ii, iii, iv, v, vi, vii``) triad in root position. *All other
+chords* --- those which are not a major or minor root-position triad on one
+of the key's natural degrees --- need additional symbols. For altered
+scale degrees, prefix the numeral with ``b`` or ``#``, e.g. ``bVI`` for
+an Ab major chord in the context of C major, or ``#vi`` for an A minor
+chord in the context of C minor.
+
+.. note::
+
+   Dorian and phrygian modes are annotated as minor keys; lydian and
+   mixolydian as major. The root distances of ``iii III vi VI vii VII``
+   from the tonic are major intervals in major keys and minor intervals
+   in minor keys. See :doc:`The first label <../tutorial/first_label>` in
+   the tutorial for details on modes.
+
+.. note::
+
+   You always indicate the chord type *before* the inversion.
+
+
+Triads
+^^^^^^
+
+.. table:: Triads. <NA> = empty; RN = uppercase numeral; rn = lowercase numeral
+   :width: 70 %
+   :widths: auto
+   :align: center
+
+   +------+------+--------------+-------------------------+---------------------------------+
+   | Root | Type | Inversions   | Chord type              | Examples                        |
+   +======+======+==============+=========================+=================================+
+   | RN   | <NA> | <NA>, 6, 64  | Major triad             | ``I``, ``V6``, ``IV64``         |
+   +------+------+--------------+-------------------------+---------------------------------+
+   | rn   | <NA> | <NA>, 6, 64  | Minor triad             | ``vi``, ``ii6``, ``iv64``       |
+   +------+------+--------------+-------------------------+---------------------------------+
+   | rn   | o    | <NA>, 6, 64  | Diminished triad        | ``viio``, ``iio6``, ``#ivo64``  |
+   +------+------+--------------+-------------------------+---------------------------------+
+   | RN   | \+   | <NA>, 6, 64  | Augmented triad         | ``III+``, ``III+6``, ``III+64`` |
+   +------+------+--------------+-------------------------+---------------------------------+
+
+
+Tetrads
+^^^^^^^
+
+Every seventh chord is distinguished by its type and one of the inversions
+``7`` (root position), ``65``, ``43``, or ``2``.
+
+.. admonition:: Mnemonic Hook
+   :class: caution
+
+   Arabic numbers always occur in descending order.
+
+.. table:: Seventh chords. <NA> = empty; RN = uppercase numeral; rn = lowercase numeral
+   :width: 75 %
+   :widths: auto
+   :align: center
+
+   +------+------+--------------+-------------------------+-----------------------+
+   | Root | Type | Inversions   | Chord type              | Examples              |
+   +======+======+==============+=========================+=======================+
+   | RN   | <NA> | 7, 65, 43, 2 | Dominant seventh        | ``V7``, ``IV65``      |
+   +------+------+--------------+-------------------------+-----------------------+
+   | rn   | <NA> | 7, 65, 43, 2 | Minor seventh           | ``vi7``, ``ii43``     |
+   +------+------+--------------+-------------------------+-----------------------+
+   | rn   | o    | 7, 65, 43, 2 | Diminished seventh      | ``vio7``, ``#viio2``  |
+   +------+------+--------------+-------------------------+-----------------------+
+   | RN   | \+   | 7, 65, 43, 2 | Augmented minor seventh | ``V+7``               |
+   +------+------+--------------+-------------------------+-----------------------+
+   | rn   | \%   | 7, 65, 43, 2 | Half-diminished seventh | ``vii%7``, ``#vi%43`` |
+   +------+------+--------------+-------------------------+-----------------------+
+   | RN   | M    | 7, 65, 43, 2 | Major seventh           | ``IVM7``, ``IIIM65``  |
+   +------+------+--------------+-------------------------+-----------------------+
+   | rn   | M    | 7, 65, 43, 2 | Minor major seventh     | ``iiiM7``             |
+   +------+------+--------------+-------------------------+-----------------------+
+   | RN   | +M   | 7, 65, 43, 2 | Augmented major seventh | ``I+M7``              |
+   +------+------+--------------+-------------------------+-----------------------+
+
+.. note::
+
+   The inversion ``42`` is accepted as equivalent to ``2`` but ``2`` is the
+   canonical form and should be preferred.
+
+.. note::
+
+   While a dominant seventh chord theoretically can appear on degrees other than
+   V (e.g. ``VII7`` in a falling fifths progression), when the respective tonic
+   follows, it should be annotated as a secondary dominant instead (e.g.
+   ``V7/III``). However, there are cases where the same sonority occurs as
+   ``IV7`` or ``IV65`` in a minor key, which is not notated as a dominant.
+
+
+.. _augmented-sixth-chords:
+
+Augmented sixth chords
+^^^^^^^^^^^^^^^^^^^^^^
+
+The standard provides special symbols for the three augmented sixth chords:
+
+.. table:: Augmented sixth chords
+   :widths: auto
+   :align: center
+
+   +---------+-------------------+---------+--------------------+
+   | Symbol  | Name              | Root    | Equivalent         |
+   +=========+===================+=========+====================+
+   | ``It6`` | Italian sixth     | vii/V   | ``viio6(b3)/V``    |
+   +---------+-------------------+---------+--------------------+
+   | ``Ger6``| German sixth      | vii/V   | ``viio65(b3)/V``   |
+   +---------+-------------------+---------+--------------------+
+   | ``Fr6`` | French sixth      | V/V     | ``V43(b5)/V``      |
+   +---------+-------------------+---------+--------------------+
+
+The forms with their standard figured bass (``It6``, ``Ger6``/``Ger65``,
+``Fr6``/``Fr43``) all express the chord in its standard position (with scale
+degree ``b6`` in the bass) and are therefore equivalent. Other figured-bass
+values indicate inversions: e.g. ``Ger7`` has ``#4`` in the bass, and ``Fr7``
+has scale degree ``2`` in the bass. Since ``It6`` is a triad, ``It`` (without
+figured bass) translates to its root position ``viio(b3)/V``.
+
+.. note::
+
+   In older versions of the standard, annotations were entered in MuseScore's
+   Harmony layer rather than the Roman numeral layer. In that context, a leading
+   dot was required to prevent MuseScore from interpreting note names as chord
+   symbols (e.g. ``.Ger`` instead of ``Ger6``). This leading dot is
+   **deprecated** and should no longer be used.
+
+
+.. _suspensions-and-retardations:
+
+Suspensions and retardations
+----------------------------
+
+Suspensions, retardations, and other chord tone changes are annotated as
+Arabic numbers within round parentheses ``()`` following the Roman numeral,
+form, and inversion. The numbers designate the note's interval **to the root**.
+This is independent of the chord's inversion: the suspension ``(4)`` means the
+same thing in ``V(4)``, ``V6(4)``, ``V65(4)``, ``V43(4)``, and ``V2(4)``
+(in two of them, the suspension is in the bass).
+
+To indicate the resolution, write the sounding chord without the change,
+e.g. ``V(4) V7`` or ``V65(4) V65``.
+
+.. note::
+
+   The intervals designated by the Arabic numbers in parentheses are diatonic
+   and depend on the chord's position in the scale and the scale itself.
+   For example, ``iv(4)`` translates to ``F B C`` in a C major context but to
+   ``F Bb C`` in a C minor context. Use ``b`` or ``#`` to alter:
+   ``iv(b4)`` in C major yields ``F Bb C``.
+
+
+Replacement from above (suspensions)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The digits ``2``, ``4``, ``6`` designate the upper neighbours of chord tones
+``1`` (root), ``3`` (third), ``5`` (fifth) respectively. The replaced chord
+tone is **not present**:
+
+- ``(2)``: replaces the root
+- ``(4)``: replaces the third
+- ``(6)``: replaces the fifth
+
+.. admonition:: Cadential six-four
+   :class: caution
+
+   The cadential six-four chord is written as ``V(64)`` to distinguish it from
+   a passing ``I64``.
+
+
+Replacement from below (retardations)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A retardation resolves upward. The digit ``7`` designates replacement of the
+root from below:
+
+- ``(7)``: retardation of the root (resolution goes upwards)
+- ``(#2)``: retardation of the third from below
+- ``(#4)``: retardation of the fifth from below
+- ``(#6)``: retardation of the seventh from below
+
+
+Direction markers
+^^^^^^^^^^^^^^^^^
+
+When a digit has an accidental, the direction of replacement is inferred
+by default:
+
+- ``b`` before a digit implies suspension (replacement from above)
+- ``#`` before a digit implies retardation (replacement from below)
+
+Two explicit direction markers can override these defaults:
+
+- ``v`` (from above): forces the digit to replace the chord tone below it.
+  Needed for raised suspensions, e.g. ``v#2`` = sharped upper neighbour
+  replacing the root.
+- ``^`` (from below): forces the digit to replace the chord tone above it.
+  Needed for unraised retardations, e.g. ``^2`` = diatonic 2 replacing the
+  third.
+
+The complete set of replacement combinations:
+
+- From above (replacing ``1``, ``3``, ``5``): ``2``, ``b2``, ``v#2``,
+  ``4``, ``b4``, ``v#4``, ``6``, ``b6``, ``v#6``
+- From below (replacing ``3``, ``5``, ``7``): ``^2``, ``^b2``, ``#2``,
+  ``^4``, ``^b4``, ``#4``, ``^6``, ``^b6``, ``#6``
+
+.. note::
+
+   Remember that the accidentals ``b`` and ``#`` depend on the local major or
+   (natural) minor scale.
+
+
+Replacement of octave doublings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The digits ``9``, ``11``, ``13`` are used when the chord tone is present but
+replaced in one of the upper octaves:
+
+- ``(9)``: replaces an octave doubling of the root (root **present**);
+  contrast with ``(2)`` where the root is **not present**
+- ``(11)``: replaces an octave doubling of the third (third **present**,
+  often in a lower voice or in the bass)
+- ``(13)``: replaces an octave doubling of the fifth (fifth **present**)
+
+For example, the "Chopin chord" (dominant seventh add 13) is expressed
+as ``V7(13)`` to clarify that the fifth is present and the added note is
+(at least) a ninth apart. The distinction matters for added notes too:
+``V7(+6)`` (dissonance is a second) vs. ``V7(+13)`` (dissonance is a ninth).
+
+
+Ninth chords
+^^^^^^^^^^^^^
+
+Dominant ninth chords illustrate the interplay of these conventions:
+
+* ``V7(9)``, ``V7(b9)``, ``V7(v#9)``: ninth replaces an octave doubling
+  of the root
+* ``V7(^9)``, ``V7(^b9)``, ``V7(#9)``: ninth replaces an octave doubling
+  of the third
+* ``V7(+9)``, ``V7(+b9)``, ``V7(+#9)``: ninth is an added note
+
+
+.. _root-replacement:
+
+Replacement of the root by its lower neighbour
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Following the above logic, replacement of the lowest root (``1``) in the chord
+should be expressed through ``0`` or ``#0`` (leading tone in a minor scale).
+However, for convenience, ``7`` or ``#7`` are commonly used instead (which
+logically express replacement of an octave doubling of the root). Therefore
+``0`` and ``7`` are equivalent in nearly all cases. The exception is
+root-position chords, where the root is in the bass: Here, ``0`` is required
+to differentiate from replacement of an octave doubling (``7``).
+
+
+Multiple simultaneous changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If several changes are sounding at the same time, annotate all of them
+within the same parenthesis, always in descending order, e.g.
+``V(64)``, ``V(42)``. A *cadenza doppia* could look like
+``V7 V(64) V(4) V`` followed by ``I`` or ``i``.
+
+
+.. attention::
+
+   Designating suspensions or retardations as intervals above the root will be
+   counterintuitive if you are used to thinking in figured bass. For example,
+   a falling fauxbourdon ``ii6 I6 viio6`` with 7-6 suspensions has to be written
+   as ``ii6(2) ii6 I6(2) I6 viio6(2) viio6``. Note that you use ``(2)`` and not
+   ``(9)`` because the root is not present. A Classical ending with retardation
+   looks like ``i(9#74) i``, and not ``i(#742) i`` or ``i(24#7) i``.
+
+
+Added and missing notes
+-----------------------
+
+.. note::
+
+   We don't annotate neighbour notes, passing notes, or embellishments.
+
+A typical additional note is a pedal note appearing in a voice other than the
+bass. Added notes are annotated like chord tone changes but preceded by ``+``:
+the digit indicates the interval *from the root*.
+
+Example: Imagine a C major context and a pedal on G in a middle voice. The
+other voices do the progression ``I viio6 I6 ii6 I64 IV6 Ger6 V``. Some
+harmonies already contain the G (``I``, ``I6``, ``I64``, ``V``), one harmony
+supports an added G (``viio6`` with G is ``V43``), and the rest neither support
+G nor can it be interpreted as a suspension. Correct annotation:
+``I V43 I6 ii6(+4) I64 IV6(+2) Ger6(+7) V``.
+
+In analogy, ``-`` indicates that a given chord tone is missing **and not
+implied** by the music. This symbol is used rarely because in most cases the
+missing note (the fifth in particular) is considered as implied. Examples:
+pronounced empty fifths ``I(-3)``, unclear third quality ``I(-3)-i(-3)``,
+or missing root in two-voice counterpoint ``IV(-1)``.
+
+.. figure:: img/added_notes.png
+   :alt: Added notes example from Monteverdi
+
+   Monteverdi, *Lamento della ninfa*: Distinguishing added notes from
+   embellishments and suspensions (mm. 40--44).
+
+
+.. _phrase-annotations:
+
+Phrase annotations and cadence labels
+-------------------------------------
+
+Phrase annotations
+^^^^^^^^^^^^^^^^^^
+
+The DCML standard includes a non-hierarchical phrase annotation using
+curly brackets ``{}``. They may stand alone or be the last character of a
+chord label. Phrase annotations are **always the label's last part**.
+
+- ``{``: beginning of a phrase
+- ``}``: structural phrase ending (typically the cadence's ultima)
+- ``}{``: phrase interlocking
+
+The closing bracket marks the structural ending; everything between ``}`` and
+the next ``{`` is still part of the same phrase (annexe, codetta, transition).
+Full phrase lengths are therefore calculated from ``{`` to ``{``.
+
+.. note::
+
+   The backslash ``\\`` is kept for backward compatibility with older versions
+   of the standard where it designated a phrase ending. It has been superseded
+   by the curly-bracket syntax.
+
+.. figure:: img/phrase_boundaries.png
+   :alt: Phrase boundaries example
+
+   Corelli: Sonata da chiesa op. 1/7, I, mm. 1--4
+
+
+Cadence labels
+^^^^^^^^^^^^^^
+
+Cadences are marked on the ultima with one of the following labels,
+separated from the chord label by a pipe ``|``:
+
+.. table:: Cadence labels
+   :widths: auto
+   :align: center
+
+   +-------+-----------------------------+-------------------------------------------------------------------------------------+
+   | Label | Cadence type                | Usage                                                                               |
+   +=======+=============================+=====================================================================================+
+   | PAC   | Perfect authentic cadence   | Bass and upper voice closing on ^1                                                  |
+   +-------+-----------------------------+-------------------------------------------------------------------------------------+
+   | IAC   | Imperfect authentic cadence | Bass or upper voice not closing on ^1                                               |
+   +-------+-----------------------------+-------------------------------------------------------------------------------------+
+   | HC    | Half cadence                | Closing on V                                                                        |
+   +-------+-----------------------------+-------------------------------------------------------------------------------------+
+   | DC    | Deceptive cadence           | Ultima not a tonic chord                                                            |
+   +-------+-----------------------------+-------------------------------------------------------------------------------------+
+   | EC    | Evaded cadence              | Cadential goal is cut off from the previous progression and groups forward          |
+   +-------+-----------------------------+-------------------------------------------------------------------------------------+
+   | PC    | Plagal cadence              | Cadential ending with ^4--^1 in the bass                                            |
+   +-------+-----------------------------+-------------------------------------------------------------------------------------+
+
+.. note::
+
+   The ``PC`` label is accepted but should be used with caution. It remains
+   debated for which repertoires plagal cadences constitute an appropriate
+   analytical category. When in doubt, consult your reviewer.
+
+If the ultima is suspended, the cadence label marks the moment of its
+completion, whereas the structural phrase ending ``}`` marks its structural
+position. When cadence label and phrase ending co-occur, ``}`` goes last:
+e.g. ``i|PAC}``. A cadence label can occur without a harmony label
+(e.g. ``|EC``) but this is rare.
+
+.. admonition:: Cadence frequency
+   :class: caution
+
+   The DCML guidelines require writing more cadence labels than most theorists
+   naturally would. Following a schema-theoretic approach, if a cadential
+   schema is repeated in the same or a similar way, the cadence label needs to
+   be repeated as well, even if from a formal perspective only one instance
+   would be considered the "real" cadence.
+
+
+.. _pedal-points:
+
+Pedal points (Organ points)
+---------------------------
+
+If several harmonies appear over the same bass note, the start of the
+pedal point is marked by ``[`` and the end by ``]``. In front of the opening
+``[`` stands the Roman numeral corresponding to the bass note's scale degree,
+immediately followed (within the same expression) by the first harmony above
+the pedal note. Thus, the most common pedal points start with ``I[I``,
+``i[V7/iv``, or ``V[V``. The pedal point ends at the end of the terminal
+symbol's duration, i.e. it ends with the next symbol after ``I]`` or ``V7]``.
+
+Two criteria must both apply for using the pedal-point annotation:
+
+* It involves three or more distinct harmonic events sharing the same bass note.
+* At least one harmony appears of which the pedal note is not a component.
+
+Therefore, a 5/3-6/4-5/3 contrapuntal movement (often on scale degree 1)
+is generally annotated as a simple neighboring motion: ``I I(64) I``
+(the pedal-point character is implied in this expression).
+
+.. |notapedal| image:: img/notapedal.png
+.. |auskomponiert| image:: img/auskomponiert.png
+
++-----------------+-------------+
+| Example         | Explanation |
++=================+=============+
+| |notapedal|     | No pedal    |
+|                 | point       |
+| (KV             | because the |
+| 333,            | bass is a   |
+| II, 19)         | constituent |
+|                 | of every    |
+|                 | harmony.    |
++-----------------+-------------+
+| |auskomponiert| | This is     |
+|                 | considered  |
+|                 | a mere      |
+| (KV             | `i i(64) i` |
+| 333,            | prolongation|
+| III,            | (only two   |
+| 65-8)           | distinct    |
+|                 | events).    |
++-----------------+-------------+
+
+A rule of thumb for the harmonies above the pedal note: If the bass note is
+a part of the harmony, write the inversion corresponding to the bass note;
+otherwise, the inversion of the chord above. A more important rule can
+override this: The harmonic progression above the organ point should be
+meaningful in itself. For example, in a fauxbourdon you might highlight the
+sixth chords: ``I[IV6 iii6 ii6 I6 viio6 I]`` rather than
+``I[IV64 iii6 ii6 I viio6 I]``.
+
+.. note::
+
+   If you change the local key, you need to end the pedal point with
+   the previous label and start a new one.
+
+
+.. _ambiguity:
+
+Ambiguity
+---------
+
+If two interpretations are possible and you are unable to make a decision,
+you can give both interpretations by separating them with a dash ``-``,
+e.g. ``viio6-V43``. Use this means as a last resort only and make sure
+that both interpretations are valid readings *within their context*, i.e.
+each interpretation should be valid in line with the prior and the following
+symbol. This implies that no modulation can occur within an ambiguous
+expression (such as ``viio7/V-v.#viio7``) because only one of the readings
+can be correct in context with the following expression. It is possible to
+give a relative key (e.g. ``I6-V6/IV``) because both options create correct
+readings.
+
+
+Unisono
+-------
+
+Single-voice passages generally imply harmonies which you are asked to
+infer. If the information of the melody line is too sparse to be sure
+whether it is implying ``viio6`` or ``V43``, for example, you will most
+likely opt for an ambiguous annotation (see :ref:`ambiguity`). You are
+also free to choose one interpretation because it is more stereotypical
+or because it alludes to another passage of the same piece. If no harmony
+can be inferred --- in particular where a composer deliberately withdraws
+tonal footing --- use the symbol ``@none``.
+
+
+.. _repetition-of-labels:
+
+Immediate repetition of identical labels
+----------------------------------------
+
+There are only rare cases where identical labels should be repeated:
+
+* If one label marks the beginning or ending of an organ point.
+* If a repetition is needed to allow for a consistent reading with
+  repetitions, first and second endings, dal segnos, etc.
+  Example: ``| V |: V I :|`` instead of ``| V |: I :|``
+
+
+Summary of the full syntax
+==========================
+
+One of the longest possible expressions would be
+``bvii.V[#viio65(+b84)/#vi``. This is purely theoretical and simply a
+demonstration of order and meaning of the different syntactic components.
+With concrete examples given in relation to C major:
+
+* ``bvii.`` in the context of a major key *(C major)* means that all
   following symbols relate to the minor key on the lowered 7th scale
-  degree *(Bb minor)*. The initial dot is necessary because ``b`` is a
-  note name. \* ``V[`` designates the beginning of an organ point on the
-  5th scale degree *(F)*. \* ``#viio65`` stands for the first inversion of
-  a diminished seventh chord of the raised 7th scale degree \* ``(+b84)``
-  designates an added diminished octave (added notes usually occur because
-  of pedal tones that are not in the bass) and a (not added but) suspended
-  fourth, withholding the third \* ``/#vi`` means that this chord (the
-  ``#viio65``) relates to the raised 6th scale degree. *Which, in Bb
-  minor, would be G. Therefore, the root of ``#viio65/#vi`` would be F#.*
+  degree *(Bb minor)*.
+* ``V[`` designates the beginning of an organ point on the
+  5th scale degree *(F)*.
+* ``#viio65`` stands for the first inversion of a diminished seventh chord
+  on the raised 7th scale degree.
+* ``(+b84)`` designates an added diminished octave (added notes usually
+  occur because of pedal tones that are not in the bass) and a (not added
+  but) suspended fourth, withholding the third.
+* ``/#vi`` means that this chord (the ``#viio65``) relates to the raised
+  6th scale degree. *Which, in Bb minor, would be G. Therefore, the root
+  of* ``#viio65/#vi`` *would be F#.*
 
-  Here, you can see an imaginary context, in C major, where this example
-  could theoretically occur: |longexpression|
+.. |longexpression| image:: img/longexpression.png
 
-  .. |split1| image:: img/split1.png
-  .. |split2| image:: img/split2.png
-  .. |split3| image:: img/split3.png
-  .. |ocal\_key\_correct| image:: img/local_key_correct.png
-  .. |local\_key\_wrong| image:: img/local_key_wrong.png
-  .. |gantt\_before| image:: img/gantt_before.png
-  .. |gantt\_after| image:: img/gantt_after.png
-  .. |longexpression| image:: img/longexpression.png
-
-
-
-
-
-
-.. Inter-Annotator Consensus
-
-  Underspecified Harmony
-  ----------------------
-
-  .. figure:: img/beethoven_03-1_240-244_lydia_adrian.png
-      :alt: Two different views on mm. 240-4 of the first movement of Beethoven's Piano Sonata No. 3
-
-      Two different views on mm. 240-4 of the first movement of Beethoven's Piano Sonata No. 3
-
-
-  .. figure:: img/beethoven_03-1_240-244_merged.png
-      :alt: Both interpretations merged together.
-
-      Both interpretations merged together.
-
-
-  .. figure:: img/beethoven_03-1_113-127_lydia_adrian.png
-      :alt: Two different views on mm. 113-27 of the first movement of Beethoven's Piano Sonata No. 3
-
-      Two different views on mm. 113-27 of the first movement of Beethoven's Piano Sonata No. 3
-
-
-  .. figure:: img/beethoven_03-1_113-127_merged.png
-      :alt: Both interpretations merged together.
-
-      Both interpretations merged together.
+Here, you can see an imaginary context, in C major, where this example
+could theoretically occur: |longexpression|
