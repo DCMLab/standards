@@ -2,6 +2,83 @@
 Annotation Reference
 ********************
 
+
+.. _quickstart:
+
+Quickstart
+==========
+
+This section gives a brief overview of the DCML harmony annotation standard
+and how to get started. Each feature links to the detailed reference below
+and to the relevant :doc:`tutorial <../tutorial/index>` pages.
+
+
+Tooling setup
+-------------
+
+1. Install `MuseScore 3.6.2 <https://github.com/musescore/MuseScore/releases/tag/v3.6.2>`__
+   (not MuseScore 4 --- see the :ref:`note below <why-not-musescore4>`).
+2. Open a score (uncompressed ``.mscx`` format) and click on the note where
+   you want to place the first label.
+3. Go to ``Add -> Text -> Roman Numeral Analysis`` (or assign a shortcut such
+   as ``Ctrl+R``). See the :doc:`tutorial <../tutorial/musescore>` for
+   cursor navigation (``[SPACE]``, ``[TAB]``, ``Ctrl+3/4/...``).
+4. Set up `Git <https://git-scm.com/>`__ for version control of your
+   annotation files. Follow the :doc:`score edition guidelines <../scores/guidelines>`
+   for score preparation.
+
+
+Feature overview
+----------------
+
+**Global and local key** ---
+The first label always starts with the global key (e.g. ``Ab.I``, ``f#.i``).
+Subsequent modulations are indicated as Roman numerals relative to the global
+key, followed by a dot (e.g. ``V.I``).
+See `Indication of key`_ and :doc:`../tutorial/localkey`.
+
+**Roman numerals** ---
+Upper case = major triad, lower case = minor triad. Altered roots are
+prefixed with ``b`` or ``#`` (e.g. ``bVI``, ``#iv``). Inversions and
+chord types are appended (e.g. ``V65``, ``viio7``, ``III+6``).
+See `Roman numerals`_ and :doc:`../tutorial/first_label`.
+
+**Applied chords and relative keys** ---
+A slash indicates that a chord relates to a key other than the current
+local key, e.g. ``V65/IV``. Extended slash notation can mark fleeting
+tonicizations over several chords (e.g. ``iio65/vi V7/vi i/vi``).
+See :ref:`relative-key` and :doc:`../tutorial/localkey`.
+
+**Suspensions, retardations, and chord-tone changes** ---
+Annotated as Arabic digits in parentheses after the Roman numeral:
+``V(4)`` for a 4--3 suspension, ``V(64)`` for the cadential six-four.
+Digits refer to intervals *above the root*, not figured bass.
+See :ref:`suspensions-and-retardations` and :doc:`../tutorial/detail`.
+
+**Added and missing notes** ---
+Added notes use ``+`` (e.g. ``ii6(+4)`` for a pedal tone), missing notes
+use ``-`` (e.g. ``I(-3)`` for an empty fifth).
+See `Added and missing notes`_.
+
+**Phrase annotations and cadence labels** ---
+Phrases are delimited with ``{`` and ``}``, cadences are marked on the
+ultima with a pipe and label: ``i|PAC}``.
+See :ref:`phrase-annotations` and :doc:`../tutorial/first_phrase`.
+
+**Pedal points** ---
+Bracketed passages over a sustained bass note: ``I[I IV64 V7 I]``.
+See :ref:`pedal-points` and :doc:`../tutorial/features`.
+
+**Augmented sixth chords** ---
+Special symbols ``It6``, ``Ger6``, ``Fr6`` for the three standard forms.
+See :ref:`augmented-sixth-chords`.
+
+**Ambiguity and unisono** ---
+Two interpretations are separated by a dash (``viio6-V43``). Unaccompanied
+passages use ``@none`` when no harmony can be inferred.
+See :ref:`ambiguity`.
+
+
 Introduction
 ============
 
@@ -33,6 +110,21 @@ such as position in the score, the key it occurs in, the chord
 tones it represents, and its different features. This reference is
 mainly concerned with explaining what these different properties are.
 
+.. _why-not-musescore4:
+
+.. admonition:: Why not MuseScore 4?
+   :class: warning
+
+   The DCML standard relies on MuseScore 3.6.2, not MuseScore 4. The MuseScore 4
+   rewrite has dropped several features indispensable for power users ---
+   possibly motivated by commercial interests that do not serve the open-source
+   community. The single most critical issue for us is the elimination of the
+   ability to store MuseScore files as individual ``.mscx`` files (rather than
+   an entire uncompressed folder). This breaks our Git-based version-control
+   workflow and the tooling built on top of it. As long as this remains
+   unresolved, we cannot adopt MuseScore 4. The issue is tracked at
+   `musescore/MuseScore#15995 <https://github.com/musescore/MuseScore/issues/15995>`__.
+
 
 About this reference
 --------------------
@@ -52,6 +144,12 @@ General principles
 
 The following principles are essential for producing correct annotations:
 
+-  **Consistency** is the annotation standard's highest maxim: While different
+   annotators would interpret the same music differently, it is important
+   that the same annotator interprets the same music identically.
+-  Major keys are indicated by uppercase, minor keys by lowercase letters.
+-  The information about a harmony is expressed in a fixed order
+   (syntax) and orthographical errors can be automatically detected.
 -  Chord symbols (i.e. Roman numerals) are attached to the moment in the
    score where the respective harmony begins. They are valid until the
    next symbol; identical symbols are never repeated consecutively
@@ -61,26 +159,35 @@ The following principles are essential for producing correct annotations:
 -  Arabic numbers indicating :ref:`inversions <roman-numerals>` or
    :ref:`chord tone changes <suspensions-and-retardations>` always appear
    in descending order (e.g. ``65`` or ``9#74``).
--  The information about a harmony is expressed in a fixed order
-   (syntax) and orthographical errors can be automatically detected.
--  The annotations always need to represent a consistent reading, also in the
-   case of repetitions, first and second endings, dal segnos, etc.
--  Major keys are indicated by uppercase, minor keys by lowercase letters.
 -  We annotate non-chord tones such as suspensions, retardations, and additions,
    but not ornaments (neighbour notes, passing notes, embellishments).
    See :doc:`Level of detail <../tutorial/detail>` in the tutorial for guidance.
 -  Before annotating, decide on the harmonic pace for the piece and maintain it
    consistently.
--  **Consistency** is the annotation standard's highest maxim: While different
-   annotators would interpret the same music differently, it is important
-   that the same annotator interprets the same music identically.
+-  The annotations always need to represent a consistent reading, also in the
+   case of repetitions, first and second endings, dal segnos, etc.
+-  DCML labels are entered in MuseScore 3's **Roman Numeral Analysis** layer
+   (``Add -> Text -> Roman Numeral Analysis``), *not* in the Harmony layer,
+   StaffText/SystemText, or Lyrics. See the :doc:`tutorial <../tutorial/musescore>`
+   for instructions on placing and navigating the annotation cursor.
+
+.. admonition:: Display of parentheses
+   :class: note
+
+   MuseScore's Roman Numeral Analysis layer does not render our
+   :ref:`parenthesis notation <suspensions-and-retardations>` correctly ---
+   for example, ``V(9#74)`` may display in an unexpected way. This is purely
+   cosmetic and **inconsequential for encoding**: the underlying data is stored
+   exactly as you type it, which is all that matters for our purposes.
 
 .. note::
 
    Depending on the source of the notation file you receive for annotation,
    it may be advisable to have a scan of the *Urtext* open for tacit correction
    of the score. At least the bar numbers must be 100% correct. Make sure that
-   upbeat measures are counted by MuseScore as measure 0.
+   upbeat measures are counted by MuseScore as measure 0. For detailed guidance
+   on score preparation and formatting, see our
+   :doc:`score edition guidelines <../scores/guidelines>`.
 
 
 
@@ -116,6 +223,19 @@ Indication of key
    the music then stays in the key of ``vi`` for a longer time (cf. next
    paragraph), you can write ``vi.V`` right away. Every following ``i``
    symbol designates the new tonic.
+-  To highlight a brief, non-substantial modulation (a *fleeting
+   tonicization*), we prefer continuing with the slash notation over
+   several chords rather than changing the local key. For example,
+   ``iio65/vi V7/vi i/vi`` keeps the passage visually grouped as a
+   fleeting modulation context, and the cadential movement reads as
+   ``V7 - i`` (the final ``i/vi`` is equivalent to ``vi`` but better
+   conveys the tonicization). Use a change of local key (``vi.``) only
+   when the music genuinely stays in the new key.
+-  You can also modulate to a *relative key* such as ``vi/III``: In a
+   global minor context, this would correspond to the global tonic, but
+   expressed as the minor relative ``vi`` of the global-relative ``III``.
+   Such relative-key modulations normally occur adjacent to (before or
+   after) a modulation to the local key to which they are relative.
 
 Example
 ^^^^^^^
@@ -155,6 +275,17 @@ making such a choice, you need to include the broader context:
      remaining unchanged (``/V``) because it is **relative** to the local
      key; whereas the **change of local key** would indicate the
      *absolute* key instead: ``V.I6 II.ii65 V7 I(4)``
+
+.. warning::
+
+   Whenever the local key is not the global tonic (``I`` or ``i``), the key
+   indicated by the slash notation (``/``) will differ from the key indicated
+   by a modulation dot (``.``). Slash notation is *relative to the local key*,
+   whereas the modulation key is *relative to the global key*. For example,
+   in a passage where the local key is ``V``, writing ``V7/IV`` refers to the
+   dominant seventh of the fourth degree *of the local key* --- which is the
+   global tonic --- while a modulation ``I.V7`` would refer to something
+   entirely different. Always keep this distinction in mind.
 
 .. |localkeycorrect| image:: img/local_key_correct.svg
     :width: 100 %

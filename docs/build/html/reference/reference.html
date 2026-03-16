@@ -131,6 +131,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Annotation Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-syntax">The syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary-of-the-full-syntax">Summary of the full syntax</a></li>
@@ -163,6 +164,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Annotation Reference</a><ul>
+<li><a class="reference internal" href="#quickstart">Quickstart</a><ul>
+<li><a class="reference internal" href="#tooling-setup">Tooling setup</a></li>
+<li><a class="reference internal" href="#feature-overview">Feature overview</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#introduction">Introduction</a><ul>
 <li><a class="reference internal" href="#what-is-it">What is it?</a></li>
 <li><a class="reference internal" href="#about-this-reference">About this reference</a></li>
@@ -193,7 +199,7 @@
 </li>
 <li><a class="reference internal" href="#added-and-missing-notes">Added and missing notes</a></li>
 <li><a class="reference internal" href="#phrase-annotations-and-cadence-labels">Phrase annotations and cadence labels</a><ul>
-<li><a class="reference internal" href="#id5">Phrase annotations</a></li>
+<li><a class="reference internal" href="#id6">Phrase annotations</a></li>
 <li><a class="reference internal" href="#cadence-labels">Cadence labels</a></li>
 </ul>
 </li>
@@ -255,6 +261,68 @@
       
   <section id="annotation-reference">
 <h1>Annotation Reference<a class="headerlink" href="#annotation-reference" title="Permalink to this heading">¶</a></h1>
+<section id="quickstart">
+<span id="id1"></span><h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h2>
+<p>This section gives a brief overview of the DCML harmony annotation standard
+and how to get started. Each feature links to the detailed reference below
+and to the relevant <a class="reference internal" href="../tutorial/index.html"><span class="doc">tutorial</span></a> pages.</p>
+<section id="tooling-setup">
+<h3>Tooling setup<a class="headerlink" href="#tooling-setup" title="Permalink to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Install <a class="reference external" href="https://github.com/musescore/MuseScore/releases/tag/v3.6.2">MuseScore 3.6.2</a>
+(not MuseScore 4 — see the <a class="reference internal" href="#why-not-musescore4"><span class="std std-ref">note below</span></a>).</p></li>
+<li><p>Open a score (uncompressed <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> format) and click on the note where
+you want to place the first label.</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">-&gt;</span> <span class="pre">Text</span> <span class="pre">-&gt;</span> <span class="pre">Roman</span> <span class="pre">Numeral</span> <span class="pre">Analysis</span></code> (or assign a shortcut such
+as <code class="docutils literal notranslate"><span class="pre">Ctrl+R</span></code>). See the <a class="reference internal" href="../tutorial/musescore.html"><span class="doc">tutorial</span></a> for
+cursor navigation (<code class="docutils literal notranslate"><span class="pre">[SPACE]</span></code>, <code class="docutils literal notranslate"><span class="pre">[TAB]</span></code>, <code class="docutils literal notranslate"><span class="pre">Ctrl+3/4/...</span></code>).</p></li>
+<li><p>Set up <a class="reference external" href="https://git-scm.com/">Git</a> for version control of your
+annotation files. Follow the <a class="reference internal" href="../scores/guidelines.html"><span class="doc">score edition guidelines</span></a>
+for score preparation.</p></li>
+</ol>
+</section>
+<section id="feature-overview">
+<h3>Feature overview<a class="headerlink" href="#feature-overview" title="Permalink to this heading">¶</a></h3>
+<p><strong>Global and local key</strong> —
+The first label always starts with the global key (e.g. <code class="docutils literal notranslate"><span class="pre">Ab.I</span></code>, <code class="docutils literal notranslate"><span class="pre">f#.i</span></code>).
+Subsequent modulations are indicated as Roman numerals relative to the global
+key, followed by a dot (e.g. <code class="docutils literal notranslate"><span class="pre">V.I</span></code>).
+See <a class="reference internal" href="#indication-of-key">Indication of key</a> and <a class="reference internal" href="../tutorial/localkey.html"><span class="doc">Changing the local key</span></a>.</p>
+<p><strong>Roman numerals</strong> —
+Upper case = major triad, lower case = minor triad. Altered roots are
+prefixed with <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">#</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">bVI</span></code>, <code class="docutils literal notranslate"><span class="pre">#iv</span></code>). Inversions and
+chord types are appended (e.g. <code class="docutils literal notranslate"><span class="pre">V65</span></code>, <code class="docutils literal notranslate"><span class="pre">viio7</span></code>, <code class="docutils literal notranslate"><span class="pre">III+6</span></code>).
+See <a class="reference internal" href="#id3">Roman numerals</a> and <a class="reference internal" href="../tutorial/first_label.html"><span class="doc">The first label</span></a>.</p>
+<p><strong>Applied chords and relative keys</strong> —
+A slash indicates that a chord relates to a key other than the current
+local key, e.g. <code class="docutils literal notranslate"><span class="pre">V65/IV</span></code>. Extended slash notation can mark fleeting
+tonicizations over several chords (e.g. <code class="docutils literal notranslate"><span class="pre">iio65/vi</span> <span class="pre">V7/vi</span> <span class="pre">i/vi</span></code>).
+See <a class="reference internal" href="#relative-key"><span class="std std-ref">Relative key</span></a> and <a class="reference internal" href="../tutorial/localkey.html"><span class="doc">Changing the local key</span></a>.</p>
+<p><strong>Suspensions, retardations, and chord-tone changes</strong> —
+Annotated as Arabic digits in parentheses after the Roman numeral:
+<code class="docutils literal notranslate"><span class="pre">V(4)</span></code> for a 4–3 suspension, <code class="docutils literal notranslate"><span class="pre">V(64)</span></code> for the cadential six-four.
+Digits refer to intervals <em>above the root</em>, not figured bass.
+See <a class="reference internal" href="#suspensions-and-retardations"><span class="std std-ref">Suspensions and retardations</span></a> and <a class="reference internal" href="../tutorial/detail.html"><span class="doc">Level of detail</span></a>.</p>
+<p><strong>Added and missing notes</strong> —
+Added notes use <code class="docutils literal notranslate"><span class="pre">+</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">ii6(+4)</span></code> for a pedal tone), missing notes
+use <code class="docutils literal notranslate"><span class="pre">-</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">I(-3)</span></code> for an empty fifth).
+See <a class="reference internal" href="#added-and-missing-notes">Added and missing notes</a>.</p>
+<p><strong>Phrase annotations and cadence labels</strong> —
+Phrases are delimited with <code class="docutils literal notranslate"><span class="pre">{</span></code> and <code class="docutils literal notranslate"><span class="pre">}</span></code>, cadences are marked on the
+ultima with a pipe and label: <code class="docutils literal notranslate"><span class="pre">i|PAC}</span></code>.
+See <a class="reference internal" href="#phrase-annotations"><span class="std std-ref">Phrase annotations and cadence labels</span></a> and <a class="reference internal" href="../tutorial/first_phrase.html"><span class="doc">The first phrase</span></a>.</p>
+<p><strong>Pedal points</strong> —
+Bracketed passages over a sustained bass note: <code class="docutils literal notranslate"><span class="pre">I[I</span> <span class="pre">IV64</span> <span class="pre">V7</span> <span class="pre">I]</span></code>.
+See <a class="reference internal" href="#pedal-points"><span class="std std-ref">Pedal points (Organ points)</span></a> and <a class="reference internal" href="../tutorial/features.html"><span class="doc">Some more features</span></a>.</p>
+<p><strong>Augmented sixth chords</strong> —
+Special symbols <code class="docutils literal notranslate"><span class="pre">It6</span></code>, <code class="docutils literal notranslate"><span class="pre">Ger6</span></code>, <code class="docutils literal notranslate"><span class="pre">Fr6</span></code> for the three standard forms.
+See <a class="reference internal" href="#augmented-sixth-chords"><span class="std std-ref">Augmented sixth chords</span></a>.</p>
+<p><strong>Ambiguity and unisono</strong> —
+Two interpretations are separated by a dash (<code class="docutils literal notranslate"><span class="pre">viio6-V43</span></code>). Unaccompanied
+passages use <code class="docutils literal notranslate"><span class="pre">&#64;none</span></code> when no harmony can be inferred.
+See <a class="reference internal" href="#ambiguity"><span class="std std-ref">Ambiguity</span></a>.</p>
+</section>
+</section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Thank you for your interest in the DCML harmony annotation standard. Harmonic
@@ -282,6 +350,18 @@ each row represents a label and each column one of its properties
 such as position in the score, the key it occurs in, the chord
 tones it represents, and its different features. This reference is
 mainly concerned with explaining what these different properties are.</p>
+<div class="warning admonition" id="why-not-musescore4">
+<p class="admonition-title">Why not MuseScore 4?</p>
+<p>The DCML standard relies on MuseScore 3.6.2, not MuseScore 4. The MuseScore 4
+rewrite has dropped several features indispensable for power users —
+possibly motivated by commercial interests that do not serve the open-source
+community. The single most critical issue for us is the elimination of the
+ability to store MuseScore files as individual <code class="docutils literal notranslate"><span class="pre">.mscx</span></code> files (rather than
+an entire uncompressed folder). This breaks our Git-based version-control
+workflow and the tooling built on top of it. As long as this remains
+unresolved, we cannot adopt MuseScore 4. The issue is tracked at
+<a class="reference external" href="https://github.com/musescore/MuseScore/issues/15995">musescore/MuseScore#15995</a>.</p>
+</div>
 </section>
 <section id="about-this-reference">
 <h3>About this reference<a class="headerlink" href="#about-this-reference" title="Permalink to this heading">¶</a></h3>
@@ -298,6 +378,12 @@ comparable and interoperable.</p>
 <h3>General principles<a class="headerlink" href="#general-principles" title="Permalink to this heading">¶</a></h3>
 <p>The following principles are essential for producing correct annotations:</p>
 <ul class="simple">
+<li><p><strong>Consistency</strong> is the annotation standard’s highest maxim: While different
+annotators would interpret the same music differently, it is important
+that the same annotator interprets the same music identically.</p></li>
+<li><p>Major keys are indicated by uppercase, minor keys by lowercase letters.</p></li>
+<li><p>The information about a harmony is expressed in a fixed order
+(syntax) and orthographical errors can be automatically detected.</p></li>
 <li><p>Chord symbols (i.e. Roman numerals) are attached to the moment in the
 score where the respective harmony begins. They are valid until the
 next symbol; identical symbols are never repeated consecutively
@@ -307,26 +393,34 @@ contains only rests, at the precise position where the harmony occurs.</p></li>
 <li><p>Arabic numbers indicating <a class="reference internal" href="#roman-numerals"><span class="std std-ref">inversions</span></a> or
 <a class="reference internal" href="#suspensions-and-retardations"><span class="std std-ref">chord tone changes</span></a> always appear
 in descending order (e.g. <code class="docutils literal notranslate"><span class="pre">65</span></code> or <code class="docutils literal notranslate"><span class="pre">9#74</span></code>).</p></li>
-<li><p>The information about a harmony is expressed in a fixed order
-(syntax) and orthographical errors can be automatically detected.</p></li>
-<li><p>The annotations always need to represent a consistent reading, also in the
-case of repetitions, first and second endings, dal segnos, etc.</p></li>
-<li><p>Major keys are indicated by uppercase, minor keys by lowercase letters.</p></li>
 <li><p>We annotate non-chord tones such as suspensions, retardations, and additions,
 but not ornaments (neighbour notes, passing notes, embellishments).
 See <a class="reference internal" href="../tutorial/detail.html"><span class="doc">Level of detail</span></a> in the tutorial for guidance.</p></li>
 <li><p>Before annotating, decide on the harmonic pace for the piece and maintain it
 consistently.</p></li>
-<li><p><strong>Consistency</strong> is the annotation standard’s highest maxim: While different
-annotators would interpret the same music differently, it is important
-that the same annotator interprets the same music identically.</p></li>
+<li><p>The annotations always need to represent a consistent reading, also in the
+case of repetitions, first and second endings, dal segnos, etc.</p></li>
+<li><p>DCML labels are entered in MuseScore 3’s <strong>Roman Numeral Analysis</strong> layer
+(<code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">-&gt;</span> <span class="pre">Text</span> <span class="pre">-&gt;</span> <span class="pre">Roman</span> <span class="pre">Numeral</span> <span class="pre">Analysis</span></code>), <em>not</em> in the Harmony layer,
+StaffText/SystemText, or Lyrics. See the <a class="reference internal" href="../tutorial/musescore.html"><span class="doc">tutorial</span></a>
+for instructions on placing and navigating the annotation cursor.</p></li>
 </ul>
+<div class="note admonition">
+<p class="admonition-title">Display of parentheses</p>
+<p>MuseScore’s Roman Numeral Analysis layer does not render our
+<a class="reference internal" href="#suspensions-and-retardations"><span class="std std-ref">parenthesis notation</span></a> correctly —
+for example, <code class="docutils literal notranslate"><span class="pre">V(9#74)</span></code> may display in an unexpected way. This is purely
+cosmetic and <strong>inconsequential for encoding</strong>: the underlying data is stored
+exactly as you type it, which is all that matters for our purposes.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the source of the notation file you receive for annotation,
 it may be advisable to have a scan of the <em>Urtext</em> open for tacit correction
 of the score. At least the bar numbers must be 100% correct. Make sure that
-upbeat measures are counted by MuseScore as measure 0.</p>
+upbeat measures are counted by MuseScore as measure 0. For detailed guidance
+on score preparation and formatting, see our
+<a class="reference internal" href="../scores/guidelines.html"><span class="doc">score edition guidelines</span></a>.</p>
 </div>
 </section>
 </section>
@@ -358,6 +452,19 @@ relate to the new key of G major.</p></li>
 the music then stays in the key of <code class="docutils literal notranslate"><span class="pre">vi</span></code> for a longer time (cf. next
 paragraph), you can write <code class="docutils literal notranslate"><span class="pre">vi.V</span></code> right away. Every following <code class="docutils literal notranslate"><span class="pre">i</span></code>
 symbol designates the new tonic.</p></li>
+<li><p>To highlight a brief, non-substantial modulation (a <em>fleeting
+tonicization</em>), we prefer continuing with the slash notation over
+several chords rather than changing the local key. For example,
+<code class="docutils literal notranslate"><span class="pre">iio65/vi</span> <span class="pre">V7/vi</span> <span class="pre">i/vi</span></code> keeps the passage visually grouped as a
+fleeting modulation context, and the cadential movement reads as
+<code class="docutils literal notranslate"><span class="pre">V7</span> <span class="pre">-</span> <span class="pre">i</span></code> (the final <code class="docutils literal notranslate"><span class="pre">i/vi</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">vi</span></code> but better
+conveys the tonicization). Use a change of local key (<code class="docutils literal notranslate"><span class="pre">vi.</span></code>) only
+when the music genuinely stays in the new key.</p></li>
+<li><p>You can also modulate to a <em>relative key</em> such as <code class="docutils literal notranslate"><span class="pre">vi/III</span></code>: In a
+global minor context, this would correspond to the global tonic, but
+expressed as the minor relative <code class="docutils literal notranslate"><span class="pre">vi</span></code> of the global-relative <code class="docutils literal notranslate"><span class="pre">III</span></code>.
+Such relative-key modulations normally occur adjacent to (before or
+after) a modulation to the local key to which they are relative.</p></li>
 </ul>
 <section id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
@@ -399,6 +506,17 @@ remaining unchanged (<code class="docutils literal notranslate"><span class="pre
 key; whereas the <strong>change of local key</strong> would indicate the
 <em>absolute</em> key instead: <code class="docutils literal notranslate"><span class="pre">V.I6</span> <span class="pre">II.ii65</span> <span class="pre">V7</span> <span class="pre">I(4)</span></code></p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Whenever the local key is not the global tonic (<code class="docutils literal notranslate"><span class="pre">I</span></code> or <code class="docutils literal notranslate"><span class="pre">i</span></code>), the key
+indicated by the slash notation (<code class="docutils literal notranslate"><span class="pre">/</span></code>) will differ from the key indicated
+by a modulation dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>). Slash notation is <em>relative to the local key</em>,
+whereas the modulation key is <em>relative to the global key</em>. For example,
+in a passage where the local key is <code class="docutils literal notranslate"><span class="pre">V</span></code>, writing <code class="docutils literal notranslate"><span class="pre">V7/IV</span></code> refers to the
+dominant seventh of the fourth degree <em>of the local key</em> — which is the
+global tonic — while a modulation <code class="docutils literal notranslate"><span class="pre">I.V7</span></code> would refer to something
+entirely different. Always keep this distinction in mind.</p>
+</div>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Approriate annotation</p></th>
@@ -432,7 +550,7 @@ analyses of two different annotations of the same piece:</p>
 </section>
 </section>
 <section id="relative-key">
-<span id="id1"></span><h3>Relative key<a class="headerlink" href="#relative-key" title="Permalink to this heading">¶</a></h3>
+<span id="id2"></span><h3>Relative key<a class="headerlink" href="#relative-key" title="Permalink to this heading">¶</a></h3>
 <p>If a symbol relates to a different key than the one you are in, you can
 indicate the relative key using a slash <code class="docutils literal notranslate"><span class="pre">/</span></code>. Most prominently this is
 the case for secondary dominants such as <code class="docutils literal notranslate"><span class="pre">V65/IV</span></code>. The relative key is
@@ -469,7 +587,7 @@ tone is scale degree <code class="docutils literal notranslate"><span class="pre
 </div>
 </section>
 <section id="roman-numerals">
-<span id="id2"></span><h3>Roman numerals<a class="headerlink" href="#roman-numerals" title="Permalink to this heading">¶</a></h3>
+<span id="id3"></span><h3>Roman numerals<a class="headerlink" href="#roman-numerals" title="Permalink to this heading">¶</a></h3>
 <p>The smallest possible symbols consist of a single Roman numeral. They
 stand for a major (<code class="docutils literal notranslate"><span class="pre">I,</span> <span class="pre">II,</span> <span class="pre">III,</span> <span class="pre">IV,</span> <span class="pre">V,</span> <span class="pre">VI,</span> <span class="pre">VII</span></code>) or minor
 (<code class="docutils literal notranslate"><span class="pre">i,</span> <span class="pre">ii,</span> <span class="pre">iii,</span> <span class="pre">iv,</span> <span class="pre">v,</span> <span class="pre">vi,</span> <span class="pre">vii</span></code>) triad in root position. <em>All other
@@ -492,8 +610,8 @@ the tutorial for details on modes.</p>
 </div>
 <section id="triads">
 <h4>Triads<a class="headerlink" href="#triads" title="Permalink to this heading">¶</a></h4>
-<table class="docutils align-center" id="id7" style="width: 70%">
-<caption><span class="caption-text">Triads. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id8" style="width: 70%">
+<caption><span class="caption-text">Triads. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Root</p></th>
 <th class="head"><p>Type</p></th>
@@ -538,8 +656,8 @@ the tutorial for details on modes.</p>
 <p class="admonition-title">Mnemonic Hook</p>
 <p>Arabic numbers always occur in descending order.</p>
 </div>
-<table class="docutils align-center" id="id8" style="width: 75%">
-<caption><span class="caption-text">Seventh chords. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id9" style="width: 75%">
+<caption><span class="caption-text">Seventh chords. &lt;NA&gt; = empty; RN = uppercase numeral; rn = lowercase numeral</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Root</p></th>
 <th class="head"><p>Type</p></th>
@@ -614,10 +732,10 @@ follows, it should be annotated as a secondary dominant instead (e.g.
 </div>
 </section>
 <section id="augmented-sixth-chords">
-<span id="id3"></span><h4>Augmented sixth chords<a class="headerlink" href="#augmented-sixth-chords" title="Permalink to this heading">¶</a></h4>
+<span id="id4"></span><h4>Augmented sixth chords<a class="headerlink" href="#augmented-sixth-chords" title="Permalink to this heading">¶</a></h4>
 <p>The standard provides special symbols for the three augmented sixth chords:</p>
-<table class="docutils align-center" id="id9">
-<caption><span class="caption-text">Augmented sixth chords</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id10">
+<caption><span class="caption-text">Augmented sixth chords</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Symbol</p></th>
 <th class="head"><p>Name</p></th>
@@ -660,7 +778,7 @@ symbols (e.g. <code class="docutils literal notranslate"><span class="pre">.Ger<
 </section>
 </section>
 <section id="suspensions-and-retardations">
-<span id="id4"></span><h3>Suspensions and retardations<a class="headerlink" href="#suspensions-and-retardations" title="Permalink to this heading">¶</a></h3>
+<span id="id5"></span><h3>Suspensions and retardations<a class="headerlink" href="#suspensions-and-retardations" title="Permalink to this heading">¶</a></h3>
 <p>Suspensions, retardations, and other chord tone changes are annotated as
 Arabic numbers within round parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> following the Roman numeral,
 form, and inversion. The numbers designate the note’s interval <strong>to the root</strong>.
@@ -808,18 +926,18 @@ implied</strong> by the music. This symbol is used rarely because in most cases 
 missing note (the fifth in particular) is considered as implied. Examples:
 pronounced empty fifths <code class="docutils literal notranslate"><span class="pre">I(-3)</span></code>, unclear third quality <code class="docutils literal notranslate"><span class="pre">I(-3)-i(-3)</span></code>,
 or missing root in two-voice counterpoint <code class="docutils literal notranslate"><span class="pre">IV(-1)</span></code>.</p>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id11">
 <img alt="Added notes example from Monteverdi" src="../_images/added_notes.png" />
 <figcaption>
 <p><span class="caption-text">Monteverdi, <em>Lamento della ninfa</em>: Distinguishing added notes from
-embellishments and suspensions (mm. 40–44).</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+embellishments and suspensions (mm. 40–44).</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="phrase-annotations-and-cadence-labels">
 <span id="phrase-annotations"></span><h3>Phrase annotations and cadence labels<a class="headerlink" href="#phrase-annotations-and-cadence-labels" title="Permalink to this heading">¶</a></h3>
-<section id="id5">
-<h4>Phrase annotations<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
+<section id="id6">
+<h4>Phrase annotations<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
 <p>The DCML standard includes a non-hierarchical phrase annotation using
 curly brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code>. They may stand alone or be the last character of a
 chord label. Phrase annotations are <strong>always the label’s last part</strong>.</p>
@@ -837,10 +955,10 @@ Full phrase lengths are therefore calculated from <code class="docutils literal 
 of the standard where it designated a phrase ending. It has been superseded
 by the curly-bracket syntax.</p>
 </div>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id12">
 <img alt="Phrase boundaries example" src="../_images/phrase_boundaries.png" />
 <figcaption>
-<p><span class="caption-text">Corelli: Sonata da chiesa op. 1/7, I, mm. 1–4</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Corelli: Sonata da chiesa op. 1/7, I, mm. 1–4</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -848,8 +966,8 @@ by the curly-bracket syntax.</p>
 <h4>Cadence labels<a class="headerlink" href="#cadence-labels" title="Permalink to this heading">¶</a></h4>
 <p>Cadences are marked on the ultima with one of the following labels,
 separated from the chord label by a pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>:</p>
-<table class="docutils align-center" id="id12">
-<caption><span class="caption-text">Cadence labels</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id13">
+<caption><span class="caption-text">Cadence labels</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Label</p></th>
 <th class="head"><p>Cadence type</p></th>
@@ -972,7 +1090,7 @@ the previous label and start a new one.</p>
 </div>
 </section>
 <section id="ambiguity">
-<span id="id6"></span><h3>Ambiguity<a class="headerlink" href="#ambiguity" title="Permalink to this heading">¶</a></h3>
+<span id="id7"></span><h3>Ambiguity<a class="headerlink" href="#ambiguity" title="Permalink to this heading">¶</a></h3>
 <p>If two interpretations are possible and you are unable to make a decision,
 you can give both interpretations by separating them with a dash <code class="docutils literal notranslate"><span class="pre">-</span></code>,
 e.g. <code class="docutils literal notranslate"><span class="pre">viio6-V43</span></code>. Use this means as a last resort only and make sure
